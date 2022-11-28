@@ -69,7 +69,7 @@
       </div>
       <div class="d-none d-lg-flex social-links align-items-center">
         <a href="mailto:cihangxie306@gmail.com" class="envelope"><i class="bi-envelope"></i></a>
-<!--         <a href="contact.html" class="phone"><i class="bi-phone"></i></a> -->
+        <a href="contact.html" class="phone"><i class="bi-phone"></i></a>
 <!--         <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
         <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a> -->
       </div>
@@ -98,7 +98,7 @@
 <!--           <li><a class="nav-link scrollto" href="about.html">About</a></li> -->
           <li><a class="nav-link scrollto" href="people.html">People</a></li>
           <li><a class="nav-link scrollto active" href="publications.html">Publications</a></li>
-<!--           <li><a class="nav-link scrollto" href="contact.html">Contact</a></li> -->
+          <li><a class="nav-link scrollto" href="contact.html">Contact</a></li>
 
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -200,18 +200,9 @@ function copy(dest, source) {
 
         // document.write("<h2>Preprint</h2>")
         // document.write("<ul>")
-        document.write("</ul>")
-        document.write("<h2>Preprint</h2>")
-        document.write("<ul>")
 
-add_paper("Masked Autoencoders Enable Efficient Knowledge Distillers",
-            "Yutong Bai, Zeyu Wang, Junfei Xiao, Chen Wei, Huiyu Wang, Alan Yuille, Yuyin Zhou, Cihang Xie",
-            "arxiv, 2022",
-            "https://arxiv.org/pdf/2208.12256.pdf",
-            "@article{bai2022dmae,<br>title   = {Masked Autoencoders Enable Efficient Knowledge Distillers},<br>author  = {Yutong Bai and Zeyu Wang and Junfei Xiao and Chen Wei and Huiyu Wang and Alan Loddon Yuille and Yuyin Zhou and Cihang Xie},<br>journal = {arXiv preprint arXiv:2208.12256},<br>year    = {2022},<br>}",
-            "This paper studies the potential of distilling knowledge from pre-trained models, especially Masked Autoencoders. Our approach is simple: in addition to optimizing the pixel reconstruction loss on masked inputs, we minimize the distance between the intermediate feature map of the teacher model and that of the student model. This design leads to a computationally efficient knowledge distillation framework, given 1) only a small visible subset of patches is used, and 2) the (cumbersome) teacher model only needs to be partially executed, i.e., forward propagate inputs through the first few layers, for obtaining intermediate feature maps. Compared to directly distilling fine-tuned models, distilling pre-trained models substantially improves downstream performance. For example, by distilling the knowledge from an MAE pre-trained ViT-L into a ViT-B, our method achieves 84.0% ImageNet top-1 accuracy, outperforming the baseline of directly distilling a fine-tuned ViT-L by 1.2%. More intriguingly, our method can robustly distill knowledge from teacher models even with extremely high masking ratios: e.g., with 95% masking ratio where merely TEN patches are visible during distillation, our ViT-B competitively attains a top-1 ImageNet accuracy of 83.6%; surprisingly, it can still secure 82.4% top-1 ImageNet accuracy by aggressively training with just FOUR visible patches (98% masking ratio). The code and models are publicly available at https://github.com/UCSC-VLAA/DMAE.",
-            "https://arxiv.org/pdf/2208.12256.pdf"
-        )
+        document.write("<h2>2022</h2>")
+        document.write("<ul>")
 
 add_paper("Can CNNs Be More Robust Than Transformers?",
             "Zeyu Wang, Yutong Bai, Yuyin Zhou, Cihang Xie",
@@ -222,6 +213,16 @@ add_paper("Can CNNs Be More Robust Than Transformers?",
             "https://arxiv.org/pdf/2206.03452.pdf",
             "https://github.com/UCSC-VLAA/RobustCNN"
         )
+
+add_paper("Masked Autoencoders Enable Efficient Knowledge Distillers",
+            "Yutong Bai, Zeyu Wang, Junfei Xiao, Chen Wei, Huiyu Wang, Alan Yuille, Yuyin Zhou, Cihang Xie",
+            "arxiv, 2022",
+            "https://arxiv.org/pdf/2208.12256.pdf",
+            "@article{bai2022dmae,<br>title   = {Masked Autoencoders Enable Efficient Knowledge Distillers},<br>author  = {Yutong Bai and Zeyu Wang and Junfei Xiao and Chen Wei and Huiyu Wang and Alan Loddon Yuille and Yuyin Zhou and Cihang Xie},<br>journal = {arXiv preprint arXiv:2208.12256},<br>year    = {2022},<br>}",
+            "This paper studies the potential of distilling knowledge from pre-trained models, especially Masked Autoencoders. Our approach is simple: in addition to optimizing the pixel reconstruction loss on masked inputs, we minimize the distance between the intermediate feature map of the teacher model and that of the student model. This design leads to a computationally efficient knowledge distillation framework, given 1) only a small visible subset of patches is used, and 2) the (cumbersome) teacher model only needs to be partially executed, i.e., forward propagate inputs through the first few layers, for obtaining intermediate feature maps. Compared to directly distilling fine-tuned models, distilling pre-trained models substantially improves downstream performance. For example, by distilling the knowledge from an MAE pre-trained ViT-L into a ViT-B, our method achieves 84.0% ImageNet top-1 accuracy, outperforming the baseline of directly distilling a fine-tuned ViT-L by 1.2%. More intriguingly, our method can robustly distill knowledge from teacher models even with extremely high masking ratios: e.g., with 95% masking ratio where merely TEN patches are visible during distillation, our ViT-B competitively attains a top-1 ImageNet accuracy of 83.6%; surprisingly, it can still secure 82.4% top-1 ImageNet accuracy by aggressively training with just FOUR visible patches (98% masking ratio). The code and models are publicly available at https://github.com/UCSC-VLAA/DMAE.",
+            "https://arxiv.org/pdf/2208.12256.pdf"
+        )
+
 
 add_paper("Label-Efficient Self-Supervised Federated Learning for Tackling Data Heterogeneity in Medical Imaging",
             "Rui Yan, Liangqiong Qu, Qingyue Wei, Shih-Cheng Huang, Liyue Shen, Daniel Rubin, Lei Xing, Yuyin Zhou",
@@ -243,6 +244,7 @@ add_paper("Bag of Tricks for FGSM Adversarial Training",
             "https://github. com/UCSC-VLAA/Bag-of-Tricks-for-FGSM-AT"
         )
 
+
 add_paper("Bag of Tricks for FGSM Adversarial Training",
             "Zichao Li, Li Liu, Zeyu Wang, Yuyin Zhou, Cihang Xie",
             "arxiv, 2022",
@@ -252,115 +254,6 @@ add_paper("Bag of Tricks for FGSM Adversarial Training",
             "https://arxiv.org/pdf/2209.02684.pdf",
             "https://github. com/UCSC-VLAA/Bag-of-Tricks-for-FGSM-AT"
         )
-
-add_paper("Multi-Granularity Cross-modal Alignment for Generalized Medical Visual Representation Learning",
-            "Fuying Wang, Yuyin Zhou, Shujun Wang, Varut Vardhanabhuti, Lequan Yu",
-            "arxiv, 2022",
-            "https://arxiv.org/abs/2210.06044",
-            "@article{wang2022multi,<br>title={Multi-Granularity Cross-modal Alignment for Generalized Medical Visual Representation Learning},<br>author={Wang, Fuying and Zhou, Yuyin and Wang, Shujun and Vardhanabhuti, Varut and Yu, Lequan},<br>journal={arXiv preprint arXiv:2210.06044},<br>year={2022}<br>}",
-            "Learning medical visual representations directly from paired radiology reports has become an emerging topic in representation learning. However, existing medical image-text joint learning methods are limited by instance or local supervision analysis, ignoring disease-level semantic correspondences. In this paper, we present a novel Multi-Granularity Cross-modal Alignment (MGCA) framework for generalized medical visual representation learning by harnessing the naturally exhibited semantic correspondences between medical image and radiology reports at three different levels, i.e., pathological region-level, instance-level, and disease-level. Specifically, we first incorporate the instance-wise alignment module by maximizing the agreement between image-report pairs. Further, for token-wise alignment, we introduce a bidirectional cross-attention strategy to explicitly learn the matching between fine-grained visual tokens and text tokens, followed by contrastive learning to align them. More important, to leverage the high-level inter-subject relationship semantic (e.g., disease) correspondences, we design a novel cross-modal disease-level alignment paradigm to enforce the cross-modal cluster assignment consistency. Extensive experimental results on seven downstream medical image datasets covering image classification, object detection, and semantic segmentation tasks demonstrate the stable and superior performance of our framework.",
-            "https://arxiv.org/abs/2210.06044"
-        )
-
-add_paper("The FELIX Project: Deep Networks To Detect Pancreatic Neoplasms",
-            "Yingda Xia, Qihang Yu, Linda Chu, Satomi Kawamoto, Seyoun Park, Fengze Liu, Jieneng Chen, Zhuotun Zhu, Bowen Li, Zongwei Zhou, Yongyi Lu, Yan Wang, Wei Shen, Lingxi Xie, Yuyin Zhou, Christopher Wolfgang, Ammar Javed, Daniel Fadaei Fouladi, Shahab Shayesteh, Jefferson Graves, Alejandra Blanco, Eva S Zinreich, Benedict Kinny-Köster, Kenneth Kinzler, Ralph H Hruban, Bert Vogelstein, Alan L Yuille, Elliot K Fishman",
-            "medRxiv,2022",
-            "https://www.medrxiv.org/content/10.1101/2022.09.24.22280071v1",
-            "@article{xia2022felix,<br>title={The FELIX Project: Deep Networks To Detect Pancreatic Neoplasms},<br>author={Xia, Yingda and Yu, Qihang and Chu, Linda and Kawamoto, Satomi and Park, Seyoun and Liu, Fengze and Chen, Jieneng and Zhu, Zhuotun and Li, Bowen and Zhou, Zongwei and others},<br>journal={medRxiv},<br>year={2022},<br>publisher={Cold Spring Harbor Laboratory Press}<br>}",
-            "Tens of millions of abdominal images are performed with computed tomography (CT) in the U.S. each year but pancreatic cancers are sometimes not initially detected in these images. We here describe a suite of algorithms (named FELIX) that can recognize pancreatic lesions from CT images without human input. Using FELIX, >90% of patients with pancreatic ductal adenocarcinomas were detected at a specificity of >90% in patients without pancreatic disease. FELIX may be able to assist radiologists in identifying pancreatic cancers earlier, when surgery and other treatments offer more hope for long-term survival.",
-            "https://www.medrxiv.org/content/10.1101/2022.09.24.22280071v1"
-        )
-
-add_paper("Simulated Adversarial Testing of Face Recognition Models",
-    "Nataniel Ruiz, Adam Kortylewski, Weichao Qiu, Cihang Xie , Sarah Adel Bargal, Alan Yuille, Stan Sclaroff",
-    "arXiv,2022",
-    "https://arxiv.org/pdf/2106.04569.pdf",
-    "@inproceedings{nataniel2021testface,<br>title     = {Simulated Adversarial Testing of Face Recognition Models},<br>author    = {Ruiz, Nataniel and Kortylewski, Adam and Qiu, Weichao and Xie, Cihang and Bargal, Sarah Adel and Yuille, Alan and Sclaroff, Stan},<br>booktitle = {CVPR},<br>year      = {2022}<br>}",
-    "Most machine learning models are validated and tested on fixed datasets. This can give an incomplete picture of the capabilities and weaknesses of the model. Such weaknesses can be revealed at test time in the real world. The risks involved in such failures can be loss of profits, loss of time or even loss of life in certain critical applications. In order to alleviate this issue, simulators can be controlled in a finegrained manner using interpretable parameters to explore the semantic image manifold. In this work, we propose a framework for learning how to test machine learning algorithms using simulators in an adversarial manner in order to find weaknesses in the model before deploying it in critical scenarios. We apply this method in a face recognition setup. We show that certain weaknesses of models trained on real data can be discovered using simulated samples. Using our proposed method, we can find adversarial synthetic faces that fool contemporary face recognition models. This demonstrates the fact that these models have weaknesses that are not measured by commonly used validation datasets. We hypothesize that this type of adversarial examples are not isolated, but usually lie in connected spaces in the latent space of the simulator. We present a method to f ind these adversarial regions as opposed to the typical adversarial points found in the adversarial example literature.",
-    "https://arxiv.org/pdf/2106.04569.pdf"
-)
-add_paper("One-Pixel Shortcut: on the Learning Preference of Deep Neural Networks",
-    "Shutong Wu, Sizhe Chen, Cihang Xie, Xiaolin Huang",
-    "arxiv, 2022",
-    "https://arxiv.org/pdf/2205.12141.pdf",
-    "@article{wu2022onepixel,<br>title   = {One-Pixel Shortcut: on the Learning Preference of Deep Neural Networks},<br>author  = {Wu, Shutong and Chen, Sizhe and Xie, Cihang and Huang, Xiaolin},<br>journal = {arXiv preprint arXiv:2205.12141},<br>year    = {2022}<br>}<br>",
-    "Unlearnable examples (ULEs) aim to protect data from unauthorized usage for training DNNs. Error-minimizing noise, which is injected to clean data, is one of the most successful methods for preventing DNNs from giving correct predictions on incoming new data. Nonetheless, under specific training strategies such as adversarial training, the unlearnability of error-minimizing noise will severely degrade. In addition, the transferability of error-minimizing noise is inherently limited by the mismatch between the generator model and the targeted learner model. In this paper, we investigate the mechanism of unlearnable examples and propose a novel model-free method, named One-Pixel Shortcut, which only perturbs a single pixel of each image and makes the dataset unlearnable. Our method needs much less computational cost and obtains stronger transferability and thus can protect data from a wide range of different models. Based on this, we further introduce the first unlearnable dataset called CIFAR-10-S, which is indistinguishable from normal CIFAR-10 by human observers and can serve as a benchmark for different models or training strategies to evaluate their abilities to extract critical features from the disturbance of non-semantic representations. The original error-minimizing ULEs will lose efficiency under adversarial training, where the model can get over 83% clean test accuracy. Meanwhile, even if adversarial training and strong data augmentation like RandAugment are applied together, the model trained on CIFAR-10-S cannot get over 50% clean test accuracy.",
-    "https://arxiv.org/pdf/2205.12141.pdf"
-)
-
-
-
-// 2021 preprint
-
-add_paper("Radfusion: Benchmarking performance and fairness for multimodal pulmonary embolism detection from ct and ehr",
-    "Yuyin Zhou, Shih-Cheng Huang, Jason Alan Fries, Alaa Youssef, Timothy J Amrhein, Marcello Chang, Imon Banerjee, Daniel Rubin, Lei Xing, Nigam Shah, Matthew P Lungren",
-    "arXiv, 2021",
-    "https://arxiv.org/pdf/2111.11665",
-    "@article{zhou2021radfusion,<br>title={Radfusion: Benchmarking performance and fairness for multimodal pulmonary embolism detection from ct and ehr},<br>author={Zhou, Yuyin and Huang, Shih-Cheng and Fries, Jason Alan and Youssef, Alaa and Amrhein, Timothy J and Chang, Marcello and Banerjee, Imon and Rubin, Daniel and Xing, Lei and Shah, Nigam and others},<br>journal={arXiv preprint arXiv:2111.11665},<br>year={2021}<br>}",
-    "Despite the routine use of electronic health record (EHR) data by radiologists to contextualize clinical history and inform image interpretation, the majority of deep learning architectures for medical imaging are unimodal, i.e., they only learn features from pixel-level information. Recent research revealing how race can be recovered from pixel data alone highlights the potential for serious biases in models which fail to account for demographics and other key patient attributes. Yet the lack of imaging datasets which capture clinical context, inclusive of demographics and longitudinal medical history, has left multimodal medical imaging underexplored. To better assess these challenges, we present RadFusion, a multimodal, benchmark dataset of 1794 patients with corresponding EHR data and high-resolution computed tomography (CT) scans labeled for pulmonary embolism. We evaluate several representative multimodal fusion models and benchmark their fairness properties across protected subgroups, e.g., gender, race/ethnicity, age. Our results suggest that integrating imaging and EHR data can improve classification performance and robustness without introducing large disparities in the true positive rate between population groups.",
-    "https://arxiv.org/pdf/2111.11665"
-)
-
-add_paper("DualNorm-UNet: Incorporating global and local statistics for robust medical image segmentation",
-            "Junfei Xiao, Lequan Yu, Lei Xing, Alan Yuille, Yuyin Zhou",
-            "arxiv, 2021",
-            "https://arxiv.org/abs/2103.15858",
-            "@article{xiao2021dualnorm,<br>title={DualNorm-UNet: Incorporating global and local statistics for robust medical image segmentation},<br>author={Xiao, Junfei and Yu, Lequan and Xing, Lei and Yuille, Alan and Zhou, Yuyin},<br>year={2021}<br>}",
-            "Batch Normalization (BN) is one of the key components for accelerating network training, and has been widely adopted in the medical image analysis field. However, BN only calculates the global statistics at the batch level, and applies the same affine transformation uniformly across all spatial coordinates, which would suppress the image contrast of different semantic structures. In this paper, we propose to incorporate the semantic class information into normalization layers, so that the activations corresponding to different regions (i.e., classes) can be modulated differently. We thus develop a novel DualNorm-UNet, to concurrently incorporate both global image-level statistics and local region-wise statistics for network normalization. Specifically, the local statistics are integrated by adaptively modulating the activations along different class regions via the learned semantic masks in the normalization layer. Compared with existing methods, our approach exploits semantic knowledge at normalization and yields more discriminative features for robust segmentation results. More importantly, our network demonstrates superior abilities in capturing domain-invariant information from multiple domains (institutions) of medical data. Extensive experiments show that our proposed DualNorm-UNet consistently improves the performance on various segmentation tasks, even in the face of more complex and variable data distributions. Code is available at https://github.com/lambert-x/DualNorm-Unet.",
-            "https://arxiv.org/abs/2103.15858",
-            "https://github.com/lambert-x/DualNorm-Unet."
-) 
-
-
-add_paper("Transunet: Transformers make strong encoders for medical image segmentation",
-            "Jieneng Chen, Yongyi Lu, Qihang Yu, Xiangde Luo, Ehsan Adeli, Yan Wang, Le Lu, Alan L Yuille, Yuyin Zhou",
-            "arXiv, 2021",
-            "https://arxiv.org/abs/2102.04306",
-            "@article{chen2021transunet,<br>title={Transunet: Transformers make strong encoders for medical image segmentation},<br>author={Chen, Jieneng and Lu, Yongyi and Yu, Qihang and Luo, Xiangde and Adeli, Ehsan and Wang, Yan and Lu, Le and Yuille, Alan L and Zhou, Yuyin},<br>journal={arXiv preprint arXiv:2102.04306},<br>year={2021}<br>}",
-            "Medical image segmentation is an essential prerequisite for developing healthcare systems, especially for disease diagnosis and treatment planning. On various medical image segmentation tasks, the u-shaped architecture, also known as U-Net, has become the de-facto standard and achieved tremendous success. However, due to the intrinsic locality of convolution operations, U-Net generally demonstrates limitations in explicitly modeling long-range dependency. Transformers, designed for sequence-to-sequence prediction, have emerged as alternative architectures with innate global self-attention mechanisms, but can result in limited localization abilities due to insufficient low-level details. In this paper, we propose TransUNet, which merits both Transformers and U-Net, as a strong alternative for medical image segmentation. On one hand, the Transformer encodes tokenized image patches from a convolution neural network (CNN) feature map as the input sequence for extracting global contexts. On the other hand, the decoder upsamples the encoded features which are then combined with the high-resolution CNN feature maps to enable precise localization. We argue that Transformers can serve as strong encoders for medical image segmentation tasks, with the combination of U-Net to enhance finer details by recovering localized spatial information. TransUNet achieves superior performances to various competing methods on different medical applications including multi-organ segmentation and cardiac segmentation. Code and models are available at https://github.com/Beckschen/TransUNet.",
-            "https://arxiv.org/abs/2102.04306",
-            "https://github.com/Beckschen/TransUNet"
-)
-
-
-// 2020 preprint
-add_paper("Batch Normalization with Enhanced Linear Transformation",
-            "Yuhui Xu, Lingxi Xie, Cihang Xie, Jieru Mei, Siyuan Qiao, Wei Shen, Hongkai Xiong, Alan Yuille",
-            "Tech report, arXiv",
-            "https://arxiv.org/pdf/2011.14150.pdf",
-            "@article{xu2020bnet,<br>author  = {Xu, Yuhui and Xie, Lingxi and Xie, Cihang and Mei, Jieru and Qiao, Siyuan and Shen, Wei and Xiong, Hongkai and Yuille, Alan},<br>title   = {Batch Normalization with Enhanced Linear Transformation},<br>journal = {arXiv preprint arXiv:2011.14150},<br>year    = {2020}<br>}<br>",
-            "Batch normalization (BN) is a fundamental unit in modern deep networks, in which a linear transformation module was designed for improving BN’s flexibility of fitting complex data distributions. In this paper, we demonstrate properly enhancing this linear transformation module can effectively improve the ability of BN. Specifically, rather than using a single neuron, we propose to additionally consider each neuron’s neighborhood for calculating the outputs of the linear transformation. Our method, named BNET, can be implemented with 2–3 lines of code in most deep learning libraries. Despite the simplicity, BNET brings consistent performance gains over a wide range of backbones and visual benchmarks. Moreover, we verify that BNET accelerates the convergence of network training and enhances spatial information by assigning the important neurons with larger weights accordingly. The code is available at https://github.com/yuhuixu1993/BNET.",
-            "https://arxiv.org/pdf/2011.14150.pdf",
-            "https://github.com/yuhuixu1993/BNET"
-)
-
-add_paper("Can temporal information help with contrastive self-supervised learning?",
-            "Yutong Bai, Haoqi Fan, Ishan Misra, Ganesh Venkatesh, Yongyi Lu, Yuyin Zhou, Qihang Yu, Vikas Chandra, Alan Yuille",
-            "arxiv, 2020",
-            "https://arxiv.org/abs/2011.13046",
-            "@article{bai2020can,<br>title={Can temporal information help with contrastive self-supervised learning?},<br>author={Bai, Yutong and Fan, Haoqi and Misra, Ishan and Venkatesh, Ganesh and Lu, Yongyi and Zhou, Yuyin and Yu, Qihang and Chandra, Vikas and Yuille, Alan},<br>year={2020}<br>}",
-            "Leveraging temporal information has been regarded as essential for developing video understanding models. However, how to properly incorporate temporal information into the recent successful instance discrimination based contrastive self-supervised learning (CSL) framework remains unclear. As an intuitive solution, we find that directly applying temporal augmentations does not help, or even impair video CSL in general. This counter-intuitive observation motivates us to re-design existing video CSL frameworks, for better integration of temporal knowledge. To this end, we present Temporal-aware Contrastive self-supervised learningTaCo, as a general paradigm to enhance video CSL. Specifically, TaCo selects a set of temporal transformations not only as strong data augmentation but also to constitute extra self-supervision for video understanding. By jointly contrasting instances with enriched temporal transformations and learning these transformations as self-supervised signals, TaCo can significantly enhance unsupervised video representation learning. For instance, TaCo demonstrates consistent improvement in downstream classification tasks over a list of backbones and CSL approaches. Our best model achieves 85.1% (UCF-101) and 51.6% (HMDB-51) top-1 accuracy, which is a 3% and 2.4% relative improvement over the previous state-of-the-art.",
-            "https://arxiv.org/abs/2011.13046"
-)
-
-
-
-
- add_paper("Smooth Adversarial Training",
-            "Cihang Xie, Mingxing Tan, Boqing Gong, Alan Yuille, Quoc Le",
-            "Tech report, arXiv",
-            "https://arxiv.org/pdf/2006.14536.pdf",
-            "@article{xie2020smooth,<br>title={Smooth adversarial training},<br>author={Xie, Cihang and Tan, Mingxing and Gong, Boqing and Yuille, Alan and Le, Quoc V},<br>journal={arXiv preprint arXiv:2006.14536},<br>year={2020}<br>}",
-            "It is commonly believed that networks cannot be both accurate and robust, that gaining robustness means losing accuracy. It is also generally believed that, unless making networks larger, network architectural elements would otherwise matter little in improving adversarial robustness. Here we present evidence to challenge these common beliefs by a careful study about adversarial training. Our key observation is that the widely-used ReLU activation function significantly weakens adversarial training due to its non-smooth nature. Hence we propose smooth adversarial training (SAT), in which we replace ReLU with its smooth approximations to strengthen adversarial training. The purpose of smooth activation functions in SAT is to allow it to f ind harder adversarial examples and compute better gradient updates during adversarial training. Compared to standard adversarial training, SAT improves adversarial robustness for “free”, i.e., no drop in accuracy and no increase in computational cost. For example, without introducing additional computations, SAT significantly enhances ResNet-50’s robustness from 33.0% to 42.3%, while also improving accuracy by 0.9% on ImageNet. SAT also works well with larger networks: it helps EfficientNet-L1 to achieve 82.2% accuracy and 58.6% robustness on ImageNet, outperforming the previous state-ofthe-art defense by 9.5% for accuracy and 11.6% for robustness. Models are available at https://github.com/ cihangxie/SmoothAdversarialTraining.",
-            "https://arxiv.org/pdf/2006.14536.pdf","https://github.com/cihangxie/SmoothAdversarialTraining"
-        )
-
-
-
-
-        document.write("</ul>")
-        document.write("<h2>2022</h2>")
-        document.write("<ul>")
 
 
 add_paper("Finding Differences Between Transformers and ConvNets Using Counterfactual Simulation Testing",
@@ -400,7 +293,14 @@ add_paper("ViP: Unified Certified Detection and Recovery for Patch Attack with V
 
         )
 
-
+add_paper("Multi-Granularity Cross-modal Alignment for Generalized Medical Visual Representation Learning",
+            "Fuying Wang, Yuyin Zhou, Shujun Wang, Varut Vardhanabhuti, Lequan Yu",
+            "arxiv, 2022",
+            "https://arxiv.org/abs/2210.06044",
+            "@article{wang2022multi,<br>title={Multi-Granularity Cross-modal Alignment for Generalized Medical Visual Representation Learning},<br>author={Wang, Fuying and Zhou, Yuyin and Wang, Shujun and Vardhanabhuti, Varut and Yu, Lequan},<br>journal={arXiv preprint arXiv:2210.06044},<br>year={2022}<br>}",
+            "Learning medical visual representations directly from paired radiology reports has become an emerging topic in representation learning. However, existing medical image-text joint learning methods are limited by instance or local supervision analysis, ignoring disease-level semantic correspondences. In this paper, we present a novel Multi-Granularity Cross-modal Alignment (MGCA) framework for generalized medical visual representation learning by harnessing the naturally exhibited semantic correspondences between medical image and radiology reports at three different levels, i.e., pathological region-level, instance-level, and disease-level. Specifically, we first incorporate the instance-wise alignment module by maximizing the agreement between image-report pairs. Further, for token-wise alignment, we introduce a bidirectional cross-attention strategy to explicitly learn the matching between fine-grained visual tokens and text tokens, followed by contrastive learning to align them. More important, to leverage the high-level inter-subject relationship semantic (e.g., disease) correspondences, we design a novel cross-modal disease-level alignment paradigm to enforce the cross-modal cluster assignment consistency. Extensive experimental results on seven downstream medical image datasets covering image classification, object detection, and semantic segmentation tasks demonstrate the stable and superior performance of our framework.",
+            "https://arxiv.org/abs/2210.06044"
+        )
         add_paper("A Simple Data Mixing Prior for Improving Self-Supervised Learning",
             "Sucheng Ren, Huiyu Wang, Zhengqi Gao, Shengfeng He, Alan Yuille, Yuyin Zhou, Cihang Xie",
             "CVPR, 2022",
@@ -424,7 +324,14 @@ add_paper("Small-Object Sensitive Segmentation Using Across Feature Map Attentio
             "Semantic segmentation is an important step in understanding the scene for many practical applications such as autonomous driving. Although Deep Convolutional Neural Networks-based methods have significantly improved segmentation accuracy, small/thin objects remain challenging to segment due to convolutional and pooling operations that result in information loss, especially for small objects. This paper presents a novel attention-based method called Across Feature Map Attention (AFMA) to address this challenge. It quantifies the inner-relationship between small and large objects belonging to the same category by utilizing the different feature levels of the original image. The AFMA could compensate for the loss of high-level feature information of small objects and improve the small/thin object segmentation. Our method can be used as an efficient plug-in for a wide range of existing architectures and produces much more interpretable feature representation than former studies. Extensive experiments on eight widely used segmentation methods and other existing small-object segmentation models on CamVid and Cityscapes demonstrate that our method substantially and consistently improves the segmentation of small/thin objects.",
             "https://ieeexplore.ieee.org/abstract/document/9906428"
         )
-
+        add_paper("The FELIX Project: Deep Networks To Detect Pancreatic Neoplasms",
+            "Yingda Xia, Qihang Yu, Linda Chu, Satomi Kawamoto, Seyoun Park, Fengze Liu, Jieneng Chen, Zhuotun Zhu, Bowen Li, Zongwei Zhou, Yongyi Lu, Yan Wang, Wei Shen, Lingxi Xie, Yuyin Zhou, Christopher Wolfgang, Ammar Javed, Daniel Fadaei Fouladi, Shahab Shayesteh, Jefferson Graves, Alejandra Blanco, Eva S Zinreich, Benedict Kinny-Köster, Kenneth Kinzler, Ralph H Hruban, Bert Vogelstein, Alan L Yuille, Elliot K Fishman",
+            "medRxiv,2022",
+            "https://www.medrxiv.org/content/10.1101/2022.09.24.22280071v1",
+            "@article{xia2022felix,<br>title={The FELIX Project: Deep Networks To Detect Pancreatic Neoplasms},<br>author={Xia, Yingda and Yu, Qihang and Chu, Linda and Kawamoto, Satomi and Park, Seyoun and Liu, Fengze and Chen, Jieneng and Zhu, Zhuotun and Li, Bowen and Zhou, Zongwei and others},<br>journal={medRxiv},<br>year={2022},<br>publisher={Cold Spring Harbor Laboratory Press}<br>}",
+            "Tens of millions of abdominal images are performed with computed tomography (CT) in the U.S. each year but pancreatic cancers are sometimes not initially detected in these images. We here describe a suite of algorithms (named FELIX) that can recognize pancreatic lesions from CT images without human input. Using FELIX, >90% of patients with pancreatic ductal adenocarcinomas were detected at a specificity of >90% in patients without pancreatic disease. FELIX may be able to assist radiologists in identifying pancreatic cancers earlier, when surgery and other treatments offer more hope for long-term survival.",
+            "https://www.medrxiv.org/content/10.1101/2022.09.24.22280071v1"
+        )
 
 
         add_paper("CateNorm: Categorical Normalization for Robust Medical Image Segmentation",
@@ -467,7 +374,14 @@ add_paper("Small-Object Sensitive Segmentation Using Across Feature Map Attentio
         )    
 
 
-
+        add_paper("Simulated Adversarial Testing of Face Recognition Models",
+            "Nataniel Ruiz, Adam Kortylewski, Weichao Qiu, Cihang Xie , Sarah Adel Bargal, Alan Yuille, Stan Sclaroff",
+            "arXiv,2022",
+            "https://arxiv.org/pdf/2106.04569.pdf",
+            "@inproceedings{nataniel2021testface,<br>title     = {Simulated Adversarial Testing of Face Recognition Models},<br>author    = {Ruiz, Nataniel and Kortylewski, Adam and Qiu, Weichao and Xie, Cihang and Bargal, Sarah Adel and Yuille, Alan and Sclaroff, Stan},<br>booktitle = {CVPR},<br>year      = {2022}<br>}",
+            "Most machine learning models are validated and tested on fixed datasets. This can give an incomplete picture of the capabilities and weaknesses of the model. Such weaknesses can be revealed at test time in the real world. The risks involved in such failures can be loss of profits, loss of time or even loss of life in certain critical applications. In order to alleviate this issue, simulators can be controlled in a finegrained manner using interpretable parameters to explore the semantic image manifold. In this work, we propose a framework for learning how to test machine learning algorithms using simulators in an adversarial manner in order to find weaknesses in the model before deploying it in critical scenarios. We apply this method in a face recognition setup. We show that certain weaknesses of models trained on real data can be discovered using simulated samples. Using our proposed method, we can find adversarial synthetic faces that fool contemporary face recognition models. This demonstrates the fact that these models have weaknesses that are not measured by commonly used validation datasets. We hypothesize that this type of adversarial examples are not isolated, but usually lie in connected spaces in the latent space of the simulator. We present a method to f ind these adversarial regions as opposed to the typical adversarial points found in the adversarial example literature.",
+            "https://arxiv.org/pdf/2106.04569.pdf"
+        )
 
         add_paper("Learning to Bootstrap for Combating Label Noise",
             "Yuyin Zhou, Xianhang Li, Fengze Liu, Xuxi Chen, Lequan Yu, Cihang Xie , Matthew P. Lungren, Lei Xing",
@@ -479,7 +393,14 @@ add_paper("Small-Object Sensitive Segmentation Using Across Feature Map Attentio
             "https://github.com/yuyinzhou/L2B"
         )
 
-
+        add_paper("One-Pixel Shortcut: on the Learning Preference of Deep Neural Networks",
+            "Shutong Wu, Sizhe Chen, Cihang Xie, Xiaolin Huang",
+            "arxiv, 2022",
+            "https://arxiv.org/pdf/2205.12141.pdf",
+            "@article{wu2022onepixel,<br>title   = {One-Pixel Shortcut: on the Learning Preference of Deep Neural Networks},<br>author  = {Wu, Shutong and Chen, Sizhe and Xie, Cihang and Huang, Xiaolin},<br>journal = {arXiv preprint arXiv:2205.12141},<br>year    = {2022}<br>}<br>",
+            "Unlearnable examples (ULEs) aim to protect data from unauthorized usage for training DNNs. Error-minimizing noise, which is injected to clean data, is one of the most successful methods for preventing DNNs from giving correct predictions on incoming new data. Nonetheless, under specific training strategies such as adversarial training, the unlearnability of error-minimizing noise will severely degrade. In addition, the transferability of error-minimizing noise is inherently limited by the mismatch between the generator model and the targeted learner model. In this paper, we investigate the mechanism of unlearnable examples and propose a novel model-free method, named One-Pixel Shortcut, which only perturbs a single pixel of each image and makes the dataset unlearnable. Our method needs much less computational cost and obtains stronger transferability and thus can protect data from a wide range of different models. Based on this, we further introduce the first unlearnable dataset called CIFAR-10-S, which is indistinguishable from normal CIFAR-10 by human observers and can serve as a benchmark for different models or training strategies to evaluate their abilities to extract critical features from the disturbance of non-semantic representations. The original error-minimizing ULEs will lose efficiency under adversarial training, where the model can get over 83% clean test accuracy. Meanwhile, even if adversarial training and strong data augmentation like RandAugment are applied together, the model trained on CIFAR-10-S cannot get over 50% clean test accuracy.",
+            "https://arxiv.org/pdf/2205.12141.pdf"
+        )
         add_paper("Fast AdvProp",
             "Jieru Mei, Yucheng Han, Yutong Bai, Yixiao Zhang, Yingwei Li, Xianhang Li, Alan Yuille, Cihang Xie",
             "ICLR, 2022",
@@ -507,7 +428,7 @@ add_paper("Small-Object Sensitive Segmentation Using Across Feature Map Attentio
 
         add_paper("Are Transformers More Robust Than CNNs?",
             "Yutong Bai, Jieru Mei, Alan Yuille, Cihang Xie",
-            "NeurIPS, 2021<br>",
+            "NeurIPS, 2021<br><b><font color=\"orange\">(The first benchmark that fairly compares Transformers with CNNs on robustness evaluations)</font></b>",
             "https://arxiv.org/pdf/2111.05464.pdf",
             "@inproceedings{bai2020vitsVScnns,<br>title     = {Are Transformers More Robust Than CNNs?},<br>author    = {Bai, Yutong and Mei, Jieru and Yuille, Alan and Xie, Cihang},<br>booktitle = {NeurIPS},<br>year      = {2021},<br>}<br>",
             "Transformer emerges as a powerful tool for visual recognition. In addition to demonstrating competitive performance on a broad range of visual benchmarks, recent works also argue that Transformers are much more robust than Convolutions Neural Networks (CNNs). Nonetheless, surprisingly, we find these conclusions are drawn from unfair experimental settings, where Transformers and CNNs are compared at different scales and are applied with distinct training frameworks. In this paper, we aim to provide the first fair & in-depth comparisons between Transformers and CNNs, focusing on robustness evaluations. With our unified training setup, we first challenge the previous belief that Transformers outshine CNNs when measuring adversarial robustness. More surprisingly, we find CNNs can easily be as robust as Transformers on defending against adversarial attacks, if they properly adopt Transformers' training recipes. While regarding generalization on out-of-distribution samples, we show pre-training on (external) large-scale datasets is not a fundamental request for enabling Transformers to achieve better performance than CNNs. Moreover, our ablations suggest such stronger generalization is largely benefited by the Transformer's self-attention-like architectures per se, rather than by other training setups. We hope this work can help the community better understand and benchmark the robustness of Transformers and CNNs. The code and models are publicly available at: https://github.com/ytongbai/ViTs-vs-CNNs.",
@@ -555,7 +476,14 @@ add_paper("Small-Object Sensitive Segmentation Using Across Feature Map Attentio
             "https://github.com/google/automl/blob/master/efficientdet/Det-AdvProp.md"
         )
 
-
+        add_paper("Radfusion: Benchmarking performance and fairness for multimodal pulmonary embolism detection from ct and ehr",
+            "Yuyin Zhou, Shih-Cheng Huang, Jason Alan Fries, Alaa Youssef, Timothy J Amrhein, Marcello Chang, Imon Banerjee, Daniel Rubin, Lei Xing, Nigam Shah, Matthew P Lungren",
+            "arXiv, 2021",
+            "https://arxiv.org/pdf/2111.11665",
+            "@article{zhou2021radfusion,<br>title={Radfusion: Benchmarking performance and fairness for multimodal pulmonary embolism detection from ct and ehr},<br>author={Zhou, Yuyin and Huang, Shih-Cheng and Fries, Jason Alan and Youssef, Alaa and Amrhein, Timothy J and Chang, Marcello and Banerjee, Imon and Rubin, Daniel and Xing, Lei and Shah, Nigam and others},<br>journal={arXiv preprint arXiv:2111.11665},<br>year={2021}<br>}",
+            "Despite the routine use of electronic health record (EHR) data by radiologists to contextualize clinical history and inform image interpretation, the majority of deep learning architectures for medical imaging are unimodal, i.e., they only learn features from pixel-level information. Recent research revealing how race can be recovered from pixel data alone highlights the potential for serious biases in models which fail to account for demographics and other key patient attributes. Yet the lack of imaging datasets which capture clinical context, inclusive of demographics and longitudinal medical history, has left multimodal medical imaging underexplored. To better assess these challenges, we present RadFusion, a multimodal, benchmark dataset of 1794 patients with corresponding EHR data and high-resolution computed tomography (CT) scans labeled for pulmonary embolism. We evaluate several representative multimodal fusion models and benchmark their fairness properties across protected subgroups, e.g., gender, race/ethnicity, age. Our results suggest that integrating imaging and EHR data can improve classification performance and robustness without introducing large disparities in the true positive rate between population groups.",
+            "https://arxiv.org/pdf/2111.11665"
+        )
 
         add_paper("Pancreas CT Segmentation by Predictive Phenotyping",
             "Yucheng Tang, Riqiang Gao, Hohin Lee, Qi Yang, Xin Yu, Yuyin Zhou, Shunxing Bao, Yuankai Huo, Jeffrey Spraggins, Jack Virostko, Zhoubing Xu, Bennett A Landman",
@@ -585,7 +513,15 @@ add_paper("Small-Object Sensitive Segmentation Using Across Feature Map Attentio
             "Pancreatic ductal adenocarcinoma (PDAC) is the third most common cause of cancer death in the United States. Predicting tumors like PDACs (including both classification and segmentation) from medical images by deep learning is becoming a growing trend, but usually a large number of annotated data are required for training, which is very labor-intensive and time-consuming. In this paper, we consider a partially supervised setting, where cheap image-level annotations are provided for all the training data, and the costly per-voxel annotations are only available for a subset of them. We propose an Inductive Attention Guidance Network (IAG-Net) to jointly learn a global image-level classifier for normal/PDAC classification and a local voxel-level classifier for semi-supervised PDAC segmentation. We instantiate both the global and the local classifiers by multiple instance learning (MIL), where the attention guidance, indicating roughly where the PDAC regions are, is the key to bridging them: For global MIL based normal/PDAC classification, attention serves as a weight for each instance (voxel) during MIL pooling, which eliminates the distraction from the background; For local MIL based semi-supervised PDAC segmentation, the attention guidance is inductive, which not only provides bag-level pseudo-labels to training data without per-voxel annotations for MIL training, but also acts as a proxy of an instance-level classifier. Experimental results show that our IAG-Net boosts PDAC segmentation accuracy by more than 5% compared with the state-of-the-arts.",
             "https://ieeexplore.ieee.org/abstract/document/9357342/"
         ) 
-
+         add_paper("DualNorm-UNet: Incorporating global and local statistics for robust medical image segmentation",
+            "Junfei Xiao, Lequan Yu, Lei Xing, Alan Yuille, Yuyin Zhou",
+            "arxiv, 2021",
+            "https://arxiv.org/abs/2103.15858",
+            "@article{xiao2021dualnorm,<br>title={DualNorm-UNet: Incorporating global and local statistics for robust medical image segmentation},<br>author={Xiao, Junfei and Yu, Lequan and Xing, Lei and Yuille, Alan and Zhou, Yuyin},<br>year={2021}<br>}",
+            "Batch Normalization (BN) is one of the key components for accelerating network training, and has been widely adopted in the medical image analysis field. However, BN only calculates the global statistics at the batch level, and applies the same affine transformation uniformly across all spatial coordinates, which would suppress the image contrast of different semantic structures. In this paper, we propose to incorporate the semantic class information into normalization layers, so that the activations corresponding to different regions (i.e., classes) can be modulated differently. We thus develop a novel DualNorm-UNet, to concurrently incorporate both global image-level statistics and local region-wise statistics for network normalization. Specifically, the local statistics are integrated by adaptively modulating the activations along different class regions via the learned semantic masks in the normalization layer. Compared with existing methods, our approach exploits semantic knowledge at normalization and yields more discriminative features for robust segmentation results. More importantly, our network demonstrates superior abilities in capturing domain-invariant information from multiple domains (institutions) of medical data. Extensive experiments show that our proposed DualNorm-UNet consistently improves the performance on various segmentation tasks, even in the face of more complex and variable data distributions. Code is available at https://github.com/lambert-x/DualNorm-Unet.",
+            "https://arxiv.org/abs/2103.15858",
+            "https://github.com/lambert-x/DualNorm-Unet."
+        ) 
 
 
          add_paper("CAKES: Channel-wise Automatic KErnel Shrinking for Efficient 3D Networks",
@@ -626,6 +562,15 @@ add_paper("Small-Object Sensitive Segmentation Using Across Feature Map Attentio
             "https://github.com/LiYingwei/ShapeTextureDebiasedTraining"
         )
 
+        add_paper("Transunet: Transformers make strong encoders for medical image segmentation",
+            "Jieneng Chen, Yongyi Lu, Qihang Yu, Xiangde Luo, Ehsan Adeli, Yan Wang, Le Lu, Alan L Yuille, Yuyin Zhou",
+            "arXiv, 2021",
+            "https://arxiv.org/abs/2102.04306",
+            "@article{chen2021transunet,<br>title={Transunet: Transformers make strong encoders for medical image segmentation},<br>author={Chen, Jieneng and Lu, Yongyi and Yu, Qihang and Luo, Xiangde and Adeli, Ehsan and Wang, Yan and Lu, Le and Yuille, Alan L and Zhou, Yuyin},<br>journal={arXiv preprint arXiv:2102.04306},<br>year={2021}<br>}",
+            "Medical image segmentation is an essential prerequisite for developing healthcare systems, especially for disease diagnosis and treatment planning. On various medical image segmentation tasks, the u-shaped architecture, also known as U-Net, has become the de-facto standard and achieved tremendous success. However, due to the intrinsic locality of convolution operations, U-Net generally demonstrates limitations in explicitly modeling long-range dependency. Transformers, designed for sequence-to-sequence prediction, have emerged as alternative architectures with innate global self-attention mechanisms, but can result in limited localization abilities due to insufficient low-level details. In this paper, we propose TransUNet, which merits both Transformers and U-Net, as a strong alternative for medical image segmentation. On one hand, the Transformer encodes tokenized image patches from a convolution neural network (CNN) feature map as the input sequence for extracting global contexts. On the other hand, the decoder upsamples the encoded features which are then combined with the high-resolution CNN feature maps to enable precise localization. We argue that Transformers can serve as strong encoders for medical image segmentation tasks, with the combination of U-Net to enhance finer details by recovering localized spatial information. TransUNet achieves superior performances to various competing methods on different medical applications including multi-organ segmentation and cardiac segmentation. Code and models are available at https://github.com/Beckschen/TransUNet.",
+            "https://arxiv.org/abs/2102.04306",
+            "https://github.com/Beckschen/TransUNet"
+        )
 
 
 
@@ -645,13 +590,14 @@ add_paper("Small-Object Sensitive Segmentation Using Across Feature Map Attentio
         )
 
 
-        add_paper("Medical Machine Intelligence: Data-efficiency and Knowledge-awareness",
-            "Yuyin Zhou",
-            "Ph.D. Dissertation, The Johns Hopkins University",
-            "https://www.proquest.com/docview/2515793464?pq-origsite=gscholar&fromopenview=true",
-            "@phdthesis{zhou2020medical,<br>title={MEDICAL MACHINE INTELLIGENCE: DATA-EFFICIENCY AND KNOWLEDGE-AWARENESS},<br>author={Zhou, Yuyin},<br>year={2020},<br>school={Johns Hopkins University}<br>}}",
-            null,
-            "https://www.proquest.com/docview/2515793464?pq-origsite=gscholar&fromopenview=true"
+        add_paper("Batch Normalization with Enhanced Linear Transformation",
+            "Yuhui Xu, Lingxi Xie, Cihang Xie, Jieru Mei, Siyuan Qiao, Wei Shen, Hongkai Xiong, Alan Yuille",
+            "Tech report, arXiv",
+            "https://arxiv.org/pdf/2011.14150.pdf",
+            "@article{xu2020bnet,<br>author  = {Xu, Yuhui and Xie, Lingxi and Xie, Cihang and Mei, Jieru and Qiao, Siyuan and Shen, Wei and Xiong, Hongkai and Yuille, Alan},<br>title   = {Batch Normalization with Enhanced Linear Transformation},<br>journal = {arXiv preprint arXiv:2011.14150},<br>year    = {2020}<br>}<br>",
+            "Batch normalization (BN) is a fundamental unit in modern deep networks, in which a linear transformation module was designed for improving BN’s flexibility of fitting complex data distributions. In this paper, we demonstrate properly enhancing this linear transformation module can effectively improve the ability of BN. Specifically, rather than using a single neuron, we propose to additionally consider each neuron’s neighborhood for calculating the outputs of the linear transformation. Our method, named BNET, can be implemented with 2–3 lines of code in most deep learning libraries. Despite the simplicity, BNET brings consistent performance gains over a wide range of backbones and visual benchmarks. Moreover, we verify that BNET accelerates the convergence of network training and enhances spatial information by assigning the important neurons with larger weights accordingly. The code is available at https://github.com/yuhuixu1993/BNET.",
+            "https://arxiv.org/pdf/2011.14150.pdf",
+            "https://github.com/yuhuixu1993/BNET"
         )
 
         add_paper("PatchAttack: A Black-box Texture-based Attack with Reinforcement Learning",
@@ -675,7 +621,7 @@ add_paper("Small-Object Sensitive Segmentation Using Across Feature Map Attentio
         )
         add_paper("Adversarial Examples Improve Image Recognition",
             "Cihang Xie, Mingxing Tan, Boqing Gong, Jiang Wang, Alan Yuille, Quoc Le",
-            "CVPR, 2020<br>",
+            "CVPR, 2020<br><b><font color=\"orange\">State-of-the-art ImageNet classifier without extra training data</font></b>",
             "https://arxiv.org/pdf/1911.09665.pdf",
             "@inproceedings{xie2020adversarial,<br>title     = {Adversarial Examples Improve Image Recognition},<br>author    = {Xie, Cihang and Tan, Mingxing and Gong, Boqing and Wang, Jiang and Yuille, Alan and Le, Quoc V},<br>booktitle = {CVPR},<br>year      = {2020}<br>}<br>",
             "Adversarial examples are commonly viewed as a threat to ConvNets. Here we present an opposite perspective: adversarial examples can be used to improve image recognition models if harnessed in the right manner. We propose AdvProp, an enhanced adversarial training scheme which treats adversarial examples as additional examples, to prevent overfitting. Key to our method is the usage of a separate auxiliary batch norm for adversarial examples, as they have different underlying distributions to normal examples. We show that AdvProp improves a wide range of models on various image recognition tasks and performs better when the models are bigger. For instance, by applying AdvProp to the latest EfficientNet-B7 [28] on ImageNet, we achieve significant improvements on ImageNet (+0.7%), ImageNet-C (+6.5%), ImageNet-A (+7.0%), Stylized-ImageNet (+4.8%). With an enhanced EfficientNet-B8, our method achieves the state-of-the-art 85.5% ImageNet top-1 accuracy without extra data. This result even surpasses the best model in [20] which is trained with 3.5B Instagram images ( 3000X more than ImageNet) and 9.4X more parameters. Code and models will be made publicly available.",
@@ -705,6 +651,15 @@ add_paper("Small-Object Sensitive Segmentation Using Across Feature Map Attentio
             "In this paper, we study physical adversarial attacks on object detectors in the wild. Previous works mostly craft instance-dependent perturbations only for rigid or planar objects. To this end, we propose to learn an adversarial pattern to effectively attack all instances belonging to the same object category, referred to as Universal Physical Camouflage Attack (UPC). Concretely, UPC crafts camouflage by jointly fooling the region proposal network, as well as misleading the classifier and the regressor to output errors. In order to make UPC effective for non-rigid or non-planar objects, we introduce a set of transformations for mimicking deformable properties. We additionally impose optimization constraint to make generated patterns look natural to human observers. To fairly evaluate the effectiveness of different physical-world attacks, we present the first standardized virtual database, AttackScenes, which simulates the real 3D world in a controllable and reproducible environment. Extensive experiments suggest the superiority of our proposed UPC compared with existing physical adversarial attackers not only in virtual environments (AttackScenes), but also in real-world physical environments.",
             "https://arxiv.org/pdf/1909.04326.pdf",
             "https://mesunhlf.github.io/index_physical.html"
+        )
+
+        add_paper("Can temporal information help with contrastive self-supervised learning?",
+            "Yutong Bai, Haoqi Fan, Ishan Misra, Ganesh Venkatesh, Yongyi Lu, Yuyin Zhou, Qihang Yu, Vikas Chandra, Alan Yuille",
+            "arxiv, 2020",
+            "https://arxiv.org/abs/2011.13046",
+            "@article{bai2020can,<br>title={Can temporal information help with contrastive self-supervised learning?},<br>author={Bai, Yutong and Fan, Haoqi and Misra, Ishan and Venkatesh, Ganesh and Lu, Yongyi and Zhou, Yuyin and Yu, Qihang and Chandra, Vikas and Yuille, Alan},<br>year={2020}<br>}",
+            "Leveraging temporal information has been regarded as essential for developing video understanding models. However, how to properly incorporate temporal information into the recent successful instance discrimination based contrastive self-supervised learning (CSL) framework remains unclear. As an intuitive solution, we find that directly applying temporal augmentations does not help, or even impair video CSL in general. This counter-intuitive observation motivates us to re-design existing video CSL frameworks, for better integration of temporal knowledge. To this end, we present Temporal-aware Contrastive self-supervised learningTaCo, as a general paradigm to enhance video CSL. Specifically, TaCo selects a set of temporal transformations not only as strong data augmentation but also to constitute extra self-supervision for video understanding. By jointly contrasting instances with enriched temporal transformations and learning these transformations as self-supervised signals, TaCo can significantly enhance unsupervised video representation learning. For instance, TaCo demonstrates consistent improvement in downstream classification tasks over a list of backbones and CSL approaches. Our best model achieves 85.1% (UCF-101) and 51.6% (HMDB-51) top-1 accuracy, which is a 3% and 2.4% relative improvement over the previous state-of-the-art.",
+            "https://arxiv.org/abs/2011.13046"
         )
 
 
@@ -803,7 +758,7 @@ add_paper("Small-Object Sensitive Segmentation Using Across Feature Map Attentio
         )
         add_paper("Deep Distance Transform for Tubular Structure Segmentation in CT Scans",
             "Yan Wang, Xu Wei, Fengze Liu, Jieneng Chen, Yuyin Zhou, Wei Shen, Elliot Fishman Alan Yuille",
-            "CVPR,2020",
+            "CVPR,Oral, 2020",
             "https://openaccess.thecvf.com/content_CVPR_2020/papers/Wang_Deep_Distance_Transform_for_Tubular_Structure_Segmentation_in_CT_Scans_CVPR_2020_paper.pdf",
             "@inproceedings{wang2020deep,<br>title={Deep distance transform for tubular structure segmentation in ct scans},<br>author={Wang, Yan and Wei, Xu and Liu, Fengze and Chen, Jieneng and Zhou, Yuyin and Shen, Wei and Fishman, Elliot K and Yuille, Alan L},<br>booktitle={CVPR},<br>year={2020}<br>}",
             "Tubular structure segmentation in medical images, e.g., segmenting vessels in CT scans, serves as a vital step in the use of computers to aid in screening early stages of related diseases. But automatic tubular structure segmentation in CT scans is a challenging problem, due to issues such as poor contrast, noise and complicated background. A tubular structure usually has a cylinder-like shape which can be well represented by its skeleton and cross-sectional radii (scales). Inspired by this, we propose a geometry-aware tubular structure segmentation method, Deep Distance Transform (DDT), which combines intuitions from the classical distance transform for skeletonization and modern deep segmentation networks. DDT first learns a multi-task network to predict a segmentation mask for a tubular structure and a distance map. Each value in the map represents the distance from each tubular structure voxel to the tubular structure surface. Then the segmentation mask is refined by leveraging the shape prior reconstructed from the distance map. We apply our DDT on six medical image datasets. Results show that (1) DDT can boost tubular structure segmentation performance significantly (e.g., over 13% DSC improvement for pancreatic duct segmentation), and (2) DDT additionally provides a geometrical measurement for a tubular structure, which is important for clinical diagnosis (e.g., the cross-sectional scale of a pancreatic duct can be an indicator for pancreatic cancer).",
@@ -854,6 +809,14 @@ add_paper("Small-Object Sensitive Segmentation Using Across Feature Map Attentio
             "https://github.com/cihangxie/DI-2-FGSM"
         )
 
+        add_paper("Medical Machine Intelligence: Data-efficiency and Knowledge-awareness",
+            "Yuyin Zhou",
+            "Ph.D. Dissertation, The Johns Hopkins University",
+            "https://www.proquest.com/docview/2515793464?pq-origsite=gscholar&fromopenview=true",
+            "@phdthesis{zhou2020medical,<br>title={MEDICAL MACHINE INTELLIGENCE: DATA-EFFICIENCY AND KNOWLEDGE-AWARENESS},<br>author={Zhou, Yuyin},<br>year={2020},<br>school={Johns Hopkins University}<br>}}",
+            null,
+            "https://www.proquest.com/docview/2515793464?pq-origsite=gscholar&fromopenview=true"
+        )
 
 
 
@@ -961,7 +924,7 @@ add_paper("Small-Object Sensitive Segmentation Using Across Feature Map Attentio
 
         add_paper("Mitigating Adversarial Effects Through Randomization",
             "Cihang Xie, Jianyu Wang, Zhishuai Zhang, Zhou Ren, Alan Yuille",
-            "ICLR, 2018<br>",
+            "ICLR, 2018<br><b><font color=\"orange\">(The runner-up solution in the adversarial defense track of NIPS 2017 Adversarial Attacks and Defenses Competition)</font></b>",
             "https://arxiv.org/pdf/1711.01991.pdf",
             "@inproceedings{xie2018mitigating,<br>title     = {Mitigating Adversarial Effects Through Randomization},<br>author    = {Xie, Cihang and Wang, Jianyu and Zhang, Zhishuai and Ren, Zhou and Yuille, Alan},<br>booktitle = {ICLR},<br>year      = {2018}<br>}<br>",
             "Convolutional neural networks have demonstrated high accuracy on various tasks in recent years. However, they are extremely vulnerable to adversarial examples. For example, imperceptible perturbations added to clean images can cause convolutional neural networks to fail. In this paper, we propose to utilize randomization at inference time to mitigate adversarial effects. Specifically, we use two randomization operations: random resizing, which resizes the input images to a random size, and random padding, which pads zeros around the input images in a random manner. Extensive experiments demonstrate that the proposed randomization method is very effective at defending against both single-step and iterative attacks. Our method provides the following advantages: 1) no additional training or f ine-tuning, 2) very few additional computations, 3) compatible with other adversarial defense methods. By combining the proposed randomization method with an adversarially trained model, it achieves a normalized score of 0.924 (ranked No.2 among 107 defense teams) in the NIPS 2017 adversarial examples defense challenge, which is far better than using adversarial training alone with a normalized score of 0.773 (ranked No.56). The code is public available at https: //github.com/cihangxie/NIPS2017_adv_challenge_defense.",
@@ -1003,7 +966,7 @@ add_paper("Small-Object Sensitive Segmentation Using Across Feature Map Attentio
 
  add_paper("Training Multi-organ Segmentation Networks with Sample Selection by Relaxed Upper Confident Bound",
             "Yan Wang, Yuyin Zhou, Peng Tang, Wei Shen, Elliot Fishman, Alan L. Yuille",
-            "MICCAI, 2018",
+            "MICCAI, Oral , 2018",
             "https://link.springer.com/chapter/10.1007/978-3-030-00937-3_50",
             "@inproceedings{wang2018training,<br>title={Training multi-organ segmentation networks with sample selection by relaxed upper confident bound},<br>author={Wang, Yan and Zhou, Yuyin and Tang, Peng and Shen, Wei and Fishman, Elliot K and Yuille, Alan L},<br>booktitle={International conference on medical image computing and computer-assisted intervention(MICCAI)},<br>year={2018}}",
             "Convolutional neural networks (CNNs), especially fully convolutional networks, have been widely applied to automatic medical image segmentation problems, e.g., multi-organ segmentation. Existing CNN-based segmentation methods mainly focus on looking for increasingly powerful network architectures, but pay less attention to data sampling strategies for training networks more effectively. In this paper, we present a simple but effective sample selection method for training multi-organ segmentation networks. Sample selection exhibits an exploitation-exploration strategy, i.e., exploiting hard samples and exploring less frequently visited samples. Based on the fact that very hard samples might have annotation errors, we propose a new sample selection policy, named Relaxed Upper Confident Bound (RUCB). Compared with other sample selection policies, e.g., Upper Confident Bound (UCB), it exploits a range of hard samples rather than being stuck with a small set of very hard ones, which mitigates the influence of annotation errors during training. We apply this new sample selection policy to training a multi-organ segmentation network on a dataset containing 120 abdominal CT scans and show that it boosts segmentation performance significantly.",
@@ -1046,6 +1009,14 @@ add_paper("Small-Object Sensitive Segmentation Using Across Feature Map Attentio
 
 
 
+ add_paper("Smooth Adversarial Training",
+            "Cihang Xie, Mingxing Tan, Boqing Gong, Alan Yuille, Quoc Le",
+            "Tech report, arXiv",
+            "https://arxiv.org/pdf/2006.14536.pdf",
+            "@article{xie2020smooth,<br>title={Smooth adversarial training},<br>author={Xie, Cihang and Tan, Mingxing and Gong, Boqing and Yuille, Alan and Le, Quoc V},<br>journal={arXiv preprint arXiv:2006.14536},<br>year={2020}<br>}",
+            "It is commonly believed that networks cannot be both accurate and robust, that gaining robustness means losing accuracy. It is also generally believed that, unless making networks larger, network architectural elements would otherwise matter little in improving adversarial robustness. Here we present evidence to challenge these common beliefs by a careful study about adversarial training. Our key observation is that the widely-used ReLU activation function significantly weakens adversarial training due to its non-smooth nature. Hence we propose smooth adversarial training (SAT), in which we replace ReLU with its smooth approximations to strengthen adversarial training. The purpose of smooth activation functions in SAT is to allow it to f ind harder adversarial examples and compute better gradient updates during adversarial training. Compared to standard adversarial training, SAT improves adversarial robustness for “free”, i.e., no drop in accuracy and no increase in computational cost. For example, without introducing additional computations, SAT significantly enhances ResNet-50’s robustness from 33.0% to 42.3%, while also improving accuracy by 0.9% on ImageNet. SAT also works well with larger networks: it helps EfficientNet-L1 to achieve 82.2% accuracy and 58.6% robustness on ImageNet, outperforming the previous state-ofthe-art defense by 9.5% for accuracy and 11.6% for robustness. Models are available at https://github.com/ cihangxie/SmoothAdversarialTraining.",
+            "https://arxiv.org/pdf/2006.14536.pdf","https://github.com/cihangxie/SmoothAdversarialTraining"
+        )
 
  add_paper("A Fixed- Point Model for Pancreas Segmentation in Abdominal CT Scans",
             "Yuyin Zhou, Lingxi Xie, Cihang Xie, Wei Shen, Yan Wang, Elliot Fishman, Alan L. Yuille",
@@ -1132,7 +1103,7 @@ add_paper("Small-Object Sensitive Segmentation Using Across Feature Map Attentio
 
       <div class="me-md-auto text-center text-md-start">
         <div class="copyright">
-          &copy; Copyright <strong><span>VLAA</span></strong>. Partially borrowed from <a href="https://www.cs.princeton.edu/~danqic/papers.html">Danqi Chen</a>
+          &copy; Copyright <strong><span>VLAA</span></strong>. Partially borrowed from <a href="https://www.cs.princeton.edu/~danqic/papers.html">Danqi</a>
         </div>
         <div class="credits">
           <!-- All the links in the footer should remain intact. -->
