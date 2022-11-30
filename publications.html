@@ -68,10 +68,7 @@
         <i class="bi bi-phone"></i> +1 5589 55488 55 -->
       </div>
       <div class="d-none d-lg-flex social-links align-items-center">
-        <a href="mailto:cihangxie306@gmail.com" class="envelope"><i class="bi-envelope"></i></a>
-<!--         <a href="contact.html" class="phone"><i class="bi-phone"></i></a> -->
-<!--         <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a> -->
+        <a href="opening.html" class="envelope"><i class="bi-envelope"></i></a>
       </div>
     </div>
   </div>
@@ -94,10 +91,11 @@
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
           <li><a class="nav-link scrollto" href="index.html">Home</a></li>
-          <li><a class="nav-link scrollto" href="news.html">News</a></li>
+
 <!--           <li><a class="nav-link scrollto" href="about.html">About</a></li> -->
           <li><a class="nav-link scrollto" href="people.html">People</a></li>
           <li><a class="nav-link scrollto active" href="publications.html">Publications</a></li>
+                    <li><a class="nav-link scrollto" href="opening.html">Opening</a></li>
 <!--           <li><a class="nav-link scrollto" href="contact.html">Contact</a></li> -->
 
         </ul>
@@ -146,11 +144,13 @@ function copy(dest, source) {
 </script>
 
 <div class="container">
-<h1> Papers</h1>
+<!-- <h1> Papers</h1> -->
 <br>
 <!-- <p>(*: equal contribution)</p> -->
 
-<script>
+<details close>
+    <summary><font size="5">Pre-print</font></summary>
+    <script>
         paper_count = 0
 
         function add_paper(title, authors, conference, link, bib, abstract, arxiv_link, code, press, slides, talk, msg) {
@@ -160,8 +160,9 @@ function copy(dest, source) {
             list_entry += "<b>" + title + "</b>"
             if (link != null)
                 list_entry += "</a>"
-            list_entry += "<br>" + authors + ".<br>" + conference + ".</li>"
-
+            list_entry += "<br>" + authors + ".<br>" 
+            if (conference != null)
+                list_entry+= conference + ".</li>"
             if (bib != null) {
                 list_entry += "<div id=\"bib" + paper_count + "\" style=\"display:none\">" + bib + "</div>"
                 list_entry += "<a href=\"javascript:copy(div" + paper_count + ",bib" + paper_count + ")\"> <span class=\"label label-success\">bib</span></a>"
@@ -201,12 +202,14 @@ function copy(dest, source) {
         // document.write("<h2>Preprint</h2>")
         // document.write("<ul>")
         document.write("</ul>")
-        document.write("<h2>Preprint</h2>")
-        document.write("<ul>")
+        // document.write("<h2>Preprint</h2>")
+        document.write("<ul><br>")
+
 
 add_paper("Masked Autoencoders Enable Efficient Knowledge Distillers",
             "Yutong Bai, Zeyu Wang, Junfei Xiao, Chen Wei, Huiyu Wang, Alan Yuille, Yuyin Zhou, Cihang Xie",
-            "arxiv, 2022",
+            // "arxiv, 2022",
+            null,
             "https://arxiv.org/pdf/2208.12256.pdf",
             "@article{bai2022dmae,<br>title   = {Masked Autoencoders Enable Efficient Knowledge Distillers},<br>author  = {Yutong Bai and Zeyu Wang and Junfei Xiao and Chen Wei and Huiyu Wang and Alan Loddon Yuille and Yuyin Zhou and Cihang Xie},<br>journal = {arXiv preprint arXiv:2208.12256},<br>year    = {2022},<br>}",
             "This paper studies the potential of distilling knowledge from pre-trained models, especially Masked Autoencoders. Our approach is simple: in addition to optimizing the pixel reconstruction loss on masked inputs, we minimize the distance between the intermediate feature map of the teacher model and that of the student model. This design leads to a computationally efficient knowledge distillation framework, given 1) only a small visible subset of patches is used, and 2) the (cumbersome) teacher model only needs to be partially executed, i.e., forward propagate inputs through the first few layers, for obtaining intermediate feature maps. Compared to directly distilling fine-tuned models, distilling pre-trained models substantially improves downstream performance. For example, by distilling the knowledge from an MAE pre-trained ViT-L into a ViT-B, our method achieves 84.0% ImageNet top-1 accuracy, outperforming the baseline of directly distilling a fine-tuned ViT-L by 1.2%. More intriguingly, our method can robustly distill knowledge from teacher models even with extremely high masking ratios: e.g., with 95% masking ratio where merely TEN patches are visible during distillation, our ViT-B competitively attains a top-1 ImageNet accuracy of 83.6%; surprisingly, it can still secure 82.4% top-1 ImageNet accuracy by aggressively training with just FOUR visible patches (98% masking ratio). The code and models are publicly available at https://github.com/UCSC-VLAA/DMAE.",
@@ -225,7 +228,8 @@ add_paper("Can CNNs Be More Robust Than Transformers?",
 
 add_paper("Label-Efficient Self-Supervised Federated Learning for Tackling Data Heterogeneity in Medical Imaging",
             "Rui Yan, Liangqiong Qu, Qingyue Wei, Shih-Cheng Huang, Liyue Shen, Daniel Rubin, Lei Xing, Yuyin Zhou",
-            "arxiv, 2022",
+            // "arxiv, 2022",
+            null,
             "https://arxiv.org/abs/2205.08576",
             "@article{yan2022label,<br>title={Label-Efficient Self-Supervised Federated Learning for Tackling Data Heterogeneity in Medical Imaging},<br>author={Yan, Rui and Qu, Liangqiong and Wei, Qingyue and Huang, Shih-Cheng and Shen, Liyue and Rubin, Daniel and Xing, Lei and Zhou, Yuyin},<br>journal={arXiv preprint arXiv:2205.08576},<br>year={2022}<br>}",
             "The curation of large-scale medical datasets from multiple institutions necessary for training deep learning models is challenged by the difficulty in sharing patient data with privacy-preserving. Federated learning (FL), a paradigm that enables privacy-protected collaborative learning among different institutions, is a promising solution to this challenge. However, FL generally suffers from performance deterioration due to heterogeneous data distributions across institutions and the lack of quality labeled data. In this paper, we present a robust and label-efficient self-supervised FL framework for medical image analysis. Specifically, we introduce a novel distributed selfsupervised pre-training paradigm into the existing FL pipeline (i.e., pre-training the models directly on the decentralized target task datasets). Built upon the recent success of Vision Transformers, we employ masked image encoding tasks for self-supervised pre-training, to facilitate more effective knowledge transfer to downstream federated models. Extensive empirical results on simulated and real-world medical imaging federated datasets show that self-supervised pre-training largely benefits the robustness of federated models against various degrees of data heterogeneity. Notably, under severe data heterogeneity, our method, without relying on any additional pre-training data, achieves an improvement of 5.06%, 1.53% and 4.58% in test accuracy on retinal, dermatology and chest X-ray classification compared with the supervised baseline with ImageNet pre-training. Moreover, we show that our self-supervised FL algorithm generalizes well to out-of-distribution data and learns federated models more effectively in limited label scenarios, surpassing the supervised baseline by 10.36% and the semi-supervised FL method by 8.3% in test accuracy. The code and trained models are available at https://github.com/rui-yan/SSL-FL.",
@@ -233,15 +237,6 @@ add_paper("Label-Efficient Self-Supervised Federated Learning for Tackling Data 
             "https://github.com/rui-yan/SSL-FL"
         )
 
-add_paper("Bag of Tricks for FGSM Adversarial Training",
-            "Zichao Li, Li Liu, Zeyu Wang, Yuyin Zhou, Cihang Xie",
-            "arxiv, 2022",
-            "https://arxiv.org/pdf/2209.02684.pdf",
-            "@article{li2022bag,<br>title   = {Bag of Tricks for FGSM Adversarial Training},<br>author  = {Li, Zichao and Liu, Li and Wang, Zeyu and Zhou, Yuyin and Xie, Cihang},<br>journal = {arXiv preprint arXiv:2209.02684},<br>year   = {2022},<br>}",
-            "Adversarial training (AT) with samples generated by Fast Gradient Sign Method (FGSM), also known as FGSM-AT, is a computationally simple method to train robust networks. However, during its training procedure, an unstable mode of “catastrophic overfitting” has been identified in [Wong et al., 2020], where the robust accuracy abruptly drops to zero within a single training step. Existing methods use gradient regularizers or random initialization tricks to attenuate this issue, whereas they either take high computational cost or lead to lower robust accuracy. In this work, we provide the first study, which thoroughly examines a collection of tricks from three perspectives: Data Initialization, Network Structure, and Optimization, to overcome the catastrophic overfitting in FGSM-AT. Surprisingly, we find that simple tricks, i.e., a) masking partial pixels (even without randomness), b) setting a large convolution stride and smooth activation functions, or c) regularizing the weights of the first convolutional layer, can effectively tackle the overfitting issue. Extensive results on a range of network architectures validate the effectiveness of each proposed trick, and the combinations of tricks are also investigated. For example, trained with PreActResNet-18 on CIFAR-10, our method attains 49.8% accuracy against PGD-50 attacker and 46.4% accuracy against AutoAttack, demonstrating that pure FGSM-AT is capable of enabling robust learners. The code and models are publicly available at https://github. com/UCSC-VLAA/Bag-of-Tricks-for-FGSM-AT.",
-            "https://arxiv.org/pdf/2209.02684.pdf",
-            "https://github. com/UCSC-VLAA/Bag-of-Tricks-for-FGSM-AT"
-        )
 
 add_paper("Bag of Tricks for FGSM Adversarial Training",
             "Zichao Li, Li Liu, Zeyu Wang, Yuyin Zhou, Cihang Xie",
@@ -262,14 +257,7 @@ add_paper("The FELIX Project: Deep Networks To Detect Pancreatic Neoplasms",
             "https://www.medrxiv.org/content/10.1101/2022.09.24.22280071v1"
         )
 
-add_paper("Simulated Adversarial Testing of Face Recognition Models",
-    "Nataniel Ruiz, Adam Kortylewski, Weichao Qiu, Cihang Xie , Sarah Adel Bargal, Alan Yuille, Stan Sclaroff",
-    "arXiv,2022",
-    "https://arxiv.org/pdf/2106.04569.pdf",
-    "@inproceedings{nataniel2021testface,<br>title     = {Simulated Adversarial Testing of Face Recognition Models},<br>author    = {Ruiz, Nataniel and Kortylewski, Adam and Qiu, Weichao and Xie, Cihang and Bargal, Sarah Adel and Yuille, Alan and Sclaroff, Stan},<br>booktitle = {CVPR},<br>year      = {2022}<br>}",
-    "Most machine learning models are validated and tested on fixed datasets. This can give an incomplete picture of the capabilities and weaknesses of the model. Such weaknesses can be revealed at test time in the real world. The risks involved in such failures can be loss of profits, loss of time or even loss of life in certain critical applications. In order to alleviate this issue, simulators can be controlled in a finegrained manner using interpretable parameters to explore the semantic image manifold. In this work, we propose a framework for learning how to test machine learning algorithms using simulators in an adversarial manner in order to find weaknesses in the model before deploying it in critical scenarios. We apply this method in a face recognition setup. We show that certain weaknesses of models trained on real data can be discovered using simulated samples. Using our proposed method, we can find adversarial synthetic faces that fool contemporary face recognition models. This demonstrates the fact that these models have weaknesses that are not measured by commonly used validation datasets. We hypothesize that this type of adversarial examples are not isolated, but usually lie in connected spaces in the latent space of the simulator. We present a method to f ind these adversarial regions as opposed to the typical adversarial points found in the adversarial example literature.",
-    "https://arxiv.org/pdf/2106.04569.pdf"
-)
+
 add_paper("One-Pixel Shortcut: on the Learning Preference of Deep Neural Networks",
     "Shutong Wu, Sizhe Chen, Cihang Xie, Xiaolin Huang",
     "arxiv, 2022",
@@ -292,14 +280,14 @@ add_paper("Radfusion: Benchmarking performance and fairness for multimodal pulmo
     "https://arxiv.org/pdf/2111.11665"
 )
 
-add_paper("DualNorm-UNet: Incorporating global and local statistics for robust medical image segmentation",
-            "Junfei Xiao, Lequan Yu, Lei Xing, Alan Yuille, Yuyin Zhou",
+add_paper("CateNorm: Categorical Normalization for Robust Medical Image Segmentation",
+            "Junfei Xiao, Lequan Yu, Zongwei Zhou, Yutong Bai, Lei Xing, Alan Yuille, Yuyin Zhou",
             "arxiv, 2021",
+            "https://link.springer.com/chapter/10.1007/978-3-031-16852-9_13",
+            "@inproceedings{xiao2022catenorm,<br>title={CateNorm: Categorical Normalization for Robust Medical Image Segmentation},<br>author={Xiao, Junfei and Yu, Lequan and Zhou, Zongwei and Bai, Yutong and Xing, Lei and Yuille, Alan and Zhou, Yuyin},<br>booktitle={MICCAI Workshop on Domain Adaptation and Representation Transfer},<br>year={2022},<br>}",
+            "Batch normalization (BN) uniformly shifts and scales the activations based on the statistics of a batch of images. However, the intensity distribution of the background pixels often dominates the BN statistics because the background accounts for a large proportion of the entire image. This paper focuses on enhancing BN with the intensity distribution of foreground pixels, the one that really matters for image segmentation. We propose a new normalization strategy, named categorical normalization (CateNorm), to normalize the activations according to categorical statistics. The categorical statistics are obtained by dynamically modulating specific regions in an image that belong to the foreground. CateNorm demonstrates both precise and robust segmentation results across five public datasets obtained from different domains, covering complex and variable data distributions. It is attributable to the ability of CateNorm to capture domain-invariant information from multiple domains (institutions) of medical data.",
             "https://arxiv.org/abs/2103.15858",
-            "@article{xiao2021dualnorm,<br>title={DualNorm-UNet: Incorporating global and local statistics for robust medical image segmentation},<br>author={Xiao, Junfei and Yu, Lequan and Xing, Lei and Yuille, Alan and Zhou, Yuyin},<br>year={2021}<br>}",
-            "Batch Normalization (BN) is one of the key components for accelerating network training, and has been widely adopted in the medical image analysis field. However, BN only calculates the global statistics at the batch level, and applies the same affine transformation uniformly across all spatial coordinates, which would suppress the image contrast of different semantic structures. In this paper, we propose to incorporate the semantic class information into normalization layers, so that the activations corresponding to different regions (i.e., classes) can be modulated differently. We thus develop a novel DualNorm-UNet, to concurrently incorporate both global image-level statistics and local region-wise statistics for network normalization. Specifically, the local statistics are integrated by adaptively modulating the activations along different class regions via the learned semantic masks in the normalization layer. Compared with existing methods, our approach exploits semantic knowledge at normalization and yields more discriminative features for robust segmentation results. More importantly, our network demonstrates superior abilities in capturing domain-invariant information from multiple domains (institutions) of medical data. Extensive experiments show that our proposed DualNorm-UNet consistently improves the performance on various segmentation tasks, even in the face of more complex and variable data distributions. Code is available at https://github.com/lambert-x/DualNorm-Unet.",
-            "https://arxiv.org/abs/2103.15858",
-            "https://github.com/lambert-x/DualNorm-Unet."
+            "https://github.com/lambert-x/CateNorm"
 ) 
 
 
@@ -347,10 +335,81 @@ add_paper("Can temporal information help with contrastive self-supervised learni
         )
 
 
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+</details>
 
 
+
+
+<!-- --------------------------------------Publications -------------------->
+
+
+
+<script>
+        paper_count = paper_count
+
+        function add_paper(title, authors, conference, link, bib, abstract, arxiv_link, code, press, slides, talk, msg) {
+            list_entry = "<li style=\"font-size:18px\">"
+            if (link != null)
+                list_entry += "<a href=\"" + link + "\">"
+            list_entry += "<b>" + title + "</b>"
+            if (link != null)
+                list_entry += "</a>"
+            list_entry += "<br>" + authors + ".<br>" 
+            if (conference != null)
+                list_entry+= conference + ".</li>"
+
+            if (bib != null) {
+                list_entry += "<div id=\"bib" + paper_count + "\" style=\"display:none\">" + bib + "</div>"
+                list_entry += "<a href=\"javascript:copy(div" + paper_count + ",bib" + paper_count + ")\"> <span class=\"label label-success\">bib</span></a>"
+            }
+
+            if (abstract != null) {
+                list_entry += "<div id=\"abstract" + paper_count + "\" style=\"display:none\">" + abstract + "</div>"
+                list_entry += "<a href=\"javascript:copy(div" + paper_count + ",abstract" + paper_count + ")\"> <span class=\"label label-warning\">abstract</span></a>"
+            }
+            if (arxiv_link != null)
+                list_entry += " <a href=\"" + arxiv_link + "\"><span class=\"label label-primary\">pdf</span></a>"
+
+            if (code != null)
+                list_entry += " <a href=\"" + code + "\"><span class=\"label label-danger\">code/models</span></a>"
+
+            if (press != null)
+                list_entry += " <a href=\"" + press + "\"><span class=\"label label-success\">press</span></a>"
+
+            if (slides != null)
+                list_entry += " <a href=\"" + slides + "\"><span class=\"label label-info\">slides/poster</span></a>"
+
+            if (talk != null)
+                list_entry += " <a href=\"" + talk + "\"><span class=\"label label-default\">talk</span></a>"
+
+            list_entry += "<br>"
+
+            if (msg != null)
+                list_entry += "<i>" + msg + "</i>"
+
+            list_entry += "<div id=\"div" + paper_count + "\" style=\"font-size:15px\"></div><br>"
+
+            document.write(list_entry)
+
+            paper_count += 1
+        }
+
+        // document.write("<h2>Preprint</h2>")
+        // document.write("<ul>")
         document.write("</ul>")
-        document.write("<h2>2022</h2>")
+        // document.write("<h2>Preprint</h2>")
+        document.write("<ul>")
+
+
+
+
+
+
+        document.write("</ul><br>")
+        // document.write("<h1>Publications</h1>")
+        document.write("<h1>2022</h1>")
         document.write("<ul>")
 
 
@@ -359,7 +418,11 @@ add_paper("Finding Differences Between Transformers and ConvNets Using Counterfa
             "NeurIPS, 2022",
             'https://t.co/HNlRgf4Ook',
             "@inproceedings{nataniel2022counterfactualtest,<br>title     = {Finding Differences Between Transformers and ConvNets Using Counterfactual Simulation Testing},<br>author    = {Ruiz, Nataniel and Xie, Cihang and Bargal, Sarah Adel and Saenko, Kate and Sclaroff, Stan},<br>booktitle = {NeurIPS},<br>year      = {2022}<br>}",
-            'https://t.co/HNlRgf4Ook'
+            "Modern deep neural networks tend to be evaluated on static test sets. One shortcoming of this is the fact that these deep neural networks cannot be easily evaluated for robustness issues with respect to specific scene variations. For example, it is hard to study the robustness of these networks to variations of object scale, object pose, scene lighting and 3D occlusions. The main reason is that collecting real datasets with fine-grained naturalistic variations of sufficient scale can be extremely time-consuming and expensive. In this work, we present Counterfactual Simulation Testing, a counterfactual framework that allows us to study the robustness of neural networks with respect to some of these naturalistic variations by building realistic synthetic scenes that allow us to ask counterfactual questions to the models, ultimately providing answers to questions such as 'Would your classification still be correct if the object were viewed from the top?'' or 'Would your classification still be correct if the object were partially occluded by another object?'. Our method allows for a fair comparison of the robustness of recently released, state-of-the-art Convolutional Neural Networks and Vision Transformers, with respect to these naturalistic variations. We find evidence that ConvNext is more robust to pose and scale variations than Swin, that ConvNext generalizes better to our simulated domain and that Swin handles partial occlusion better than ConvNext. We also find that robustness for all networks improves with network scale and with data scale and variety. We release the Naturalistic Variation Object Dataset (NVD), a large simulated dataset of 272k images of everyday objects with naturalistic variations such as object pose, scale, viewpoint, lighting and occlusions. Project page: ",
+            "https://t.co/HNlRgf4Ook",
+            "https://counterfactualsimulation.github.io"
+
+
         )
 
 add_paper("Adversarial Attack on Attackers: Post-Process to Mitigate Black-Box Score-Based Query Attacks",
@@ -379,6 +442,16 @@ add_paper("Multi-Granularity Cross-modal Alignment for Generalized Medical Visua
             "Learning medical visual representations directly from paired radiology reports has become an emerging topic in representation learning. However, existing medical image-text joint learning methods are limited by instance or local supervision analysis, ignoring disease-level semantic correspondences. In this paper, we present a novel Multi-Granularity Cross-modal Alignment (MGCA) framework for generalized medical visual representation learning by harnessing the naturally exhibited semantic correspondences between medical image and radiology reports at three different levels, i.e., pathological region-level, instance-level, and disease-level. Specifically, we first incorporate the instance-wise alignment module by maximizing the agreement between image-report pairs. Further, for token-wise alignment, we introduce a bidirectional cross-attention strategy to explicitly learn the matching between fine-grained visual tokens and text tokens, followed by contrastive learning to align them. More important, to leverage the high-level inter-subject relationship semantic (e.g., disease) correspondences, we design a novel cross-modal disease-level alignment paradigm to enforce the cross-modal cluster assignment consistency. Extensive experimental results on seven downstream medical image datasets covering image classification, object detection, and semantic segmentation tasks demonstrate the stable and superior performance of our framework.",
             "https://arxiv.org/abs/2210.06044"
         )
+
+add_paper("Simulated Adversarial Testing of Face Recognition Models",
+    "Nataniel Ruiz, Adam Kortylewski, Weichao Qiu, Cihang Xie , Sarah Adel Bargal, Alan Yuille, Stan Sclaroff",
+    "CVPR,2022",
+    "https://arxiv.org/pdf/2106.04569.pdf",
+    "@inproceedings{nataniel2021testface,<br>title     = {Simulated Adversarial Testing of Face Recognition Models},<br>author    = {Ruiz, Nataniel and Kortylewski, Adam and Qiu, Weichao and Xie, Cihang and Bargal, Sarah Adel and Yuille, Alan and Sclaroff, Stan},<br>booktitle = {CVPR},<br>year      = {2022}<br>}",
+    "Most machine learning models are validated and tested on fixed datasets. This can give an incomplete picture of the capabilities and weaknesses of the model. Such weaknesses can be revealed at test time in the real world. The risks involved in such failures can be loss of profits, loss of time or even loss of life in certain critical applications. In order to alleviate this issue, simulators can be controlled in a finegrained manner using interpretable parameters to explore the semantic image manifold. In this work, we propose a framework for learning how to test machine learning algorithms using simulators in an adversarial manner in order to find weaknesses in the model before deploying it in critical scenarios. We apply this method in a face recognition setup. We show that certain weaknesses of models trained on real data can be discovered using simulated samples. Using our proposed method, we can find adversarial synthetic faces that fool contemporary face recognition models. This demonstrates the fact that these models have weaknesses that are not measured by commonly used validation datasets. We hypothesize that this type of adversarial examples are not isolated, but usually lie in connected spaces in the latent space of the simulator. We present a method to f ind these adversarial regions as opposed to the typical adversarial points found in the adversarial example literature.",
+    "https://arxiv.org/pdf/2106.04569.pdf"
+)
+
 add_paper("In Defense of Image Pre-Training for Spatiotemporal Recognition",
             "Xianhang Li, Huiyu Wang, Chen Wei, Jieru Mei, Alan Yuille, Yuyin Zhou, Cihang Xie",
             "ECCV, 2022",
@@ -418,7 +491,7 @@ add_paper("ViP: Unified Certified Detection and Recovery for Patch Attack with V
         )
 add_paper("Small-Object Sensitive Segmentation Using Across Feature Map Attention",
             "Shengtian Sang, Yuyin Zhou, Md Tauhidul Islam, Lei Xing",
-            "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+            "IEEE TPAMI",
             "https://ieeexplore.ieee.org/abstract/document/9906428",
             "@article{sang2022small,<br>title={Small-Object Sensitive Segmentation Using Across Feature Map Attention},<br>author={Sang, Shengtian and Zhou, Yuyin and Islam, Md Tauhidul and Xing, Lei},<br>journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},<br>year={2022},<br>publisher={IEEE}<br>}",
             "Semantic segmentation is an important step in understanding the scene for many practical applications such as autonomous driving. Although Deep Convolutional Neural Networks-based methods have significantly improved segmentation accuracy, small/thin objects remain challenging to segment due to convolutional and pooling operations that result in information loss, especially for small objects. This paper presents a novel attention-based method called Across Feature Map Attention (AFMA) to address this challenge. It quantifies the inner-relationship between small and large objects belonging to the same category by utilizing the different feature levels of the original image. The AFMA could compensate for the loss of high-level feature information of small objects and improve the small/thin object segmentation. Our method can be used as an efficient plug-in for a wide range of existing architectures and produces much more interpretable feature representation than former studies. Extensive experiments on eight widely used segmentation methods and other existing small-object segmentation models on CamVid and Cityscapes demonstrate that our method substantially and consistently improves the segmentation of small/thin objects.",
@@ -502,12 +575,12 @@ add_paper("Small-Object Sensitive Segmentation Using Across Feature Map Attentio
             "https://medium.com/syncedreview/meet-ibot-a-masked-image-modelling-framework-that-enables-bert-like-pretraining-for-vision-da01002115e7"
         )
         document.write("</ul>")
-        document.write("<h2>2021</h2>")
+        document.write("<h1>2021</h1>")
         document.write("<ul>")
 
         add_paper("Are Transformers More Robust Than CNNs?",
             "Yutong Bai, Jieru Mei, Alan Yuille, Cihang Xie",
-            "NeurIPS, 2021<br>",
+            "NeurIPS, 2021",
             "https://arxiv.org/pdf/2111.05464.pdf",
             "@inproceedings{bai2020vitsVScnns,<br>title     = {Are Transformers More Robust Than CNNs?},<br>author    = {Bai, Yutong and Mei, Jieru and Yuille, Alan and Xie, Cihang},<br>booktitle = {NeurIPS},<br>year      = {2021},<br>}<br>",
             "Transformer emerges as a powerful tool for visual recognition. In addition to demonstrating competitive performance on a broad range of visual benchmarks, recent works also argue that Transformers are much more robust than Convolutions Neural Networks (CNNs). Nonetheless, surprisingly, we find these conclusions are drawn from unfair experimental settings, where Transformers and CNNs are compared at different scales and are applied with distinct training frameworks. In this paper, we aim to provide the first fair & in-depth comparisons between Transformers and CNNs, focusing on robustness evaluations. With our unified training setup, we first challenge the previous belief that Transformers outshine CNNs when measuring adversarial robustness. More surprisingly, we find CNNs can easily be as robust as Transformers on defending against adversarial attacks, if they properly adopt Transformers' training recipes. While regarding generalization on out-of-distribution samples, we show pre-training on (external) large-scale datasets is not a fundamental request for enabling Transformers to achieve better performance than CNNs. Moreover, our ablations suggest such stronger generalization is largely benefited by the Transformer's self-attention-like architectures per se, rather than by other training setups. We hope this work can help the community better understand and benchmark the robustness of Transformers and CNNs. The code and models are publicly available at: https://github.com/ytongbai/ViTs-vs-CNNs.",
@@ -631,7 +704,7 @@ add_paper("Small-Object Sensitive Segmentation Using Across Feature Map Attentio
 
 
         document.write("</ul>")
-        document.write("<h2>2020</h2>")
+        document.write("<h1>2020</h1>")
         document.write("<ul>")
 
 
@@ -828,7 +901,7 @@ add_paper("Small-Object Sensitive Segmentation Using Across Feature Map Attentio
             "https://github.com/198808xc/OrganSegRSTN"
         )
         document.write("</ul>")
-        document.write("<h2>2019</h2>")
+        document.write("<h1>2019</h1>")
         document.write("<ul>")
 
 
@@ -955,7 +1028,7 @@ add_paper("Small-Object Sensitive Segmentation Using Across Feature Map Attentio
 
 
         document.write("</ul>")
-        document.write("<h2>2018</h2>")
+        document.write("<h1>2018</h1>")
         document.write("<ul>")
 
 
@@ -1018,7 +1091,7 @@ add_paper("Small-Object Sensitive Segmentation Using Across Feature Map Attentio
             "https://openaccess.thecvf.com/content_cvpr_2018/papers/Yu_Recurrent_Saliency_Transformation_CVPR_2018_paper.pdf"
         )
         document.write("</ul>")
-        document.write("<h2>2017</h2>")
+        document.write("<h1>2017</h1>")
         document.write("<ul>")
 
  add_paper("Adversarial Examples for Semantic Segmentation and Object Detection",
@@ -1151,13 +1224,9 @@ add_paper("Small-Object Sensitive Segmentation Using Across Feature Map Attentio
 
 
       </div> -->
-                <div class="col-lg-4 col-md-6 footer-newsletter">
+<!--                 <div class="col-lg-4 col-md-6 footer-newsletter">
             <h7>Email: cixie@ucsc.edu</h7>
-<!--             <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p> -->
-<!--             <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form> -->
-          </div>
+          </div> -->
     </div>
   </footer><!-- End Footer -->
 
