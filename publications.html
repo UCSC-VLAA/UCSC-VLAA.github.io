@@ -173,7 +173,7 @@ function copy(dest, source) {
                 list_entry += "<a href=\"javascript:copy(div" + paper_count + ",abstract" + paper_count + ")\"> <span class=\"label label-warning\">abstract</span></a>"
             }
             if (arxiv_link != null)
-                list_entry += " <a href=\"" + arxiv_link + "\"><span class=\"label label-primary\">pdf</span></a>"
+                list_entry += " <a href=\"" + arxiv_link + "\"><span class=\"label label-primary\">arxiv</span></a>"
 
             if (code != null)
                 list_entry += " <a href=\"" + code + "\"><span class=\"label label-danger\">code/models</span></a>"
@@ -213,7 +213,8 @@ add_paper("Masked Autoencoders Enable Efficient Knowledge Distillers",
             "https://arxiv.org/pdf/2208.12256.pdf",
             "@article{bai2022dmae,<br>title   = {Masked Autoencoders Enable Efficient Knowledge Distillers},<br>author  = {Yutong Bai and Zeyu Wang and Junfei Xiao and Chen Wei and Huiyu Wang and Alan Loddon Yuille and Yuyin Zhou and Cihang Xie},<br>journal = {arXiv preprint arXiv:2208.12256},<br>year    = {2022},<br>}",
             "This paper studies the potential of distilling knowledge from pre-trained models, especially Masked Autoencoders. Our approach is simple: in addition to optimizing the pixel reconstruction loss on masked inputs, we minimize the distance between the intermediate feature map of the teacher model and that of the student model. This design leads to a computationally efficient knowledge distillation framework, given 1) only a small visible subset of patches is used, and 2) the (cumbersome) teacher model only needs to be partially executed, i.e., forward propagate inputs through the first few layers, for obtaining intermediate feature maps. Compared to directly distilling fine-tuned models, distilling pre-trained models substantially improves downstream performance. For example, by distilling the knowledge from an MAE pre-trained ViT-L into a ViT-B, our method achieves 84.0% ImageNet top-1 accuracy, outperforming the baseline of directly distilling a fine-tuned ViT-L by 1.2%. More intriguingly, our method can robustly distill knowledge from teacher models even with extremely high masking ratios: e.g., with 95% masking ratio where merely TEN patches are visible during distillation, our ViT-B competitively attains a top-1 ImageNet accuracy of 83.6%; surprisingly, it can still secure 82.4% top-1 ImageNet accuracy by aggressively training with just FOUR visible patches (98% masking ratio). The code and models are publicly available at https://github.com/UCSC-VLAA/DMAE.",
-            "https://arxiv.org/pdf/2208.12256.pdf"
+            "https://arxiv.org/abs/2208.12256",
+            "https://github.com/UCSC-VLAA/DMAE"
         )
 add_paper("Localization vs. Semantics: How Can Language Benefit Visual Representation Learning?",
             "Zhuowan Li, Cihang Xie, Benjamin Van Durme, Alan Yuille",
@@ -251,7 +252,7 @@ add_paper("Can CNNs Be More Robust Than Transformers?",
             "https://arxiv.org/pdf/2206.03452.pdf",
             "@article{wang2022robustcnn,<br>title   = {Can CNNs Be More Robust Than Transformers?},<br>author  = {Zeyu Wang and Yutong Bai and Yuyin Zhou and Cihang Xie},<br>journal = {arXiv preprint arXiv:2206.03452},<br>year    = {2022},<br>}",
             "The recent success of Vision Transformers is shaking the long dominance of Convolutional Neural Networks (CNNs) in image recognition for a decade. Specifically, in terms of robustness on out-ofdistribution samples, recent research finds that Transformers are inherently more robust than CNNs, regardless of different training setups. Moreover, it is believed that such superiority of Transformers should largely be credited to their self-attention-like architectures per se. In this paper, we question that belief by closely examining the design of Transformers. Our findings lead to three highly effective architecture designs for boosting robustness, yet simple enough to be implemented in several lines of code, namely a) patchifying input images, b) enlarging kernel size, and c) reducing activation layers and normalization layers. Bringing these components together, we are able to build pure CNN architectures without any attention-like operations that is as robust as, or even more robust than, Transformers. We hope this work can help the community better understand the design of robust neural architectures. The code is publicly available at https://github.com/UCSC-VLAA/RobustCNN.",
-            "https://arxiv.org/pdf/2206.03452.pdf",
+            "https://arxiv.org/abs/2206.03452",
             "https://github.com/UCSC-VLAA/RobustCNN"
         )
 
@@ -273,14 +274,14 @@ add_paper("Bag of Tricks for FGSM Adversarial Training",
             "https://arxiv.org/pdf/2209.02684.pdf",
             "@article{li2022bag,<br>title   = {Bag of Tricks for FGSM Adversarial Training},<br>author  = {Li, Zichao and Liu, Li and Wang, Zeyu and Zhou, Yuyin and Xie, Cihang},<br>journal = {arXiv preprint arXiv:2209.02684},<br>year   = {2022},<br>}",
             "Adversarial training (AT) with samples generated by Fast Gradient Sign Method (FGSM), also known as FGSM-AT, is a computationally simple method to train robust networks. However, during its training procedure, an unstable mode of “catastrophic overfitting” has been identified in [Wong et al., 2020], where the robust accuracy abruptly drops to zero within a single training step. Existing methods use gradient regularizers or random initialization tricks to attenuate this issue, whereas they either take high computational cost or lead to lower robust accuracy. In this work, we provide the first study, which thoroughly examines a collection of tricks from three perspectives: Data Initialization, Network Structure, and Optimization, to overcome the catastrophic overfitting in FGSM-AT. Surprisingly, we find that simple tricks, i.e., a) masking partial pixels (even without randomness), b) setting a large convolution stride and smooth activation functions, or c) regularizing the weights of the first convolutional layer, can effectively tackle the overfitting issue. Extensive results on a range of network architectures validate the effectiveness of each proposed trick, and the combinations of tricks are also investigated. For example, trained with PreActResNet-18 on CIFAR-10, our method attains 49.8% accuracy against PGD-50 attacker and 46.4% accuracy against AutoAttack, demonstrating that pure FGSM-AT is capable of enabling robust learners. The code and models are publicly available at https://github. com/UCSC-VLAA/Bag-of-Tricks-for-FGSM-AT.",
-            "https://arxiv.org/pdf/2209.02684.pdf",
+            "https://arxiv.org/abs/2209.02684",
             "https://github. com/UCSC-VLAA/Bag-of-Tricks-for-FGSM-AT"
         )
 
 add_paper("The FELIX Project: Deep Networks To Detect Pancreatic Neoplasms",
             "Yingda Xia, Qihang Yu, Linda Chu, Satomi Kawamoto, Seyoun Park, Fengze Liu, Jieneng Chen, Zhuotun Zhu, Bowen Li, Zongwei Zhou, Yongyi Lu, Yan Wang, Wei Shen, Lingxi Xie, Yuyin Zhou, Christopher Wolfgang, Ammar Javed, Daniel Fadaei Fouladi, Shahab Shayesteh, Jefferson Graves, Alejandra Blanco, Eva S Zinreich, Benedict Kinny-Köster, Kenneth Kinzler, Ralph H Hruban, Bert Vogelstein, Alan L Yuille, Elliot K Fishman",
             null,
-            "https://www.medrxiv.org/content/10.1101/2022.09.24.22280071v1",
+            "https://www.medrxiv.org/content/10.1101/2022.09.24.22280071v1.full.pdf",
             "@article{xia2022felix,<br>title={The FELIX Project: Deep Networks To Detect Pancreatic Neoplasms},<br>author={Xia, Yingda and Yu, Qihang and Chu, Linda and Kawamoto, Satomi and Park, Seyoun and Liu, Fengze and Chen, Jieneng and Zhu, Zhuotun and Li, Bowen and Zhou, Zongwei and others},<br>journal={medRxiv},<br>year={2022},<br>publisher={Cold Spring Harbor Laboratory Press}<br>}",
             "Tens of millions of abdominal images are performed with computed tomography (CT) in the U.S. each year but pancreatic cancers are sometimes not initially detected in these images. We here describe a suite of algorithms (named FELIX) that can recognize pancreatic lesions from CT images without human input. Using FELIX, >90% of patients with pancreatic ductal adenocarcinomas were detected at a specificity of >90% in patients without pancreatic disease. FELIX may be able to assist radiologists in identifying pancreatic cancers earlier, when surgery and other treatments offer more hope for long-term survival.",
             "https://www.medrxiv.org/content/10.1101/2022.09.24.22280071v1"
@@ -293,7 +294,7 @@ add_paper("One-Pixel Shortcut: on the Learning Preference of Deep Neural Network
     "https://arxiv.org/pdf/2205.12141.pdf",
     "@article{wu2022onepixel,<br>title   = {One-Pixel Shortcut: on the Learning Preference of Deep Neural Networks},<br>author  = {Wu, Shutong and Chen, Sizhe and Xie, Cihang and Huang, Xiaolin},<br>journal = {arXiv preprint arXiv:2205.12141},<br>year    = {2022}<br>}<br>",
     "Unlearnable examples (ULEs) aim to protect data from unauthorized usage for training DNNs. Error-minimizing noise, which is injected to clean data, is one of the most successful methods for preventing DNNs from giving correct predictions on incoming new data. Nonetheless, under specific training strategies such as adversarial training, the unlearnability of error-minimizing noise will severely degrade. In addition, the transferability of error-minimizing noise is inherently limited by the mismatch between the generator model and the targeted learner model. In this paper, we investigate the mechanism of unlearnable examples and propose a novel model-free method, named One-Pixel Shortcut, which only perturbs a single pixel of each image and makes the dataset unlearnable. Our method needs much less computational cost and obtains stronger transferability and thus can protect data from a wide range of different models. Based on this, we further introduce the first unlearnable dataset called CIFAR-10-S, which is indistinguishable from normal CIFAR-10 by human observers and can serve as a benchmark for different models or training strategies to evaluate their abilities to extract critical features from the disturbance of non-semantic representations. The original error-minimizing ULEs will lose efficiency under adversarial training, where the model can get over 83% clean test accuracy. Meanwhile, even if adversarial training and strong data augmentation like RandAugment are applied together, the model trained on CIFAR-10-S cannot get over 50% clean test accuracy.",
-    "https://arxiv.org/pdf/2205.12141.pdf"
+    "https://arxiv.org/abs/2205.12141"
 )
 
 
@@ -303,10 +304,10 @@ add_paper("One-Pixel Shortcut: on the Learning Preference of Deep Neural Network
 add_paper("Radfusion: Benchmarking performance and fairness for multimodal pulmonary embolism detection from ct and ehr",
     "Yuyin Zhou, Shih-Cheng Huang, Jason Alan Fries, Alaa Youssef, Timothy J Amrhein, Marcello Chang, Imon Banerjee, Daniel Rubin, Lei Xing, Nigam Shah, Matthew P Lungren",
             null,
-    "https://arxiv.org/pdf/2111.11665",
+    "https://arxiv.org/pdf/2111.11665.pdf",
     "@article{zhou2021radfusion,<br>title={Radfusion: Benchmarking performance and fairness for multimodal pulmonary embolism detection from ct and ehr},<br>author={Zhou, Yuyin and Huang, Shih-Cheng and Fries, Jason Alan and Youssef, Alaa and Amrhein, Timothy J and Chang, Marcello and Banerjee, Imon and Rubin, Daniel and Xing, Lei and Shah, Nigam and others},<br>journal={arXiv preprint arXiv:2111.11665},<br>year={2021}<br>}",
     "Despite the routine use of electronic health record (EHR) data by radiologists to contextualize clinical history and inform image interpretation, the majority of deep learning architectures for medical imaging are unimodal, i.e., they only learn features from pixel-level information. Recent research revealing how race can be recovered from pixel data alone highlights the potential for serious biases in models which fail to account for demographics and other key patient attributes. Yet the lack of imaging datasets which capture clinical context, inclusive of demographics and longitudinal medical history, has left multimodal medical imaging underexplored. To better assess these challenges, we present RadFusion, a multimodal, benchmark dataset of 1794 patients with corresponding EHR data and high-resolution computed tomography (CT) scans labeled for pulmonary embolism. We evaluate several representative multimodal fusion models and benchmark their fairness properties across protected subgroups, e.g., gender, race/ethnicity, age. Our results suggest that integrating imaging and EHR data can improve classification performance and robustness without introducing large disparities in the true positive rate between population groups.",
-    "https://arxiv.org/pdf/2111.11665"
+    "https://arxiv.org/abs/2111.11665"
 )
 
 
@@ -314,7 +315,7 @@ add_paper("Transunet: Transformers make strong encoders for medical image segmen
             "Jieneng Chen, Yongyi Lu, Qihang Yu, Xiangde Luo, Ehsan Adeli, Yan Wang, Le Lu, Alan L Yuille, Yuyin Zhou",
             // "arXiv, 2021",
             null,
-            "https://arxiv.org/abs/2102.04306",
+            "https://arxiv.org/pdf/2102.04306.pdf",
             "@article{chen2021transunet,<br>title={Transunet: Transformers make strong encoders for medical image segmentation},<br>author={Chen, Jieneng and Lu, Yongyi and Yu, Qihang and Luo, Xiangde and Adeli, Ehsan and Wang, Yan and Lu, Le and Yuille, Alan L and Zhou, Yuyin},<br>journal={arXiv preprint arXiv:2102.04306},<br>year={2021}<br>}",
             "Medical image segmentation is an essential prerequisite for developing healthcare systems, especially for disease diagnosis and treatment planning. On various medical image segmentation tasks, the u-shaped architecture, also known as U-Net, has become the de-facto standard and achieved tremendous success. However, due to the intrinsic locality of convolution operations, U-Net generally demonstrates limitations in explicitly modeling long-range dependency. Transformers, designed for sequence-to-sequence prediction, have emerged as alternative architectures with innate global self-attention mechanisms, but can result in limited localization abilities due to insufficient low-level details. In this paper, we propose TransUNet, which merits both Transformers and U-Net, as a strong alternative for medical image segmentation. On one hand, the Transformer encodes tokenized image patches from a convolution neural network (CNN) feature map as the input sequence for extracting global contexts. On the other hand, the decoder upsamples the encoded features which are then combined with the high-resolution CNN feature maps to enable precise localization. We argue that Transformers can serve as strong encoders for medical image segmentation tasks, with the combination of U-Net to enhance finer details by recovering localized spatial information. TransUNet achieves superior performances to various competing methods on different medical applications including multi-organ segmentation and cardiac segmentation. Code and models are available at https://github.com/Beckschen/TransUNet.",
             "https://arxiv.org/abs/2102.04306",
@@ -329,14 +330,14 @@ add_paper("Batch Normalization with Enhanced Linear Transformation",
             "https://arxiv.org/pdf/2011.14150.pdf",
             "@article{xu2020bnet,<br>author  = {Xu, Yuhui and Xie, Lingxi and Xie, Cihang and Mei, Jieru and Qiao, Siyuan and Shen, Wei and Xiong, Hongkai and Yuille, Alan},<br>title   = {Batch Normalization with Enhanced Linear Transformation},<br>journal = {arXiv preprint arXiv:2011.14150},<br>year    = {2020}<br>}<br>",
             "Batch normalization (BN) is a fundamental unit in modern deep networks, in which a linear transformation module was designed for improving BN’s flexibility of fitting complex data distributions. In this paper, we demonstrate properly enhancing this linear transformation module can effectively improve the ability of BN. Specifically, rather than using a single neuron, we propose to additionally consider each neuron’s neighborhood for calculating the outputs of the linear transformation. Our method, named BNET, can be implemented with 2–3 lines of code in most deep learning libraries. Despite the simplicity, BNET brings consistent performance gains over a wide range of backbones and visual benchmarks. Moreover, we verify that BNET accelerates the convergence of network training and enhances spatial information by assigning the important neurons with larger weights accordingly. The code is available at https://github.com/yuhuixu1993/BNET.",
-            "https://arxiv.org/pdf/2011.14150.pdf",
+            "https://arxiv.org/abs/2011.14150",
             "https://github.com/yuhuixu1993/BNET"
 )
 
 add_paper("Can temporal information help with contrastive self-supervised learning?",
             "Yutong Bai, Haoqi Fan, Ishan Misra, Ganesh Venkatesh, Yongyi Lu, Yuyin Zhou, Qihang Yu, Vikas Chandra, Alan Yuille",
             null,
-            "https://arxiv.org/abs/2011.13046",
+            "https://arxiv.org/pdf/2011.13046.pdf",
             "@article{bai2020can,<br>title={Can temporal information help with contrastive self-supervised learning?},<br>author={Bai, Yutong and Fan, Haoqi and Misra, Ishan and Venkatesh, Ganesh and Lu, Yongyi and Zhou, Yuyin and Yu, Qihang and Chandra, Vikas and Yuille, Alan},<br>year={2020}<br>}",
             "Leveraging temporal information has been regarded as essential for developing video understanding models. However, how to properly incorporate temporal information into the recent successful instance discrimination based contrastive self-supervised learning (CSL) framework remains unclear. As an intuitive solution, we find that directly applying temporal augmentations does not help, or even impair video CSL in general. This counter-intuitive observation motivates us to re-design existing video CSL frameworks, for better integration of temporal knowledge. To this end, we present Temporal-aware Contrastive self-supervised learningTaCo, as a general paradigm to enhance video CSL. Specifically, TaCo selects a set of temporal transformations not only as strong data augmentation but also to constitute extra self-supervision for video understanding. By jointly contrasting instances with enriched temporal transformations and learning these transformations as self-supervised signals, TaCo can significantly enhance unsupervised video representation learning. For instance, TaCo demonstrates consistent improvement in downstream classification tasks over a list of backbones and CSL approaches. Our best model achieves 85.1% (UCF-101) and 51.6% (HMDB-51) top-1 accuracy, which is a 3% and 2.4% relative improvement over the previous state-of-the-art.",
             "https://arxiv.org/abs/2011.13046"
@@ -351,7 +352,8 @@ add_paper("Can temporal information help with contrastive self-supervised learni
             "https://arxiv.org/pdf/2006.14536.pdf",
             "@article{xie2020smooth,<br>title={Smooth adversarial training},<br>author={Xie, Cihang and Tan, Mingxing and Gong, Boqing and Yuille, Alan and Le, Quoc V},<br>journal={arXiv preprint arXiv:2006.14536},<br>year={2020}<br>}",
             "It is commonly believed that networks cannot be both accurate and robust, that gaining robustness means losing accuracy. It is also generally believed that, unless making networks larger, network architectural elements would otherwise matter little in improving adversarial robustness. Here we present evidence to challenge these common beliefs by a careful study about adversarial training. Our key observation is that the widely-used ReLU activation function significantly weakens adversarial training due to its non-smooth nature. Hence we propose smooth adversarial training (SAT), in which we replace ReLU with its smooth approximations to strengthen adversarial training. The purpose of smooth activation functions in SAT is to allow it to f ind harder adversarial examples and compute better gradient updates during adversarial training. Compared to standard adversarial training, SAT improves adversarial robustness for “free”, i.e., no drop in accuracy and no increase in computational cost. For example, without introducing additional computations, SAT significantly enhances ResNet-50’s robustness from 33.0% to 42.3%, while also improving accuracy by 0.9% on ImageNet. SAT also works well with larger networks: it helps EfficientNet-L1 to achieve 82.2% accuracy and 58.6% robustness on ImageNet, outperforming the previous state-ofthe-art defense by 9.5% for accuracy and 11.6% for robustness. Models are available at https://github.com/ cihangxie/SmoothAdversarialTraining.",
-            "https://arxiv.org/pdf/2006.14536.pdf","https://github.com/cihangxie/SmoothAdversarialTraining"
+            "https://arxiv.org/abs/2006.14536",
+            "https://github.com/cihangxie/SmoothAdversarialTraining"
         )
 
 
@@ -390,7 +392,7 @@ add_paper("Can temporal information help with contrastive self-supervised learni
                 list_entry += "<a href=\"javascript:copy(div" + paper_count + ",abstract" + paper_count + ")\"> <span class=\"label label-warning\">abstract</span></a>"
             }
             if (arxiv_link != null)
-                list_entry += " <a href=\"" + arxiv_link + "\"><span class=\"label label-primary\">pdf</span></a>"
+                list_entry += " <a href=\"" + arxiv_link + "\"><span class=\"label label-primary\">arxiv</span></a>"
 
             if (code != null)
                 list_entry += " <a href=\"" + code + "\"><span class=\"label label-danger\">code/models</span></a>"
@@ -424,6 +426,18 @@ add_paper("Can temporal information help with contrastive self-supervised learni
 
 
 
+        document.write("</ul><br>")
+        // document.write("<h1>Publications</h1>")
+        document.write("<h1>2023</h1>")
+        document.write("<ul>")
+
+        add_paper("Practical Disruption of Image Translation Deepfake Networks",
+            "Nataniel Ruiz, Sarah Adel Bargal, Cihang Xie, Stan Sclaroff",
+            "AAAI, 2023",
+            "",
+            "@inproceedings{nataniel2023practical,<br>title     = {Practical Disruption of Image Translation Deepfake Networks},<br>author    = {Ruiz, Nataniel and Bargal, Sarah Adel and Xie, Cihang and Sclaroff, Stan},<br>booktitle = {AAAI},<br>year      = {2023}<br>}",
+            "By harnessing the latest advances in deep learning, image-to-image translation architectures have recently achieved impressive capabilities. Unfortunately, the growing representational power of these architectures has prominent unethical uses. Among these, the threats of (1) face manipulation (\"DeepFakes\") used for misinformation or pornographic use (2) \"DeepNude\" manipulations of body images to remove clothes from individuals, etc. Several works tackle the task of disrupting such image translation networks by inserting imperceptible adversarial attacks into the input image. Nevertheless, these works have limitations that may result in disruptions that are not practical in the real world. Specifically, most works generate disruptions in a white-box scenario, assuming perfect knowledge about the image translation network. The few remaining works that assume a black-box scenario require a large number of queries to successfully disrupt the adversary's image translation network. In this work we propose Leaking Transferable Perturbations (LTP), an algorithm that significantly reduces the number of queries needed to disrupt an image translation network by dynamically re-purposing previous disruptions into new query efficient disruptions."
+        )
 
 
 
@@ -433,90 +447,72 @@ add_paper("Can temporal information help with contrastive self-supervised learni
         document.write("<ul>")
 
 
-add_paper("Finding Differences Between Transformers and ConvNets Using Counterfactual Simulation Testing",
-            "Nataniel Ruiz, Cihang Xie, Sarah Adel Bargal, Kate Saenko, Stan Sclaroff",
-            "NeurIPS, 2022",
-            'https://t.co/HNlRgf4Ook',
-            "@inproceedings{nataniel2022counterfactualtest,<br>title     = {Finding Differences Between Transformers and ConvNets Using Counterfactual Simulation Testing},<br>author    = {Ruiz, Nataniel and Xie, Cihang and Bargal, Sarah Adel and Saenko, Kate and Sclaroff, Stan},<br>booktitle = {NeurIPS},<br>year      = {2022}<br>}",
-            "Modern deep neural networks tend to be evaluated on static test sets. One shortcoming of this is the fact that these deep neural networks cannot be easily evaluated for robustness issues with respect to specific scene variations. For example, it is hard to study the robustness of these networks to variations of object scale, object pose, scene lighting and 3D occlusions. The main reason is that collecting real datasets with fine-grained naturalistic variations of sufficient scale can be extremely time-consuming and expensive. In this work, we present Counterfactual Simulation Testing, a counterfactual framework that allows us to study the robustness of neural networks with respect to some of these naturalistic variations by building realistic synthetic scenes that allow us to ask counterfactual questions to the models, ultimately providing answers to questions such as 'Would your classification still be correct if the object were viewed from the top?'' or 'Would your classification still be correct if the object were partially occluded by another object?'. Our method allows for a fair comparison of the robustness of recently released, state-of-the-art Convolutional Neural Networks and Vision Transformers, with respect to these naturalistic variations. We find evidence that ConvNext is more robust to pose and scale variations than Swin, that ConvNext generalizes better to our simulated domain and that Swin handles partial occlusion better than ConvNext. We also find that robustness for all networks improves with network scale and with data scale and variety. We release the Naturalistic Variation Object Dataset (NVD), a large simulated dataset of 272k images of everyday objects with naturalistic variations such as object pose, scale, viewpoint, lighting and occlusions.",
-            "https://t.co/HNlRgf4Ook",
-            "https://counterfactualsimulation.github.io"
+        add_paper("Finding Differences Between Transformers and ConvNets Using Counterfactual Simulation Testing",
+                    "Nataniel Ruiz, Cihang Xie, Sarah Adel Bargal, Kate Saenko, Stan Sclaroff",
+                    "NeurIPS, 2022",
+                    'https://arxiv.org/pdf/2211.16499.pdf',
+                    "@inproceedings{nataniel2022counterfactualtest,<br>title     = {Finding Differences Between Transformers and ConvNets Using Counterfactual Simulation Testing},<br>author    = {Ruiz, Nataniel and Xie, Cihang and Bargal, Sarah Adel and Saenko, Kate and Sclaroff, Stan},<br>booktitle = {NeurIPS},<br>year      = {2022}<br>}",
+                    "Modern deep neural networks tend to be evaluated on static test sets. One shortcoming of this is the fact that these deep neural networks cannot be easily evaluated for robustness issues with respect to specific scene variations. For example, it is hard to study the robustness of these networks to variations of object scale, object pose, scene lighting and 3D occlusions. The main reason is that collecting real datasets with fine-grained naturalistic variations of sufficient scale can be extremely time-consuming and expensive. In this work, we present Counterfactual Simulation Testing, a counterfactual framework that allows us to study the robustness of neural networks with respect to some of these naturalistic variations by building realistic synthetic scenes that allow us to ask counterfactual questions to the models, ultimately providing answers to questions such as 'Would your classification still be correct if the object were viewed from the top?'' or 'Would your classification still be correct if the object were partially occluded by another object?'. Our method allows for a fair comparison of the robustness of recently released, state-of-the-art Convolutional Neural Networks and Vision Transformers, with respect to these naturalistic variations. We find evidence that ConvNext is more robust to pose and scale variations than Swin, that ConvNext generalizes better to our simulated domain and that Swin handles partial occlusion better than ConvNext. We also find that robustness for all networks improves with network scale and with data scale and variety. We release the Naturalistic Variation Object Dataset (NVD), a large simulated dataset of 272k images of everyday objects with naturalistic variations such as object pose, scale, viewpoint, lighting and occlusions. Project page: https://counterfactualsimulation.github.io/.",
+                    "https://arxiv.org/abs/2211.16499",
+                    "https://counterfactualsimulation.github.io"
+                )
 
 
+        add_paper("Adversarial Attack on Attackers: Post-Process to Mitigate Black-Box Score-Based Query Attacks",
+                    "Sizhe Chen, Zhehao Huang, Qinghua Tao, Yingwen Wu, Cihang Xie, Xiaolin Huang",
+                    "NeurIPS, 2022",
+                    "https://arxiv.org/pdf/2205.12134.pdf",
+                    "@inproceedings{chen2022AAA,<br>title     = {Adversarial Attack on Attackers: Post-Process to Mitigate Black-Box Score-Based Query Attacks},<br>author    = {Chen, Sizhe and Huang, Zhehao and Tao, Qinghua and Wu, Yingwen and Xie, Cihang and Huang, Xiaolin},<br>booktitle = {NeurIPS},<br>year      = {2022}<br>}",
+                    "The score-based query attacks (SQAs) pose practical threats to deep neural networks by crafting adversarial perturbations within dozens of queries, only using the model’s output scores. Nonetheless, we note that if the loss trend of the outputs is slightly perturbed, SQAs could be easily misled and thereby become much less effective. Following this idea, we propose a novel defense, namely Adversarial Attack on Attackers (AAA), to confound SQAs towards incorrect attack directions by slightly modifying the output logits. In this way, (1) SQAs are prevented regardless of the model’s worst-case robustness; (2) the original model predictions are hardly changed, i.e., no degradation on clean accuracy; (3) the calibration of confidence scores can be improved simultaneously. Extensive experiments are provided to verify the above advantages. For example, by setting ∞ = 8/255 on CIFAR-10, our proposed AAA helps WideResNet-28 secure 80.59% accuracy under Square attack (2500 queries), while the best prior defense (i.e., adversarial training) only attains 67.44%. Since AAA attacks SQA’s general greedy strategy, such advantages of AAAover 8 defenses can be consistently observed on 8 CIFAR-10/ImageNet models under 6 SQAs, using different attack targets, bounds, norms, losses, and strategies. Moreover, AAA calibrates better without hurting the accuracy.",
+                    "https://arxiv.org/abs/2205.12134"
+                )
+
+
+        add_paper("Multi-Granularity Cross-modal Alignment for Generalized Medical Visual Representation Learning",
+                    "Fuying Wang, Yuyin Zhou, Shujun Wang, Varut Vardhanabhuti, Lequan Yu",
+                    "NeurIPS, 2022",
+                    "https://arxiv.org/pdf/2210.06044.pdf",
+                    "@inproceedings{wang2022multi,<br>title={Multi-Granularity Cross-modal Alignment for Generalized Medical Visual Representation Learning},<br>author={Wang, Fuying and Zhou, Yuyin and Wang, Shujun and Vardhanabhuti, Varut and Yu, Lequan},<br>booktitle = {NeurIPS},<br>year      = {2022}<br>}<br>",
+                    "Learning medical visual representations directly from paired radiology reports has become an emerging topic in representation learning. However, existing medical image-text joint learning methods are limited by instance or local supervision analysis, ignoring disease-level semantic correspondences. In this paper, we present a novel Multi-Granularity Cross-modal Alignment (MGCA) framework for generalized medical visual representation learning by harnessing the naturally exhibited semantic correspondences between medical image and radiology reports at three different levels, i.e., pathological region-level, instance-level, and disease-level. Specifically, we first incorporate the instance-wise alignment module by maximizing the agreement between image-report pairs. Further, for token-wise alignment, we introduce a bidirectional cross-attention strategy to explicitly learn the matching between fine-grained visual tokens and text tokens, followed by contrastive learning to align them. More important, to leverage the high-level inter-subject relationship semantic (e.g., disease) correspondences, we design a novel cross-modal disease-level alignment paradigm to enforce the cross-modal cluster assignment consistency. Extensive experimental results on seven downstream medical image datasets covering image classification, object detection, and semantic segmentation tasks demonstrate the stable and superior performance of our framework.",
+                    "https://arxiv.org/abs/2210.06044"
+                )
+
+
+
+        add_paper("In Defense of Image Pre-Training for Spatiotemporal Recognition",
+                    "Xianhang Li, Huiyu Wang, Chen Wei, Jieru Mei, Alan Yuille, Yuyin Zhou, Cihang Xie",
+                    "ECCV, 2022",
+                    "https://arxiv.org/pdf/2205.01721.pdf",
+                    "@inproceedings{li2022videopretraining,<br>title     = {In Defense of Image Pre-Training for Spatiotemporal Recognition},<br>author    = {Xianhang Li and Huiyu Wang and Chen Wei and Jieru Mei and Alan Yuille and Yuyin Zhou and Cihang Xie},<br>booktitle = {ECCV},<br>year      = {2022},<br>}<br>",
+                    "Image pre-training, the current de-facto paradigm for a wide range of visual tasks, is generally less favored in the field of video recognition. By contrast, a common strategy is to directly train with spatiotemporal convolutional neural networks (CNNs) from scratch. Nonetheless, interestingly, by taking a closer look at these from-scratch learned CNNs, we note there exist certain 3D kernels that exhibit much stronger appearance modeling ability than others, arguably suggesting appearance information is already well disentangled in learning. Inspired by this observation, we hypothesize that the key to effectively leveraging image pre-training lies in the decomposition of learning spatial and temporal features, and revisiting image pre-training as the appearance prior to initializing 3D kernels. In addition, we propose Spatial-Temporal Separable (STS) convolution, which explicitly splits the feature channels into spatial and temporal groups, to further enable a more thorough decomposition of spatiotemporal features for fine-tuning 3D CNNs. Our experiments show that simply replacing 3D convolution with STS notably improves a wide range of 3D CNNs without increasing parameters and computation on both Kinetics-400 and Something-Something V2. Moreover, this new training pipeline consistently achieves better results on video recognition with significant speedup. For instance, we achieve +0.6% top-1 of Slowfast on Kinetics-400 over the strong 256epoch 128-GPU baseline while fine-tuning for only 50 epochs with 4 GPUs. The code and models are available at github.com/UCSC-VLAA/ Image-Pretraining-for-Video.",
+                    "https://arxiv.org/abs/2205.01721",
+                    "https://github.com/UCSC-VLAA/Image-Pretraining-for-Video"
+                )
+
+        add_paper("ViP: Unified Certified Detection and Recovery for Patch Attack with Vision Transformers",
+                    "Junbo Li, Huan Zhang, Cihang Xie",
+                    "ECCV, 2022",
+                    "https://www.ecva.net/papers/eccv_2022/papers_ECCV/html/7173_ECCV_2022_paper.php",
+                    "@inproceedings{li2022vip,<br>title     = {ViP: Unified Certified Detection and Recovery for Patch Attack with Vision Transformers}, <br>author    = {Junbo Li and Huan Zhang and Cihang Xie},<br>booktitle = {ECCV},<br>year      = {2022},<br>}<br>",
+                    "Patch attack, which introduces a perceptible but localized change to the input image, has gained significant momentum in recent years. In this paper, we present a unified framework to analyze certified patch defense tasks, including both certified detection and certified recovery, leveraging the recently emerged Vision Transformers (ViTs). In addition to the existing patch defense setting where only one patch is considered, we provide the very first study on developing certified detection against the dual patch attack, in which the attacker is allowed to adversarially manipulate pixels in two different regions. By building upon the latest progress in self-supervised ViTs with masked image modeling (i.e., masked autoencoder (MAE)), our method achieves state-of-the-art performance in both certified detection and certified recovery of adversarial patches. Regarding certified detection, we improve the performance by up to ∼16% on ImageNet without training on a single adversarial patch, and for the first time, can also tackle the more challenging dual patch setting. Our method largely closes the gap between detection-based certified robustness and clean image accuracy. Regarding certified recovery, our approach improves certified accuracy by ∼2% on ImageNet across all attack sizes, attaining the new state-of-the-art performance.",
+                    "https://www.ecva.net/papers/eccv_2022/papers_ECCV/papers/136850566.pdf"
+
+                )
+
+        add_paper("Simulated Adversarial Testing of Face Recognition Models",
+            "Nataniel Ruiz, Adam Kortylewski, Weichao Qiu, Cihang Xie , Sarah Adel Bargal, Alan Yuille, Stan Sclaroff",
+            "CVPR,2022",
+            "https://arxiv.org/pdf/2106.04569.pdf",
+            "@inproceedings{nataniel2021testface,<br>title     = {Simulated Adversarial Testing of Face Recognition Models},<br>author    = {Ruiz, Nataniel and Kortylewski, Adam and Qiu, Weichao and Xie, Cihang and Bargal, Sarah Adel and Yuille, Alan and Sclaroff, Stan},<br>booktitle = {CVPR},<br>year      = {2022}<br>}",
+            "Most machine learning models are validated and tested on fixed datasets. This can give an incomplete picture of the capabilities and weaknesses of the model. Such weaknesses can be revealed at test time in the real world. The risks involved in such failures can be loss of profits, loss of time or even loss of life in certain critical applications. In order to alleviate this issue, simulators can be controlled in a finegrained manner using interpretable parameters to explore the semantic image manifold. In this work, we propose a framework for learning how to test machine learning algorithms using simulators in an adversarial manner in order to find weaknesses in the model before deploying it in critical scenarios. We apply this method in a face recognition setup. We show that certain weaknesses of models trained on real data can be discovered using simulated samples. Using our proposed method, we can find adversarial synthetic faces that fool contemporary face recognition models. This demonstrates the fact that these models have weaknesses that are not measured by commonly used validation datasets. We hypothesize that this type of adversarial examples are not isolated, but usually lie in connected spaces in the latent space of the simulator. We present a method to f ind these adversarial regions as opposed to the typical adversarial points found in the adversarial example literature.",
+            "https://arxiv.org/abs/2106.04569"
         )
 
-add_paper("Adversarial Attack on Attackers: Post-Process to Mitigate Black-Box Score-Based Query Attacks",
-            "Sizhe Chen, Zhehao Huang, Qinghua Tao, Yingwen Wu, Cihang Xie, Xiaolin Huang",
-            "NeurIPS, 2022",
-            "https://arxiv.org/pdf/2205.12134.pdf",
-            "@inproceedings{chen2022AAA,<br>title     = {Adversarial Attack on Attackers: Post-Process to Mitigate Black-Box Score-Based Query Attacks},<br>author    = {Chen, Sizhe and Huang, Zhehao and Tao, Qinghua and Wu, Yingwen and Xie, Cihang and Huang, Xiaolin},<br>booktitle = {NeurIPS},<br>year      = {2022}<br>}<br>",
-            "The score-based query attacks (SQAs) pose practical threats to deep neural networks by crafting adversarial perturbations within dozens of queries, only using the model’s output scores. Nonetheless, we note that if the loss trend of the outputs is slightly perturbed, SQAs could be easily misled and thereby become much less effective. Following this idea, we propose a novel defense, namely Adversarial Attack on Attackers (AAA), to confound SQAs towards incorrect attack directions by slightly modifying the output logits. In this way, (1) SQAs are prevented regardless of the model’s worst-case robustness; (2) the original model predictions are hardly changed, i.e., no degradation on clean accuracy; (3) the calibration of confidence scores can be improved simultaneously. Extensive experiments are provided to verify the above advantages. For example, by setting ∞ = 8/255 on CIFAR-10, our proposed AAA helps WideResNet-28 secure 80.59% accuracy under Square attack (2500 queries), while the best prior defense (i.e., adversarial training) only attains 67.44%. Since AAA attacks SQA’s general greedy strategy, such advantages of AAAover 8 defenses can be consistently observed on 8 CIFAR-10/ImageNet models under 6 SQAs, using different attack targets, bounds, norms, losses, and strategies. Moreover, AAA calibrates better without hurting the accuracy.",
-            "https://arxiv.org/pdf/2205.12134.pdf"
-        )
-
-add_paper("Multi-Granularity Cross-modal Alignment for Generalized Medical Visual Representation Learning",
-            "Fuying Wang, Yuyin Zhou, Shujun Wang, Varut Vardhanabhuti, Lequan Yu",
-            "NeurIPS, 2022",
-            "https://arxiv.org/abs/2210.06044",
-            "@inproceedings{wang2022multi,<br>title={Multi-Granularity Cross-modal Alignment for Generalized Medical Visual Representation Learning},<br>author={Wang, Fuying and Zhou, Yuyin and Wang, Shujun and Vardhanabhuti, Varut and Yu, Lequan},<br>booktitle = {NeurIPS},<br>year      = {2022}<br>}<br>",
-            "Learning medical visual representations directly from paired radiology reports has become an emerging topic in representation learning. However, existing medical image-text joint learning methods are limited by instance or local supervision analysis, ignoring disease-level semantic correspondences. In this paper, we present a novel Multi-Granularity Cross-modal Alignment (MGCA) framework for generalized medical visual representation learning by harnessing the naturally exhibited semantic correspondences between medical image and radiology reports at three different levels, i.e., pathological region-level, instance-level, and disease-level. Specifically, we first incorporate the instance-wise alignment module by maximizing the agreement between image-report pairs. Further, for token-wise alignment, we introduce a bidirectional cross-attention strategy to explicitly learn the matching between fine-grained visual tokens and text tokens, followed by contrastive learning to align them. More important, to leverage the high-level inter-subject relationship semantic (e.g., disease) correspondences, we design a novel cross-modal disease-level alignment paradigm to enforce the cross-modal cluster assignment consistency. Extensive experimental results on seven downstream medical image datasets covering image classification, object detection, and semantic segmentation tasks demonstrate the stable and superior performance of our framework.",
-            "https://arxiv.org/abs/2210.06044"
-        )
-
-
-
-
-add_paper("Mitigating Lies in Vision-Language Models",
-            "Junbo Li, Xianhang Li, Xianhang_Li1, Cihang Xie",
-            "NeurIPS ML Safety Workshop, 2022",
-            'https://openreview.net/pdf?id=mAiTuIeWbxD',
-            "@article{limitigating,<br>title={Mitigating Lies in Vision-Language Models},<br>author={Li, Junbo and Li, Xianhang and Xie, Cihang}<br>}",
-            "In this work, we bring new insights into the honesty of vision-language models, particularly in visual question answering (VQA). After a throughout revisit of the existing ‘lie’ behavior in pure language models, our work makes an unprecedented extension of ’lies’ to vision-language models. The results indicate that the lie prefixes have a more obvious misleading effect on vision-language models than on language models. We also propose a novel visual prefix and prove that the consistent vision-language prefix is more threatening to vision-language models. To defend the models from the stated ’lies’, we put forward an unsupervised framework based on Gaussian mixture modeling and obtain improvement with 3% against the language prefix and 12% against the vision-language prefix.",
-            "https://openreview.net/pdf?id=mAiTuIeWbxD"
-
-
-        )
-
-add_paper("In Defense of Image Pre-Training for Spatiotemporal Recognition",
-            "Xianhang Li, Huiyu Wang, Chen Wei, Jieru Mei, Alan Yuille, Yuyin Zhou, Cihang Xie",
-            "ECCV, 2022",
-            "https://arxiv.org/pdf/2205.01721.pdf",
-            "@inproceedings{li2022videopretraining,<br>title     = {In Defense of Image Pre-Training for Spatiotemporal Recognition},<br>author    = {Xianhang Li and Huiyu Wang and Chen Wei and Jieru Mei and Alan Yuille and Yuyin Zhou and Cihang Xie},<br>booktitle = {ECCV},<br>year      = {2022},<br>}<br>",
-            "Image pre-training, the current de-facto paradigm for a wide range of visual tasks, is generally less favored in the field of video recognition. By contrast, a common strategy is to directly train with spatiotemporal convolutional neural networks (CNNs) from scratch. Nonetheless, interestingly, by taking a closer look at these from-scratch learned CNNs, we note there exist certain 3D kernels that exhibit much stronger appearance modeling ability than others, arguably suggesting appearance information is already well disentangled in learning. Inspired by this observation, we hypothesize that the key to effectively leveraging image pre-training lies in the decomposition of learning spatial and temporal features, and revisiting image pre-training as the appearance prior to initializing 3D kernels. In addition, we propose Spatial-Temporal Separable (STS) convolution, which explicitly splits the feature channels into spatial and temporal groups, to further enable a more thorough decomposition of spatiotemporal features for fine-tuning 3D CNNs. Our experiments show that simply replacing 3D convolution with STS notably improves a wide range of 3D CNNs without increasing parameters and computation on both Kinetics-400 and Something-Something V2. Moreover, this new training pipeline consistently achieves better results on video recognition with significant speedup. For instance, we achieve +0.6% top-1 of Slowfast on Kinetics-400 over the strong 256epoch 128-GPU baseline while fine-tuning for only 50 epochs with 4 GPUs. The code and models are available at github.com/UCSC-VLAA/ Image-Pretraining-for-Video.",
-            "https://arxiv.org/pdf/2205.01721.pdf",
-            "https://github.com/UCSC-VLAA/Image-Pretraining-for-Video"
-
-        )
-
-add_paper("ViP: Unified Certified Detection and Recovery for Patch Attack with Vision Transformers",
-            "Junbo Li, Huan Zhang, Cihang Xie",
-            "ECCV, 2022",
-            "https://cihangxie.github.io/data/li2022vip.pdf",
-            "@inproceedings{li2022vip,<br>title     = {ViP: Unified Certified Detection and Recovery for Patch Attack with Vision Transformers}, <br>author    = {Junbo Li and Huan Zhang and Cihang Xie},<br>booktitle = {ECCV},<br>year      = {2022},<br>}<br>",
-            "Patch attack, which introduces a perceptible but localized change to the input image, has gained significant momentum in recent years. In this paper, we present a unified framework to analyze certified patch defense tasks, including both certified detection and certified recovery, leveraging the recently emerged Vision Transformers (ViTs). In addition to the existing patch defense setting where only one patch is considered, we provide the very first study on developing certified detection against the dual patch attack, in which the attacker is allowed to adversarially manipulate pixels in two different regions. By building upon the latest progress in self-supervised ViTs with masked image modeling (i.e., masked autoencoder (MAE)), our method achieves state-of-the-art performance in both certified detection and certified recovery of adversarial patches. Regarding certified detection, we improve the performance by up to ∼16% on ImageNet without training on a single adversarial patch, and for the first time, can also tackle the more challenging dual patch setting. Our method largely closes the gap between detection-based certified robustness and clean image accuracy. Regarding certified recovery, our approach improves certified accuracy by ∼2% on ImageNet across all attack sizes, attaining the new state-of-the-art performance.",
-            "https://cihangxie.github.io/data/li2022vip.pdf"
-
-        )
-
-add_paper("Simulated Adversarial Testing of Face Recognition Models",
-    "Nataniel Ruiz, Adam Kortylewski, Weichao Qiu, Cihang Xie , Sarah Adel Bargal, Alan Yuille, Stan Sclaroff",
-    "CVPR,2022",
-    "https://arxiv.org/pdf/2106.04569.pdf",
-    "@inproceedings{nataniel2021testface,<br>title     = {Simulated Adversarial Testing of Face Recognition Models},<br>author    = {Ruiz, Nataniel and Kortylewski, Adam and Qiu, Weichao and Xie, Cihang and Bargal, Sarah Adel and Yuille, Alan and Sclaroff, Stan},<br>booktitle = {CVPR},<br>year      = {2022}<br>}",
-    "Most machine learning models are validated and tested on fixed datasets. This can give an incomplete picture of the capabilities and weaknesses of the model. Such weaknesses can be revealed at test time in the real world. The risks involved in such failures can be loss of profits, loss of time or even loss of life in certain critical applications. In order to alleviate this issue, simulators can be controlled in a finegrained manner using interpretable parameters to explore the semantic image manifold. In this work, we propose a framework for learning how to test machine learning algorithms using simulators in an adversarial manner in order to find weaknesses in the model before deploying it in critical scenarios. We apply this method in a face recognition setup. We show that certain weaknesses of models trained on real data can be discovered using simulated samples. Using our proposed method, we can find adversarial synthetic faces that fool contemporary face recognition models. This demonstrates the fact that these models have weaknesses that are not measured by commonly used validation datasets. We hypothesize that this type of adversarial examples are not isolated, but usually lie in connected spaces in the latent space of the simulator. We present a method to f ind these adversarial regions as opposed to the typical adversarial points found in the adversarial example literature.",
-    "https://arxiv.org/pdf/2106.04569.pdf"
-)
         add_paper("A Simple Data Mixing Prior for Improving Self-Supervised Learning",
             "Sucheng Ren, Huiyu Wang, Zhengqi Gao, Shengfeng He, Alan Yuille, Yuyin Zhou, Cihang Xie",
             "CVPR, 2022",
             "https://cihangxie.github.io/data/SDMP.pdf",
             "@inproceedings{ren2022sdmp,<br>title     = {A Simple Data Mixing Prior for Improving Self-Supervised Learning},<br>author    = {Ren, Sucheng and Wang, Huiyu and Gao, Zhengqi and He, Shengfeng and Yuille, Alan and Zhou, Yuyin and Xie, Cihang},<br>booktitle = {CVPR},<br>year      = {2022}<br>}",
-            // "@article{malladi2022kernel,<br>" +
-            // "&nbsp;&nbsp;&nbsp;title={A Kernel-Based View of Language Model Fine-Tuning},<br>" +
-            // "&nbsp;&nbsp;&nbsp;author={Malladi, Sadhika and Wettig, Alexander and Yu, Dingli and Chen, Danqi and Arora, Sanjeev},<br>" +
-            // "&nbsp;&nbsp;&nbsp;journal={arXiv preprint 2210.05643},<br>" +
-            // "&nbsp;&nbsp;&nbsp;year={2022}<br>}",
-
             "Data mixing (e.g., Mixup, Cutmix, ResizeMix) is an essential component for advancing recognition models. In this paper, we focus on studying its effectiveness in the self-supervised setting. By noticing the mixed images that share the same source images are intrinsically related to each other, we hereby propose SDMP, short for Simple Data Mixing Prior, to capture this straightforward yet essential prior, and position such mixed images as additional positive pairs to facilitate self-supervised representation learning. Our experiments verify that the proposed SDMP enables data mixing to help a set of self-supervised learning frameworks (e.g., MoCo) achieve better accuracy and out-ofdistribution robustness. More notably, our SDMP is the first method that successfully leverages data mixing to improve (rather than hurt) the performance of Vision Transformers in the self-supervised setting. Code is publicly available at https://github.com/OliverRensu/SDMP.",
             "https://cihangxie.github.io/data/SDMP.pdf",
             "https://github.com/OliverRensu/SDMP"
