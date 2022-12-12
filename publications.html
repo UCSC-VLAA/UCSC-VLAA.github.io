@@ -926,18 +926,18 @@ add_paper("Can temporal information help with contrastive self-supervised learni
             "https://arxiv.org/abs/1912.03383"
         )
 
-        add_paper("UPC: Learning Universal Physical Camouflage Attacks on Object Detectors",
-            "Lifeng Huang, Chengying Gao, Yuyin Zhou, Cihang Xie, Alan Yuille , Changqing Zou",
-            "CVPR, 2020",
-            "https://arxiv.org/abs/1909.04326",
-            "@inproceedings{huang2020universal,<br>" +
-             "&nbsp;&nbsp;&nbsp;title={Universal physical camouflage attacks on object detectors},<br>" +
-             "&nbsp;&nbsp;&nbsp;author={Huang, Lifeng and Gao, Chengying and Zhou, Yuyin and Xie, Cihang and Yuille, Alan L and Zou, Changqing and Liu, Ning},<br>" +
-             "&nbsp;&nbsp;&nbsp;booktitle={CVPR},<br>" +
-             "&nbsp;&nbsp;&nbsp;year={2020}<br>}",
-            "In this paper, we study physical adversarial attacks on object detectors in the wild. Previous works mostly craft instance-dependent perturbations only for rigid or planar objects. To this end, we propose to learn an adversarial pattern to effectively attack all instances belonging to the same object category, referred to as Universal Physical Camouflage Attack (UPC). Concretely, UPC crafts camouflage by jointly fooling the region proposal network, as well as misleading the classifier and the regressor to output errors. In order to make UPC effective for non-rigid or non-planar objects, we introduce a set of transformations for mimicking deformable properties. We additionally impose optimization constraint to make generated patterns look natural to human observers. To fairly evaluate the effectiveness of different physical-world attacks, we present the first standardized virtual database, AttackScenes, which simulates the real 3D world in a controllable and reproducible environment. Extensive experiments suggest the superiority of our proposed UPC compared with existing physical adversarial attackers not only in virtual environments (AttackScenes), but also in real-world physical environments.",
-            "https://arxiv.org/abs/1909.04326"
-        )
+        // add_paper("UPC: Learning Universal Physical Camouflage Attacks on Object Detectors",
+        //     "Lifeng Huang, Chengying Gao, Yuyin Zhou, Cihang Xie, Alan Yuille , Changqing Zou",
+        //     "CVPR, 2020",
+        //     "https://arxiv.org/abs/1909.04326",
+        //     "@inproceedings{huang2020universal,<br>" +
+        //      "&nbsp;&nbsp;&nbsp;title={Universal physical camouflage attacks on object detectors},<br>" +
+        //      "&nbsp;&nbsp;&nbsp;author={Huang, Lifeng and Gao, Chengying and Zhou, Yuyin and Xie, Cihang and Yuille, Alan L and Zou, Changqing and Liu, Ning},<br>" +
+        //      "&nbsp;&nbsp;&nbsp;booktitle={CVPR},<br>" +
+        //      "&nbsp;&nbsp;&nbsp;year={2020}<br>}",
+        //     "In this paper, we study physical adversarial attacks on object detectors in the wild. Previous works mostly craft instance-dependent perturbations only for rigid or planar objects. To this end, we propose to learn an adversarial pattern to effectively attack all instances belonging to the same object category, referred to as Universal Physical Camouflage Attack (UPC). Concretely, UPC crafts camouflage by jointly fooling the region proposal network, as well as misleading the classifier and the regressor to output errors. In order to make UPC effective for non-rigid or non-planar objects, we introduce a set of transformations for mimicking deformable properties. We additionally impose optimization constraint to make generated patterns look natural to human observers. To fairly evaluate the effectiveness of different physical-world attacks, we present the first standardized virtual database, AttackScenes, which simulates the real 3D world in a controllable and reproducible environment. Extensive experiments suggest the superiority of our proposed UPC compared with existing physical adversarial attackers not only in virtual environments (AttackScenes), but also in real-world physical environments.",
+        //     "https://arxiv.org/abs/1909.04326"
+        // )
 
         add_paper("A multiscale deep learning method for quantitative visualization of traumatic hemoperitoneum at CT: assessment of feasibility and comparison with subjective categorical estimation",
             "David Dreizin, Yuyin Zhou, Shuhao Fu, Yan Wang, Guang Li, Kathryn Champ, Eliot Siegel, Ze Wang, Tina Chen, Alan L Yuille",
@@ -1032,18 +1032,6 @@ add_paper("Can temporal information help with contrastive self-supervised learni
         )
 
 
-        add_paper("Neural Architecture Search for Lightweight Non-Local Networks",
-            "Yingwei Li, Xiaojie Jin, Jieru Mei, Xiaochen Lian, Linjie Yang, Cihang Xie, Qihang Yu, Yuyin Zhou, Song Bai, Alan Yuille",
-            "CVPR, 2020",
-            "https://arxiv.org/abs/2004.01961",
-            "@inproceedings{li2020neural,<br>" +
-             "&nbsp;&nbsp;&nbsp;title={Neural architecture search for lightweight non-local networks},<br>" +
-             "&nbsp;&nbsp;&nbsp;author={Li, Yingwei and Jin, Xiaojie and Mei, Jieru and Lian, Xiaochen and Yang, Linjie and Xie, Cihang and Yu, Qihang and Zhou, Yuyin and Bai, Song and Yuille, Alan L},<br>" +
-             "&nbsp;&nbsp;&nbsp;booktitle={CVPR},<br>" +
-             "&nbsp;&nbsp;&nbsp;year={2020}<br>}",
-            "Non-Local (NL) blocks have been widely studied in various vision tasks. However, it has been rarely explored to embed the NL blocks in mobile neural networks, mainly due to the following challenges: 1) NL blocks generally have heavy computation cost which makes it difficult to be applied in applications where computational resources are limited, and 2) it is an open problem to discover an optimal configuration to embed NL blocks into mobile neural networks. We propose AutoNL to overcome the above two obstacles. Firstly, we propose a Lightweight Non-Local (LightNL) block by squeezing the transformation operations and incorporating compact features. With the novel design choices, the proposed LightNL block is 400 times computationally cheaper than its conventional counterpart without sacrificing the performance. Secondly, by relaxing the structure of the LightNL block to be differentiable during training, we propose an efficient neural architecture search algorithm to learn an optimal configuration of LightNL blocks in an end-to-end manner. Notably, using only 32 GPU hours, the searched AutoNL model achieves 77.7% top-1 accuracy on ImageNet under a typical mobile setting (350M FLOPs), significantly outperforming previous mobile models including MobileNetV2 (+5.7%), FBNet (+2.8%) and MnasNet (+2.1%). Code and models are available at https://github.com/LiYingwei/AutoNL.",
-            "https://arxiv.org/abs/2004.01961"
-        )
 
         add_paper("Recurrent Saliency Transformation Network for Tiny Target Segmentation in Abdominal CT Scans",
             "Lingxi Xie, Qihang Yu, Yuyin Zhou, Yan Wang, Elliot Fishman, Alan Yuille",
