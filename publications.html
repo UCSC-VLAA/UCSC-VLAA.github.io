@@ -371,20 +371,6 @@ function copy(dest, source) {
                     "https://github.com/Beckschen/TransUNet"
         )
 
-        // 2020 preprint
-        add_paper("Batch Normalization with Enhanced Linear Transformation",
-                    "Yuhui Xu, Lingxi Xie, Cihang Xie, Jieru Mei, Siyuan Qiao, Wei Shen, Hongkai Xiong, Alan Yuille",
-                    null,
-                    "https://arxiv.org/abs/2011.14150",
-                    "@article{xu2020bnet,<br>" +
-                     "&nbsp;&nbsp;&nbsp;author  = {Xu, Yuhui and Xie, Lingxi and Xie, Cihang and Mei, Jieru and Qiao, Siyuan and Shen, Wei and Xiong, Hongkai and Yuille, Alan},<br>" +
-                     "&nbsp;&nbsp;&nbsp;title   = {Batch Normalization with Enhanced Linear Transformation},<br>" +
-                     "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2011.14150},<br>" +
-                     "&nbsp;&nbsp;&nbsp;year    = {2020}<br>}",
-                    "Batch normalization (BN) is a fundamental unit in modern deep networks, in which a linear transformation module was designed for improving BN’s flexibility of fitting complex data distributions. In this paper, we demonstrate properly enhancing this linear transformation module can effectively improve the ability of BN. Specifically, rather than using a single neuron, we propose to additionally consider each neuron’s neighborhood for calculating the outputs of the linear transformation. Our method, named BNET, can be implemented with 2–3 lines of code in most deep learning libraries. Despite the simplicity, BNET brings consistent performance gains over a wide range of backbones and visual benchmarks. Moreover, we verify that BNET accelerates the convergence of network training and enhances spatial information by assigning the important neurons with larger weights accordingly. The code is available at https://github.com/yuhuixu1993/BNET.",
-                    "https://arxiv.org/abs/2011.14150",
-                    "https://github.com/yuhuixu1993/BNET"
-        )
 
         add_paper("Can temporal information help with contrastive self-supervised learning?",
                     "Yutong Bai, Haoqi Fan, Ishan Misra, Ganesh Venkatesh, Yongyi Lu, Yuyin Zhou, Qihang Yu, Vikas Chandra, Alan Yuille",
@@ -482,6 +468,21 @@ function copy(dest, source) {
         document.write("</ul><br>")
         document.write("<h1>2023</h1>")
         document.write("<ul>")
+
+
+        add_paper("BNET: Batch Normalization With Enhanced Linear Transformation",
+                    "Yuhui Xu, Lingxi Xie, Cihang Xie, Jieru Mei, Siyuan Qiao, Wei Shen, Hongkai Xiong, Alan Yuille",
+                    "IEEE TPAMI, 2023",
+                    "https://arxiv.org/abs/2011.14150",
+                    "@article{xu2023bnet,<br>" +
+                     "&nbsp;&nbsp;&nbsp;author  = {Xu, Yuhui and Xie, Lingxi and Xie, Cihang and Mei, Jieru and Qiao, Siyuan and Shen, Wei and Xiong, Hongkai and Yuille, Alan},<br>" +
+                     "&nbsp;&nbsp;&nbsp;title   = {BNET: Batch Normalization With Enhanced Linear Transformation},<br>" +
+                     "&nbsp;&nbsp;&nbsp;journal = {IEEE Transactions on Pattern Analysis and Machine Intelligence},<br>" +
+                     "&nbsp;&nbsp;&nbsp;year    = {2023}<br>}",
+                    "Batch normalization (BN) is a fundamental unit in modern deep neural networks. However, BN and its variants focus on normalization statistics but neglect the recovery step that uses linear transformation to improve the capacity of fitting complex data distributions. In this paper, we demonstrate that the recovery step can be improved by aggregating the neighborhood of each neuron rather than just considering a single neuron. Specifically, we propose a simple yet effective method named batch normalization with enhanced linear transformation (BNET) to embed spatial contextual information and improve representation ability. BNET can be easily implemented using the depth-wise convolution and seamlessly transplanted into existing architectures with BN. To our best knowledge, BNET is the first attempt to enhance the recovery step for BN. Furthermore, BN is interpreted as a special case of BNET from both spatial and spectral views. Experimental results demonstrate that BNET achieves consistent performance gains based on various backbones in a wide range of visual tasks. Moreover, BNET can accelerate the convergence of network training and enhance spatial information by assigning important neurons with large weights accordingly. The code is available at https://github.com/yuhuixu1993/BNET.",
+                    "https://arxiv.org/abs/2011.14150",
+                    "https://github.com/yuhuixu1993/BNET"
+        )
 
         add_paper("Practical Disruption of Image Translation Deepfake Networks",
             "Nataniel Ruiz, Sarah Adel Bargal, Cihang Xie, Stan Sclaroff",
@@ -964,7 +965,7 @@ function copy(dest, source) {
              "&nbsp;&nbsp;&nbsp;title     = {Adversarial metric attack and defense for person re-identification},<br>" +
              "&nbsp;&nbsp;&nbsp;author    = {Bai, Song and Li, Yingwei and Zhou, Yuyin and Li, Qizhu and Torr, Philip HS},<br>" +
              "&nbsp;&nbsp;&nbsp;journal   = {IEEE Transactions on Pattern Analysis and Machine Intelligence},<br>" +
-             "&nbsp;&nbsp;&nbsp; year      = {2020}<br>}",
+             "&nbsp;&nbsp;&nbsp;year      = {2020}<br>}",
             "Person re-identification (re-ID) has attracted much attention recently due to its great importance in video surveillance. In general, distance metrics used to identify two person images are expected to be robust under various appearance changes. However, our work observes the extreme vulnerability of existing distance metrics to adversarial examples, generated by simply adding human-imperceptible perturbations to person images. Hence, the security danger is dramatically increased when deploying commercial re-ID systems in video surveillance. Although adversarial examples have been extensively applied for classification analysis, it is rarely studied in metric analysis like person re-identification. The most likely reason is the natural gap between the training and testing of re-ID networks, that is, the predictions of a re-ID network cannot be directly used during testing without an effective metric. In this work, we bridge the gap by proposing Adversarial Metric Attack, a parallel methodology to adversarial classification attacks. Comprehensive experiments clearly reveal the adversarial effects in re-ID systems. Meanwhile, we also present an early attempt of training a metric-preserving network, thereby defending the metric against adversarial attacks. At last, by benchmarking various adversarial settings, we expect that our work can facilitate the development of adversarial attack and defense in metric-based applications.",
             "https://arxiv.org/abs/1901.10650"
         )
