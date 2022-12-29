@@ -265,21 +265,6 @@ function copy(dest, source) {
                     "https://github.com/UCSC-VLAA/RobustCNN"
                 )
 
-        add_paper("Label-Efficient Self-Supervised Federated Learning for Tackling Data Heterogeneity in Medical Imaging",
-                    "Rui Yan, Liangqiong Qu, Qingyue Wei, Shih-Cheng Huang, Liyue Shen, Daniel Rubin, Lei Xing, Yuyin Zhou",
-                    // "arxiv, 2022",
-                    null,
-                    "https://arxiv.org/abs/2205.08576",
-                    "@article{yan2022label,<br>" +
-                     "&nbsp;&nbsp;&nbsp;title     = {Label-Efficient Self-Supervised Federated Learning for Tackling Data Heterogeneity in Medical Imaging},<br>" +
-                     "&nbsp;&nbsp;&nbsp;author    = {Yan, Rui and Qu, Liangqiong and Wei, Qingyue and Huang, Shih-Cheng and Shen, Liyue and Rubin, Daniel and Xing, Lei and Zhou, Yuyin},<br>" +
-                     "&nbsp;&nbsp;&nbsp;journal   = {arXiv preprint arXiv:2205.08576},<br>" +
-                     "&nbsp;&nbsp;&nbsp;year      = {2022}<br>}",
-                    "The curation of large-scale medical datasets from multiple institutions necessary for training deep learning models is challenged by the difficulty in sharing patient data with privacy-preserving. Federated learning (FL), a paradigm that enables privacy-protected collaborative learning among different institutions, is a promising solution to this challenge. However, FL generally suffers from performance deterioration due to heterogeneous data distributions across institutions and the lack of quality labeled data. In this paper, we present a robust and label-efficient self-supervised FL framework for medical image analysis. Specifically, we introduce a novel distributed selfsupervised pre-training paradigm into the existing FL pipeline (i.e., pre-training the models directly on the decentralized target task datasets). Built upon the recent success of Vision Transformers, we employ masked image encoding tasks for self-supervised pre-training, to facilitate more effective knowledge transfer to downstream federated models. Extensive empirical results on simulated and real-world medical imaging federated datasets show that self-supervised pre-training largely benefits the robustness of federated models against various degrees of data heterogeneity. Notably, under severe data heterogeneity, our method, without relying on any additional pre-training data, achieves an improvement of 5.06%, 1.53% and 4.58% in test accuracy on retinal, dermatology and chest X-ray classification compared with the supervised baseline with ImageNet pre-training. Moreover, we show that our self-supervised FL algorithm generalizes well to out-of-distribution data and learns federated models more effectively in limited label scenarios, surpassing the supervised baseline by 10.36% and the semi-supervised FL method by 8.3% in test accuracy. The code and trained models are available at https://github.com/rui-yan/SSL-FL.",
-                    "https://arxiv.org/abs/2205.08576",
-                    "https://github.com/rui-yan/SSL-FL"
-                )
-
 
         add_paper("Bag of Tricks for FGSM Adversarial Training",
                     "Zichao Li, Li Liu, Zeyu Wang, Yuyin Zhou, Cihang Xie",
@@ -468,6 +453,21 @@ function copy(dest, source) {
         document.write("</ul><br>")
         document.write("<h1>2023</h1>")
         document.write("<ul>")
+
+
+        add_paper("Label-Efficient Self-Supervised Federated Learning for Tackling Data Heterogeneity in Medical Imaging",
+                    "Rui Yan, Liangqiong Qu, Qingyue Wei, Shih-Cheng Huang, Liyue Shen, Daniel Rubin, Lei Xing, Yuyin Zhou",
+                    "IEEE TMI, 2023",
+                    "https://arxiv.org/abs/2205.08576",
+                    "@article{yan2022label,<br>" +
+                     "&nbsp;&nbsp;&nbsp;title     = {Label-Efficient Self-Supervised Federated Learning for Tackling Data Heterogeneity in Medical Imaging},<br>" +
+                     "&nbsp;&nbsp;&nbsp;author    = {Yan, Rui and Qu, Liangqiong and Wei, Qingyue and Huang, Shih-Cheng and Shen, Liyue and Rubin, Daniel and Xing, Lei and Zhou, Yuyin},<br>" +
+                     "&nbsp;&nbsp;&nbsp;journal   = {IEEE Transactions on Medical Imaging},<br>" +
+                     "&nbsp;&nbsp;&nbsp;year      = {2023}<br>}",
+                    "The curation of large-scale medical datasets from multiple institutions necessary for training deep learning models is challenged by the difficulty in sharing patient data with privacy-preserving. Federated learning (FL), a paradigm that enables privacy-protected collaborative learning among different institutions, is a promising solution to this challenge. However, FL generally suffers from performance deterioration due to heterogeneous data distributions across institutions and the lack of quality labeled data. In this paper, we present a robust and label-efficient self-supervised FL framework for medical image analysis. Specifically, we introduce a novel distributed selfsupervised pre-training paradigm into the existing FL pipeline (i.e., pre-training the models directly on the decentralized target task datasets). Built upon the recent success of Vision Transformers, we employ masked image encoding tasks for self-supervised pre-training, to facilitate more effective knowledge transfer to downstream federated models. Extensive empirical results on simulated and real-world medical imaging federated datasets show that self-supervised pre-training largely benefits the robustness of federated models against various degrees of data heterogeneity. Notably, under severe data heterogeneity, our method, without relying on any additional pre-training data, achieves an improvement of 5.06%, 1.53% and 4.58% in test accuracy on retinal, dermatology and chest X-ray classification compared with the supervised baseline with ImageNet pre-training. Moreover, we show that our self-supervised FL algorithm generalizes well to out-of-distribution data and learns federated models more effectively in limited label scenarios, surpassing the supervised baseline by 10.36% and the semi-supervised FL method by 8.3% in test accuracy. The code and trained models are available at https://github.com/rui-yan/SSL-FL.",
+                    "https://arxiv.org/abs/2205.08576",
+                    "https://github.com/rui-yan/SSL-FL"
+                )
 
 
         add_paper("BNET: Batch Normalization With Enhanced Linear Transformation",
@@ -1045,7 +1045,7 @@ function copy(dest, source) {
             "@article{xie2019recurrent,<br>" +
              "&nbsp;&nbsp;&nbsp;title     = {Recurrent saliency transformation network for tiny target segmentation in abdominal CT scans},<br>" +
              "&nbsp;&nbsp;&nbsp;author    = {Xie, Lingxi and Yu, Qihang and Zhou, Yuyin and Wang, Yan and Fishman, Elliot K and Yuille, Alan},<br>" +
-             "&nbsp;&nbsp;&nbsp;journal   = {IEEE transactions on medical imaging},<br>" +
+             "&nbsp;&nbsp;&nbsp;journal   = {IEEE Transactions on Medical Imaging},<br>" +
              "&nbsp;&nbsp;&nbsp;year      = {2019}<br>}",
             "We aim at segmenting a wide variety of organs, including tiny targets (e.g., adrenal gland), and neoplasms (e.g., pancreatic cyst), from abdominal CT scans. This is a challenging task in two aspects. First, some organs (e.g., the pancreas), are highly variable in both anatomy and geometry, and thus very difficult to depict. Second, the neoplasms often vary a lot in its size, shape, as well as its location within the organ. Third, the targets (organs and neoplasms) can be considerably small compared to the human body, and so standard deep networks for segmentation are often less sensitive to these targets and thus predict less accurately especially around their boundaries. In this paper, we present an end-to-end framework named recurrent saliency transformation network (RSTN) for segmenting tiny and/or variable targets. The RSTN is a coarse-to-fine approach that uses prediction from the first (coarse) stage to shrink the input region for the second (fine) stage. A saliency transformation module is inserted between these two stages so that 1) the coarse-scaled segmentation mask can be transferred as spatial weights and applied to the fine stage and 2) the gradients can be back-propagated from the loss layer to the entire network so that the two stages are optimized in a joint manner. In the testing stage, we perform segmentation iteratively to improve accuracy. In this extended journal paper, we allow a gradual optimization to improve the stability of the RSTN, and introduce a hierarchical version named H-RSTN to segment tiny and variable neoplasms such as pancreatic cysts. Experiments are performed on several CT datasets including a public pancreas segmentation dataset, our own multi-organ dataset, and a cystic pancreas dataset. In all these cases, the RSTN outperforms the baseline (a stage-wise coarse-to-fine approach) significantly. Confirmed by the radiologists in our team, these promising segmentation results can help early diagnosis of pancreatic cancer. The code and pre-trained models of our project were made available at https://github.com/198808xc/OrganSegRSTN",
             "https://ieeexplore.ieee.org/abstract/document/8769868",
