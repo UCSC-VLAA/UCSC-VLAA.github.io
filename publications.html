@@ -252,19 +252,6 @@ function copy(dest, source) {
                     "https://arxiv.org/abs/2211.14769"
                 )
 
-        add_paper("Can CNNs Be More Robust Than Transformers?",
-                    "Zeyu Wang, Yutong Bai, Yuyin Zhou, Cihang Xie",
-                    null,
-                    "https://arxiv.org/abs/2206.03452",
-                    "@article{wang2022robustcnn,<br>" +
-                     "&nbsp;&nbsp;&nbsp;title   = {Can CNNs Be More Robust Than Transformers?},<br>" +
-                     "&nbsp;&nbsp;&nbsp;author  = {Wang, Zeyu and Bai, Yutong and Zhou, Yuyin and Xie, Cihang},<br>" +
-                     "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2206.03452},<br>" +
-                     "&nbsp;&nbsp;&nbsp;year    = {2022}<br>}",
-                    "The recent success of Vision Transformers is shaking the long dominance of Convolutional Neural Networks (CNNs) in image recognition for a decade. Specifically, in terms of robustness on out-ofdistribution samples, recent research finds that Transformers are inherently more robust than CNNs, regardless of different training setups. Moreover, it is believed that such superiority of Transformers should largely be credited to their self-attention-like architectures per se. In this paper, we question that belief by closely examining the design of Transformers. Our findings lead to three highly effective architecture designs for boosting robustness, yet simple enough to be implemented in several lines of code, namely a) patchifying input images, b) enlarging kernel size, and c) reducing activation layers and normalization layers. Bringing these components together, we are able to build pure CNN architectures without any attention-like operations that is as robust as, or even more robust than, Transformers. We hope this work can help the community better understand the design of robust neural architectures. The code is publicly available at https://github.com/UCSC-VLAA/RobustCNN.",
-                    "https://arxiv.org/abs/2206.03452",
-                    "https://github.com/UCSC-VLAA/RobustCNN"
-                )
 
 
         add_paper("Bag of Tricks for FGSM Adversarial Training",
@@ -311,18 +298,6 @@ function copy(dest, source) {
                 )
 
 
-        add_paper("One-Pixel Shortcut: on the Learning Preference of Deep Neural Networks",
-            "Shutong Wu, Sizhe Chen, Cihang Xie, Xiaolin Huang",
-                    null,
-            "https://arxiv.org/abs/2205.12141",
-            "@article{wu2022onepixel,<br>" +
-              "&nbsp;&nbsp;&nbsp;title   = {One-Pixel Shortcut: on the Learning Preference of Deep Neural Networks},<br>" +
-              "&nbsp;&nbsp;&nbsp;author  = {Wu, Shutong and Chen, Sizhe and Xie, Cihang and Huang, Xiaolin},<br>" +
-              "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2205.12141},<br>" +
-              "&nbsp;&nbsp;&nbsp;year    = {2022}<br>}",
-            "Unlearnable examples (ULEs) aim to protect data from unauthorized usage for training DNNs. Error-minimizing noise, which is injected to clean data, is one of the most successful methods for preventing DNNs from giving correct predictions on incoming new data. Nonetheless, under specific training strategies such as adversarial training, the unlearnability of error-minimizing noise will severely degrade. In addition, the transferability of error-minimizing noise is inherently limited by the mismatch between the generator model and the targeted learner model. In this paper, we investigate the mechanism of unlearnable examples and propose a novel model-free method, named One-Pixel Shortcut, which only perturbs a single pixel of each image and makes the dataset unlearnable. Our method needs much less computational cost and obtains stronger transferability and thus can protect data from a wide range of different models. Based on this, we further introduce the first unlearnable dataset called CIFAR-10-S, which is indistinguishable from normal CIFAR-10 by human observers and can serve as a benchmark for different models or training strategies to evaluate their abilities to extract critical features from the disturbance of non-semantic representations. The original error-minimizing ULEs will lose efficiency under adversarial training, where the model can get over 83% clean test accuracy. Meanwhile, even if adversarial training and strong data augmentation like RandAugment are applied together, the model trained on CIFAR-10-S cannot get over 50% clean test accuracy.",
-            "https://arxiv.org/abs/2205.12141"
-        )
 
 
 
@@ -455,6 +430,32 @@ function copy(dest, source) {
         document.write("<h1>2023</h1>")
         document.write("<ul>")
 
+        add_paper("Can CNNs Be More Robust Than Transformers?",
+                    "Zeyu Wang, Yutong Bai, Yuyin Zhou, Cihang Xie",
+                    "ICLR, 2023",
+                    "https://arxiv.org/abs/2206.03452",
+                    "@article{wang2022robustcnn,<br>" +
+                     "&nbsp;&nbsp;&nbsp;title   = {Can CNNs Be More Robust Than Transformers?},<br>" +
+                     "&nbsp;&nbsp;&nbsp;author  = {Wang, Zeyu and Bai, Yutong and Zhou, Yuyin and Xie, Cihang},<br>" +
+                     "&nbsp;&nbsp;&nbsp;booktitle = {ICLR},<br>" +
+                     "&nbsp;&nbsp;&nbsp;year    = {2023}<br>}",
+                    "The recent success of Vision Transformers is shaking the long dominance of Convolutional Neural Networks (CNNs) in image recognition for a decade. Specifically, in terms of robustness on out-ofdistribution samples, recent research finds that Transformers are inherently more robust than CNNs, regardless of different training setups. Moreover, it is believed that such superiority of Transformers should largely be credited to their self-attention-like architectures per se. In this paper, we question that belief by closely examining the design of Transformers. Our findings lead to three highly effective architecture designs for boosting robustness, yet simple enough to be implemented in several lines of code, namely a) patchifying input images, b) enlarging kernel size, and c) reducing activation layers and normalization layers. Bringing these components together, we are able to build pure CNN architectures without any attention-like operations that is as robust as, or even more robust than, Transformers. We hope this work can help the community better understand the design of robust neural architectures. The code is publicly available at https://github.com/UCSC-VLAA/RobustCNN.",
+                    "https://arxiv.org/abs/2206.03452",
+                    "https://github.com/UCSC-VLAA/RobustCNN"
+                )
+
+        add_paper("One-Pixel Shortcut: on the Learning Preference of Deep Neural Networks",
+            "Shutong Wu, Sizhe Chen, Cihang Xie, Xiaolin Huang",
+                    "ICLR,2023",
+            "https://arxiv.org/abs/2205.12141",
+            "@article{wu2022onepixel,<br>" +
+              "&nbsp;&nbsp;&nbsp;title   = {One-Pixel Shortcut: on the Learning Preference of Deep Neural Networks},<br>" +
+              "&nbsp;&nbsp;&nbsp;author  = {Wu, Shutong and Chen, Sizhe and Xie, Cihang and Huang, Xiaolin},<br>" +
+              "&nbsp;&nbsp;&nbsp;booktitle = {ICLR},<br>" +
+              "&nbsp;&nbsp;&nbsp;year    = {2023}<br>}",
+            "Unlearnable examples (ULEs) aim to protect data from unauthorized usage for training DNNs. Error-minimizing noise, which is injected to clean data, is one of the most successful methods for preventing DNNs from giving correct predictions on incoming new data. Nonetheless, under specific training strategies such as adversarial training, the unlearnability of error-minimizing noise will severely degrade. In addition, the transferability of error-minimizing noise is inherently limited by the mismatch between the generator model and the targeted learner model. In this paper, we investigate the mechanism of unlearnable examples and propose a novel model-free method, named One-Pixel Shortcut, which only perturbs a single pixel of each image and makes the dataset unlearnable. Our method needs much less computational cost and obtains stronger transferability and thus can protect data from a wide range of different models. Based on this, we further introduce the first unlearnable dataset called CIFAR-10-S, which is indistinguishable from normal CIFAR-10 by human observers and can serve as a benchmark for different models or training strategies to evaluate their abilities to extract critical features from the disturbance of non-semantic representations. The original error-minimizing ULEs will lose efficiency under adversarial training, where the model can get over 83% clean test accuracy. Meanwhile, even if adversarial training and strong data augmentation like RandAugment are applied together, the model trained on CIFAR-10-S cannot get over 50% clean test accuracy.",
+            "https://arxiv.org/abs/2205.12141"
+        )
 
         add_paper("Label-Efficient Self-Supervised Federated Learning for Tackling Data Heterogeneity in Medical Imaging",
                     "Rui Yan, Liangqiong Qu, Qingyue Wei, Shih-Cheng Huang, Liyue Shen, Daniel Rubin, Lei Xing, Yuyin Zhou",
