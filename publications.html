@@ -179,6 +179,37 @@ function copy(dest, source) {
         document.write("<ul><br>")
 
 
+        add_paper("On the Adversarial Robustness of Camera-based 3D Object Detection",
+            "Shaoyuan Xie, Zichao Li, Zeyu Wang, Cihang Xie",
+            // "arxiv, 2023",
+            null,
+            "https://arxiv.org/abs/2301.10766",
+            "@article{xie2023robustness,<br>" +
+            "&nbsp;&nbsp;&nbsp;title={On the Adversarial Robustness of Camera-based 3D Object Detection},<br>" +
+            "&nbsp;&nbsp;&nbsp;author={Xie, Shaoyuan and Li, Zichao and Wang, Zeyu and Xie, Cihang},<br>" +
+            "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2301.10766},<br>" +
+            "&nbsp;&nbsp;&nbsp;year={2023}<br>}",
+            "In recent years, camera-based 3D object detection has gained widespread attention for its ability to achieve high performance with low computational cost. However, the robustness of these methods to adversarial attacks has not been thoroughly examined. In this study, we conduct the first comprehensive investigation of the robustness of leading camera-based 3D object detection methods under various adversarial conditions. Our experiments reveal five interesting findings: (a) the use of accurate depth estimation effectively improves robustness; (b) depth-estimation-free approaches do not show superior robustness; (c) bird's-eye-view-based representations exhibit greater robustness against localization attacks; (d) incorporating multi-frame benign inputs can effectively mitigate adversarial attacks; and (e) addressing long-tail problems can enhance robustness. We hope our work can provide guidance for the design of future camera-based object detection modules with improved adversarial robustness.",
+            "https://arxiv.org/abs/2301.10766",
+        )
+
+
+
+        add_paper("Benchmarking Robustness in Neural Radiance Fields",
+           "Chen Wang, Angtian Wang, Junbo Li, Alan Yuille, Cihang Xie",
+           // "arxiv, 2023",
+           null,
+           "https://arxiv.org/abs/2301.04075",
+           "@article{wang2023benchmarking,<br>" +
+           "&nbsp;&nbsp;&nbsp;title={Benchmarking Robustness in Neural Radiance Fields},<br>" +
+           "&nbsp;&nbsp;&nbsp;author={Wang, Chen and Wang, Angtian and Li, Junbo and Yuille, Alan and Xie, Cihang},<br>" +
+           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2301.04075},<br>" +
+           "&nbsp;&nbsp;&nbsp;year={2023}<br>}",
+           "Neural Radiance Field (NeRF) has demonstrated excellent quality in novel view synthesis, thanks to its ability to model 3D object geometries in a concise formulation. However, current approaches to NeRF-based models rely on clean images with accurate camera calibration, which can be difficult to obtain in the real world, where data is often subject to corruption and distortion. In this work, we provide the first comprehensive analysis of the robustness of NeRF-based novel view synthesis algorithms in the presence of different types of corruptions. We find that NeRF-based models are significantly degraded in the presence of corruption, and are more sensitive to a different set of corruptions than image recognition models. Furthermore, we analyze the robustness of the feature encoder in generalizable methods, which synthesize images using neural features extracted via convolutional neural networks or transformers, and find that it only contributes marginally to robustness. Finally, we reveal that standard data augmentation techniques, which can significantly improve the robustness of recognition models, do not help the robustness of NeRF-based models. We hope that our findings will attract more researchers to study the robustness of NeRF-based approaches and help to improve their performance in the real world.",
+           "https://arxiv.org/abs/2301.04075",
+        )
+
+
         add_paper("Unleashing the Power of Visual Prompting At the Pixel Level",
             "Junyang Wu, Xianhang Li, Chen Wei, Huiyu Wang, Alan Yuille, Yuyin Zhou, Cihang Xie",
             // "arxiv, 2022",
@@ -194,20 +225,6 @@ function copy(dest, source) {
             "https://github.com/UCSC-VLAA/EVP"
         )
 
-        add_paper("Masked Autoencoders Enable Efficient Knowledge Distillers",
-                    "Yutong Bai, Zeyu Wang, Junfei Xiao, Chen Wei, Huiyu Wang, Alan Yuille, Yuyin Zhou, Cihang Xie",
-                    // "arxiv, 2022",
-                    null,
-                    "https://arxiv.org/abs/2208.12256",
-                    "@article{bai2022dmae,<br>" +
-                     "&nbsp;&nbsp;&nbsp;title   = {Masked Autoencoders Enable Efficient Knowledge Distillers},<br>" +
-                     "&nbsp;&nbsp;&nbsp;author  = {Bai, Yutong and Wang, Zeyu and Xiao, Junfei and Wei, Chen and Wang, Huiyu and Yuille, Alan and Zhou, Yuyin and Xie, Cihang},<br>" +
-                     "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2208.12256},<br>" +
-                     "&nbsp;&nbsp;&nbsp;year    = {2022}<br>}",
-                    "This paper studies the potential of distilling knowledge from pre-trained models, especially Masked Autoencoders. Our approach is simple: in addition to optimizing the pixel reconstruction loss on masked inputs, we minimize the distance between the intermediate feature map of the teacher model and that of the student model. This design leads to a computationally efficient knowledge distillation framework, given 1) only a small visible subset of patches is used, and 2) the (cumbersome) teacher model only needs to be partially executed, i.e., forward propagate inputs through the first few layers, for obtaining intermediate feature maps. Compared to directly distilling fine-tuned models, distilling pre-trained models substantially improves downstream performance. For example, by distilling the knowledge from an MAE pre-trained ViT-L into a ViT-B, our method achieves 84.0% ImageNet top-1 accuracy, outperforming the baseline of directly distilling a fine-tuned ViT-L by 1.2%. More intriguingly, our method can robustly distill knowledge from teacher models even with extremely high masking ratios: e.g., with 95% masking ratio where merely TEN patches are visible during distillation, our ViT-B competitively attains a top-1 ImageNet accuracy of 83.6%; surprisingly, it can still secure 82.4% top-1 ImageNet accuracy by aggressively training with just FOUR visible patches (98% masking ratio). The code and models are publicly available at https://github.com/UCSC-VLAA/DMAE.",
-                    "https://arxiv.org/abs/2208.12256",
-                    "https://github.com/UCSC-VLAA/DMAE"
-                )
 
         add_paper("Localization vs. Semantics: How Can Language Benefit Visual Representation Learning?",
                     "Zhuowan Li, Cihang Xie, Benjamin Van Durme, Alan Yuille",
@@ -429,6 +446,21 @@ function copy(dest, source) {
         document.write("</ul><br>")
         document.write("<h1>2023</h1>")
         document.write("<ul>")
+
+
+        add_paper("Masked Autoencoders Enable Efficient Knowledge Distillers",
+                    "Yutong Bai, Zeyu Wang, Junfei Xiao, Chen Wei, Huiyu Wang, Alan Yuille, Yuyin Zhou, Cihang Xie",
+                    "CVPR, 2023",
+                    "https://arxiv.org/abs/2208.12256",
+                    "@inproceedings{bai2022dmae,<br>" +
+                     "&nbsp;&nbsp;&nbsp;title   = {Masked Autoencoders Enable Efficient Knowledge Distillers},<br>" +
+                     "&nbsp;&nbsp;&nbsp;author  = {Bai, Yutong and Wang, Zeyu and Xiao, Junfei and Wei, Chen and Wang, Huiyu and Yuille, Alan and Zhou, Yuyin and Xie, Cihang},<br>" +
+                     "&nbsp;&nbsp;&nbsp;booktitle = {CVPR},<br>" +
+                     "&nbsp;&nbsp;&nbsp;year    = {2023}<br>}",
+                    "This paper studies the potential of distilling knowledge from pre-trained models, especially Masked Autoencoders. Our approach is simple: in addition to optimizing the pixel reconstruction loss on masked inputs, we minimize the distance between the intermediate feature map of the teacher model and that of the student model. This design leads to a computationally efficient knowledge distillation framework, given 1) only a small visible subset of patches is used, and 2) the (cumbersome) teacher model only needs to be partially executed, i.e., forward propagate inputs through the first few layers, for obtaining intermediate feature maps. Compared to directly distilling fine-tuned models, distilling pre-trained models substantially improves downstream performance. For example, by distilling the knowledge from an MAE pre-trained ViT-L into a ViT-B, our method achieves 84.0% ImageNet top-1 accuracy, outperforming the baseline of directly distilling a fine-tuned ViT-L by 1.2%. More intriguingly, our method can robustly distill knowledge from teacher models even with extremely high masking ratios: e.g., with 95% masking ratio where merely TEN patches are visible during distillation, our ViT-B competitively attains a top-1 ImageNet accuracy of 83.6%; surprisingly, it can still secure 82.4% top-1 ImageNet accuracy by aggressively training with just FOUR visible patches (98% masking ratio). The code and models are publicly available at https://github.com/UCSC-VLAA/DMAE.",
+                    "https://arxiv.org/abs/2208.12256",
+                    "https://github.com/UCSC-VLAA/DMAE"
+                )
 
         add_paper("Can CNNs Be More Robust Than Transformers?",
                     "Zeyu Wang, Yutong Bai, Yuyin Zhou, Cihang Xie",
