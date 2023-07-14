@@ -179,53 +179,90 @@ function copy(dest, source) {
         document.write("<ul><br>")
 
 
+        add_paper("CLIPA-v2: Scaling CLIP Training with 81.1% Zero-shot ImageNet Accuracy within a $10,000 Budget; An Extra $4,000 Unlocks 81.8% Accuracy",
+                    "Xianhang Li, Zeyu Wang, Cihang Xie",
+                    null,
+                    "https://arxiv.org/abs/2306.15658",
+                    "@article{li2023clipav2,<br>" +
+                    "&nbsp;&nbsp;&nbsp;title = {CLIPA-v2: Scaling CLIP Training with 81.1% Zero-shot ImageNet Accuracy within a $10,000 Budget; An Extra $4,000 Unlocks 81.8% Accuracy},<br>" +
+                    "&nbsp;&nbsp;&nbsp;author = {Li, Xianhang and Wang, Zeyu and Xie, Cihang},<br>" +
+                    "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2306.15658},<br>" +
+                    "&nbsp;&nbsp;&nbsp;year={2023}<br>}",
+                    "The recent work CLIPA presents an inverse scaling law for CLIP training -- whereby the larger the image/text encoders used, the shorter the sequence length of image/text tokens that can be applied in training. This finding enables us to train high-performance CLIP models with significantly reduced computations. Building upon this work, we hereby present CLIPA-v2 with two key contributions. Technically, we find this inverse scaling law is also applicable in the finetuning stage, enabling further reduction in computational needs. Empirically, we explore CLIPA at scale, extending the experiments up to the H/14 model with ~13B image-text pairs seen during training. Our results are exciting -- by only allocating a budget of $10,000, our CLIP model achieves an impressive zero-shot ImageNet accuracy of 81.1%, surpassing the prior best CLIP model (from OpenCLIP, 80.1%) by 1.0% and meanwhile reducing the computational cost by ~39X. Moreover, with an additional investment of $4,000, we can further elevate the zero-shot ImageNet accuracy to 81.8%. Our code and models are available at https://github.com/UCSC-VLAA/CLIPA.",
+                    "https://arxiv.org/abs/arXiv:2306.15658",
+                    "https://github.com/UCSC-VLAA/CLIPA"
+                    )
+
+
 
         add_paper("An Inverse Scaling Law for CLIP Training",
-        "Xianhang Li, Zeyu Wang, Cihang Xie",
-        // "arxiv, 2023",
-        null,
-        "https://arxiv.org/abs/2305.07017",
-        "@article{li2023inverse,<br>" +
-        "   title={An Inverse Scaling Law for CLIP Training},<br>" +
-        "   author={Li, Xianhang and Wang, Zeyu and Xie, Cihang},<br>" +
-        "   journal = {arXiv preprint arXiv:2305.07017},<br>" +
-        "   year={2023}<br>}",
-        "CLIP, the first foundation model that connects images and text, has enabled many recent breakthroughs in computer vision. However, its associated training cost is prohibitively high, imposing a significant barrier to its widespread exploration. In this paper, we present a surprising finding that there exists an inverse scaling law for CLIP training, whereby the larger the image/text encoders used, the shorter the sequence length of image/text tokens that can be applied in training. Moreover, we showcase that the strategy for reducing image/text token length plays a crucial role in determining the quality of this scaling law.\n\nAs a result of this finding, we are able to successfully train CLIP even by using academic resources. For example, on an A100 eight-GPU server, our CLIP models achieve zero-shot top-1 ImageNet accuracies of 63.2% in approximately 2 days, 67.8% in approximately 3 days, and 69.3% in approximately 4 days. By reducing the computation barrier associated with CLIP, we hope to inspire more research in this field, particularly from academics. Our code is available at https://github.com/UCSC-VLAA/CLIPA.",
-        "https://arxiv.org/abs/2305.07017",
-        "https://github.com/UCSC-VLAA/CLIPA"
-        )
+                    "Xianhang Li, Zeyu Wang, Cihang Xie",
+                    // "arxiv, 2023",
+                    null,
+                    "https://arxiv.org/abs/2305.07017",
+                    "@article{li2023inverse,<br>" +
+                    "&nbsp;&nbsp;&nbsp;title={An Inverse Scaling Law for CLIP Training},<br>" +
+                    "&nbsp;&nbsp;&nbsp;author={Li, Xianhang and Wang, Zeyu and Xie, Cihang},<br>" +
+                    "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2305.07017},<br>" +
+                    "&nbsp;&nbsp;&nbsp;year={2023}<br>}",
+                    "CLIP, the first foundation model that connects images and text, has enabled many recent breakthroughs in computer vision. However, its associated training cost is prohibitively high, imposing a significant barrier to its widespread exploration. In this paper, we present a surprising finding that there exists an inverse scaling law for CLIP training, whereby the larger the image/text encoders used, the shorter the sequence length of image/text tokens that can be applied in training. Moreover, we showcase that the strategy for reducing image/text token length plays a crucial role in determining the quality of this scaling law.<br>" +
+                    "As a result of this finding, we are able to successfully train CLIP even by using academic resources. For example, on an A100 eight-GPU server, our CLIP models achieve zero-shot top-1 ImageNet accuracies of 63.2% in approximately 2 days, 67.8% in approximately 3 days, and 69.3% in approximately 4 days. By reducing the computation barrier associated with CLIP, we hope to inspire more research in this field, particularly from academics. Our code is available at https://github.com/UCSC-VLAA/CLIPA.",
+                    "https://arxiv.org/abs/2305.07017",
+                    "https://github.com/UCSC-VLAA/CLIPA"
+                    )
 
+        add_paper("Image Registration of In Vivo Micro-Ultrasound and Ex Vivo Pseudo-Whole Mount Histopathology Images of the Prostate: A Proof-of-Concept Study",
+                    "Muhammad Imran, Brianna Nguyen, Jake Pensa, Sara M. Falzarano, Anthony E. Sisk, Muxuan Liang, John Michael DiBianco, Li-Ming Su, Yuyin Zhou, Wayne G. Brisbane, Wei Shao",
+                    null,
+                    "https://arxiv.org/abs/2305.19939",
+                    "@article{imran2023image,<br>" +
+                    "&nbsp;&nbsp;&nbsp;title = {Image Registration of In Vivo Micro-Ultrasound and Ex Vivo Pseudo-Whole Mount Histopathology Images of the Prostate: A Proof-of-Concept Study},<br>" +
+                    "&nbsp;&nbsp;&nbsp;author = {Imran, Muhammad and Nguyen, Brianna and Pensa, Jake and Falzarano, Sara M. and Sisk, Anthony E. and Liang, Muxuan and DiBianco, John Michael and Su, Li-Ming and Zhou, Yuyin and Brisbane, Wayne G. and Shao, Wei},<br>" +
+                    "&nbsp;&nbsp;&nbsp;journal = {arXiv:2305.19939}<br>" +
+                    "&nbsp;&nbsp;&nbsp;year = {2023},<br>",
+                    "Early diagnosis of prostate cancer significantly improves a patient's 5-year survival rate. Biopsy of small prostate cancers is improved with image-guided biopsy. MRI-ultrasound fusion-guided biopsy is sensitive to smaller tumors but is underutilized due to the high cost of MRI and fusion equipment. Micro-ultrasound (micro-US), a novel high-resolution ultrasound technology, provides a cost-effective alternative to MRI while delivering comparable diagnostic accuracy. However, the interpretation of micro-US is challenging due to subtle grayscale changes indicating cancer vs normal tissue. This challenge can be addressed by training urologists with a large dataset of micro-US images containing the ground truth cancer outlines. Such a dataset can be mapped from surgical specimens (histopathology) onto micro-US images via image registration. In this paper, we present a semi-automated pipeline for registering in vivo micro-US images with ex vivo whole-mount histopathology images. Our pipeline begins with the reconstruction of pseudo-whole-mount histopathology images and a 3-dimensional (3D) micro-US volume. Each pseudo-whole-mount histopathology image is then registered with the corresponding axial micro-US slice using a two-stage approach that estimates an affine transformation followed by a deformable transformation. We evaluated our registration pipeline using micro-US and histopathology images from 18 patients who underwent radical prostatectomy. The results showed a Dice coefficient of 0.94 and a landmark error of 2.7 mm, indicating the accuracy of our registration pipeline. This proof-of-concept study demonstrates the feasibility of accurately aligning micro-US and histopathology images. To promote transparency and collaboration in research, we will make our code and dataset publicly available.",
+                    "https://arxiv.org/abs/2305.19939"
+                    )
 
-        add_paper("Diffusion Models as Masked Autoencoders",
-        "Chen Wei, Karttikeya Mangalam, Po-Yao Huang, Yanghao Li, Haoqi Fan, Hu Xu, Huiyu Wang, Cihang Xie, Alan Yuille, Christoph Feichtenhofer",
-        // "arxiv, 2023",
-        null,
-        "https://arxiv.org/abs/2304.03283",
-        "@article{wei2023diffusion,<br>" +
-        "   title={Diffusion Models as Masked Autoencoders},<br>" +
-        "   author={Wei, Chen and Mangalam, Karttikeya and Huang, Po-Yao and Li, Yanghao and Fan, Haoqi and Xu, Hu and Wang, Huiyu and Xie, Cihang and Yuille, Alan and Feichtenhofer, Christoph},<br>" +
-        "   journal = {arXiv preprint arXiv:2304.03283},<br>" +
-        "   year={2023}<br>}",
-        "There has been a longstanding belief that generation can facilitate a true understanding of visual data. In line with this, we revisit generatively pre-training visual representations in light of recent interest in denoising diffusion models. While directly pre-training with diffusion models does not produce strong representations, we condition diffusion models on masked input and formulate diffusion models as masked autoencoders (DiffMAE). Our approach is capable of (i) serving as a strong initialization for downstream recognition tasks, (ii) conducting high-quality image inpainting, and (iii) being effortlessly extended to video where it produces state-of-the-art classification accuracy. We further perform a comprehensive study on the pros and cons of design choices and build connections between diffusion models and masked autoencoders.",
-        "https://arxiv.org/abs/2304.03283",
-        "https://weichen582.github.io/diffmae.html"
-        )
+        add_paper("MicroSegNet: A Deep Learning Approach for Prostate Segmentation on Micro-Ultrasound Images",
+                    "Hongxu Jiang, Muhammad Imran, Preethika Muralidharan, Anjali Patel, Jake Pensa, Muxuan Liang, Tarik Benidir, Joseph R Grajo, Jason P Joseph, Russell Terry, John Michael DiBianco, Li-Ming Su, Yuyin Zhou, Wayne G Brisbane, Wei Shao",
+                    null,
+                    "https://arxiv.org/abs/2305.19956",
+                    "@article{jiang2023microsegnet,<br>" +
+                    "&nbsp;&nbsp;&nbsp;title = {MicroSegNet: A Deep Learning Approach for Prostate Segmentation on Micro-Ultrasound Images},<br>" +
+                    "&nbsp;&nbsp;&nbsp;author = {Jiang, Hongxu and Imran, Muhammad and Muralidharan, Preethika and Patel, Anjali and Pensa, Jake and Liang, Muxuan and Benidir, Tarik and Grajo, Joseph R and Joseph, Jason P and Terry, Russell and DiBianco, John Michael and Su, Li-Ming and Zhou, Yuyin and Brisbane, Wayne G and Shao, Wei},<br>" +
+                    "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2305.19956}<br>" +
+                    "&nbsp;&nbsp;&nbsp;year = {2023},<br>",
+                    "Micro-ultrasound (micro-US) is a novel 29-MHz ultrasound technique that provides 3-4 times higher resolution than traditional ultrasound, delivering comparable accuracy for diagnosing prostate cancer to MRI but at a lower cost. Accurate prostate segmentation is crucial for prostate volume measurement, cancer diagnosis, prostate biopsy, and treatment planning. This paper proposes a deep learning approach for automated, fast, and accurate prostate segmentation on micro-US images. Prostate segmentation on micro-US is challenging due to artifacts and indistinct borders between the prostate, bladder, and urethra in the midline. We introduce MicroSegNet, a multi-scale annotation-guided Transformer UNet model to address this challenge. During the training process, MicroSegNet focuses more on regions that are hard to segment (challenging regions), where expert and non-expert annotations show discrepancies. We achieve this by proposing an annotation-guided cross entropy loss that assigns a larger weight to pixels in hard regions and a lower weight to pixels in easy regions. We trained our model using micro-US images from 55 patients, followed by evaluation on 20 patients. Our MicroSegNet model achieved a Dice coefficient of 0.942 and a Hausdorff distance of 2.11 mm, outperforming several state-of-the-art segmentation methods, as well as three human annotators with different experience levels. We will make our code and dataset publicly available to promote transparency and collaboration in research.",
+                    "https://arxiv.org/abs/2305.19956"
+                    )
 
-
+        add_paper("BiomedGPT: A Unified and Generalist Biomedical Generative Pre-trained Transformer for Vision, Language, and Multimodal Tasks",
+                    "Kai Zhang, Jun Yu, Zhiling Yan, Yixin Liu, Eashan Adhikarla, Sunyang Fu, Xun Chen, Chen Chen, Yuyin Zhou, Xiang Li, Lifang He, Brian D Davison, Quanzheng Li, Yong Chen, Hongfang Liu, Lichao Sun",
+                    null,
+                    "https://arxiv.org/abs/2305.17100",
+                    "@article{zhang2023biomedgpt,<br>" +
+                    "&nbsp;&nbsp;&nbsp;title = {BiomedGPT: A Unified and Generalist Biomedical Generative Pre-trained Transformer for Vision, Language, and Multimodal Tasks},<br>" +
+                    "&nbsp;&nbsp;&nbsp;author = {Zhang, Kai and Yu, Jun and Yan, Zhiling and Liu, Yixin and Adhikarla, Eashan and Fu, Sunyang and Chen, Xun and Chen, Chen and Zhou, Yuyin and Li, Xiang and He, Lifang and Davison, Brian D and Li, Quanzheng and Chen, Yong and Liu, Hongfang and Sun, Lichao},<br>" +
+                    "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2305.17100}<br>" +
+                    "&nbsp;&nbsp;&nbsp;year = {2023},<br>",
+                    "In this paper, we introduce a unified and generalist Biomedical Generative Pre-trained Transformer (BiomedGPT) model, which leverages self-supervision on large and diverse datasets to accept multi-modal inputs and perform a range of downstream tasks. Our experiments demonstrate that BiomedGPT delivers expansive and inclusive representations of biomedical data, outperforming the majority of preceding state-of-the-art models across five distinct tasks with 20 public datasets spanning over 15 unique biomedical modalities. Through the ablation study, we also showcase the efficacy of our multi-modal and multi-task pretraining approach in transferring knowledge to previously unseen data. Overall, our work presents a significant step forward in developing unified and generalist models for biomedicine, with far-reaching implications for improving healthcare outcomes.",
+                    "https://arxiv.org/abs/2305.17100",
+                    )
         
         add_paper("Distribution Aligned Diffusion and Prototype-guided network for Unsupervised Domain Adaptive Segmentation",
-        "Haipeng Zhou, Lei Zhu, Yuyin Zhou",
-        // "arxiv, 2023",
-        null,
-        "https://arxiv.org/abs/2303.12313",
-        "@article{zhou2023distribution,<br>" +
-        "   title={Distribution Aligned Diffusion and Prototype-guided network for Unsupervised Domain Adaptive Segmentation},<br>" +
-        "   author={Zhou, Haipeng and Zhu, Lei and Zhou, Yuyin},<br>" +
-        "   journal = {arXiv preprint arXiv:2303.12313},<br>" +
-        "   year={2023}<br>}",
-        "The Diffusion Probabilistic Model (DPM) has emerged as a highly effective generative model in the field of computer vision. Its intermediate latent vectors offer rich semantic information, making it an attractive option for various downstream tasks such as segmentation and detection. In order to explore its potential further, we have taken a step forward and considered a more complex scenario in the medical image domain, specifically, under an unsupervised adaptation condition. To this end, we propose a Diffusion-based and Prototype-guided network (DP-Net) for unsupervised domain adaptive segmentation. Concretely, our DP-Net consists of two stages: 1) Distribution Aligned Diffusion (DADiff), which involves training a domain discriminator to minimize the difference between the intermediate features generated by the DPM, thereby aligning the inter-domain distribution; and 2) Prototype-guided Consistency Learning (PCL), which utilizes feature centroids as prototypes and applies a prototype-guided loss to ensure that the segmentor learns consistent content from both source and target domains. Our approach is evaluated on fundus datasets through a series of experiments, which demonstrate that the performance of the proposed method is reliable and outperforms state-of-the-art methods. Our work presents a promising direction for using DPM in complex medical image scenarios, opening up new possibilities for further research in medical imaging.",
-        "https://arxiv.org/abs/2303.12313"
-        )
+                    "Haipeng Zhou, Lei Zhu, Yuyin Zhou",
+                    // "arxiv, 2023",
+                    null,
+                    "https://arxiv.org/abs/2303.12313",
+                    "@article{zhou2023distribution,<br>" +
+                    "&nbsp;&nbsp;&nbsp;title={Distribution Aligned Diffusion and Prototype-guided network for Unsupervised Domain Adaptive Segmentation},<br>" +
+                    "&nbsp;&nbsp;&nbsp;author={Zhou, Haipeng and Zhu, Lei and Zhou, Yuyin},<br>" +
+                    "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2303.12313},<br>" +
+                    "&nbsp;&nbsp;&nbsp;year={2023}<br>}",
+                    "The Diffusion Probabilistic Model (DPM) has emerged as a highly effective generative model in the field of computer vision. Its intermediate latent vectors offer rich semantic information, making it an attractive option for various downstream tasks such as segmentation and detection. In order to explore its potential further, we have taken a step forward and considered a more complex scenario in the medical image domain, specifically, under an unsupervised adaptation condition. To this end, we propose a Diffusion-based and Prototype-guided network (DP-Net) for unsupervised domain adaptive segmentation. Concretely, our DP-Net consists of two stages: 1) Distribution Aligned Diffusion (DADiff), which involves training a domain discriminator to minimize the difference between the intermediate features generated by the DPM, thereby aligning the inter-domain distribution; and 2) Prototype-guided Consistency Learning (PCL), which utilizes feature centroids as prototypes and applies a prototype-guided loss to ensure that the segmentor learns consistent content from both source and target domains. Our approach is evaluated on fundus datasets through a series of experiments, which demonstrate that the performance of the proposed method is reliable and outperforms state-of-the-art methods. Our work presents a promising direction for using DPM in complex medical image scenarios, opening up new possibilities for further research in medical imaging.",
+                    "https://arxiv.org/abs/2303.12313"
+                    )
 
 
         add_paper("On the Adversarial Robustness of Camera-based 3D Object Detection",
@@ -290,19 +327,6 @@ function copy(dest, source) {
                     "https://github.com/Lizw14/visual_probing"
                 )
 
-        add_paper("SMAUG: Sparse Masked Autoencoder for Efficient Video-Language Pre-training",
-                    "Yuanze Lin, Chen Wei, Huiyu Wang, Alan Yuille, Cihang Xie",
-                    // "arxiv, 2022",
-                    null,
-                    "https://arxiv.org/abs/2211.11446",
-                    "@article{lin2022smaug,<br>" +
-                     "&nbsp;&nbsp;&nbsp;title     = {SMAUG: Sparse Masked Autoencoder for Efficient Video-Language Pre-training},<br>" +
-                     "&nbsp;&nbsp;&nbsp;author    = {Lin, Yuanze and Wei, Chen and Wang, Huiyu and Yuille, Alan and Xie, Cihang},<br>" +
-                     "&nbsp;&nbsp;&nbsp;journal   = {arXiv preprint arXiv:2211.11446},<br>" +
-                     "&nbsp;&nbsp;&nbsp;year      = {2022}<br>}",
-                    "Video-language pre-training is crucial for learning powerful multi-modal representation. However, it typically requires a massive amount of computation. In this paper, we develop SMAUG, an efficient pre-training framework for video-language models. The foundation component in SMAUG is masked autoencoders. Different from prior works which only mask textual inputs, our masking strategy considers both visual and textual modalities, providing a better cross-modal alignment and saving more pre-training costs. On top of that, we introduce a space-time token sparsification module, which leverages context information to further select only 'important' spatial regions and temporal frames for pre-training. Coupling all these designs allows our method to enjoy both competitive performances on text-to-video retrieval and video question answering tasks, and much less pre-training costs by 1.9X or more. For example, our SMAUG only needs about 50 NVIDIA A6000 GPU hours for pre-training to attain competitive performances on these two video-language tasks across six popular benchmarks.",
-                    "https://arxiv.org/abs/2211.11446"
-                )
 
         add_paper("Navigation as the Attacker Wishes? Towards Building Byzantine-Robust Embodied Agents under Federated Learning",
                     "Yunchao Zhang, Zonglin Di, Kaiwen Zhou, Cihang Xie, Xin Wang",
@@ -497,18 +521,89 @@ function copy(dest, source) {
         document.write("<ul>")
 
 
-        add_paper("SwinMM: Masked Multi-view with Swin Transformers for 3D Medical Image Segmentation",
-            "Yiqing Wang, Zihan Li, Zihao Wei, Jieru Mei, Li Liu, Chen Wang, Shengtian Sang, Alan Yuille, Cihang Xie, Yuyin Zhou",
-            "MICCAI, 2023",
-            "",
-            "@inproceedings{wang2023swinmm,<br>" +
-             "&nbsp;&nbsp;&nbsp;title     = {SwinMM: Masked Multi-view with Swin Transformers for 3D Medical Image Segmentation},<br>" +
-             "&nbsp;&nbsp;&nbsp;author    = {Wang, Yiqing and Li, Zihan and Wei, Zihao and Mei, Jieru and Liu, Li and Wang, Chen and Sang, Shengtian and Yuille, Alan and Xie, Cihang and Zhou, Yuyin},<br>" +
-             "&nbsp;&nbsp;&nbsp;booktitle = {MICCAI},<br>" +
-             "&nbsp;&nbsp;&nbsp;year      = {2023}<br>}",
-            "Recent advancements in large-scale Vision Transformers have led to significant improvements in pre-trained models for medical image segmentation. However, these methods require a large amount of pre-training data, which can be particularly challenging to obtain in the medical field. To overcome this limitation, we present a novel and data-efficient approach called Masked Multi-view with Swin Transformers, dubbed SwinMM, which is the first comprehensive multi-view pipeline for self-supervised medical image analysis. Our approach consists of two key components. In the pre-training phase, we introduce a masked multi-view encoder that simultaneously trains masked multi-view observations with a diverse set of proxy tasks. These tasks include image reconstruction, rotation, contrastive learning, and a mutual learning paradigm that comprehensively leverages hidden multi-view information from 3D medical data by maximizing the consistency between predictions from different views. In the fine-tuning stage, a cross-view decoder is developed to aggregate the multi-view information using a novel cross-view attention block. SwinMM yields competitive performance, superior robustness, and higher data efficiency compared to recent state-of-the-art models with similar or even more training costs."
-        )
+        add_paper("SMAUG: Sparse Masked Autoencoder for Efficient Video-Language Pre-training",
+                    "Yuanze Lin, Chen Wei, Huiyu Wang, Alan Yuille, Cihang Xie",
+                    "ICCV, 2023",
+                    "https://arxiv.org/abs/2211.11446",
+                    "@article{lin2023smaug,<br>" +
+                     "&nbsp;&nbsp;&nbsp;title     = {SMAUG: Sparse Masked Autoencoder for Efficient Video-Language Pre-training},<br>" +
+                     "&nbsp;&nbsp;&nbsp;author    = {Lin, Yuanze and Wei, Chen and Wang, Huiyu and Yuille, Alan and Xie, Cihang},<br>" +
+                     "&nbsp;&nbsp;&nbsp;booktitle = {ICCV},<br>" +
+                     "&nbsp;&nbsp;&nbsp;year      = {2022}<br>}",
+                    "Video-language pre-training is crucial for learning powerful multi-modal representation. However, it typically requires a massive amount of computation. In this paper, we develop SMAUG, an efficient pre-training framework for video-language models. The foundation component in SMAUG is masked autoencoders. Different from prior works which only mask textual inputs, our masking strategy considers both visual and textual modalities, providing a better cross-modal alignment and saving more pre-training costs. On top of that, we introduce a space-time token sparsification module, which leverages context information to further select only 'important' spatial regions and temporal frames for pre-training. Coupling all these designs allows our method to enjoy both competitive performances on text-to-video retrieval and video question answering tasks, and much less pre-training costs by 1.9X or more. For example, our SMAUG only needs about 50 NVIDIA A6000 GPU hours for pre-training to attain competitive performances on these two video-language tasks across six popular benchmarks.",
+                    "https://arxiv.org/abs/2211.11446"
+                )
 
+        add_paper("Diffusion Models as Masked Autoencoders",
+                    "Chen Wei, Karttikeya Mangalam, Po-Yao Huang, Yanghao Li, Haoqi Fan, Hu Xu, Huiyu Wang, Cihang Xie, Alan Yuille, Christoph Feichtenhofer",
+                    "ICCV, 2023",
+                    "https://arxiv.org/abs/2304.03283",
+                    "@inproceedings{wei2023diffusion,<br>" +
+                    "&nbsp;&nbsp;&nbsp;title     = {Diffusion Models as Masked Autoencoders},<br>" +
+                    "&nbsp;&nbsp;&nbsp;author    = {Wei, Chen and Mangalam, Karttikeya and Huang, Po-Yao and Li, Yanghao and Fan, Haoqi and Xu, Hu and Wang, Huiyu and Xie, Cihang and Yuille, Alan and Feichtenhofer, Christoph},<br>" +
+                    "&nbsp;&nbsp;&nbsp;booktitle = {ICCV},<br>" +
+                    "&nbsp;&nbsp;&nbsp;year      = {2023}<br>}",
+                    "There has been a longstanding belief that generation can facilitate a true understanding of visual data. In line with this, we revisit generatively pre-training visual representations in light of recent interest in denoising diffusion models. While directly pre-training with diffusion models does not produce strong representations, we condition diffusion models on masked input and formulate diffusion models as masked autoencoders (DiffMAE). Our approach is capable of (i) serving as a strong initialization for downstream recognition tasks, (ii) conducting high-quality image inpainting, and (iii) being effortlessly extended to video where it produces state-of-the-art classification accuracy. We further perform a comprehensive study on the pros and cons of design choices and build connections between diffusion models and masked autoencoders.",
+                    "https://arxiv.org/abs/2304.03283",
+                    "https://weichen582.github.io/diffmae.html"
+                    )
+
+        add_paper("Boosting Multi-Camera 3D Object Detection with Cross-Modal Knowledge Distillation",
+                    "Zeyu Wang, Dingwen Li, Chenxu Luo, Cihang Xie, Xiaodong Yang",
+                    "ICCV, 2023",
+                    "",
+                    "@inproceedings{wang2023bevdistill,<br>" +
+                    "&nbsp;&nbsp;&nbsp;title = {Boosting Multi-Camera 3D Object Detection with Cross-Modal Knowledge Distillation},<br>" +
+                    "&nbsp;&nbsp;&nbsp;author = {Wang, Zeyu and Li, Dingwen and Luo, Chenxu and Xie, Cihang and Yang, Xiaodong},<br>" +
+                    "&nbsp;&nbsp;&nbsp;booktitle = {ICCV},<br>" +
+                    "&nbsp;&nbsp;&nbsp;year      = {2023}<br>}",
+                    "3D perception based on the representations learned from multi-camera bird’s-eye-view (BEV) is trending as cameras are cost-effective for mass production in the autonomous driving industry. However, there exists a distinct performance gap between multi-camera BEV and LiDAR-based 3D object detection. One key reason is that LiDAR captures accurate depth and other geometry measurements, while it is notoriously challenging to infer such 3D information from merely image input. In this work, we propose to boost the representation learning of a multi-camera BEV-based student detector by training it to imitate the features of a well-trained LiDAR-based teacher detector. We propose an effective balancing strategy to enforce the student to focus on learning the crucial features from the teacher and generalize knowledge transfer to multi-scale layers with temporal fusion. We conduct extensive evaluations on multiple representative models of multi-camera BEV. Experiments reveal that our approach renders significant improvement over the student models, leading to state-of-the-art performance on the popular benchmark nuScenes."
+                    )
+
+        add_paper("Consistency-guided Meta-Learning for Bootstrapping Semi-Supervised Medical Image Segmentation",
+                    "Qingyue Wei, Lequan Yu, Xianhang Li, Wei Shao, Cihang Xie, Lei Xing, Yuyin Zhou",
+                    "MICCAI, 2023",
+                    "",
+                    "@inproceedings{wei2023mlbseg,<br>" +
+                     "&nbsp;&nbsp;&nbsp;title     = {Consistency-guided Meta-Learning for Bootstrapping Semi-Supervised Medical Image Segmentation},<br>" +
+                     "&nbsp;&nbsp;&nbsp;author    = {Wei, Qingyue and Yu, Lequan and Li, Xianhang and Shao, Wei and Xie, Cihang and Xing, Lei and Zhou, Yuyin},<br>" +
+                     "&nbsp;&nbsp;&nbsp;booktitle = {MICCAI},<br>" +
+                     "&nbsp;&nbsp;&nbsp;year      = {2023}<br>}",
+                    "Medical imaging has witnessed remarkable progress but usually requires a large amount of high-quality annotated data which is time-consuming and costly to obtain. To alleviate this burden, semi-supervised learning has garnered attention as a potential solution. In this paper, we present Meta-Learning for Bootstrapping Medical Image Segmentation (MLB-Seg), a novel method for tackling the challenge of semi-supervised medical image segmentation. Specifically, our approach first involves training a segmentation model on a small set of clean labeled images to generate initial labels for unlabeled data. To further optimize this bootstrapping process, we introduce a per-pixel weight mapping system that dynamically assigns weights to both the initialized labels and the model’s own predictions. These weights are determined using a meta-process that prioritizes pixels with loss gradient directions closer to those of clean data, which is based on a small set of precisely annotated images. To facilitate the meta-learning process, we additionally introduce a consistency-based Pseudo Label Enhancement (PLE) scheme that improves the quality of the model’s own predictions by ensembling predictions from various augmented versions of the same input. In order to improve the quality of the weight maps obtained through multiple augmentations of a single input, we introduce a mean teacher into the PLE scheme. This method helps to reduce noise in the weight maps and stabilize its generation process. Our extensive experimental results on public atrial and prostate segmentation datasets demonstrate that our proposed method achieves state-of-the-art results under semi-supervision."
+                    )
+
+
+        add_paper("SwinMM: Masked Multi-view with Swin Transformers for 3D Medical Image Segmentation",
+                    "Yiqing Wang, Zihan Li, Zihao Wei, Jieru Mei, Li Liu, Chen Wang, Shengtian Sang, Alan Yuille, Cihang Xie, Yuyin Zhou",
+                    "MICCAI, 2023",
+                    "",
+                    "@inproceedings{wang2023swinmm,<br>" +
+                     "&nbsp;&nbsp;&nbsp;title     = {SwinMM: Masked Multi-view with Swin Transformers for 3D Medical Image Segmentation},<br>" +
+                     "&nbsp;&nbsp;&nbsp;author    = {Wang, Yiqing and Li, Zihan and Wei, Zihao and Mei, Jieru and Liu, Li and Wang, Chen and Sang, Shengtian and Yuille, Alan and Xie, Cihang and Zhou, Yuyin},<br>" +
+                     "&nbsp;&nbsp;&nbsp;booktitle = {MICCAI},<br>" +
+                     "&nbsp;&nbsp;&nbsp;year      = {2023}<br>}",
+                    "Recent advancements in large-scale Vision Transformers have led to significant improvements in pre-trained models for medical image segmentation. However, these methods require a large amount of pre-training data, which can be particularly challenging to obtain in the medical field. To overcome this limitation, we present a novel and data-efficient approach called Masked Multi-view with Swin Transformers, dubbed SwinMM, which is the first comprehensive multi-view pipeline for self-supervised medical image analysis. Our approach consists of two key components. In the pre-training phase, we introduce a masked multi-view encoder that simultaneously trains masked multi-view observations with a diverse set of proxy tasks. These tasks include image reconstruction, rotation, contrastive learning, and a mutual learning paradigm that comprehensively leverages hidden multi-view information from 3D medical data by maximizing the consistency between predictions from different views. In the fine-tuning stage, a cross-view decoder is developed to aggregate the multi-view information using a novel cross-view attention block. SwinMM yields competitive performance, superior robustness, and higher data efficiency compared to recent state-of-the-art models with similar or even more training costs."
+                )
+
+        add_paper("Patient-Specific Auto-segmentation on Daily kVCT Images for Adaptive Radiation Therapy",
+                    "Yizheng Chen, Michael F. Gensheimer, Hilary P. Bagshaw, Santino Butler, Lequan Yu, Yuyin Zhou, Liyue Shen, Nataliya Kovalchuk, Murat Surucu, Daniel T. Chang, Lei Xing, Bin Han",
+                    "International Journal of Radiation Oncology Biology Physics, 2023",
+                    "2023",
+                    "@article{CHEN2023,<br>" +
+                    "&nbsp;&nbsp;&nbsp;title = {Patient-Specific Auto-segmentation on Daily kVCT Images for Adaptive Radiation Therapy},<br>" +
+                     "&nbsp;&nbsp;&nbsp;author = {Chen, Yizheng and Gensheimer, Michael F. and Bagshaw, Hilary P. and Butler, Santino and Yu, Lequan and Zhou, Yuyin and Shen, Liyue and Kovalchuk, Nataliya and Surucu, Murat and Chang, Daniel T. and Xing, Lei and Han, Bin},<br>" +
+                    "&nbsp;&nbsp;&nbsp;journal = {International Journal of Radiation Oncology Biology Physics},<br>" +
+                    "&nbsp;&nbsp;&nbsp;year = {2023},<br>",
+                    "   abstract= {Purpose<br>" +
+                    "This study explored deep-learning-based patient-specific auto-segmentation using transfer learning on daily RefleXion kilovoltage computed tomography (kVCT) images to facilitate adaptive radiation therapy, based on data from the first group of patients treated with the innovative RefleXion system.<br>" +
+                    "Methods and Materials<br>" +
+                    "For head and neck (HaN) and pelvic cancers, a deep convolutional segmentation network was initially trained on a population data set that contained 67 and 56 patient cases, respectively. Then the pretrained population network was adapted to the specific RefleXion patient by fine-tuning the network weights with a transfer learning method. For each of the 6 collected RefleXion HaN cases and 4 pelvic cases, initial planning computed tomography (CT) scans and 5 to 26 sets of daily kVCT images were used for the patient-specific learning and evaluation separately. The performance of the patient-specific network was compared with the population network and the clinical rigid registration method and evaluated by the Dice similarity coefficient (DSC) with manual contours being the reference. The corresponding dosimetric effects resulting from different auto-segmentation and registration methods were also investigated.<br>" +
+                    "Results<br>" +
+                    "The proposed patient-specific network achieved mean DSC results of 0.88 for 3 HaN organs at risk (OARs) of interest and 0.90 for 8 pelvic target and OARs, outperforming the population network (0.70 and 0.63) and the registration method (0.72 and 0.72). The DSC of the patient-specific network gradually increased with the increment of longitudinal training cases and approached saturation with more than 6 training cases. Compared with using the registration contour, the target and OAR mean doses and dose-volume histograms obtained using the patient-specific auto-segmentation were closer to the results using the manual contour.<br>" +
+                    "Conclusions<br>" +
+                    "Auto-segmentation of RefleXion kVCT images based on the patient-specific transfer learning could achieve higher accuracy, outperforming a common population network and clinical registration-based method. This approach shows promise in improving dose evaluation accuracy in RefleXion adaptive radiation therapy.<br>}",
+                    "https://www.sciencedirect.com/science/article/abs/pii/S0360301623004339"
+                    )
 
         add_paper("Masked Autoencoders Enable Efficient Knowledge Distillers",
                     "Yutong Bai, Zeyu Wang, Junfei Xiao, Chen Wei, Huiyu Wang, Alan Yuille, Yuyin Zhou, Cihang Xie",
@@ -539,17 +634,17 @@ function copy(dest, source) {
                 )
 
         add_paper("One-Pixel Shortcut: on the Learning Preference of Deep Neural Networks",
-            "Shutong Wu, Sizhe Chen, Cihang Xie, Xiaolin Huang",
-                    "ICLR, 2023",
-            "https://arxiv.org/abs/2205.12141",
-            "@inproceedings{wu2022onepixel,<br>" +
-              "&nbsp;&nbsp;&nbsp;title   = {One-Pixel Shortcut: on the Learning Preference of Deep Neural Networks},<br>" +
-              "&nbsp;&nbsp;&nbsp;author  = {Wu, Shutong and Chen, Sizhe and Xie, Cihang and Huang, Xiaolin},<br>" +
-              "&nbsp;&nbsp;&nbsp;booktitle = {ICLR},<br>" +
-              "&nbsp;&nbsp;&nbsp;year    = {2023}<br>}",
-            "Unlearnable examples (ULEs) aim to protect data from unauthorized usage for training DNNs. Error-minimizing noise, which is injected to clean data, is one of the most successful methods for preventing DNNs from giving correct predictions on incoming new data. Nonetheless, under specific training strategies such as adversarial training, the unlearnability of error-minimizing noise will severely degrade. In addition, the transferability of error-minimizing noise is inherently limited by the mismatch between the generator model and the targeted learner model. In this paper, we investigate the mechanism of unlearnable examples and propose a novel model-free method, named One-Pixel Shortcut, which only perturbs a single pixel of each image and makes the dataset unlearnable. Our method needs much less computational cost and obtains stronger transferability and thus can protect data from a wide range of different models. Based on this, we further introduce the first unlearnable dataset called CIFAR-10-S, which is indistinguishable from normal CIFAR-10 by human observers and can serve as a benchmark for different models or training strategies to evaluate their abilities to extract critical features from the disturbance of non-semantic representations. The original error-minimizing ULEs will lose efficiency under adversarial training, where the model can get over 83% clean test accuracy. Meanwhile, even if adversarial training and strong data augmentation like RandAugment are applied together, the model trained on CIFAR-10-S cannot get over 50% clean test accuracy.",
-            "https://arxiv.org/abs/2205.12141"
-        )
+                    "Shutong Wu, Sizhe Chen, Cihang Xie, Xiaolin Huang",
+                            "ICLR, 2023",
+                    "https://arxiv.org/abs/2205.12141",
+                    "@inproceedings{wu2022onepixel,<br>" +
+                      "&nbsp;&nbsp;&nbsp;title   = {One-Pixel Shortcut: on the Learning Preference of Deep Neural Networks},<br>" +
+                      "&nbsp;&nbsp;&nbsp;author  = {Wu, Shutong and Chen, Sizhe and Xie, Cihang and Huang, Xiaolin},<br>" +
+                      "&nbsp;&nbsp;&nbsp;booktitle = {ICLR},<br>" +
+                      "&nbsp;&nbsp;&nbsp;year    = {2023}<br>}",
+                    "Unlearnable examples (ULEs) aim to protect data from unauthorized usage for training DNNs. Error-minimizing noise, which is injected to clean data, is one of the most successful methods for preventing DNNs from giving correct predictions on incoming new data. Nonetheless, under specific training strategies such as adversarial training, the unlearnability of error-minimizing noise will severely degrade. In addition, the transferability of error-minimizing noise is inherently limited by the mismatch between the generator model and the targeted learner model. In this paper, we investigate the mechanism of unlearnable examples and propose a novel model-free method, named One-Pixel Shortcut, which only perturbs a single pixel of each image and makes the dataset unlearnable. Our method needs much less computational cost and obtains stronger transferability and thus can protect data from a wide range of different models. Based on this, we further introduce the first unlearnable dataset called CIFAR-10-S, which is indistinguishable from normal CIFAR-10 by human observers and can serve as a benchmark for different models or training strategies to evaluate their abilities to extract critical features from the disturbance of non-semantic representations. The original error-minimizing ULEs will lose efficiency under adversarial training, where the model can get over 83% clean test accuracy. Meanwhile, even if adversarial training and strong data augmentation like RandAugment are applied together, the model trained on CIFAR-10-S cannot get over 50% clean test accuracy.",
+                    "https://arxiv.org/abs/2205.12141"
+                )
 
         add_paper("Label-Efficient Self-Supervised Federated Learning for Tackling Data Heterogeneity in Medical Imaging",
                     "Rui Yan, Liangqiong Qu, Qingyue Wei, Shih-Cheng Huang, Liyue Shen, Daniel Rubin, Lei Xing, Yuyin Zhou",
@@ -581,16 +676,17 @@ function copy(dest, source) {
         )
 
         add_paper("Practical Disruption of Image Translation Deepfake Networks",
-            "Nataniel Ruiz, Sarah Adel Bargal, Cihang Xie, Stan Sclaroff",
-            "AAAI, 2023",
-            "",
-            "@inproceedings{nataniel2023practical,<br>" +
-             "&nbsp;&nbsp;&nbsp;title     = {Practical Disruption of Image Translation Deepfake Networks},<br>" +
-             "&nbsp;&nbsp;&nbsp;author    = {Ruiz, Nataniel and Bargal, Sarah Adel and Xie, Cihang and Sclaroff, Stan},<br>" +
-             "&nbsp;&nbsp;&nbsp;booktitle = {AAAI},<br>" +
-             "&nbsp;&nbsp;&nbsp;year      = {2023}<br>}",
-            "By harnessing the latest advances in deep learning, image-to-image translation architectures have recently achieved impressive capabilities. Unfortunately, the growing representational power of these architectures has prominent unethical uses. Among these, the threats of (1) face manipulation (\"DeepFakes\") used for misinformation or pornographic use (2) \"DeepNude\" manipulations of body images to remove clothes from individuals, etc. Several works tackle the task of disrupting such image translation networks by inserting imperceptible adversarial attacks into the input image. Nevertheless, these works have limitations that may result in disruptions that are not practical in the real world. Specifically, most works generate disruptions in a white-box scenario, assuming perfect knowledge about the image translation network. The few remaining works that assume a black-box scenario require a large number of queries to successfully disrupt the adversary's image translation network. In this work we propose Leaking Transferable Perturbations (LTP), an algorithm that significantly reduces the number of queries needed to disrupt an image translation network by dynamically re-purposing previous disruptions into new query efficient disruptions."
-        )
+                    "Nataniel Ruiz, Sarah Adel Bargal, Cihang Xie, Stan Sclaroff",
+                    "AAAI, 2023",
+                    "",
+                    "@inproceedings{nataniel2023practical,<br>" +
+                     "&nbsp;&nbsp;&nbsp;title     = {Practical Disruption of Image Translation Deepfake Networks},<br>" +
+                     "&nbsp;&nbsp;&nbsp;author    = {Ruiz, Nataniel and Bargal, Sarah Adel and Xie, Cihang and Sclaroff, Stan},<br>" +
+                     "&nbsp;&nbsp;&nbsp;booktitle = {AAAI},<br>" +
+                     "&nbsp;&nbsp;&nbsp;year      = {2023}<br>}",
+                    "By harnessing the latest advances in deep learning, image-to-image translation architectures have recently achieved impressive capabilities. Unfortunately, the growing representational power of these architectures has prominent unethical uses. Among these, the threats of (1) face manipulation (\"DeepFakes\") used for misinformation or pornographic use (2) \"DeepNude\" manipulations of body images to remove clothes from individuals, etc. Several works tackle the task of disrupting such image translation networks by inserting imperceptible adversarial attacks into the input image. Nevertheless, these works have limitations that may result in disruptions that are not practical in the real world. Specifically, most works generate disruptions in a white-box scenario, assuming perfect knowledge about the image translation network. The few remaining works that assume a black-box scenario require a large number of queries to successfully disrupt the adversary's image translation network. In this work we propose Leaking Transferable Perturbations (LTP), an algorithm that significantly reduces the number of queries needed to disrupt an image translation network by dynamically re-purposing previous disruptions into new query efficient disruptions.",
+                    "https://ojs.aaai.org/index.php/AAAI/article/view/26693"
+                )
 
 
 
