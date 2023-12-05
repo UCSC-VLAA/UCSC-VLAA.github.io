@@ -179,6 +179,21 @@ function copy(dest, source) {
         document.write("<ul><br>")
 
 
+        add_paper("Rejuvenating image-GPT as Strong Visual Representation Learners",
+                  "Sucheng Ren, Zeyu Wang, Hongru Zhu, Junfei Xiao, Alan Yuille, Cihang Xie",
+                  null,
+                  "https://arxiv.org/abs/2312.02147",
+                  "@article{ren2023digpt,<br>" +
+                  "&nbsp;&nbsp;&nbsp;title     = {Rejuvenating i-GPT for Scalable Visual Representation Learning},<br>" +
+                  "&nbsp;&nbsp;&nbsp;author    = {Ren, Sucheng and Wang, Zeyu and Zhu, Hongru and Xiao, Junfei and Yuille, Alan and Xie, Cihang},<br>" +
+                  "&nbsp;&nbsp;&nbsp;journal   = {arXiv preprint arXiv:2312.02147},<br>" +
+                  "&nbsp;&nbsp;&nbsp;year      = {2023}<br>}",
+                  "This paper enhances image-GPT (iGPT), one of the pioneering works that introduce autoregressive pretraining to predict next pixels for visual representation learning. Two simple yet essential changes are made. First, we shift the prediction target from raw pixels to semantic tokens, enabling a higher-level understanding of visual content. Second, we supplement the autoregressive modeling by instructing the model to predict not only the next tokens but also the visible tokens. This pipeline is particularly effective when semantic tokens are encoded by discriminatively trained models, such as CLIP. We introduce this novel approach as D-iGPT. Extensive experiments showcase that DiGPT excels as a strong learner of visual representations: A notable achievement of D-iGPT is its compelling performance on the ImageNet-1K dataset — by training on publicly available datasets, D-iGPT achieves 89.5% top-1 accuracy with a vanilla ViT-Large model. This model also shows strong generalization on the downstream task and robustness on out-of-distribution samples. Code is avaiable at https://github.com/OliverRensu/D-iGPT.",
+                  "https://arxiv.org/abs/2312.02147",
+                  "https://github.com/OliverRensu/D-iGPT"
+                  )
+
+
         add_paper("MixCon3D: Synergizing Multi-View and Cross-Modal Contrastive Learning for Enhancing 3D Representation",
                   "Yipeng Gao, Zeyu Wang, Wei-Shi Zheng, Cihang Xie, Yuyin Zhou",
                   null,
