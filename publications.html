@@ -179,6 +179,37 @@ function copy(dest, source) {
         document.write("<ul><br>")
 
 
+        add_paper("Revisiting Adversarial Training at Scale",
+          "Zeyu Wang, Xianhang Li, Hongru Zhu, Cihang Xie",
+          null,
+          "https://arxiv.org/abs/2401.04727",
+          "@article{wang2024advxl,<br>" +
+          "&nbsp;&nbsp;&nbsp;title     = {Revisiting Adversarial Training at Scale},<br>" +
+          "&nbsp;&nbsp;&nbsp;author    = {Wang, Zeyu and Li, Xianhang and Zhu, Hongru and Xie, Cihang},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal   = {arXiv preprint arXiv:2401.04727},<br>" +
+          "&nbsp;&nbsp;&nbsp;year      = {2024}<br>}",
+          "The machine learning community has witnessed a drastic change in the training pipeline, pivoted by those ''foundation models'' with unprecedented scales. However, the field of adversarial training is lagging behind, predominantly centered around small model sizes like ResNet-50, and tiny and low-resolution datasets like CIFAR-10. To bridge this transformation gap, this paper provides a modern re-examination with adversarial training, investigating its potential benefits when applied at scale. Additionally, we introduce an efficient and effective training strategy to enable adversarial training with giant models and web-scale data at an affordable computing cost. We denote this newly introduced framework as AdvXL. Empirical results demonstrate that AdvXL establishes new state-of-the-art robust accuracy records under AutoAttack on ImageNet-1K. For example, by training on DataComp-1B dataset, our AdvXL empowers a vanilla ViT-g model to substantially surpass the previous records of  l∞-, l2-, and l1-robust accuracy by margins of 11.4%, 14.2% and 12.9%, respectively. This achievement posits AdvXL as a pioneering approach, charting a new trajectory for the efficient training of robust visual representations at significantly larger scales. Our code is available at https://github.com/UCSC-VLAA/AdvXL.",
+          "https://arxiv.org/abs/2401.04727",
+          "https://github.com/UCSC-VLAA/AdvXL"
+         )
+
+
+        add_paper("SPFormer: Enhancing Vision Transformer with Superpixel Representation",
+          "Jieru Mei, Liang-Chieh Chen, Alan Yuille, Cihang Xie",
+          null,
+          "https://arxiv.org/abs/2401.02931",
+          "@article{mei2024spformer,<br>" +
+          "&nbsp;&nbsp;&nbsp;title     = {SPFormer: Enhancing Vision Transformer with Superpixel Representation},<br>" +
+          "&nbsp;&nbsp;&nbsp;author    = {Mei, Jieru and Chen, Liang-Chieh and Yuille, Alan and Xie, Cihang},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal   = {arXiv preprint arXiv:2401.02931},<br>" +
+          "&nbsp;&nbsp;&nbsp;year      = {2024}<br>}",
+          "In this work, we introduce SPFormer, a novel Vision Transformer enhanced by superpixel representation. Addressing the limitations of traditional Vision Transformers' fixed-size, non-adaptive patch partitioning, SPFormer employs superpixels that adapt to the image's content. This approach divides the image into irregular, semantically coherent regions, effectively capturing intricate details and applicable at both initial and intermediate feature levels. SPFormer, trainable end-to-end, exhibits superior performance across various benchmarks. Notably, it exhibits significant improvements on the challenging ImageNet benchmark, achieving a 1.4% increase over DeiT-T and 1.1% over DeiT-S respectively. A standout feature of SPFormer is its inherent explainability. The superpixel structure offers a window into the model's internal processes, providing valuable insights that enhance the model's interpretability. This level of clarity significantly improves SPFormer's robustness, particularly in challenging scenarios such as image rotations and occlusions, demonstrating its adaptability and resilience.",
+          "https://arxiv.org/abs/2401.02931"
+        )
+
+
+
+
         add_paper("Rejuvenating image-GPT as Strong Visual Representation Learners",
                   "Sucheng Ren, Zeyu Wang, Hongru Zhu, Junfei Xiao, Alan Yuille, Cihang Xie",
                   null,
@@ -206,20 +237,6 @@ function copy(dest, source) {
                   "This paper introduces ProLab, a novel approach using property-level label space for creating strong interpretable segmentation models. Instead of relying solely on category-specific annotations, ProLab uses descriptive properties grounded in common sense knowledge for supervising segmentation models. It is based on two core designs. First, we employ Large Language Models (LLMs) and carefully crafted prompts to generate descriptions of all involved categories that carry meaningful common sense knowledge and follow a structured format. Second, we introduce a description embedding model preserving semantic correlation across descriptions and then cluster them into a set of descriptive properties (e.g., 256) using K-Means. These properties are based on interpretable common sense knowledge consistent with theories of human recognition. We empirically show that our approach makes segmentation models perform stronger on five classic benchmarks (e.g., ADE20K, COCO-Stuff, Pascal Context, Cityscapes, and BDD). Our method also shows better scalability with extended training steps than category-level supervision. Our interpretable segmentation framework also emerges with the generalization ability to segment out-of-domain or unknown categories using only in-domain descriptive properties. Code is available at https://github.com/lambert-x/ProLab",
                   "https://arxiv.org/abs/2312.13764",
                   "https://github.com/lambert-x/ProLab"
-                  )
-
-
-        add_paper("Tuning LayerNorm in Attention: Towards Efficient MultiModal LLM Finetuning",
-                  "Haoqin Tu, Chen Wei, Jieru Mei, Cihang Xie",
-                  null,
-                  "https://arxiv.org/abs/2312.11420",
-                  "@article{zhao2023tuning,<br>" +
-                  "&nbsp;&nbsp;&nbsp;title     = {Tuning LayerNorm in Attention: Towards Efficient MultiModal LLM Finetuning},<br>" +
-                  "&nbsp;&nbsp;&nbsp;author    = {Zhao, Bingchen and Tu, Haoqin and Wei, Chen and Mei, Jieru and Xie, Cihang},<br>" +
-                  "&nbsp;&nbsp;&nbsp;journal   = {arXiv preprint arXiv:2312.11420},<br>" +
-                  "&nbsp;&nbsp;&nbsp;year      = {2023}<br>}",
-                  "This paper introduces an efficient strategy to transform Large Language Models (LLMs) into Multi-Modal Large Language Models (MLLMs). By conceptualizing this transformation as a domain adaptation process, i.e., transitioning from text understanding to embracing multiple modalities, we intriguingly note that, within each attention block, tuning LayerNorm suffices to yield strong performance. Moreover, when benchmarked against other tuning approaches like full parameter finetuning or LoRA, its benefits on efficiency are substantial. For example, when compared to LoRA on a 13B model scale, performance can be enhanced by an average of over 20% across five multi-modal tasks, and meanwhile, results in a significant reduction of trainable parameters by 41.9% and a decrease in GPU memory usage by 17.6%. On top of this LayerNorm strategy, we showcase that selectively tuning only with conversational data can improve efficiency further. Beyond these empirical outcomes, we provide a comprehensive analysis to explore the role of LayerNorm in adapting LLMs to the multi-modal domain and improving the expressive power of the model.",
-                  "https://arxiv.org/abs/2312.11420"
                   )
 
 
@@ -619,6 +636,21 @@ function copy(dest, source) {
         document.write("</ul><br>")
         document.write("<h1>2024</h1>")
         document.write("<ul>")
+
+
+
+      add_paper("Tuning LayerNorm in Attention: Towards Efficient MultiModal LLM Finetuning",
+                  "Haoqin Tu, Chen Wei, Jieru Mei, Cihang Xie",
+                  null,
+                  "https://arxiv.org/abs/2312.11420",
+                  "@inproceedings{zhao2024tuning,<br>" +
+                  "&nbsp;&nbsp;&nbsp;title       = {Tuning LayerNorm in Attention: Towards Efficient MultiModal LLM Finetuning},<br>" +
+                  "&nbsp;&nbsp;&nbsp;author      = {Zhao, Bingchen and Tu, Haoqin and Wei, Chen and Mei, Jieru and Xie, Cihang},<br>" +
+                  "&nbsp;&nbsp;&nbsp;booktitle   = {ICLR},<br>" +
+                  "&nbsp;&nbsp;&nbsp;year        = {2024}<br>}",
+                  "This paper introduces an efficient strategy to transform Large Language Models (LLMs) into Multi-Modal Large Language Models (MLLMs). By conceptualizing this transformation as a domain adaptation process, i.e., transitioning from text understanding to embracing multiple modalities, we intriguingly note that, within each attention block, tuning LayerNorm suffices to yield strong performance. Moreover, when benchmarked against other tuning approaches like full parameter finetuning or LoRA, its benefits on efficiency are substantial. For example, when compared to LoRA on a 13B model scale, performance can be enhanced by an average of over 20% across five multi-modal tasks, and meanwhile, results in a significant reduction of trainable parameters by 41.9% and a decrease in GPU memory usage by 17.6%. On top of this LayerNorm strategy, we showcase that selectively tuning only with conversational data can improve efficiency further. Beyond these empirical outcomes, we provide a comprehensive analysis to explore the role of LayerNorm in adapting LLMs to the multi-modal domain and improving the expressive power of the model.",
+                  "https://arxiv.org/abs/2312.11420"
+                  )
 
         add_paper("On the Adversarial Robustness of Camera-based 3D Object Detection",
             "Shaoyuan Xie, Zichao Li, Zeyu Wang, Cihang Xie",
