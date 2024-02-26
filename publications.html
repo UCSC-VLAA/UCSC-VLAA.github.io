@@ -179,19 +179,7 @@ function copy(dest, source) {
         document.write("<ul><br>")
 
 
-        add_paper("Revisiting Adversarial Training at Scale",
-          "Zeyu Wang, Xianhang Li, Hongru Zhu, Cihang Xie",
-          null,
-          "https://arxiv.org/abs/2401.04727",
-          "@article{wang2024advxl,<br>" +
-          "&nbsp;&nbsp;&nbsp;title     = {Revisiting Adversarial Training at Scale},<br>" +
-          "&nbsp;&nbsp;&nbsp;author    = {Wang, Zeyu and Li, Xianhang and Zhu, Hongru and Xie, Cihang},<br>" +
-          "&nbsp;&nbsp;&nbsp;journal   = {arXiv preprint arXiv:2401.04727},<br>" +
-          "&nbsp;&nbsp;&nbsp;year      = {2024}<br>}",
-          "The machine learning community has witnessed a drastic change in the training pipeline, pivoted by those ''foundation models'' with unprecedented scales. However, the field of adversarial training is lagging behind, predominantly centered around small model sizes like ResNet-50, and tiny and low-resolution datasets like CIFAR-10. To bridge this transformation gap, this paper provides a modern re-examination with adversarial training, investigating its potential benefits when applied at scale. Additionally, we introduce an efficient and effective training strategy to enable adversarial training with giant models and web-scale data at an affordable computing cost. We denote this newly introduced framework as AdvXL. Empirical results demonstrate that AdvXL establishes new state-of-the-art robust accuracy records under AutoAttack on ImageNet-1K. For example, by training on DataComp-1B dataset, our AdvXL empowers a vanilla ViT-g model to substantially surpass the previous records of  l∞-, l2-, and l1-robust accuracy by margins of 11.4%, 14.2% and 12.9%, respectively. This achievement posits AdvXL as a pioneering approach, charting a new trajectory for the efficient training of robust visual representations at significantly larger scales. Our code is available at https://github.com/UCSC-VLAA/AdvXL.",
-          "https://arxiv.org/abs/2401.04727",
-          "https://github.com/UCSC-VLAA/AdvXL"
-         )
+        
 
 
         add_paper("SPFormer: Enhancing Vision Transformer with Superpixel Representation",
@@ -268,19 +256,7 @@ function copy(dest, source) {
                   )
 
 
-        add_paper("MixCon3D: Synergizing Multi-View and Cross-Modal Contrastive Learning for Enhancing 3D Representation",
-                  "Yipeng Gao, Zeyu Wang, Wei-Shi Zheng, Cihang Xie, Yuyin Zhou",
-                  null,
-                  "https://arxiv.org/abs/2311.01734",
-                  "@article{gao2023mixcon3d,<br>" +
-                  "&nbsp;&nbsp;&nbsp;title     = {MixCon3D: Synergizing Multi-View and Cross-Modal Contrastive Learning for Enhancing 3D Representation},<br>" +
-                  "&nbsp;&nbsp;&nbsp;author    = {Gao, Yipeng and Wang, Zeyu and Zheng, Wei-Shi and Xie, Cihang and Zhou, Yuyin},<br>" +
-                  "&nbsp;&nbsp;&nbsp;journal   = {arXiv preprint arXiv:2311.01734},<br>" +
-                  "&nbsp;&nbsp;&nbsp;year      = {2023}<br>}",
-                  "Contrastive learning has emerged as a promising paradigm for 3D open-world understanding, jointly with text, image, and point cloud. In this paper, we introduce MixCon3D, which combines the complementary information between 2D images and 3D point clouds to enhance contrastive learning. With the further integration of multi-view 2D images, MixCon3D enhances the traditional tri-modal representation by offering a more accurate and comprehensive depiction of real-world 3D objects and bolstering text alignment. Additionally, we pioneer the first thorough investigation of various training recipes for the 3D contrastive learning paradigm, building a solid baseline with improved performance. Extensive experiments conducted on three representative benchmarks reveal that our method renders significant improvement over the baseline, surpassing the previous state-of-the-art performance on the challenging 1,156-category Objaverse-LVIS dataset by 5.7%. We further showcase the effectiveness of our approach in more applications, including text-to-3D retrieval and point cloud captioning. The code is available at https://github.com/UCSC-VLAA/MixCon3D.",
-                  "https://arxiv.org/abs/2311.01734",
-                  "https://github.com/UCSC-VLAA/MixCon3D"
-                  )
+        
 
 
         add_paper("3D TransUNet: Advancing Medical Image Segmentation through Vision Transformers",
@@ -460,19 +436,7 @@ function copy(dest, source) {
                     "https://github. com/UCSC-VLAA/Bag-of-Tricks-for-FGSM-AT"
                 )
 
-         add_paper("Learning to Bootstrap for Combating Label Noise",
-                    "Yuyin Zhou, Xianhang Li, Fengze Liu, Xuxi Chen, Lequan Yu, Cihang Xie , Matthew P. Lungren, Lei Xing",
-                    null,
-                    "https://arxiv.org/abs/2202.04291",
-                    "@article{zhou2022L2B,<br>" +
-                     "&nbsp;&nbsp;&nbsp;title     = {Learning to Bootstrap for Combating Label Noise},<br>" +
-                     "&nbsp;&nbsp;&nbsp;author    = {Zhou, Yuyin and Li, Xianhang and Liu, Fengze and Chen, Xuxi and Yu, Lequan and Xie, Cihang and Lungren, Matthew P and Xing, Lei},<br>" +
-                     "&nbsp;&nbsp;&nbsp;journal   = {arXiv preprint arXiv:2202.04291},<br>" +
-                     "&nbsp;&nbsp;&nbsp;year      = {2022}<br>}",
-                    "Deep neural networks are powerful tools for representation learning, but can easily overfit to noisy labels which are prevalent in many realworld scenarios. Generally, noisy supervision could stem from variation among labelers, label corruption by adversaries, etc. To combat such label noises, one popular line of approach is to apply customized weights to the training instances, so that the corrupted examples contribute less to the model learning. However, such learning mechanisms potentially erase important information about the data distribution and therefore yield suboptimal results. To leverage useful information from the corrupted instances, an alternative is the bootstrapping loss, which reconstructs new training targets on-the-fly by incorporating the network’s own predictions (i.e., pseudo-labels). In this paper, we propose a more generic learnable loss objective which enables a joint reweighting of instances and labels at once. Specifically, our method dynamically adjusts the per-sample importance weight between the real observed labels and pseudo-labels, where the weights are efficiently determined in a meta process. Compared to the previous instance reweighting methods, our approach concurrently conducts implicit relabeling, and thereby yield substantial improvements with almost no extra cost. Extensive experimental results demonstrated the strengths of our approach over existing methods on multiple natural and medical image benchmark datasets, including CIFAR-10, CIFAR-100, ISIC2019 and Clothing 1M.",
-                    "https://arxiv.org/abs/2202.04291",
-                    "https://github.com/yuyinzhou/L2B"
-                )
+         
 
 
 
@@ -620,6 +584,91 @@ function copy(dest, source) {
         document.write("</ul><br>")
         document.write("<h1>2024</h1>")
         document.write("<ul>")
+
+
+        add_paper("Learning to Bootstrap for Combating Label Noise",
+                    "Yuyin Zhou, Xianhang Li, Fengze Liu, Xuxi Chen, Lequan Yu, Cihang Xie , Matthew P. Lungren, Lei Xing",
+                    "CVPR, 2024",
+                    "https://arxiv.org/abs/2202.04291",
+                    "@inproceedings{zhou2022L2B,<br>" +
+                     "&nbsp;&nbsp;&nbsp;title       = {Learning to Bootstrap for Combating Label Noise},<br>" +
+                     "&nbsp;&nbsp;&nbsp;author      = {Zhou, Yuyin and Li, Xianhang and Liu, Fengze and Chen, Xuxi and Yu, Lequan and Xie, Cihang and Lungren, Matthew P and Xing, Lei},<br>" +
+                     "&nbsp;&nbsp;&nbsp;booktitle   = {CVPR},<br>" +
+                     "&nbsp;&nbsp;&nbsp;year        = {2024}<br>}",
+                    "Deep neural networks are powerful tools for representation learning, but can easily overfit to noisy labels which are prevalent in many realworld scenarios. Generally, noisy supervision could stem from variation among labelers, label corruption by adversaries, etc. To combat such label noises, one popular line of approach is to apply customized weights to the training instances, so that the corrupted examples contribute less to the model learning. However, such learning mechanisms potentially erase important information about the data distribution and therefore yield suboptimal results. To leverage useful information from the corrupted instances, an alternative is the bootstrapping loss, which reconstructs new training targets on-the-fly by incorporating the network’s own predictions (i.e., pseudo-labels). In this paper, we propose a more generic learnable loss objective which enables a joint reweighting of instances and labels at once. Specifically, our method dynamically adjusts the per-sample importance weight between the real observed labels and pseudo-labels, where the weights are efficiently determined in a meta process. Compared to the previous instance reweighting methods, our approach concurrently conducts implicit relabeling, and thereby yield substantial improvements with almost no extra cost. Extensive experimental results demonstrated the strengths of our approach over existing methods on multiple natural and medical image benchmark datasets, including CIFAR-10, CIFAR-100, ISIC2019 and Clothing 1M.",
+                    "https://arxiv.org/abs/2202.04291",
+                    "https://github.com/yuyinzhou/L2B"
+                )
+
+
+        add_paper("MixCon3D: Synergizing Multi-View and Cross-Modal Contrastive Learning for Enhancing 3D Representation",
+                  "Yipeng Gao, Zeyu Wang, Wei-Shi Zheng, Cihang Xie, Yuyin Zhou",
+                  "CVPR, 2024",
+                  "https://arxiv.org/abs/2311.01734",
+                  "@inproceedings{gao2023mixcon3d,<br>" +
+                  "&nbsp;&nbsp;&nbsp;title       = {MixCon3D: Synergizing Multi-View and Cross-Modal Contrastive Learning for Enhancing 3D Representation},<br>" +
+                  "&nbsp;&nbsp;&nbsp;author      = {Gao, Yipeng and Wang, Zeyu and Zheng, Wei-Shi and Xie, Cihang and Zhou, Yuyin},<br>" +
+                  "&nbsp;&nbsp;&nbsp;booktitle   = {CVPR},<br>" +
+                  "&nbsp;&nbsp;&nbsp;year        = {2024}<br>}",
+                  "Contrastive learning has emerged as a promising paradigm for 3D open-world understanding, jointly with text, image, and point cloud. In this paper, we introduce MixCon3D, which combines the complementary information between 2D images and 3D point clouds to enhance contrastive learning. With the further integration of multi-view 2D images, MixCon3D enhances the traditional tri-modal representation by offering a more accurate and comprehensive depiction of real-world 3D objects and bolstering text alignment. Additionally, we pioneer the first thorough investigation of various training recipes for the 3D contrastive learning paradigm, building a solid baseline with improved performance. Extensive experiments conducted on three representative benchmarks reveal that our method renders significant improvement over the baseline, surpassing the previous state-of-the-art performance on the challenging 1,156-category Objaverse-LVIS dataset by 5.7%. We further showcase the effectiveness of our approach in more applications, including text-to-3D retrieval and point cloud captioning. The code is available at https://github.com/UCSC-VLAA/MixCon3D.",
+                  "https://arxiv.org/abs/2311.01734",
+                  "https://github.com/UCSC-VLAA/MixCon3D"
+                  )
+
+        add_paper("MicroDiffusion: Implicit Representation-Guided Diffusion for 3D Reconstruction from Limited 2D Microscopy Projections",
+                  "Mude Hui, Zihao Wei, Hongru Zhu, Fei Xia, Yuyin Zhou",
+                  "CVPR, 2024",
+                  "",
+                  "@inproceedings{hui2024microdiffusion,<br>" +
+                  "&nbsp;&nbsp;&nbsp;title       = {MicroDiffusion: Implicit Representation-Guided Diffusion for 3D Reconstruction from Limited 2D Microscopy Projections},<br>" +
+                  "&nbsp;&nbsp;&nbsp;author      = {Hui, Mude and Wei, Zihao and Zhu, Hongru and Xia, Fei and Zhou, Yuyin},<br>" +
+                  "&nbsp;&nbsp;&nbsp;booktitle   = {CVPR},<br>" +
+                  "&nbsp;&nbsp;&nbsp;year        = {2024}<br>}",
+                  " Volumetric optical microscopy using non-diffracting beams, offers rapid imaging of 3D volumes by projecting them axially to 2D images, but it often falls short in providing depth information. To address this limitation, we introduce MicroDiffusion, a pioneering tool designed for high-quality, depth-resolved 3D volume reconstruction from a limited set of 2D microscopy projections. Existing 3D reconstruction methods, such as Implicit Neural Representation (INR) models, often result in incomplete and noisy outputs. In contrast, Denoising Diffusion Probabilistic Models (DDPM) excel at capturing fine-grained details. Our method merges the strengths of INR’s ability to maintain structural 3D coherence with DDPM’s proficiency in enhancing details. Initially, we pretrain an INR model that transforms the 2D axially-projected images into a preliminary 3D volume. Then, the pretrained INR serves as a global prior, directing DDPM's generative process through linear interpolation between INR outputs and noise inputs. This strategy effectively enriches the diffusion process with structured 3D information while simultaneously enhancing detail and minimizing noise in localized 2D images. Furthermore, by conditioning the diffusion model on the closest 2D image, MicroDiffusion substantially enhances the fidelity of the resulting 3D reconstructions. MicroDiffusion enables depth-resolved volumetric microscopy by delivering high-quality 3D reconstructions that are sharper than those produced by INR models and more coherent than standard DDPM outputs. Extensive results from three microscopy datasets demonstrate MicroDiffusion's superiority in producing 3D reconstructions with enhanced image quality, structural coherence, and fidelity, compared to traditional INR and diffusion models.",
+                  "",
+                  )
+
+        add_paper("Unleashing the Potential of SAM for Medical Adaptation via Hierarchical Decoding",
+                  "Zhiheng Cheng, Qingyue Wei, Hongru Zhu, Yan Wang, Liangqiong Qu, Wei Shao, Yuyin Zhou",
+                  "CVPR, 2024",
+                  "",
+                  "@inproceedings{cheng2024unleashing,<br>" +
+                  "&nbsp;&nbsp;&nbsp;title       = {Unleashing the Potential of SAM for Medical Adaptation via Hierarchical Decoding},<br>" +
+                  "&nbsp;&nbsp;&nbsp;author      = {Cheng, Zhiheng and Wei, Qingyue and Zhu, Hongru and Wang, Yan and Qu, Liangqiong and Shao, Wei and Zhou, Yuyin},<br>" +
+                  "&nbsp;&nbsp;&nbsp;booktitle   = {CVPR},<br>" +
+                  "&nbsp;&nbsp;&nbsp;year        = {2024}<br>}",
+                  "The Segment Anything Model (SAM) has garnered significant attention for its versatile segmentation abilities and intuitive prompt-based interface. However, its application in medical imaging presents challenges, requiring either substantial training cost and extensive medical datasets for full model fine-tuning or high-quality prompts for optimal performance. This paper introduces H-SAM: a prompt-free adaptation of SAM designed for efficient fine-tuning on medical images via a two-stage hierarchical decoding procedure. In the first stage, H-SAM employs SAM's original decoder to create a prior (probabilistic) mask, which will be used to guide more intricate decoding in the second stage. Specifically, we propose two key designs: 1) A class-balanced, mask-guided self-attention mechanism that addresses the unbalanced label distribution and thus enhancing the image embedding; 2) A learnable mask cross-attention mechanism that spatially modulates the interplay among different image regions based on the prior mask. Moreover, the inclusion of a hierarchical pixel decoder in H-SAM enhances its proficiency in capturing fine-grained and localized details. This approach enables SAM to effectively integrate learned medical prior, facilitating enhanced adaptation for medical image segmentation with limited samples. Our H-SAM enjoys 4.78% improvement in average Dice compared to existing prompt-free SAM variants for multi-organ segmentation using only 10% 2D slices. Without using any unlabeled data at all, H-SAM is able to even outperform state-of-the-art semi-supervised models which use extensive unlabeled training data on various medical datasets.",
+                  "",
+                  )
+
+
+        add_paper("FLHetBench: Benchmarking Device and State Heterogeneity in Federated Learning",
+                  "Junyuan Zhang, Shuang Zeng, Miao Zhang, Runxi Wang, Feifei Wang, Yuyin Zhou, Paul Pu Liang, Liangqiong Qu",
+                  "CVPR, 2024",
+                  "",
+                  "@inproceedings{zhang2024flhetbench,<br>" +
+                  "&nbsp;&nbsp;&nbsp;title       = {FLHetBench: Benchmarking Device and State Heterogeneity in Federated Learning},<br>" +
+                  "&nbsp;&nbsp;&nbsp;author      = {Zhang, Junyuan and Zeng, Shuang and Zhang, Miao and Wang, Runxi and Wang, Feifei and Zhou, Yuyin and Liang, Pu and Qu, Liangqiong},<br>" +
+                  "&nbsp;&nbsp;&nbsp;booktitle   = {CVPR},<br>" +
+                  "&nbsp;&nbsp;&nbsp;year        = {2024}<br>}",
+                  "Federated learning (FL) is a powerful technology that enables collaborative training of machine learning models without sharing private data among clients. The fundamental challenge in FL lies in learning over extremely heterogeneous data distributions, device capacities, and device state availabilities, all of which adversely impact performance and communication efficiency. While data heterogeneity has been well-studied in the literature, this paper introduces FLHetBench, the first FL benchmark targeted toward understanding device and state heterogeneity. FLHetBench comprises two new sampling methods to generate real-world device and state databases with varying heterogeneity and new metrics for quantifying the success of FL methods under these real-world constraints. Using FLHetBench, we conduct a comprehensive evaluation of existing methods and find that they struggle under these settings, which inspires us to propose BiasPrompt+, a new method employing staleness-aware aggregation and fast weights to tackle these new heterogeneity challenges. Experiments on various FL tasks and datasets validate the effectiveness of our BiasPrompt+ method and highlight the value of FLHetBench in fostering the development of more efficient and robust FL solutions under real-world device and state constraints.",
+                  "",
+                  )
+
+
+        add_paper("Revisiting Adversarial Training at Scale",
+          "Zeyu Wang, Xianhang Li, Hongru Zhu, Cihang Xie",
+          "CVPR, 2024",
+          "https://arxiv.org/abs/2401.04727",
+          "@inproceedings{wang2024advxl,<br>" +
+          "&nbsp;&nbsp;&nbsp;title       = {Revisiting Adversarial Training at Scale},<br>" +
+          "&nbsp;&nbsp;&nbsp;author      = {Wang, Zeyu and Li, Xianhang and Zhu, Hongru and Xie, Cihang},<br>" +
+          "&nbsp;&nbsp;&nbsp;booktitle   = {CVPR},<br>" +
+          "&nbsp;&nbsp;&nbsp;year        = {2024}<br>}",
+          "The machine learning community has witnessed a drastic change in the training pipeline, pivoted by those ''foundation models'' with unprecedented scales. However, the field of adversarial training is lagging behind, predominantly centered around small model sizes like ResNet-50, and tiny and low-resolution datasets like CIFAR-10. To bridge this transformation gap, this paper provides a modern re-examination with adversarial training, investigating its potential benefits when applied at scale. Additionally, we introduce an efficient and effective training strategy to enable adversarial training with giant models and web-scale data at an affordable computing cost. We denote this newly introduced framework as AdvXL. Empirical results demonstrate that AdvXL establishes new state-of-the-art robust accuracy records under AutoAttack on ImageNet-1K. For example, by training on DataComp-1B dataset, our AdvXL empowers a vanilla ViT-g model to substantially surpass the previous records of  l∞-, l2-, and l1-robust accuracy by margins of 11.4%, 14.2% and 12.9%, respectively. This achievement posits AdvXL as a pioneering approach, charting a new trajectory for the efficient training of robust visual representations at significantly larger scales. Our code is available at https://github.com/UCSC-VLAA/AdvXL.",
+          "https://arxiv.org/abs/2401.04727",
+          "https://github.com/UCSC-VLAA/AdvXL"
+         )
 
 
 
