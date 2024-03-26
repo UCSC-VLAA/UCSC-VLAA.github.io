@@ -179,7 +179,33 @@ function copy(dest, source) {
         document.write("<ul><br>")
 
 
-        
+        add_paper("AQA-Bench: An Interactive Benchmark for Evaluating LLMs' Sequential Reasoning Ability",
+          "Siwei Yang, Bingchen Zhao, Cihang Xie",
+          null,
+          "https://arxiv.org/abs/2402.09404",
+          "@article{yang2024aqabench,<br>" +
+           "&nbsp;&nbsp;&nbsp;title     = {AQA-Bench: An Interactive Benchmark for Evaluating LLMs' Sequential Reasoning Ability},<br>" +
+           "&nbsp;&nbsp;&nbsp;author    = {Yang, Siwei and Zhao, Bingchen and Xie, Cihang},<br>" +
+           "&nbsp;&nbsp;&nbsp;booktitle = {arXiv preprint arXiv:2402.09404},<br>" +
+           "&nbsp;&nbsp;&nbsp;year      = {2024},<br>",
+          "This paper introduces AQA-Bench, a novel benchmark to assess the sequential reasoning capabilities of large language models (LLMs) in algorithmic contexts, such as depth-first search (DFS). The key feature of our evaluation benchmark lies in its interactive evaluation protocol -- for example, in DFS, the availability of each node's connected edge is contingent upon the model's traversal to that node, thereby necessitating the LLM's ability to effectively remember visited nodes and strategize subsequent moves. We comprehensively build AQA-Bench with three different algorithms, namely binary search, depth-first search, and breadth-first search, and to evaluate the sequential reasoning ability of 12 different LLMs. Our investigations reveal several interesting findings: (1) Closed-source models like GPT-4 and Gemini generally show strong sequential reasoning ability, significantly outperforming open-source LLMs. (2) Naively providing interactive examples may inadvertently hurt few-shot performance. (3) A very limited number of predecessor steps following the optimal policy can substantially boost small models' performance. (4) The scaling correlation between performance and model size is not always significant, sometimes even showcasing an inverse trend. We hope our study can catalyze future work on advancing the understanding and enhancement of LLMs' capabilities in sequential reasoning. The code is available at https://github.com/UCSC-VLAA/AQA-Bench",
+          "https://arxiv.org/abs/2402.09404",
+          "https://github.com/UCSC-VLAA/AQA-Bench"
+        )
+
+        add_paper("CIS-UNet: Multi-Class Segmentation of the Aorta in Computed Tomography Angiography via Context-Aware Shifted Window Self-Attention",
+          "Muhammad Imran, Jonathan R Krebs, Veera Rajasekhar Reddy Gopu, Brian Fazzone, Vishal Balaji Sivaraman, Amarjeet Kumar, Chelsea Viscardi, Robert Evans Heithaus, Benjamin Shickel, Yuyin Zhou, Michol A Cooper, Wei Shao",
+          null,
+          "https://arxiv.org/abs/2401.13049",
+          "@article{imran2024cisunet,<br>" +
+           "&nbsp;&nbsp;&nbsp;title     = {CIS-UNet: Multi-Class Segmentation of the Aorta in Computed Tomography Angiography via Context-Aware Shifted Window Self-Attention},<br>" +
+           "&nbsp;&nbsp;&nbsp;author    = {Imran, Muhammad and Krebs, Jonathan R and Gopu, Veera Rajasekhar Reddy and Fazzone, Brian and Sivaraman, Vishal Balaji and Kumar, Amarjeet and Viscardi, Chelsea and Heithaus, Robert Evans and Shickel, Benjamin and Zhou, Yuyin and Cooper, Michol A and Shao, Wei},<br>" +
+           "&nbsp;&nbsp;&nbsp;booktitle = {arXiv preprint arXiv: 2401.13049},<br>" +
+           "&nbsp;&nbsp;&nbsp;year      = {2024},<br>",
+           "Advancements in medical imaging and endovascular grafting have facilitated minimally invasive treatments for aortic diseases. Accurate 3D segmentation of the aorta and its branches is crucial for interventions, as inaccurate segmentation can lead to erroneous surgical planning and endograft construction. Previous methods simplified aortic segmentation as a binary image segmentation problem, overlooking the necessity of distinguishing between individual aortic branches. In this paper, we introduce Context Infused Swin-UNet (CIS-UNet), a deep learning model designed for multi-class segmentation of the aorta and thirteen aortic branches. Combining the strengths of Convolutional Neural Networks (CNNs) and Swin transformers, CIS-UNet adopts a hierarchical encoder-decoder structure comprising a CNN encoder, symmetric decoder, skip connections, and a novel Context-aware Shifted Window Self-Attention (CSW-SA) as the bottleneck block. Notably, CSW-SA introduces a unique utilization of the patch merging layer, distinct from conventional Swin transformers. It efficiently condenses the feature map, providing a global spatial context and enhancing performance when applied at the bottleneck layer, offering superior computational efficiency and segmentation accuracy compared to the Swin transformers. We trained our model on computed tomography (CT) scans from 44 patients and tested it on 15 patients. CIS-UNet outperformed the state-of-the-art SwinUNetR segmentation model, which is solely based on Swin transformers, by achieving a superior mean Dice coefficient of 0.713 compared to 0.697, and a mean surface distance of 2.78 mm compared to 3.39 mm. CIS-UNet's superior 3D aortic segmentation offers improved precision and optimization for planning endovascular treatments. Our dataset and code will be publicly available.",
+          "https://arxiv.org/abs/2401.13049",          
+        )
+
 
 
         add_paper("SPFormer: Enhancing Vision Transformer with Superpixel Representation",
@@ -305,21 +331,6 @@ function copy(dest, source) {
 
 
 
-        add_paper("Boosting Dermatoscopic Lesion Segmentation via Diffusion Models with Visual and Textual Prompts",
-                  "Shiyi Du, Xiaosong Wang, Yongyi Lu, Yuyin Zhou, Shaoting Zhang, Alan Yuille, Kang Li, Zongwei Zhou",
-                  null,
-                  "https://arxiv.org/abs/2310.02906",
-                  "@article{du2023boosting,<br>" +
-                  "&nbsp;&nbsp;&nbsp;title     = {Boosting Dermatoscopic Lesion Segmentation via Diffusion Models with Visual and Textual Prompts},<br>" +
-                  "&nbsp;&nbsp;&nbsp;author    = {Du, Shiyi and Wang, Xiaosong and Lu, Yongyi and Zhou, Yuyin and Zhang, Shaoting and Yuille, Alan and Li, Kang and Zhou, Zongwei},<br>" +
-                  "&nbsp;&nbsp;&nbsp;journal   = {arXiv preprint arXiv:2310.02906},<br>" +
-                  "&nbsp;&nbsp;&nbsp;year      = {2023}<br>}",
-                  "Image synthesis approaches, such as generative adversarial networks, have been popular for data augmentation in medical image analysis. These techniques help overcome the shortage of publicly accessible data and quality annotations. However, they often lack control over the contents of generated images, such as disease patterns, lesion locations, and diagnostic attributes. This work adapts the diffusion model, a recent advance in generative models, with lesion-specific visual and textual prompts to generate dermatoscopic images. We demonstrate our diffusion model-based framework's superiority over classical generation models in both image quality and segmentation performance on skin lesions. It achieves a 9% increase in SSIM image quality measure and over 5% improvement in Dice coefficients compared to prior arts.",
-                  "https://arxiv.org/abs/2310.02906",
-                  )
-
-
-
         add_paper("Image Registration of In Vivo Micro-Ultrasound and Ex Vivo Pseudo-Whole Mount Histopathology Images of the Prostate: A Proof-of-Concept Study",
                     "Muhammad Imran, Brianna Nguyen, Jake Pensa, Sara M. Falzarano, Anthony E. Sisk, Muxuan Liang, John Michael DiBianco, Li-Ming Su, Yuyin Zhou, Wayne G. Brisbane, Wei Shao",
                     null,
@@ -333,18 +344,6 @@ function copy(dest, source) {
                     "https://arxiv.org/abs/2305.19939"
                     )
 
-        add_paper("MicroSegNet: A Deep Learning Approach for Prostate Segmentation on Micro-Ultrasound Images",
-                    "Hongxu Jiang, Muhammad Imran, Preethika Muralidharan, Anjali Patel, Jake Pensa, Muxuan Liang, Tarik Benidir, Joseph R Grajo, Jason P Joseph, Russell Terry, John Michael DiBianco, Li-Ming Su, Yuyin Zhou, Wayne G Brisbane, Wei Shao",
-                    null,
-                    "https://arxiv.org/abs/2305.19956",
-                    "@article{jiang2023microsegnet,<br>" +
-                    "&nbsp;&nbsp;&nbsp;title = {MicroSegNet: A Deep Learning Approach for Prostate Segmentation on Micro-Ultrasound Images},<br>" +
-                    "&nbsp;&nbsp;&nbsp;author = {Jiang, Hongxu and Imran, Muhammad and Muralidharan, Preethika and Patel, Anjali and Pensa, Jake and Liang, Muxuan and Benidir, Tarik and Grajo, Joseph R and Joseph, Jason P and Terry, Russell and DiBianco, John Michael and Su, Li-Ming and Zhou, Yuyin and Brisbane, Wayne G and Shao, Wei},<br>" +
-                    "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2305.19956}<br>" +
-                    "&nbsp;&nbsp;&nbsp;year = {2023},<br>",
-                    "Micro-ultrasound (micro-US) is a novel 29-MHz ultrasound technique that provides 3-4 times higher resolution than traditional ultrasound, delivering comparable accuracy for diagnosing prostate cancer to MRI but at a lower cost. Accurate prostate segmentation is crucial for prostate volume measurement, cancer diagnosis, prostate biopsy, and treatment planning. This paper proposes a deep learning approach for automated, fast, and accurate prostate segmentation on micro-US images. Prostate segmentation on micro-US is challenging due to artifacts and indistinct borders between the prostate, bladder, and urethra in the midline. We introduce MicroSegNet, a multi-scale annotation-guided Transformer UNet model to address this challenge. During the training process, MicroSegNet focuses more on regions that are hard to segment (challenging regions), where expert and non-expert annotations show discrepancies. We achieve this by proposing an annotation-guided cross entropy loss that assigns a larger weight to pixels in hard regions and a lower weight to pixels in easy regions. We trained our model using micro-US images from 55 patients, followed by evaluation on 20 patients. Our MicroSegNet model achieved a Dice coefficient of 0.942 and a Hausdorff distance of 2.11 mm, outperforming several state-of-the-art segmentation methods, as well as three human annotators with different experience levels. We will make our code and dataset publicly available to promote transparency and collaboration in research.",
-                    "https://arxiv.org/abs/2305.19956"
-                    )
 
         add_paper("BiomedGPT: A Unified and Generalist Biomedical Generative Pre-trained Transformer for Vision, Language, and Multimodal Tasks",
                     "Kai Zhang, Jun Yu, Zhiling Yan, Yixin Liu, Eashan Adhikarla, Sunyang Fu, Xun Chen, Chen Chen, Yuyin Zhou, Xiang Li, Lifang He, Brian D Davison, Quanzheng Li, Yong Chen, Hongfang Liu, Lichao Sun",
@@ -406,19 +405,7 @@ function copy(dest, source) {
         )
 
 
-        add_paper("Navigation as the Attacker Wishes? Towards Building Byzantine-Robust Embodied Agents under Federated Learning",
-                    "Yunchao Zhang, Zonglin Di, Kaiwen Zhou, Cihang Xie, Xin Wang",
-                    // "arxiv, 2022",
-                    null,
-                    "https://arxiv.org/abs/2211.14769",
-                    "@article{zhang2022navigation,<br>" +
-                     "&nbsp;&nbsp;&nbsp;title     = {Navigation as the Attacker Wishes? Towards Building Byzantine-Robust Embodied Agents under Federated Learning},<br>" +
-                     "&nbsp;&nbsp;&nbsp;author    = {Zhang, Yunchao and Di, Zonglin and Zhou, Kaiwen and Xie, Cihang and Wang, Xin},<br>" +
-                     "&nbsp;&nbsp;&nbsp;journal   = {arXiv preprint arXiv:2211.14769},<br>" +
-                     "&nbsp;&nbsp;&nbsp;year      = {2022}<br>}",
-                    "Federated embodied agent learning protects the data privacy of individual visual environments by keeping data locally at each client (the individual environment) during training. However, since the local data is inaccessible to the server under federated learning, attackers may easily poison the training data of the local client to build a backdoor in the agent without notice. Deploying such an agent raises the risk of potential harm to humans, as the attackers may easily navigate and control the agent as they wish via the backdoor. Towards Byzantine-robust federated embodied agent learning, in this paper, we study the attack and defense for the task of vision-and-language navigation (VLN), where the agent is required to follow natural language instructions to navigate indoor environments. First, we introduce a simple but effective attack strategy, Navigation as Wish (NAW), in which the malicious client manipulates local trajectory data to implant a backdoor into the global model. Results on two VLN datasets (R2R and RxR) show that NAW can easily navigate the deployed VLN agent regardless of the language instruction, without affecting its performance on normal test sets. Then, we propose a new Prompt-Based Aggregation (PBA) to defend against the NAW attack in federated VLN, which provides the server with a ''prompt'' of the vision-and-language alignment variance between the benign and malicious clients so that they can be distinguished during training. We validate the effectiveness of the PBA method on protecting the global model from the NAW attack, which outperforms other state-of-the-art defense methods by a large margin in the defense metrics on R2R and RxR.",
-                    "https://arxiv.org/abs/2211.14769"
-                )
+        
 
 
 
@@ -618,14 +605,15 @@ function copy(dest, source) {
         add_paper("MicroDiffusion: Implicit Representation-Guided Diffusion for 3D Reconstruction from Limited 2D Microscopy Projections",
                   "Mude Hui, Zihao Wei, Hongru Zhu, Fei Xia, Yuyin Zhou",
                   "CVPR, 2024",
-                  "",
+                  "https://arxiv.org/abs/2403.10815",
                   "@inproceedings{hui2024microdiffusion,<br>" +
                   "&nbsp;&nbsp;&nbsp;title       = {MicroDiffusion: Implicit Representation-Guided Diffusion for 3D Reconstruction from Limited 2D Microscopy Projections},<br>" +
                   "&nbsp;&nbsp;&nbsp;author      = {Hui, Mude and Wei, Zihao and Zhu, Hongru and Xia, Fei and Zhou, Yuyin},<br>" +
                   "&nbsp;&nbsp;&nbsp;booktitle   = {CVPR},<br>" +
                   "&nbsp;&nbsp;&nbsp;year        = {2024}<br>}",
-                  " Volumetric optical microscopy using non-diffracting beams, offers rapid imaging of 3D volumes by projecting them axially to 2D images, but it often falls short in providing depth information. To address this limitation, we introduce MicroDiffusion, a pioneering tool designed for high-quality, depth-resolved 3D volume reconstruction from a limited set of 2D microscopy projections. Existing 3D reconstruction methods, such as Implicit Neural Representation (INR) models, often result in incomplete and noisy outputs. In contrast, Denoising Diffusion Probabilistic Models (DDPM) excel at capturing fine-grained details. Our method merges the strengths of INR’s ability to maintain structural 3D coherence with DDPM’s proficiency in enhancing details. Initially, we pretrain an INR model that transforms the 2D axially-projected images into a preliminary 3D volume. Then, the pretrained INR serves as a global prior, directing DDPM's generative process through linear interpolation between INR outputs and noise inputs. This strategy effectively enriches the diffusion process with structured 3D information while simultaneously enhancing detail and minimizing noise in localized 2D images. Furthermore, by conditioning the diffusion model on the closest 2D image, MicroDiffusion substantially enhances the fidelity of the resulting 3D reconstructions. MicroDiffusion enables depth-resolved volumetric microscopy by delivering high-quality 3D reconstructions that are sharper than those produced by INR models and more coherent than standard DDPM outputs. Extensive results from three microscopy datasets demonstrate MicroDiffusion's superiority in producing 3D reconstructions with enhanced image quality, structural coherence, and fidelity, compared to traditional INR and diffusion models.",
-                  "",
+                  " Volumetric optical microscopy using non-diffracting beams enables rapid imaging of 3D volumes by projecting them axially to 2D images but lacks crucial depth information. Addressing this, we introduce MicroDiffusion, a pioneering tool facilitating high-quality, depth-resolved 3D volume reconstruction from limited 2D projections. While existing Implicit Neural Representation (INR) models often yield incomplete outputs and Denoising Diffusion Probabilistic Models (DDPM) excel at capturing details, our method integrates INR's structural coherence with DDPM's fine-detail enhancement capabilities. We pretrain an INR model to transform 2D axially-projected images into a preliminary 3D volume. This pretrained INR acts as a global prior guiding DDPM's generative process through a linear interpolation between INR outputs and noise inputs. This strategy enriches the diffusion process with structured 3D information, enhancing detail and reducing noise in localized 2D images. By conditioning the diffusion model on the closest 2D projection, MicroDiffusion substantially enhances fidelity in resulting 3D reconstructions, surpassing INR and standard DDPM outputs with unparalleled image quality and structural fidelity. Our code and dataset are available at https://github.com/UCSC-VLAA/MicroDiffusion.",
+                  "https://arxiv.org/abs/2403.10815",
+                  "https://github.com/UCSC-VLAA/MicroDiffusion"
                   )
 
         add_paper("Unleashing the Potential of SAM for Medical Adaptation via Hierarchical Decoding",
@@ -686,6 +674,20 @@ function copy(dest, source) {
                   )
 
 
+      add_paper("Navigation as the Attacker Wishes? Towards Building Byzantine-Robust Embodied Agents under Federated Learning",
+                    "Yunchao Zhang, Zonglin Di, Kaiwen Zhou, Cihang Xie, Xin Wang",
+                    "NAACL, 2024",
+                    "https://arxiv.org/abs/2211.14769",
+                    "@inproceedings{zhang2022navigation,<br>" +
+                     "&nbsp;&nbsp;&nbsp;title     = {Navigation as the Attacker Wishes? Towards Building Byzantine-Robust Embodied Agents under Federated Learning},<br>" +
+                     "&nbsp;&nbsp;&nbsp;author    = {Zhang, Yunchao and Di, Zonglin and Zhou, Kaiwen and Xie, Cihang and Wang, Xin},<br>" +
+                     "&nbsp;&nbsp;&nbsp;booktitle = {NAACL},<br>" +
+                     "&nbsp;&nbsp;&nbsp;year      = {2024}<br>}",
+                    "Federated embodied agent learning protects the data privacy of individual visual environments by keeping data locally at each client (the individual environment) during training. However, since the local data is inaccessible to the server under federated learning, attackers may easily poison the training data of the local client to build a backdoor in the agent without notice. Deploying such an agent raises the risk of potential harm to humans, as the attackers may easily navigate and control the agent as they wish via the backdoor. Towards Byzantine-robust federated embodied agent learning, in this paper, we study the attack and defense for the task of vision-and-language navigation (VLN), where the agent is required to follow natural language instructions to navigate indoor environments. First, we introduce a simple but effective attack strategy, Navigation as Wish (NAW), in which the malicious client manipulates local trajectory data to implant a backdoor into the global model. Results on two VLN datasets (R2R and RxR) show that NAW can easily navigate the deployed VLN agent regardless of the language instruction, without affecting its performance on normal test sets. Then, we propose a new Prompt-Based Aggregation (PBA) to defend against the NAW attack in federated VLN, which provides the server with a ''prompt'' of the vision-and-language alignment variance between the benign and malicious clients so that they can be distinguished during training. We validate the effectiveness of the PBA method on protecting the global model from the NAW attack, which outperforms other state-of-the-art defense methods by a large margin in the defense metrics on R2R and RxR.",
+                    "https://arxiv.org/abs/2211.14769"
+                )
+
+
             add_paper("Localization vs. Semantics: Visual Representations in Unimodal and Multimodal Models",
                     "Zhuowan Li, Cihang Xie, Benjamin Van Durme, Alan Yuille",
                     "EACL, 2024",
@@ -700,6 +702,49 @@ function copy(dest, source) {
                     "https://github.com/Lizw14/visual_probing"
                 )
 
+
+            add_paper("Boosting Dermatoscopic Lesion Segmentation via Diffusion Models with Visual and Textual Prompts",
+                  "Shiyi Du, Xiaosong Wang, Yongyi Lu, Yuyin Zhou, Shaoting Zhang, Alan Yuille, Kang Li, Zongwei Zhou",
+                  "ISBI, 2024",
+                  "https://arxiv.org/abs/2310.02906",
+                  "@inproceedings{du2023boosting,<br>" +
+                  "&nbsp;&nbsp;&nbsp;title     = {Boosting Dermatoscopic Lesion Segmentation via Diffusion Models with Visual and Textual Prompts},<br>" +
+                  "&nbsp;&nbsp;&nbsp;author    = {Du, Shiyi and Wang, Xiaosong and Lu, Yongyi and Zhou, Yuyin and Zhang, Shaoting and Yuille, Alan and Li, Kang and Zhou, Zongwei},<br>" +
+                  "&nbsp;&nbsp;&nbsp;booktitle = {ISBI},<br>" +
+                  "&nbsp;&nbsp;&nbsp;year      = {2024}<br>}",
+                  "Image synthesis approaches, such as generative adversarial networks, have been popular for data augmentation in medical image analysis. These techniques help overcome the shortage of publicly accessible data and quality annotations. However, they often lack control over the contents of generated images, such as disease patterns, lesion locations, and diagnostic attributes. This work adapts the diffusion model, a recent advance in generative models, with lesion-specific visual and textual prompts to generate dermatoscopic images. We demonstrate our diffusion model-based framework's superiority over classical generation models in both image quality and segmentation performance on skin lesions. It achieves a 9% increase in SSIM image quality measure and over 5% improvement in Dice coefficients compared to prior arts.",
+                  "https://arxiv.org/abs/2310.02906",
+                  )
+
+        add_paper("Self-supervised deep learning of gene–gene interactions for improved gene expression recovery",
+          "Qingyue Wei, Md Tauhidul Islam, Yuyin Zhou, Lei Xing",
+          "Briefings in Bioinformatics, 2024",
+          "https://doi.org/10.1093/bib/bbae031",
+          "@article{wei2024geneinteractions,<br>" +
+           "&nbsp;&nbsp;&nbsp;title     = {Self-supervised deep learning of gene–gene interactions for improved gene expression recovery},<br>" +
+           "&nbsp;&nbsp;&nbsp;author    = {Wei, Qingyue and Islam, Md Tauhidul and Zhou, Yuyin and Xing, Lei},<br>" +
+           "&nbsp;&nbsp;&nbsp;journal   = {Briefings in Bioinformatics},<br>" +
+           "&nbsp;&nbsp;&nbsp;year      = {2024},<br>}",
+          "Single-cell RNA sequencing (scRNA-seq) has emerged as a powerful tool to gain biological insights at the cellular level. However, due to technical limitations of the existing sequencing technologies, low gene expression values are often omitted, leading to inaccurate gene counts. Existing methods, including advanced deep learning techniques, struggle to reliably impute gene expressions due to a lack of mechanisms that explicitly consider the underlying biological knowledge of the system. In reality, it has long been recognized that gene–gene interactions may serve as reflective indicators of underlying biology processes, presenting discriminative signatures of the cells. A genomic data analysis framework that is capable of leveraging the underlying gene–gene interactions is thus highly desirable and could allow for more reliable identification of distinctive patterns of the genomic data through extraction and integration of intricate biological characteristics of the genomic data. Here we tackle the problem in two steps to exploit the gene–gene interactions of the system. We first reposition the genes into a 2D grid such that their spatial configuration reflects their interactive relationships. To alleviate the need for labeled ground truth gene expression datasets, a self-supervised 2D convolutional neural network is employed to extract the contextual features of the interactions from the spatially configured genes and impute the omitted values. Extensive experiments with both simulated and experimental scRNA-seq datasets are carried out to demonstrate the superior performance of the proposed strategy against the existing imputation methods.",
+          "https://doi.org/10.1093/bib/bbae031"
+        )
+
+
+        add_paper("MicroSegNet: A Deep Learning Approach for Prostate Segmentation on Micro-Ultrasound Images",
+                    "Hongxu Jiang, Muhammad Imran, Preethika Muralidharan, Anjali Patel, Jake Pensa, Muxuan Liang, Tarik Benidir, Joseph R Grajo, Jason P Joseph, Russell Terry, John Michael DiBianco, Li-Ming Su, Yuyin Zhou, Wayne G Brisbane, Wei Shao",
+                    "Computerized Medical Imaging and Graphics, 2024",
+                    "https://arxiv.org/abs/2305.19956",
+                    "@article{jiang2023microsegnet,<br>" +
+                    "&nbsp;&nbsp;&nbsp;title = {MicroSegNet: A Deep Learning Approach for Prostate Segmentation on Micro-Ultrasound Images},<br>" +
+                    "&nbsp;&nbsp;&nbsp;author = {Jiang, Hongxu and Imran, Muhammad and Muralidharan, Preethika and Patel, Anjali and Pensa, Jake and Liang, Muxuan and Benidir, Tarik and Grajo, Joseph R and Joseph, Jason P and Terry, Russell and DiBianco, John Michael and Su, Li-Ming and Zhou, Yuyin and Brisbane, Wayne G and Shao, Wei},<br>" +
+                    "&nbsp;&nbsp;&nbsp;journal = {Computerized Medical Imaging and Graphics}<br>" +
+                    "&nbsp;&nbsp;&nbsp;year = {2024},<br>",
+                    "Micro-ultrasound (micro-US) is a novel 29-MHz ultrasound technique that provides 3-4 times higher resolution than traditional ultrasound, delivering comparable accuracy for diagnosing prostate cancer to MRI but at a lower cost. Accurate prostate segmentation is crucial for prostate volume measurement, cancer diagnosis, prostate biopsy, and treatment planning. This paper proposes a deep learning approach for automated, fast, and accurate prostate segmentation on micro-US images. Prostate segmentation on micro-US is challenging due to artifacts and indistinct borders between the prostate, bladder, and urethra in the midline. We introduce MicroSegNet, a multi-scale annotation-guided Transformer UNet model to address this challenge. During the training process, MicroSegNet focuses more on regions that are hard to segment (challenging regions), where expert and non-expert annotations show discrepancies. We achieve this by proposing an annotation-guided cross entropy loss that assigns a larger weight to pixels in hard regions and a lower weight to pixels in easy regions. We trained our model using micro-US images from 55 patients, followed by evaluation on 20 patients. Our MicroSegNet model achieved a Dice coefficient of 0.942 and a Hausdorff distance of 2.11 mm, outperforming several state-of-the-art segmentation methods, as well as three human annotators with different experience levels. We will make our code and dataset publicly available to promote transparency and collaboration in research.",
+                    "https://arxiv.org/abs/2305.19956"
+                    )
+
+
+
         add_paper("On the Adversarial Robustness of Camera-based 3D Object Detection",
             "Shaoyuan Xie, Zichao Li, Zeyu Wang, Cihang Xie",
             "TMLR, 2024",
@@ -712,6 +757,20 @@ function copy(dest, source) {
             "In recent years, camera-based 3D object detection has gained widespread attention for its ability to achieve high performance with low computational cost. However, the robustness of these methods to adversarial attacks has not been thoroughly examined. In this study, we conduct the first comprehensive investigation of the robustness of leading camera-based 3D object detection methods under various adversarial conditions. Our experiments reveal five interesting findings: (a) the use of accurate depth estimation effectively improves robustness; (b) depth-estimation-free approaches do not show superior robustness; (c) bird's-eye-view-based representations exhibit greater robustness against localization attacks; (d) incorporating multi-frame benign inputs can effectively mitigate adversarial attacks; and (e) addressing long-tail problems can enhance robustness. We hope our work can provide guidance for the design of future camera-based object detection modules with improved adversarial robustness.",
             "https://arxiv.org/abs/2301.10766",
         )
+
+
+        add_paper("Scaling (Down) CLIP: A Comprehensive Analysis of Data, Architecture, and Training Strategies",
+            "Zichao Li, Cihang Xie, Ekin Dogus Cubuk",
+            "TMLR, 2024",
+            "",
+            "@article{li2024scaling,<br>" +
+            "&nbsp;&nbsp;&nbsp;title={Scaling (Down) CLIP: A Comprehensive Analysis of Data, Architecture, and Training Strategies},<br>" +
+            "&nbsp;&nbsp;&nbsp;author={Li, Zichao and Xie, Cihang and Cubuk, Ekin Dogus},<br>" +
+            "&nbsp;&nbsp;&nbsp;journal = {TMLR},<br>" +
+            "&nbsp;&nbsp;&nbsp;year={2024}<br>}",
+            "This paper investigates the performance of the Contrastive Language-Image Pre-training (CLIP) method when scaled down to limited computation budgets. We explore CLIP from three perspectives: data, architecture, and training strategies. With regards to data, we demonstrate the significance of high-quality training data and show that a smaller dataset of high-quality data can outperform a larger dataset with lower quality. We also examine how model performance varies with different dataset sizes, suggesting that smaller ViT models are better suited for smaller numbers of sample data, while larger models perform better on larger datasets with fixed compute. Additionally, we provide guidance on when to choose a CNN-based architecture or a ViT-based architecture for CLIP training. Moreover, we compare four CLIP training strategies - SLIP, FLIP, CLIP, and CLIP+Data Augmentation - and show that the choice of training strategy depends on the available compute resources. Our analysis reveals that CLIP+Data Augmentation can achieve comparable performance to CLIP using only half of the training data. This work provides practical insights into how to effectively train and deploy CLIP models, making them more accessible and affordable for practical use in various applications.",
+        )
+
 
 
         document.write("</ul><br>")
@@ -832,6 +891,20 @@ function copy(dest, source) {
                     "https://arxiv.org/abs/2307.12591",
                     "https://github.com/UCSC-VLAA/SwinMM/"
                 )
+
+
+        add_paper("3D-TransUNet for Brain Metastases Segmentation in the BraTS2023 Challenge",
+          "Siwei Yang, Xianhang Li, Jieru Mei, Jieneng Chen, Cihang Xie, Yuyin Zhou",
+          "MICCAI Workshop on Brain Lesion, 2023",
+          "https://arxiv.org/abs/2403.15735",
+          "@inproceedings{yang2024brainles,<br>" +
+           "&nbsp;&nbsp;&nbsp;title     = {3D-TransUNet for Brain Metastases Segmentation in the BraTS2023 Challenge},<br>" +
+           "&nbsp;&nbsp;&nbsp;author    = {Yang, Siwei and Li, Xianhang and Mei, Jieru and Chen, Jieneng and Xie, Cihang and Zhou, Yuyin},<br>" +
+           "&nbsp;&nbsp;&nbsp;booktitle = {MICCAI Workshop on Brain Lesion},<br>" +
+           "&nbsp;&nbsp;&nbsp;year      = {2023}<br>}",
+          "Segmenting brain tumors is complex due to their diverse appearances and scales. Brain metastases, the most common type of brain tumor, are a frequent complication of cancer. Therefore, an effective segmentation model for brain metastases must adeptly capture local intricacies to delineate small tumor regions while also integrating global context to understand broader scan features. The TransUNet model, which combines Transformer self-attention with U-Net's localized information, emerges as a promising solution for this task. In this report, we address brain metastases segmentation by training the 3D-TransUNet model on the Brain Tumor Segmentation (BraTS-METS) 2023 challenge dataset. Specifically, we explored two architectural configurations: the Encoder-only 3D-TransUNet, employing Transformers solely in the encoder, and the Decoder-only 3D-TransUNet, utilizing Transformers exclusively in the decoder. For Encoder-only 3D-TransUNet, we note that Masked-Autoencoder pre-training is required for a better initialization of the Transformer Encoder and thus accelerates the training process. We identify that the Decoder-only 3D-TransUNet model should offer enhanced efficacy in the segmentation of brain metastases, as indicated by our 5-fold cross-validation on the training set. However, our use of the Encoder-only 3D-TransUNet model already yield notable results, with an average lesion-wise Dice score of 59.8% on the test set, securing second place in the BraTS-METS 2023 challenge.",
+           "https://arxiv.org/abs/2403.15735",
+        )
 
         add_paper("Patient-Specific Auto-segmentation on Daily kVCT Images for Adaptive Radiation Therapy",
                     "Yizheng Chen, Michael F. Gensheimer, Hilary P. Bagshaw, Santino Butler, Lequan Yu, Yuyin Zhou, Liyue Shen, Nataliya Kovalchuk, Murat Surucu, Daniel T. Chang, Lei Xing, Bin Han",
