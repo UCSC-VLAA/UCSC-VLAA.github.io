@@ -238,22 +238,6 @@ function copy(dest, source) {
 
 
 
-
-        add_paper("Rejuvenating image-GPT as Strong Visual Representation Learners",
-                  "Sucheng Ren, Zeyu Wang, Hongru Zhu, Junfei Xiao, Alan Yuille, Cihang Xie",
-                  null,
-                  "https://arxiv.org/abs/2312.02147",
-                  "@article{ren2023digpt,<br>" +
-                  "&nbsp;&nbsp;&nbsp;title     = {Rejuvenating i-GPT for Scalable Visual Representation Learning},<br>" +
-                  "&nbsp;&nbsp;&nbsp;author    = {Ren, Sucheng and Wang, Zeyu and Zhu, Hongru and Xiao, Junfei and Yuille, Alan and Xie, Cihang},<br>" +
-                  "&nbsp;&nbsp;&nbsp;journal   = {arXiv preprint arXiv:2312.02147},<br>" +
-                  "&nbsp;&nbsp;&nbsp;year      = {2023}<br>}",
-                  "This paper enhances image-GPT (iGPT), one of the pioneering works that introduce autoregressive pretraining to predict next pixels for visual representation learning. Two simple yet essential changes are made. First, we shift the prediction target from raw pixels to semantic tokens, enabling a higher-level understanding of visual content. Second, we supplement the autoregressive modeling by instructing the model to predict not only the next tokens but also the visible tokens. This pipeline is particularly effective when semantic tokens are encoded by discriminatively trained models, such as CLIP. We introduce this novel approach as D-iGPT. Extensive experiments showcase that D-iGPT excels as a strong learner of visual representations: A notable achievement of D-iGPT is its compelling performance on the ImageNet-1K dataset -- by training on publicly available datasets, D-iGPT achieves 89.5% top-1 accuracy with a vanilla ViT-Large model. This model also shows strong generalization on the downstream task and robustness on out-of-distribution samples. Code is avaiable at https://github.com/OliverRensu/D-iGPT.",
-                  "https://arxiv.org/abs/2312.02147",
-                  "https://github.com/OliverRensu/D-iGPT"
-                  )
-
-
         add_paper("A Semantic Space is Worth 256 Language Descriptions: Make Stronger Segmentation Models with Descriptive Properties",
                   "Junfei Xiao, Ziqi Zhou, Wenxuan Li, Shiyi Lan, Jieru Mei, Zhiding Yu, Bingchen Zhao, Alan Yuille, Yuyin Zhou, Cihang Xie",
                   null,
@@ -315,21 +299,6 @@ function copy(dest, source) {
                   )
 
 
-        add_paper("FedConv: Enhancing Convolutional Neural Networks for Handling Data Heterogeneity in Federated Learning",
-                  "Peiran Xu, Zeyu Wang, Jieru Mei, Liangqiong Qu, Alan Yuille, Cihang Xie, Yuyin Zhou",
-                  null,
-                  "https://arxiv.org/abs/2310.04412",
-                  "@article{xu2023fedconv,<br>" +
-                  "&nbsp;&nbsp;&nbsp;title     = {FedConv: Enhancing Convolutional Neural Networks for Handling Data Heterogeneity in Federated Learning},<br>" +
-                  "&nbsp;&nbsp;&nbsp;author    = {Xu, Peiran and Wang, Zeyu and Mei, Jieru and Qu, Liangqiong and Yuille, Alan and Xie, Cihang and Zhou, Yuyin},<br>" +
-                  "&nbsp;&nbsp;&nbsp;journal   = {arXiv preprint arXiv:2310.04412},<br>" +
-                  "&nbsp;&nbsp;&nbsp;year      = {2023}<br>}",
-                  "Federated learning (FL) is an emerging paradigm in machine learning, where a shared model is collaboratively learned using data from multiple devices to mitigate the risk of data leakage. While recent studies suggest that Vision Transformer (ViT) outperforms Convolutional Neural Networks (CNNs) in addressing data heterogeneity in FL, the specific architectural components that contribute to this advantage are not fully understood. This paper systematically investigates the impact of different architectural elements, such as activation functions and normalization layers, on performance in heterogeneous FL. Through empirical analyses, we offer general guidance on micro-architecture design principles for heterogeneous FL. Our findings indicate that with strategic architectural modifications, pure CNNs can achieve robustness comparable to or exceeding that of ViTs in handling heterogeneous data in FL. Our approach is compatible with existing FL techniques and delivers state-of-the-art solutions across various FL benchmarks. The code is available at https://github.com/UCSC-VLAA/FedConv.",
-                  "https://arxiv.org/abs/2310.04412",
-                  "https://github.com/UCSC-VLAA/FedConv"
-                  )
-
-
         add_paper("How Many Unicorns Are in This Image? A Safety Evaluation Benchmark for Vision LLMs",
                   "Haoqin Tu, Chenhang Cui, Zijun Wang, Yiyang Zhou, Bingchen Zhao, Junlin Han, Wangchunshu Zhou, Huaxiu Yao, Cihang Xie",
                   null,
@@ -385,26 +354,7 @@ function copy(dest, source) {
                     "&nbsp;&nbsp;&nbsp;year={2023}<br>}",
                     "The Diffusion Probabilistic Model (DPM) has emerged as a highly effective generative model in the field of computer vision. Its intermediate latent vectors offer rich semantic information, making it an attractive option for various downstream tasks such as segmentation and detection. In order to explore its potential further, we have taken a step forward and considered a more complex scenario in the medical image domain, specifically, under an unsupervised adaptation condition. To this end, we propose a Diffusion-based and Prototype-guided network (DP-Net) for unsupervised domain adaptive segmentation. Concretely, our DP-Net consists of two stages: 1) Distribution Aligned Diffusion (DADiff), which involves training a domain discriminator to minimize the difference between the intermediate features generated by the DPM, thereby aligning the inter-domain distribution; and 2) Prototype-guided Consistency Learning (PCL), which utilizes feature centroids as prototypes and applies a prototype-guided loss to ensure that the segmentor learns consistent content from both source and target domains. Our approach is evaluated on fundus datasets through a series of experiments, which demonstrate that the performance of the proposed method is reliable and outperforms state-of-the-art methods. Our work presents a promising direction for using DPM in complex medical image scenarios, opening up new possibilities for further research in medical imaging.",
                     "https://arxiv.org/abs/2303.12313"
-                    )
-
-
-        add_paper("Unleashing the Power of Visual Prompting At the Pixel Level",
-            "Junyang Wu, Xianhang Li, Chen Wei, Huiyu Wang, Alan Yuille, Yuyin Zhou, Cihang Xie",
-            // "arxiv, 2022",
-            null,
-            "https://arxiv.org/abs/2212.10556",
-            "@article{wu2022evp,<br>" +
-             "&nbsp;&nbsp;&nbsp;title   = {Unleashing the Power of Visual Prompting At the Pixel Level},<br>" +
-             "&nbsp;&nbsp;&nbsp;author  = {Wu, Junyang and Li, Xianhang and Wei, Chen and Wang, Huiyu and Yuille, Alan and Zhou, Yuyin and Xie, Cihang},<br>" +
-             "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2212.10556},<br>" +
-             "&nbsp;&nbsp;&nbsp;year    = {2022}<br>}",
-            "This paper presents a simple and effective visual prompting method for adapting pre-trained models to downstream recognition tasks. Our method includes two key designs. First, rather than directly adding together the prompt and the image, we treat the prompt as an extra and independent learnable component. We show that the strategy of reconciling the prompt and the image matters, and find that warping the prompt around a properly shrinked image empirically works the best. Second, we re-introduce two \"old tricks\" commonly used in building transferable adversarial examples, i.e., input diversity and gradient normalization, into visual prompting. These techniques improve optimization and enable the prompt to generalize better. We provide extensive experimental results to demonstrate the effectiveness of our method. Using a CLIP model, our prompting method sets a new record of 82.8% average accuracy across 12 popular classification datasets, substantially surpassing the prior art by +5.6%. It is worth noting that this prompting performance already outperforms linear probing by +2.1% and can even match fully fine-tuning in certain datasets. In addition, our prompting method shows competitive performance across different data scales and against distribution shifts. The code is publicly available at https://github.com/UCSC-VLAA/EVP.",
-            "https://arxiv.org/abs/2212.10556",
-            "https://github.com/UCSC-VLAA/EVP"
-        )
-
-
-        
+                    )        
 
 
 
@@ -572,6 +522,21 @@ function copy(dest, source) {
         document.write("<ul>")
 
 
+        add_paper("Rejuvenating image-GPT as Strong Visual Representation Learners",
+                  "Sucheng Ren, Zeyu Wang, Hongru Zhu, Junfei Xiao, Alan Yuille, Cihang Xie",
+                  "ICML, 2024",
+                  "https://arxiv.org/abs/2312.02147",
+                  "@inproceedings{ren2024digpt,<br>" +
+                  "&nbsp;&nbsp;&nbsp;title     = {Rejuvenating i-GPT for Scalable Visual Representation Learning},<br>" +
+                  "&nbsp;&nbsp;&nbsp;author    = {Ren, Sucheng and Wang, Zeyu and Zhu, Hongru and Xiao, Junfei and Yuille, Alan and Xie, Cihang},<br>" +
+                  "&nbsp;&nbsp;&nbsp;booktitle = {ICML},<br>" +
+                  "&nbsp;&nbsp;&nbsp;year      = {2024}<br>}",
+                  "This paper enhances iGPT, one of the pioneering works that introduce autoregressive pretraining to predict the next pixels for visual representation learning. Two simple yet essential changes are made. First, we shift the prediction target from raw pixels to semantic tokens, enabling a higher-level understanding of visual content. Second, we supplement the autoregressive modeling by instructing the model to predict not only the next tokens but also the visible tokens. This pipeline is particularly effective when semantic tokens are encoded by discriminatively trained models, such as CLIP. We introduce this novel approach as D-iGPT. Extensive experiments showcase that D-iGPT excels as a strong learner of visual representations: A notable achievement is its compelling performance on the ImageNet-1K dataset --- by training on publicly available datasets, D-iGPT unprecedentedly achieves 90.0% top-1 accuracy with a vanilla ViT-H. Additionally, D-iGPT shows strong generalization on the downstream task. Code is included in the supplementary materials. Code is avaiable at https://github.com/OliverRensu/D-iGPT.",
+                  "https://arxiv.org/abs/2312.02147",
+                  "https://github.com/OliverRensu/D-iGPT"
+                  )
+
+
         add_paper("Learning to Bootstrap for Combating Label Noise",
                     "Yuyin Zhou, Xianhang Li, Fengze Liu, Xuxi Chen, Lequan Yu, Cihang Xie , Matthew P. Lungren, Lei Xing",
                     "CVPR, 2024",
@@ -671,6 +636,19 @@ function copy(dest, source) {
            "https://arxiv.org/abs/2301.04075",
         )
 
+         add_paper("Masked Autoencoders are Secretly Efficient Learners",
+           "Zihao Wei, Chen Wei, Jieru Mei, Yutong Bai, Zeyu Wang, Xianhang Li, Huiyu Wang, Alan Yuille, Yuyin Zhou, Cihang Xie",
+           "CVPR Efficient Deep Learning for Computer Vision Workshop, 2024",
+           "",
+           "@inproceedings{wei2023mae,<br>" +
+           "&nbsp;&nbsp;&nbsp;title     = {Masked Autoencoders are Secretly Efficient Learners},<br>" +
+           "&nbsp;&nbsp;&nbsp;author    = {Wei, Zihao and Wei, Chen and Mei, Jieru and Bai, Yutong and Wang, Zeyu and Li, Xianhang and Wang, Huiyu and Yuille, Alan and Zhou, Yuyin and Xie, Cihang},<br>" +
+           "&nbsp;&nbsp;&nbsp;booktitle = {CVPR Efficient Deep Learning for Computer Vision Workshop},<br>" +
+           "&nbsp;&nbsp;&nbsp;year      = {2024}<br>}",
+           "This paper provides an efficiency study of training Masked Autoencoders (MAE), a framework introduced by He etal for pre-training Vision Transformers (ViTs). Our results surprisingly reveal that MAE can learn at a faster speed and with fewer training samples while maintaining high performance. To accelerate its training, our changes are simple and straightforward: in the pre-training stage, we aggressively increase the masking ratio, decrease the number of training epochs, and reduce the decoder depth to lower the pre-training cost; in the fine-tuning stage, we demonstrate that layer-wise learning rate decay plays a vital role in unlocking the full potential of pre-trained models. Under this setup, we further verify the sample efficiency of MAE: training MAE is hardly affected even when using only 20% of the original training set. By combining these strategies, we are able to accelerate MAE pre-training by a factor of 82 or more, with little performance drop. For example, we are able to pre-train a ViT-B in ~9 hours using a single NVIDIA A100 GPU and achieve 82.9% top-1 accuracy on the downstream ImageNet classification task. Additionally, we also verify the speed acceleration on another MAE extension, SupMAE.",
+           "",
+        )
+
 
 
       add_paper("Tuning LayerNorm in Attention: Towards Efficient MultiModal LLM Finetuning",
@@ -715,12 +693,27 @@ function copy(dest, source) {
                     "https://github.com/Lizw14/visual_probing"
                 )
 
+            
+
+            add_paper("Brain Tumor Segmentation Through SuperVoxel Transformer",
+                  "Yunfei Xie, Ce Zhou, Jieru Mei, Xianhang Li, Cihang Xie, Yuyin Zhou",
+                  "ISBI, 2024",
+                  "",
+                  "@inproceedings{xie2024brats,<br>" +
+                  "&nbsp;&nbsp;&nbsp;title     = {Brain Tumor Segmentation Through SuperVoxel Transformer},<br>" +
+                  "&nbsp;&nbsp;&nbsp;author    = {Xie, Yunfei and Zhou, Ce and Mei, Jieru and Li, Xianhang and Xie, Cihang and Zhou, Yuyin},<br>" +
+                  "&nbsp;&nbsp;&nbsp;booktitle = {ISBI},<br>" +
+                  "&nbsp;&nbsp;&nbsp;year      = {2024}<br>}",
+                  "Segmenting brain tumors presents a multifaceted challenge due to their varied appearances and scales. This study endeavors to develop segmentation models with broad applicability across brain tumors, highlighting the importance of models capable of accommodating diverse lesion types, institutions, and demographic characteristics. Specifically, we investigate two CNN-Transformer hybrid models within the BraTS-ISBI 2024 challenge, which seeks to advance generalized segmentation models for brain tumors. The first model is the decoder-only variant of the 3D TransUNet, built upon nnUNet, featuring a CNN encoder and a hybrid CNN-Transformer decoder, which has shown superior performance on the brain metastases segmentation. The Transformer decoder treats segmentation as a binary mask classification task, refining queries through cross-attention. Additionally, we introduce a novel supervoxel Transformer to improve interpretability by efficiently clustering voxels with similar characteristics. This model incorporates a supervoxel cross-attention mechanism to iteratively refine assignments and features. Both models undergo training on an expanded augmented  BraTS-ISBI 2024 challenge dataset and are combined for validation through ensembling techniques. Our best solution achieved 2nd place on the leaderboard during the validation phase.",
+                  "",
+                  )
+
 
             add_paper("Boosting Dermatoscopic Lesion Segmentation via Diffusion Models with Visual and Textual Prompts",
                   "Shiyi Du, Xiaosong Wang, Yongyi Lu, Yuyin Zhou, Shaoting Zhang, Alan Yuille, Kang Li, Zongwei Zhou",
                   "ISBI, 2024",
                   "https://arxiv.org/abs/2310.02906",
-                  "@inproceedings{du2023boosting,<br>" +
+                  "@inproceedings{du2024boosting,<br>" +
                   "&nbsp;&nbsp;&nbsp;title     = {Boosting Dermatoscopic Lesion Segmentation via Diffusion Models with Visual and Textual Prompts},<br>" +
                   "&nbsp;&nbsp;&nbsp;author    = {Du, Shiyi and Wang, Xiaosong and Lu, Yongyi and Zhou, Yuyin and Zhang, Shaoting and Yuille, Alan and Li, Kang and Zhou, Zongwei},<br>" +
                   "&nbsp;&nbsp;&nbsp;booktitle = {ISBI},<br>" +
@@ -757,18 +750,49 @@ function copy(dest, source) {
                     )
 
 
+        add_paper("Unleashing the Power of Visual Prompting At the Pixel Level",
+            "Junyang Wu, Xianhang Li, Chen Wei, Huiyu Wang, Alan Yuille, Yuyin Zhou, Cihang Xie",
+            "TMLR, 2024",
+            "https://arxiv.org/abs/2212.10556",
+            "@article{wu2024evp,<br>" +
+             "&nbsp;&nbsp;&nbsp;title   = {Unleashing the Power of Visual Prompting At the Pixel Level},<br>" +
+             "&nbsp;&nbsp;&nbsp;author  = {Wu, Junyang and Li, Xianhang and Wei, Chen and Wang, Huiyu and Yuille, Alan and Zhou, Yuyin and Xie, Cihang},<br>" +
+             "&nbsp;&nbsp;&nbsp;journal = {TMLR},<br>" +
+             "&nbsp;&nbsp;&nbsp;year    = {2024}<br>}",
+            "This paper presents a simple and effective visual prompting method for adapting pre-trained models to downstream recognition tasks. Our method includes two key designs. First, rather than directly adding together the prompt and the image, we treat the prompt as an extra and independent learnable component. We show that the strategy of reconciling the prompt and the image matters, and find that warping the prompt around a properly shrinked image empirically works the best. Second, we re-introduce two \"old tricks\" commonly used in building transferable adversarial examples, i.e., input diversity and gradient normalization, into visual prompting. These techniques improve optimization and enable the prompt to generalize better. We provide extensive experimental results to demonstrate the effectiveness of our method. Using a CLIP model, our prompting method sets a new record of 82.8% average accuracy across 12 popular classification datasets, substantially surpassing the prior art by +5.6%. It is worth noting that this prompting performance already outperforms linear probing by +2.1% and can even match fully fine-tuning in certain datasets. In addition, our prompting method shows competitive performance across different data scales and against distribution shifts. The code is publicly available at https://github.com/UCSC-VLAA/EVP.",
+            "https://arxiv.org/abs/2212.10556",
+            "https://github.com/UCSC-VLAA/EVP"
+        )
+
+
+        add_paper("FedConv: Enhancing Convolutional Neural Networks for Handling Data Heterogeneity in Federated Learning",
+                  "Peiran Xu, Zeyu Wang, Jieru Mei, Liangqiong Qu, Alan Yuille, Cihang Xie, Yuyin Zhou",
+                  "TMLR, 2024",
+                  "https://arxiv.org/abs/2310.04412",
+                  "@article{xu2024fedconv,<br>" +
+                  "&nbsp;&nbsp;&nbsp;title   = {FedConv: Enhancing Convolutional Neural Networks for Handling Data Heterogeneity in Federated Learning},<br>" +
+                  "&nbsp;&nbsp;&nbsp;author  = {Xu, Peiran and Wang, Zeyu and Mei, Jieru and Qu, Liangqiong and Yuille, Alan and Xie, Cihang and Zhou, Yuyin},<br>" +
+                  "&nbsp;&nbsp;&nbsp;journal = {TMLR},<br>" +
+                  "&nbsp;&nbsp;&nbsp;year    = {2024}<br>}",
+                  "Federated learning (FL) is an emerging paradigm in machine learning, where a shared model is collaboratively learned using data from multiple devices to mitigate the risk of data leakage. While recent studies suggest that Vision Transformer (ViT) outperforms Convolutional Neural Networks (CNNs) in addressing data heterogeneity in FL, the specific architectural components that contribute to this advantage are not fully understood. This paper systematically investigates the impact of different architectural elements, such as activation functions and normalization layers, on performance in heterogeneous FL. Through empirical analyses, we offer general guidance on micro-architecture design principles for heterogeneous FL. Our findings indicate that with strategic architectural modifications, pure CNNs can achieve robustness comparable to or exceeding that of ViTs in handling heterogeneous data in FL. Our approach is compatible with existing FL techniques and delivers state-of-the-art solutions across various FL benchmarks. The code is available at https://github.com/UCSC-VLAA/FedConv.",
+                  "https://arxiv.org/abs/2310.04412",
+                  "https://github.com/UCSC-VLAA/FedConv"
+                  )
+
+
 
         add_paper("On the Adversarial Robustness of Camera-based 3D Object Detection",
             "Shaoyuan Xie, Zichao Li, Zeyu Wang, Cihang Xie",
             "TMLR, 2024",
             "https://arxiv.org/abs/2301.10766",
             "@article{xie2024robustness,<br>" +
-            "&nbsp;&nbsp;&nbsp;title={On the Adversarial Robustness of Camera-based 3D Object Detection},<br>" +
-            "&nbsp;&nbsp;&nbsp;author={Xie, Shaoyuan and Li, Zichao and Wang, Zeyu and Xie, Cihang},<br>" +
+            "&nbsp;&nbsp;&nbsp;title   = {On the Adversarial Robustness of Camera-based 3D Object Detection},<br>" +
+            "&nbsp;&nbsp;&nbsp;author  = {Xie, Shaoyuan and Li, Zichao and Wang, Zeyu and Xie, Cihang},<br>" +
             "&nbsp;&nbsp;&nbsp;journal = {TMLR},<br>" +
-            "&nbsp;&nbsp;&nbsp;year={2024}<br>}",
+            "&nbsp;&nbsp;&nbsp;year    = {2024}<br>}",
             "In recent years, camera-based 3D object detection has gained widespread attention for its ability to achieve high performance with low computational cost. However, the robustness of these methods to adversarial attacks has not been thoroughly examined. In this study, we conduct the first comprehensive investigation of the robustness of leading camera-based 3D object detection methods under various adversarial conditions. Our experiments reveal five interesting findings: (a) the use of accurate depth estimation effectively improves robustness; (b) depth-estimation-free approaches do not show superior robustness; (c) bird's-eye-view-based representations exhibit greater robustness against localization attacks; (d) incorporating multi-frame benign inputs can effectively mitigate adversarial attacks; and (e) addressing long-tail problems can enhance robustness. We hope our work can provide guidance for the design of future camera-based object detection modules with improved adversarial robustness.",
             "https://arxiv.org/abs/2301.10766",
+            "https://github.com/Daniel-xsy/BEV-Attack"
         )
 
 
@@ -777,10 +801,10 @@ function copy(dest, source) {
             "TMLR, 2024",
             "https://openreview.net/forum?id=t4nnCi5AO6",
             "@article{li2024scaling,<br>" +
-            "&nbsp;&nbsp;&nbsp;title={Scaling (Down) CLIP: A Comprehensive Analysis of Data, Architecture, and Training Strategies},<br>" +
-            "&nbsp;&nbsp;&nbsp;author={Li, Zichao and Xie, Cihang and Cubuk, Ekin Dogus},<br>" +
+            "&nbsp;&nbsp;&nbsp;title   = {Scaling (Down) CLIP: A Comprehensive Analysis of Data, Architecture, and Training Strategies},<br>" +
+            "&nbsp;&nbsp;&nbsp;author  = {Li, Zichao and Xie, Cihang and Cubuk, Ekin Dogus},<br>" +
             "&nbsp;&nbsp;&nbsp;journal = {TMLR},<br>" +
-            "&nbsp;&nbsp;&nbsp;year={2024}<br>}",
+            "&nbsp;&nbsp;&nbsp;year    = {2024}<br>}",
             "This paper investigates the performance of the Contrastive Language-Image Pre-training (CLIP) method when scaled down to limited computation budgets. We explore CLIP from three perspectives: data, architecture, and training strategies. With regards to data, we demonstrate the significance of high-quality training data and show that a smaller dataset of high-quality data can outperform a larger dataset with lower quality. We also examine how model performance varies with different dataset sizes, suggesting that smaller ViT models are better suited for smaller numbers of sample data, while larger models perform better on larger datasets with fixed compute. Additionally, we provide guidance on when to choose a CNN-based architecture or a ViT-based architecture for CLIP training. Moreover, we compare four CLIP training strategies - SLIP, FLIP, CLIP, and CLIP+Data Augmentation - and show that the choice of training strategy depends on the available compute resources. Our analysis reveals that CLIP+Data Augmentation can achieve comparable performance to CLIP using only half of the training data. This work provides practical insights into how to effectively train and deploy CLIP models, making them more accessible and affordable for practical use in various applications.",
             "https://openreview.net/forum?id=t4nnCi5AO6"
         )
