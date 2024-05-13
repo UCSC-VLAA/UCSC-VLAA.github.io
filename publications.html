@@ -652,7 +652,7 @@ function copy(dest, source) {
 
 
       add_paper("Tuning LayerNorm in Attention: Towards Efficient MultiModal LLM Finetuning",
-                  "Haoqin Tu, Chen Wei, Jieru Mei, Cihang Xie",
+                  "Bingchen Zhao, Haoqin Tu, Chen Wei, Jieru Mei, Cihang Xie",
                   "ICLR, 2024",
                   "https://arxiv.org/abs/2312.11420",
                   "@inproceedings{zhao2024tuning,<br>" +
@@ -661,7 +661,8 @@ function copy(dest, source) {
                   "&nbsp;&nbsp;&nbsp;booktitle   = {ICLR},<br>" +
                   "&nbsp;&nbsp;&nbsp;year        = {2024}<br>}",
                   "This paper introduces an efficient strategy to transform Large Language Models (LLMs) into Multi-Modal Large Language Models (MLLMs). By conceptualizing this transformation as a domain adaptation process, i.e., transitioning from text understanding to embracing multiple modalities, we intriguingly note that, within each attention block, tuning LayerNorm suffices to yield strong performance. Moreover, when benchmarked against other tuning approaches like full parameter finetuning or LoRA, its benefits on efficiency are substantial. For example, when compared to LoRA on a 13B model scale, performance can be enhanced by an average of over 20% across five multi-modal tasks, and meanwhile, results in a significant reduction of trainable parameters by 41.9% and a decrease in GPU memory usage by 17.6%. On top of this LayerNorm strategy, we showcase that selectively tuning only with conversational data can improve efficiency further. Beyond these empirical outcomes, we provide a comprehensive analysis to explore the role of LayerNorm in adapting LLMs to the multi-modal domain and improving the expressive power of the model.",
-                  "https://arxiv.org/abs/2312.11420"
+                  "https://arxiv.org/abs/2312.11420",
+                  "https://huggingface.co/docs/peft/main/en/package_reference/layernorm_tuning"
                   )
 
 
@@ -675,7 +676,8 @@ function copy(dest, source) {
                      "&nbsp;&nbsp;&nbsp;booktitle = {NAACL},<br>" +
                      "&nbsp;&nbsp;&nbsp;year      = {2024}<br>}",
                     "Federated embodied agent learning protects the data privacy of individual visual environments by keeping data locally at each client (the individual environment) during training. However, since the local data is inaccessible to the server under federated learning, attackers may easily poison the training data of the local client to build a backdoor in the agent without notice. Deploying such an agent raises the risk of potential harm to humans, as the attackers may easily navigate and control the agent as they wish via the backdoor. Towards Byzantine-robust federated embodied agent learning, in this paper, we study the attack and defense for the task of vision-and-language navigation (VLN), where the agent is required to follow natural language instructions to navigate indoor environments. First, we introduce a simple but effective attack strategy, Navigation as Wish (NAW), in which the malicious client manipulates local trajectory data to implant a backdoor into the global model. Results on two VLN datasets (R2R and RxR) show that NAW can easily navigate the deployed VLN agent regardless of the language instruction, without affecting its performance on normal test sets. Then, we propose a new Prompt-Based Aggregation (PBA) to defend against the NAW attack in federated VLN, which provides the server with a ''prompt'' of the vision-and-language alignment variance between the benign and malicious clients so that they can be distinguished during training. We validate the effectiveness of the PBA method on protecting the global model from the NAW attack, which outperforms other state-of-the-art defense methods by a large margin in the defense metrics on R2R and RxR.",
-                    "https://arxiv.org/abs/2211.14769"
+                    "https://arxiv.org/abs/2211.14769",
+                    "https://github.com/eric-ai-lab/Naivgation-as-wish"
                 )
 
 
