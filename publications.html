@@ -71,6 +71,7 @@
           <li><a class="nav-link scrollto" href="people.html">People</a></li>
           <li><a class="nav-link scrollto active" href="publications.html">Publications</a></li>
           <li><a class="nav-link scrollto" href="https://github.com/UCSC-VLAA">GitHub</a></li>
+          <li><a class="nav-link scrollto" href="https://huggingface.co/UCSC-VLAA">HuggingFace</a></li>
           <li><a class="nav-link scrollto" href="opening.html">Opening</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -179,15 +180,149 @@ function copy(dest, source) {
         document.write("<ul><br>")
 
 
+        add_paper("What If We Recaption Billions of Web Images with LLaMA-3",
+          "Xianhang Li, Haoqin Tu, Mude Hui, Zeyu Wang, Bingchen Zhao, Junfei Xiao, Sucheng Ren, Jieru Mei, Qing Liu, Huangjie Zheng, Yuyin Zhou, Cihang Xie",
+          null,
+          "https://arxiv.org/abs/2406.08478",
+          "@article{li2024recaption,<br>" +
+           "&nbsp;&nbsp;&nbsp;title   = {What If We Recaption Billions of Web Images with LLaMA-3},<br>" +
+           "&nbsp;&nbsp;&nbsp;author  = {Li, Xianhang and Tu, Haoqin and Hui, Mude and Wang, Zeyu and Zhao, Bingchen and Xiao, Junfei and Ren, Sucheng and Mei, Jieru and Liu, Qing and Zheng, Huangjie and Zhou, Yuyin and Xie, Cihang},<br>" +
+           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2406.08478},<br>" +
+           "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
+          "Web-crawled image-text pairs are inherently noisy. Prior studies demonstrate that semantically aligning and enriching textual descriptions of these pairs can significantly enhance model training across various vision-language tasks, particularly text-to-image generation. However, large-scale investigations in this area remain predominantly closed-source. Our paper aims to bridge this community effort, leveraging the powerful and \textit{open-sourced} LLaMA-3, a GPT-4 level LLM. Our recaptioning pipeline is simple: first, we fine-tune a LLaMA-3-8B powered LLaVA-1.5 and then employ it to recaption 1.3 billion images from the DataComp-1B dataset. Our empirical results confirm that this enhanced dataset, Recap-DataComp-1B, offers substantial benefits in training advanced vision-language models. For discriminative models like CLIP, we observe enhanced zero-shot performance in cross-modal retrieval tasks. For generative models like text-to-image Diffusion Transformers, the generated images exhibit a significant improvement in alignment with users' text instructions, especially in following complex queries. Our project page is https://www.haqtu.me/Recap-Datacomp-1B/",
+          "https://arxiv.org/abs/2406.08478",
+          "https://www.haqtu.me/Recap-Datacomp-1B/"
+        )
+
+
+        add_paper("Medical Vision Generalist: Unifying Medical Imaging Tasks in Context",
+          "Sucheng Ren, Xiaoke Huang, Xianhang Li, Junfei Xiao, Jieru Mei, Zeyu Wang, Alan Yuille, Yuyin Zhou",
+          null,
+          "https://arxiv.org/abs/2406.05565",
+          "@article{ren2024medicalvision,<br>" +
+           "&nbsp;&nbsp;&nbsp;title   = {Medical Vision Generalist: Unifying Medical Imaging Tasks in Context},<br>" +
+           "&nbsp;&nbsp;&nbsp;author  = {Ren, Sucheng and Huang, Xiaoke and Li, Xianhang and Xiao, Junfei and Mei, Jieru and Wang, Zeyu and Yuille, Alan and Zhou, Yuyin},<br>" +
+           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2406.05565},<br>" +
+           "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
+          "This study presents Medical Vision Generalist (MVG), the first foundation model capable of handling various medical imaging tasks -- such as cross-modal synthesis, image segmentation, denoising, and inpainting -- within a unified image-to-image generation framework. Specifically, MVG employs an in-context generation strategy that standardizes the handling of inputs and outputs as images. By treating these tasks as an image generation process conditioned on prompt image-label pairs and input images, this approach enables a flexible unification of various tasks, even those spanning different modalities and datasets. To capitalize on both local and global context, we design a hybrid method combining masked image modeling with autoregressive training for conditional image generation. This hybrid approach yields the most robust performance across all involved medical imaging tasks. To rigorously evaluate MVG's capabilities, we curated the first comprehensive generalist medical vision benchmark, comprising 13 datasets and spanning four imaging modalities (CT, MRI, X-ray, and micro-ultrasound). Our results consistently establish MVG's superior performance, outperforming existing vision generalists, such as Painter and LVM. Furthermore, MVG exhibits strong scalability, with its performance demonstrably improving when trained on a more diverse set of tasks, and can be effectively adapted to unseen datasets with only minimal task-specific samples. The code is available at https://github.com/OliverRensu/MVG.",
+          "https://arxiv.org/abs/2406.05565",
+          "https://github.com/OliverRensu/MVG"
+        )
+
+
+        add_paper("Fast Denoising Diffusion Probabilistic Models for Medical Image-to-Image Generation",
+          "Hongxu Jiang, Muhammad Imran, Linhai Ma, Teng Zhang, Yuyin Zhou, Muxuan Liang, Kuang Gong, Wei Shao",
+          null,
+          "https://arxiv.org/abs/2405.14802",
+          "@article{jiang2024fastddpm,<br>" +
+           "&nbsp;&nbsp;&nbsp;title   = {Fast Denoising Diffusion Probabilistic Models for Medical Image-to-Image Generation},<br>" +
+           "&nbsp;&nbsp;&nbsp;author  = {Jiang, Hongxu and Imran, Muhammad and Ma, Linhai and Zhang, Teng and Zhou, Yuyin and Liang, Muxuan and Gong, Kuang and Shao, Wei},<br>" +
+           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2405.14802},<br>" +
+           "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
+          "Denoising diffusion probabilistic models (DDPMs) have achieved unprecedented success in computer vision. However, they remain underutilized in medical imaging, a field crucial for disease diagnosis and treatment planning. This is primarily due to the high computational cost associated with (1) the use of large number of time steps (e.g., 1,000) in diffusion processes and (2) the increased dimensionality of medical images, which are often 3D or 4D. Training a diffusion model on medical images typically takes days to weeks, while sampling each image volume takes minutes to hours. To address this challenge, we introduce Fast-DDPM, a simple yet effective approach capable of improving training speed, sampling speed, and generation quality simultaneously. Unlike DDPM, which trains the image denoiser across 1,000 time steps, Fast-DDPM trains and samples using only 10 time steps. The key to our method lies in aligning the training and sampling procedures. We introduced two efficient noise schedulers with 10 time steps: one with uniform time step sampling and another with non-uniform sampling. We evaluated Fast-DDPM across three medical image-to-image generation tasks: multi-image super-resolution, image denoising, and image-to-image translation. Fast-DDPM outperformed DDPM and current state-of-the-art methods based on convolutional networks and generative adversarial networks in all tasks. Additionally, Fast-DDPM reduced training time by a factor of 5 and sampling time by a factor of 100 compared to DDPM. Our code is publicly available at: https://github.com/mirthAI/Fast-DDPM.",
+          "https://arxiv.org/abs/2405.14802",
+          "https://github.com/mirthAI/Fast-DDPM"
+        )
+
+
+        add_paper("Autoregressive Pretraining with Mamba in Vision",
+          "Sucheng Ren, Xianhang Li, Haoqin Tu, Feng Wang, Fangxun Shu, Lei Zhang, Jieru Mei, Linjie Yang, Peng Wang, Heng Wang, Alan Yuille, Cihang Xie",
+          null,
+          "https://arxiv.org/abs/2406.07537",
+          "@article{ren2024autoregressive,<br>" +
+           "&nbsp;&nbsp;&nbsp;title   = {Autoregressive Pretraining with Mamba in Vision},<br>" +
+           "&nbsp;&nbsp;&nbsp;author  = {Ren, Sucheng and Li, Xianhang and Tu, Haoqin and Wang, Feng and Shu, Fangxun and Zhang, Lei and Mei, Jieru and Yang, Linjie and Wang, Peng and Wang, Heng and Yuille, Alan and Xie, Cihang},<br>" +
+           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2406.07537},<br>" +
+           "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
+          "The vision community has started to build with the recently developed state space model, Mamba, as the new backbone for a range of tasks. This paper shows that Mamba's visual capability can be significantly enhanced through autoregressive pretraining, a direction not previously explored. Efficiency-wise, the autoregressive nature can well capitalize on the Mamba's unidirectional recurrent structure, enabling faster overall training speed compared to other training strategies like mask modeling. Performance-wise, autoregressive pretraining equips the Mamba architecture with markedly higher accuracy over its supervised-trained counterparts and, more importantly, successfully unlocks its scaling potential to large and even huge model sizes. For example, with autoregressive pretraining, a base-size Mamba attains 83.2% ImageNet accuracy, outperforming its supervised counterpart by 2.0%; our huge-size Mamba, the largest Vision Mamba to date, attains 85.0% ImageNet accuracy (85.5% when finetuned with 384x384 inputs), notably surpassing all other Mamba variants in vision. The code is available at https://github.com/OliverRensu/ARM.",
+          "https://arxiv.org/abs/2406.07537",
+          "https://github.com/OliverRensu/ARM"
+        )
+
+
+        add_paper("Scaling White-Box Transformers for Vision",
+          "Jinrui Yang, Xianhang Li, Druv Pai, Yuyin Zhou, Yi Ma, Yaodong Yu, Cihang Xie",
+          null,
+          "https://arxiv.org/abs/2405.20299",
+          "@article{yang2024scaling,<br>" +
+           "&nbsp;&nbsp;&nbsp;title   = {Scaling White-Box Transformers for Vision},<br>" +
+           "&nbsp;&nbsp;&nbsp;author  = {Yang, Jinrui and Li, Xianhang and Pai, Druv and Zhou, Yuyin and Ma, Yi and Yu, Yaodong and Xie, Cihang},<br>" +
+           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2405.20299},<br>" +
+           "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
+          "CRATE, a white-box transformer architecture designed to learn compressed and sparse representations, offers an intriguing alternative to standard vision transformers (ViTs) due to its inherent mathematical interpretability. Despite extensive investigations into the scaling behaviors of language and vision transformers, the scalability of CRATE remains an open question which this paper aims to address. Specifically, we propose CRATE-α, featuring strategic yet minimal modifications to the sparse coding block in the CRATE architecture design, and a light training recipe designed to improve the scalability of CRATE. Through extensive experiments, we demonstrate that CRATE-α can effectively scale with larger model sizes and datasets. For example, our CRATE-α-B substantially outperforms the prior best CRATE-B model accuracy on ImageNet classification by 3.7%, achieving an accuracy of 83.2%. Meanwhile, when scaling further, our CRATE-α-L obtains an ImageNet classification accuracy of 85.1%. More notably, these model performance improvements are achieved while preserving, and potentially even enhancing the interpretability of learned CRATE models, as we demonstrate through showing that the learned token representations of increasingly larger trained CRATE-α models yield increasingly higher-quality unsupervised object segmentation of images. The project page is https://rayjryang.github.io/CRATE-alpha/.",
+          "https://arxiv.org/abs/2405.20299",
+          "https://rayjryang.github.io/CRATE-alpha/"
+        )
+
+
+        add_paper("ARVideo: Autoregressive Pretraining for Self-Supervised Video Representation Learning",
+          "Sucheng Ren, Hongru Zhu, Chen Wei, Yijiang Li, Alan Yuille, Cihang Xie",
+          null,
+          "https://arxiv.org/abs/2405.15160",
+          "@article{ren2024arvideo,<br>" +
+           "&nbsp;&nbsp;&nbsp;title   = {ARVideo: Autoregressive Pretraining for Self-Supervised Video Representation Learning},<br>" +
+           "&nbsp;&nbsp;&nbsp;author  = {Ren, Sucheng and Zhu, Hongru and Wei, Chen and Li, Yijiang and Yuille, Alan and Xie, Cihang},<br>" +
+           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2405.15160},<br>" +
+           "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
+          "This paper presents a new self-supervised video representation learning framework, ARVideo, which autoregressively predicts the next video token in a tailored sequence order. Two key designs are included. First, we organize autoregressive video tokens into clusters that span both spatially and temporally, thereby enabling a richer aggregation of contextual information compared to the standard spatial-only or temporal-only clusters. Second, we adopt a randomized spatiotemporal prediction order to facilitate learning from multi-dimensional data, addressing the limitations of a handcrafted spatial-first or temporal-first sequence order. Extensive experiments establish ARVideo as an effective paradigm for self-supervised video representation learning. For example, when trained with the ViT-B backbone, ARVideo competitively attains 81.2% on Kinetics-400 and 70.9% on Something-Something V2, which are on par with the strong benchmark set by VideoMAE. Importantly, ARVideo also demonstrates higher training efficiency, i.e., it trains 14% faster and requires 58% less GPU memory compared to VideoMAE.",
+          "https://arxiv.org/abs/2405.15160",
+          null
+        )
+
+
+        add_paper("Mamba-R: Vision Mamba ALSO Needs Registers",
+          "Feng Wang, Jiahao Wang, Sucheng Ren, Guoyizhe Wei, Jieru Mei, Wei Shao, Yuyin Zhou, Alan Yuille, Cihang Xie",
+          null,
+          "https://arxiv.org/abs/2405.14858",
+          "@article{wang2024mambar,<br>" +
+           "&nbsp;&nbsp;&nbsp;title     = {Mamba-R: Vision Mamba also needs registers},<br>" +
+           "&nbsp;&nbsp;&nbsp;author    = {Wang, Feng and Wang, Jiahao and Ren, Sucheng and Wei, Guoyizhe and Mei, Jieru and Shao, Wei and Zhou, Yuyin and Yuille, Alan and Xie, Cihang},<br>" +
+           "&nbsp;&nbsp;&nbsp;journal   = {arXiv preprint arXiv:2405.14858},<br>" +
+           "&nbsp;&nbsp;&nbsp;year      = {2024},<br>",
+          "Similar to Vision Transformers, this paper identifies artifacts also present within the feature maps of Vision Mamba. These artifacts, corresponding to high-norm tokens emerging in low-information background areas of images, appear much more severe in Vision Mamba -- they exist prevalently even with the tiny-sized model and activate extensively across background regions. To mitigate this issue, we follow the prior solution of introducing register tokens into Vision Mamba. To better cope with Mamba blocks' uni-directional inference paradigm, two key modifications are introduced: 1) evenly inserting registers throughout the input token sequence, and 2) recycling registers for final decision predictions. We term this new architecture Mamba-R. Qualitative observations suggest, compared to vanilla Vision Mamba, Mamba-R's feature maps appear cleaner and more focused on semantically meaningful regions. Quantitatively, Mamba-R attains stronger performance and scales better. For example, on the ImageNet benchmark, our base-size Mamba-R attains 82.9% accuracy, significantly outperforming Vim-B's 81.8%; furthermore, we provide the first successful scaling to the large model size (i.e., with 341M parameters), attaining a competitive accuracy of 83.2% (84.5% if finetuned with 384x384 inputs). Additional validation on the downstream semantic segmentation task also supports Mamba-R's efficacy.",
+          "https://arxiv.org/abs/2405.14858",
+          "https://wangf3014.github.io/mambar-page/"
+        )
+
+        add_paper("A Flexible 2.5D Medical Image Segmentation Approach with In-Slice and Cross-Slice Attention",
+          "Amarjeet Kumar, Hongxu Jiang, Muhammad Imran, Cyndi Valdes, Gabriela Leon, Dahyun Kang, Parvathi Nataraj, Yuyin Zhou, Michael D Weiss, Wei Shao",
+          null,
+          "https://arxiv.org/abs/2405.00130",
+          "@article{kumar2024flexible25d,<br>" +
+           "&nbsp;&nbsp;&nbsp;title   = {A Flexible 2.5 D Medical Image Segmentation Approach with In-Slice and Cross-Slice Attention},<br>" +
+           "&nbsp;&nbsp;&nbsp;author  = {Kumar, Amarjeet and Jiang, Hongxu and Imran, Muhammad and Valdes, Cyndi and Leon, Gabriela and Kang, Dahyun and Nataraj, Parvathi and Zhou, Yuyin and Weiss, Michael D and Shao, Wei},<br>" +
+           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2405.00130},<br>" +
+           "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
+          "Deep learning has become the de facto method for medical image segmentation, with 3D segmentation models excelling in capturing complex 3D structures and 2D models offering high computational efficiency. However, segmenting 2.5D images, which have high in-plane but low through-plane resolution, is a relatively unexplored challenge. While applying 2D models to individual slices of a 2.5D image is feasible, it fails to capture the spatial relationships between slices. On the other hand, 3D models face challenges such as resolution inconsistencies in 2.5D images, along with computational complexity and susceptibility to overfitting when trained with limited data. In this context, 2.5D models, which capture inter-slice correlations using only 2D neural networks, emerge as a promising solution due to their reduced computational demand and simplicity in implementation. In this paper, we introduce CSA-Net, a flexible 2.5D segmentation model capable of processing 2.5D images with an arbitrary number of slices through an innovative Cross-Slice Attention (CSA) module. This module uses the cross-slice attention mechanism to effectively capture 3D spatial information by learning long-range dependencies between the center slice (for segmentation) and its neighboring slices. Moreover, CSA-Net utilizes the self-attention mechanism to understand correlations among pixels within the center slice. We evaluated CSA-Net on three 2.5D segmentation tasks: (1) multi-class brain MRI segmentation, (2) binary prostate MRI segmentation, and (3) multi-class prostate MRI segmentation. CSA-Net outperformed leading 2D and 2.5D segmentation methods across all three tasks, demonstrating its efficacy and superiority. Our code is publicly available at https://github.com/mirthAI/CSA-Net.",
+          "https://arxiv.org/abs/2405.00130",
+          "https://github.com/mirthAI/CSA-Net"
+        )
+
+
+        add_paper("RetinaRegNet: A Versatile Approach for Retinal Image Registration",
+          "Vishal Balaji Sivaraman, Muhammad Imran, Qingyue Wei, Preethika Muralidharan, Michelle R Tamplin, Isabella M Grumbach, Randy H Kardon, Jui-Kai Wang, Yuyin Zhou, Wei Shao",
+          null,
+          "https://arxiv.org/abs/2404.16017",
+          "@article{sivaraman2024retinaregnet,<br>" +
+           "&nbsp;&nbsp;&nbsp;title   = {RetinaRegNet: A Versatile Approach for Retinal Image Registration},<br>" +
+           "&nbsp;&nbsp;&nbsp;author  = {Sivaraman, Vishal Balaji and Imran, Muhammad and Wei, Qingyue and Muralidharan, Preethika and Tamplin, Michelle R and Grumbach, Isabella M and Kardon, Randy H and Wang, Jui-Kai and Zhou, Yuyin and Shao, Wei},<br>" +
+           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2404.16017},<br>" +
+           "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
+          "We introduce the RetinaRegNet model, which can achieve state-of-the-art performance across various retinal image registration tasks. RetinaRegNet does not require training on any retinal images. It begins by establishing point correspondences between two retinal images using image features derived from diffusion models. This process involves the selection of feature points from the moving image using the SIFT algorithm alongside random point sampling. For each selected feature point, a 2D correlation map is computed by assessing the similarity between the feature vector at that point and the feature vectors of all pixels in the fixed image. The pixel with the highest similarity score in the correlation map corresponds to the feature point in the moving image. To remove outliers in the estimated point correspondences, we first applied an inverse consistency constraint, followed by a transformation-based outlier detector. This method proved to outperform the widely used random sample consensus (RANSAC) outlier detector by a significant margin. To handle large deformations, we utilized a two-stage image registration framework. A homography transformation was used in the first stage and a more accurate third-order polynomial transformation was used in the second stage. The model's effectiveness was demonstrated across three retinal image datasets: color fundus images, fluorescein angiography images, and laser speckle flowgraphy images. RetinaRegNet outperformed current state-of-the-art methods in all three datasets. It was especially effective for registering image pairs with large displacement and scaling deformations. This innovation holds promise for various applications in retinal image analysis. Our code is publicly available at https://github.com/mirthAI/RetinaRegNet.",
+          "https://arxiv.org/abs/2404.16017",
+          "https://github.com/mirthAI/RetinaRegNet"
+        )
+
+
         add_paper("HQ-Edit: A High-Quality Dataset for Instruction-based Image Editing",
-          "Mude Hui, Siwei Yang, Bingchen Zhao, Yichun Shi, Heng Wang, Peng Wang, Yuyin Zhou, Cihang Xie",
+          "Mude Hui, Siwei Yang, Bingchen Zhao, Yichun Shi, Heng Wang, Peng Wang, Cihang Xie, Yuyin Zhou",
           null,
           "https://arxiv.org/abs/2404.09990",
           "@article{hui2024hqedit,<br>" +
-           "&nbsp;&nbsp;&nbsp;title     = {HQ-Edit: A High-Quality Dataset for Instruction-based Image Editing},<br>" +
-           "&nbsp;&nbsp;&nbsp;author    = {Hui, Mude and Yang, Siwei and Zhao, Bingchen and Shi, Yichun and Wang, Heng and Wang, Peng and Zhou, Yuyin and Xie, Cihang},<br>" +
-           "&nbsp;&nbsp;&nbsp;booktitle = {arXiv preprint arXiv:2404.09990},<br>" +
-           "&nbsp;&nbsp;&nbsp;year      = {2024},<br>",
+           "&nbsp;&nbsp;&nbsp;title   = {HQ-Edit: A High-Quality Dataset for Instruction-based Image Editing},<br>" +
+           "&nbsp;&nbsp;&nbsp;author  = {Hui, Mude and Yang, Siwei and Zhao, Bingchen and Shi, Yichun and Wang, Heng and Wang, Peng and Xie, Cihang and Zhou, Yuyin},<br>" +
+           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2404.09990},<br>" +
+           "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
           "This study introduces HQ-Edit, a high-quality instruction-based image editing dataset with around 200,000 edits. Unlike prior approaches relying on attribute guidance or human feedback on building datasets, we devise a scalable data collection pipeline leveraging advanced foundation models, namely GPT-4V and DALL-E 3. To ensure its high quality, diverse examples are first collected online, expanded, and then used to create high-quality diptychs featuring input and output images with detailed text prompts, followed by precise alignment ensured through post-processing. In addition, we propose two evaluation metrics, Alignment and Coherence, to quantitatively assess the quality of image edit pairs using GPT-4V. HQ-Edits high-resolution images, rich in detail and accompanied by comprehensive editing prompts, substantially enhance the capabilities of existing image editing models. For example, an HQ-Edit finetuned InstructPix2Pix can attain state-of-the-art image editing performance, even surpassing those models fine-tuned with human-annotated data. The project page is https://thefllood.github.io/HQEdit_web/",
           "https://arxiv.org/abs/2404.09990",
           "https://thefllood.github.io/HQEdit_web/"
@@ -199,10 +334,10 @@ function copy(dest, source) {
           null,
           "https://arxiv.org/abs/2402.09404",
           "@article{yang2024aqabench,<br>" +
-           "&nbsp;&nbsp;&nbsp;title     = {AQA-Bench: An Interactive Benchmark for Evaluating LLMs' Sequential Reasoning Ability},<br>" +
-           "&nbsp;&nbsp;&nbsp;author    = {Yang, Siwei and Zhao, Bingchen and Xie, Cihang},<br>" +
-           "&nbsp;&nbsp;&nbsp;booktitle = {arXiv preprint arXiv:2402.09404},<br>" +
-           "&nbsp;&nbsp;&nbsp;year      = {2024},<br>",
+           "&nbsp;&nbsp;&nbsp;title   = {AQA-Bench: An Interactive Benchmark for Evaluating LLMs' Sequential Reasoning Ability},<br>" +
+           "&nbsp;&nbsp;&nbsp;author  = {Yang, Siwei and Zhao, Bingchen and Xie, Cihang},<br>" +
+           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2402.09404},<br>" +
+           "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
           "This paper introduces AQA-Bench, a novel benchmark to assess the sequential reasoning capabilities of large language models (LLMs) in algorithmic contexts, such as depth-first search (DFS). The key feature of our evaluation benchmark lies in its interactive evaluation protocol -- for example, in DFS, the availability of each node's connected edge is contingent upon the model's traversal to that node, thereby necessitating the LLM's ability to effectively remember visited nodes and strategize subsequent moves. We comprehensively build AQA-Bench with three different algorithms, namely binary search, depth-first search, and breadth-first search, and to evaluate the sequential reasoning ability of 12 different LLMs. Our investigations reveal several interesting findings: (1) Closed-source models like GPT-4 and Gemini generally show strong sequential reasoning ability, significantly outperforming open-source LLMs. (2) Naively providing interactive examples may inadvertently hurt few-shot performance. (3) A very limited number of predecessor steps following the optimal policy can substantially boost small models' performance. (4) The scaling correlation between performance and model size is not always significant, sometimes even showcasing an inverse trend. We hope our study can catalyze future work on advancing the understanding and enhancement of LLMs' capabilities in sequential reasoning. The code is available at https://github.com/UCSC-VLAA/AQA-Bench",
           "https://arxiv.org/abs/2402.09404",
           "https://github.com/UCSC-VLAA/AQA-Bench"
@@ -213,10 +348,10 @@ function copy(dest, source) {
           null,
           "https://arxiv.org/abs/2401.13049",
           "@article{imran2024cisunet,<br>" +
-           "&nbsp;&nbsp;&nbsp;title     = {CIS-UNet: Multi-Class Segmentation of the Aorta in Computed Tomography Angiography via Context-Aware Shifted Window Self-Attention},<br>" +
-           "&nbsp;&nbsp;&nbsp;author    = {Imran, Muhammad and Krebs, Jonathan R and Gopu, Veera Rajasekhar Reddy and Fazzone, Brian and Sivaraman, Vishal Balaji and Kumar, Amarjeet and Viscardi, Chelsea and Heithaus, Robert Evans and Shickel, Benjamin and Zhou, Yuyin and Cooper, Michol A and Shao, Wei},<br>" +
-           "&nbsp;&nbsp;&nbsp;booktitle = {arXiv preprint arXiv: 2401.13049},<br>" +
-           "&nbsp;&nbsp;&nbsp;year      = {2024},<br>",
+           "&nbsp;&nbsp;&nbsp;title   = {CIS-UNet: Multi-Class Segmentation of the Aorta in Computed Tomography Angiography via Context-Aware Shifted Window Self-Attention},<br>" +
+           "&nbsp;&nbsp;&nbsp;author  = {Imran, Muhammad and Krebs, Jonathan R and Gopu, Veera Rajasekhar Reddy and Fazzone, Brian and Sivaraman, Vishal Balaji and Kumar, Amarjeet and Viscardi, Chelsea and Heithaus, Robert Evans and Shickel, Benjamin and Zhou, Yuyin and Cooper, Michol A and Shao, Wei},<br>" +
+           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv: 2401.13049},<br>" +
+           "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
            "Advancements in medical imaging and endovascular grafting have facilitated minimally invasive treatments for aortic diseases. Accurate 3D segmentation of the aorta and its branches is crucial for interventions, as inaccurate segmentation can lead to erroneous surgical planning and endograft construction. Previous methods simplified aortic segmentation as a binary image segmentation problem, overlooking the necessity of distinguishing between individual aortic branches. In this paper, we introduce Context Infused Swin-UNet (CIS-UNet), a deep learning model designed for multi-class segmentation of the aorta and thirteen aortic branches. Combining the strengths of Convolutional Neural Networks (CNNs) and Swin transformers, CIS-UNet adopts a hierarchical encoder-decoder structure comprising a CNN encoder, symmetric decoder, skip connections, and a novel Context-aware Shifted Window Self-Attention (CSW-SA) as the bottleneck block. Notably, CSW-SA introduces a unique utilization of the patch merging layer, distinct from conventional Swin transformers. It efficiently condenses the feature map, providing a global spatial context and enhancing performance when applied at the bottleneck layer, offering superior computational efficiency and segmentation accuracy compared to the Swin transformers. We trained our model on computed tomography (CT) scans from 44 patients and tested it on 15 patients. CIS-UNet outperformed the state-of-the-art SwinUNetR segmentation model, which is solely based on Swin transformers, by achieving a superior mean Dice coefficient of 0.713 compared to 0.697, and a mean surface distance of 2.78 mm compared to 3.39 mm. CIS-UNet's superior 3D aortic segmentation offers improved precision and optimization for planning endovascular treatments. Our dataset and code will be publicly available.",
           "https://arxiv.org/abs/2401.13049",          
         )
@@ -522,6 +657,19 @@ function copy(dest, source) {
         document.write("<ul>")
 
 
+        add_paper("Tackling Data Heterogeneity in Federated Learning via Loss Decomposition",
+                    "Shuang Zeng, Pengxin Guo, Shuai Wang, Jianbo Wang, Yuyin Zhou, Liangqiong Qu",
+                    "MICCAI, 2024",
+                    "",
+                    "@inproceedings{zeng2024trackling,<br>" +
+                     "&nbsp;&nbsp;&nbsp;title     = {Tackling Data Heterogeneity in Federated Learning via Loss Decomposition},<br>" +
+                     "&nbsp;&nbsp;&nbsp;author    = {Zeng, Shuang and Guo, Pengxin and Wang, Shuai and Wang, Jianbo and Zhou, Yuyin and Qu, Liangqiong},<br>" +
+                     "&nbsp;&nbsp;&nbsp;booktitle = {MICCAI},<br>" +
+                     "&nbsp;&nbsp;&nbsp;year      = {2024}<br>}",
+                    "Federated Learning (FL) is a rising approach towards collaborative and privacy-preserving machine learning where large-scale medical datasets remain localized to each client. However, the issue of data heterogeneity among clients often compels local models to diverge, leading to suboptimal global models. To mitigate the impact of data heterogeneity on FL performance, we start with analyzing how FL training influence FL performance by decomposing the global loss into three terms: local loss, distribution shift loss and aggregation loss. Remarkably, our loss decomposition reveals that existing local training-based FL methods attempt to further reduce the distribution shift loss, while the global aggregation-based FL methods propose better aggregation strategies to reduce the aggregation loss. Nevertheless, a comprehensive joint effort to minimize all three terms is currently limited in the literature, leading to subpar performance when dealing with data heterogeneity challenges. To fill this gap, we propose a novel FL method based on global loss decomposition, called FedLD, to jointly reduce these three loss terms. Our FedLD involves a margin control regularization in local training to reduce the distribution shift loss, and a principal gradient-based server aggregation strategy to reduce the aggregation loss. Notably, under different levels of data heterogeneity, our strategies achieve better and more robust performance on retinal and chest X-ray classification compared to other FL algorithms.",
+                    )
+
+
         add_paper("Rejuvenating image-GPT as Strong Visual Representation Learners",
                   "Sucheng Ren, Zeyu Wang, Hongru Zhu, Junfei Xiao, Alan Yuille, Cihang Xie",
                   "ICML, 2024",
@@ -707,7 +855,6 @@ function copy(dest, source) {
                   "&nbsp;&nbsp;&nbsp;booktitle = {ISBI},<br>" +
                   "&nbsp;&nbsp;&nbsp;year      = {2024}<br>}",
                   "Segmenting brain tumors presents a multifaceted challenge due to their varied appearances and scales. This study endeavors to develop segmentation models with broad applicability across brain tumors, highlighting the importance of models capable of accommodating diverse lesion types, institutions, and demographic characteristics. Specifically, we investigate two CNN-Transformer hybrid models within the BraTS-ISBI 2024 challenge, which seeks to advance generalized segmentation models for brain tumors. The first model is the decoder-only variant of the 3D TransUNet, built upon nnUNet, featuring a CNN encoder and a hybrid CNN-Transformer decoder, which has shown superior performance on the brain metastases segmentation. The Transformer decoder treats segmentation as a binary mask classification task, refining queries through cross-attention. Additionally, we introduce a novel supervoxel Transformer to improve interpretability by efficiently clustering voxels with similar characteristics. This model incorporates a supervoxel cross-attention mechanism to iteratively refine assignments and features. Both models undergo training on an expanded augmented  BraTS-ISBI 2024 challenge dataset and are combined for validation through ensembling techniques. Our best solution achieved 2nd place on the leaderboard during the validation phase.",
-                  "",
                   )
 
 
@@ -906,7 +1053,7 @@ function copy(dest, source) {
         add_paper("Consistency-guided Meta-Learning for Bootstrapping Semi-Supervised Medical Image Segmentation",
                     "Qingyue Wei, Lequan Yu, Xianhang Li, Wei Shao, Cihang Xie, Lei Xing, Yuyin Zhou",
                     "MICCAI, 2023",
-                    "",
+                    "https://arxiv.org/abs/2307.11604",
                     "@inproceedings{wei2023mlbseg,<br>" +
                      "&nbsp;&nbsp;&nbsp;title     = {Consistency-guided Meta-Learning for Bootstrapping Semi-Supervised Medical Image Segmentation},<br>" +
                      "&nbsp;&nbsp;&nbsp;author    = {Wei, Qingyue and Yu, Lequan and Li, Xianhang and Shao, Wei and Xie, Cihang and Xing, Lei and Zhou, Yuyin},<br>" +
@@ -921,7 +1068,7 @@ function copy(dest, source) {
         add_paper("SwinMM: Masked Multi-view with Swin Transformers for 3D Medical Image Segmentation",
                     "Yiqing Wang, Zihan Li, Zihao Wei, Jieru Mei, Li Liu, Chen Wang, Shengtian Sang, Alan Yuille, Cihang Xie, Yuyin Zhou",
                     "MICCAI, 2023",
-                    "",
+                    "https://arxiv.org/abs/2307.12591",
                     "@inproceedings{wang2023swinmm,<br>" +
                      "&nbsp;&nbsp;&nbsp;title     = {SwinMM: Masked Multi-view with Swin Transformers for 3D Medical Image Segmentation},<br>" +
                      "&nbsp;&nbsp;&nbsp;author    = {Wang, Yiqing and Li, Zihan and Wei, Zihao and Mei, Jieru and Liu, Li and Wang, Chen and Sang, Shengtian and Yuille, Alan and Xie, Cihang and Zhou, Yuyin},<br>" +
