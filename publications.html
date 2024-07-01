@@ -224,6 +224,33 @@ function copy(dest, source) {
           "https://github.com/mirthAI/Fast-DDPM"
         )
 
+        add_paper("VideoHallucer: Evaluating Intrinsic and Extrinsic Hallucinations in Large Video-Language Models",
+          "Yuxuan Wang, Yueqian Wang, Dongyan Zhao, Cihang Xie, Zilong Zheng",
+          null,
+          "https://arxiv.org/abs/2406.16338",
+          "@article{wang2025videohallucer,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {VideoHallucer: Evaluating Intrinsic and Extrinsic Hallucinations in Large Video-Language Models},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Wang, Yuxuan and Wang, Yueqian and Zhao, Dongyan and Xie, Cihang and Zheng, Zilong},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2406.16338},<br>" +
+          "&nbsp;&nbsp;&nbsp;year    = {2024}<br>",
+          "Recent advancements in Multimodal Large Language Models (MLLMs) have extended their capabilities to video understanding. Yet, these models are often plagued by 'hallucinations', where irrelevant or nonsensical content is generated, deviating from the actual video context. This work introduces VideoHallucer, the first comprehensive benchmark for hallucination detection in large video-language models (LVLMs). VideoHallucer categorizes hallucinations into two main types: intrinsic and extrinsic, offering further subcategories for detailed analysis, including object-relation, temporal, semantic detail, extrinsic factual, and extrinsic non-factual hallucinations. We adopt an adversarial binary VideoQA method for comprehensive evaluation, where pairs of basic and hallucinated questions are crafted strategically. By evaluating eleven LVLMs on VideoHallucer, we reveal that i) the majority of current models exhibit significant issues with hallucinations; ii) while scaling datasets and parameters improves models' ability to detect basic visual cues and counterfactuals, it provides limited benefit for detecting extrinsic factual hallucinations; iii) existing models are more adept at detecting facts than identifying hallucinations. As a byproduct, these analyses further instruct the development of our self-PEP framework, achieving an average of 5.38% improvement in hallucination resistance across all model architectures.",
+          "https://arxiv.org/abs/2406.16338",
+          "https://videohallucer.github.io/"
+          )
+
+        add_paper("DDR: Exploiting Deep Degradation Response as Flexible Image Descriptor",
+          "Juncheng Wu, Zhangkai Ni, Hanli Wang, Wenhan Yang, Yuyin Zhou, Shiqi Wang",
+          null,
+          "https://arxiv.org/abs/2406.08377",
+          "@article{wu2024ddr,<br>" +
+          "&nbsp;&nbsp;&nbsp;title     = {DDR: Exploiting Deep Degradation Response as Flexible Image Descriptor},<br>" +
+          "&nbsp;&nbsp;&nbsp;author    = {Wu, Juncheng and Ni, Zhangkai and Wang, Hanli and Yang, Wenhan and Zhou, Yuyin and Wang, Shiqi},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal   = {arXiv preprint arXiv:2406.08377},<br>" +
+          "&nbsp;&nbsp;&nbsp;year      = {2024}<br>",
+          "Image deep features extracted by pre-trained networks are known to contain rich and informative representations. In this paper, we present Deep Degradation Response (DDR), a method to quantify changes in image deep features under varying degradation conditions. Specifically, our approach facilitates flexible and adaptive degradation, enabling the controlled synthesis of image degradation through text-driven prompts. Extensive evaluations demonstrate the versatility of DDR as an image descriptor, with strong correlations observed with key image attributes such as complexity, colorfulness, sharpness, and overall quality. Moreover, we demonstrate the efficacy of DDR across a spectrum of applications. It excels as a blind image quality assessment metric, outperforming existing methodologies across multiple datasets. Additionally, DDR serves as an effective unsupervised learning objective in image restoration tasks, yielding notable advancements in image deblurring and single-image super-resolution.",
+          "https://arxiv.org/abs/2406.08377"
+          )
+
 
         add_paper("Autoregressive Pretraining with Mamba in Vision",
           "Sucheng Ren, Xianhang Li, Haoqin Tu, Feng Wang, Fangxun Shu, Lei Zhang, Jieru Mei, Linjie Yang, Peng Wang, Heng Wang, Alan Yuille, Cihang Xie",
@@ -372,22 +399,6 @@ function copy(dest, source) {
         )
 
 
-
-        add_paper("A Semantic Space is Worth 256 Language Descriptions: Make Stronger Segmentation Models with Descriptive Properties",
-                  "Junfei Xiao, Ziqi Zhou, Wenxuan Li, Shiyi Lan, Jieru Mei, Zhiding Yu, Bingchen Zhao, Alan Yuille, Yuyin Zhou, Cihang Xie",
-                  null,
-                  "https://arxiv.org/abs/2312.13764",
-                  "@article{xiao2023semantic,<br>" +
-                  "&nbsp;&nbsp;&nbsp;title     = {A Semantic Space is Worth 256 Language Descriptions: Make Stronger Segmentation Models with Descriptive Properties},<br>" +
-                  "&nbsp;&nbsp;&nbsp;author    = {Xiao, Junfei and Zhou, Ziqi and Li, Wenxuan and Lan, Shiyi and Mei, Jieru and Yu, Zhiding and Yuille, Alan and Zhou, Yuyin and Xie, Cihang},<br>" +
-                  "&nbsp;&nbsp;&nbsp;journal   = {arXiv preprint arXiv:2312.13764},<br>" +
-                  "&nbsp;&nbsp;&nbsp;year      = {2023}<br>}",
-                  "This paper introduces ProLab, a novel approach using property-level label space for creating strong interpretable segmentation models. Instead of relying solely on category-specific annotations, ProLab uses descriptive properties grounded in common sense knowledge for supervising segmentation models. It is based on two core designs. First, we employ Large Language Models (LLMs) and carefully crafted prompts to generate descriptions of all involved categories that carry meaningful common sense knowledge and follow a structured format. Second, we introduce a description embedding model preserving semantic correlation across descriptions and then cluster them into a set of descriptive properties (e.g., 256) using K-Means. These properties are based on interpretable common sense knowledge consistent with theories of human recognition. We empirically show that our approach makes segmentation models perform stronger on five classic benchmarks (e.g., ADE20K, COCO-Stuff, Pascal Context, Cityscapes, and BDD). Our method also shows better scalability with extended training steps than category-level supervision. Our interpretable segmentation framework also emerges with the generalization ability to segment out-of-domain or unknown categories using only in-domain descriptive properties. Code is available at https://github.com/lambert-x/ProLab",
-                  "https://arxiv.org/abs/2312.13764",
-                  "https://github.com/lambert-x/ProLab"
-                  )
-
-
         add_paper("Audio-Visual LLM for Video Understanding",
                   "Hangxun Shu, Lei Zhang, Hao Jiang, Cihang Xie",
                   null,
@@ -431,21 +442,6 @@ function copy(dest, source) {
                   "Medical image segmentation plays a crucial role in advancing healthcare systems for disease diagnosis and treatment planning. The u-shaped architecture, popularly known as U-Net, has proven highly successful for various medical image segmentation tasks. However, U-Net's convolution-based operations inherently limit its ability to model long-range dependencies effectively. To address these limitations, researchers have turned to Transformers, renowned for their global self-attention mechanisms, as alternative architectures. Our previous TransUNet, which leverages Transformers' self-attention to complement U-Net's localized information with the global context, is now extended to a 3D network. This is achieved by building upon the state-of-the-art nnU-Net architecture, fully exploring Transformers' potential in both the encoder and decoder design. We introduce a Transformer encoder for tokenizing image patches and a Transformer decoder for adaptively refining candidate regions. The Transformer encoder excels in multi-organ segmentation, while the Transformer decoder is more beneficial for small and challenging segmented targets such as tumor segmentation. Our extensive experiments showcase the significant potential of integrating a Transformer-based encoder and decoder into the u-shaped medical image segmentation architecture, with TransUNet outperforming competitors in various medical applications.",
                   "https://arxiv.org/abs/2310.07781",
                   "https://github.com/Beckschen/3D-TransUNet"
-                  )
-
-
-        add_paper("How Many Unicorns Are in This Image? A Safety Evaluation Benchmark for Vision LLMs",
-                  "Haoqin Tu, Chenhang Cui, Zijun Wang, Yiyang Zhou, Bingchen Zhao, Junlin Han, Wangchunshu Zhou, Huaxiu Yao, Cihang Xie",
-                  null,
-                  "https://arxiv.org/abs/2311.16101",
-                  "@article{tu2023unicorns,<br>" +
-                  "&nbsp;&nbsp;&nbsp;title     = {How Many Unicorns Are in This Image? A Safety Evaluation Benchmark for Vision LLMs},<br>" +
-                  "&nbsp;&nbsp;&nbsp;author    = {Tu, Haoqin and Cui, Chenhang and Wang, Zijun and Zhou, Yiyang and Zhao, Bingchen and Han, Junlin and Zhou, Wangchunshu and Yao, Huaxiu and Xie, Cihang},<br>" +
-                  "&nbsp;&nbsp;&nbsp;journal   = {arXiv preprint arXiv:2311.16101},<br>" +
-                  "&nbsp;&nbsp;&nbsp;year      = {2023}<br>}",
-                  "This work focuses on the potential of Vision LLMs (VLLMs) in visual reasoning, shifting focus from standard performance to a comprehensive safety evaluation suite covering OOD generalization and adversarial robustness. We present two novel VQA datasets, each with a variant, to test model performance under challenging conditions. We propose an attack strategy for misleading VLLMs and assess the efficacy of jailbreaking strategies targeting the vision or language components. Our evaluation of 21 models, including open-source VLLMs and GPT-4V, reveals that current VLLMs struggle with OOD texts but not images, unless visual information is limited. These VLLMs can be easily misled by deceiving vision encoders only, and their vision-language training often compromise safety protocols. We release our safety evaluation suite at https://github.com/UCSC-VLAA/vllm-safety-benchmark.",
-                  "https://arxiv.org/abs/2311.16101",
-                  "https://github.com/UCSC-VLAA/vllm-safety-benchmark"
                   )
 
 
@@ -655,6 +651,50 @@ function copy(dest, source) {
         document.write("</ul><br>")
         document.write("<h1>2024</h1>")
         document.write("<ul>")
+
+
+        add_paper("A Semantic Space is Worth 256 Language Descriptions: Make Stronger Segmentation Models with Descriptive Properties",
+                  "Junfei Xiao, Ziqi Zhou, Wenxuan Li, Shiyi Lan, Jieru Mei, Zhiding Yu, Bingchen Zhao, Alan Yuille, Yuyin Zhou, Cihang Xie",
+                  "ECCV, 2024",
+                  "https://arxiv.org/abs/2312.13764",
+                  "@inproceedings{xiao2023semantic,<br>" +
+                  "&nbsp;&nbsp;&nbsp;title     = {A Semantic Space is Worth 256 Language Descriptions: Make Stronger Segmentation Models with Descriptive Properties},<br>" +
+                  "&nbsp;&nbsp;&nbsp;author    = {Xiao, Junfei and Zhou, Ziqi and Li, Wenxuan and Lan, Shiyi and Mei, Jieru and Yu, Zhiding and Yuille, Alan and Zhou, Yuyin and Xie, Cihang},<br>" +
+                  "&nbsp;&nbsp;&nbsp;booktitle = {ECCV},<br>" +
+                  "&nbsp;&nbsp;&nbsp;year      = {2024}<br>}",
+                  "This paper introduces ProLab, a novel approach using property-level label space for creating strong interpretable segmentation models. Instead of relying solely on category-specific annotations, ProLab uses descriptive properties grounded in common sense knowledge for supervising segmentation models. It is based on two core designs. First, we employ Large Language Models (LLMs) and carefully crafted prompts to generate descriptions of all involved categories that carry meaningful common sense knowledge and follow a structured format. Second, we introduce a description embedding model preserving semantic correlation across descriptions and then cluster them into a set of descriptive properties (e.g., 256) using K-Means. These properties are based on interpretable common sense knowledge consistent with theories of human recognition. We empirically show that our approach makes segmentation models perform stronger on five classic benchmarks (e.g., ADE20K, COCO-Stuff, Pascal Context, Cityscapes, and BDD). Our method also shows better scalability with extended training steps than category-level supervision. Our interpretable segmentation framework also emerges with the generalization ability to segment out-of-domain or unknown categories using only in-domain descriptive properties. Code is available at https://github.com/lambert-x/ProLab.",
+                  "https://arxiv.org/abs/2312.13764",
+                  "https://github.com/lambert-x/ProLab"
+                  )
+
+
+        add_paper("How Many Unicorns Are in This Image? A Safety Evaluation Benchmark for Vision LLMs",
+                  "Haoqin Tu, Chenhang Cui, Zijun Wang, Yiyang Zhou, Bingchen Zhao, Junlin Han, Wangchunshu Zhou, Huaxiu Yao, Cihang Xie",
+                  "ECCV, 2024",
+                  "https://arxiv.org/abs/2311.16101",
+                  "@inproceedings{tu2023unicorns,<br>" +
+                  "&nbsp;&nbsp;&nbsp;title     = {How Many Unicorns Are in This Image? A Safety Evaluation Benchmark for Vision LLMs},<br>" +
+                  "&nbsp;&nbsp;&nbsp;author    = {Tu, Haoqin and Cui, Chenhang and Wang, Zijun and Zhou, Yiyang and Zhao, Bingchen and Han, Junlin and Zhou, Wangchunshu and Yao, Huaxiu and Xie, Cihang},<br>" +
+                  "&nbsp;&nbsp;&nbsp;booktitle = {ECCV},<br>" +
+                  "&nbsp;&nbsp;&nbsp;year      = {2024}<br>}",
+                  "This work focuses on the potential of Vision LLMs (VLLMs) in visual reasoning, shifting focus from standard performance to a comprehensive safety evaluation suite covering OOD generalization and adversarial robustness. We present two novel VQA datasets, each with a variant, to test model performance under challenging conditions. We propose an attack strategy for misleading VLLMs and assess the efficacy of jailbreaking strategies targeting the vision or language components. Our evaluation of 21 models, including open-source VLLMs and GPT-4V, reveals that current VLLMs struggle with OOD texts but not images, unless visual information is limited. These VLLMs can be easily misled by deceiving vision encoders only, and their vision-language training often compromise safety protocols. We release our safety evaluation suite at https://github.com/UCSC-VLAA/vllm-safety-benchmark.",
+                  "https://arxiv.org/abs/2311.16101",
+                  "https://github.com/UCSC-VLAA/vllm-safety-benchmark"
+                  )
+
+
+        add_paper("From Pixels to Objects: A Hierarchical Approach for Part and Object Segmentation Using Local and Global Aggregation",
+                  "Yunfei Xie, Cihang Xie, Alan Yuille, Jieru Mei",
+                  "ECCV, 2024",
+                  "",
+                  "@inproceedings{xie2024pixels,<br>" +
+                  "&nbsp;&nbsp;&nbsp;title     = {From Pixels to Objects: A Hierarchical Approach for Part and Object Segmentation Using Local and Global Aggregation},<br>" +
+                  "&nbsp;&nbsp;&nbsp;author    = {Xie, Yunfei and Xie, Cihang and Yuille, Alan and Mei, Jieru},<br>" +
+                  "&nbsp;&nbsp;&nbsp;booktitle = {ECCV},<br>" +
+                  "&nbsp;&nbsp;&nbsp;year      = {2024}<br>}",
+                  "We present a hierarchical transformer-based model for image segmentation that effectively links the segmentation of detailed parts to the broader context of object segmentation. Central to our approach is a multi-level representation, progressing from individual pixels to superpixels, and finally to cohesive groups. This progression is characterized by two key aggregation strategies: local aggregation for forming superpixels and global aggregation for clustering these superpixels into group tokens. The formation of superpixels through local aggregation taps into the redundancy of image data, yielding segments that align with image parts under object-level supervision. Conversely, the global aggregation process assembles these superpixels into groups that demonstrate a tendency to align with whole objects, especially when guided by part-level supervision. This methodology achieves an optimal balance between adaptability to different types of supervision and computational efficiency, leading to notable advancements in the segmentation of both parts and objects. When evaluated on the PartImageNet dataset, our approach surpasses the previous state-of-the-art by 2.8% and 0.8% in part and object mIoU scores, respectively. Similarly, on the Pascal Part dataset, it demonstrates improvements of 1.5% and 2.0% for part and object mIoU, respectively.",
+                  "",
+                  )
 
 
         add_paper("Tackling Data Heterogeneity in Federated Learning via Loss Decomposition",
