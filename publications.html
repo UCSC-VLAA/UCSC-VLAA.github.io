@@ -179,6 +179,21 @@ function copy(dest, source) {
         // document.write("<h2>Preprint</h2>")
         document.write("<ul><br>")
 
+
+        add_paper("A Preliminary Study of o1 in Medicine: Are We Closer to an AI Doctor?",
+            "Yunfei Xie, Juncheng Wu, Haoqin Tu, Siwei Yang, Bingchen Zhao, Yongshuo Zong, Qiao Jin, Cihang Xie, Yuyin Zhou",
+            null,
+            "https://arxiv.org/abs/2409.15277",
+            "@article{xie2024preliminarystudyo1medicine,<br>" +
+            "&nbsp;&nbsp;&nbsp;title   = {A Preliminary Study of o1 in Medicine: Are We Closer to an AI Doctor?},<br>" +
+            "&nbsp;&nbsp;&nbsp;author  = {Yunfei Xie, Juncheng Wu, Haoqin Tu, Siwei Yang, Bingchen Zhao, Yongshuo Zong, Qiao Jin, Cihang Xie, Yuyin Zhou},<br>" +
+            "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2409.15277},<br>" +
+            "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
+            "Large language models (LLMs) have exhibited remarkable capabilities across various domains and tasks, pushing the boundaries of our knowledge in learning and cognition. The latest model, OpenAI's o1, stands out as the first LLM with an internalized chain-of-thought technique using reinforcement learning strategies. While it has demonstrated surprisingly strong capabilities on various general language tasks, its performance in specialized fields such as medicine remains unknown. To this end, this report provides a comprehensive exploration of o1 on different medical scenarios, examining 3 key aspects: understanding, reasoning, and multilinguality. Specifically, our evaluation encompasses 6 tasks using data from 37 medical datasets, including two newly constructed and more challenging question-answering (QA) tasks based on professional medical quizzes from the New England Journal of Medicine (NEJM) and The Lancet. These datasets offer greater clinical relevance compared to standard medical QA benchmarks such as MedQA, translating more effectively into real-world clinical utility. Our analysis of o1 suggests that the enhanced reasoning ability of LLMs may (significantly) benefit their capability to understand various medical instructions and reason through complex clinical scenarios. Notably, o1 surpasses the previous GPT-4 in accuracy by an average of 6.2% and 6.6% across 19 datasets and two newly created complex QA scenarios. But meanwhile, we identify several weaknesses in both the model capability and the existing evaluation protocols, including hallucination, inconsistent multilingual ability, and discrepant metrics for evaluation. We release our raw data and model outputs https://ucsc-vlaa.github.io/o1_medicine/ for future research.",
+            "https://arxiv.org/abs/2409.15277",
+            "https://ucsc-vlaa.github.io/o1_medicine/"
+            )
+
         add_paper("MedTrinity-25M: A Large-scale Multimodal Dataset with Multigranular Annotations for Medicine",
         "Yunfei Xie, Ce Zhou, Lang Gao, Juncheng Wu, Xianhang Li, Hong-Yu Zhou, Sheng Liu, Lei Xing, James Zou, Cihang Xie, Yuyin Zhou",
         null,
@@ -252,18 +267,6 @@ function copy(dest, source) {
           "https://videohallucer.github.io/"
           )
 
-        add_paper("DDR: Exploiting Deep Degradation Response as Flexible Image Descriptor",
-          "Juncheng Wu, Zhangkai Ni, Hanli Wang, Wenhan Yang, Yuyin Zhou, Shiqi Wang",
-          null,
-          "https://arxiv.org/abs/2406.08377",
-          "@article{wu2024ddr,<br>" +
-          "&nbsp;&nbsp;&nbsp;title     = {DDR: Exploiting Deep Degradation Response as Flexible Image Descriptor},<br>" +
-          "&nbsp;&nbsp;&nbsp;author    = {Wu, Juncheng and Ni, Zhangkai and Wang, Hanli and Yang, Wenhan and Zhou, Yuyin and Wang, Shiqi},<br>" +
-          "&nbsp;&nbsp;&nbsp;journal   = {arXiv preprint arXiv:2406.08377},<br>" +
-          "&nbsp;&nbsp;&nbsp;year      = {2024}<br>",
-          "Image deep features extracted by pre-trained networks are known to contain rich and informative representations. In this paper, we present Deep Degradation Response (DDR), a method to quantify changes in image deep features under varying degradation conditions. Specifically, our approach facilitates flexible and adaptive degradation, enabling the controlled synthesis of image degradation through text-driven prompts. Extensive evaluations demonstrate the versatility of DDR as an image descriptor, with strong correlations observed with key image attributes such as complexity, colorfulness, sharpness, and overall quality. Moreover, we demonstrate the efficacy of DDR across a spectrum of applications. It excels as a blind image quality assessment metric, outperforming existing methodologies across multiple datasets. Additionally, DDR serves as an effective unsupervised learning objective in image restoration tasks, yielding notable advancements in image deblurring and single-image super-resolution.",
-          "https://arxiv.org/abs/2406.08377"
-          )
 
 
         add_paper("Autoregressive Pretraining with Mamba in Vision",
@@ -281,19 +284,6 @@ function copy(dest, source) {
         )
 
 
-        add_paper("Scaling White-Box Transformers for Vision",
-          "Jinrui Yang, Xianhang Li, Druv Pai, Yuyin Zhou, Yi Ma, Yaodong Yu, Cihang Xie",
-          null,
-          "https://arxiv.org/abs/2405.20299",
-          "@article{yang2024scaling,<br>" +
-           "&nbsp;&nbsp;&nbsp;title   = {Scaling White-Box Transformers for Vision},<br>" +
-           "&nbsp;&nbsp;&nbsp;author  = {Yang, Jinrui and Li, Xianhang and Pai, Druv and Zhou, Yuyin and Ma, Yi and Yu, Yaodong and Xie, Cihang},<br>" +
-           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2405.20299},<br>" +
-           "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
-          "CRATE, a white-box transformer architecture designed to learn compressed and sparse representations, offers an intriguing alternative to standard vision transformers (ViTs) due to its inherent mathematical interpretability. Despite extensive investigations into the scaling behaviors of language and vision transformers, the scalability of CRATE remains an open question which this paper aims to address. Specifically, we propose CRATE-α, featuring strategic yet minimal modifications to the sparse coding block in the CRATE architecture design, and a light training recipe designed to improve the scalability of CRATE. Through extensive experiments, we demonstrate that CRATE-α can effectively scale with larger model sizes and datasets. For example, our CRATE-α-B substantially outperforms the prior best CRATE-B model accuracy on ImageNet classification by 3.7%, achieving an accuracy of 83.2%. Meanwhile, when scaling further, our CRATE-α-L obtains an ImageNet classification accuracy of 85.1%. More notably, these model performance improvements are achieved while preserving, and potentially even enhancing the interpretability of learned CRATE models, as we demonstrate through showing that the learned token representations of increasingly larger trained CRATE-α models yield increasingly higher-quality unsupervised object segmentation of images. The project page is https://rayjryang.github.io/CRATE-alpha/.",
-          "https://arxiv.org/abs/2405.20299",
-          "https://rayjryang.github.io/CRATE-alpha/"
-        )
 
 
         add_paper("ARVideo: Autoregressive Pretraining for Self-Supervised Video Representation Learning",
@@ -665,6 +655,33 @@ function copy(dest, source) {
         document.write("</ul><br>")
         document.write("<h1>2024</h1>")
         document.write("<ul>")
+
+        add_paper("DDR: Exploiting Deep Degradation Response as Flexible Image Descriptor",
+            "Juncheng Wu, Zhangkai Ni, Hanli Wang, Wenhan Yang, Yuyin Zhou, Shiqi Wang",
+            null,
+            "https://arxiv.org/abs/2406.08377",
+            "@article{wu2024ddr,<br>" +
+            "&nbsp;&nbsp;&nbsp;title     = {DDR: Exploiting Deep Degradation Response as Flexible Image Descriptor},<br>" +
+            "&nbsp;&nbsp;&nbsp;author    = {Wu, Juncheng and Ni, Zhangkai and Wang, Hanli and Yang, Wenhan and Zhou, Yuyin and Wang, Shiqi},<br>" +
+            "&nbsp;&nbsp;&nbsp;journal   = {NeurIPS},<br>" +
+            "&nbsp;&nbsp;&nbsp;year      = {2024}<br>",
+            "Image deep features extracted by pre-trained networks are known to contain rich and informative representations. In this paper, we present Deep Degradation Response (DDR), a method to quantify changes in image deep features under varying degradation conditions. Specifically, our approach facilitates flexible and adaptive degradation, enabling the controlled synthesis of image degradation through text-driven prompts. Extensive evaluations demonstrate the versatility of DDR as an image descriptor, with strong correlations observed with key image attributes such as complexity, colorfulness, sharpness, and overall quality. Moreover, we demonstrate the efficacy of DDR across a spectrum of applications. It excels as a blind image quality assessment metric, outperforming existing methodologies across multiple datasets. Additionally, DDR serves as an effective unsupervised learning objective in image restoration tasks, yielding notable advancements in image deblurring and single-image super-resolution.",
+            "https://arxiv.org/abs/2406.08377"
+            )
+
+        add_paper("Scaling White-Box Transformers for Vision",
+            "Jinrui Yang, Xianhang Li, Druv Pai, Yuyin Zhou, Yi Ma, Yaodong Yu, Cihang Xie",
+            null,
+            "https://arxiv.org/abs/2405.20299",
+            "@article{yang2024scaling,<br>" +
+             "&nbsp;&nbsp;&nbsp;title   = {Scaling White-Box Transformers for Vision},<br>" +
+             "&nbsp;&nbsp;&nbsp;author  = {Yang, Jinrui and Li, Xianhang and Pai, Druv and Zhou, Yuyin and Ma, Yi and Yu, Yaodong and Xie, Cihang},<br>" +
+             "&nbsp;&nbsp;&nbsp;journal = {NeurIPS},<br>" +
+             "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
+            "CRATE, a white-box transformer architecture designed to learn compressed and sparse representations, offers an intriguing alternative to standard vision transformers (ViTs) due to its inherent mathematical interpretability. Despite extensive investigations into the scaling behaviors of language and vision transformers, the scalability of CRATE remains an open question which this paper aims to address. Specifically, we propose CRATE-α, featuring strategic yet minimal modifications to the sparse coding block in the CRATE architecture design, and a light training recipe designed to improve the scalability of CRATE. Through extensive experiments, we demonstrate that CRATE-α can effectively scale with larger model sizes and datasets. For example, our CRATE-α-B substantially outperforms the prior best CRATE-B model accuracy on ImageNet classification by 3.7%, achieving an accuracy of 83.2%. Meanwhile, when scaling further, our CRATE-α-L obtains an ImageNet classification accuracy of 85.1%. More notably, these model performance improvements are achieved while preserving, and potentially even enhancing the interpretability of learned CRATE models, as we demonstrate through showing that the learned token representations of increasingly larger trained CRATE-α models yield increasingly higher-quality unsupervised object segmentation of images. The project page is https://rayjryang.github.io/CRATE-alpha/.",
+            "https://arxiv.org/abs/2405.20299",
+            "https://rayjryang.github.io/CRATE-alpha/"
+            )
 
 
         add_paper("A Semantic Space is Worth 256 Language Descriptions: Make Stronger Segmentation Models with Descriptive Properties",
