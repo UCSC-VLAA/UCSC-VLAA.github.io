@@ -481,22 +481,6 @@ function copy(dest, source) {
 
 
 
-
-
-        add_paper("SPFormer: Enhancing Vision Transformer with Superpixel Representation",
-          "Jieru Mei, Liang-Chieh Chen, Alan Yuille, Cihang Xie",
-          null,
-          "https://arxiv.org/abs/2401.02931",
-          "@article{mei2024spformer,<br>" +
-          "&nbsp;&nbsp;&nbsp;title     = {SPFormer: Enhancing Vision Transformer with Superpixel Representation},<br>" +
-          "&nbsp;&nbsp;&nbsp;author    = {Mei, Jieru and Chen, Liang-Chieh and Yuille, Alan and Xie, Cihang},<br>" +
-          "&nbsp;&nbsp;&nbsp;journal   = {arXiv preprint arXiv:2401.02931},<br>" +
-          "&nbsp;&nbsp;&nbsp;year      = {2024}<br>}",
-          "In this work, we introduce SPFormer, a novel Vision Transformer enhanced by superpixel representation. Addressing the limitations of traditional Vision Transformers' fixed-size, non-adaptive patch partitioning, SPFormer employs superpixels that adapt to the image's content. This approach divides the image into irregular, semantically coherent regions, effectively capturing intricate details and applicable at both initial and intermediate feature levels. SPFormer, trainable end-to-end, exhibits superior performance across various benchmarks. Notably, it exhibits significant improvements on the challenging ImageNet benchmark, achieving a 1.4% increase over DeiT-T and 1.1% over DeiT-S respectively. A standout feature of SPFormer is its inherent explainability. The superpixel structure offers a window into the model's internal processes, providing valuable insights that enhance the model's interpretability. This level of clarity significantly improves SPFormer's robustness, particularly in challenging scenarios such as image rotations and occlusions, demonstrating its adaptability and resilience.",
-          "https://arxiv.org/abs/2401.02931"
-        )
-
-
         add_paper("Audio-Visual LLM for Video Understanding",
                   "Hangxun Shu, Lei Zhang, Hao Jiang, Cihang Xie",
                   null,
@@ -733,6 +717,39 @@ function copy(dest, source) {
 
         document.write("</ul>")
         document.write("<ul>")
+
+
+        document.write("</ul><br>")
+        document.write("<h1>2025</h1>")
+        document.write("<ul>")
+
+        add_paper("A New Federated Learning Framework Against Gradient Inversion Attacks",
+           "Pengxin Guo, Shuang Zeng, Wenhao Chen, Xiaodan Zhang, Weihong Ren, Yuyin Zhou, Liangqiong Qu",
+           "AAAI, 2025",
+           "https://arxiv.org/abs/2412.07187",
+           "@inproceedings{guo2023new,<br>" +
+           "&nbsp;&nbsp;&nbsp;title     = {A New Federated Learning Framework Against Gradient Inversion Attacks},<br>" +
+           "&nbsp;&nbsp;&nbsp;author    = {Guo, Pengxin and Zeng, Shuang and Chen, Wenhao and Zhang, Xiaodan and Ren, Weihong and Zhou, Yuyin and Qu, Liangqiong},<br>" +
+           "&nbsp;&nbsp;&nbsp;booktitle = {AAAI},<br>" +
+           "&nbsp;&nbsp;&nbsp;year      = {2025}<br>}",
+           "Federated Learning (FL) aims to protect data privacy by enabling clients to collectively train machine learning models without sharing their raw data. However, recent studies demonstrate that information exchanged during FL is subject to Gradient Inversion Attacks (GIA) and, consequently, a variety of privacy-preserving methods have been integrated into FL to thwart such attacks, such as Secure Multi-party Computing (SMC), Homomorphic Encryption (HE), and Differential Privacy (DP). Despite their ability to protect data privacy, these approaches inherently involve substantial privacy-utility trade-offs. By revisiting the key to privacy exposure in FL under GIA, which lies in the frequent sharing of model gradients that contain private data, we take a new perspective by designing a novel privacy preserve FL framework that effectively ``breaks the direct connection'' between the shared parameters and the local private data to defend against GIA. Specifically, we propose a Hypernetwork Federated Learning (HyperFL) framework that utilizes hypernetworks to generate the parameters of the local model and only the hypernetwork parameters are uploaded to the server for aggregation. Theoretical analyses demonstrate the convergence rate of the proposed HyperFL, while extensive experimental results show the privacy-preserving capability and comparable performance of HyperFL. Code is available at https://github.com/Pengxin-Guo/HyperFL.",
+           "https://arxiv.org/abs/2412.07187",
+           "https://github.com/Pengxin-Guo/HyperFL"
+)
+
+
+        add_paper("SPFormer: Enhancing Vision Transformer with Superpixel Representation",
+          "Jieru Mei, Liang-Chieh Chen, Alan Yuille, Cihang Xie",
+          "TMLR, 2025",
+          "https://arxiv.org/abs/2401.02931",
+          "@article{mei2024spformer,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {SPFormer: Enhancing Vision Transformer with Superpixel Representation},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Mei, Jieru and Chen, Liang-Chieh and Yuille, Alan and Xie, Cihang},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {TMLR},<br>" +
+          "&nbsp;&nbsp;&nbsp;year    = {2025}<br>}",
+          "In this work, we introduce SPFormer, a novel Vision Transformer enhanced by superpixel representation. Addressing the limitations of traditional Vision Transformers' fixed-size, non-adaptive patch partitioning, SPFormer employs superpixels that adapt to the image's content. This approach divides the image into irregular, semantically coherent regions, effectively capturing intricate details and applicable at both initial and intermediate feature levels. SPFormer, trainable end-to-end, exhibits superior performance across various benchmarks. Notably, it exhibits significant improvements on the challenging ImageNet benchmark, achieving a 1.4% increase over DeiT-T and 1.1% over DeiT-S respectively. A standout feature of SPFormer is its inherent explainability. The superpixel structure offers a window into the model's internal processes, providing valuable insights that enhance the model's interpretability. This level of clarity significantly improves SPFormer's robustness, particularly in challenging scenarios such as image rotations and occlusions, demonstrating its adaptability and resilience.",
+          "https://arxiv.org/abs/2401.02931"
+        )
 
 
         document.write("</ul><br>")
