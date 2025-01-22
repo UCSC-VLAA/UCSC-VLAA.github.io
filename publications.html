@@ -180,6 +180,36 @@ function copy(dest, source) {
         document.write("<ul><br>")
 
 
+        add_paper("Double Visual Defense: Adversarial Pre-training and Instruction Tuning for Improving Vision-Language Model Robustness",
+          "Zeyu Wang, Cihang Xie, Brian Bartoldson, Bhavya Kailkhura",
+          null,
+          "https://arxiv.org/abs/2501.09446", 
+          "@article{wang2024double,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {Double Visual Defense: Adversarial Pre-training and Instruction Tuning for Improving Vision-Language Model Robustness},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Zeyu Wang, Cihang Xie, Brian Bartoldson, Bhavya Kailkhura},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2501.09446},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+          "This paper investigates the robustness of vision-language models against adversarial visual perturbations and introduces a novel \"double visual defense\" to enhance this robustness. Unlike previous approaches that resort to lightweight adversarial fine-tuning of a pre-trained CLIP model, we perform large-scale adversarial vision-language pre-training from scratch using web-scale data. We then strengthen the defense by incorporating adversarial visual instruction tuning. The resulting models from each stage, ΔCLIP and Δ2LLaVA, show substantially enhanced zero-shot robustness and set a new state-of-the-art in adversarial defense for vision-language models. For example, the adversarial robustness of ΔCLIP surpasses that of the previous best models on ImageNet-1k by ~20%. Similarly, compared to prior art, Δ2LLaVA brings a ~30% robustness improvement to image captioning task and a ~20% robustness improvement to visual question answering task. Furthermore, our models exhibit stronger zero-shot recognition capability, fewer hallucinations, and superior reasoning performance compared to baselines. Our project page is https://doublevisualdefense.github.io/.",
+          "https://arxiv.org/abs/2501.09446", 
+          "https://doublevisualdefense.github.io/" 
+        )
+
+
+        add_paper("Generative Image Layer Decomposition with Visual Effects",
+          "Jinrui Yang, Qing Liu, Yijun Li, Soo Ye Kim, Daniil Pakhomov, Mengwei Ren, Jianming Zhang, Zhe Lin, Cihang Xie, Yuyin Zhou",
+          null,
+          "https://arxiv.org/abs/2411.17864",
+          "@article{yang2024generative,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {Generative Image Layer Decomposition with Visual Effects},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Jinrui Yang, Qing Liu, Yijun Li, Soo Ye Kim, Daniil Pakhomov, Mengwei Ren, Jianming Zhang, Zhe Lin, Cihang Xie, Yuyin Zhou},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2411.17864},<br>" +
+          "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
+          "Recent advancements in large generative models, particularly diffusion-based methods, have significantly enhanced the capabilities of image editing. However, achieving precise control over image composition tasks remains a challenge. Layered representations, which allow for independent editing of image components, are essential for user-driven content creation, yet existing approaches often struggle to decompose image into plausible layers with accurately retained transparent visual effects such as shadows and reflections. We propose a generative framework for image layer decomposition which outputs photorealistic clean backgrounds and high-quality transparent foregrounds with faithfully preserved visual effects. To enable effective training, we first introduce a dataset preparation pipeline that automatically scales up simulated multi-layer data with synthesized visual effects. To further enhance real-world applicability, we supplement this simulated dataset with camera-captured images containing natural visual effects. Additionally, we propose a consistency loss which enforces the model to learn accurate representations for the transparent foreground layer when ground-truth annotations are not available. Our method achieves superior quality in layer decomposition, outperforming existing approaches in object removal and spatial editing tasks across several benchmarks and multiple user studies, unlocking various creative possibilities for layer-wise image editing. The project page is https://rayjryang.github.io/LayerDecomp.",
+          "https://arxiv.org/abs/2411.17864",
+          "https://rayjryang.github.io/LayerDecomp"
+        )
+
+
 
         add_paper("CLIPS: An Enhanced CLIP Framework for Learning with Synthetic Captions",
           "Yanqing Liu, Xianhang Li, Zeyu Wang, Bingchen Zhao, Cihang Xie",
@@ -211,20 +241,6 @@ function copy(dest, source) {
           )
 
 
-        add_paper("AttnGCG: Enhancing Jailbreaking Attacks on LLMs with Attention Manipulation",
-          "Zijun Wang, Haoqin Tu, Jieru Mei, Bingchen Zhao, Yisen Wang, Cihang Xie",
-          null,
-          "https://arxiv.org/abs/2410.09040",
-          "@article{wang2024attngcg,<br>" +
-          "&nbsp;&nbsp;&nbsp;title   = {AttnGCG: Enhancing Jailbreaking Attacks on LLMs with Attention Manipulation},<br>" +
-          "&nbsp;&nbsp;&nbsp;author  = {Zijun Wang, Haoqin Tu, Jieru Mei, Bingchen Zhao, Yisen Wang, Cihang Xie},<br>" +
-          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2410.09040},<br>" +
-          "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
-          "This paper studies the vulnerabilities of transformer-based Large Language Models (LLMs) to jailbreaking attacks, focusing specifically on the optimization-based Greedy Coordinate Gradient (GCG) strategy. We first observe a positive correlation between the effectiveness of attacks and the internal behaviors of the models. For instance, attacks tend to be less effective when models pay more attention to system prompts designed to ensure LLM safety alignment. Building on this discovery, we introduce an enhanced method that manipulates models' attention scores to facilitate LLM jailbreaking, which we term AttnGCG. Empirically, AttnGCG shows consistent improvements in attack efficacy across diverse LLMs, achieving an average increase of ~7% in the Llama-2 series and ~10% in the Gemma series. Our strategy also demonstrates robust attack transferability against both unseen harmful goals and black-box LLMs like GPT-3.5 and GPT-4. Moreover, we note our attention-score visualization is more interpretable, allowing us to gain better insights into how our targeted attention manipulation facilitates more effective jailbreaking. We release the code at https://github.com/UCSC-VLAA/AttnGCG-attack.",
-          "https://arxiv.org/abs/2410.09040",
-          "https://github.com/UCSC-VLAA/AttnGCG-attack"
-          )
-
 
         add_paper("Causal Image Modeling for Efficient Visual Understanding",
           "Feng Wang, Timing Yang, Yaodong Yu, Sucheng Ren, Guoyizhe Wei, Angtian Wang, Wei Shao, Yuyin Zhou, Alan Yuille, Cihang Xie",
@@ -253,6 +269,20 @@ function copy(dest, source) {
           "https://arxiv.org/abs/2410.06244",
           "https://jwmao1.github.io/storyadapter"
           )
+
+        // add_paper("Efficient MedSAMs: Segment Anything in Medical Images on Laptop",
+        //   "Jun Ma, Feifei Li, Sumin Kim, Reza Asakereh, Bao-Hiep Le, Dang-Khoa Nguyen-Vu, Alexander Pfefferle, Muxin Wei, Ruochen Gao, Donghang Lyu, Songxiao Yang, Lennart Purucker, Zdravko Marinov, Marius Staring, Haisheng Lu, Thuy Thanh Dao, Xincheng Ye, Zhi Li, Gianluca Brugnara, Philipp Vollmuth, Martha Foltyn-Dumitru, Jaeyoung Cho, Mustafa Ahmed Mahmutoglu, Martin Bendszus, Irada Pflüger, Aditya Rastogi, Dong Ni, Xin Yang, Guang-Quan Zhou, Kaini Wang, Nicholas Heller, Nikolaos Papanikolopoulos, Christopher Weight, Yubing Tong, Jayaram K Udupa, Cahill J Patrick, Yaqi Wang, Yifan Zhang, Francisco Contijoch, Elliot McVeigh, Xin Ye, Shucheng He, Robert Haase, Thomas Pinetz, Alexander Radbruch, Inga Krause, Erich Kobler, Jian He, Yucheng Tang, Haichun Yang, Yuankai Huo, Gongning Luo, Kaisar Kushibar, Jandos Amankulov, Dias Toleshbayev, Amangeldi Mukhamejan, Jan Egger, Antonio Pepe, Christina Gsaxner, Gijs Luijten, Shohei Fujita, Tomohiro Kikuchi, Benedikt Wiestler, Jan S Kirschke, Ezequiel de la Rosa, Federico Bolelli, Luca Lumetti, Costantino Grana, Kunpeng Xie, Guomin Wu, Behrus Puladi, Carlos Martín-Isla, Karim Lekadir, Victor M Campello, Wei Shao, Wayne Brisbane, Hongxu Jiang, Hao Wei, Wu Yuan, Shuangle Li, Yuyin Zhou, Bo Wang",
+        //   null,
+        //   "https://arxiv.org/abs/2412.16085",
+        //   "@article{ma2024efficient,<br>" +
+        //   "&nbsp;&nbsp;&nbsp;title   = {Efficient MedSAMs: Segment Anything in Medical Images on Laptop},<br>" +
+        //   "&nbsp;&nbsp;&nbsp;author  = {Jun Ma, Feifei Li, Sumin Kim, Reza Asakereh, Bao-Hiep Le, Dang-Khoa Nguyen-Vu, Alexander Pfefferle, Muxin Wei, Ruochen Gao, Donghang Lyu, Songxiao Yang, Lennart Purucker, Zdravko Marinov, Marius Staring, Haisheng Lu, Thuy Thanh Dao, Xincheng Ye, Zhi Li, Gianluca Brugnara, Philipp Vollmuth, Martha Foltyn-Dumitru, Jaeyoung Cho, Mustafa Ahmed Mahmutoglu, Martin Bendszus, Irada Pflüger, Aditya Rastogi, Dong Ni, Xin Yang, Guang-Quan Zhou, Kaini Wang, Nicholas Heller, Nikolaos Papanikolopoulos, Christopher Weight, Yubing Tong, Jayaram K Udupa, Cahill J Patrick, Yaqi Wang, Yifan Zhang, Francisco Contijoch, Elliot McVeigh, Xin Ye, Shucheng He, Robert Haase, Thomas Pinetz, Alexander Radbruch, Inga Krause, Erich Kobler, Jian He, Yucheng Tang, Haichun Yang, Yuankai Huo, Gongning Luo, Kaisar Kushibar, Jandos Amankulov, Dias Toleshbayev, Amangeldi Mukhamejan, Jan Egger, Antonio Pepe, Christina Gsaxner, Gijs Luijten, Shohei Fujita, Tomohiro Kikuchi, Benedikt Wiestler, Jan S Kirschke, Ezequiel de la Rosa, Federico Bolelli, Luca Lumetti, Costantino Grana, Kunpeng Xie, Guomin Wu, Behrus Puladi, Carlos Martín-Isla, Karim Lekadir, Victor M Campello, Wei Shao, Wayne Brisbane, Hongxu Jiang, Hao Wei, Wu Yuan, Shuangle Li, Yuyin Zhou, Bo Wang},<br>" +
+        //   "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2412.16085},<br>" +
+        //   "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
+        //   "Promptable segmentation foundation models have emerged as a transformative approach to addressing the diverse needs in medical images, but most existing models require expensive computing, posing a big barrier to their adoption in clinical practice. In this work, we organized the first international competition dedicated to promptable medical image segmentation, featuring a large-scale dataset spanning nine common imaging modalities from over 20 different institutions. The top teams developed lightweight segmentation foundation models and implemented an efficient inference pipeline that substantially reduced computational requirements while maintaining state-of-the-art segmentation accuracy. Moreover, the post-challenge phase advanced the algorithms through the design of performance booster and reproducibility tasks, resulting in improved algorithms and validated reproducibility of the winning solution. Furthermore, the best-performing algorithms have been incorporated into the open-source software with a user-friendly interface to facilitate clinical adoption. The data and code are publicly available to foster the further development of medical image segmentation foundation models and pave the way for impactful real-world applications.",
+        //   "https://arxiv.org/abs/2412.16085",
+        //   )
+
 
 
         add_paper("A Preliminary Study of o1 in Medicine: Are We Closer to an AI Doctor?",
@@ -285,19 +315,7 @@ function copy(dest, source) {
         )
 
 
-        add_paper("MedTrinity-25M: A Large-scale Multimodal Dataset with Multigranular Annotations for Medicine",
-        "Yunfei Xie, Ce Zhou, Lang Gao, Juncheng Wu, Xianhang Li, Hong-Yu Zhou, Sheng Liu, Lei Xing, James Zou, Cihang Xie, Yuyin Zhou",
-        null,
-        "https://arxiv.org/abs/2408.02900",
-        "@article{xie2024medtrinity,<br>" +
-        "&nbsp;&nbsp;&nbsp;title   = {MedTrinity-25M: A Large-scale Multimodal Dataset with Multigranular Annotations for Medicine},<br>" +
-        "&nbsp;&nbsp;&nbsp;author  = {Yunfei Xie, Ce Zhou, Lang Gao, Juncheng Wu, Xianhang Li, Hong-Yu Zhou, Sheng Liu, Lei Xing, James Zou, Cihang Xie, Yuyin Zhou},<br>" +
-        "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2408.02900},<br>" +
-        "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
-        "This paper introduces MedTrinity-25M, a comprehensive, large-scale multimodal dataset for medicine, covering over 25 million images across 10 modalities, with multigranular annotations for more than 65 diseases. These enriched annotations encompass both global textual information, such as disease/lesion type, modality, region-specific descriptions, and inter-regional relationships, as well as detailed local annotations for regions of interest (ROIs), including bounding boxes, segmentation masks. Unlike existing approach which is limited by the availability of image-text pairs, we have developed the first automated pipeline that scales up multimodal data by generating multigranular visual and texual annotations (in the form of image-ROI-description triplets) without the need for any paired text descriptions. Specifically, data from over 90 different sources have been collected, preprocessed, and grounded using domain-specific expert models to identify ROIs related to abnormal regions. We then build a comprehensive knowledge base and prompt multimodal large language models to perform retrieval-augmented generation with the identified ROIs as guidance, resulting in multigranular texual descriptions. Compared to existing datasets, MedTrinity-25M provides the most enriched annotations, supporting a comprehensive range of multimodal tasks such as captioning and report generation, as well as vision-centric tasks like classification and segmentation. This dataset can be utilized to support large-scale pre-training of multimodal medical AI models, contributing to the development of future foundation models in the medical domain.",
-        "https://arxiv.org/abs/2408.02900",
-        "https://yunfeixie233.github.io/MedTrinity-25M/"
-        )
+        
 
         add_paper("VideoLLaMB: Long-context Video Understanding with Recurrent Memory Bridges",
           "Yuxuan Wang, Cihang Xie, Yang Liu, Zilong Zheng",
@@ -374,38 +392,6 @@ function copy(dest, source) {
 
 
 
-        add_paper("Autoregressive Pretraining with Mamba in Vision",
-          "Sucheng Ren, Xianhang Li, Haoqin Tu, Feng Wang, Fangxun Shu, Lei Zhang, Jieru Mei, Linjie Yang, Peng Wang, Heng Wang, Alan Yuille, Cihang Xie",
-          null,
-          "https://arxiv.org/abs/2406.07537",
-          "@article{ren2024autoregressive,<br>" +
-           "&nbsp;&nbsp;&nbsp;title   = {Autoregressive Pretraining with Mamba in Vision},<br>" +
-           "&nbsp;&nbsp;&nbsp;author  = {Ren, Sucheng and Li, Xianhang and Tu, Haoqin and Wang, Feng and Shu, Fangxun and Zhang, Lei and Mei, Jieru and Yang, Linjie and Wang, Peng and Wang, Heng and Yuille, Alan and Xie, Cihang},<br>" +
-           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2406.07537},<br>" +
-           "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
-          "The vision community has started to build with the recently developed state space model, Mamba, as the new backbone for a range of tasks. This paper shows that Mamba's visual capability can be significantly enhanced through autoregressive pretraining, a direction not previously explored. Efficiency-wise, the autoregressive nature can well capitalize on the Mamba's unidirectional recurrent structure, enabling faster overall training speed compared to other training strategies like mask modeling. Performance-wise, autoregressive pretraining equips the Mamba architecture with markedly higher accuracy over its supervised-trained counterparts and, more importantly, successfully unlocks its scaling potential to large and even huge model sizes. For example, with autoregressive pretraining, a base-size Mamba attains 83.2% ImageNet accuracy, outperforming its supervised counterpart by 2.0%; our huge-size Mamba, the largest Vision Mamba to date, attains 85.0% ImageNet accuracy (85.5% when finetuned with 384x384 inputs), notably surpassing all other Mamba variants in vision. The code is available at https://github.com/OliverRensu/ARM.",
-          "https://arxiv.org/abs/2406.07537",
-          "https://github.com/OliverRensu/ARM"
-        )
-
-
-
-
-        add_paper("ARVideo: Autoregressive Pretraining for Self-Supervised Video Representation Learning",
-          "Sucheng Ren, Hongru Zhu, Chen Wei, Yijiang Li, Alan Yuille, Cihang Xie",
-          null,
-          "https://arxiv.org/abs/2405.15160",
-          "@article{ren2024arvideo,<br>" +
-           "&nbsp;&nbsp;&nbsp;title   = {ARVideo: Autoregressive Pretraining for Self-Supervised Video Representation Learning},<br>" +
-           "&nbsp;&nbsp;&nbsp;author  = {Ren, Sucheng and Zhu, Hongru and Wei, Chen and Li, Yijiang and Yuille, Alan and Xie, Cihang},<br>" +
-           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2405.15160},<br>" +
-           "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
-          "This paper presents a new self-supervised video representation learning framework, ARVideo, which autoregressively predicts the next video token in a tailored sequence order. Two key designs are included. First, we organize autoregressive video tokens into clusters that span both spatially and temporally, thereby enabling a richer aggregation of contextual information compared to the standard spatial-only or temporal-only clusters. Second, we adopt a randomized spatiotemporal prediction order to facilitate learning from multi-dimensional data, addressing the limitations of a handcrafted spatial-first or temporal-first sequence order. Extensive experiments establish ARVideo as an effective paradigm for self-supervised video representation learning. For example, when trained with the ViT-B backbone, ARVideo competitively attains 81.2% on Kinetics-400 and 70.9% on Something-Something V2, which are on par with the strong benchmark set by VideoMAE. Importantly, ARVideo also demonstrates higher training efficiency, i.e., it trains 14% faster and requires 58% less GPU memory compared to VideoMAE.",
-          "https://arxiv.org/abs/2405.15160",
-          null
-        )
-
-
         add_paper("Mamba-R: Vision Mamba ALSO Needs Registers",
           "Feng Wang, Jiahao Wang, Sucheng Ren, Guoyizhe Wei, Jieru Mei, Wei Shao, Yuyin Zhou, Alan Yuille, Cihang Xie",
           null,
@@ -450,19 +436,7 @@ function copy(dest, source) {
         )
 
 
-        add_paper("HQ-Edit: A High-Quality Dataset for Instruction-based Image Editing",
-          "Mude Hui, Siwei Yang, Bingchen Zhao, Yichun Shi, Heng Wang, Peng Wang, Cihang Xie, Yuyin Zhou",
-          null,
-          "https://arxiv.org/abs/2404.09990",
-          "@article{hui2024hqedit,<br>" +
-           "&nbsp;&nbsp;&nbsp;title   = {HQ-Edit: A High-Quality Dataset for Instruction-based Image Editing},<br>" +
-           "&nbsp;&nbsp;&nbsp;author  = {Hui, Mude and Yang, Siwei and Zhao, Bingchen and Shi, Yichun and Wang, Heng and Wang, Peng and Xie, Cihang and Zhou, Yuyin},<br>" +
-           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2404.09990},<br>" +
-           "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
-          "This study introduces HQ-Edit, a high-quality instruction-based image editing dataset with around 200,000 edits. Unlike prior approaches relying on attribute guidance or human feedback on building datasets, we devise a scalable data collection pipeline leveraging advanced foundation models, namely GPT-4V and DALL-E 3. To ensure its high quality, diverse examples are first collected online, expanded, and then used to create high-quality diptychs featuring input and output images with detailed text prompts, followed by precise alignment ensured through post-processing. In addition, we propose two evaluation metrics, Alignment and Coherence, to quantitatively assess the quality of image edit pairs using GPT-4V. HQ-Edits high-resolution images, rich in detail and accompanied by comprehensive editing prompts, substantially enhance the capabilities of existing image editing models. For example, an HQ-Edit finetuned InstructPix2Pix can attain state-of-the-art image editing performance, even surpassing those models fine-tuned with human-annotated data. The project page is https://thefllood.github.io/HQEdit_web/",
-          "https://arxiv.org/abs/2404.09990",
-          "https://thefllood.github.io/HQEdit_web/"
-        )
+        
 
 
         add_paper("AQA-Bench: An Interactive Benchmark for Evaluating LLMs' Sequential Reasoning Ability",
@@ -723,6 +697,52 @@ function copy(dest, source) {
         document.write("<h1>2025</h1>")
         document.write("<ul>")
 
+
+        add_paper("HQ-Edit: A High-Quality Dataset for Instruction-based Image Editing",
+          "Mude Hui, Siwei Yang, Bingchen Zhao, Yichun Shi, Heng Wang, Peng Wang, Yuyin Zhou, Cihang Xie",
+          "ICLR, 2025",
+          "https://arxiv.org/abs/2404.09990",
+          "@article{hui2024hqedit,<br>" +
+           "&nbsp;&nbsp;&nbsp;title   = {HQ-Edit: A High-Quality Dataset for Instruction-based Image Editing},<br>" +
+           "&nbsp;&nbsp;&nbsp;author  = {Hui, Mude and Yang, Siwei and Zhao, Bingchen and Shi, Yichun and Wang, Heng and Wang, Peng and Zhou, Yuyin and Xie, Cihang },<br>" +
+           "&nbsp;&nbsp;&nbsp;journal = {ICLR},<br>" +
+           "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+          "This study introduces HQ-Edit, a high-quality instruction-based image editing dataset with around 200,000 edits. Unlike prior approaches relying on attribute guidance or human feedback on building datasets, we devise a scalable data collection pipeline leveraging advanced foundation models, namely GPT-4V and DALL-E 3. To ensure its high quality, diverse examples are first collected online, expanded, and then used to create high-quality diptychs featuring input and output images with detailed text prompts, followed by precise alignment ensured through post-processing. In addition, we propose two evaluation metrics, Alignment and Coherence, to quantitatively assess the quality of image edit pairs using GPT-4V. HQ-Edits high-resolution images, rich in detail and accompanied by comprehensive editing prompts, substantially enhance the capabilities of existing image editing models. For example, an HQ-Edit finetuned InstructPix2Pix can attain state-of-the-art image editing performance, even surpassing those models fine-tuned with human-annotated data. The project page is https://thefllood.github.io/HQEdit_web/",
+          "https://arxiv.org/abs/2404.09990",
+          "https://thefllood.github.io/HQEdit_web/"
+        )
+
+
+        add_paper("Autoregressive Pretraining with Mamba in Vision",
+          "Sucheng Ren, Xianhang Li, Haoqin Tu, Feng Wang, Fangxun Shu, Lei Zhang, Jieru Mei, Linjie Yang, Peng Wang, Heng Wang, Alan Yuille, Cihang Xie",
+          "ICLR, 2025",
+          "https://arxiv.org/abs/2406.07537",
+          "@article{ren2024autoregressive,<br>" +
+           "&nbsp;&nbsp;&nbsp;title   = {Autoregressive Pretraining with Mamba in Vision},<br>" +
+           "&nbsp;&nbsp;&nbsp;author  = {Ren, Sucheng and Li, Xianhang and Tu, Haoqin and Wang, Feng and Shu, Fangxun and Zhang, Lei and Mei, Jieru and Yang, Linjie and Wang, Peng and Wang, Heng and Yuille, Alan and Xie, Cihang},<br>" +
+           "&nbsp;&nbsp;&nbsp;journal = {ICLR},<br>" +
+           "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+          "The vision community has started to build with the recently developed state space model, Mamba, as the new backbone for a range of tasks. This paper shows that Mamba's visual capability can be significantly enhanced through autoregressive pretraining, a direction not previously explored. Efficiency-wise, the autoregressive nature can well capitalize on the Mamba's unidirectional recurrent structure, enabling faster overall training speed compared to other training strategies like mask modeling. Performance-wise, autoregressive pretraining equips the Mamba architecture with markedly higher accuracy over its supervised-trained counterparts and, more importantly, successfully unlocks its scaling potential to large and even huge model sizes. For example, with autoregressive pretraining, a base-size Mamba attains 83.2% ImageNet accuracy, outperforming its supervised counterpart by 2.0%; our huge-size Mamba, the largest Vision Mamba to date, attains 85.0% ImageNet accuracy (85.5% when finetuned with 384x384 inputs), notably surpassing all other Mamba variants in vision. The code is available at https://github.com/OliverRensu/ARM.",
+          "https://arxiv.org/abs/2406.07537",
+          "https://github.com/OliverRensu/ARM"
+        )
+
+
+        add_paper("MedTrinity-25M: A Large-scale Multimodal Dataset with Multigranular Annotations for Medicine",
+        "Yunfei Xie, Ce Zhou, Lang Gao, Juncheng Wu, Xianhang Li, Hong-Yu Zhou, Sheng Liu, Lei Xing, James Zou, Cihang Xie, Yuyin Zhou",
+        "ICLR, 2025",
+        "https://arxiv.org/abs/2408.02900",
+        "@article{xie2024medtrinity,<br>" +
+        "&nbsp;&nbsp;&nbsp;title   = {MedTrinity-25M: A Large-scale Multimodal Dataset with Multigranular Annotations for Medicine},<br>" +
+        "&nbsp;&nbsp;&nbsp;author  = {Yunfei Xie, Ce Zhou, Lang Gao, Juncheng Wu, Xianhang Li, Hong-Yu Zhou, Sheng Liu, Lei Xing, James Zou, Cihang Xie, Yuyin Zhou},<br>" +
+        "&nbsp;&nbsp;&nbsp;journal = {ICLR},<br>" +
+        "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+        "This paper introduces MedTrinity-25M, a comprehensive, large-scale multimodal dataset for medicine, covering over 25 million images across 10 modalities, with multigranular annotations for more than 65 diseases. These enriched annotations encompass both global textual information, such as disease/lesion type, modality, region-specific descriptions, and inter-regional relationships, as well as detailed local annotations for regions of interest (ROIs), including bounding boxes, segmentation masks. Unlike existing approach which is limited by the availability of image-text pairs, we have developed the first automated pipeline that scales up multimodal data by generating multigranular visual and texual annotations (in the form of image-ROI-description triplets) without the need for any paired text descriptions. Specifically, data from over 90 different sources have been collected, preprocessed, and grounded using domain-specific expert models to identify ROIs related to abnormal regions. We then build a comprehensive knowledge base and prompt multimodal large language models to perform retrieval-augmented generation with the identified ROIs as guidance, resulting in multigranular texual descriptions. Compared to existing datasets, MedTrinity-25M provides the most enriched annotations, supporting a comprehensive range of multimodal tasks such as captioning and report generation, as well as vision-centric tasks like classification and segmentation. This dataset can be utilized to support large-scale pre-training of multimodal medical AI models, contributing to the development of future foundation models in the medical domain.",
+        "https://arxiv.org/abs/2408.02900",
+        "https://yunfeixie233.github.io/MedTrinity-25M/"
+        )
+
+
         add_paper("A New Federated Learning Framework Against Gradient Inversion Attacks",
            "Pengxin Guo, Shuang Zeng, Wenhao Chen, Xiaodan Zhang, Weihong Ren, Yuyin Zhou, Liangqiong Qu",
            "AAAI, 2025",
@@ -735,7 +755,36 @@ function copy(dest, source) {
            "Federated Learning (FL) aims to protect data privacy by enabling clients to collectively train machine learning models without sharing their raw data. However, recent studies demonstrate that information exchanged during FL is subject to Gradient Inversion Attacks (GIA) and, consequently, a variety of privacy-preserving methods have been integrated into FL to thwart such attacks, such as Secure Multi-party Computing (SMC), Homomorphic Encryption (HE), and Differential Privacy (DP). Despite their ability to protect data privacy, these approaches inherently involve substantial privacy-utility trade-offs. By revisiting the key to privacy exposure in FL under GIA, which lies in the frequent sharing of model gradients that contain private data, we take a new perspective by designing a novel privacy preserve FL framework that effectively ``breaks the direct connection'' between the shared parameters and the local private data to defend against GIA. Specifically, we propose a Hypernetwork Federated Learning (HyperFL) framework that utilizes hypernetworks to generate the parameters of the local model and only the hypernetwork parameters are uploaded to the server for aggregation. Theoretical analyses demonstrate the convergence rate of the proposed HyperFL, while extensive experimental results show the privacy-preserving capability and comparable performance of HyperFL. Code is available at https://github.com/Pengxin-Guo/HyperFL.",
            "https://arxiv.org/abs/2412.07187",
            "https://github.com/Pengxin-Guo/HyperFL"
-)
+        )
+
+
+        add_paper("ARVideo: Autoregressive Pretraining for Self-Supervised Video Representation Learning",
+          "Sucheng Ren, Hongru Zhu, Chen Wei, Yijiang Li, Alan Yuille, Cihang Xie",
+          "TMLR, 2025",
+          "https://arxiv.org/abs/2405.15160",
+          "@article{ren2024arvideo,<br>" +
+           "&nbsp;&nbsp;&nbsp;title   = {ARVideo: Autoregressive Pretraining for Self-Supervised Video Representation Learning},<br>" +
+           "&nbsp;&nbsp;&nbsp;author  = {Ren, Sucheng and Zhu, Hongru and Wei, Chen and Li, Yijiang and Yuille, Alan and Xie, Cihang},<br>" +
+           "&nbsp;&nbsp;&nbsp;journal = {TMLR},<br>" +
+           "&nbsp;&nbsp;&nbsp;year    = {2025}<br>}",
+          "This paper presents a new self-supervised video representation learning framework, ARVideo, which autoregressively predicts the next video token in a tailored sequence order. Two key designs are included. First, we organize autoregressive video tokens into clusters that span both spatially and temporally, thereby enabling a richer aggregation of contextual information compared to the standard spatial-only or temporal-only clusters. Second, we adopt a randomized spatiotemporal prediction order to facilitate learning from multi-dimensional data, addressing the limitations of a handcrafted spatial-first or temporal-first sequence order. Extensive experiments establish ARVideo as an effective paradigm for self-supervised video representation learning. For example, when trained with the ViT-B backbone, ARVideo competitively attains 81.2% on Kinetics-400 and 70.9% on Something-Something V2, which are on par with the strong benchmark set by VideoMAE. Importantly, ARVideo also demonstrates higher training efficiency, i.e., it trains 14% faster and requires 58% less GPU memory compared to VideoMAE.",
+          "https://arxiv.org/abs/2405.15160",
+        )
+
+
+        add_paper("AttnGCG: Enhancing Jailbreaking Attacks on LLMs with Attention Manipulation",
+          "Zijun Wang, Haoqin Tu, Jieru Mei, Bingchen Zhao, Yisen Wang, Cihang Xie",
+          "TMLR, 2025",
+          "https://arxiv.org/abs/2410.09040",
+          "@article{wang2024attngcg,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {AttnGCG: Enhancing Jailbreaking Attacks on LLMs with Attention Manipulation},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Zijun Wang, Haoqin Tu, Jieru Mei, Bingchen Zhao, Yisen Wang, Cihang Xie},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {TMLR},<br>" +
+          "&nbsp;&nbsp;&nbsp;year    = {2025}<br>}",
+          "This paper studies the vulnerabilities of transformer-based Large Language Models (LLMs) to jailbreaking attacks, focusing specifically on the optimization-based Greedy Coordinate Gradient (GCG) strategy. We first observe a positive correlation between the effectiveness of attacks and the internal behaviors of the models. For instance, attacks tend to be less effective when models pay more attention to system prompts designed to ensure LLM safety alignment. Building on this discovery, we introduce an enhanced method that manipulates models' attention scores to facilitate LLM jailbreaking, which we term AttnGCG. Empirically, AttnGCG shows consistent improvements in attack efficacy across diverse LLMs, achieving an average increase of ~7% in the Llama-2 series and ~10% in the Gemma series. Our strategy also demonstrates robust attack transferability against both unseen harmful goals and black-box LLMs like GPT-3.5 and GPT-4. Moreover, we note our attention-score visualization is more interpretable, allowing us to gain better insights into how our targeted attention manipulation facilitates more effective jailbreaking. We release the code at https://github.com/UCSC-VLAA/AttnGCG-attack.",
+          "https://arxiv.org/abs/2410.09040",
+          "https://github.com/UCSC-VLAA/AttnGCG-attack"
+          )
 
 
         add_paper("SPFormer: Enhancing Vision Transformer with Superpixel Representation",
@@ -832,27 +881,28 @@ function copy(dest, source) {
         add_paper("From Pixels to Objects: A Hierarchical Approach for Part and Object Segmentation Using Local and Global Aggregation",
                   "Yunfei Xie, Cihang Xie, Alan Yuille, Jieru Mei",
                   "ECCV, 2024",
-                  "",
+                  "https://arxiv.org/abs/2409.01353",
                   "@inproceedings{xie2024pixels,<br>" +
                   "&nbsp;&nbsp;&nbsp;title     = {From Pixels to Objects: A Hierarchical Approach for Part and Object Segmentation Using Local and Global Aggregation},<br>" +
                   "&nbsp;&nbsp;&nbsp;author    = {Xie, Yunfei and Xie, Cihang and Yuille, Alan and Mei, Jieru},<br>" +
                   "&nbsp;&nbsp;&nbsp;booktitle = {ECCV},<br>" +
                   "&nbsp;&nbsp;&nbsp;year      = {2024}<br>}",
                   "We present a hierarchical transformer-based model for image segmentation that effectively links the segmentation of detailed parts to the broader context of object segmentation. Central to our approach is a multi-level representation, progressing from individual pixels to superpixels, and finally to cohesive groups. This progression is characterized by two key aggregation strategies: local aggregation for forming superpixels and global aggregation for clustering these superpixels into group tokens. The formation of superpixels through local aggregation taps into the redundancy of image data, yielding segments that align with image parts under object-level supervision. Conversely, the global aggregation process assembles these superpixels into groups that demonstrate a tendency to align with whole objects, especially when guided by part-level supervision. This methodology achieves an optimal balance between adaptability to different types of supervision and computational efficiency, leading to notable advancements in the segmentation of both parts and objects. When evaluated on the PartImageNet dataset, our approach surpasses the previous state-of-the-art by 2.8% and 0.8% in part and object mIoU scores, respectively. Similarly, on the Pascal Part dataset, it demonstrates improvements of 1.5% and 2.0% for part and object mIoU, respectively.",
-                  "",
+                  "https://arxiv.org/abs/2409.01353",
                   )
 
 
         add_paper("Tackling Data Heterogeneity in Federated Learning via Loss Decomposition",
                     "Shuang Zeng, Pengxin Guo, Shuai Wang, Jianbo Wang, Yuyin Zhou, Liangqiong Qu",
                     "MICCAI, 2024",
-                    "",
+                    "https://arxiv.org/abs/2408.12300",
                     "@inproceedings{zeng2024trackling,<br>" +
                      "&nbsp;&nbsp;&nbsp;title     = {Tackling Data Heterogeneity in Federated Learning via Loss Decomposition},<br>" +
                      "&nbsp;&nbsp;&nbsp;author    = {Zeng, Shuang and Guo, Pengxin and Wang, Shuai and Wang, Jianbo and Zhou, Yuyin and Qu, Liangqiong},<br>" +
                      "&nbsp;&nbsp;&nbsp;booktitle = {MICCAI},<br>" +
                      "&nbsp;&nbsp;&nbsp;year      = {2024}<br>}",
                     "Federated Learning (FL) is a rising approach towards collaborative and privacy-preserving machine learning where large-scale medical datasets remain localized to each client. However, the issue of data heterogeneity among clients often compels local models to diverge, leading to suboptimal global models. To mitigate the impact of data heterogeneity on FL performance, we start with analyzing how FL training influence FL performance by decomposing the global loss into three terms: local loss, distribution shift loss and aggregation loss. Remarkably, our loss decomposition reveals that existing local training-based FL methods attempt to further reduce the distribution shift loss, while the global aggregation-based FL methods propose better aggregation strategies to reduce the aggregation loss. Nevertheless, a comprehensive joint effort to minimize all three terms is currently limited in the literature, leading to subpar performance when dealing with data heterogeneity challenges. To fill this gap, we propose a novel FL method based on global loss decomposition, called FedLD, to jointly reduce these three loss terms. Our FedLD involves a margin control regularization in local training to reduce the distribution shift loss, and a principal gradient-based server aggregation strategy to reduce the aggregation loss. Notably, under different levels of data heterogeneity, our strategies achieve better and more robust performance on retinal and chest X-ray classification compared to other FL algorithms.",
+                    "https://arxiv.org/abs/2408.12300"
                     )
 
 
