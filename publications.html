@@ -180,6 +180,95 @@ function copy(dest, source) {
         document.write("<ul><br>")
 
 
+        add_paper("EpiFoundation: A Foundation Model for Single-Cell ATAC-seq via Peak-to-Gene Alignment",
+          "Juncheng Wu, Changxin Wan, Zhicheng Ji, Yuyin Zhou, Wenpin Hou",
+          null,
+          "https://www.biorxiv.org/content/10.1101/2025.02.05.636688", 
+          "@article{wu2025epifoundation,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {EpiFoundation: A Foundation Model for Single-Cell ATAC-seq via Peak-to-Gene Alignment},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Juncheng Wu, Changxin Wan, Zhicheng Ji, Yuyin Zhou, Wenpin Hou},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {bioRxiv},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+          "Foundation models exhibit strong capabilities for downstream tasks by learning generalized representations through self-supervised pre-training on large datasets. While several foundation models have been developed for single-cell RNA-seq (scRNA-seq) data, there is still a lack of models specifically tailored for single-cell ATAC-seq (scATAC-seq), which measures epigenetic information in individual cells. The principal challenge in developing such a model lies in the vast number of scATAC peaks and the significant sparsity of the data, which complicates the formulation of peak-to-peak correlations. To address this challenge, we introduce EpiFoundation, a foundation model for learning cell representations from the high-dimensional and sparse space of peaks. Epi-Foundation relies on an innovative cross-modality pre-training procedure with two key technical innovations. First, EpiFoundation exclusively processes the non-zero peak set, thereby enhancing the density of cell-specific information within the input data. Second, EpiFoundation utilizes dense gene expression information to supervise the pre-training process, aligning peak-to-gene correlations. EpiFoundation can handle various types of downstream tasks, including cell-type annotation, batch correction, and gene expression prediction. To train and validate EpiFoundation, we curated MiniAtlas, a dataset of 100,000+ single cells with paired scRNA-seq and scATAC-seq data, along with diverse test sets spanning various tissues and cell types for robust evaluation. EpiFoundation demonstrates state-of-the-art performance across multiple tissues and diverse downstream tasks.",
+          "https://www.biorxiv.org/content/10.1101/2025.02.05.636688",
+          "https://github.com/UCSC-VLAA/EpiFoundation"
+        )
+
+
+        add_paper("MethylProphet: A Generalized Gene-Contextual Model for Inferring Whole-Genome DNA Methylation Landscape",
+          "Xiaoke Huang, Qi Liu, Yifei Zhao, Xianfeng Tang, Yuyin Zhou, Wenpin Hou",
+          null,
+          "https://www.biorxiv.org/content/10.1101/2025.02.05.636730", 
+          "@article{huang2025methylprophet,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {MethylProphet: A Generalized Gene-Contextual Model for Inferring Whole-Genome DNA Methylation Landscape},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Xiaoke Huang, Qi Liu, Yifei Zhao, Xianfeng Tang, Yuyin Zhou, Wenpin Hou},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {bioRxiv},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+          "DNA methylation (DNAm), an epigenetic modification, regulates gene expression, influences phenotypes, and encodes inheritable information, making it critical for disease diagnosis, treatment, and prevention. While human genome contains approximately 28 million CpG sites where DNAm can be measured, only 1–3% of these sites are typically available in most datasets due to complex experimental protocols and high costs, hindering insights from DNAm data. Leveraging the relationship between gene expression and DNAm offers promise for computational inference, but existing statistical, machine learning, and masking-based generative Transformers face critical limitations: they cannot infer DNAm at unmeasured CpGs or in new samples effectively. To overcome these challenges, we introduce MethylProphet, a gene-guided, context-aware Transformer model designed for DNAm inference. MethylProphet employs a Bottleneck MLP for efficient gene profile compression and a specialized DNA sequence tokenizer, integrating global gene expression patterns with local CpG context through a Transformer encoder architecture. Trained on whole-genome bisulfite sequencing data from ENCODE (1.6B training CpG-sample pairs; 322B tokens), MethylProphet demonstrates strong performance in hold-out evaluations, effectively inferring DNAm for unmeasured CpGs and new samples. In addition, its application to 10842 pairs of gene expression and DNAm samples at TCGA chromosome 1 (450M training CpGsample pairs; 91B tokens) highlights its potential to facilitate pan-cancer DNAm landscape inference, offering a powerful tool for advancing epigenetic research and precision medicine. All codes, data, protocols, and models are publicly available via https://github.com/xk-huang/methylprophet/.",
+          "https://www.biorxiv.org/content/10.1101/2025.02.05.636730", 
+          "https://github.com/xk-huang/methylprophet/"
+        )
+
+
+
+        add_paper("Scaling Laws in Patchification: An Image Is Worth 50,176 Tokens And More",
+          "Feng Wang, Yaodong Yu, Guoyizhe Wei, Wei Shao, Yuyin Zhou, Alan Yuille, Cihang Xie",
+          null,
+          "https://arxiv.org/abs/2502.03738", 
+          "@article{wang2025scaling,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {Scaling Laws in Patchification: An Image Is Worth 50,176 Tokens And More},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Feng Wang, Yaodong Yu, Guoyizhe Wei, Wei Shao, Yuyin Zhou, Alan Yuille, Cihang Xie},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2502.03738},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+          "Since the introduction of Vision Transformer (ViT), patchification has long been regarded as a de facto image tokenization approach for plain visual architectures. By compressing the spatial size of images, this approach can effectively shorten the token sequence and reduce the computational cost of ViT-like plain architectures. In this work, we aim to thoroughly examine the information loss caused by this patchification-based compressive encoding paradigm and how it affects visual understanding. We conduct extensive patch size scaling experiments and excitedly observe an intriguing scaling law in patchification: the models can consistently benefit from decreased patch sizes and attain improved predictive performance, until it reaches the minimum patch size of 1x1, i.e., pixel tokenization. This conclusion is broadly applicable across different vision tasks, various input scales, and diverse architectures such as ViT and the recent Mamba models. Moreover, as a by-product, we discover that with smaller patches, task-specific decoder heads become less critical for dense prediction. In the experiments, we successfully scale up the visual sequence to an exceptional length of 50,176 tokens, achieving a competitive test accuracy of 84.6% with a base-sized model on the ImageNet-1k benchmark. We hope this study can provide insights and theoretical foundations for future works of building non-compressive vision models. Code is available at https://github.com/wangf3014/Patch_Scaling.",
+          "https://arxiv.org/abs/2502.03738", 
+          "https://github.com/wangf3014/Patch_Scaling"
+        )
+
+
+        add_paper("ARFlow: Autogressive Flow with Hybrid Linear Attention",
+          "Mude Hui, Rui-Jie Zhu, Songlin Yang, Yu Zhang, Zirui Wang, Yuyin Zhou, Jason Eshraghian, Cihang Xie",
+          null,
+          "https://arxiv.org/abs/2501.16085", 
+          "@article{hui2025arflow,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {ARFlow: Autogressive Flow with Hybrid Linear Attention},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Mude Hui, Rui-Jie Zhu, Songlin Yang, Yu Zhang, Zirui Wang, Yuyin Zhou, Jason Eshraghian, Cihang Xie},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2501.16085},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+          "Flow models are effective at progressively generating realistic images, but they generally struggle to capture long-range dependencies during the generation process as they compress all the information from previous time steps into a single corrupted image. To address this limitation, we propose integrating autoregressive modeling -- known for its excellence in modeling complex, high-dimensional joint probability distributions -- into flow models. During training, at each step, we construct causally-ordered sequences by sampling multiple images from the same semantic category and applying different levels of noise, where images with higher noise levels serve as causal predecessors to those with lower noise levels. This design enables the model to learn broader category-level variations while maintaining proper causal relationships in the flow process. During generation, the model autoregressively conditions the previously generated images from earlier denoising steps, forming a contextual and coherent generation trajectory. Additionally, we design a customized hybrid linear attention mechanism tailored to our modeling approach to enhance computational efficiency. Our approach, termed ARFlow, under 400k training steps, achieves 14.08 FID scores on ImageNet at 128 * 128 without classifier-free guidance, reaching 4.34 FID with classifier-free guidance 1.5, significantly outperforming the previous flow-based model SiT's 9.17 FID. Extensive ablation studies demonstrate the effectiveness of our modeling strategy and chunk-wise attention design.",
+          "https://arxiv.org/abs/2501.16085"
+        )
+
+
+        add_paper("UD-Mamba: A pixel-level uncertainty-driven Mamba model for medical image segmentation",
+          "Weiren Zhao, Feng Wang, Yanran Wang, Yutong Xie, Qi Wu, Yuyin Zhou",
+          null,
+          "https://arxiv.org/abs/2502.02024", 
+          "@article{zhao2025udmamba,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {UD-Mamba: A pixel-level uncertainty-driven Mamba model for medical image segmentation},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Weiren Zhao, Feng Wang, Yanran Wang, Yutong Xie, Qi Wu, Yuyin Zhou},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2502.02024},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+          "Recent advancements have highlighted the Mamba framework, a state-space model known for its efficiency in capturing long-range dependencies with linear computational complexity. While Mamba has shown competitive performance in medical image segmentation, it encounters difficulties in modeling local features due to the sporadic nature of traditional location-based scanning methods and the complex, ambiguous boundaries often present in medical images. To overcome these challenges, we propose Uncertainty-Driven Mamba (UD-Mamba), which redefines the pixel-order scanning process by incorporating channel uncertainty into the scanning mechanism. UD-Mamba introduces two key scanning techniques: 1) sequential scanning, which prioritizes regions with high uncertainty by scanning in a row-by-row fashion, and 2) skip scanning, which processes columns vertically, moving from high-to-low or low-to-high uncertainty at fixed intervals. Sequential scanning efficiently clusters high-uncertainty regions, such as boundaries and foreground objects, to improve segmentation precision, while skip scanning enhances the interaction between background and foreground regions, allowing for timely integration of background information to support more accurate foreground inference. Recognizing the advantages of scanning from certain to uncertain areas, we introduce four learnable parameters to balance the importance of features extracted from different scanning methods. Additionally, a cosine consistency loss is employed to mitigate the drawbacks of transitioning between uncertain and certain regions during the scanning process. Our method demonstrates robust segmentation performance, validated across three distinct medical imaging datasets involving pathology, dermatological lesions, and cardiac tasks.",
+          "https://arxiv.org/abs/2502.02024" 
+        )
+
+
+        add_paper("Safety at Scale: A Comprehensive Survey of Large Model Safety",
+          "Xingjun Ma, Yifeng Gao, Yixu Wang, Ruofan Wang, Xin Wang, Ye Sun, Yifan Ding, Hengyuan Xu, Yunhao Chen, Yunhan Zhao, Hanxun Huang, Yige Li, Jiaming Zhang, Xiang Zheng, Yang Bai, Zuxuan Wu, Xipeng Qiu, Jingfeng Zhang, Yiming Li, Jun Sun, Cong Wang, Jindong Gu, Baoyuan Wu, Siheng Chen, Tianwei Zhang, Yang Liu, Mingming Gong, Tongliang Liu, Shirui Pan, Cihang Xie, Tianyu Pang, Yinpeng Dong, Ruoxi Jia, Yang Zhang, Shiqing Ma, Xiangyu Zhang, Neil Gong, Chaowei Xiao, Sarah Erfani, Bo Li, Masashi Sugiyama, Dacheng Tao, James Bailey, Yu-Gang Jiang",
+          null,
+          "https://arxiv.org/abs/2502.05206", 
+          "@article{ma2025safety,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {Safety at Scale: A Comprehensive Survey of Large Model Safety},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Xingjun Ma, Yifeng Gao, Yixu Wang, Ruofan Wang, Xin Wang, Ye Sun, Yifan Ding, Hengyuan Xu, Yunhao Chen, Yunhan Zhao, Hanxun Huang, Yige Li, Jiaming Zhang, Xiang Zheng, Yang Bai, Zuxuan Wu, Xipeng Qiu, Jingfeng Zhang, Yiming Li, Jun Sun, Cong Wang, Jindong Gu, Baoyuan Wu, Siheng Chen, Tianwei Zhang, Yang Liu, Mingming Gong, Tongliang Liu, Shirui Pan, Cihang Xie, Tianyu Pang, Yinpeng Dong, Ruoxi Jia, Yang Zhang, Shiqing Ma, Xiangyu Zhang, Neil Gong, Chaowei Xiao, Sarah Erfani, Bo Li, Masashi Sugiyama, Dacheng Tao, James Bailey, Yu-Gang Jiang},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2502.05206},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+          "The rapid advancement of large models, driven by their exceptional abilities in learning and generalization through large-scale pre-training, has reshaped the landscape of Artificial Intelligence (AI). These models are now foundational to a wide range of applications, including conversational AI, recommendation systems, autonomous driving, content generation, medical diagnostics, and scientific discovery. However, their widespread deployment also exposes them to significant safety risks, raising concerns about robustness, reliability, and ethical implications. This survey provides a systematic review of current safety research on large models, covering Vision Foundation Models (VFMs), Large Language Models (LLMs), Vision-Language Pre-training (VLP) models, Vision-Language Models (VLMs), Diffusion Models (DMs), and large-model-based Agents. Our contributions are summarized as follows: (1) We present a comprehensive taxonomy of safety threats to these models, including adversarial attacks, data poisoning, backdoor attacks, jailbreak and prompt injection attacks, energy-latency attacks, data and model extraction attacks, and emerging agent-specific threats. (2) We review defense strategies proposed for each type of attacks if available and summarize the commonly used datasets and benchmarks for safety research. (3) Building on this, we identify and discuss the open challenges in large model safety, emphasizing the need for comprehensive safety evaluations, scalable and effective defense mechanisms, and sustainable data practices. More importantly, we highlight the necessity of collective efforts from the research community and international collaboration. Our work can serve as a useful reference for researchers and practitioners, fostering the ongoing development of comprehensive defense systems and platforms to safeguard AI models.",
+          "https://arxiv.org/abs/2502.05206", 
+          "https://github.com/xingjunm/Awesome-Large-Model-Safety"
+        )
+
+
         add_paper("Double Visual Defense: Adversarial Pre-training and Instruction Tuning for Improving Vision-Language Model Robustness",
           "Zeyu Wang, Cihang Xie, Brian Bartoldson, Bhavya Kailkhura",
           null,
@@ -192,21 +281,6 @@ function copy(dest, source) {
           "This paper investigates the robustness of vision-language models against adversarial visual perturbations and introduces a novel \"double visual defense\" to enhance this robustness. Unlike previous approaches that resort to lightweight adversarial fine-tuning of a pre-trained CLIP model, we perform large-scale adversarial vision-language pre-training from scratch using web-scale data. We then strengthen the defense by incorporating adversarial visual instruction tuning. The resulting models from each stage, ΔCLIP and Δ2LLaVA, show substantially enhanced zero-shot robustness and set a new state-of-the-art in adversarial defense for vision-language models. For example, the adversarial robustness of ΔCLIP surpasses that of the previous best models on ImageNet-1k by ~20%. Similarly, compared to prior art, Δ2LLaVA brings a ~30% robustness improvement to image captioning task and a ~20% robustness improvement to visual question answering task. Furthermore, our models exhibit stronger zero-shot recognition capability, fewer hallucinations, and superior reasoning performance compared to baselines. Our project page is https://doublevisualdefense.github.io/.",
           "https://arxiv.org/abs/2501.09446", 
           "https://doublevisualdefense.github.io/" 
-        )
-
-
-        add_paper("Generative Image Layer Decomposition with Visual Effects",
-          "Jinrui Yang, Qing Liu, Yijun Li, Soo Ye Kim, Daniil Pakhomov, Mengwei Ren, Jianming Zhang, Zhe Lin, Cihang Xie, Yuyin Zhou",
-          null,
-          "https://arxiv.org/abs/2411.17864",
-          "@article{yang2024generative,<br>" +
-          "&nbsp;&nbsp;&nbsp;title   = {Generative Image Layer Decomposition with Visual Effects},<br>" +
-          "&nbsp;&nbsp;&nbsp;author  = {Jinrui Yang, Qing Liu, Yijun Li, Soo Ye Kim, Daniil Pakhomov, Mengwei Ren, Jianming Zhang, Zhe Lin, Cihang Xie, Yuyin Zhou},<br>" +
-          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2411.17864},<br>" +
-          "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
-          "Recent advancements in large generative models, particularly diffusion-based methods, have significantly enhanced the capabilities of image editing. However, achieving precise control over image composition tasks remains a challenge. Layered representations, which allow for independent editing of image components, are essential for user-driven content creation, yet existing approaches often struggle to decompose image into plausible layers with accurately retained transparent visual effects such as shadows and reflections. We propose a generative framework for image layer decomposition which outputs photorealistic clean backgrounds and high-quality transparent foregrounds with faithfully preserved visual effects. To enable effective training, we first introduce a dataset preparation pipeline that automatically scales up simulated multi-layer data with synthesized visual effects. To further enhance real-world applicability, we supplement this simulated dataset with camera-captured images containing natural visual effects. Additionally, we propose a consistency loss which enforces the model to learn accurate representations for the transparent foreground layer when ground-truth annotations are not available. Our method achieves superior quality in layer decomposition, outperforming existing approaches in object removal and spatial editing tasks across several benchmarks and multiple user studies, unlocking various creative possibilities for layer-wise image editing. The project page is https://rayjryang.github.io/LayerDecomp.",
-          "https://arxiv.org/abs/2411.17864",
-          "https://rayjryang.github.io/LayerDecomp"
         )
 
 
@@ -242,19 +316,7 @@ function copy(dest, source) {
 
 
 
-        add_paper("Causal Image Modeling for Efficient Visual Understanding",
-          "Feng Wang, Timing Yang, Yaodong Yu, Sucheng Ren, Guoyizhe Wei, Angtian Wang, Wei Shao, Yuyin Zhou, Alan Yuille, Cihang Xie",
-          null,
-          "https://arxiv.org/abs/2410.07599",
-          "@article{wang2024causalimagemodeling,<br>" +
-          "&nbsp;&nbsp;&nbsp;title   = {Causal Image Modeling for Efficient Visual Understanding},<br>" +
-          "&nbsp;&nbsp;&nbsp;author  = {Feng Wang, Timing Yang, Yaodong Yu, Sucheng Ren, Guoyizhe Wei, Angtian Wang, Wei Shao, Yuyin Zhou, Alan Yuille, Cihang Xie},<br>" +
-          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2410.07599},<br>" +
-          "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
-          "In this work, we present a comprehensive analysis of causal image modeling and introduce the Adventurer series models where we treat images as sequences of patch tokens and employ uni-directional language models to learn visual representations. This modeling paradigm allows us to process images in a recurrent formulation with linear complexity relative to the sequence length, which can effectively address the memory and computation explosion issues posed by high-resolution and fine-grained images. In detail, we introduce two simple designs that seamlessly integrate image inputs into the causal inference framework: a global pooling token placed at the beginning of the sequence and a flipping operation between every two layers. Extensive empirical studies demonstrate the significant efficiency and effectiveness of this causal image modeling paradigm. For example, our base-sized Adventurer model attains a competitive test accuracy of 84.0% on the standard ImageNet-1k benchmark with 216 images/s training throughput, which is 5.3 times more efficient than vision transformers to achieve the same result.",
-          "https://arxiv.org/abs/2410.07599",
-          null
-          )
+
 
         add_paper("Story-Adapter: A Training-free Iterative Framework for Long Story Visualization",
           "Jiawei Mao, Xiaoke Huang, Yunfei Xie, Yuanqi Chang, Mude Hui, Bingjie Xu, Yuyin Zhou",
@@ -390,35 +452,6 @@ function copy(dest, source) {
           "https://videohallucer.github.io/"
           )
 
-
-
-        add_paper("Mamba-R: Vision Mamba ALSO Needs Registers",
-          "Feng Wang, Jiahao Wang, Sucheng Ren, Guoyizhe Wei, Jieru Mei, Wei Shao, Yuyin Zhou, Alan Yuille, Cihang Xie",
-          null,
-          "https://arxiv.org/abs/2405.14858",
-          "@article{wang2024mambar,<br>" +
-           "&nbsp;&nbsp;&nbsp;title     = {Mamba-R: Vision Mamba also needs registers},<br>" +
-           "&nbsp;&nbsp;&nbsp;author    = {Wang, Feng and Wang, Jiahao and Ren, Sucheng and Wei, Guoyizhe and Mei, Jieru and Shao, Wei and Zhou, Yuyin and Yuille, Alan and Xie, Cihang},<br>" +
-           "&nbsp;&nbsp;&nbsp;journal   = {arXiv preprint arXiv:2405.14858},<br>" +
-           "&nbsp;&nbsp;&nbsp;year      = {2024},<br>",
-          "Similar to Vision Transformers, this paper identifies artifacts also present within the feature maps of Vision Mamba. These artifacts, corresponding to high-norm tokens emerging in low-information background areas of images, appear much more severe in Vision Mamba -- they exist prevalently even with the tiny-sized model and activate extensively across background regions. To mitigate this issue, we follow the prior solution of introducing register tokens into Vision Mamba. To better cope with Mamba blocks' uni-directional inference paradigm, two key modifications are introduced: 1) evenly inserting registers throughout the input token sequence, and 2) recycling registers for final decision predictions. We term this new architecture Mamba-R. Qualitative observations suggest, compared to vanilla Vision Mamba, Mamba-R's feature maps appear cleaner and more focused on semantically meaningful regions. Quantitatively, Mamba-R attains stronger performance and scales better. For example, on the ImageNet benchmark, our base-size Mamba-R attains 82.9% accuracy, significantly outperforming Vim-B's 81.8%; furthermore, we provide the first successful scaling to the large model size (i.e., with 341M parameters), attaining a competitive accuracy of 83.2% (84.5% if finetuned with 384x384 inputs). Additional validation on the downstream semantic segmentation task also supports Mamba-R's efficacy.",
-          "https://arxiv.org/abs/2405.14858",
-          "https://wangf3014.github.io/mambar-page/"
-        )
-
-        add_paper("A Flexible 2.5D Medical Image Segmentation Approach with In-Slice and Cross-Slice Attention",
-          "Amarjeet Kumar, Hongxu Jiang, Muhammad Imran, Cyndi Valdes, Gabriela Leon, Dahyun Kang, Parvathi Nataraj, Yuyin Zhou, Michael D Weiss, Wei Shao",
-          null,
-          "https://arxiv.org/abs/2405.00130",
-          "@article{kumar2024flexible25d,<br>" +
-           "&nbsp;&nbsp;&nbsp;title   = {A Flexible 2.5 D Medical Image Segmentation Approach with In-Slice and Cross-Slice Attention},<br>" +
-           "&nbsp;&nbsp;&nbsp;author  = {Kumar, Amarjeet and Jiang, Hongxu and Imran, Muhammad and Valdes, Cyndi and Leon, Gabriela and Kang, Dahyun and Nataraj, Parvathi and Zhou, Yuyin and Weiss, Michael D and Shao, Wei},<br>" +
-           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2405.00130},<br>" +
-           "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
-          "Deep learning has become the de facto method for medical image segmentation, with 3D segmentation models excelling in capturing complex 3D structures and 2D models offering high computational efficiency. However, segmenting 2.5D images, which have high in-plane but low through-plane resolution, is a relatively unexplored challenge. While applying 2D models to individual slices of a 2.5D image is feasible, it fails to capture the spatial relationships between slices. On the other hand, 3D models face challenges such as resolution inconsistencies in 2.5D images, along with computational complexity and susceptibility to overfitting when trained with limited data. In this context, 2.5D models, which capture inter-slice correlations using only 2D neural networks, emerge as a promising solution due to their reduced computational demand and simplicity in implementation. In this paper, we introduce CSA-Net, a flexible 2.5D segmentation model capable of processing 2.5D images with an arbitrary number of slices through an innovative Cross-Slice Attention (CSA) module. This module uses the cross-slice attention mechanism to effectively capture 3D spatial information by learning long-range dependencies between the center slice (for segmentation) and its neighboring slices. Moreover, CSA-Net utilizes the self-attention mechanism to understand correlations among pixels within the center slice. We evaluated CSA-Net on three 2.5D segmentation tasks: (1) multi-class brain MRI segmentation, (2) binary prostate MRI segmentation, and (3) multi-class prostate MRI segmentation. CSA-Net outperformed leading 2D and 2.5D segmentation methods across all three tasks, demonstrating its efficacy and superiority. Our code is publicly available at https://github.com/mirthAI/CSA-Net.",
-          "https://arxiv.org/abs/2405.00130",
-          "https://github.com/mirthAI/CSA-Net"
-        )
 
 
         add_paper("RetinaRegNet: A Versatile Approach for Retinal Image Registration",
@@ -697,6 +730,49 @@ function copy(dest, source) {
         document.write("<h1>2025</h1>")
         document.write("<ul>")
 
+        add_paper("Mamba-R: Vision Mamba ALSO Needs Registers",
+          "Feng Wang, Jiahao Wang, Sucheng Ren, Guoyizhe Wei, Jieru Mei, Wei Shao, Yuyin Zhou, Alan Yuille, Cihang Xie",
+          "CVPR, 2025",
+          "https://arxiv.org/abs/2405.14858",
+          "@article{wang2024mambar,<br>" +
+           "&nbsp;&nbsp;&nbsp;title   = {Mamba-R: Vision Mamba also needs registers},<br>" +
+           "&nbsp;&nbsp;&nbsp;author  = {Wang, Feng and Wang, Jiahao and Ren, Sucheng and Wei, Guoyizhe and Mei, Jieru and Shao, Wei and Zhou, Yuyin and Yuille, Alan and Xie, Cihang},<br>" +
+           "&nbsp;&nbsp;&nbsp;journal = {CVPR},<br>" +
+           "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+          "Similar to Vision Transformers, this paper identifies artifacts also present within the feature maps of Vision Mamba. These artifacts, corresponding to high-norm tokens emerging in low-information background areas of images, appear much more severe in Vision Mamba -- they exist prevalently even with the tiny-sized model and activate extensively across background regions. To mitigate this issue, we follow the prior solution of introducing register tokens into Vision Mamba. To better cope with Mamba blocks' uni-directional inference paradigm, two key modifications are introduced: 1) evenly inserting registers throughout the input token sequence, and 2) recycling registers for final decision predictions. We term this new architecture Mamba-R. Qualitative observations suggest, compared to vanilla Vision Mamba, Mamba-R's feature maps appear cleaner and more focused on semantically meaningful regions. Quantitatively, Mamba-R attains stronger performance and scales better. For example, on the ImageNet benchmark, our base-size Mamba-R attains 82.9% accuracy, significantly outperforming Vim-B's 81.8%; furthermore, we provide the first successful scaling to the large model size (i.e., with 341M parameters), attaining a competitive accuracy of 83.2% (84.5% if finetuned with 384x384 inputs). Additional validation on the downstream semantic segmentation task also supports Mamba-R's efficacy.",
+          "https://arxiv.org/abs/2405.14858",
+          "https://wangf3014.github.io/mambar-page/"
+        )
+
+        add_paper("Causal Image Modeling for Efficient Visual Understanding",
+          "Feng Wang, Timing Yang, Yaodong Yu, Sucheng Ren, Guoyizhe Wei, Angtian Wang, Wei Shao, Yuyin Zhou, Alan Yuille, Cihang Xie",
+          "CVPR, 2025",
+          "https://arxiv.org/abs/2410.07599",
+          "@article{wang2024causalimagemodeling,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {Causal Image Modeling for Efficient Visual Understanding},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Feng Wang, Timing Yang, Yaodong Yu, Sucheng Ren, Guoyizhe Wei, Angtian Wang, Wei Shao, Yuyin Zhou, Alan Yuille, Cihang Xie},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {CVPR},<br>" +
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+          "In this work, we present a comprehensive analysis of causal image modeling and introduce the Adventurer series models where we treat images as sequences of patch tokens and employ uni-directional language models to learn visual representations. This modeling paradigm allows us to process images in a recurrent formulation with linear complexity relative to the sequence length, which can effectively address the memory and computation explosion issues posed by high-resolution and fine-grained images. In detail, we introduce two simple designs that seamlessly integrate image inputs into the causal inference framework: a global pooling token placed at the beginning of the sequence and a flipping operation between every two layers. Extensive empirical studies demonstrate the significant efficiency and effectiveness of this causal image modeling paradigm. For example, our base-sized Adventurer model attains a competitive test accuracy of 84.0% on the standard ImageNet-1k benchmark with 216 images/s training throughput, which is 5.3 times more efficient than vision transformers to achieve the same result.",
+          "https://arxiv.org/abs/2410.07599",
+          "https://github.com/wangf3014/Adventurer"
+          )
+
+
+        add_paper("Generative Image Layer Decomposition with Visual Effects",
+          "Jinrui Yang, Qing Liu, Yijun Li, Soo Ye Kim, Daniil Pakhomov, Mengwei Ren, Jianming Zhang, Zhe Lin, Cihang Xie, Yuyin Zhou",
+          "CVPR, 2025",
+          "https://arxiv.org/abs/2411.17864",
+          "@article{yang2024generative,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {Generative Image Layer Decomposition with Visual Effects},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Jinrui Yang, Qing Liu, Yijun Li, Soo Ye Kim, Daniil Pakhomov, Mengwei Ren, Jianming Zhang, Zhe Lin, Cihang Xie, Yuyin Zhou},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {CVPR},<br>" +
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+          "Recent advancements in large generative models, particularly diffusion-based methods, have significantly enhanced the capabilities of image editing. However, achieving precise control over image composition tasks remains a challenge. Layered representations, which allow for independent editing of image components, are essential for user-driven content creation, yet existing approaches often struggle to decompose image into plausible layers with accurately retained transparent visual effects such as shadows and reflections. We propose a generative framework for image layer decomposition which outputs photorealistic clean backgrounds and high-quality transparent foregrounds with faithfully preserved visual effects. To enable effective training, we first introduce a dataset preparation pipeline that automatically scales up simulated multi-layer data with synthesized visual effects. To further enhance real-world applicability, we supplement this simulated dataset with camera-captured images containing natural visual effects. Additionally, we propose a consistency loss which enforces the model to learn accurate representations for the transparent foreground layer when ground-truth annotations are not available. Our method achieves superior quality in layer decomposition, outperforming existing approaches in object removal and spatial editing tasks across several benchmarks and multiple user studies, unlocking various creative possibilities for layer-wise image editing. The project page is https://rayjryang.github.io/LayerDecomp.",
+          "https://arxiv.org/abs/2411.17864",
+          "https://rayjryang.github.io/LayerDecomp"
+        )
+
 
         add_paper("HQ-Edit: A High-Quality Dataset for Instruction-based Image Editing",
           "Mude Hui, Siwei Yang, Bingchen Zhao, Yichun Shi, Heng Wang, Peng Wang, Cihang Xie, Yuyin Zhou",
@@ -799,6 +875,8 @@ function copy(dest, source) {
           "In this work, we introduce SPFormer, a novel Vision Transformer enhanced by superpixel representation. Addressing the limitations of traditional Vision Transformers' fixed-size, non-adaptive patch partitioning, SPFormer employs superpixels that adapt to the image's content. This approach divides the image into irregular, semantically coherent regions, effectively capturing intricate details and applicable at both initial and intermediate feature levels. SPFormer, trainable end-to-end, exhibits superior performance across various benchmarks. Notably, it exhibits significant improvements on the challenging ImageNet benchmark, achieving a 1.4% increase over DeiT-T and 1.1% over DeiT-S respectively. A standout feature of SPFormer is its inherent explainability. The superpixel structure offers a window into the model's internal processes, providing valuable insights that enhance the model's interpretability. This level of clarity significantly improves SPFormer's robustness, particularly in challenging scenarios such as image rotations and occlusions, demonstrating its adaptability and resilience.",
           "https://arxiv.org/abs/2401.02931"
         )
+
+
 
 
         document.write("</ul><br>")
@@ -1269,6 +1347,22 @@ function copy(dest, source) {
             "This paper investigates the performance of the Contrastive Language-Image Pre-training (CLIP) method when scaled down to limited computation budgets. We explore CLIP from three perspectives: data, architecture, and training strategies. With regards to data, we demonstrate the significance of high-quality training data and show that a smaller dataset of high-quality data can outperform a larger dataset with lower quality. We also examine how model performance varies with different dataset sizes, suggesting that smaller ViT models are better suited for smaller numbers of sample data, while larger models perform better on larger datasets with fixed compute. Additionally, we provide guidance on when to choose a CNN-based architecture or a ViT-based architecture for CLIP training. Moreover, we compare four CLIP training strategies - SLIP, FLIP, CLIP, and CLIP+Data Augmentation - and show that the choice of training strategy depends on the available compute resources. Our analysis reveals that CLIP+Data Augmentation can achieve comparable performance to CLIP using only half of the training data. This work provides practical insights into how to effectively train and deploy CLIP models, making them more accessible and affordable for practical use in various applications.",
             "https://openreview.net/forum?id=t4nnCi5AO6"
         )
+
+
+        add_paper("A Flexible 2.5D Medical Image Segmentation Approach with In-Slice and Cross-Slice Attention",
+          "Amarjeet Kumar, Hongxu Jiang, Muhammad Imran, Cyndi Valdes, Gabriela Leon, Dahyun Kang, Parvathi Nataraj, Yuyin Zhou, Michael D Weiss, Wei Shao",
+          null,
+          "https://arxiv.org/abs/2405.00130",
+          "@article{kumar2024flexible25d,<br>" +
+           "&nbsp;&nbsp;&nbsp;title   = {A Flexible 2.5 D Medical Image Segmentation Approach with In-Slice and Cross-Slice Attention},<br>" +
+           "&nbsp;&nbsp;&nbsp;author  = {Kumar, Amarjeet and Jiang, Hongxu and Imran, Muhammad and Valdes, Cyndi and Leon, Gabriela and Kang, Dahyun and Nataraj, Parvathi and Zhou, Yuyin and Weiss, Michael D and Shao, Wei},<br>" +
+           "&nbsp;&nbsp;&nbsp;journal = {Computers in Biology and Medicine},<br>" +
+          "&nbsp;&nbsp;&nbsp;year     = {2024}<br>}",
+          "Deep learning has become the de facto method for medical image segmentation, with 3D segmentation models excelling in capturing complex 3D structures and 2D models offering high computational efficiency. However, segmenting 2.5D images, which have high in-plane but low through-plane resolution, is a relatively unexplored challenge. While applying 2D models to individual slices of a 2.5D image is feasible, it fails to capture the spatial relationships between slices. On the other hand, 3D models face challenges such as resolution inconsistencies in 2.5D images, along with computational complexity and susceptibility to overfitting when trained with limited data. In this context, 2.5D models, which capture inter-slice correlations using only 2D neural networks, emerge as a promising solution due to their reduced computational demand and simplicity in implementation. In this paper, we introduce CSA-Net, a flexible 2.5D segmentation model capable of processing 2.5D images with an arbitrary number of slices through an innovative Cross-Slice Attention (CSA) module. This module uses the cross-slice attention mechanism to effectively capture 3D spatial information by learning long-range dependencies between the center slice (for segmentation) and its neighboring slices. Moreover, CSA-Net utilizes the self-attention mechanism to understand correlations among pixels within the center slice. We evaluated CSA-Net on three 2.5D segmentation tasks: (1) multi-class brain MRI segmentation, (2) binary prostate MRI segmentation, and (3) multi-class prostate MRI segmentation. CSA-Net outperformed leading 2D and 2.5D segmentation methods across all three tasks, demonstrating its efficacy and superiority. Our code is publicly available at https://github.com/mirthAI/CSA-Net.",
+          "https://arxiv.org/abs/2405.00130",
+          "https://github.com/mirthAI/CSA-Net"
+        )
+
 
 
 
