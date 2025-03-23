@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><span style="font-variant: small-caps;">ViLBench</span>: A Suite for Vision-Language Process Reward Modeling</title>
+
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./resources/icon.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title"><span style="font-variant: small-caps;">ViLBench</span>: A Suite for Vision-Language Process Reward Modeling</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <span><a href="https://www.haqtu.me/">Haoqin Tu</a></span><sup>1</sup>,</span>
+            <span class="author-block">
+              <span><a href="https://georgefwt.github.io/">Weitao Feng</a></span><sup>1</sup>,</span>
+            </span>
+            <span class="author-block">
+              <span><a href="https://g-h-chen.github.io/">Hardy Chen</a></span><sup>2</sup>,</span>
+            </span>
+            <span class="author-block">
+              <span><a href="https://layneins.github.io/">Hui Liu</a></span><sup>3</sup>,</span>
+            </span>
+            <span class="author-block">
+              <span><a href="https://xta.ng/">Xianfeng Tang</a></span><sup>3</sup>,</span>
+            </span>
+            <span class="author-block">
+              <span><a href="https://cihangxie.github.io/">Cihang Xie</a></span><sup>1</sup></span>
+            </span>
+          </div>
+          <br/>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>UC Santa Cruz, </span>
+            <span class="author-block"><sup>2</sup>UT Dallas, </span>
+            <span class="author-block"><sup>3</sup>Amazon Research, </span>
+            
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fa-solidassasas fa-face-smiling-hands"></i>
+                    <img src="./resources/ar.svg" alt="img" style="width: 100%; height: 100%" /> 
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (coming soon)</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://huggingface.co/datasets/UCSC-VLAA/ViLBench"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fa-solidasasa fa-face-smiling-hands"></i>
+                   <img src="./resources/hg.svg" alt="img" style="width: 100%; height: 100%" /> 
+                  </span>
+                   <span>ViLBench Data</span>
+                  </a>
+                </span>
+
+              <span class="link-block">
+                <a href="https://huggingface.co/datasets/UCSC-VLAA/ViLReward-73K"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fa-solidasasa fa-face-smiling-hands"></i>
+                   <img src="./resources/hg.svg" alt="img" style="width: 100%; height: 100%" /> 
+                  </span>
+                   <span>ViLReward-73K Data</span>
+                  </a>
+                </span>
+
+                <!-- <span class="link-block">
+                <a href="https://huggingface.co/tennant/llava-llama-3-8b-hqedit"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fa-solidasasa fa-face-smiling-hands"></i>
+                   <img src="./resources/gr.svg" alt="img" style="width: 100%; height: 100%" /> 
+                  </span>
+                   <span>Recaption Model</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                <a href="https://huggingface.co/UCSC-VLAA/ViT-L-16-HTxt-Recap-CLIP"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fa-solidasasa fa-face-smiling-hands"></i>
+                   <img src="./resources/gr.svg" alt="img" style="width: 100%; height: 100%" /> 
+                  </span>
+                   <span>Recap-CLIP</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fa-solidasasa fa-face-smiling-hands"></i>
+                   <img src="./resources/gr.svg" alt="img" style="width: 100%; height: 100%" /> 
+                  </span>
+                   <span>Recap-DiT (Incoming)</span>
+                  </a>
+                </span> -->
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="hero teaser">
+  <div class="container">
+    <div class="hero-body", style="text-align: center;">
+      <img src="./resources/teaser.jpg" alt="alt text"
+                        style="width: 70%; object-fit: cover; max-width:70%;"></a>
+      <h2 class="subtitle has-text-centered">
+        We first benchmark current vision-language models as different reward models, and present ViLBench that requires intensive step-wise reward. Then we collect 73K+ preference reward data to train a vision-language process reward model ViLPRM that performs better than other baselines.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="section">
+  <div class="container ">
+    <div class="hero-body">
+      <center><h2 class="title is-3">Demo</h2></center>
+  <iframe src="https://laos-y-hqedit.hf.space" frameborder="0" width="100%" height="1000"></iframe>
+</div>
+</div>
+</section> -->
+
+<section class="section">
+  <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Motivations</h2>
+        <div class="content has-text-justified">
+          <p>
+             Process-supervised reward models serve as a fine-grained function that provides detailed step-wise feedback to model responses, facilitating effective selection of reasoning trajectories for complex tasks. Despite its advantages, evaluation on PRMs remains less explored, especially in the multimodal domain. To address this gap, this paper first benchmarks current vision large language models (VLLMs) as two types of reward models: output reward models (ORMs) and process reward models (PRMs) on multiple vision-language benchmarks, which reveal that neither ORM nor PRM consistently outperforms across all tasks, and superior VLLMs do not necessarily yield better rewarding performance. To further advance evaluation, we introduce ViLBench, a vision-language benchmark designed to require intensive process reward signals. Notably, OpenAI's GPT-4o with Chain-of-Thought (CoT) achieves only 27.3% accuracy, indicating the benchmark's challenge for current VLLMs. Lastly, we preliminarily showcase a promising pathway towards bridging the gap between general VLLMs and reward models --- by collecting 73.6K vision-language process reward data using an enhanced tree-search algorithm, our 3B model is able to achieve an average improvement of 3.3% over standard CoT and up to 2.5% compared to its untrained counterpart on ViLBench by selecting OpenAI o1’s generations. We release the implementations at https://ucsc-vlaa.github.io/ViLBench with our code, model, and benchmark data.<a href=""></a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+    <!--/ Abstract. -->
+
+    <section class="section">
+  <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Part I: Benchmarking Vision Large Language Models as Reward Models</h2>
+        <h2 class="title is-4">Key Findings</h2>
+        <div class="content has-text-centered">
+          <center><img class="center" src="./resources/main_results_vprm.jpg" width="100%"></center>
+          
+          <div class="content has-text-justified">
+            <p><strong>Figure 1.</strong> We adopt the Best-of-N (BoN) setting, where VLLMs select the best response from a pool of N candidate responses. In detail, we use GPT-4o as the base solution sampler to sample 2<sup>4</sup> solutions given one question. Then we incorporate 7 different VLLMs as the deterministic scorer to pick the best response among the candidates by assigning scores between 1 to 5 to each reasoning step. We have the finding:</p>
+            <!-- <p><strong>Experimental Settings:</strong></p>
+            <ul>
+              <li> Generator: GPT-4o
+            </ul> -->
+          </div>
+          <!-- Styled findings box -->
+          <div class="findings-box">
+            <p><strong>Findings 1:</strong> Neither ORM nor PRM excels across all vision-language tasks.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+      <section class="section">
+  <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <!-- <h2 class="title is-3">Part I: Benchmarking Vision Large Language Models as Reward Models</h2> -->
+        <div class="content has-text-centered">
+          <center><img class="center" src="./resources/correlation_vprm.jpg" width="80%"></center>
+          <div class="content has-text-justified">
+            <p><strong>Figure 2.</strong> We present the correlations between the model performance and its reward performance on MMStar and MathVista datasets.</p>
+            <!-- <p><strong>Experimental Settings:</strong></p>
+            <ul>
+              <li> Generator: GPT-4o
+            </ul> -->
+          </div>
+          <!-- Styled findings box -->
+          <div class="findings-box">
+            <p><strong>Findings 2:</strong> Better vision-language models do not necessarily lead to better reward models.</p>
+          </div>
+          <!-- Findings box 2 (new) -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+        <section class="section">
+  <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <!-- <h2 class="title is-3">Part I: Benchmarking Vision Large Language Models as Reward Models</h2> -->
+        <div class="content has-text-centered">
+          <center><img class="center" src="./resources/best_rm_vprm.jpg" width="90%"></center>
+          <div class="content has-text-justified">
+            <p><strong>Figure 3.</strong> Model performance with the last n of step rewards selected under the Best-of-N paradigm.</p>
+            <!-- <p><strong>Experimental Settings:</strong></p>
+            <ul>
+              <li> Generator: GPT-4o
+            </ul> -->
+          </div>
+          <!-- Styled findings box -->
+          <div class="findings-box">
+            <p><strong>Findings 3:</strong> The best practice for a vision-language reward model is usually between PRM and ORM.</p>
+          </div>
+          <!-- Findings box 2 (new) -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <!-- <h2 class="title is-3">Part I: Benchmarking Vision Large Language Models as Reward Models</h2> -->
+        <div class="content has-text-centered">
+          <center><img class="center" src="./resources/text-vision-domain.jpg" width="50%"></center>
+          <div class="content has-text-justified">
+            <p><strong>Table 1.</strong> Average performance gain across 7 RMs from text or visual dominant examples on MathVerse using ORM or PRM.</p>
+            <!-- <p><strong>Experimental Settings:</strong></p>
+            <ul>
+              <li> Generator: GPT-4o
+            </ul> -->
+          </div>
+          <!-- Styled findings box -->
+          <div class="findings-box">
+            <p><strong>Findings 4:</strong> LLMs as reward models provide more benefits on text-dominant examples.</p>
+          </div>
+          <!-- Findings box 2 (new) -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4"><span style="font-variant: small-caps;">ViLBench</span>: A Vision-Language Benchmark Requiring Intensive Reward Feedback</h2>
+        <div class="content has-text-centered">
+          <center><img class="center" src="./resources/vilbench_sta.jpg" width="50%"></center>
+          
+          <div class="content has-text-justified">
+            <p><strong>Table 2.</strong> We leverage six open-weight VLLMs to filter samples where they perform well as PRMs but worse as ORMs under the BoN setting.</p>
+            <!-- <p><strong>Experimental Settings:</strong></p>
+            <ul>
+              <li> Generator: GPT-4o
+            </ul> -->
+          </div>
+          <!-- Styled findings box -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Part II: ViLPRM: A Vision-Language Process Reward Model</h2>
+        <h2 class="title is-4">ViLReward-73K: A Step-wise Vision-Language Process Reward Data </h2>
+        <div class="content has-text-centered">
+          <center><img class="center" src="./resources/vilreward_data.jpg" width="50%"></center>
+          
+          <div class="content has-text-justified">
+            <p><strong>Table 3.</strong> We collect ViLReward-73K, a vision-language process reward preference dataset using an improved MCTS-search engine. </p>
+            <!-- <p><strong>Experimental Settings:</strong></p>
+            <ul>
+              <li> Generator: GPT-4o
+            </ul> -->
+          </div>
+          <!-- Styled findings box -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4">An Example of Collected Searching Tree using Our MCTS-based Engine</h2>
+        <div class="content has-text-centered">
+          <center><img class="center" src="./resources/prdata_example.jpg" width="50%"></center>
+          
+          <!-- Styled findings box -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4">Overall Performance of the Trained ViLPRM</h2>
+        <div class="content has-text-centered">
+          <center><img class="center" src="./resources/vilprm_main.jpg" width="100%"></center>
+          <div class="content has-text-justified">
+            <p><strong>Figure 3.</strong> We collect ViLReward-73K, a vision-language process reward preference dataset using an improved MCTS-search engine. </p>
+          </div>
+          <!-- Styled findings box -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4">Example for Reward</h2>
+        <div class="content has-text-centered">
+          <center><img class="center" src="./resources/scoring_example.jpg" width="40%"></center>
+          <div class="content has-text-justified">
+            <p><strong>Figure 4.</strong> An example for </p>
+          </div>
+          <!-- Styled findings box -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+          <section class="section">
+            <div class="container">
+              <!-- Abstract. -->
+              <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                  <h2 class="title is-3">Datasets and Model Zoo</h2>
+                  <div class="content has-text-justified">
+                    <p>
+                      We are pleased to announce the release of our recaptioned datasets, including <strong>Recap-DataComp-1B</strong> and <strong>Recap-COCO-30K</strong>, as well as our caption model, <strong>LLaVA-1.5-LLaMA3-8B</strong>. Stay tuned for the upcoming release of our <i>CLIP</i> and <i>T2I</i> models!
+
+                      <h3>Dataset</h3>
+                      <table>
+                      <tr>
+                        <th>Dataset</th>
+                        <th>Num. of Sample</th>
+                        <th>url</th>
+                      </tr>
+                      <tr>
+                        <td>ViLBench</td>
+                        <td>600</td>
+                        <td><a href="https://huggingface.co/datasets/UCSC-VLAA/ViLBench">https://huggingface.co/datasets/UCSC-VLAA/ViLBench</a></td>
+                      </tr>
+                      <tr>
+                        <td>ViLReward-73K</td>
+                        <td>73.5K</td>
+                        <td><a href="https://huggingface.co/datasets/UCSC-VLAA/ViLReward-73K">https://huggingface.co/datasets/UCSC-VLAA/ViLReward-73K</a></td>
+                      </tr>
+                    </table>
+
+                    <h3>Model</h3>
+                    <table>
+                      <tr>
+                        <th>Model</th>
+                        <th>Type</th>
+                        <th>url</th>
+                      </tr>
+                      <tr>
+                        <td>ViLPRM-3B</td>
+                        <td>Our VL PRM based on QwenVL-2.5-3B</td>
+                        <td>Coming Soon...</td>
+                      </tr>
+                    </table>
+
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="section">
+            <div class="container">
+              <!-- Abstract. -->
+              <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                  <h2 class="title is-3">Acknowledge</h2>
+                  <div class="content has-text-justified">
+                    <!-- <center><img class="center" src="./resources/recap_cvpr_ac_poster.jpg" width="95%"></center> -->
+                    We thank the Microsoft Accelerate Foundation Models Research Program for supporting our computing needs.
+                  </div>
+                </div>
+              </div>
+            </section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+@article{tu2025vilbench,
+  title   = {Vilbench: A Suite for Vision-Language Process Reward Modeling},
+  author  = {Tu, Haoqin and Xie, Cihang},
+  journal = {arXiv preprint arXiv:},
+  year    = {2025}
+}
+    </code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Based on the following <a href="http://nerfies.github.io">template</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
