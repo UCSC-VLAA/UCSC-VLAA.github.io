@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><span style="font-variant: small-caps;">STAR-1</span>: Safer Alignment of Reasoning LLMs with 1K Data</title>
+
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./resources/icon.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title"><span style="font-variant: small-caps;">STAR-1</span>: Safer Alignment of Reasoning LLMs with 1K Data</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <span><a href="https://asillycat.github.io/">Zijun Wang</a></span><sup>1</sup>,</span>
+            <span class="author-block">
+            <span class="author-block">
+              <span><a href="https://www.haqtu.me/">Haoqin Tu</a></span><sup>1</sup>,</span>
+            <span class="author-block">
+              <span><a href="https://scholar.google.com/citations?user=Bo9xeqMAAAAJ&hl=en">Yuhan Wang</a></span><sup>1</sup>,</span>
+            </span>
+            <span class="author-block">
+              <span><a href="https://chtholly17.github.io/">Juncheng Wu</a></span><sup>1</sup>,</span>
+            </span>
+            <span class="author-block">
+              <span><a href="https://meijieru.com/">Jieru Mei</a></span><sup>2</sup>,</span>
+            </span>
+            <span class="author-block">
+              <span><a href="https://brianbartoldson.wordpress.com/">Brian R. Bartoldson</a></span><sup>3</sup>,</span>
+            </span>
+            <span class="author-block">
+              <span><a href="https://people.llnl.gov/kailkhura1">Bhavya Kailkhura</a></span><sup>3</sup>,</span>
+            </span>
+            <span class="author-block">
+              <span><a href="https://cihangxie.github.io/">Cihang Xie</a></span><sup>1</sup></span>
+            </span>
+          </div>
+          <br/>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>UC Santa Cruz, </span>
+            <span class="author-block"><sup>2</sup>Google, </span>
+            <span class="author-block"><sup>3</sup>Lawrence Livermore National Labs </span>
+            
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fa-solidassasas fa-face-smiling-hands"></i>
+                    <img src="./resources/ar.svg" alt="img" style="width: 100%; height: 100%" /> 
+                  </span>
+                  <span>arXiv (coming soon)</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (coming soon)</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fa-solidasasa fa-face-smiling-hands"></i>
+                   <img src="./resources/hg.svg" alt="img" style="width: 100%; height: 100%" /> 
+                  </span>
+                   <span>STAR-1 Data</span>
+                  </a>
+                </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="hero teaser">
+  <div class="container">
+    <div class="hero-body", style="text-align: center;">
+      <img src="./resources/SART1_teaser_final.jpg" alt="alt text"
+                        style="width: 80%; object-fit: cover; max-width:80%;"></a>
+      <h2 class="subtitle has-text-centered">
+        <b>Left:</b> LRMs are vulnerable to malicious instructions. <b>Middle:</b> Generation pipeline of STAR-1. 
+        Each malicious instruction is tagged with a relevant safety category. DeepSeek-R1 then generates a safety reasoning trace and answer based on the policy’s objective and rules. GPT-4o evaluates the outputs across three criteria, and low-scoring samples are discarded.
+    <b>Right:</b> STAR-1 improve LRM's safety abilities by guiding it to recall policies.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="section">
+  <div class="container ">
+    <div class="hero-body">
+      <center><h2 class="title is-3">Demo</h2></center>
+  <iframe src="https://laos-y-hqedit.hf.space" frameborder="0" width="100%" height="1000"></iframe>
+</div>
+</div>
+</section> -->
+
+<section class="section">
+  <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            This paper introduces <b>STAR-1</b>, a high-quality, just-1k-scale <em>safety</em> dataset specifically designed for large reasoning models (LRMs) like DeepSeek-R1. Built on three core principles --- diversity, deliberative reasoning, and rigorous filtering --- STAR-1 aims to address the critical needs for safety alignment in LRMs.
+            Specifically, we begin by integrating existing open-source safety datasets from diverse sources. Then, we curate safety policies to generate policy-grounded deliberative reasoning samples. Lastly, we apply a GPT-4o-based safety scoring system to select training examples aligned with best practices.
+            Experimental results show that fine-tuning LRMs with STAR-1 leads to an average 40% improvement in safety performance across four benchmarks, while only incurring a marginal decrease (<em>e.g.</em>, an average of 1.1%) in reasoning ability measured across five reasoning tasks. Extensive ablation studies further validate the importance of our design principles in constructing STAR-1 and analyze its efficacy across both LRMs and traditional LLMs.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+    <!--/ Abstract. -->
+
+    <section class="section">
+  <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Main Results: LRM trained on STAR-1 vs. Origin LRM </h2>
+        <h2 class="title is-4">Key Findings</h2>
+        <div class="content has-text-centered">
+          <center><img class="center" src="./resources/main_gain.jpg" width="100%"></center>
+          
+          <div class="content has-text-justified">
+            <p><strong>Figure 1.</strong> The average performance gap between (1) model trained on STAR-1 and Instruct model (<font color="#4169e1">blue</font>); (2) model trained on STAR-1 and the R1-distilled model (<font color="#f15757">red</font>) on both safety and reasoning tasks across five model types. We observe that:</p>
+            <!-- <p><strong>Experimental Settings:</strong></p>
+            <ul>
+              <li> Generator: GPT-4o
+            </ul> -->
+          </div>
+          <!-- Styled findings box -->
+          <div class="findings-box">
+            <p><strong>Observation 1:</strong> STAR-1 Substantially and Consistently Enhances LRMs' Safety Capabilities.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+      <section class="section">
+  <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <!-- <h2 class="title is-3">Part I: Benchmarking Vision Large Language Models as Reward Models</h2> -->
+        <div class="content has-text-centered">
+          <center><img class="center" src="./resources/main_table.jpg" width="80%"></center>
+          <div class="content has-text-justified">
+            <p><strong>Table 1.</strong> Results of the instruction model (Instruct), the original R1-distilled LRM (R1 Distilled), and LRMs trained on our data (STAR-1) on safety and reasoning tasks.</p>
+            <!-- <p><strong>Experimental Settings:</strong></p>
+            <ul>
+              <li> Generator: GPT-4o
+            </ul> -->
+          </div>
+          <!-- Styled findings box -->
+          <div class="findings-box">
+            <p><strong>Observation 2:</strong> STAR-1 Offers Minimum Compromise in LRM's Reasoning Ability.</p>
+          </div>
+          <!-- Findings box 2 (new) -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">A Closer Look at the Data Paradigm</h2>
+        <h2 class="title is-4">Two Hidden Keys of <em>Less is More</em> in LM Safety Training </h2>
+        <div class="content has-text-centered">
+          <center><img class="center" src="./resources/quality_ablation.jpg" width="90%"></center>
+          
+          <div class="content has-text-justified">
+            <p><strong>Table 2.</strong> LRMs trained on randomly selected 1K or the full SafeChain data comparing trained on medium-scoring (Med) or the high-scoring (High) STAR-1 data. </p>
+            <!-- <p><strong>Experimental Settings:</strong></p>
+            <ul>
+              <li> Generator: GPT-4o
+            </ul> -->
+          </div>
+          <!-- Styled findings box -->
+          <div class="findings-box">
+            <p><strong>Observation 3:</strong> There are two main factors in forming strong language safety training data: the <em>deliberative reasoning</em> process and the <em>high-scoring filtering</em> protocol</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4">The Role of Safety Reasoning in LRMs and LLM</h2>
+        <div class="content has-text-centered">
+          <center><img class="center" src="./resources/reasoning_ablation.jpg" width="70%"></center>
+          
+          <div class="content has-text-justified">
+            <p><strong>Table 3.</strong> Training LRMs or LLMs on safety data with or without the reasoning process (w/o think) on safety benchmarks. </p>
+            <!-- <p><strong>Experimental Settings:</strong></p>
+            <ul>
+              <li> Generator: GPT-4o
+            </ul> -->
+          </div>
+          <!-- Styled findings box -->
+          <div class="findings-box">
+            <p><strong>Observation 4:</strong> Safety Reasoning is Necessary for Training LRMs</p>
+          </div>
+          <div class="findings-box">
+            <p><strong>Observation 5:</strong> LLMs are NOT Tamed for Safety Reasoning Training Yet.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+<section class="section">
+  <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4">Example of STAR-1 data</h2>
+        <div class="content has-text-centered">
+          <center><img class="center" src="./resources/data_example.jpg" width="80%"></center>
+          <!-- <div class="content has-text-justified">
+            <p><strong>Figure 5.</strong> An example of process scores provided by URSA and our <code>ViLPRM</code>. We mark different scores with different colors.</p>
+          </div> -->
+          <!-- Styled findings box -->
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+          <section class="section">
+            <div class="container">
+              <!-- Abstract. -->
+              <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                  <h2 class="title is-3">Datasets Zoo</h2>
+                  <div class="content has-text-justified">
+                    <p>
+                      <!-- We are pleased to announce the release of our recaptioned datasets, including <strong>Recap-DataComp-1B</strong> and <strong>Recap-COCO-30K</strong>, as well as our caption model, <strong>LLaVA-1.5-LLaMA3-8B</strong>. Stay tuned for the upcoming release of our <i>CLIP</i> and <i>T2I</i> models! -->
+
+                      <h3>Dataset</h3>
+                      <table>
+                      <tr>
+                        <th>Dataset</th>
+                        <th>Num. of Sample</th>
+                        <th>url</th>
+                      </tr>
+                      <tr>
+                        <td>STAR-1</td>
+                        <td>1K</td>
+                        <td><a href="">Coming soon...</a></td>
+                      </tr>
+                      <tr>
+                        <td>STAR 40K</td>
+                        <td>41K</td>
+                        <td><a href="">Coming soon...</a></td>
+                      </tr>
+                    </table>
+
+                    <!-- <h3>Model</h3>
+                    <table>
+                      <tr>
+                        <th>Model</th>
+                        <th>Type</th>
+                        <th>url</th>
+                      </tr>
+                      <tr>
+                        <td><code>ViLPRM</code>-3B</td>
+                        <td>Our VL PRM based on QwenVL-2.5-3B</td>
+                        <td>Coming Soon...</td>
+                      </tr>
+                    </table> -->
+
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="section">
+            <div class="container">
+              <!-- Abstract. -->
+              <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                  <h2 class="title is-3">Acknowledge</h2>
+                  <div class="content has-text-justified">
+                    <!-- <center><img class="center" src="./resources/recap_cvpr_ac_poster.jpg" width="95%"></center> -->
+                    This work is partially supported by a gift from Open Philanthropy. We thank the NAIRR Pilot Program and the Microsoft Accelerate Foundation Models Research Program for supporting our computing needs.
+                  </div>
+                </div>
+              </div>
+            </section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+TBD
+    </code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Based on the following <a href="http://nerfies.github.io">template</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
