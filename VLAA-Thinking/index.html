@@ -394,25 +394,11 @@
 
         <div class="content has-text-justified">
           <center><img class="center" src="./assets/sft_only.png" width="100%"></center>
-          <!-- <p>
-            <strong style="font-weight: 900">Pipeline Overview.</strong>
-            We propose a four-step procedure for data generation: <b>Captioning</b>, <b>Visual-Language CoT Generation</b>, <b>Answer Rewriting</b> and <b>Answer Verification</b>.         
-           </p> -->
            <p>
-            <strong style="font-weight: 900">Examples from LVLMs trained with different strategies for reasoning.</strong>
+            <strong style="font-weight: 900">Delta percentage performance change</strong>
+            of different models trained with supervised fine-tuning (SFT) only. 
            </p>
-           <p>
-            <strong>Left</strong>: response from a model trained with SFT, showing 
-            <em>pseudo reasoning traces</em> and a number of <em>pseudo self-reflective cues</em> (i.e., aha-moments) imitated from R1.
-          </p>
-          <p>
-            <strong>Right</strong>: response from a model trained with RL (GRPO), showing 
-            <em>native reasoning ability</em> and <em>authentic aha-moments</em> emerged from RL training.
-          </p>
-          <p>
-            <span style="color: red;">Wrong reasoning steps</span> are colored red and 
-            <span style="background-color: yellow;">aha-moments</span> are highlighted.
-          </p>
+
         </div>
         
         <h3 class="title is-3 has-text-left" style="font-size: 1.5rem;">SFT vs GRPO Performance</h3>
@@ -424,20 +410,9 @@
             We propose a four-step procedure for data generation: <b>Captioning</b>, <b>Visual-Language CoT Generation</b>, <b>Answer Rewriting</b> and <b>Answer Verification</b>.         
            </p> -->
            <p>
-            <strong style="font-weight: 900">Examples from LVLMs trained with different strategies for reasoning.</strong>
+            <strong style="font-weight: 900">Impact of SFT with 5K and 10K samples before GRPO.</strong>
            </p>
-           <p>
-            <strong>Left</strong>: response from a model trained with SFT, showing 
-            <em>pseudo reasoning traces</em> and a number of <em>pseudo self-reflective cues</em> (i.e., aha-moments) imitated from R1.
-          </p>
-          <p>
-            <strong>Right</strong>: response from a model trained with RL (GRPO), showing 
-            <em>native reasoning ability</em> and <em>authentic aha-moments</em> emerged from RL training.
-          </p>
-          <p>
-            <span style="color: red;">Wrong reasoning steps</span> are colored red and 
-            <span style="background-color: yellow;">aha-moments</span> are highlighted.
-          </p>
+           SFT jeopardizes GRPO performance.
         </div>
 
 
@@ -454,7 +429,7 @@
       <div class="column is-four-fifths">
         <h2 class="title is-3">💡 GRPO with Mixed Reward</h2>
 
-
+        <h3 class="title is-3 has-text-left" style="font-size: 1.5rem;">Mixed Reward Module</h3>
 
         <div class="content has-text-justified">
           <center><img class="center" src="./assets/mixed_reward.png" width="100%"></center>
@@ -463,6 +438,8 @@
             The proposed framework comprises 2 reward formats (rule-based and open-ended) and 5 types of verifiable rewards (digit, MCQ, math, IoU and general reasoning).         
           </p>
         </div>
+
+        <h3 class="title is-3 has-text-left" style="font-size: 1.5rem;">Performance</h3>
 
         <div class="content has-text-justified">
           <center><img class="center" src="./assets/main_results.png" width="100%"></center>
@@ -475,7 +452,6 @@
             Evaluation on 6 math reasoning benchmarks held by <a href="https://huggingface.co/spaces/opencompass/Open_LMM_Reasoning_Leaderboard">Open LMM Reasoning Leaderboard</a>. VLAA-Thinker models significantly outperform baselines and other models.
           </p>
         </div>
-
 
 
 
