@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SFT or RL? An Early Investigation into Training R1-Like Reasoning Large Vision-Language Models </title>
+  <title>VLAA-Thinking</title>
 
 
   <link rel="stylesheet" href="./static/css/bulma.min.css">
@@ -33,20 +33,23 @@
           <h1 class="title is-1 publication-title">SFT or RL? An Early Investigation into Training R1-Like Reasoning Large Vision-Language Models </h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <span><a href="https://g-h-chen.github.io/">Hardy Chen</a></span><sup>3*</sup>,</span>
+              <span><a href="https://g-h-chen.github.io/">Hardy Chen</a></span><sup>2*</sup>,</span>
             <span class="author-block">
               <span><a href="https://www.haqtu.me/">Haoqin Tu</a></span><sup>1*</sup>,</span>
 
             <span class="author-block">
-              <span><a href="https://layneins.github.io/">Hui Liu</a></span><sup>2</sup>,</span>
+              <span><a href="https://fairyfali.github.io/">Fali Wang</a></span><sup>3</sup>,</span>
+            </span>
+            <span class="author-block">
+              <span><a href="https://layneins.github.io/">Hui Liu</a></span><sup>4</sup>,</span>
             </span>
 
             <span class="author-block">
-              <span><a href="https://xta.ng/">Xianfeng Tang</a></span><sup>2</sup>,</span>
+              <span><a href="https://xta.ng/">Xianfeng Tang</a></span><sup>4</sup>,</span>
             </span>
             
             <span class="author-block">
-              <span><a href="https://xinyadu.github.io/">Xinya Du</a></span><sup>3</sup>,</span>
+              <span><a href="https://xinyadu.github.io/">Xinya Du</a></span><sup>2</sup>,</span>
             </span>
 
             <span class="author-block">
@@ -142,20 +145,20 @@
 
 
 <!-- Abstract. -->
-<!-- <section class="section">
+<section class="section">
   <div class="container">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">About VL-Thinking 🤔</h2>
+        <h2 class="title is-3">About VLAA-Thinking 🤔</h2>
         <div class="content has-text-justified">
           <p>
-            VL-Thinking is a large.
+            This work revisits the dominant supervised fine-tuning (SFT) then reinforcement learning (RL) paradigm for training Large Vision-Language Models (LVLMs), and reveals a key finding: SFT can significantly undermine subsequent RL by inducing ``pseudo reasoning paths'' imitated from expert models. While these paths may resemble the native reasoning paths of RL models, they often involve prolonged, hesitant, less informative steps, and  incorrect reasoning. To systematically study this effect, we introduce \textbf{\ds}, a new multimodal dataset designed to support reasoning in LVLMs.  Constructed via a six-step pipeline involving captioning, reasoning distillation, answer rewrite and verification, \ds\ comprises high-quality, step-by-step visual reasoning traces for SFT, along with a more challenging RL split from the same data source. Using this dataset, we conduct extensive experiments comparing SFT, RL and their combinations.  Results show that while SFT helps models learn reasoning formats, it often locks aligned models into imitative, rigid reasoning modes that impede further learning. This work revisits the dominant supervised fine-tuning (SFT) then reinforcement learning (RL) paradigm for training Large Vision-Language Models (LVLMs), and reveals a key finding: SFT can significantly undermine subsequent RL by inducing ``pseudo reasoning paths'' imitated from expert models. While these paths may resemble the native reasoning paths of RL models, they often involve prolonged, hesitant, less informative steps, and  incorrect reasoning. To systematically study this effect, we introduce \textbf{\ds}, a new multimodal dataset designed to support reasoning in LVLMs.  Constructed via a six-step pipeline involving captioning, reasoning distillation, answer rewrite and verification, \ds\ comprises high-quality, step-by-step visual reasoning traces for SFT, along with a more challenging RL split from the same data source. Using this dataset, we conduct extensive experiments comparing SFT, RL and their combinations.  Results show that while SFT helps models learn reasoning formats, it often locks aligned models into imitative, rigid reasoning modes that impede further learning. 
           </p>
         </div>
       </div>
     </div>
-  </section> -->
-<!--/ Abstract. -->
+  </section>
+<!-- / Abstract. -->
 
 
 <section class="section">
@@ -168,51 +171,98 @@
         <thead>
           <tr>
             <th>Name</th>
-            <th># Original Samples</th>
-            <th># Rewritten</th>
-            <th><strong># Verified</strong></th>
+            <th>Data Type</th>
+            <th>#Ori.</th>
+            <th>#Pipeline</th>
+            <th>#Final SFT</th>
+            <th>#Final RL</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><a href="https://huggingface.co/datasets/lmms-lab/LLaVA-OneVision-Data/tree/main/CLEVR-Math(MathV360K)">CLEVR_Math</a></td>
-            <td>15,000</td>
-            <td>14,748</td>
-            <td><strong>9,771</strong></td>
+            <td>CLEVR-Math</td>
+            <td>Closed-end</td>
+            <td>35,000</td>
+            <td>28,018</td>
+            <td>5,923</td>
+            <td>2,000</td>
           </tr>
           <tr>
-            <td><a href="https://huggingface.co/datasets/lmms-lab/LLaVA-OneVision-Data/tree/main/geo170k(qa)">GeoQA170K</a></td>
-            <td>14,019</td>
-            <td>11,745</td>
-            <td><strong>7,794</strong></td>
+            <td>GeoQA170K</td>
+            <td>Closed-end</td>
+            <td>-</td>
+            <td>-</td>
+            <td>-</td>
+            <td>6,499</td>
           </tr>
           <tr>
-            <td><a href="https://huggingface.co/datasets/Math-PUMA/Math-PUMA_Data_Stage2/tree/main/Synthesis">Synthesis</a></td>
-            <td>29,998</td>
-            <td>29,998</td>
-            <td><strong>26,672</strong></td>
+            <td>Math PUMA</td>
+            <td>Closed-end</td>
+            <td>30,000</td>
+            <td>26,672</td>
+            <td>19,258</td>
+            <td>6,696</td>
           </tr>
           <tr>
-            <td><a href="https://huggingface.co/datasets/MMInstruction/ArxivQA?row=0">ArxivQA</a></td>
-            <td>14,992</td>
-            <td>14,810</td>
-            <td><strong>14,109</strong></td>
+            <td>ArxivQA</td>
+            <td>Closed-end</td>
+            <td>54,399</td>
+            <td>51,348</td>
+            <td>34,604</td>
+            <td>1,000</td>
           </tr>
           <tr>
-            <td><a href="https://huggingface.co/datasets/FreedomIntelligence/ALLaVA-4V/tree/main/allava_laion">ALLaVA-LAION</a></td>
-            <td>36,977</td>
-            <td>30,191</td>
-            <td><strong>18,123</strong></td>
+            <td>DocVQA</td>
+            <td>Closed-end</td>
+            <td>10,194</td>
+            <td>8,206</td>
+            <td>4,897</td>
+            <td>1,000</td>
+          </tr>
+          <tr>
+            <td>VizWiz</td>
+            <td>Closed-end</td>
+            <td>20,523</td>
+            <td>6,528</td>
+            <td>4,266</td>
+            <td>1,000</td>
+          </tr>
+          <tr>
+            <td>ALLaVA-LAION</td>
+            <td>Open-end</td>
+            <td>47,066</td>
+            <td>18,123</td>
+            <td>10,496</td>
+            <td>3,000</td>
+          </tr>
+          <tr>
+            <td>COCO</td>
+            <td>Closed-end</td>
+            <td>3,000</td>
+            <td>3,000</td>
+            <td>8,727</td>
+            <td>2,000</td>
+          </tr>
+          <tr>
+            <td>VisualGenome</td>
+            <td>Closed-end</td>
+            <td>3,000</td>
+            <td>3,000</td>
+            <td>38,242</td>
+            <td>2,000</td>
           </tr>
           <tr>
             <td><strong>Total</strong></td>
-            <td></td>
-            <td></td>
-            <td><strong>76,469</strong></td>
+            <td>Closed- &amp; Open-end</td>
+            <td>203,182</td>
+            <td>144,895</td>
+            <td>126,413</td>
+            <td>25,195</td>
           </tr>
         </tbody>
       </table>
     </div>
+    
     <p class="has-text-justified">
       <b>Dataset Statistics.</b> These datasets cover questions from different domains (math, general) and questions of different types (close-ended, open-ended). 
       For datasets with duplicated images, we select unique images for higher diversity. <b>More data are on the way</b>.
