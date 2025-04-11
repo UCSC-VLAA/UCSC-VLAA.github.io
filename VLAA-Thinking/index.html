@@ -246,7 +246,6 @@
             <td>1,000</td>
           </tr>
           <tr>
-            <td>DocVQA</td>
             <td><a href="https://www.docvqa.org/datasets">DocVQA</a></td>
             <td>Closed-end</td>
             <td>10,194</td>
@@ -255,7 +254,6 @@
             <td>1,000</td>
           </tr>
           <tr>
-            <td>VizWiz</td>
             <td><a href="https://vizwiz.org/tasks-and-datasets/vqa/">VizWiz</a></td>
             <td>Closed-end</td>
             <td>20,523</td>
@@ -299,9 +297,12 @@
       </table>
     </div>
     
-    <p class="has-text-justified">
+    <!-- <p class="has-text-justified">
       <b>Dataset Statistics.</b> These datasets cover questions from different domains (math, general) and questions of different types (close-ended, open-ended). 
       For datasets with duplicated images, we select unique images for higher diversity. <b>More data are on the way</b>.
+    </p> -->
+    <p class="has-text-justified">
+      <strong>Data statistics of ds.</strong> We present the original volume of metadata (<span>#Original</span>), the data size after the distillation pipeline (<span>#Pipeline</span>), the size of sampled examples for SFT (<span>#Final SFT</span>) and RL (<span>#Final RL</span>), respectively. Note that we only use GeoQA170K with verifiable answers for the RL split.
     </p>
   </div>
 </section>
