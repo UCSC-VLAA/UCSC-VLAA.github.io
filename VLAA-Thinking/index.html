@@ -195,6 +195,28 @@
 <!-- / Teaser. -->
 
 
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">VLAA-Thinking Data Generation</h2>
+        <div class="content has-text-justified">
+          <center><img class="center" src="./assets/data_generation.png" width="100%"></center>
+          <!-- <p>
+            <strong style="font-weight: 900">Pipeline Overview.</strong>
+            We propose a four-step procedure for data generation: <b>Captioning</b>, <b>Visual-Language CoT Generation</b>, <b>Answer Rewriting</b> and <b>Answer Verification</b>.          
+          </p> -->
+          <p>
+            <strong style="font-weight: 900">Data generation pipeline.</strong>
+            We first generate initial reasoning traces by feeding detailed captions and visual questions into DeepSeek-R1.These outputs are then rewritten for improved fluency and verified for correctness using a GPT-based verifier. the resulting data is split into VLAA-Thinking-SFT and VLAA-Thinking-RL. 
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
 <section class="section">
   <div class="container">
     <h2 class="title is-3 has-text-centered">📚 VLAA-Thinking Dataset Card</h2>
@@ -308,25 +330,6 @@
 </section>
 
 
-    <section class="section">
-      <div class="container">
-        <div class="columns is-centered has-text-centered">
-          <div class="column is-four-fifths">
-            <h2 class="title is-3">VLAA-Thinking Data Generation</h2>
-            <div class="content has-text-justified">
-              <center><img class="center" src="./assets/data_generation.png" width="100%"></center>
-              <!-- <p>
-                <strong style="font-weight: 900">Pipeline Overview.</strong>
-                We propose a four-step procedure for data generation: <b>Captioning</b>, <b>Visual-Language CoT Generation</b>, <b>Answer Rewriting</b> and <b>Answer Verification</b>.          
-              </p> -->
-              <p>
-                <strong style="font-weight: 900">Data generation pipeline.</strong>
-                We first generate initial reasoning traces by feeding detailed captions and visual questions into DeepSeek-R1.These outputs are then rewritten for improved fluency and verified for correctness using a GPT-based verifier. the resulting data is split into VLAA-Thinking-SFT and VLAA-Thinking-RL. 
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
 
 
