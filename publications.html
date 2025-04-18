@@ -179,6 +179,61 @@ function copy(dest, source) {
         // document.write("<h2>Preprint</h2>")
         document.write("<ul><br>")
 
+        add_paper("MedReason: Eliciting Factual Medical Reasoning Steps in LLMs via Knowledge Graphs",
+            "Juncheng Wu, Wenlong Deng, Xingxuan Li, Sheng Liu, Taomian Mi, Yifan Peng, Ziyang Xu, Yi Liu, Hyunjin Cho, Chang-In Choi, Yihan Cao, Hui Ren, Xiang Li, Xiaoxiao Li, Yuyin Zhou",
+            null,
+            "https://arxiv.org/pdf/2504.00993", 
+            "@article{wu2025medreason,<br>" +
+            "&nbsp;&nbsp;&nbsp;title   = {MedReason: Eliciting Factual Medical Reasoning Steps in LLMs via Knowledge Graphs},<br>" +
+            "&nbsp;&nbsp;&nbsp;author  = {Juncheng Wu, Wenlong Deng, Xingxuan Li, Sheng Liu, Taomian Mi, Yifan Peng, Ziyang Xu, Yi Liu, Hyunjin Cho, Chang-In Choi, Yihan Cao, Hui Ren, Xiang Li, Xiaoxiao Li, Yuyin Zhou},<br>" +
+            "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2504.00993},<br>" + 
+            "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+            "Medical tasks such as diagnosis and treatment planning require precise and complex reasoning, particularly in life-critical domains. Unlike mathematical reasoning, medical reasoning demands meticulous, verifiable thought processes to ensure reliability and accuracy. However, there is a notable lack of datasets that provide transparent, step-by-step reasoning to validate and enhance the medical reasoning ability of AI models. To bridge this gap, we introduce MedReason, a large-scale high-quality medical reasoning dataset designed to enable faithful and explainable medical problem-solving in large language models (LLMs). We utilize a structured medical knowledge graph (KG) to convert clinical QA pairs into logical chains of reasoning, or ``thinking paths'', which trace connections from question elements to answers via relevant KG entities. Each path is validated for consistency with clinical logic and evidence-based medicine. Our pipeline generates detailed reasoning for various medical questions from 7 medical datasets, resulting in a dataset of 32,682 question-answer pairs, each with detailed, step-by-step explanations. Experiments demonstrate that fine-tuning with our dataset consistently boosts medical problem-solving capabilities, achieving significant gains of up to 7.7% for DeepSeek-Ditill-8B. Our top-performing model, MedReason-8B, outperforms the Huatuo-o1-8B, a state-of-the-art medical reasoning model, by up to 4.2% on the clinical benchmark MedBullets. We also engage medical professionals from diverse specialties to assess our dataset's quality, ensuring MedReason offers accurate and coherent medical reasoning.",
+            "https://arxiv.org/pdf/2504.00993",
+            "https://github.com/UCSC-VLAA/MedReason"
+        )
+
+        add_paper("m1: Unleash the Potential of Test-Time Scaling for Medical Reasoning with Large Language Models",
+            "Xiaoke Huang, Juncheng Wu, Hui Liu, Xianfeng Tang, Yuyin Zhou",
+            null,
+            "https://arxiv.org/abs/2504.00869", 
+            "@article{huang2025m1,<br>" +
+            "&nbsp;&nbsp;&nbsp;title   = {m1: Unleash the Potential of Test-Time Scaling for Medical Reasoning with Large Language Models},<br>" +
+            "&nbsp;&nbsp;&nbsp;author  = {Xiaoke Huang, Juncheng Wu, Hui Liu, Xianfeng Tang, Yuyin Zhou},<br>" +
+            "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2504.00869},<br>" + 
+            "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+            "Test-time scaling has emerged as a powerful technique for enhancing the reasoning capabilities of large language models. However, its effectiveness in medical reasoning remains uncertain, as the medical domain fundamentally differs from mathematical tasks in terms of knowledge representation and decision-making processes. In this paper, we provide the first comprehensive investigation of test-time scaling for medical reasoning and present m1, a simple yet effective approach that increases a model's medical reasoning capability at inference. Our evaluation across diverse medical tasks demonstrates that test-time scaling consistently enhances medical reasoning, enabling lightweight fine-tuned models under 10B parameters to establish new state-of-the-art performance, while our 32B model rivals previous 70B-scale medical LLMs. However, we identify an optimal reasoning token budget of approximately 4K, beyond which performance may degrade due to overthinking. Budget forcing, which extends test-time computation through iterative prompts, helps models double-check answers but does not necessarily improve the overall medical QA performance and, in some cases, even introduces errors into previously correct responses. Our case-by-case analysis identifies insufficient medical knowledge as a key bottleneck that prevents further performance gains through test-time scaling. We find that increasing data scale, improving data quality, and expanding model capacity consistently enhance medical knowledge grounding, enabling continued performance improvements, particularly on challenging medical benchmarks where smaller models reach saturation. These findings underscore fundamental differences between medical and mathematical reasoning in LLMs, highlighting that enriched medical knowledge, other than increased reasoning depth alone, is essential for realizing the benefits of test-time scaling.",
+            "https://arxiv.org/abs/2504.00869",
+            "https://github.com/UCSC-VLAA/m1"
+        )
+
+        add_paper("STAR-1: Safer Alignment of Reasoning LLMs with 1K Data",
+            "Zijun Wang, Haoqin Tu, Yuhan Wang, Juncheng Wu, Jieru Mei, Brian R. Bartoldson, Bhavya Kailkhura, Cihang Xie",
+            null,
+            "https://arxiv.org/abs/2504.01903", 
+            "@article{wang2025star,<br>" +
+            "&nbsp;&nbsp;&nbsp;title   = {STAR-1: Safer Alignment of Reasoning LLMs with 1K Data},<br>" +
+            "&nbsp;&nbsp;&nbsp;author  = {Zijun Wang, Haoqin Tu, Yuhan Wang, Juncheng Wu, Jieru Mei, Brian R. Bartoldson, Bhavya Kailkhura, Cihang Xie},<br>" +
+            "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2504.01903},<br>" + 
+            "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+            "This paper introduces STAR-1, a high-quality, just-1k-scale safety dataset specifically designed for large reasoning models (LRMs) like DeepSeek-R1. Built on three core principles -- diversity, deliberative reasoning, and rigorous filtering -- STAR-1 aims to address the critical needs for safety alignment in LRMs. Specifically, we begin by integrating existing open-source safety datasets from diverse sources. Then, we curate safety policies to generate policy-grounded deliberative reasoning samples. Lastly, we apply a GPT-4o-based safety scoring system to select training examples aligned with best practices. Experimental results show that fine-tuning LRMs with STAR-1 leads to an average 40% improvement in safety performance across four benchmarks, while only incurring a marginal decrease (e.g., an average of 1.1%) in reasoning ability measured across five reasoning tasks. Extensive ablation studies further validate the importance of our design principles in constructing STAR-1 and analyze its efficacy across both LRMs and traditional LLMs.",
+            "https://arxiv.org/abs/2504.01903",
+            "https://github.com/UCSC-VLAA/STAR-1"
+        )
+        
+        add_paper("SFT or RL? An Early Investigation into Training R1-Like Reasoning Large Vision-Language Models",
+            "Hardy Chen, Haoqin Tu, Fali Wang, Hui Liu, Xianfeng Tang, Xinya Du, Yuyin Zhou, Cihang Xie",
+            null,
+            "https://arxiv.org/abs/2504.11468", 
+            "@article{wang2025star,<br>" +
+            "&nbsp;&nbsp;&nbsp;title   = {SFT or RL? An Early Investigation into Training R1-Like Reasoning Large Vision-Language Models},<br>" +
+            "&nbsp;&nbsp;&nbsp;author  = {Hardy Chen, Haoqin Tu, Fali Wang, Hui Liu, Xianfeng Tang, Xinya Du, Yuyin Zhou, Cihang Xie},<br>" +
+            "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2504.11468},<br>" + 
+            "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+            "This work revisits the dominant supervised fine-tuning (SFT) then reinforcement learning (RL) paradigm for training Large Vision-Language Models (LVLMs), and reveals a key finding: SFT can significantly undermine subsequent RL by inducing ``pseudo reasoning paths'' imitated from expert models. While these paths may resemble the native reasoning paths of RL models, they often involve prolonged, hesitant, less informative steps, and incorrect reasoning. To systematically study this effect, we introduce VLAA-Thinking, a new multimodal dataset designed to support reasoning in LVLMs. Constructed via a six-step pipeline involving captioning, reasoning distillation, answer rewrite and verification, VLAA-Thinking comprises high-quality, step-by-step visual reasoning traces for SFT, along with a more challenging RL split from the same data source. Using this dataset, we conduct extensive experiments comparing SFT, RL and their combinations. Results show that while SFT helps models learn reasoning formats, it often locks aligned models into imitative, rigid reasoning modes that impede further learning. In contrast, building on the Group Relative Policy Optimization (GRPO) with a novel mixed reward module integrating both perception and cognition signals, our RL approach fosters more genuine, adaptive reasoning behavior. Notably, our model VLAA-Thinker, based on Qwen2.5VL 3B, achieves top-1 performance on Open LMM Reasoning Leaderboard among 4B scale LVLMs, surpassing the previous state-of-the-art by 1.8%. We hope our findings provide valuable insights in developing reasoning-capable LVLMs and can inform future research in this area.",
+            "https://arxiv.org/abs/2504.11468",
+            "https://github.com/UCSC-VLAA/VLAA-Thinking"
+        )
 
         add_paper("EpiFoundation: A Foundation Model for Single-Cell ATAC-seq via Peak-to-Gene Alignment",
           "Juncheng Wu, Changxin Wan, Zhicheng Ji, Yuyin Zhou, Wenpin Hou",
