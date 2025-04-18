@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Complex-Edit: CoT-Like Instruction Generation for Complexity-Controllable Image Editing Benchmark">
+    <meta name="keywords" content="Complex-Edit, Image Editing, Benchmark, Complexity, Controllable">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Complex-Edit</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-ABCDEFGHIJ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-ABCDEFGHIJ');
+    </script> -->
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" href="./static/images/UCSC_icon.png">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+
+    <!-- MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+    </nav>
+
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-widescreen has-text-centered">
+                <h1 class="title is-1 publication-title">
+                    <!-- use monospaced font. simluate texttt in latex -->
+                    <span class="is-family-code">Complex-Edit</span>
+                </h1>
+                <h1 class="title is-3 publication-title">
+                    CoT-Like Instruction Generation for Complexity-Controllable Image Editing Benchmark
+                </h1>
+                <div class="is-size-5 publication-authors">
+                    <span class="author-block">
+                        <a href="https://siweiy.notion.site/">Siwei Yang</a><sup>1</sup>,
+                    </span>
+                    <span class="author-block">
+                        <a href="https://thefllood.github.io/mudehui.github.io/">Mude Hui</a><sup>1</sup>,
+                    </span>
+                    <span class="author-block">
+                        <a href="https://bzhao.me/">Bingchen Zhao</a><sup>2</sup>,
+                    </span>
+                    <span class="author-block">
+                        <a href="https://yuyinzhou.github.io/">Yuyin Zhou</a><sup>1</sup>,
+                    </span>
+                    <span class="author-block">
+                        <a href="https://natanielruiz.github.io/">Nataniel Ruiz</a><sup>3</sup>,
+                    </span>
+                    <span class="author-block">
+                        <a href="https://cihangxie.github.io/">Cihang Xie</a><sup>1</sup>
+                    </span>
+
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block"><sup>1</sup>UC Santa Cruz</span>
+                        <span class="author-block"><sup>2</sup>University of Edinburgh</span>
+                        <span class="author-block"><sup>3</sup>Google</span>
+                    </div>
+
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+                            <!-- PDF Link. -->
+                            <!-- <span class="link-block">
+                                <a href="https://arxiv.org/abs/2504.13143"
+                                    class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </span>
+                                    <span>Paper</span>
+                                </a>
+                            </span> -->
+                            <span class="link-block">
+                                <a href="https://arxiv.org/abs/2504.13143"
+                                    class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <!-- <i class="ai ai-arxiv"></i> -->
+                                        <img src="static/images/ar.svg" alt="arXiv Icon" style="height: 70%">
+                                    </span>
+                                    <span>arXiv</span>
+                                </a>
+                            </span>
+                            <!-- Code Link. -->
+                            <span class="link-block">
+                                <a href="https://github.com/UCSC-VLAA/Complex-Edit"
+                                    class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="fab fa-github"></i>
+                                    </span>
+                                    <span>Code</span>
+                                </a>
+                            </span>
+                            <!-- Dataset Link. -->
+                            <span class="link-block">
+                                <a href="https://huggingface.co/datasets/UCSC-VLAA/Complex-Edit"
+                                    class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <!-- <i class="far fa-images"></i> -->
+                                        <img src="static/images/hg.svg" alt="Huggingface Icon" style="height: 70%">
+                                    </span>
+                                    <span>Dataset</span>
+                                </a>
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <section class="hero teaser">
+        <div class="container is-max-widescreen">
+            <div class="hero-body">
+                <img id="teaser-image" src="./static/images/teaser.png" alt="teaser image" width="100%">
+                <h2 class="subtitle has-text-centered">
+                    An illustration of our <span class="is-family-code">Complex-Edit</span> Benchmark. This figure presents a structured progression of instruction complexity in
+                    image editing tasks, highlighting the transition from atomic edits to highly intricate transformations.
+                </h2>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-widescreen">
+            <!-- Abstract. -->
+            <div class="title is-1 has-text-centered">Abstract</div>
+            <div class="content has-text-justified">
+                <p>
+                    We introduce <span class="is-family-code">Complex-Edit</span>, a comprehensive benchmark designed to systematically evaluate instruction-based image editing models across instructions of varying complexity. To develop this benchmark, we harness GPT-4o to automatically collect a diverse set of editing instructions at scale.
+                </p>
+                <p>
+                    Our approach follows a well-structured “Chain-of-Edit” pipeline: we first generate individual atomic editing tasks independently and then integrate them to form cohesive, complex instructions. Additionally, we introduce a suite of metrics to assess various aspects of editing performance, along with a VLM-based auto-evaluation pipeline that supports large-scale assessments.
+                </p>
+                <p>
+                    Our benchmark yields several notable insights:
+                    <ol>
+                        <li>
+                            Opensource models significantly underperform relative to proprietary, closed-source models, with the performance gap widening as instruction complexity increases;
+                        </li>
+                        <li>
+                            Increased instructional complexity primarily impairs the models' ability to retain key elements from the input images and to preserve the overall aesthetic quality;
+                        </li>
+                        <li>
+                            Decomposing a complex instruction into a sequence of atomic steps, executed in a step-by-step manner, substantially degrades performance across multiple metrics;
+                        </li>
+                        <li>
+                            A straightforward Best-of-N selection strategy improves results for both direct editing and the step-by-step sequential approach;
+                        </li>
+                        <li>
+                            We observe a “curse of synthetic data”: when synthetic data is involved in model training, the edited images from such models tend to appear increasingly synthetic as the complexity of the editing instructions rises — a phenomenon that intriguingly also manifests in the latest GPT-4o outputs.
+                        </li>
+                    </ol>
+                </p>
+            </div>
+            <!--/ Abstract. -->
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="title is-1 has-text-centered">Dataset</div>
+        <div class="container is-fullhd">
+            <img id="data-pipeline" src="./static/images/pipeline.png" alt="data pipeline" width="100%">
+            <div class="container is-max-widescreen has-text-centered">
+                <div class="block">
+                    <b>An overview of our data generation pipeline.</b>
+                </div>
+            </div>
+
+            <div class="block"></div>
+
+            <div class="columns">
+                <div class="column">
+                    <div class="title is-3">Stage #1 <br> Sequence Generation</div>
+                    <p class="has-text-justified">
+                        A sequence of atomic instructions is produced for each image. 
+                    </p>
+                </div>
+
+                <div class="column">
+                    <div class="title is-3">Stage #2 <br> Simplification</div>
+                    <p class="has-text-justified">
+                        Each atomic instruction is refined to eliminate extraneous details, preserving only the essential description of the editing process.
+                    </p>
+                </div>
+
+                <div class="column">
+                    <div class="title is-3">Stage #3 <br> Instruction Compounding</div>
+                    <p class="has-text-justified">
+                        Several atomic instructions are integrated into one comprehensive instruction.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+    <section class="section">
+        <div class="title is-1 has-text-centered">Evaluation</div>
+
+        <div class="container is-fullhd">
+            <div class="title is-3">Instruction Following</div>
+            <p class="has-text-justified">
+                Whether the specified modifications are present in the output image.
+            </p>
+            <img id="instruction_following" src="./static/images/if.png" alt="instruction following" width="100%">
+            <div class="block"></div>
+
+            <div class="title is-3">Identity Perservation</div>
+            <p class="has-text-justified">
+                Whether elements of the input image that should remain unchanged are indeed preserved.
+            </p>
+            <img id="identity_preservation" src="./static/images/ip.png" alt="identity preservation" width="100%">
+            <div class="block"></div>
+
+
+            <div class="title is-3">Perceptual Quality</div>
+            <p class="has-text-justified">
+                Aesthetic factors such as consistency in lighting and shadows, style coherence, and the seamless integration of elements.
+            </p>
+            <img id="perceptual_quality" src="./static/images/pq.png" alt="perceptual quality" width="100%">
+        </div>
+
+
+        <div class="block"></div>
+
+
+<!--         <div class="container is-fullhd">
+            <div class="title is-2">Evaluation Examples</div>
+            <img id="alignment" src="./static/images/alignment.png" alt="if id" width="100%">
+            <div class="container is-max-widescreen has-text-centered">
+                <div class="block">
+                    <b>Figure 2.</b> Example evaluation results for <b>Instruction Following</b> and <b>Identity Preservation</b>.
+                </div>
+            </div>
+
+            <div class="block"></div>
+
+            <img id="quality" src="./static/images/quality.png" alt="if id" width="100%">
+            <div class="container is-max-widescreen has-text-centered">
+                <div class="block">
+                    <b>Figure 3.</b> Example evaluation results for <b>Perceptual Quality</b>.
+                </div>
+            </div>
+
+        </div>
+
+        </div>
+    </section>
+ -->
+
+    <section class="section">
+        <div class="title is-1 has-text-centered">Results</div>
+        <!-- Main. -->
+        <div class="container is-fullhd">
+            <div class="title is-3">Effect of Increasing Complexity</div>
+
+            <center>
+                <img src="static/images/vis-main-syn.png" width="80%">
+            </center>
+
+            <div class="container is-max-widescreen has-text-justified">
+                <div class="block">
+                <center>
+                    <b>Qualitative results with editing instructions at different complexity levels.</b>
+                </center>
+                </div>
+            </div>
+            <div class="block"></div>
+
+            <div class="container is-max-widescreen has-text-justified">
+                <div class="block">
+                    Higher complexity leads to a consistent decline in both Identity Preservation and Perceptual Quality across models, while Instruction Following tends to fluctuate depending on the specific model.
+                     <!-- (\( \text{Err}_\text{min} \), \( \text{G}_\text{min} \)),  -->
+                </div>
+            </div>
+
+            <div class="block"></div>
+
+            <div class="container is-max-widescreen has-text-justified">
+                <div class="block">
+                    GPT-4o surpasses all the other models we tested in terms of all metrics, particularly in terms of Instruction Following and Perceptual Quality. However, images edited by GPT-4o completely lose the realistic style with highly complex instructions. See the following section for more details.
+                </div>
+            </div>
+        </div>
+        <!--/ Main. -->
+
+        <div class="block"></div>
+
+        <div class="container is-fullhd">
+            <div class="title is-3">Results of GPT-4o - Curse of Synthetic Data</div>
+
+            <img src="static/images/vis-main-gpt.png" width="100%">
+            <div class="container is-max-widescreen has-text-centered">
+                <div class="block">
+                    <b>Qualitative results with realistic image inputs edited by GPT-4o based on instructions at \( C_8 \) complexity level.</b>
+                </div>
+            </div>
+
+            <div class="block"></div>
+
+            <center>
+                <img src="static/images/tab-curse.png" width="50%">
+            </center>
+            <div class="container is-max-widescreen has-text-centered">
+                <div class="block">
+                    <b>Evaluation results with direct editing on real images with the instruction complexity at \( C_8 \).</b>
+                </div>
+            </div>
+
+            <div class="block"></div>
+            
+            <div class="container is-max-widescreen has-text-justified">
+                <div class="block">
+                    When applying extremely complex editing instructions (\( C_8 \)) to real input images, the resulting outputs frequently lose their realistic appearance and adopt a distinctly synthetic aesthetic. Notably, UltraEdit is particularly susceptible to this effect compared to OmniGen and AnyEdit.
+                     <!-- (\( \text{Err}_\text{min} \), \( \text{G}_\text{min} \)),  -->
+                </div>
+                <div class="block">
+                    We attribute this trend to the composition of UltraEdit's training data, which contains a significantly higher proportion of synthetic images than the datasets used by OmniGen and AnyEdit.
+                </div>
+                <div class="block">
+                    This also applies to powerful models like GPT-4o. As shown in the figure above, GPT-4o's edited images lose their realistic style, even though it outperforms all other models overall, even though GPT-4o surpass all the other models we tested in terms of all 3 metrics. This suggests that GPT-4o's training heavily relies on synthetic data.
+                </div>
+            </div>
+        </div>
+
+        <div class="block"></div>
+
+        <!-- Sequential Editing. -->
+        <div class="container is-fullhd">
+            <div class="title is-3">Sequential Editing</div>
+            <center>
+                <img src="static/images/vis-real-direct-sequence.png" width="80%">
+            </center>
+
+            <div class="container is-max-widescreen has-text-justified">
+                <div class="block">
+                    <center><b>Qualitative results with instructions at different complexity levels.</b></center>
+                </div>
+            </div>
+            <div class="block"></div>
+
+            <div class="container is-max-widescreen has-text-justified">
+                <div class="block">
+                    Sequential editing refers to decompose a complex instruction into a sequence of atomic instructions then executing them sequentially in a CoT-like style.
+                </div>
+                <div class="block">
+                    Our results reveal that sequential editing yields a steady decline in performance across all three metrics, with accumulating visual artifacts and distortions—even for strong proprietary models such as Imagen3 and SeedEdit.
+                </div>
+            </div>
+        </div>
+        <!--/ Sequential Editing. -->
+
+        <div class="block"></div>
+
+        <!-- Best of N. -->
+        <div class="container is-fullhd">
+            <div class="title is-3">Best-of-N</div>
+            <center>
+                <img src="static/images/vis-real-sequence-best1-best4.png" width="80%">
+            </center>
+
+            <div class="container is-max-widescreen has-text-justified">
+                <div class="block">
+                <center>
+                    <b>Qualitative results of sequential editing with and without Best-of-4 with OmniGen on real input images.</b>
+                </center>
+                </div>
+            </div>
+
+            <div class="block"></div>
+
+
+            <div class="container is-max-widescreen has-text-justified">
+   <!--              <div class="block">
+                    Our evaluations with open-source models on real-life images (see Figure 14) indicate that increasing N gradually improves direct editing performance across all metrics. 
+                </div> -->
+                <div class="block">
+                    For sequential editing, a Best-of-N strategy produces significant gains in Identity Preservation and Perceptual Quality; however, the improvement in Instruction Following is less consistent.
+                </div>
+            </div>
+        </div>
+        <!--/ Best of N. -->
+
+        <div class="block"></div>
+
+    </section>
+
+    <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <h2 class="title">BibTeX</h2>
+            <pre><code>@misc{yang2025textttcomplexeditcotlikeinstructiongeneration,
+    title={$\texttt{Complex-Edit}$: CoT-Like Instruction Generation for Complexity-Controllable Image Editing Benchmark}, 
+    author={Siwei Yang and Mude Hui and Bingchen Zhao and Yuyin Zhou and Nataniel Ruiz and Cihang Xie},
+    year={2025},
+    eprint={2504.13143},
+    archivePrefix={arXiv},
+    primaryClass={cs.CV},
+    url={https://arxiv.org/abs/2504.13143}, 
+}</code></pre>
+        </div>
+    </section>
+
+
+    <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <h2 class="title">Acknowledge</h2>
+            We would like to thank Google Cloud Research Credits Program, and the Microsoft Accelerate Foundation Models Research Program for supporting our computing needs.
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container is-small">
+            <div class="content has-text-centered">
+                <a class="icon-link" href="https://arxiv.org/abs/2504.13143">
+                    <i class="fas fa-file-pdf"></i>
+                </a>
+                <a class="icon-link" href="https://siweiy.notion.site/" class="external-link" disabled>
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="content">
+                        <p>
+                            This website is licensed under a <a rel="license"
+                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                                Commons Attribution-ShareAlike 4.0 International License</a>.
+                        </p>
+                        <p>
+                            The template is modified based on <a href="https://github.com/nerfies/nerfies.github.io">this</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
