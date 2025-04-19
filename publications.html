@@ -595,22 +595,7 @@ function copy(dest, source) {
         )
 
 
-        
 
-
-        add_paper("AQA-Bench: An Interactive Benchmark for Evaluating LLMs' Sequential Reasoning Ability",
-          "Siwei Yang, Bingchen Zhao, Cihang Xie",
-          null,
-          "https://arxiv.org/abs/2402.09404",
-          "@article{yang2024aqabench,<br>" +
-           "&nbsp;&nbsp;&nbsp;title   = {AQA-Bench: An Interactive Benchmark for Evaluating LLMs' Sequential Reasoning Ability},<br>" +
-           "&nbsp;&nbsp;&nbsp;author  = {Yang, Siwei and Zhao, Bingchen and Xie, Cihang},<br>" +
-           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2402.09404},<br>" +
-           "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
-          "This paper introduces AQA-Bench, a novel benchmark to assess the sequential reasoning capabilities of large language models (LLMs) in algorithmic contexts, such as depth-first search (DFS). The key feature of our evaluation benchmark lies in its interactive evaluation protocol -- for example, in DFS, the availability of each node's connected edge is contingent upon the model's traversal to that node, thereby necessitating the LLM's ability to effectively remember visited nodes and strategize subsequent moves. We comprehensively build AQA-Bench with three different algorithms, namely binary search, depth-first search, and breadth-first search, and to evaluate the sequential reasoning ability of 12 different LLMs. Our investigations reveal several interesting findings: (1) Closed-source models like GPT-4 and Gemini generally show strong sequential reasoning ability, significantly outperforming open-source LLMs. (2) Naively providing interactive examples may inadvertently hurt few-shot performance. (3) A very limited number of predecessor steps following the optimal policy can substantially boost small models' performance. (4) The scaling correlation between performance and model size is not always significant, sometimes even showcasing an inverse trend. We hope our study can catalyze future work on advancing the understanding and enhancement of LLMs' capabilities in sequential reasoning. The code is available at https://github.com/UCSC-VLAA/AQA-Bench",
-          "https://arxiv.org/abs/2402.09404",
-          "https://github.com/UCSC-VLAA/AQA-Bench"
-        )
 
 
 
@@ -1000,6 +985,23 @@ function copy(dest, source) {
           "&nbsp;&nbsp;&nbsp;year    = {2025}<br>}",
           "In this work, we introduce SPFormer, a novel Vision Transformer enhanced by superpixel representation. Addressing the limitations of traditional Vision Transformers' fixed-size, non-adaptive patch partitioning, SPFormer employs superpixels that adapt to the image's content. This approach divides the image into irregular, semantically coherent regions, effectively capturing intricate details and applicable at both initial and intermediate feature levels. SPFormer, trainable end-to-end, exhibits superior performance across various benchmarks. Notably, it exhibits significant improvements on the challenging ImageNet benchmark, achieving a 1.4% increase over DeiT-T and 1.1% over DeiT-S respectively. A standout feature of SPFormer is its inherent explainability. The superpixel structure offers a window into the model's internal processes, providing valuable insights that enhance the model's interpretability. This level of clarity significantly improves SPFormer's robustness, particularly in challenging scenarios such as image rotations and occlusions, demonstrating its adaptability and resilience.",
           "https://arxiv.org/abs/2401.02931"
+        )
+
+
+
+
+        add_paper("AQA-Bench: An Interactive Benchmark for Evaluating LLMs' Sequential Reasoning Ability",
+          "Siwei Yang, Bingchen Zhao, Cihang Xie",
+          "TMLR, 2025",
+          "https://arxiv.org/abs/2402.09404",
+          "@article{yang2024aqabench,<br>" +
+           "&nbsp;&nbsp;&nbsp;title   = {AQA-Bench: An Interactive Benchmark for Evaluating LLMs' Sequential Reasoning Ability},<br>" +
+           "&nbsp;&nbsp;&nbsp;author  = {Yang, Siwei and Zhao, Bingchen and Xie, Cihang},<br>" +
+           "&nbsp;&nbsp;&nbsp;journal = {TMLR},<br>" +
+           "&nbsp;&nbsp;&nbsp;year    = {2025}<br>}",
+          "This paper introduces AQA-Bench, a novel benchmark to assess the sequential reasoning capabilities of large language models (LLMs) in algorithmic contexts, such as depth-first search (DFS). The key feature of our evaluation benchmark lies in its interactive evaluation protocol -- for example, in DFS, the availability of each node's connected edge is contingent upon the model's traversal to that node, thereby necessitating the LLM's ability to effectively remember visited nodes and strategize subsequent moves. We comprehensively build AQA-Bench with three different algorithms, namely binary search, depth-first search, and breadth-first search, and to evaluate the sequential reasoning ability of 12 different LLMs. Our investigations reveal several interesting findings: (1) Closed-source models like GPT-4 and Gemini generally show strong sequential reasoning ability, significantly outperforming open-source LLMs. (2) Naively providing interactive examples may inadvertently hurt few-shot performance. (3) A very limited number of predecessor steps following the optimal policy can substantially boost small models' performance. (4) The scaling correlation between performance and model size is not always significant, sometimes even showcasing an inverse trend. We hope our study can catalyze future work on advancing the understanding and enhancement of LLMs' capabilities in sequential reasoning. The code is available at https://github.com/UCSC-VLAA/AQA-Bench",
+          "https://arxiv.org/abs/2402.09404",
+          "https://github.com/UCSC-VLAA/AQA-Bench"
         )
 
 
@@ -1477,7 +1479,7 @@ function copy(dest, source) {
 
         add_paper("A Flexible 2.5D Medical Image Segmentation Approach with In-Slice and Cross-Slice Attention",
           "Amarjeet Kumar, Hongxu Jiang, Muhammad Imran, Cyndi Valdes, Gabriela Leon, Dahyun Kang, Parvathi Nataraj, Yuyin Zhou, Michael D Weiss, Wei Shao",
-          null,
+          "Computers in Biology and Medicine, 2024",
           "https://arxiv.org/abs/2405.00130",
           "@article{kumar2024flexible25d,<br>" +
            "&nbsp;&nbsp;&nbsp;title   = {A Flexible 2.5 D Medical Image Segmentation Approach with In-Slice and Cross-Slice Attention},<br>" +
