@@ -179,6 +179,76 @@ function copy(dest, source) {
         // document.write("<h2>Preprint</h2>")
         document.write("<ul><br>")
 
+        add_paper("Complex-Edit: CoT-Like Instruction Generation for Complexity-Controllable Image Editing Benchmark",
+          "Siwei Yang, Mude Hui, Bingchen Zhao, Yuyin Zhou, Nataniel Ruiz, Cihang Xie",
+          null,
+          "https://arxiv.org/abs/2504.13143", 
+          "@article{yang2025textttcomplexeditcotlikeinstructiongeneration,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {Complex-Edit: CoT-Like Instruction Generation for Complexity-Controllable Image Editing Benchmark},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Siwei Yang, Mude Hui, Bingchen Zhao, Yuyin Zhou, Nataniel Ruiz, Cihang Xie},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2504.13143},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+          "We introduce Complex-Edit, a comprehensive benchmark designed to systematically evaluate instruction-based image editing models across instructions of varying complexity. To develop this benchmark, we harness GPT-4o to automatically collect a diverse set of editing instructions at scale. Our approach follows a well-structured ``Chain-of-Edit'' pipeline: we first generate individual atomic editing tasks independently and then integrate them to form cohesive, complex instructions. Additionally, we introduce a suite of metrics to assess various aspects of editing performance, along with a VLM-based auto-evaluation pipeline that supports large-scale assessments. Our benchmark yields several notable insights: 1) Open-source models significantly underperform relative to proprietary, closed-source models, with the performance gap widening as instruction complexity increases; 2) Increased instructional complexity primarily impairs the models' ability to retain key elements from the input images and to preserve the overall aesthetic quality; 3) Decomposing a complex instruction into a sequence of atomic steps, executed in a step-by-step manner, substantially degrades performance across multiple metrics; 4) A straightforward Best-of-N selection strategy improves results for both direct editing and the step-by-step sequential approach; and 5) We observe a ``curse of synthetic data'': when synthetic data is involved in model training, the edited images from such models tend to appear increasingly synthetic as the complexity of the editing instructions rises -- a phenomenon that intriguingly also manifests in the latest GPT-4o outputs.",
+          "https://arxiv.org/abs/2504.13143",
+          "https://github.com/UCSC-VLAA/Complex-Edit"
+        )
+
+        add_paper("MedSegFactory: Text-Guided Generation of Medical Image-Mask Pairs",
+          "Jiawei Mao, Yuhan Wang, Yucheng Tang, Daguang Xu, Kang Wang, Yang Yang, Zongwei Zhou, Yuyin Zhou",
+          null,
+          "https://arxiv.org/abs/2504.06897", 
+          "@article{mao2025medsegfactory,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {MedSegFactory: Text-Guided Generation of Medical Image-Mask Pairs},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Jiawei Mao, Yuhan Wang, Yucheng Tang, Daguang Xu, Kang Wang, Yang Yang, Zongwei Zhou, Yuyin Zhou},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2504.06897},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+          "This paper presents MedSegFactory, a versatile medical synthesis framework that generates high-quality paired medical images and segmentation masks across modalities and tasks. It aims to serve as an unlimited data repository, supplying image-mask pairs to enhance existing segmentation tools. The core of MedSegFactory is a dual-stream diffusion model, where one stream synthesizes medical images and the other generates corresponding segmentation masks. To ensure precise alignment between image-mask pairs, we introduce Joint Cross-Attention (JCA), enabling a collaborative denoising paradigm by dynamic cross-conditioning between streams. This bidirectional interaction allows both representations to guide each other's generation, enhancing consistency between generated pairs. MedSegFactory unlocks on-demand generation of paired medical images and segmentation masks through user-defined prompts that specify the target labels, imaging modalities, anatomical regions, and pathological conditions, facilitating scalable and high-quality data generation. This new paradigm of medical image synthesis enables seamless integration into diverse medical imaging workflows, enhancing both efficiency and accuracy. Extensive experiments show that MedSegFactory generates data of superior quality and usability, achieving competitive or state-of-the-art performance in 2D and 3D segmentation tasks while addressing data scarcity and regulatory constraints.",
+          "https://arxiv.org/abs/2504.06897",
+          "https://github.com/jwmao1/MedSegFactory"
+        )
+
+        add_paper("A Comprehensive Analysis of Mamba for 3D Volumetric Medical Image Segmentation",
+          "Chaohan Wang, Yutong Xie, Qi Chen, Yuyin Zhou, Qi Wu",
+          null,
+          "https://arxiv.org/abs/2503.19308", 
+          "@article{wang2025comprehensive,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {A Comprehensive Analysis of Mamba for 3D Volumetric Medical Image Segmentation},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Chaohan Wang, Yutong Xie, Qi Chen, Yuyin Zhou, Qi Wu},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2503.19308},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+          "Mamba, with its selective State Space Models (SSMs), offers a more computationally efficient solution than Transformers for long-range dependency modeling. However, there is still a debate about its effectiveness in high-resolution 3D medical image segmentation. In this study, we present a comprehensive investigation into Mamba's capabilities in 3D medical image segmentation by tackling three pivotal questions: Can Mamba replace Transformers? Can it elevate multi-scale representation learning? Is complex scanning necessary to unlock its full potential? We evaluate Mamba's performance across three large public benchmarks-AMOS, TotalSegmentator, and BraTS. Our findings reveal that UlikeMamba, a U-shape Mamba-based network, consistently surpasses UlikeTrans, a U-shape Transformer-based network, particularly when enhanced with custom-designed 3D depthwise convolutions, boosting accuracy and computational efficiency. Further, our proposed multi-scale Mamba block demonstrates superior performance in capturing both fine-grained details and global context, especially in complex segmentation tasks, surpassing Transformer-based counterparts. We also critically assess complex scanning strategies, finding that simpler methods often suffice, while our Tri-scan approach delivers notable advantages in the most challenging scenarios. By integrating these advancements, we introduce a new network for 3D medical image segmentation, positioning Mamba as a transformative force that outperforms leading models such as nnUNet, CoTr, and U-Mamba, offering competitive accuracy with superior computational efficiency. This study provides key insights into Mamba's unique advantages, paving the way for more efficient and accurate approaches to 3D medical imaging.",
+          "https://arxiv.org/abs/2503.19308",
+          "https://arxiv.org/abs/2503.19308"
+        )
+
+        add_paper("ViLBench: A Suite for Vision-Language Process Reward Modeling",
+          "Haoqin Tu, Weitao Feng, Hardy Chen, Hui Liu, Xianfeng Tang, Cihang Xie",
+          null,
+          "https://arxiv.org/abs/2503.20271", 
+          "@article{tu2025vilbench,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {ViLBench: A Suite for Vision-Language Process Reward Modeling},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Haoqin Tu, Weitao Feng, Hardy Chen, Hui Liu, Xianfeng Tang, Cihang Xie},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2503.20271},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+          "Process-supervised reward models serve as a fine-grained function that provides detailed step-wise feedback to model responses, facilitating effective selection of reasoning trajectories for complex tasks. Despite its advantages, evaluation on PRMs remains less explored, especially in the multimodal domain. To address this gap, this paper first benchmarks current vision large language models (VLLMs) as two types of reward models: output reward models (ORMs) and process reward models (PRMs) on multiple vision-language benchmarks, which reveal that neither ORM nor PRM consistently outperforms across all tasks, and superior VLLMs do not necessarily yield better rewarding performance. To further advance evaluation, we introduce ViLBench, a vision-language benchmark designed to require intensive process reward signals. Notably, OpenAI's GPT-4o with Chain-of-Thought (CoT) achieves only 27.3% accuracy, indicating the benchmark's challenge for current VLLMs. Lastly, we preliminarily showcase a promising pathway towards bridging the gap between general VLLMs and reward models -- by collecting 73.6K vision-language process reward data using an enhanced tree-search algorithm, our 3B model is able to achieve an average improvement of 3.3% over standard CoT and up to 2.5% compared to its untrained counterpart on ViLBench by selecting OpenAI o1's generations. We release the implementations with our code, model, and data.",
+          "https://arxiv.org/abs/2503.20271",
+          "https://ucsc-vlaa.github.io/ViLBench/"
+        )
+
+        add_paper("Exploring the Vulnerabilities of Federated Learning: A Deep Dive into Gradient Inversion Attacks",
+          "Pengxin Guo, Runxi Wang, Shuang Zeng, Jinjing Zhu, Haoning Jiang, Yanran Wang, Yuyin Zhou, Feifei Wang, Hui Xiong, Liangqiong Qu",
+          null,
+          "https://arxiv.org/abs/2503.11514", 
+          "@article{guo2025exploring,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {Exploring the Vulnerabilities of Federated Learning: A Deep Dive into Gradient Inversion Attacks},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Pengxin Guo, Runxi Wang, Shuang Zeng, Jinjing Zhu, Haoning Jiang, Yanran Wang, Yuyin Zhou, Feifei Wang, Hui Xiong, Liangqiong Qu},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2503.11514},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+          "Federated Learning (FL) has emerged as a promising privacy-preserving collaborative model training paradigm without sharing raw data. However, recent studies have revealed that private information can still be leaked through shared gradient information and attacked by Gradient Inversion Attacks (GIA). While many GIA methods have been proposed, a detailed analysis, evaluation, and summary of these methods are still lacking. Although various survey papers summarize existing privacy attacks in FL, few studies have conducted extensive experiments to unveil the effectiveness of GIA and their associated limiting factors in this context. To fill this gap, we first undertake a systematic review of GIA and categorize existing methods into three types, i.e., \textit{optimization-based} GIA (OP-GIA), \textit{generation-based} GIA (GEN-GIA), and \textit{analytics-based} GIA (ANA-GIA). Then, we comprehensively analyze and evaluate the three types of GIA in FL, providing insights into the factors that influence their performance, practicality, and potential threats. Our findings indicate that OP-GIA is the most practical attack setting despite its unsatisfactory performance, while GEN-GIA has many dependencies and ANA-GIA is easily detectable, making them both impractical. Finally, we offer a three-stage defense pipeline to users when designing FL frameworks and protocols for better privacy protection and share some future research directions from the perspectives of attackers and defenders that we believe should be pursued. We hope that our study can help researchers design more robust FL frameworks to defend against these attacks.",
+          "https://arxiv.org/abs/2503.11514",
+          "https://arxiv.org/abs/2503.11514"
+        )
+
         add_paper("SFT or RL? An Early Investigation into Training R1-Like Reasoning Large Vision-Language Models",
             "Hardy Chen, Haoqin Tu, Fali Wang, Hui Liu, Xianfeng Tang, Xinya Du, Yuyin Zhou, Cihang Xie",
             null,
