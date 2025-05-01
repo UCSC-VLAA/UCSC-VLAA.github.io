@@ -336,22 +336,6 @@ function copy(dest, source) {
         )
 
 
-
-        add_paper("Scaling Laws in Patchification: An Image Is Worth 50,176 Tokens And More",
-          "Feng Wang, Yaodong Yu, Guoyizhe Wei, Wei Shao, Yuyin Zhou, Alan Yuille, Cihang Xie",
-          null,
-          "https://arxiv.org/abs/2502.03738", 
-          "@article{wang2025scaling,<br>" +
-          "&nbsp;&nbsp;&nbsp;title   = {Scaling Laws in Patchification: An Image Is Worth 50,176 Tokens And More},<br>" +
-          "&nbsp;&nbsp;&nbsp;author  = {Feng Wang, Yaodong Yu, Guoyizhe Wei, Wei Shao, Yuyin Zhou, Alan Yuille, Cihang Xie},<br>" +
-          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2502.03738},<br>" + 
-          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
-          "Since the introduction of Vision Transformer (ViT), patchification has long been regarded as a de facto image tokenization approach for plain visual architectures. By compressing the spatial size of images, this approach can effectively shorten the token sequence and reduce the computational cost of ViT-like plain architectures. In this work, we aim to thoroughly examine the information loss caused by this patchification-based compressive encoding paradigm and how it affects visual understanding. We conduct extensive patch size scaling experiments and excitedly observe an intriguing scaling law in patchification: the models can consistently benefit from decreased patch sizes and attain improved predictive performance, until it reaches the minimum patch size of 1x1, i.e., pixel tokenization. This conclusion is broadly applicable across different vision tasks, various input scales, and diverse architectures such as ViT and the recent Mamba models. Moreover, as a by-product, we discover that with smaller patches, task-specific decoder heads become less critical for dense prediction. In the experiments, we successfully scale up the visual sequence to an exceptional length of 50,176 tokens, achieving a competitive test accuracy of 84.6% with a base-sized model on the ImageNet-1k benchmark. We hope this study can provide insights and theoretical foundations for future works of building non-compressive vision models. Code is available at https://github.com/wangf3014/Patch_Scaling.",
-          "https://arxiv.org/abs/2502.03738", 
-          "https://github.com/wangf3014/Patch_Scaling"
-        )
-
-
         add_paper("ARFlow: Autogressive Flow with Hybrid Linear Attention",
           "Mude Hui, Rui-Jie Zhu, Songlin Yang, Yu Zhang, Zirui Wang, Yuyin Zhou, Jason Eshraghian, Cihang Xie",
           null,
@@ -519,20 +503,6 @@ function copy(dest, source) {
           "https://videollamb.github.io/"
           )
 
-        
-        add_paper("What If We Recaption Billions of Web Images with LLaMA-3",
-          "Xianhang Li, Haoqin Tu, Mude Hui, Zeyu Wang, Bingchen Zhao, Junfei Xiao, Sucheng Ren, Jieru Mei, Qing Liu, Huangjie Zheng, Yuyin Zhou, Cihang Xie",
-          null,
-          "https://arxiv.org/abs/2406.08478",
-          "@article{li2024recaption,<br>" +
-           "&nbsp;&nbsp;&nbsp;title   = {What If We Recaption Billions of Web Images with LLaMA-3},<br>" +
-           "&nbsp;&nbsp;&nbsp;author  = {Li, Xianhang and Tu, Haoqin and Hui, Mude and Wang, Zeyu and Zhao, Bingchen and Xiao, Junfei and Ren, Sucheng and Mei, Jieru and Liu, Qing and Zheng, Huangjie and Zhou, Yuyin and Xie, Cihang},<br>" +
-           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2406.08478},<br>" +
-           "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
-          "Web-crawled image-text pairs are inherently noisy. Prior studies demonstrate that semantically aligning and enriching textual descriptions of these pairs can significantly enhance model training across various vision-language tasks, particularly text-to-image generation. However, large-scale investigations in this area remain predominantly closed-source. Our paper aims to bridge this community effort, leveraging the powerful and \textit{open-sourced} LLaMA-3, a GPT-4 level LLM. Our recaptioning pipeline is simple: first, we fine-tune a LLaMA-3-8B powered LLaVA-1.5 and then employ it to recaption 1.3 billion images from the DataComp-1B dataset. Our empirical results confirm that this enhanced dataset, Recap-DataComp-1B, offers substantial benefits in training advanced vision-language models. For discriminative models like CLIP, we observe enhanced zero-shot performance in cross-modal retrieval tasks. For generative models like text-to-image Diffusion Transformers, the generated images exhibit a significant improvement in alignment with users' text instructions, especially in following complex queries. Our project page is https://www.haqtu.me/Recap-Datacomp-1B/",
-          "https://arxiv.org/abs/2406.08478",
-          "https://www.haqtu.me/Recap-Datacomp-1B/"
-        )
 
 
         add_paper("Medical Vision Generalist: Unifying Medical Imaging Tasks in Context",
@@ -840,6 +810,35 @@ function copy(dest, source) {
         document.write("</ul><br>")
         document.write("<h1>2025</h1>")
         document.write("<ul>")
+
+
+        add_paper("What If We Recaption Billions of Web Images with LLaMA-3",
+          "Xianhang Li, Haoqin Tu, Mude Hui, Zeyu Wang, Bingchen Zhao, Junfei Xiao, Sucheng Ren, Jieru Mei, Qing Liu, Huangjie Zheng, Yuyin Zhou, Cihang Xie",
+          "ICML, 2025",
+          "https://arxiv.org/abs/2406.08478",
+          "@article{li2024recaption,<br>" +
+           "&nbsp;&nbsp;&nbsp;title   = {What If We Recaption Billions of Web Images with LLaMA-3},<br>" +
+           "&nbsp;&nbsp;&nbsp;author  = {Li, Xianhang and Tu, Haoqin and Hui, Mude and Wang, Zeyu and Zhao, Bingchen and Xiao, Junfei and Ren, Sucheng and Mei, Jieru and Liu, Qing and Zheng, Huangjie and Zhou, Yuyin and Xie, Cihang},<br>" +
+           "&nbsp;&nbsp;&nbsp;journal = {ICML},<br>" +
+           "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+          "Web-crawled image-text pairs are inherently noisy. Prior studies demonstrate that semantically aligning and enriching textual descriptions of these pairs can significantly enhance model training across various vision-language tasks, particularly text-to-image generation. However, large-scale investigations in this area remain predominantly closed-source. Our paper aims to bridge this community effort, leveraging the powerful and \textit{open-sourced} LLaMA-3, a GPT-4 level LLM. Our recaptioning pipeline is simple: first, we fine-tune a LLaMA-3-8B powered LLaVA-1.5 and then employ it to recaption 1.3 billion images from the DataComp-1B dataset. Our empirical results confirm that this enhanced dataset, Recap-DataComp-1B, offers substantial benefits in training advanced vision-language models. For discriminative models like CLIP, we observe enhanced zero-shot performance in cross-modal retrieval tasks. For generative models like text-to-image Diffusion Transformers, the generated images exhibit a significant improvement in alignment with users' text instructions, especially in following complex queries. Our project page is https://www.haqtu.me/Recap-Datacomp-1B/",
+          "https://arxiv.org/abs/2406.08478",
+          "https://www.haqtu.me/Recap-Datacomp-1B/"
+        )
+
+        add_paper("Scaling Laws in Patchification: An Image Is Worth 50,176 Tokens And More",
+          "Feng Wang, Yaodong Yu, Guoyizhe Wei, Wei Shao, Yuyin Zhou, Alan Yuille, Cihang Xie",
+          "ICML, 2025",
+          "https://arxiv.org/abs/2502.03738", 
+          "@article{wang2025scaling,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {Scaling Laws in Patchification: An Image Is Worth 50,176 Tokens And More},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Feng Wang, Yaodong Yu, Guoyizhe Wei, Wei Shao, Yuyin Zhou, Alan Yuille, Cihang Xie},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {ICML},<br>" +
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+          "Since the introduction of Vision Transformer (ViT), patchification has long been regarded as a de facto image tokenization approach for plain visual architectures. By compressing the spatial size of images, this approach can effectively shorten the token sequence and reduce the computational cost of ViT-like plain architectures. In this work, we aim to thoroughly examine the information loss caused by this patchification-based compressive encoding paradigm and how it affects visual understanding. We conduct extensive patch size scaling experiments and excitedly observe an intriguing scaling law in patchification: the models can consistently benefit from decreased patch sizes and attain improved predictive performance, until it reaches the minimum patch size of 1x1, i.e., pixel tokenization. This conclusion is broadly applicable across different vision tasks, various input scales, and diverse architectures such as ViT and the recent Mamba models. Moreover, as a by-product, we discover that with smaller patches, task-specific decoder heads become less critical for dense prediction. In the experiments, we successfully scale up the visual sequence to an exceptional length of 50,176 tokens, achieving a competitive test accuracy of 84.6% with a base-sized model on the ImageNet-1k benchmark. We hope this study can provide insights and theoretical foundations for future works of building non-compressive vision models. Code is available at https://github.com/wangf3014/Patch_Scaling.",
+          "https://arxiv.org/abs/2502.03738", 
+          "https://github.com/wangf3014/Patch_Scaling"
+        )
 
         add_paper("Mamba-R: Vision Mamba ALSO Needs Registers",
           "Feng Wang, Jiahao Wang, Sucheng Ren, Guoyizhe Wei, Jieru Mei, Wei Shao, Yuyin Zhou, Alan Yuille, Cihang Xie",
