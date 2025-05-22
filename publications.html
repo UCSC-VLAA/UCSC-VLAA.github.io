@@ -187,7 +187,7 @@ function copy(dest, source) {
           "&nbsp;&nbsp;&nbsp;title   = {Complex-Edit: CoT-Like Instruction Generation for Complexity-Controllable Image Editing Benchmark},<br>" +
           "&nbsp;&nbsp;&nbsp;author  = {Siwei Yang, Mude Hui, Bingchen Zhao, Yuyin Zhou, Nataniel Ruiz, Cihang Xie},<br>" +
           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2504.13143},<br>" + 
-          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
           "We introduce Complex-Edit, a comprehensive benchmark designed to systematically evaluate instruction-based image editing models across instructions of varying complexity. To develop this benchmark, we harness GPT-4o to automatically collect a diverse set of editing instructions at scale. Our approach follows a well-structured ``Chain-of-Edit'' pipeline: we first generate individual atomic editing tasks independently and then integrate them to form cohesive, complex instructions. Additionally, we introduce a suite of metrics to assess various aspects of editing performance, along with a VLM-based auto-evaluation pipeline that supports large-scale assessments. Our benchmark yields several notable insights: 1) Open-source models significantly underperform relative to proprietary, closed-source models, with the performance gap widening as instruction complexity increases; 2) Increased instructional complexity primarily impairs the models' ability to retain key elements from the input images and to preserve the overall aesthetic quality; 3) Decomposing a complex instruction into a sequence of atomic steps, executed in a step-by-step manner, substantially degrades performance across multiple metrics; 4) A straightforward Best-of-N selection strategy improves results for both direct editing and the step-by-step sequential approach; and 5) We observe a ``curse of synthetic data'': when synthetic data is involved in model training, the edited images from such models tend to appear increasingly synthetic as the complexity of the editing instructions rises -- a phenomenon that intriguingly also manifests in the latest GPT-4o outputs.",
           "https://arxiv.org/abs/2504.13143",
           "https://github.com/UCSC-VLAA/Complex-Edit"
@@ -201,7 +201,7 @@ function copy(dest, source) {
           "&nbsp;&nbsp;&nbsp;title   = {MedSegFactory: Text-Guided Generation of Medical Image-Mask Pairs},<br>" +
           "&nbsp;&nbsp;&nbsp;author  = {Jiawei Mao, Yuhan Wang, Yucheng Tang, Daguang Xu, Kang Wang, Yang Yang, Zongwei Zhou, Yuyin Zhou},<br>" +
           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2504.06897},<br>" + 
-          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
           "This paper presents MedSegFactory, a versatile medical synthesis framework that generates high-quality paired medical images and segmentation masks across modalities and tasks. It aims to serve as an unlimited data repository, supplying image-mask pairs to enhance existing segmentation tools. The core of MedSegFactory is a dual-stream diffusion model, where one stream synthesizes medical images and the other generates corresponding segmentation masks. To ensure precise alignment between image-mask pairs, we introduce Joint Cross-Attention (JCA), enabling a collaborative denoising paradigm by dynamic cross-conditioning between streams. This bidirectional interaction allows both representations to guide each other's generation, enhancing consistency between generated pairs. MedSegFactory unlocks on-demand generation of paired medical images and segmentation masks through user-defined prompts that specify the target labels, imaging modalities, anatomical regions, and pathological conditions, facilitating scalable and high-quality data generation. This new paradigm of medical image synthesis enables seamless integration into diverse medical imaging workflows, enhancing both efficiency and accuracy. Extensive experiments show that MedSegFactory generates data of superior quality and usability, achieving competitive or state-of-the-art performance in 2D and 3D segmentation tasks while addressing data scarcity and regulatory constraints.",
           "https://arxiv.org/abs/2504.06897",
           "https://github.com/jwmao1/MedSegFactory"
@@ -215,7 +215,7 @@ function copy(dest, source) {
           "&nbsp;&nbsp;&nbsp;title   = {A Comprehensive Analysis of Mamba for 3D Volumetric Medical Image Segmentation},<br>" +
           "&nbsp;&nbsp;&nbsp;author  = {Chaohan Wang, Yutong Xie, Qi Chen, Yuyin Zhou, Qi Wu},<br>" +
           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2503.19308},<br>" + 
-          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
           "Mamba, with its selective State Space Models (SSMs), offers a more computationally efficient solution than Transformers for long-range dependency modeling. However, there is still a debate about its effectiveness in high-resolution 3D medical image segmentation. In this study, we present a comprehensive investigation into Mamba's capabilities in 3D medical image segmentation by tackling three pivotal questions: Can Mamba replace Transformers? Can it elevate multi-scale representation learning? Is complex scanning necessary to unlock its full potential? We evaluate Mamba's performance across three large public benchmarks-AMOS, TotalSegmentator, and BraTS. Our findings reveal that UlikeMamba, a U-shape Mamba-based network, consistently surpasses UlikeTrans, a U-shape Transformer-based network, particularly when enhanced with custom-designed 3D depthwise convolutions, boosting accuracy and computational efficiency. Further, our proposed multi-scale Mamba block demonstrates superior performance in capturing both fine-grained details and global context, especially in complex segmentation tasks, surpassing Transformer-based counterparts. We also critically assess complex scanning strategies, finding that simpler methods often suffice, while our Tri-scan approach delivers notable advantages in the most challenging scenarios. By integrating these advancements, we introduce a new network for 3D medical image segmentation, positioning Mamba as a transformative force that outperforms leading models such as nnUNet, CoTr, and U-Mamba, offering competitive accuracy with superior computational efficiency. This study provides key insights into Mamba's unique advantages, paving the way for more efficient and accurate approaches to 3D medical imaging.",
           "https://arxiv.org/abs/2503.19308",
           "https://arxiv.org/abs/2503.19308"
@@ -229,7 +229,7 @@ function copy(dest, source) {
           "&nbsp;&nbsp;&nbsp;title   = {ViLBench: A Suite for Vision-Language Process Reward Modeling},<br>" +
           "&nbsp;&nbsp;&nbsp;author  = {Haoqin Tu, Weitao Feng, Hardy Chen, Hui Liu, Xianfeng Tang, Cihang Xie},<br>" +
           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2503.20271},<br>" + 
-          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
           "Process-supervised reward models serve as a fine-grained function that provides detailed step-wise feedback to model responses, facilitating effective selection of reasoning trajectories for complex tasks. Despite its advantages, evaluation on PRMs remains less explored, especially in the multimodal domain. To address this gap, this paper first benchmarks current vision large language models (VLLMs) as two types of reward models: output reward models (ORMs) and process reward models (PRMs) on multiple vision-language benchmarks, which reveal that neither ORM nor PRM consistently outperforms across all tasks, and superior VLLMs do not necessarily yield better rewarding performance. To further advance evaluation, we introduce ViLBench, a vision-language benchmark designed to require intensive process reward signals. Notably, OpenAI's GPT-4o with Chain-of-Thought (CoT) achieves only 27.3% accuracy, indicating the benchmark's challenge for current VLLMs. Lastly, we preliminarily showcase a promising pathway towards bridging the gap between general VLLMs and reward models -- by collecting 73.6K vision-language process reward data using an enhanced tree-search algorithm, our 3B model is able to achieve an average improvement of 3.3% over standard CoT and up to 2.5% compared to its untrained counterpart on ViLBench by selecting OpenAI o1's generations. We release the implementations with our code, model, and data.",
           "https://arxiv.org/abs/2503.20271",
           "https://ucsc-vlaa.github.io/ViLBench/"
@@ -243,7 +243,7 @@ function copy(dest, source) {
           "&nbsp;&nbsp;&nbsp;title   = {Exploring the Vulnerabilities of Federated Learning: A Deep Dive into Gradient Inversion Attacks},<br>" +
           "&nbsp;&nbsp;&nbsp;author  = {Pengxin Guo, Runxi Wang, Shuang Zeng, Jinjing Zhu, Haoning Jiang, Yanran Wang, Yuyin Zhou, Feifei Wang, Hui Xiong, Liangqiong Qu},<br>" +
           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2503.11514},<br>" + 
-          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
           "Federated Learning (FL) has emerged as a promising privacy-preserving collaborative model training paradigm without sharing raw data. However, recent studies have revealed that private information can still be leaked through shared gradient information and attacked by Gradient Inversion Attacks (GIA). While many GIA methods have been proposed, a detailed analysis, evaluation, and summary of these methods are still lacking. Although various survey papers summarize existing privacy attacks in FL, few studies have conducted extensive experiments to unveil the effectiveness of GIA and their associated limiting factors in this context. To fill this gap, we first undertake a systematic review of GIA and categorize existing methods into three types, i.e., \textit{optimization-based} GIA (OP-GIA), \textit{generation-based} GIA (GEN-GIA), and \textit{analytics-based} GIA (ANA-GIA). Then, we comprehensively analyze and evaluate the three types of GIA in FL, providing insights into the factors that influence their performance, practicality, and potential threats. Our findings indicate that OP-GIA is the most practical attack setting despite its unsatisfactory performance, while GEN-GIA has many dependencies and ANA-GIA is easily detectable, making them both impractical. Finally, we offer a three-stage defense pipeline to users when designing FL frameworks and protocols for better privacy protection and share some future research directions from the perspectives of attackers and defenders that we believe should be pursued. We hope that our study can help researchers design more robust FL frameworks to defend against these attacks.",
           "https://arxiv.org/abs/2503.11514",
           "https://arxiv.org/abs/2503.11514"
@@ -257,7 +257,7 @@ function copy(dest, source) {
             "&nbsp;&nbsp;&nbsp;title   = {SFT or RL? An Early Investigation into Training R1-Like Reasoning Large Vision-Language Models},<br>" +
             "&nbsp;&nbsp;&nbsp;author  = {Hardy Chen, Haoqin Tu, Fali Wang, Hui Liu, Xianfeng Tang, Xinya Du, Yuyin Zhou, Cihang Xie},<br>" +
             "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2504.11468},<br>" + 
-            "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+            "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
             "This work revisits the dominant supervised fine-tuning (SFT) then reinforcement learning (RL) paradigm for training Large Vision-Language Models (LVLMs), and reveals a key finding: SFT can significantly undermine subsequent RL by inducing ``pseudo reasoning paths'' imitated from expert models. While these paths may resemble the native reasoning paths of RL models, they often involve prolonged, hesitant, less informative steps, and incorrect reasoning. To systematically study this effect, we introduce VLAA-Thinking, a new multimodal dataset designed to support reasoning in LVLMs. Constructed via a six-step pipeline involving captioning, reasoning distillation, answer rewrite and verification, VLAA-Thinking comprises high-quality, step-by-step visual reasoning traces for SFT, along with a more challenging RL split from the same data source. Using this dataset, we conduct extensive experiments comparing SFT, RL and their combinations. Results show that while SFT helps models learn reasoning formats, it often locks aligned models into imitative, rigid reasoning modes that impede further learning. In contrast, building on the Group Relative Policy Optimization (GRPO) with a novel mixed reward module integrating both perception and cognition signals, our RL approach fosters more genuine, adaptive reasoning behavior. Notably, our model VLAA-Thinker, based on Qwen2.5VL 3B, achieves top-1 performance on Open LMM Reasoning Leaderboard among 4B scale LVLMs, surpassing the previous state-of-the-art by 1.8%. We hope our findings provide valuable insights in developing reasoning-capable LVLMs and can inform future research in this area.",
             "https://arxiv.org/abs/2504.11468",
             "https://github.com/UCSC-VLAA/VLAA-Thinking"
@@ -271,7 +271,7 @@ function copy(dest, source) {
             "&nbsp;&nbsp;&nbsp;title   = {MedReason: Eliciting Factual Medical Reasoning Steps in LLMs via Knowledge Graphs},<br>" +
             "&nbsp;&nbsp;&nbsp;author  = {Juncheng Wu, Wenlong Deng, Xingxuan Li, Sheng Liu, Taomian Mi, Yifan Peng, Ziyang Xu, Yi Liu, Hyunjin Cho, Chang-In Choi, Yihan Cao, Hui Ren, Xiang Li, Xiaoxiao Li, Yuyin Zhou},<br>" +
             "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2504.00993},<br>" + 
-            "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+            "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
             "Medical tasks such as diagnosis and treatment planning require precise and complex reasoning, particularly in life-critical domains. Unlike mathematical reasoning, medical reasoning demands meticulous, verifiable thought processes to ensure reliability and accuracy. However, there is a notable lack of datasets that provide transparent, step-by-step reasoning to validate and enhance the medical reasoning ability of AI models. To bridge this gap, we introduce MedReason, a large-scale high-quality medical reasoning dataset designed to enable faithful and explainable medical problem-solving in large language models (LLMs). We utilize a structured medical knowledge graph (KG) to convert clinical QA pairs into logical chains of reasoning, or ``thinking paths'', which trace connections from question elements to answers via relevant KG entities. Each path is validated for consistency with clinical logic and evidence-based medicine. Our pipeline generates detailed reasoning for various medical questions from 7 medical datasets, resulting in a dataset of 32,682 question-answer pairs, each with detailed, step-by-step explanations. Experiments demonstrate that fine-tuning with our dataset consistently boosts medical problem-solving capabilities, achieving significant gains of up to 7.7% for DeepSeek-Ditill-8B. Our top-performing model, MedReason-8B, outperforms the Huatuo-o1-8B, a state-of-the-art medical reasoning model, by up to 4.2% on the clinical benchmark MedBullets. We also engage medical professionals from diverse specialties to assess our dataset's quality, ensuring MedReason offers accurate and coherent medical reasoning.",
             "https://arxiv.org/pdf/2504.00993",
             "https://github.com/UCSC-VLAA/MedReason"
@@ -285,7 +285,7 @@ function copy(dest, source) {
             "&nbsp;&nbsp;&nbsp;title   = {m1: Unleash the Potential of Test-Time Scaling for Medical Reasoning with Large Language Models},<br>" +
             "&nbsp;&nbsp;&nbsp;author  = {Xiaoke Huang, Juncheng Wu, Hui Liu, Xianfeng Tang, Yuyin Zhou},<br>" +
             "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2504.00869},<br>" + 
-            "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+            "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
             "Test-time scaling has emerged as a powerful technique for enhancing the reasoning capabilities of large language models. However, its effectiveness in medical reasoning remains uncertain, as the medical domain fundamentally differs from mathematical tasks in terms of knowledge representation and decision-making processes. In this paper, we provide the first comprehensive investigation of test-time scaling for medical reasoning and present m1, a simple yet effective approach that increases a model's medical reasoning capability at inference. Our evaluation across diverse medical tasks demonstrates that test-time scaling consistently enhances medical reasoning, enabling lightweight fine-tuned models under 10B parameters to establish new state-of-the-art performance, while our 32B model rivals previous 70B-scale medical LLMs. However, we identify an optimal reasoning token budget of approximately 4K, beyond which performance may degrade due to overthinking. Budget forcing, which extends test-time computation through iterative prompts, helps models double-check answers but does not necessarily improve the overall medical QA performance and, in some cases, even introduces errors into previously correct responses. Our case-by-case analysis identifies insufficient medical knowledge as a key bottleneck that prevents further performance gains through test-time scaling. We find that increasing data scale, improving data quality, and expanding model capacity consistently enhance medical knowledge grounding, enabling continued performance improvements, particularly on challenging medical benchmarks where smaller models reach saturation. These findings underscore fundamental differences between medical and mathematical reasoning in LLMs, highlighting that enriched medical knowledge, other than increased reasoning depth alone, is essential for realizing the benefits of test-time scaling.",
             "https://arxiv.org/abs/2504.00869",
             "https://github.com/UCSC-VLAA/m1"
@@ -299,7 +299,7 @@ function copy(dest, source) {
             "&nbsp;&nbsp;&nbsp;title   = {STAR-1: Safer Alignment of Reasoning LLMs with 1K Data},<br>" +
             "&nbsp;&nbsp;&nbsp;author  = {Zijun Wang, Haoqin Tu, Yuhan Wang, Juncheng Wu, Jieru Mei, Brian R. Bartoldson, Bhavya Kailkhura, Cihang Xie},<br>" +
             "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2504.01903},<br>" + 
-            "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+            "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
             "This paper introduces STAR-1, a high-quality, just-1k-scale safety dataset specifically designed for large reasoning models (LRMs) like DeepSeek-R1. Built on three core principles -- diversity, deliberative reasoning, and rigorous filtering -- STAR-1 aims to address the critical needs for safety alignment in LRMs. Specifically, we begin by integrating existing open-source safety datasets from diverse sources. Then, we curate safety policies to generate policy-grounded deliberative reasoning samples. Lastly, we apply a GPT-4o-based safety scoring system to select training examples aligned with best practices. Experimental results show that fine-tuning LRMs with STAR-1 leads to an average 40% improvement in safety performance across four benchmarks, while only incurring a marginal decrease (e.g., an average of 1.1%) in reasoning ability measured across five reasoning tasks. Extensive ablation studies further validate the importance of our design principles in constructing STAR-1 and analyze its efficacy across both LRMs and traditional LLMs.",
             "https://arxiv.org/abs/2504.01903",
             "https://github.com/UCSC-VLAA/STAR-1"
@@ -314,7 +314,7 @@ function copy(dest, source) {
           "&nbsp;&nbsp;&nbsp;title   = {EpiFoundation: A Foundation Model for Single-Cell ATAC-seq via Peak-to-Gene Alignment},<br>" +
           "&nbsp;&nbsp;&nbsp;author  = {Juncheng Wu, Changxin Wan, Zhicheng Ji, Yuyin Zhou, Wenpin Hou},<br>" +
           "&nbsp;&nbsp;&nbsp;journal = {bioRxiv},<br>" + 
-          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
           "Foundation models exhibit strong capabilities for downstream tasks by learning generalized representations through self-supervised pre-training on large datasets. While several foundation models have been developed for single-cell RNA-seq (scRNA-seq) data, there is still a lack of models specifically tailored for single-cell ATAC-seq (scATAC-seq), which measures epigenetic information in individual cells. The principal challenge in developing such a model lies in the vast number of scATAC peaks and the significant sparsity of the data, which complicates the formulation of peak-to-peak correlations. To address this challenge, we introduce EpiFoundation, a foundation model for learning cell representations from the high-dimensional and sparse space of peaks. Epi-Foundation relies on an innovative cross-modality pre-training procedure with two key technical innovations. First, EpiFoundation exclusively processes the non-zero peak set, thereby enhancing the density of cell-specific information within the input data. Second, EpiFoundation utilizes dense gene expression information to supervise the pre-training process, aligning peak-to-gene correlations. EpiFoundation can handle various types of downstream tasks, including cell-type annotation, batch correction, and gene expression prediction. To train and validate EpiFoundation, we curated MiniAtlas, a dataset of 100,000+ single cells with paired scRNA-seq and scATAC-seq data, along with diverse test sets spanning various tissues and cell types for robust evaluation. EpiFoundation demonstrates state-of-the-art performance across multiple tissues and diverse downstream tasks.",
           "https://www.biorxiv.org/content/10.1101/2025.02.05.636688",
           "https://github.com/UCSC-VLAA/EpiFoundation"
@@ -329,26 +329,10 @@ function copy(dest, source) {
           "&nbsp;&nbsp;&nbsp;title   = {MethylProphet: A Generalized Gene-Contextual Model for Inferring Whole-Genome DNA Methylation Landscape},<br>" +
           "&nbsp;&nbsp;&nbsp;author  = {Xiaoke Huang, Qi Liu, Yifei Zhao, Xianfeng Tang, Yuyin Zhou, Wenpin Hou},<br>" +
           "&nbsp;&nbsp;&nbsp;journal = {bioRxiv},<br>" + 
-          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
           "DNA methylation (DNAm), an epigenetic modification, regulates gene expression, influences phenotypes, and encodes inheritable information, making it critical for disease diagnosis, treatment, and prevention. While human genome contains approximately 28 million CpG sites where DNAm can be measured, only 1–3% of these sites are typically available in most datasets due to complex experimental protocols and high costs, hindering insights from DNAm data. Leveraging the relationship between gene expression and DNAm offers promise for computational inference, but existing statistical, machine learning, and masking-based generative Transformers face critical limitations: they cannot infer DNAm at unmeasured CpGs or in new samples effectively. To overcome these challenges, we introduce MethylProphet, a gene-guided, context-aware Transformer model designed for DNAm inference. MethylProphet employs a Bottleneck MLP for efficient gene profile compression and a specialized DNA sequence tokenizer, integrating global gene expression patterns with local CpG context through a Transformer encoder architecture. Trained on whole-genome bisulfite sequencing data from ENCODE (1.6B training CpG-sample pairs; 322B tokens), MethylProphet demonstrates strong performance in hold-out evaluations, effectively inferring DNAm for unmeasured CpGs and new samples. In addition, its application to 10842 pairs of gene expression and DNAm samples at TCGA chromosome 1 (450M training CpGsample pairs; 91B tokens) highlights its potential to facilitate pan-cancer DNAm landscape inference, offering a powerful tool for advancing epigenetic research and precision medicine. All codes, data, protocols, and models are publicly available via https://github.com/xk-huang/methylprophet/.",
           "https://www.biorxiv.org/content/10.1101/2025.02.05.636730", 
           "https://github.com/xk-huang/methylprophet/"
-        )
-
-
-
-        add_paper("Scaling Laws in Patchification: An Image Is Worth 50,176 Tokens And More",
-          "Feng Wang, Yaodong Yu, Guoyizhe Wei, Wei Shao, Yuyin Zhou, Alan Yuille, Cihang Xie",
-          null,
-          "https://arxiv.org/abs/2502.03738", 
-          "@article{wang2025scaling,<br>" +
-          "&nbsp;&nbsp;&nbsp;title   = {Scaling Laws in Patchification: An Image Is Worth 50,176 Tokens And More},<br>" +
-          "&nbsp;&nbsp;&nbsp;author  = {Feng Wang, Yaodong Yu, Guoyizhe Wei, Wei Shao, Yuyin Zhou, Alan Yuille, Cihang Xie},<br>" +
-          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2502.03738},<br>" + 
-          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
-          "Since the introduction of Vision Transformer (ViT), patchification has long been regarded as a de facto image tokenization approach for plain visual architectures. By compressing the spatial size of images, this approach can effectively shorten the token sequence and reduce the computational cost of ViT-like plain architectures. In this work, we aim to thoroughly examine the information loss caused by this patchification-based compressive encoding paradigm and how it affects visual understanding. We conduct extensive patch size scaling experiments and excitedly observe an intriguing scaling law in patchification: the models can consistently benefit from decreased patch sizes and attain improved predictive performance, until it reaches the minimum patch size of 1x1, i.e., pixel tokenization. This conclusion is broadly applicable across different vision tasks, various input scales, and diverse architectures such as ViT and the recent Mamba models. Moreover, as a by-product, we discover that with smaller patches, task-specific decoder heads become less critical for dense prediction. In the experiments, we successfully scale up the visual sequence to an exceptional length of 50,176 tokens, achieving a competitive test accuracy of 84.6% with a base-sized model on the ImageNet-1k benchmark. We hope this study can provide insights and theoretical foundations for future works of building non-compressive vision models. Code is available at https://github.com/wangf3014/Patch_Scaling.",
-          "https://arxiv.org/abs/2502.03738", 
-          "https://github.com/wangf3014/Patch_Scaling"
         )
 
 
@@ -360,7 +344,7 @@ function copy(dest, source) {
           "&nbsp;&nbsp;&nbsp;title   = {ARFlow: Autogressive Flow with Hybrid Linear Attention},<br>" +
           "&nbsp;&nbsp;&nbsp;author  = {Mude Hui, Rui-Jie Zhu, Songlin Yang, Yu Zhang, Zirui Wang, Yuyin Zhou, Jason Eshraghian, Cihang Xie},<br>" +
           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2501.16085},<br>" + 
-          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
           "Flow models are effective at progressively generating realistic images, but they generally struggle to capture long-range dependencies during the generation process as they compress all the information from previous time steps into a single corrupted image. To address this limitation, we propose integrating autoregressive modeling -- known for its excellence in modeling complex, high-dimensional joint probability distributions -- into flow models. During training, at each step, we construct causally-ordered sequences by sampling multiple images from the same semantic category and applying different levels of noise, where images with higher noise levels serve as causal predecessors to those with lower noise levels. This design enables the model to learn broader category-level variations while maintaining proper causal relationships in the flow process. During generation, the model autoregressively conditions the previously generated images from earlier denoising steps, forming a contextual and coherent generation trajectory. Additionally, we design a customized hybrid linear attention mechanism tailored to our modeling approach to enhance computational efficiency. Our approach, termed ARFlow, under 400k training steps, achieves 14.08 FID scores on ImageNet at 128 * 128 without classifier-free guidance, reaching 4.34 FID with classifier-free guidance 1.5, significantly outperforming the previous flow-based model SiT's 9.17 FID. Extensive ablation studies demonstrate the effectiveness of our modeling strategy and chunk-wise attention design.",
           "https://arxiv.org/abs/2501.16085"
         )
@@ -374,7 +358,7 @@ function copy(dest, source) {
           "&nbsp;&nbsp;&nbsp;title   = {UD-Mamba: A pixel-level uncertainty-driven Mamba model for medical image segmentation},<br>" +
           "&nbsp;&nbsp;&nbsp;author  = {Weiren Zhao, Feng Wang, Yanran Wang, Yutong Xie, Qi Wu, Yuyin Zhou},<br>" +
           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2502.02024},<br>" + 
-          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
           "Recent advancements have highlighted the Mamba framework, a state-space model known for its efficiency in capturing long-range dependencies with linear computational complexity. While Mamba has shown competitive performance in medical image segmentation, it encounters difficulties in modeling local features due to the sporadic nature of traditional location-based scanning methods and the complex, ambiguous boundaries often present in medical images. To overcome these challenges, we propose Uncertainty-Driven Mamba (UD-Mamba), which redefines the pixel-order scanning process by incorporating channel uncertainty into the scanning mechanism. UD-Mamba introduces two key scanning techniques: 1) sequential scanning, which prioritizes regions with high uncertainty by scanning in a row-by-row fashion, and 2) skip scanning, which processes columns vertically, moving from high-to-low or low-to-high uncertainty at fixed intervals. Sequential scanning efficiently clusters high-uncertainty regions, such as boundaries and foreground objects, to improve segmentation precision, while skip scanning enhances the interaction between background and foreground regions, allowing for timely integration of background information to support more accurate foreground inference. Recognizing the advantages of scanning from certain to uncertain areas, we introduce four learnable parameters to balance the importance of features extracted from different scanning methods. Additionally, a cosine consistency loss is employed to mitigate the drawbacks of transitioning between uncertain and certain regions during the scanning process. Our method demonstrates robust segmentation performance, validated across three distinct medical imaging datasets involving pathology, dermatological lesions, and cardiac tasks.",
           "https://arxiv.org/abs/2502.02024" 
         )
@@ -388,7 +372,7 @@ function copy(dest, source) {
           "&nbsp;&nbsp;&nbsp;title   = {Safety at Scale: A Comprehensive Survey of Large Model Safety},<br>" +
           "&nbsp;&nbsp;&nbsp;author  = {Xingjun Ma, Yifeng Gao, Yixu Wang, Ruofan Wang, Xin Wang, Ye Sun, Yifan Ding, Hengyuan Xu, Yunhao Chen, Yunhan Zhao, Hanxun Huang, Yige Li, Jiaming Zhang, Xiang Zheng, Yang Bai, Zuxuan Wu, Xipeng Qiu, Jingfeng Zhang, Yiming Li, Jun Sun, Cong Wang, Jindong Gu, Baoyuan Wu, Siheng Chen, Tianwei Zhang, Yang Liu, Mingming Gong, Tongliang Liu, Shirui Pan, Cihang Xie, Tianyu Pang, Yinpeng Dong, Ruoxi Jia, Yang Zhang, Shiqing Ma, Xiangyu Zhang, Neil Gong, Chaowei Xiao, Sarah Erfani, Bo Li, Masashi Sugiyama, Dacheng Tao, James Bailey, Yu-Gang Jiang},<br>" +
           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2502.05206},<br>" + 
-          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
           "The rapid advancement of large models, driven by their exceptional abilities in learning and generalization through large-scale pre-training, has reshaped the landscape of Artificial Intelligence (AI). These models are now foundational to a wide range of applications, including conversational AI, recommendation systems, autonomous driving, content generation, medical diagnostics, and scientific discovery. However, their widespread deployment also exposes them to significant safety risks, raising concerns about robustness, reliability, and ethical implications. This survey provides a systematic review of current safety research on large models, covering Vision Foundation Models (VFMs), Large Language Models (LLMs), Vision-Language Pre-training (VLP) models, Vision-Language Models (VLMs), Diffusion Models (DMs), and large-model-based Agents. Our contributions are summarized as follows: (1) We present a comprehensive taxonomy of safety threats to these models, including adversarial attacks, data poisoning, backdoor attacks, jailbreak and prompt injection attacks, energy-latency attacks, data and model extraction attacks, and emerging agent-specific threats. (2) We review defense strategies proposed for each type of attacks if available and summarize the commonly used datasets and benchmarks for safety research. (3) Building on this, we identify and discuss the open challenges in large model safety, emphasizing the need for comprehensive safety evaluations, scalable and effective defense mechanisms, and sustainable data practices. More importantly, we highlight the necessity of collective efforts from the research community and international collaboration. Our work can serve as a useful reference for researchers and practitioners, fostering the ongoing development of comprehensive defense systems and platforms to safeguard AI models.",
           "https://arxiv.org/abs/2502.05206", 
           "https://github.com/xingjunm/Awesome-Large-Model-Safety"
@@ -403,7 +387,7 @@ function copy(dest, source) {
           "&nbsp;&nbsp;&nbsp;title   = {Double Visual Defense: Adversarial Pre-training and Instruction Tuning for Improving Vision-Language Model Robustness},<br>" +
           "&nbsp;&nbsp;&nbsp;author  = {Zeyu Wang, Cihang Xie, Brian Bartoldson, Bhavya Kailkhura},<br>" +
           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2501.09446},<br>" + 
-          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
           "This paper investigates the robustness of vision-language models against adversarial visual perturbations and introduces a novel \"double visual defense\" to enhance this robustness. Unlike previous approaches that resort to lightweight adversarial fine-tuning of a pre-trained CLIP model, we perform large-scale adversarial vision-language pre-training from scratch using web-scale data. We then strengthen the defense by incorporating adversarial visual instruction tuning. The resulting models from each stage, ΔCLIP and Δ2LLaVA, show substantially enhanced zero-shot robustness and set a new state-of-the-art in adversarial defense for vision-language models. For example, the adversarial robustness of ΔCLIP surpasses that of the previous best models on ImageNet-1k by ~20%. Similarly, compared to prior art, Δ2LLaVA brings a ~30% robustness improvement to image captioning task and a ~20% robustness improvement to visual question answering task. Furthermore, our models exhibit stronger zero-shot recognition capability, fewer hallucinations, and superior reasoning performance compared to baselines. Our project page is https://doublevisualdefense.github.io/.",
           "https://arxiv.org/abs/2501.09446", 
           "https://doublevisualdefense.github.io/" 
@@ -419,7 +403,7 @@ function copy(dest, source) {
           "&nbsp;&nbsp;&nbsp;title   = {CLIPS: An Enhanced CLIP Framework for Learning with Synthetic Captions},<br>" +
           "&nbsp;&nbsp;&nbsp;author  = {Yanqing Liu, Xianhang Li, Zeyu Wang, Bingchen Zhao, Cihang Xie},<br>" +
           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2411.16828},<br>" +
-          "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
+          "&nbsp;&nbsp;&nbsp;year    = {2024},<br>}",
           "Previous works show that noisy, web-crawled image-text pairs may limit vision-language pretraining like CLIP and propose learning with synthetic captions as a promising alternative. Our work continues this effort, introducing two simple yet effective designs to better leverage richly described synthetic captions. Firstly, by observing a strong inverse effect in learning with synthetic captions -- the short synthetic captions can generally lead to MUCH higher performance than full-length ones -- we therefore fed only partial synthetic captions to the text encoder. Secondly, we incorporate an autoregressive captioner to mimic the recaptioning process -- by conditioning on the paired image input and web-crawled text description, the captioner learns to predict the full-length synthetic caption generated by advanced MLLMs. Experiments show that our framework significantly improves zero-shot performance in cross-modal retrieval tasks, setting new SOTA results on MSCOCO and Flickr30K. Moreover, such trained vision encoders can enhance the visual capability of LLaVA, showing strong improvements on a range of MLLM benchmarks. Our project page is https://ucsc-vlaa.github.io/CLIPS/.",
           "https://arxiv.org/abs/2411.16828",
           "https://ucsc-vlaa.github.io/CLIPS/"
@@ -434,7 +418,7 @@ function copy(dest, source) {
           "&nbsp;&nbsp;&nbsp;title   = {M-VAR: Decoupled Scale-wise Autoregressive Modeling for High-Quality Image Generation},<br>" +
           "&nbsp;&nbsp;&nbsp;author  = {Sucheng Ren, Yaodong Yu, Nataniel Ruiz, Feng Wang, Alan Yuille, Cihang Xie},<br>" +
           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2411.10433},<br>" +
-          "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
+          "&nbsp;&nbsp;&nbsp;year    = {2024},<br>}",
           "There exists recent work in computer vision, named VAR, that proposes a new autoregressive paradigm for image generation. Diverging from the vanilla next-token prediction, VAR structurally reformulates the image generation into a coarse to fine next-scale prediction. In this paper, we show that this scale-wise autoregressive framework can be effectively decoupled into intra-scale modeling, which captures local spatial dependencies within each scale, and inter-scale modeling, which models cross-scale relationships progressively from coarse-to-fine scales. This decoupling structure allows to rebuild VAR in a more computationally efficient manner. Specifically, for intra-scale modeling -- crucial for generating high-fidelity images -- we retain the original bidirectional self-attention design to ensure comprehensive modeling; for inter-scale modeling, which semantically connects different scales but is computationally intensive, we apply linear-complexity mechanisms like Mamba to substantially reduce computational overhead. We term this new framework M-VAR. Extensive experiments demonstrate that our method outperforms existing models in both image quality and generation speed. For example, our 1.5B model, with fewer parameters and faster inference speed, outperforms the largest VAR-d30-2B. Moreover, our largest model M-VAR-d32 impressively registers 1.78 FID on ImageNet 256x256 and outperforms the prior-art autoregressive models LlamaGen/VAR by 0.4/0.19 and popular diffusion models LDM/DiT by 1.82/0.49, respectively. Code is available at https://github.com/OliverRensu/MVAR.",
           "https://arxiv.org/abs/2411.10433",
           "https://github.com/OliverRensu/MVAR"
@@ -452,7 +436,7 @@ function copy(dest, source) {
           "&nbsp;&nbsp;&nbsp;title   = {Story-Adapter: A Training-free Iterative Framework for Long Story Visualization},<br>" +
           "&nbsp;&nbsp;&nbsp;author  = {Jiawei Mao, Xiaoke Huang, Yunfei Xie, Yuanqi Chang, Mude Hui, Bingjie Xu, Yuyin Zhou},<br>" +
           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2410.06244},<br>" +
-          "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
+          "&nbsp;&nbsp;&nbsp;year    = {2024},<br>}",
           "Story visualization, the task of generating coherent images based on a narrative, has seen significant advancements with the emergence of text-to-image models, particularly diffusion models. However, maintaining semantic consistency, generating high-quality fine-grained interactions, and ensuring computational feasibility remain challenging, especially in long story visualization (i.e., up to 100 frames). In this work, we propose a training-free and computationally efficient framework, termed Story-Adapter, to enhance the generative capability of long stories. Specifically, we propose an iterative paradigm to refine each generated image, leveraging both the text prompt and all generated images from the previous iteration. Central to our framework is a training-free global reference cross-attention module, which aggregates all generated images from the previous iteration to preserve semantic consistency across the entire story, while minimizing computational costs with global embeddings. This iterative process progressively optimizes image generation by repeatedly incorporating text constraints, resulting in more precise and fine-grained interactions. Extensive experiments validate the superiority of Story-Adapter in improving both semantic consistency and generative capability for fine-grained interactions, particularly in long story scenarios. The project page and associated code can be accessed via https://jwmao1.github.io/storyadapter.",
           "https://arxiv.org/abs/2410.06244",
           "https://jwmao1.github.io/storyadapter"
@@ -481,7 +465,7 @@ function copy(dest, source) {
             "&nbsp;&nbsp;&nbsp;title   = {A Preliminary Study of o1 in Medicine: Are We Closer to an AI Doctor?},<br>" +
             "&nbsp;&nbsp;&nbsp;author  = {Yunfei Xie, Juncheng Wu, Haoqin Tu, Siwei Yang, Bingchen Zhao, Yongshuo Zong, Qiao Jin, Cihang Xie, Yuyin Zhou},<br>" +
             "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2409.15277},<br>" +
-            "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
+            "&nbsp;&nbsp;&nbsp;year    = {2024},<br>}",
             "Large language models (LLMs) have exhibited remarkable capabilities across various domains and tasks, pushing the boundaries of our knowledge in learning and cognition. The latest model, OpenAI's o1, stands out as the first LLM with an internalized chain-of-thought technique using reinforcement learning strategies. While it has demonstrated surprisingly strong capabilities on various general language tasks, its performance in specialized fields such as medicine remains unknown. To this end, this report provides a comprehensive exploration of o1 on different medical scenarios, examining 3 key aspects: understanding, reasoning, and multilinguality. Specifically, our evaluation encompasses 6 tasks using data from 37 medical datasets, including two newly constructed and more challenging question-answering (QA) tasks based on professional medical quizzes from the New England Journal of Medicine (NEJM) and The Lancet. These datasets offer greater clinical relevance compared to standard medical QA benchmarks such as MedQA, translating more effectively into real-world clinical utility. Our analysis of o1 suggests that the enhanced reasoning ability of LLMs may (significantly) benefit their capability to understand various medical instructions and reason through complex clinical scenarios. Notably, o1 surpasses the previous GPT-4 in accuracy by an average of 6.2% and 6.6% across 19 datasets and two newly created complex QA scenarios. But meanwhile, we identify several weaknesses in both the model capability and the existing evaluation protocols, including hallucination, inconsistent multilingual ability, and discrepant metrics for evaluation. We release our raw data and model outputs https://ucsc-vlaa.github.io/o1_medicine/ for future research.",
             "https://arxiv.org/abs/2409.15277",
             "https://ucsc-vlaa.github.io/o1_medicine/"
@@ -513,26 +497,12 @@ function copy(dest, source) {
           "&nbsp;&nbsp;&nbsp;title   = {VideoLLaMB: Long-context Video Understanding with Recurrent Memory Bridges},<br>" +
           "&nbsp;&nbsp;&nbsp;author  = {Yuxuan Wang, Cihang Xie, Yang Liu, Zilong Zheng},<br>" +
           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2409.01071},<br>" +
-          "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
+          "&nbsp;&nbsp;&nbsp;year    = {2024},<br>}",
           "Recent advancements in large-scale video-language models have shown significant potential for real-time planning and detailed interactions. However, their high computational demands and the scarcity of annotated datasets limit their practicality for academic researchers. In this work, we introduce VideoLLaMB, a novel framework that utilizes temporal memory tokens within bridge layers to allow for the encoding of entire video sequences alongside historical visual data, effectively preserving semantic continuity and enhancing model performance across various tasks. This approach includes recurrent memory tokens and a SceneTilling algorithm, which segments videos into independent semantic units to preserve semantic integrity. Empirically, VideoLLaMB significantly outstrips existing video-language models, demonstrating a 5.5 points improvement over its competitors across three VideoQA benchmarks, and 2.06 points on egocentric planning. Comprehensive results on the MVBench show that VideoLLaMB-7B achieves markedly better results than previous 7B models of same LLM. Remarkably, it maintains robust performance as PLLaVA even as video length increases up to 8 times. Besides, the frame retrieval results on our specialized Needle in a Video Haystack (NIAVH) benchmark, further validate VideoLLaMB's prowess in accurately identifying specific frames within lengthy videos. Our SceneTilling algorithm also enables the generation of streaming video captions directly, without necessitating additional training. In terms of efficiency, VideoLLaMB, trained on 16 frames, supports up to 320 frames on a single Nvidia A100 GPU with linear GPU memory scaling, ensuring both high performance and cost-effectiveness, thereby setting a new foundation for long-form video-language models in both academic and practical applications.",
           "https://arxiv.org/abs/2409.01071",
           "https://videollamb.github.io/"
           )
 
-        
-        add_paper("What If We Recaption Billions of Web Images with LLaMA-3",
-          "Xianhang Li, Haoqin Tu, Mude Hui, Zeyu Wang, Bingchen Zhao, Junfei Xiao, Sucheng Ren, Jieru Mei, Qing Liu, Huangjie Zheng, Yuyin Zhou, Cihang Xie",
-          null,
-          "https://arxiv.org/abs/2406.08478",
-          "@article{li2024recaption,<br>" +
-           "&nbsp;&nbsp;&nbsp;title   = {What If We Recaption Billions of Web Images with LLaMA-3},<br>" +
-           "&nbsp;&nbsp;&nbsp;author  = {Li, Xianhang and Tu, Haoqin and Hui, Mude and Wang, Zeyu and Zhao, Bingchen and Xiao, Junfei and Ren, Sucheng and Mei, Jieru and Liu, Qing and Zheng, Huangjie and Zhou, Yuyin and Xie, Cihang},<br>" +
-           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2406.08478},<br>" +
-           "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
-          "Web-crawled image-text pairs are inherently noisy. Prior studies demonstrate that semantically aligning and enriching textual descriptions of these pairs can significantly enhance model training across various vision-language tasks, particularly text-to-image generation. However, large-scale investigations in this area remain predominantly closed-source. Our paper aims to bridge this community effort, leveraging the powerful and \textit{open-sourced} LLaMA-3, a GPT-4 level LLM. Our recaptioning pipeline is simple: first, we fine-tune a LLaMA-3-8B powered LLaVA-1.5 and then employ it to recaption 1.3 billion images from the DataComp-1B dataset. Our empirical results confirm that this enhanced dataset, Recap-DataComp-1B, offers substantial benefits in training advanced vision-language models. For discriminative models like CLIP, we observe enhanced zero-shot performance in cross-modal retrieval tasks. For generative models like text-to-image Diffusion Transformers, the generated images exhibit a significant improvement in alignment with users' text instructions, especially in following complex queries. Our project page is https://www.haqtu.me/Recap-Datacomp-1B/",
-          "https://arxiv.org/abs/2406.08478",
-          "https://www.haqtu.me/Recap-Datacomp-1B/"
-        )
 
 
         add_paper("Medical Vision Generalist: Unifying Medical Imaging Tasks in Context",
@@ -543,7 +513,7 @@ function copy(dest, source) {
            "&nbsp;&nbsp;&nbsp;title   = {Medical Vision Generalist: Unifying Medical Imaging Tasks in Context},<br>" +
            "&nbsp;&nbsp;&nbsp;author  = {Ren, Sucheng and Huang, Xiaoke and Li, Xianhang and Xiao, Junfei and Mei, Jieru and Wang, Zeyu and Yuille, Alan and Zhou, Yuyin},<br>" +
            "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2406.05565},<br>" +
-           "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
+           "&nbsp;&nbsp;&nbsp;year    = {2024},<br>}",
           "This study presents Medical Vision Generalist (MVG), the first foundation model capable of handling various medical imaging tasks -- such as cross-modal synthesis, image segmentation, denoising, and inpainting -- within a unified image-to-image generation framework. Specifically, MVG employs an in-context generation strategy that standardizes the handling of inputs and outputs as images. By treating these tasks as an image generation process conditioned on prompt image-label pairs and input images, this approach enables a flexible unification of various tasks, even those spanning different modalities and datasets. To capitalize on both local and global context, we design a hybrid method combining masked image modeling with autoregressive training for conditional image generation. This hybrid approach yields the most robust performance across all involved medical imaging tasks. To rigorously evaluate MVG's capabilities, we curated the first comprehensive generalist medical vision benchmark, comprising 13 datasets and spanning four imaging modalities (CT, MRI, X-ray, and micro-ultrasound). Our results consistently establish MVG's superior performance, outperforming existing vision generalists, such as Painter and LVM. Furthermore, MVG exhibits strong scalability, with its performance demonstrably improving when trained on a more diverse set of tasks, and can be effectively adapted to unseen datasets with only minimal task-specific samples. The code is available at https://github.com/OliverRensu/MVG.",
           "https://arxiv.org/abs/2406.05565",
           "https://github.com/OliverRensu/MVG"
@@ -558,7 +528,7 @@ function copy(dest, source) {
            "&nbsp;&nbsp;&nbsp;title   = {Fast Denoising Diffusion Probabilistic Models for Medical Image-to-Image Generation},<br>" +
            "&nbsp;&nbsp;&nbsp;author  = {Jiang, Hongxu and Imran, Muhammad and Ma, Linhai and Zhang, Teng and Zhou, Yuyin and Liang, Muxuan and Gong, Kuang and Shao, Wei},<br>" +
            "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2405.14802},<br>" +
-           "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
+           "&nbsp;&nbsp;&nbsp;year    = {2024},<br>}",
           "Denoising diffusion probabilistic models (DDPMs) have achieved unprecedented success in computer vision. However, they remain underutilized in medical imaging, a field crucial for disease diagnosis and treatment planning. This is primarily due to the high computational cost associated with (1) the use of large number of time steps (e.g., 1,000) in diffusion processes and (2) the increased dimensionality of medical images, which are often 3D or 4D. Training a diffusion model on medical images typically takes days to weeks, while sampling each image volume takes minutes to hours. To address this challenge, we introduce Fast-DDPM, a simple yet effective approach capable of improving training speed, sampling speed, and generation quality simultaneously. Unlike DDPM, which trains the image denoiser across 1,000 time steps, Fast-DDPM trains and samples using only 10 time steps. The key to our method lies in aligning the training and sampling procedures. We introduced two efficient noise schedulers with 10 time steps: one with uniform time step sampling and another with non-uniform sampling. We evaluated Fast-DDPM across three medical image-to-image generation tasks: multi-image super-resolution, image denoising, and image-to-image translation. Fast-DDPM outperformed DDPM and current state-of-the-art methods based on convolutional networks and generative adversarial networks in all tasks. Additionally, Fast-DDPM reduced training time by a factor of 5 and sampling time by a factor of 100 compared to DDPM. Our code is publicly available at: https://github.com/mirthAI/Fast-DDPM.",
           "https://arxiv.org/abs/2405.14802",
           "https://github.com/mirthAI/Fast-DDPM"
@@ -572,7 +542,7 @@ function copy(dest, source) {
           "&nbsp;&nbsp;&nbsp;title   = {VideoHallucer: Evaluating Intrinsic and Extrinsic Hallucinations in Large Video-Language Models},<br>" +
           "&nbsp;&nbsp;&nbsp;author  = {Wang, Yuxuan and Wang, Yueqian and Zhao, Dongyan and Xie, Cihang and Zheng, Zilong},<br>" +
           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2406.16338},<br>" +
-          "&nbsp;&nbsp;&nbsp;year    = {2024}<br>",
+          "&nbsp;&nbsp;&nbsp;year    = {2024}<br>}",
           "Recent advancements in Multimodal Large Language Models (MLLMs) have extended their capabilities to video understanding. Yet, these models are often plagued by 'hallucinations', where irrelevant or nonsensical content is generated, deviating from the actual video context. This work introduces VideoHallucer, the first comprehensive benchmark for hallucination detection in large video-language models (LVLMs). VideoHallucer categorizes hallucinations into two main types: intrinsic and extrinsic, offering further subcategories for detailed analysis, including object-relation, temporal, semantic detail, extrinsic factual, and extrinsic non-factual hallucinations. We adopt an adversarial binary VideoQA method for comprehensive evaluation, where pairs of basic and hallucinated questions are crafted strategically. By evaluating eleven LVLMs on VideoHallucer, we reveal that i) the majority of current models exhibit significant issues with hallucinations; ii) while scaling datasets and parameters improves models' ability to detect basic visual cues and counterfactuals, it provides limited benefit for detecting extrinsic factual hallucinations; iii) existing models are more adept at detecting facts than identifying hallucinations. As a byproduct, these analyses further instruct the development of our self-PEP framework, achieving an average of 5.38% improvement in hallucination resistance across all model architectures.",
           "https://arxiv.org/abs/2406.16338",
           "https://videohallucer.github.io/"
@@ -588,7 +558,7 @@ function copy(dest, source) {
            "&nbsp;&nbsp;&nbsp;title   = {RetinaRegNet: A Versatile Approach for Retinal Image Registration},<br>" +
            "&nbsp;&nbsp;&nbsp;author  = {Sivaraman, Vishal Balaji and Imran, Muhammad and Wei, Qingyue and Muralidharan, Preethika and Tamplin, Michelle R and Grumbach, Isabella M and Kardon, Randy H and Wang, Jui-Kai and Zhou, Yuyin and Shao, Wei},<br>" +
            "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2404.16017},<br>" +
-           "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
+           "&nbsp;&nbsp;&nbsp;year    = {2024},<br>}",
           "We introduce the RetinaRegNet model, which can achieve state-of-the-art performance across various retinal image registration tasks. RetinaRegNet does not require training on any retinal images. It begins by establishing point correspondences between two retinal images using image features derived from diffusion models. This process involves the selection of feature points from the moving image using the SIFT algorithm alongside random point sampling. For each selected feature point, a 2D correlation map is computed by assessing the similarity between the feature vector at that point and the feature vectors of all pixels in the fixed image. The pixel with the highest similarity score in the correlation map corresponds to the feature point in the moving image. To remove outliers in the estimated point correspondences, we first applied an inverse consistency constraint, followed by a transformation-based outlier detector. This method proved to outperform the widely used random sample consensus (RANSAC) outlier detector by a significant margin. To handle large deformations, we utilized a two-stage image registration framework. A homography transformation was used in the first stage and a more accurate third-order polynomial transformation was used in the second stage. The model's effectiveness was demonstrated across three retinal image datasets: color fundus images, fluorescein angiography images, and laser speckle flowgraphy images. RetinaRegNet outperformed current state-of-the-art methods in all three datasets. It was especially effective for registering image pairs with large displacement and scaling deformations. This innovation holds promise for various applications in retinal image analysis. Our code is publicly available at https://github.com/mirthAI/RetinaRegNet.",
           "https://arxiv.org/abs/2404.16017",
           "https://github.com/mirthAI/RetinaRegNet"
@@ -668,10 +638,10 @@ function copy(dest, source) {
                     null,
                     "https://arxiv.org/abs/2303.12313",
                     "@article{zhou2023distribution,<br>" +
-                    "&nbsp;&nbsp;&nbsp;title={Distribution Aligned Diffusion and Prototype-guided network for Unsupervised Domain Adaptive Segmentation},<br>" +
-                    "&nbsp;&nbsp;&nbsp;author={Zhou, Haipeng and Zhu, Lei and Zhou, Yuyin},<br>" +
+                    "&nbsp;&nbsp;&nbsp;title   = {Distribution Aligned Diffusion and Prototype-guided network for Unsupervised Domain Adaptive Segmentation},<br>" +
+                    "&nbsp;&nbsp;&nbsp;author  = {Zhou, Haipeng and Zhu, Lei and Zhou, Yuyin},<br>" +
                     "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2303.12313},<br>" +
-                    "&nbsp;&nbsp;&nbsp;year={2023}<br>}",
+                    "&nbsp;&nbsp;&nbsp;year    = {2023}<br>}",
                     "The Diffusion Probabilistic Model (DPM) has emerged as a highly effective generative model in the field of computer vision. Its intermediate latent vectors offer rich semantic information, making it an attractive option for various downstream tasks such as segmentation and detection. In order to explore its potential further, we have taken a step forward and considered a more complex scenario in the medical image domain, specifically, under an unsupervised adaptation condition. To this end, we propose a Diffusion-based and Prototype-guided network (DP-Net) for unsupervised domain adaptive segmentation. Concretely, our DP-Net consists of two stages: 1) Distribution Aligned Diffusion (DADiff), which involves training a domain discriminator to minimize the difference between the intermediate features generated by the DPM, thereby aligning the inter-domain distribution; and 2) Prototype-guided Consistency Learning (PCL), which utilizes feature centroids as prototypes and applies a prototype-guided loss to ensure that the segmentor learns consistent content from both source and target domains. Our approach is evaluated on fundus datasets through a series of experiments, which demonstrate that the performance of the proposed method is reliable and outperforms state-of-the-art methods. Our work presents a promising direction for using DPM in complex medical image scenarios, opening up new possibilities for further research in medical imaging.",
                     "https://arxiv.org/abs/2303.12313"
                     )        
@@ -686,7 +656,7 @@ function copy(dest, source) {
                      "&nbsp;&nbsp;&nbsp;title   = {Bag of Tricks for FGSM Adversarial Training},<br>" +
                      "&nbsp;&nbsp;&nbsp;author  = {Li, Zichao and Liu, Li and Wang, Zeyu and Zhou, Yuyin and Xie, Cihang},<br>" +
                      "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2209.02684},<br>" +
-                     "&nbsp;&nbsp;&nbsp;year   = {2022}<br>}",
+                     "&nbsp;&nbsp;&nbsp;year    = {2022}<br>}",
                     "Adversarial training (AT) with samples generated by Fast Gradient Sign Method (FGSM), also known as FGSM-AT, is a computationally simple method to train robust networks. However, during its training procedure, an unstable mode of “catastrophic overfitting” has been identified in [Wong et al., 2020], where the robust accuracy abruptly drops to zero within a single training step. Existing methods use gradient regularizers or random initialization tricks to attenuate this issue, whereas they either take high computational cost or lead to lower robust accuracy. In this work, we provide the first study, which thoroughly examines a collection of tricks from three perspectives: Data Initialization, Network Structure, and Optimization, to overcome the catastrophic overfitting in FGSM-AT. Surprisingly, we find that simple tricks, i.e., a) masking partial pixels (even without randomness), b) setting a large convolution stride and smooth activation functions, or c) regularizing the weights of the first convolutional layer, can effectively tackle the overfitting issue. Extensive results on a range of network architectures validate the effectiveness of each proposed trick, and the combinations of tricks are also investigated. For example, trained with PreActResNet-18 on CIFAR-10, our method attains 49.8% accuracy against PGD-50 attacker and 46.4% accuracy against AutoAttack, demonstrating that pure FGSM-AT is capable of enabling robust learners. The code and models are publicly available at https://github. com/UCSC-VLAA/Bag-of-Tricks-for-FGSM-AT.",
                     "https://arxiv.org/abs/2209.02684",
                     "https://github. com/UCSC-VLAA/Bag-of-Tricks-for-FGSM-AT"
@@ -704,7 +674,7 @@ function copy(dest, source) {
                      "&nbsp;&nbsp;&nbsp;title     = {The FELIX Project: Deep Networks To Detect Pancreatic Neoplasms},<br>" +
                      "&nbsp;&nbsp;&nbsp;author    = {Xia, Yingda and Yu, Qihang and Chu, Linda and Kawamoto, Satomi and Park, Seyoun and Liu, Fengze and Chen, Jieneng and Zhu, Zhuotun and Li, Bowen and Zhou, Zongwei and others},<br>" +
                      "&nbsp;&nbsp;&nbsp;journal   = {medRxiv},<br>" +
-                     "&nbsp;&nbsp;&nbsp;year      = {2022},<br>",
+                     "&nbsp;&nbsp;&nbsp;year      = {2022},<br>}",
                     "Tens of millions of abdominal images are performed with computed tomography (CT) in the U.S. each year but pancreatic cancers are sometimes not initially detected in these images. We here describe a suite of algorithms (named FELIX) that can recognize pancreatic lesions from CT images without human input. Using FELIX, >90% of patients with pancreatic ductal adenocarcinomas were detected at a specificity of >90% in patients without pancreatic disease. FELIX may be able to assist radiologists in identifying pancreatic cancers earlier, when surgery and other treatments offer more hope for long-term survival.",
                     "https://www.medrxiv.org/content/10.1101/2022.09.24.22280071v1"
                 )
@@ -841,15 +811,44 @@ function copy(dest, source) {
         document.write("<h1>2025</h1>")
         document.write("<ul>")
 
+
+        add_paper("What If We Recaption Billions of Web Images with LLaMA-3",
+          "Xianhang Li, Haoqin Tu, Mude Hui, Zeyu Wang, Bingchen Zhao, Junfei Xiao, Sucheng Ren, Jieru Mei, Qing Liu, Huangjie Zheng, Yuyin Zhou, Cihang Xie",
+          "ICML, 2025",
+          "https://arxiv.org/abs/2406.08478",
+          "@inproceedings{li2024recaption,<br>" +
+           "&nbsp;&nbsp;&nbsp;title     = {What If We Recaption Billions of Web Images with LLaMA-3},<br>" +
+           "&nbsp;&nbsp;&nbsp;author    = {Li, Xianhang and Tu, Haoqin and Hui, Mude and Wang, Zeyu and Zhao, Bingchen and Xiao, Junfei and Ren, Sucheng and Mei, Jieru and Liu, Qing and Zheng, Huangjie and Zhou, Yuyin and Xie, Cihang},<br>" +
+           "&nbsp;&nbsp;&nbsp;booktitle = {ICML},<br>" +
+           "&nbsp;&nbsp;&nbsp;year      = {2025},<br>}",
+          "Web-crawled image-text pairs are inherently noisy. Prior studies demonstrate that semantically aligning and enriching textual descriptions of these pairs can significantly enhance model training across various vision-language tasks, particularly text-to-image generation. However, large-scale investigations in this area remain predominantly closed-source. Our paper aims to bridge this community effort, leveraging the powerful and \textit{open-sourced} LLaMA-3, a GPT-4 level LLM. Our recaptioning pipeline is simple: first, we fine-tune a LLaMA-3-8B powered LLaVA-1.5 and then employ it to recaption 1.3 billion images from the DataComp-1B dataset. Our empirical results confirm that this enhanced dataset, Recap-DataComp-1B, offers substantial benefits in training advanced vision-language models. For discriminative models like CLIP, we observe enhanced zero-shot performance in cross-modal retrieval tasks. For generative models like text-to-image Diffusion Transformers, the generated images exhibit a significant improvement in alignment with users' text instructions, especially in following complex queries. Our project page is https://www.haqtu.me/Recap-Datacomp-1B/",
+          "https://arxiv.org/abs/2406.08478",
+          "https://www.haqtu.me/Recap-Datacomp-1B/"
+        )
+
+        add_paper("Scaling Laws in Patchification: An Image Is Worth 50,176 Tokens And More",
+          "Feng Wang, Yaodong Yu, Guoyizhe Wei, Wei Shao, Yuyin Zhou, Alan Yuille, Cihang Xie",
+          "ICML, 2025",
+          "https://arxiv.org/abs/2502.03738", 
+          "@inproceedings{wang2025scaling,<br>" +
+          "&nbsp;&nbsp;&nbsp;title     = {Scaling Laws in Patchification: An Image Is Worth 50,176 Tokens And More},<br>" +
+          "&nbsp;&nbsp;&nbsp;author    = {Feng Wang, Yaodong Yu, Guoyizhe Wei, Wei Shao, Yuyin Zhou, Alan Yuille, Cihang Xie},<br>" +
+          "&nbsp;&nbsp;&nbsp;booktitle = {ICML},<br>" +
+          "&nbsp;&nbsp;&nbsp;year      = {2025},<br>}",
+          "Since the introduction of Vision Transformer (ViT), patchification has long been regarded as a de facto image tokenization approach for plain visual architectures. By compressing the spatial size of images, this approach can effectively shorten the token sequence and reduce the computational cost of ViT-like plain architectures. In this work, we aim to thoroughly examine the information loss caused by this patchification-based compressive encoding paradigm and how it affects visual understanding. We conduct extensive patch size scaling experiments and excitedly observe an intriguing scaling law in patchification: the models can consistently benefit from decreased patch sizes and attain improved predictive performance, until it reaches the minimum patch size of 1x1, i.e., pixel tokenization. This conclusion is broadly applicable across different vision tasks, various input scales, and diverse architectures such as ViT and the recent Mamba models. Moreover, as a by-product, we discover that with smaller patches, task-specific decoder heads become less critical for dense prediction. In the experiments, we successfully scale up the visual sequence to an exceptional length of 50,176 tokens, achieving a competitive test accuracy of 84.6% with a base-sized model on the ImageNet-1k benchmark. We hope this study can provide insights and theoretical foundations for future works of building non-compressive vision models. Code is available at https://github.com/wangf3014/Patch_Scaling.",
+          "https://arxiv.org/abs/2502.03738", 
+          "https://github.com/wangf3014/Patch_Scaling"
+        )
+
         add_paper("Mamba-R: Vision Mamba ALSO Needs Registers",
           "Feng Wang, Jiahao Wang, Sucheng Ren, Guoyizhe Wei, Jieru Mei, Wei Shao, Yuyin Zhou, Alan Yuille, Cihang Xie",
           "CVPR, 2025",
           "https://arxiv.org/abs/2405.14858",
-          "@article{wang2024mambar,<br>" +
+          "@inproceedings{wang2024mambar,<br>" +
            "&nbsp;&nbsp;&nbsp;title   = {Mamba-R: Vision Mamba also needs registers},<br>" +
            "&nbsp;&nbsp;&nbsp;author  = {Wang, Feng and Wang, Jiahao and Ren, Sucheng and Wei, Guoyizhe and Mei, Jieru and Shao, Wei and Zhou, Yuyin and Yuille, Alan and Xie, Cihang},<br>" +
-           "&nbsp;&nbsp;&nbsp;journal = {CVPR},<br>" +
-           "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+           "&nbsp;&nbsp;&nbsp;booktitle = {CVPR},<br>" +
+           "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
           "Similar to Vision Transformers, this paper identifies artifacts also present within the feature maps of Vision Mamba. These artifacts, corresponding to high-norm tokens emerging in low-information background areas of images, appear much more severe in Vision Mamba -- they exist prevalently even with the tiny-sized model and activate extensively across background regions. To mitigate this issue, we follow the prior solution of introducing register tokens into Vision Mamba. To better cope with Mamba blocks' uni-directional inference paradigm, two key modifications are introduced: 1) evenly inserting registers throughout the input token sequence, and 2) recycling registers for final decision predictions. We term this new architecture Mamba-R. Qualitative observations suggest, compared to vanilla Vision Mamba, Mamba-R's feature maps appear cleaner and more focused on semantically meaningful regions. Quantitatively, Mamba-R attains stronger performance and scales better. For example, on the ImageNet benchmark, our base-size Mamba-R attains 82.9% accuracy, significantly outperforming Vim-B's 81.8%; furthermore, we provide the first successful scaling to the large model size (i.e., with 341M parameters), attaining a competitive accuracy of 83.2% (84.5% if finetuned with 384x384 inputs). Additional validation on the downstream semantic segmentation task also supports Mamba-R's efficacy.",
           "https://arxiv.org/abs/2405.14858",
           "https://wangf3014.github.io/mambar-page/"
@@ -859,11 +858,11 @@ function copy(dest, source) {
           "Feng Wang, Timing Yang, Yaodong Yu, Sucheng Ren, Guoyizhe Wei, Angtian Wang, Wei Shao, Yuyin Zhou, Alan Yuille, Cihang Xie",
           "CVPR, 2025",
           "https://arxiv.org/abs/2410.07599",
-          "@article{wang2024causalimagemodeling,<br>" +
-          "&nbsp;&nbsp;&nbsp;title   = {Causal Image Modeling for Efficient Visual Understanding},<br>" +
-          "&nbsp;&nbsp;&nbsp;author  = {Feng Wang, Timing Yang, Yaodong Yu, Sucheng Ren, Guoyizhe Wei, Angtian Wang, Wei Shao, Yuyin Zhou, Alan Yuille, Cihang Xie},<br>" +
-          "&nbsp;&nbsp;&nbsp;journal = {CVPR},<br>" +
-          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+          "@inproceedings{wang2024causalimagemodeling,<br>" +
+          "&nbsp;&nbsp;&nbsp;title     = {Causal Image Modeling for Efficient Visual Understanding},<br>" +
+          "&nbsp;&nbsp;&nbsp;author    = {Feng Wang, Timing Yang, Yaodong Yu, Sucheng Ren, Guoyizhe Wei, Angtian Wang, Wei Shao, Yuyin Zhou, Alan Yuille, Cihang Xie},<br>" +
+          "&nbsp;&nbsp;&nbsp;booktitle = {CVPR},<br>" +
+          "&nbsp;&nbsp;&nbsp;year      = {2025},<br>}",
           "In this work, we present a comprehensive analysis of causal image modeling and introduce the Adventurer series models where we treat images as sequences of patch tokens and employ uni-directional language models to learn visual representations. This modeling paradigm allows us to process images in a recurrent formulation with linear complexity relative to the sequence length, which can effectively address the memory and computation explosion issues posed by high-resolution and fine-grained images. In detail, we introduce two simple designs that seamlessly integrate image inputs into the causal inference framework: a global pooling token placed at the beginning of the sequence and a flipping operation between every two layers. Extensive empirical studies demonstrate the significant efficiency and effectiveness of this causal image modeling paradigm. For example, our base-sized Adventurer model attains a competitive test accuracy of 84.0% on the standard ImageNet-1k benchmark with 216 images/s training throughput, which is 5.3 times more efficient than vision transformers to achieve the same result.",
           "https://arxiv.org/abs/2410.07599",
           "https://github.com/wangf3014/Adventurer"
@@ -874,11 +873,11 @@ function copy(dest, source) {
           "Jinrui Yang, Qing Liu, Yijun Li, Soo Ye Kim, Daniil Pakhomov, Mengwei Ren, Jianming Zhang, Zhe Lin, Cihang Xie, Yuyin Zhou",
           "CVPR, 2025",
           "https://arxiv.org/abs/2411.17864",
-          "@article{yang2024generative,<br>" +
-          "&nbsp;&nbsp;&nbsp;title   = {Generative Image Layer Decomposition with Visual Effects},<br>" +
-          "&nbsp;&nbsp;&nbsp;author  = {Jinrui Yang, Qing Liu, Yijun Li, Soo Ye Kim, Daniil Pakhomov, Mengwei Ren, Jianming Zhang, Zhe Lin, Cihang Xie, Yuyin Zhou},<br>" +
-          "&nbsp;&nbsp;&nbsp;journal = {CVPR},<br>" +
-          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+          "@inproceedings{yang2024generative,<br>" +
+          "&nbsp;&nbsp;&nbsp;title     = {Generative Image Layer Decomposition with Visual Effects},<br>" +
+          "&nbsp;&nbsp;&nbsp;author    = {Jinrui Yang, Qing Liu, Yijun Li, Soo Ye Kim, Daniil Pakhomov, Mengwei Ren, Jianming Zhang, Zhe Lin, Cihang Xie, Yuyin Zhou},<br>" +
+          "&nbsp;&nbsp;&nbsp;booktitle = {CVPR},<br>" +
+          "&nbsp;&nbsp;&nbsp;year      = {2025},<br>}",
           "Recent advancements in large generative models, particularly diffusion-based methods, have significantly enhanced the capabilities of image editing. However, achieving precise control over image composition tasks remains a challenge. Layered representations, which allow for independent editing of image components, are essential for user-driven content creation, yet existing approaches often struggle to decompose image into plausible layers with accurately retained transparent visual effects such as shadows and reflections. We propose a generative framework for image layer decomposition which outputs photorealistic clean backgrounds and high-quality transparent foregrounds with faithfully preserved visual effects. To enable effective training, we first introduce a dataset preparation pipeline that automatically scales up simulated multi-layer data with synthesized visual effects. To further enhance real-world applicability, we supplement this simulated dataset with camera-captured images containing natural visual effects. Additionally, we propose a consistency loss which enforces the model to learn accurate representations for the transparent foreground layer when ground-truth annotations are not available. Our method achieves superior quality in layer decomposition, outperforming existing approaches in object removal and spatial editing tasks across several benchmarks and multiple user studies, unlocking various creative possibilities for layer-wise image editing. The project page is https://rayjryang.github.io/LayerDecomp.",
           "https://arxiv.org/abs/2411.17864",
           "https://rayjryang.github.io/LayerDecomp"
@@ -889,11 +888,11 @@ function copy(dest, source) {
           "Mude Hui, Siwei Yang, Bingchen Zhao, Yichun Shi, Heng Wang, Peng Wang, Cihang Xie, Yuyin Zhou",
           "ICLR, 2025",
           "https://arxiv.org/abs/2404.09990",
-          "@article{hui2024hqedit,<br>" +
-           "&nbsp;&nbsp;&nbsp;title   = {HQ-Edit: A High-Quality Dataset for Instruction-based Image Editing},<br>" +
-           "&nbsp;&nbsp;&nbsp;author  = {Hui, Mude and Yang, Siwei and Zhao, Bingchen and Shi, Yichun and Wang, Heng and Wang, Peng and Xie, Cihang and Zhou, Yuyin},<br>" +
-           "&nbsp;&nbsp;&nbsp;journal = {ICLR},<br>" +
-           "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+          "@inproceedings{hui2024hqedit,<br>" +
+           "&nbsp;&nbsp;&nbsp;title     = {HQ-Edit: A High-Quality Dataset for Instruction-based Image Editing},<br>" +
+           "&nbsp;&nbsp;&nbsp;author    = {Hui, Mude and Yang, Siwei and Zhao, Bingchen and Shi, Yichun and Wang, Heng and Wang, Peng and Xie, Cihang and Zhou, Yuyin},<br>" +
+           "&nbsp;&nbsp;&nbsp;booktitle = {ICLR},<br>" +
+           "&nbsp;&nbsp;&nbsp;year      = {2025},<br>}",
           "This study introduces HQ-Edit, a high-quality instruction-based image editing dataset with around 200,000 edits. Unlike prior approaches relying on attribute guidance or human feedback on building datasets, we devise a scalable data collection pipeline leveraging advanced foundation models, namely GPT-4V and DALL-E 3. To ensure its high quality, diverse examples are first collected online, expanded, and then used to create high-quality diptychs featuring input and output images with detailed text prompts, followed by precise alignment ensured through post-processing. In addition, we propose two evaluation metrics, Alignment and Coherence, to quantitatively assess the quality of image edit pairs using GPT-4V. HQ-Edits high-resolution images, rich in detail and accompanied by comprehensive editing prompts, substantially enhance the capabilities of existing image editing models. For example, an HQ-Edit finetuned InstructPix2Pix can attain state-of-the-art image editing performance, even surpassing those models fine-tuned with human-annotated data. The project page is https://thefllood.github.io/HQEdit_web/",
           "https://arxiv.org/abs/2404.09990",
           "https://thefllood.github.io/HQEdit_web/"
@@ -904,11 +903,11 @@ function copy(dest, source) {
           "Sucheng Ren, Xianhang Li, Haoqin Tu, Feng Wang, Fangxun Shu, Lei Zhang, Jieru Mei, Linjie Yang, Peng Wang, Heng Wang, Alan Yuille, Cihang Xie",
           "ICLR, 2025",
           "https://arxiv.org/abs/2406.07537",
-          "@article{ren2024autoregressive,<br>" +
-           "&nbsp;&nbsp;&nbsp;title   = {Autoregressive Pretraining with Mamba in Vision},<br>" +
-           "&nbsp;&nbsp;&nbsp;author  = {Ren, Sucheng and Li, Xianhang and Tu, Haoqin and Wang, Feng and Shu, Fangxun and Zhang, Lei and Mei, Jieru and Yang, Linjie and Wang, Peng and Wang, Heng and Yuille, Alan and Xie, Cihang},<br>" +
-           "&nbsp;&nbsp;&nbsp;journal = {ICLR},<br>" +
-           "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+          "@inproceedings{ren2024autoregressive,<br>" +
+           "&nbsp;&nbsp;&nbsp;title     = {Autoregressive Pretraining with Mamba in Vision},<br>" +
+           "&nbsp;&nbsp;&nbsp;author    = {Ren, Sucheng and Li, Xianhang and Tu, Haoqin and Wang, Feng and Shu, Fangxun and Zhang, Lei and Mei, Jieru and Yang, Linjie and Wang, Peng and Wang, Heng and Yuille, Alan and Xie, Cihang},<br>" +
+           "&nbsp;&nbsp;&nbsp;booktitle = {ICLR},<br>" +
+           "&nbsp;&nbsp;&nbsp;year      = {2025},<br>}",
           "The vision community has started to build with the recently developed state space model, Mamba, as the new backbone for a range of tasks. This paper shows that Mamba's visual capability can be significantly enhanced through autoregressive pretraining, a direction not previously explored. Efficiency-wise, the autoregressive nature can well capitalize on the Mamba's unidirectional recurrent structure, enabling faster overall training speed compared to other training strategies like mask modeling. Performance-wise, autoregressive pretraining equips the Mamba architecture with markedly higher accuracy over its supervised-trained counterparts and, more importantly, successfully unlocks its scaling potential to large and even huge model sizes. For example, with autoregressive pretraining, a base-size Mamba attains 83.2% ImageNet accuracy, outperforming its supervised counterpart by 2.0%; our huge-size Mamba, the largest Vision Mamba to date, attains 85.0% ImageNet accuracy (85.5% when finetuned with 384x384 inputs), notably surpassing all other Mamba variants in vision. The code is available at https://github.com/OliverRensu/ARM.",
           "https://arxiv.org/abs/2406.07537",
           "https://github.com/OliverRensu/ARM"
@@ -919,11 +918,11 @@ function copy(dest, source) {
         "Yunfei Xie, Ce Zhou, Lang Gao, Juncheng Wu, Xianhang Li, Hong-Yu Zhou, Sheng Liu, Lei Xing, James Zou, Cihang Xie, Yuyin Zhou",
         "ICLR, 2025",
         "https://arxiv.org/abs/2408.02900",
-        "@article{xie2024medtrinity,<br>" +
-        "&nbsp;&nbsp;&nbsp;title   = {MedTrinity-25M: A Large-scale Multimodal Dataset with Multigranular Annotations for Medicine},<br>" +
-        "&nbsp;&nbsp;&nbsp;author  = {Yunfei Xie, Ce Zhou, Lang Gao, Juncheng Wu, Xianhang Li, Hong-Yu Zhou, Sheng Liu, Lei Xing, James Zou, Cihang Xie, Yuyin Zhou},<br>" +
-        "&nbsp;&nbsp;&nbsp;journal = {ICLR},<br>" +
-        "&nbsp;&nbsp;&nbsp;year    = {2025},<br>",
+        "@inproceedings{xie2024medtrinity,<br>" +
+        "&nbsp;&nbsp;&nbsp;title     = {MedTrinity-25M: A Large-scale Multimodal Dataset with Multigranular Annotations for Medicine},<br>" +
+        "&nbsp;&nbsp;&nbsp;author    = {Yunfei Xie, Ce Zhou, Lang Gao, Juncheng Wu, Xianhang Li, Hong-Yu Zhou, Sheng Liu, Lei Xing, James Zou, Cihang Xie, Yuyin Zhou},<br>" +
+        "&nbsp;&nbsp;&nbsp;booktitle = {ICLR},<br>" +
+        "&nbsp;&nbsp;&nbsp;year      = {2025},<br>}",
         "This paper introduces MedTrinity-25M, a comprehensive, large-scale multimodal dataset for medicine, covering over 25 million images across 10 modalities, with multigranular annotations for more than 65 diseases. These enriched annotations encompass both global textual information, such as disease/lesion type, modality, region-specific descriptions, and inter-regional relationships, as well as detailed local annotations for regions of interest (ROIs), including bounding boxes, segmentation masks. Unlike existing approach which is limited by the availability of image-text pairs, we have developed the first automated pipeline that scales up multimodal data by generating multigranular visual and texual annotations (in the form of image-ROI-description triplets) without the need for any paired text descriptions. Specifically, data from over 90 different sources have been collected, preprocessed, and grounded using domain-specific expert models to identify ROIs related to abnormal regions. We then build a comprehensive knowledge base and prompt multimodal large language models to perform retrieval-augmented generation with the identified ROIs as guidance, resulting in multigranular texual descriptions. Compared to existing datasets, MedTrinity-25M provides the most enriched annotations, supporting a comprehensive range of multimodal tasks such as captioning and report generation, as well as vision-centric tasks like classification and segmentation. This dataset can be utilized to support large-scale pre-training of multimodal medical AI models, contributing to the development of future foundation models in the medical domain.",
         "https://arxiv.org/abs/2408.02900",
         "https://yunfeixie233.github.io/MedTrinity-25M/"
@@ -1015,11 +1014,11 @@ function copy(dest, source) {
             "Tony Lee, Haoqin Tu, Chi Heem Wong, Wenhao Zheng, Yiyang Zhou, Yifan Mai, Josselin Somerville Roberts, Michihiro Yasunaga, Huaxiu Yao, Cihang Xie, Percy Liang",
             "NeurIPS (D\&B Track), 2024",
             "https://arxiv.org/abs/2410.07112",
-            "@article{tony2024vhelm,<br>" +
-            "&nbsp;&nbsp;&nbsp;title   = {VHELM: A Holistic Evaluation of Vision Language Models},<br>" +
-            "&nbsp;&nbsp;&nbsp;author  = {Tony Lee, Haoqin Tu, Chi Heem Wong, Wenhao Zheng, Yiyang Zhou, Yifan Mai, Josselin Somerville Roberts, Michihiro Yasunaga, Huaxiu Yao, Cihang Xie, Percy Liang},<br>" +
-            "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2410.07112},<br>" +
-            "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
+            "@inproceedings{tony2024vhelm,<br>" +
+            "&nbsp;&nbsp;&nbsp;title     = {VHELM: A Holistic Evaluation of Vision Language Models},<br>" +
+            "&nbsp;&nbsp;&nbsp;author    = {Tony Lee, Haoqin Tu, Chi Heem Wong, Wenhao Zheng, Yiyang Zhou, Yifan Mai, Josselin Somerville Roberts, Michihiro Yasunaga, Huaxiu Yao, Cihang Xie, Percy Liang},<br>" +
+            "&nbsp;&nbsp;&nbsp;booktitle = {NeurIPS},<br>" +
+            "&nbsp;&nbsp;&nbsp;year      = {2024},<br>}",
             "Current benchmarks for assessing vision-language models (VLMs) often focus on their perception or problem-solving capabilities and neglect other critical aspects such as fairness, multilinguality, or toxicity. Furthermore, they differ in their evaluation procedures and the scope of the evaluation, making it difficult to compare models. To address these issues, we extend the HELM framework to VLMs to present the Holistic Evaluation of Vision Language Models (VHELM). VHELM aggregates various datasets to cover one or more of the 9 aspects: visual perception, knowledge, reasoning, bias, fairness, multilinguality, robustness, toxicity, and safety. In doing so, we produce a comprehensive, multi-dimensional view of the capabilities of the VLMs across these important factors. In addition, we standardize the standard inference parameters, methods of prompting, and evaluation metrics to enable fair comparisons across models. Our framework is designed to be lightweight and automatic so that evaluation runs are cheap and fast. Our initial run evaluates 22 VLMs on 21 existing datasets to provide a holistic snapshot of the models. We uncover new key findings, such as the fact that efficiency-focused models (e.g., Claude 3 Haiku or Gemini 1.5 Flash) perform significantly worse than their full models (e.g., Claude 3 Opus or Gemini 1.5 Pro) on the bias benchmark but not when evaluated on the other aspects. For transparency, we release the raw model generations and complete results on our website (https://crfm.stanford.edu/helm/vhelm/v2.0.1/). VHELM is intended to be a living benchmark, and we hope to continue adding new datasets and models over time.",
             "https://arxiv.org/abs/2410.07112",
             "https://github.com/stanford-crfm/helm"
@@ -1029,11 +1028,11 @@ function copy(dest, source) {
             "Juncheng Wu, Zhangkai Ni, Hanli Wang, Wenhan Yang, Yuyin Zhou, Shiqi Wang",
             "NeurIPS, 2024",
             "https://arxiv.org/abs/2406.08377",
-            "@article{wu2024ddr,<br>" +
+            "@inproceedings{wu2024ddr,<br>" +
             "&nbsp;&nbsp;&nbsp;title     = {DDR: Exploiting Deep Degradation Response as Flexible Image Descriptor},<br>" +
             "&nbsp;&nbsp;&nbsp;author    = {Wu, Juncheng and Ni, Zhangkai and Wang, Hanli and Yang, Wenhan and Zhou, Yuyin and Wang, Shiqi},<br>" +
-            "&nbsp;&nbsp;&nbsp;journal   = {NeurIPS},<br>" +
-            "&nbsp;&nbsp;&nbsp;year      = {2024}<br>",
+            "&nbsp;&nbsp;&nbsp;booktitle = {NeurIPS},<br>" +
+            "&nbsp;&nbsp;&nbsp;year      = {2024}<br>}",
             "Image deep features extracted by pre-trained networks are known to contain rich and informative representations. In this paper, we present Deep Degradation Response (DDR), a method to quantify changes in image deep features under varying degradation conditions. Specifically, our approach facilitates flexible and adaptive degradation, enabling the controlled synthesis of image degradation through text-driven prompts. Extensive evaluations demonstrate the versatility of DDR as an image descriptor, with strong correlations observed with key image attributes such as complexity, colorfulness, sharpness, and overall quality. Moreover, we demonstrate the efficacy of DDR across a spectrum of applications. It excels as a blind image quality assessment metric, outperforming existing methodologies across multiple datasets. Additionally, DDR serves as an effective unsupervised learning objective in image restoration tasks, yielding notable advancements in image deblurring and single-image super-resolution.",
             "https://arxiv.org/abs/2406.08377",
             "https://github.com/eezkni/DDR"
@@ -1043,11 +1042,11 @@ function copy(dest, source) {
             "Jinrui Yang, Xianhang Li, Druv Pai, Yuyin Zhou, Yi Ma, Yaodong Yu, Cihang Xie",
             "NeurIPS, 2024",
             "https://arxiv.org/abs/2405.20299",
-            "@article{yang2024scaling,<br>" +
-             "&nbsp;&nbsp;&nbsp;title   = {Scaling White-Box Transformers for Vision},<br>" +
-             "&nbsp;&nbsp;&nbsp;author  = {Yang, Jinrui and Li, Xianhang and Pai, Druv and Zhou, Yuyin and Ma, Yi and Yu, Yaodong and Xie, Cihang},<br>" +
-             "&nbsp;&nbsp;&nbsp;journal = {NeurIPS},<br>" +
-             "&nbsp;&nbsp;&nbsp;year    = {2024},<br>",
+            "@inproceedings{yang2024scaling,<br>" +
+             "&nbsp;&nbsp;&nbsp;title     = {Scaling White-Box Transformers for Vision},<br>" +
+             "&nbsp;&nbsp;&nbsp;author    = {Yang, Jinrui and Li, Xianhang and Pai, Druv and Zhou, Yuyin and Ma, Yi and Yu, Yaodong and Xie, Cihang},<br>" +
+             "&nbsp;&nbsp;&nbsp;booktitle = {NeurIPS},<br>" +
+             "&nbsp;&nbsp;&nbsp;year      = {2024},<br>}",
             "CRATE, a white-box transformer architecture designed to learn compressed and sparse representations, offers an intriguing alternative to standard vision transformers (ViTs) due to its inherent mathematical interpretability. Despite extensive investigations into the scaling behaviors of language and vision transformers, the scalability of CRATE remains an open question which this paper aims to address. Specifically, we propose CRATE-α, featuring strategic yet minimal modifications to the sparse coding block in the CRATE architecture design, and a light training recipe designed to improve the scalability of CRATE. Through extensive experiments, we demonstrate that CRATE-α can effectively scale with larger model sizes and datasets. For example, our CRATE-α-B substantially outperforms the prior best CRATE-B model accuracy on ImageNet classification by 3.7%, achieving an accuracy of 83.2%. Meanwhile, when scaling further, our CRATE-α-L obtains an ImageNet classification accuracy of 85.1%. More notably, these model performance improvements are achieved while preserving, and potentially even enhancing the interpretability of learned CRATE models, as we demonstrate through showing that the learned token representations of increasingly larger trained CRATE-α models yield increasingly higher-quality unsupervised object segmentation of images. The project page is https://rayjryang.github.io/CRATE-alpha/.",
             "https://arxiv.org/abs/2405.20299",
             "https://rayjryang.github.io/CRATE-alpha/"
@@ -1132,10 +1131,10 @@ function copy(dest, source) {
                     "CVPR, 2024",
                     "https://arxiv.org/abs/2202.04291",
                     "@inproceedings{zhou2022L2B,<br>" +
-                     "&nbsp;&nbsp;&nbsp;title       = {Learning to Bootstrap for Combating Label Noise},<br>" +
-                     "&nbsp;&nbsp;&nbsp;author      = {Zhou, Yuyin and Li, Xianhang and Liu, Fengze and Chen, Xuxi and Yu, Lequan and Xie, Cihang and Lungren, Matthew P and Xing, Lei},<br>" +
-                     "&nbsp;&nbsp;&nbsp;booktitle   = {CVPR},<br>" +
-                     "&nbsp;&nbsp;&nbsp;year        = {2024}<br>}",
+                     "&nbsp;&nbsp;&nbsp;title     = {Learning to Bootstrap for Combating Label Noise},<br>" +
+                     "&nbsp;&nbsp;&nbsp;author    = {Zhou, Yuyin and Li, Xianhang and Liu, Fengze and Chen, Xuxi and Yu, Lequan and Xie, Cihang and Lungren, Matthew P and Xing, Lei},<br>" +
+                     "&nbsp;&nbsp;&nbsp;booktitle = {CVPR},<br>" +
+                     "&nbsp;&nbsp;&nbsp;year      = {2024}<br>}",
                     "Deep neural networks are powerful tools for representation learning, but can easily overfit to noisy labels which are prevalent in many realworld scenarios. Generally, noisy supervision could stem from variation among labelers, label corruption by adversaries, etc. To combat such label noises, one popular line of approach is to apply customized weights to the training instances, so that the corrupted examples contribute less to the model learning. However, such learning mechanisms potentially erase important information about the data distribution and therefore yield suboptimal results. To leverage useful information from the corrupted instances, an alternative is the bootstrapping loss, which reconstructs new training targets on-the-fly by incorporating the network’s own predictions (i.e., pseudo-labels). In this paper, we propose a more generic learnable loss objective which enables a joint reweighting of instances and labels at once. Specifically, our method dynamically adjusts the per-sample importance weight between the real observed labels and pseudo-labels, where the weights are efficiently determined in a meta process. Compared to the previous instance reweighting methods, our approach concurrently conducts implicit relabeling, and thereby yield substantial improvements with almost no extra cost. Extensive experimental results demonstrated the strengths of our approach over existing methods on multiple natural and medical image benchmark datasets, including CIFAR-10, CIFAR-100, ISIC2019 and Clothing 1M.",
                     "https://arxiv.org/abs/2202.04291",
                     "https://github.com/yuyinzhou/L2B"
