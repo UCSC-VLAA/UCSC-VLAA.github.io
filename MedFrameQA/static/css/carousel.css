@@ -1,0 +1,15 @@
+.carousel {
+  overflow: hidden;
+}
+
+.carousel .carousel-items {
+  overflow: hidden;
+}
+
+.carousel .carousel-item {
+  display: none;
+}
+
+.carousel .carousel-item.is-active {
+  display: block;
+} 

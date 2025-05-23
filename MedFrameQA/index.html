@@ -1,6 +1,313 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>MedFrameQA: A Multi-Image Medical VQA Benchmark for Clinical Reasoning</title>
-  </head>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MedFrameQA: A Multi-Image Medical VQA Benchmark for Clinical Reasoning</title>
+
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="./static/css/carousel.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./resources/icon.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/carousel.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title"><span style="font-variant: small-caps;">MedFrameQA</span>: A Multi-Image Medical VQA Benchmark for Clinical Reasoning</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <span><a href="https://suhaoyu1020.github.io/">Suhao Yu</a></span><sup>1</sup><sup>*</sup>,</span>
+            <span class="author-block">
+              <span><a href="https://haojinw0027.github.io/">Haojin Wang</a></span><sup>2</sup><sup>*</sup>,</span>
+            </span>
+            <span class="author-block">
+              <span><a href="https://chtholly17.github.io/">Juncheng Wu</a></span><sup>3</sup><sup>*</sup>,</span>
+            </span>
+            <span class="author-block">
+              <span><a href="https://cihangxie.github.io/">Cihang Xie</a></span><sup>3</sup>,</span>
+            </span>
+            <span class="author-block">
+              <span><a href="https://yuyinzhou.github.io/">Yuyin Zhou</a></span><sup>3</sup></span>
+            </span>
+          </div>
+          <br/>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of Pennsylvania, </span>
+            <span class="author-block"><sup>2</sup>University of Illinois Urbana-Champaign, </span>
+            <span class="author-block"><sup>3</sup>UC Santa Cruz</span>
+            
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2505.16964"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fa-solidassasas fa-face-smiling-hands"></i>
+                    <img src="./resources/ar.svg" alt="img" style="width: 100%; height: 100%" /> 
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/haojinw0027/MedFrameQA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://huggingface.co/datasets/SuhaoYu1020/MedFrameQA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fa-solidasasa fa-face-smiling-hands"></i>
+                   <img src="./resources/hg.svg" alt="img" style="width: 100%; height: 100%" /> 
+                  </span>
+                   <span>MedFrameQA Data</span>
+                  </a>
+                </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="hero teaser">
+  <div class="container">
+    <div class="hero-body" style="text-align: center;">
+      <img src="./resources/teaser.png" alt="alt text"
+           style="width: 70%; max-width:70%; outline: none; border: none;">
+      <h2 class="subtitle has-text-centered">
+        MedFrameQA introduces multi-image, clinically grounded questions that require comprehensive reasoning across all images. Unlike prior benchmarks such as SLAKE and MedXpertQA, it emphasizes diagnostic complexity, expert-level knowledge, and explicit reasoning chains.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Existing medical VQA benchmarks mostly focus on single-image analysis, yet clinicians almost always compare a series of images before reaching a diagnosis. To better approximate this workflow, we introduce MEDFRAMEQA—the first benchmark that explicitly evaluates multi-image reasoning in medical VQA. To build MEDFRAMEQA both at scale and in high-quality, we develop 1) an automated pipeline that extracts temporally coherent frames from medical videos and constructs VQA items whose content evolves logically across images, and 2) a multiple-stage filtering strategy, including model-based and manual review, to preserve data clarity, difficulty, and medical relevance. The resulting dataset comprises 2,851 VQA pairs (gathered from 9,237 high-quality frames in 3,420 videos), covering nine human body systems and 43 organs; every question is accompanied by two to five images. We comprehensively benchmark ten advanced Multimodal LLMs—both proprietary and open source, with and without explicit reasoning modules—on MEDFRAMEQA. The evaluation challengingly reveals that all models perform poorly, with most accuracies below 50%, and accuracy fluctuates as the number of images per question increases. Error analysis further shows that models frequently ignore salient findings, mis-aggregate evidence across images, and propagate early mistakes through their reasoning chains; results also vary substantially across body systems, organs, and modalities. We hope this work can catalyze research on clinically grounded, multi-image reasoning and accelerate progress toward more capable diagnostic AI systems.<a href=""></a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Comparison of <span style="font-variant: small-caps;">MedFrameQA</span> with Existing Benchmarks</h2>
+          <div class="content has-text-centered">
+            <center><img class="center" src="./resources/Comparison.png" width="100%"></center>
+            <div class="content has-text-justified">
+              <p><strong>Table 1.</strong> <span style="font-variant: small-caps;"><b>MedFrameQA</b></span> supports multi-image reasoning within real-world clinical video scenarios and paired reasoning across frames. The paired reasoning in <span style="font-variant: small-caps;"><b>MedFrameQA</b></span> is derived from the transcripts from original video clips.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3"><span style="font-variant: small-caps;">MedFrameQA</span> Pipeline</h2>
+          <div class="content has-text-centered">
+            <center><img class="center" src="./resources/pipeline.png" width="100%"></center>
+            <div class="content has-text-justified">
+              <p><strong>Figure 1.</strong> <span style="font-variant: small-caps;"><b>MedFrameQA</b></span> generation pipeline contains four stages: (a) Medical Video Collection: Collecting 3,420 medical videos via clinical search queries; (b) Frame-Caption Pairing: Extracting keyframes and aligning with transcribed captions; (c) Multi-Frame Merging: Merging clinically related frame-caption pairs into multi-frame clips; (d) Question-Answer Generation: Generating multi-image VQA from the multi-frame clips. </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Data Distribution of <span style="font-variant: small-caps;">MedFrameQA</span></h2>
+          <div class="content has-text-centered">
+            <center><img class="center" src="./resources/distribution.png" width="100%"></center>
+            <div class="content has-text-justified">
+              <p><strong>Figure 2.</strong> The data distribution of <span style="font-variant: small-caps;"><b>MedFrameQA</b></span>. In figure (a), we show the distribution across body systems; (b) presents the distribution across organs; (c) shows the distribution across imaging modalities; (d) provides a word cloud of keywords in <span style="font-variant: small-caps;"><b>MedFrameQA</b></span>; and (e) reports the distribution of frame counts per question.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Accuracy by Human Body System on <span style="font-variant: small-caps;">MedFrameQA</span></h2>
+          <div class="content has-text-centered">
+            <center><img class="center" src="./resources/System_ACC.png" width="100%"></center>
+            <div class="content has-text-justified">
+              <p><strong>Table 2.</strong> Accuracy on ten advanced Multimodal LLMs on <span style="font-variant: small-caps;"><b>MedFrameQA</b></span> with system-wise performance. In general, all assessed models demonstrate persistently low accuracy on <span style="font-variant: small-caps;"><b>MedFrameQA</b></span>, with system-wise performance of substantial variability in task difficulty. We report results for nine systems: Central Nervous System (<b>CNS</b>), Respiratory System (<b>RES</b>), Circulatory System (<b>CIR</b>), Digestive System (<b>DIG</b>), Urinary System (<b>URI</b>), Reproductive System (<b>REP</b>), Endocrine System (<b>END</b>), Musculoskeletal System (<b>MSK</b>), Auxiliary (<b>AUX</b>) and their average accuracy (%).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Accuracy by Modality and Frame Count on <span style="font-variant: small-caps;">MedFrameQA</span></h2>
+          <div class="content has-text-centered">
+            <center><img class="center" src="./resources/modality_acc.png" width="100%"></center>
+            <div class="content has-text-justified">
+              <p><strong>Table 3.</strong> We report the accuracy of models on questions in <span style="font-variant: small-caps;"><b>MedFrameQA</b></span> grouped by frame count with standard deviation (<i>SD</i>) and by modality. We empirically observe that accuracy fluctuates with increasing frame count and varies significantly across common imaging modalities.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Failure Case Study of <code>o1</code> on <span style="font-variant: small-caps;">MedFrameQA</span></h2>
+          <div class="content has-text-centered">
+            <center><img class="center" src="./resources/fail_case_1.png" width="100%"></center>
+            <div class="content has-text-justified">
+              <center><p><strong>Figure 3.</strong> Failure case study of <code>o1</code> on <span style="font-variant: small-caps;"><b>MedFrameQA</b></span>. Negligence of important information across
+              multiple frames. In this case, <code>o1</code> overlooked critical features in the second and third frames, which
+              ultimately led to the selection of an incorrect answer.</p></center>
+            </div>
+            <center><img class="center" src="./resources/fail_case_2.png" width="100%"></center>
+            <div class="content has-text-justified">
+              <center>
+                <p><strong>Figure 4.</strong> Failure case study of <code>o1</code> on <span style="font-variant: small-caps;"><b>MedFrameQA</b></span>. A mistake originating from a single image
+                can result in significant errors in subsequent reasoning. In this case, <code>o1</code> made a directional error when
+                interpreting the first frame, which propagated through its reasoning process and ultimately led to an
+                incorrect answer.</p>
+              </center>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Examples of <code>2-5</code> Images Input on <span
+              style="font-variant: small-caps;">MedFrameQA</span></h2>
+          <div class="content has-text-centered">
+            <div class="carousel">
+              <div class="item-1">
+                <img src="./resources/Example_1.png" alt="Example 1">
+              </div>
+              <div class="item-2">
+                <img src="./resources/Example_2.png" alt="Example 2">
+              </div>
+              <div class="item-3">
+                <img src="./resources/Example_3.png" alt="Example 3">
+              </div>
+              <div class="item-4">
+                <img src="./resources/Example_4.png" alt="Example 4">
+              </div>
+            </div>
+            <div class="content has-text-justified">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+  <div class="container">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Acknowledge</h2>
+        <div class="content has-text-justified">
+          <!-- <center><img class="center" src="./resources/recap_cvpr_ac_poster.jpg" width="95%"></center> -->
+          <center>We thank the Microsoft Accelerate Foundation Models Research Program for supporting our computing needs.</center>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <center><h2 class="title">BibTeX</h2></center>
+    <pre><code>
+@article{yu2025medframeqamultiimagemedicalvqa,
+  title={MedFrameQA: A Multi-Image Medical VQA Benchmark for Clinical Reasoning}, 
+  author={Yu, Suhao and Wang, Haojin and Wu, Juncheng and Xie, Cihang and Zhou, Yuyin},
+  journal = {arXiv preprint arXiv:2505.16964},
+  year={2025}
+}
+    </code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Based on the following <a href="http://nerfies.github.io">template</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
 </html>
