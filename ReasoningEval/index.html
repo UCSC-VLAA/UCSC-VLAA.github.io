@@ -1,8 +1,391 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  </head>
-  <body>
-    <p>Placeholder project page.</p>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ReasoningEval</title>
+
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./resources/thinking.webp">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+
+  <style>
+    .icon {
+        width: 40px;
+        height: 40px;
+        vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Knowledge <img src="./resources/knowledge_icon.png" alt="Icon 1" class="icon"> or Reasoning <img src="./resources/reasoning_icon.png" alt="Icon 1" class="icon">? A Close Look at How LLMs Think Across Domains </h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <span><a href="https://chtholly17.github.io/">Juncheng Wu</a></span><sup>1*</sup>,</span>
+            <span class="author-block">
+              <span><a href="https://shengliu66.github.io/">Sheng Liu</a></span><sup>2*</sup>,</span>
+
+            <span class="author-block">
+              <span><a href="https://www.haqtu.me/">Haoqin Tu</a></span><sup>1*</sup>,</span>
+            </span>
+            <span class="author-block">
+              <span><a href="https://openreview.net/profile?id=~Hang_Yu14">Hang Yu</a></span><sup>3*</sup>,</span>
+            </span>
+
+            <span class="author-block">
+              <span><a href="https://xk-huang.github.io/">Xiaoke Huang</a></span><sup>1</sup>,</span>
+            </span>
+            
+            <span class="author-block">
+              <span><a href="https://www.james-zou.com/">James Zou</a></span><sup>2</sup>,</span>
+            </span>
+
+            <span class="author-block">
+              <span><a href="https://cihangxie.github.io/">Cihang Xie</a></span><sup>1</sup></span>
+            </span>
+
+            <span class="author-block">
+              <span><a href="https://yuyinzhou.github.io/">Yuyin Zhou</a></span><sup>1</sup>,</span>
+            </span>
+          </div>
+          <br/>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>UC Santa Cruz,</span>
+            <span class="author-block"><sup>2</sup>Stanford University,</span>
+            <span class="author-block"><sup>3</sup>Tongji University</span>
+            <!-- <span class="author-block"><sup>3</sup>JHU, </span> -->
+            
+          </div>
+
+          <div class="column has-text-centered">
+
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org" target="_blank"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fa-solidassasas fa-face-smiling-hands"></i>
+                    <img src="./resources/ar.svg" alt="img" style="width: 100%; height: 100%" /> 
+                  </span>
+                  <span>ArXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/UCSC-VLAA/ReasoningEval" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- <section class="hero teaser">
+  <div class="container">
+    <div class="hero-body", style="text-align: center;">
+      <img src="./resources/recap_front.jpg" alt="alt text"
+                        style="width: 50%; object-fit: cover; max-width:50%;"></a>
+      <h2 class="subtitle has-text-centered">
+        Examples of the original caption and our recaption in DataComp-1B, and the word distributions.
+      </h2>
+    </div>
+  </div>
+</section> -->
+
+<!-- <section class="section">
+  <div class="container ">
+    <div class="hero-body">
+      <center><h2 class="title is-3">Demo</h2></center>
+  <iframe src="https://laos-y-hqedit.hf.space" frameborder="0" width="100%" height="1000"></iframe>
+</div>
+</div>
+</section> -->
+
+
+
+<!-- Abstract. -->
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Recent advances in reasoning-enhanced Large Language Models (LLMs) such as OpenAI-o1/3 and DeepSeek-R1 have significantly improved performance on complex tasks. However, the quality and transparency of their internal reasoning processes remain underexplored. This work moves beyond the final-answer accuracy and investigates step-by-step reasoning in the medical and mathematical domains by explicitly decomposing the thinking trajectories into knowledge and reasoning parts. We propose a fine-grained evaluation framework that judges: (1) the correctness of the <b>knowledge</b> used, and (2) the quality of the <b>reasoning</b>. To quantify these, we introduce two novel metrics: Knowledge Index (KI) for knowledge accuracy and Information Gain (InfoGain) for reasoning informativeness. We conduct a case study on R1-distilled and the base Qwen models with supervised fine-tuning (SFT) and/or reinforcement learning (RL) in the medical and math domains, which uncovers several key insights: (1) the general reasoning abilities in R1-distilled models do not transfer effectively to the medical domain via SFT or RL; (2) while SFT improves final accuracy in both domains, it often compromises reasoning, as reflected by average 38.9% lower InfoGain scores against untrained models---yet it remains essential in the medical domain, where domain knowledge is critical for accuracy; and (3) RL enhances medical reasoning by pruning inaccurate or irrelevant knowledge from reasoning paths, thereby improving both reasoning accuracy and knowledge correctness. We hope this work can encourage future research toward more reliable LLM reasoning.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- / Abstract. -->
+
+
+
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Knowledge and Reasoning Shoule Be Two Distinct Evaluation Aspects</h2>
+        <div class="content has-text-justified">
+          <center><img class="center" src="./assets/knowledge_reasoning_case.png" width="100%"></center>
+          <!-- <p>
+            <strong style="font-weight: 900">Pipeline Overview.</strong>
+            We propose a four-step procedure for data generation: <b>Captioning</b>, <b>Visual-Language CoT Generation</b>, <b>Answer Rewriting</b> and <b>Answer Verification</b>.          
+          </p> -->
+          <p>
+            <strong style="font-weight: 900">Figure 1.</strong>
+            A reasoning step may effectively reduce uncertainty toward the final answer despite relying on incorrect knowledge (e.g., Step 3), or it may present factually correct but irrelevant/redundant knowledge that hinders reasoning efficiency (e.g., Step 4). Accuracy alone fails to capture these nuances. We introduce two complementary metrics that separately evaluate knowledge correctness and reasoning informativeness.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Evaluation Pipeline</h2>
+        <h3 class="title is-3 has-text-left" style="font-size: 1.5rem; margin-top: 50px;;">🏭 Step-by-Step evaluation for LLM's reasoning</h3>
+        <div class="content has-text-justified">
+          <center><img class="center" src="./assets/eval_pipeline.png" width="100%"></center>
+          <!-- <p>
+            <strong style="font-weight: 900">Pipeline Overview.</strong>
+            We propose a four-step procedure for data generation: <b>Captioning</b>, <b>Visual-Language CoT Generation</b>, <b>Answer Rewriting</b> and <b>Answer Verification</b>.          
+          </p> -->
+          <p>
+            <strong style="font-weight: 900">Figure 2.</strong>
+            Our evaluation pipeline: (a) We decompose the model’s reasoning into reasoning steps, then evaluate the (b) Information Gain: how much a reasoning step reduces uncertainty toward the final answer, calculated as the probability gap between adjacent response steps; and (c) Knowledge Index: the factual correctness of each step by verifying extracted knowledge against external ground truth sources.
+          </p>
+        </div>
+        <div class="content has-text-justified">
+          <h3 class="title is-3 has-text-left" style="font-size: 1.5rem; margin-top: 50px;;">Example of reasoning decomposition</h3>
+
+          <center><img class="center" src="./assets/decompose_example.png" width="100%"></center>
+          <p>
+            <strong style="font-weight: 900">Figure 3.</strong>
+            Example of reasoning decomposition. Every stage of reasoning corresponds to a logical step accompanied by the specific knowledge point it contains.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Knowledge and Reasoning for Medical Reasoning</h2>
+        <h3 class="title is-3 has-text-left" style="font-size: 1.5rem; margin-top: 50px;;">Knowledge Index and Information Gain exhibit distinct trends</h3>
+        <div class="content has-text-justified">
+          <center><img class="center" src="./assets/knowledge_reasoning_table.png" width="80%"></center>
+          <!-- <p>
+            <strong style="font-weight: 900">Pipeline Overview.</strong>
+            We propose a four-step procedure for data generation: <b>Captioning</b>, <b>Visual-Language CoT Generation</b>, <b>Answer Rewriting</b> and <b>Answer Verification</b>.          
+          </p> -->
+          <p>
+            <strong style="font-weight: 900">Table 1.</strong>
+             While the reasoning abilities of the two Qwen-Base variants remain comparable, the RL-ed Qwen-Base demonstrates slightly better medical knowledge according to our KI metric (64.2 vs. 63.4). Similarly, although the RL-enhanced Qwen-R1 shows a minor improvement over its SFT-only version in general performance, it underperforms in knowledge evaluation, trailing by 2.2 points in the KI metric (54.3).
+          </p>
+        </div>
+
+        <h3 class="title is-3 has-text-left" style="font-size: 1.5rem; margin-top: 50px;;">The challenging nature of different benchmarks may inherit from different aspects</h3>
+        <div class="content has-text-justified">
+          <center><img class="center" src="./assets/correlation_datasets.png" width="50%"></center>
+          <!-- <p>
+            <strong style="font-weight: 900">Pipeline Overview.</strong>
+            We propose a four-step procedure for data generation: <b>Captioning</b>, <b>Visual-Language CoT Generation</b>, <b>Answer Rewriting</b> and <b>Answer Verification</b>.          
+          </p> -->
+          <p>
+            <strong style="font-weight: 900">Figure 4.</strong>
+             Correlations between the proposed two metrics and accuracy. Different tasks require different levels of knowledge and/or reasoning capabilities in LLMs.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+<!-- Teaser. -->
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">⚔️ SFT vs RL for Reasoning in Different Domains</h2>
+        
+        <h3 class="title is-3 has-text-left" style="font-size: 1.5rem; margin-top: 50px;;">SFT improves final accuracy while compromises reasoning efficiency, RL improves Both</h3>
+        <div class="content has-text-justified">
+          <center><img class="center" src="./assets/SFT_vs_RL.png" width="80%"></center>
+          <!-- <p>
+            <strong style="font-weight: 900">Pipeline Overview.</strong>
+            We propose a four-step procedure for data generation: <b>Captioning</b>, <b>Visual-Language CoT Generation</b>, <b>Answer Rewriting</b> and <b>Answer Verification</b>.         
+           </p> -->
+           <p>
+            <strong style="font-weight: 900">Figure 5.</strong>
+            Both SFT and RL improve final accuracy. In math tasks, RL-ed model achieves higher accuracy; while in medical tasks, SFT-ed model achieves higher accuracy. However, SFT reduces reasoning efficiency (lower Information Gain) in both domains, while RL leads to consistent improvements.
+          </p>
+          <center><img class="center" src="./assets/SFT_math.png" width="80%"></center>
+          <!-- <p>
+            <strong style="font-weight: 900">Pipeline Overview.</strong>
+            We propose a four-step procedure for data generation: <b>Captioning</b>, <b>Visual-Language CoT Generation</b>, <b>Answer Rewriting</b> and <b>Answer Verification</b>.         
+           </p> -->
+           <p>
+            <strong style="font-weight: 900">Figure 5.</strong>
+            In mathematics, SFT adds redundant reasoning steps, reducing per-step information gain and inference efficiency.
+        </div>
+
+
+        <h3 class="title is-3 has-text-left" style="font-size: 1.5rem; margin-top: 50px;;">SFT remains crucial in medical by providing domain knowledge</h3>
+        <div class="content has-text-justified">
+          <center><img class="center" src="./assets/SFT_med.png" width="50%"></center>
+          <!-- <p>
+            <strong style="font-weight: 900">Pipeline Overview.</strong>
+            We propose a four-step procedure for data generation: <b>Captioning</b>, <b>Visual-Language CoT Generation</b>, <b>Answer Rewriting</b> and <b>Answer Verification</b>.         
+           </p> -->
+           <p>
+            <strong style="font-weight: 900">Figure 6.</strong>
+            In knowledge-intensive tasks like medical reasoning, SFT is essential as it provides necessary domain knowledge and leads to higher knowledge index (KI) scores.
+          </p>
+        </div>
+
+        <h3 class="title is-3 has-text-left" style="font-size: 1.5rem; margin-top: 50px;;">RL improves knowledge correctness by pruning out incorrect reasoning paths</h3>
+        <div class="content has-text-justified">
+          <center><img class="center" src="./assets/RL_knowledge.png" width="80%"></center>
+          <!-- <p>
+            <strong style="font-weight: 900">Pipeline Overview.</strong>
+            We propose a four-step procedure for data generation: <b>Captioning</b>, <b>Visual-Language CoT Generation</b>, <b>Answer Rewriting</b> and <b>Answer Verification</b>.         
+           </p> -->
+           <p>
+            <strong style="font-weight: 900">Figure 7.</strong>
+            In the medical domain, applying RL to base model before or post SFT consistently improves the knowlegde index.
+          </p>
+          <center><img class="center" src="./assets/RL_knowledge_case.png" width="80%"></center>
+          <!-- <p>
+            <strong style="font-weight: 900">Pipeline Overview.</strong>
+            We propose a four-step procedure for data generation: <b>Captioning</b>, <b>Visual-Language CoT Generation</b>, <b>Answer Rewriting</b> and <b>Answer Verification</b>.         
+           </p> -->
+           <p>
+            <strong style="font-weight: 900">Figure 8.</strong>
+            While both cisplatin and carboplatin fit this criterion and share a DNA cross-linking mechanism, the SFT-only model incorrectly selects carboplatin and misattributes its mechanism to free radical generation, leading to an incorrect answer. In contrast, the SFT+RL model correctly selects cisplatin, avoiding the knowledge error.
+          </p>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+<!-- / Teaser. -->
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Challenge of Reasoning Across Domains</h2>
+        <h3 class="title is-3 has-text-left" style="font-size: 1.5rem; margin-top: 50px;;">Trained Qwen-Base outperforms its R1-distilled counterpart</h3>
+        <div class="content has-text-justified">
+          <center><img class="center" src="./assets/Qwen_R1.png" width="80%"></center>
+          <!-- <p>
+            <strong style="font-weight: 900">Pipeline Overview.</strong>
+            We propose a four-step procedure for data generation: <b>Captioning</b>, <b>Visual-Language CoT Generation</b>, <b>Answer Rewriting</b> and <b>Answer Verification</b>.          
+          </p> -->
+          <p>
+            <strong style="font-weight: 900">Table 2.</strong>
+             Qwen-Base consistently outperforms the R1-distilled variant across the evaluated benchmarks, whether using SFT alone or in combination with subsequent RL. 
+
+            <center><img class="center" src="./assets/Qwen_R1_case.png" width="80%"></center>
+          <!-- <p>
+            <strong style="font-weight: 900">Pipeline Overview.</strong>
+            We propose a four-step procedure for data generation: <b>Captioning</b>, <b>Visual-Language CoT Generation</b>, <b>Answer Rewriting</b> and <b>Answer Verification</b>.          
+          </p> -->
+          <p>
+            <strong style="font-weight: 900">Figure 9.</strong>
+             While the medical knowledge of all reasoning steps in Qwen-R1 + SFT is correct, the ignorance of considering more appropriate treatment for the specified disease results in an incorrect answer. 
+          </p>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+            
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Acknowledgement</h2>
+    <p class="has-text-justified">
+      This work was partially funded by an unrestricted gift from Google. We thank the Microsoft Accelerate Foundation Models Research Program for supporting our computing needs.
+    </p>
+  </div>
+</section>
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+TBD
+<!-- @misc{vl-thinking2025,
+    title={VL-Thinking: An R1-Derived Visual Instruction Tuning Dataset for Thinkable LVLMs},
+    author={Hardy Chen and Haoqin Tu and Hui Liu and Xianfeng Tang and Xinya Du and Yuyin Zhou and Cihang Xie},
+    year = {2025},
+    publisher = {GitHub},
+    journal = {GitHub repository},
+    howpublished = {\url{https://github.com/UCSC-VLAA/VL-Thinking}},
+    } -->
+    </code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Based on the following <a href="http://nerfies.github.io">template</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
 </html>
