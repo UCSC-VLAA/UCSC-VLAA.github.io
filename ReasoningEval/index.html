@@ -82,7 +82,7 @@
             <div class="publication-links">
               <!-- PDF Link. -->
               <span class="link-block">
-                <a href="https://arxiv.org" target="_blank"
+                <a href="http://arxiv.org/abs/2506.02126" target="_blank"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                     <i class="fa-solidassasas fa-face-smiling-hands"></i>
@@ -160,7 +160,8 @@
   <div class="container">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Knowledge and Reasoning Are Two Distinct Evaluation Aspects</h2>
+        <h2 class="title is-3">Evaluation Pipeline</h2>
+        <h3 class="title is-3 has-text-left" style="font-size: 1.5rem; margin-top: 50px;;">Knowledge and Reasoning Are Two Distinct Evaluation Aspects</h3>
         <div class="content has-text-justified">
           <center><img class="center" src="./assets/knowledge_reasoning_case.png" width="90%"></center>
           <!-- <p>
@@ -172,17 +173,8 @@
             A reasoning step may effectively reduce uncertainty toward the final answer despite relying on incorrect knowledge (e.g., Step 3), or it may present factually correct but irrelevant/redundant knowledge that hinders reasoning efficiency (e.g., Step 4). Accuracy alone fails to capture these nuances. We introduce two complementary metrics that separately evaluate knowledge correctness and reasoning informativeness.
           </p>
         </div>
-      </div>
-    </div>
-  </section>
 
-
-<section class="section">
-  <div class="container">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Step-by-Step Reasoning Evaluation</h2>
-        <!-- <h3 class="title is-3 has-text-left" style="font-size: 1.5rem; margin-top: 50px;;">Step-by-Step evaluation for LLM's reasoning</h3> -->
+        <h3 class="title is-3 has-text-left" style="font-size: 1.5rem; margin-top: 50px;;">Step-by-Step Reasoning Evaluation</h3>
         <div class="content has-text-justified">
           <center><img class="center" src="./assets/eval_pipeline.png" width="90%"></center>
           <!-- <p>
@@ -194,18 +186,11 @@
             Our evaluation pipeline: (a) We decompose the model’s reasoning into reasoning steps, then evaluate the (b) Information Gain: how much a reasoning step reduces uncertainty toward the final answer, calculated as the probability gap between adjacent response steps; and (c) Knowledge Index: the factual correctness of each step by verifying extracted knowledge against external ground truth sources.
           </p>
         </div>
-        <div class="content has-text-justified">
-          <h3 class="title is-3 has-text-left" style="font-size: 1.5rem; margin-top: 50px;;">Example of reasoning decomposition</h3>
-
-          <center><img class="center" src="./assets/decompose_example.png" width="90%"></center>
-          <p>
-            <strong style="font-weight: 900">Figure 3.</strong>
-            Example of reasoning decomposition. Every stage of reasoning corresponds to a logical step accompanied by the specific knowledge point it contains.
-          </p>
-        </div>
       </div>
     </div>
   </section>
+
+
 
 <section class="section">
   <div class="container">
@@ -227,13 +212,13 @@
 
         <h3 class="title is-3 has-text-left" style="font-size: 1.5rem; margin-top: 50px;;">The challenging nature of different benchmarks may inherit from different aspects</h3>
         <div class="content has-text-justified">
-          <center><img class="center" src="./assets/correlation_datasets.png" width="50%"></center>
+          <center><img class="center" src="./assets/correlation_datasets.png" width="40%"></center>
           <!-- <p>
             <strong style="font-weight: 900">Pipeline Overview.</strong>
             We propose a four-step procedure for data generation: <b>Captioning</b>, <b>Visual-Language CoT Generation</b>, <b>Answer Rewriting</b> and <b>Answer Verification</b>.          
           </p> -->
           <p>
-            <strong style="font-weight: 900">Figure 4.</strong>
+            <strong style="font-weight: 900">Figure 3.</strong>
              Correlations between the proposed two metrics and accuracy. Different tasks require different levels of knowledge and/or reasoning capabilities in LLMs.
           </p>
         </div>
@@ -251,61 +236,30 @@
         
         <h3 class="title is-3 has-text-left" style="font-size: 1.5rem; margin-top: 50px;;">SFT improves final accuracy while compromises reasoning efficiency, RL improves Both</h3>
         <div class="content has-text-justified">
-          <center><img class="center" src="./assets/SFT_vs_RL.png" width="80%"></center>
+          <center><img class="center" src="./assets/SFT_vs_RL.png" width="60%"></center>
           <!-- <p>
             <strong style="font-weight: 900">Pipeline Overview.</strong>
             We propose a four-step procedure for data generation: <b>Captioning</b>, <b>Visual-Language CoT Generation</b>, <b>Answer Rewriting</b> and <b>Answer Verification</b>.         
            </p> -->
            <p>
-            <strong style="font-weight: 900">Figure 5.</strong>
+            <strong style="font-weight: 900">Figure 4.</strong>
             Both SFT and RL improve final accuracy. In math tasks, RL-ed model achieves higher accuracy; while in medical tasks, SFT-ed model achieves higher accuracy. However, SFT reduces reasoning efficiency (lower Information Gain) in both domains, while RL leads to consistent improvements.
           </p>
-          <center><img class="center" src="./assets/SFT_math.png" width="80%"></center>
-          <!-- <p>
-            <strong style="font-weight: 900">Pipeline Overview.</strong>
-            We propose a four-step procedure for data generation: <b>Captioning</b>, <b>Visual-Language CoT Generation</b>, <b>Answer Rewriting</b> and <b>Answer Verification</b>.         
-           </p> -->
-           <p>
-            <strong style="font-weight: 900">Figure 5.</strong>
-            In mathematics, SFT adds redundant reasoning steps, reducing per-step information gain and inference efficiency.
         </div>
 
 
         <h3 class="title is-3 has-text-left" style="font-size: 1.5rem; margin-top: 50px;;">SFT remains crucial in medical by providing domain knowledge</h3>
         <div class="content has-text-justified">
-          <center><img class="center" src="./assets/SFT_med.png" width="50%"></center>
+          <center><img class="center" src="./assets/SFT_med.png" width="40%"></center>
           <!-- <p>
             <strong style="font-weight: 900">Pipeline Overview.</strong>
             We propose a four-step procedure for data generation: <b>Captioning</b>, <b>Visual-Language CoT Generation</b>, <b>Answer Rewriting</b> and <b>Answer Verification</b>.         
            </p> -->
            <p>
-            <strong style="font-weight: 900">Figure 6.</strong>
+            <strong style="font-weight: 900">Figure 5.</strong>
             In knowledge-intensive tasks like medical reasoning, SFT is essential as it provides necessary domain knowledge and leads to higher knowledge index (KI) scores.
           </p>
         </div>
-
-        <h3 class="title is-3 has-text-left" style="font-size: 1.5rem; margin-top: 50px;;">RL improves knowledge correctness by pruning out incorrect reasoning paths</h3>
-        <div class="content has-text-justified">
-          <center><img class="center" src="./assets/RL_knowledge.png" width="80%"></center>
-          <!-- <p>
-            <strong style="font-weight: 900">Pipeline Overview.</strong>
-            We propose a four-step procedure for data generation: <b>Captioning</b>, <b>Visual-Language CoT Generation</b>, <b>Answer Rewriting</b> and <b>Answer Verification</b>.         
-           </p> -->
-           <p>
-            <strong style="font-weight: 900">Figure 7.</strong>
-            In the medical domain, applying RL to base model before or post SFT consistently improves the knowlegde index.
-          </p>
-          <center><img class="center" src="./assets/RL_knowledge_case.png" width="80%"></center>
-          <!-- <p>
-            <strong style="font-weight: 900">Pipeline Overview.</strong>
-            We propose a four-step procedure for data generation: <b>Captioning</b>, <b>Visual-Language CoT Generation</b>, <b>Answer Rewriting</b> and <b>Answer Verification</b>.         
-           </p> -->
-           <p>
-            <strong style="font-weight: 900">Figure 8.</strong>
-            While both cisplatin and carboplatin fit this criterion and share a DNA cross-linking mechanism, the SFT-only model incorrectly selects carboplatin and misattributes its mechanism to free radical generation, leading to an incorrect answer. In contrast, the SFT+RL model correctly selects cisplatin, avoiding the knowledge error.
-          </p>
-        </div>
-
 
       </div>
     </div>
@@ -327,16 +281,6 @@
           <p>
             <strong style="font-weight: 900">Table 2.</strong>
              Qwen-Base consistently outperforms the R1-distilled variant across the evaluated benchmarks, whether using SFT alone or in combination with subsequent RL. 
-
-            <center><img class="center" src="./assets/Qwen_R1_case.png" width="80%"></center>
-          <!-- <p>
-            <strong style="font-weight: 900">Pipeline Overview.</strong>
-            We propose a four-step procedure for data generation: <b>Captioning</b>, <b>Visual-Language CoT Generation</b>, <b>Answer Rewriting</b> and <b>Answer Verification</b>.          
-          </p> -->
-          <p>
-            <strong style="font-weight: 900">Figure 9.</strong>
-             While the medical knowledge of all reasoning steps in Qwen-R1 + SFT is correct, the ignorance of considering more appropriate treatment for the specified disease results in an incorrect answer. 
-          </p>
           </p>
         </div>
       </div>
@@ -363,6 +307,25 @@
         </div>
       </section>
 
+    <script>
+        function showTab(event, tabId) {
+          document.querySelectorAll('.pdf-preview').forEach(img => img.classList.add('is-hidden'));
+          document.getElementById(tabId).classList.remove('is-hidden');
+          
+          document.querySelectorAll('.tabs ul li').forEach(tab => tab.classList.remove('is-active'));
+          event.currentTarget.classList.add('is-active');
+        }
+      </script>
+      
+      <style>
+        .is-hidden {
+          display: none;
+        }
+        .tabs ul li a {
+          cursor: pointer;
+        }
+      </style>
+
             
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
@@ -379,7 +342,15 @@
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>
-TBD
+@misc{wu2025knowledgereasoningcloselook,
+      title={Knowledge or Reasoning? A Close Look at How LLMs Think Across Domains}, 
+      author={Juncheng Wu and Sheng Liu and Haoqin Tu and Hang Yu and Xiaoke Huang and James Zou and Cihang Xie and Yuyin Zhou},
+      year={2025},
+      eprint={2506.02126},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2506.02126}, 
+}
     </code></pre>
   </div>
 </section>
