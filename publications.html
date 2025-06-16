@@ -179,6 +179,48 @@ function copy(dest, source) {
         // document.write("<h2>Preprint</h2>")
         document.write("<ul><br>")
 
+        add_paper("Knowledge or Reasoning? A Close Look at How LLMs Think Across Domains",
+          "Juncheng Wu, Sheng Liu, Haoqin Tu, Hang Yu, Xiaoke Huang, James Zou, Cihang Xie, Yuyin Zhou",
+          null,
+          "https://arxiv.org/abs/2506.02126", 
+          "@article{wu2025knowledgereasoningcloselook,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {Knowledge or Reasoning? A Close Look at How LLMs Think Across Domains},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Juncheng Wu, Sheng Liu, Haoqin Tu, Hang Yu, Xiaoke Huang, James Zou, Cihang Xie, Yuyin Zhou},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2506.02126},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
+          "Recent advances in reasoning-enhanced Large Language Models such as OpenAI-o1/3 and DeepSeek-R1 have significantly improved performance on complex tasks. However, the quality and transparency of their internal reasoning processes remain underexplored. This work moves beyond the final-answer accuracy and investigates step-by-step reasoning in the medical and mathematical domains by explicitly decomposing the thinking trajectories into two parts: knowledge and reasoning. Specifically, we introduce a fine-grained evaluation framework that judges: (1) the correctness of knowledge used (measured by Knowledge Index (KI)) and (2) the quality of reasoning (measured by Information Gain (InfoGain)). Using this framework, we study R1-distilled and base Qwen models trained with supervised fine-tuning (SFT) and/or reinforcement learning (RL) in the medical and math domains. Three intriguing findings emerge: (1) The general reasoning abilities in R1-distilled models do not transfer effectively to the medical domain through either SFT or RL. (2) SFT raises final-answer accuracy in both domains, but often at the cost of reasoning quality: InfoGain drops by 38.9% on average compared with untrained models; In the medical domain, however, SFT remains crucial because domain knowledge is indispensable. (3) RL enhances medical reasoning by pruning inaccurate or irrelevant knowledge from reasoning paths, thereby improving both reasoning accuracy and knowledge correctness.",
+          "https://arxiv.org/abs/2506.02126",
+          "https://ucsc-vlaa.github.io/ReasoningEval"
+        )
+
+        add_paper("MedFrameQA: A Multi-Image Medical VQA Benchmark for Clinical Reasoning",
+          "Suhao Yu, Haojin Wang, Juncheng Wu, Cihang Xie, Yuyin Zhou",
+          null,
+          "https://arxiv.org/abs/2505.16964", 
+          "@article{yu2025medframeqamultiimagemedicalvqa,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {MedFrameQA: A Multi-Image Medical VQA Benchmark for Clinical Reasoning},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Suhao Yu, Haojin Wang, Juncheng Wu, Cihang Xie, Yuyin Zhou},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2505.16964},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
+          "Existing medical VQA benchmarks mostly focus on single-image analysis, yet clinicians almost always compare a series of images before reaching a diagnosis. To better approximate this workflow, we introduce MedFrameQA -- the first benchmark that explicitly evaluates multi-image reasoning in medical VQA. To build MedFrameQA both at scale and in high-quality, we develop 1) an automated pipeline that extracts temporally coherent frames from medical videos and constructs VQA items whose content evolves logically across images, and 2) a multiple-stage filtering strategy, including model-based and manual review, to preserve data clarity, difficulty, and medical relevance. The resulting dataset comprises 2,851 VQA pairs (gathered from 9,237 high-quality frames in 3,420 videos), covering nine human body systems and 43 organs; every question is accompanied by two to five images. We comprehensively benchmark ten advanced Multimodal LLMs -- both proprietary and open source, with and without explicit reasoning modules -- on MedFrameQA. The evaluation challengingly reveals that all models perform poorly, with most accuracies below 50%, and accuracy fluctuates as the number of images per question increases. Error analysis further shows that models frequently ignore salient findings, mis-aggregate evidence across images, and propagate early mistakes through their reasoning chains; results also vary substantially across body systems, organs, and modalities. We hope this work can catalyze research on clinically grounded, multi-image reasoning and accelerate progress toward more capable diagnostic AI systems.",
+          "https://arxiv.org/abs/2505.16964",
+          "https://ucsc-vlaa.github.io/MedFrameQA"
+        )
+
+        add_paper("More Thinking, Less Seeing? Assessing Amplified Hallucination in Multimodal Reasoning Models",
+          "Chengzhi Liu, Zhongxing Xu, Qingyue Wei, Juncheng Wu, James Zou, Xin Eric Wang, Yuyin Zhou, Sheng Liu",
+          null,
+          "https://arxiv.org/abs/2505.21523", 
+          "@article{liu2025thinkingseeingassessingamplified,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {More Thinking, Less Seeing? Assessing Amplified Hallucination in Multimodal Reasoning Models},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Chengzhi Liu, Zhongxing Xu, Qingyue Wei, Juncheng Wu, James Zou, Xin Eric Wang, Yuyin Zhou, Sheng Liu},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2505.21523},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
+          "Test-time compute has empowered multimodal large language models to generate extended reasoning chains, yielding strong performance on tasks such as multimodal math reasoning. However, this improved reasoning ability often comes with increased hallucination: as generations become longer, models tend to drift away from image-grounded content and rely more heavily on language priors. Attention analysis shows that longer reasoning chains lead to reduced focus on visual inputs, which contributes to hallucination. To systematically study this phenomenon, we introduce RH-AUC, a metric that quantifies how a model's perception accuracy changes with reasoning length, allowing us to evaluate whether the model preserves visual grounding during reasoning. We also release RH-Bench, a diagnostic benchmark that spans a variety of multimodal tasks, designed to assess the trade-off between reasoning ability and hallucination. Our analysis reveals that (i) larger models typically achieve a better balance between reasoning and perception, and (ii) this balance is influenced more by the types and domains of training data than by its overall volume. These findings underscore the importance of evaluation frameworks that jointly consider both reasoning quality and perceptual fidelity.",
+          "https://arxiv.org/abs/2505.21523",
+          "https://mlrm-halu.github.io"
+        )
+
         add_paper("Complex-Edit: CoT-Like Instruction Generation for Complexity-Controllable Image Editing Benchmark",
           "Siwei Yang, Mude Hui, Bingchen Zhao, Yuyin Zhou, Nataniel Ruiz, Cihang Xie",
           null,
