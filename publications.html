@@ -179,22 +179,7 @@ function copy(dest, source) {
         // document.write("<h2>Preprint</h2>")
         document.write("<ul><br>")
 
-        add_paper(
-        "Openvision: A fully-open, cost-effective family of advanced vision encoders for multimodal learning",
-        "Xianhang Li, Yanqing Liu, Haoqin Tu, Hongru Zhu, Cihang Xie",
-        null,
-        "https://arxiv.org/abs/2505.04601",
-        "@article{li2025openvision,<br>" +
-        "&nbsp;&nbsp;&nbsp;title   = {Openvision: A fully-open, cost-effective family of advanced vision encoders for multimodal learning},<br>" +
-        "&nbsp;&nbsp;&nbsp;author  = {Xianhang Li and Yanqing Liu and Haoqin Tu and Hongru Zhu and Cihang Xie},<br>" +
-        "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2505.04601},<br>" +
-        "&nbsp;&nbsp;&nbsp;year    = {2025},<br>" +
-        "}",
-        "OpenAI's CLIP, released in early 2021, have long been the go-to choice of vision encoder for building multimodal foundation models. Although recent alternatives such as SigLIP have begun to challenge this status quo, to our knowledge none are fully open: their training data remains proprietary and/or their training recipes are not released. This paper fills this gap with OpenVision, a fully-open, cost-effective family of vision encoders that match or surpass the performance of OpenAI's CLIP when integrated into multimodal frameworks like LLaVA. OpenVision builds on existing works -- e.g., CLIPS for training framework and Recap-DataComp-1B for training data -- while revealing multiple key insights in enhancing encoder quality and showcasing practical benefits in advancing multimodal models. By releasing vision encoders spanning from 5.9M to 632.1M parameters, OpenVision offers practitioners a flexible trade-off between capacity and efficiency in building multimodal models: larger models deliver enhanced multimodal performance, while smaller versions enable lightweight, edge-ready multimodal deployments.",
-        "https://arxiv.org/abs/2505.04601",
-        null
-        )
-
+        
         add_paper("Knowledge or Reasoning? A Close Look at How LLMs Think Across Domains",
           "Juncheng Wu, Sheng Liu, Haoqin Tu, Hang Yu, Xiaoke Huang, James Zou, Cihang Xie, Yuyin Zhou",
           null,
@@ -251,19 +236,7 @@ function copy(dest, source) {
           "https://github.com/UCSC-VLAA/Complex-Edit"
         )
 
-        add_paper("MedSegFactory: Text-Guided Generation of Medical Image-Mask Pairs",
-          "Jiawei Mao, Yuhan Wang, Yucheng Tang, Daguang Xu, Kang Wang, Yang Yang, Zongwei Zhou, Yuyin Zhou",
-          null,
-          "https://arxiv.org/abs/2504.06897", 
-          "@article{mao2025medsegfactory,<br>" +
-          "&nbsp;&nbsp;&nbsp;title   = {MedSegFactory: Text-Guided Generation of Medical Image-Mask Pairs},<br>" +
-          "&nbsp;&nbsp;&nbsp;author  = {Jiawei Mao, Yuhan Wang, Yucheng Tang, Daguang Xu, Kang Wang, Yang Yang, Zongwei Zhou, Yuyin Zhou},<br>" +
-          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2504.06897},<br>" + 
-          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
-          "This paper presents MedSegFactory, a versatile medical synthesis framework that generates high-quality paired medical images and segmentation masks across modalities and tasks. It aims to serve as an unlimited data repository, supplying image-mask pairs to enhance existing segmentation tools. The core of MedSegFactory is a dual-stream diffusion model, where one stream synthesizes medical images and the other generates corresponding segmentation masks. To ensure precise alignment between image-mask pairs, we introduce Joint Cross-Attention (JCA), enabling a collaborative denoising paradigm by dynamic cross-conditioning between streams. This bidirectional interaction allows both representations to guide each other's generation, enhancing consistency between generated pairs. MedSegFactory unlocks on-demand generation of paired medical images and segmentation masks through user-defined prompts that specify the target labels, imaging modalities, anatomical regions, and pathological conditions, facilitating scalable and high-quality data generation. This new paradigm of medical image synthesis enables seamless integration into diverse medical imaging workflows, enhancing both efficiency and accuracy. Extensive experiments show that MedSegFactory generates data of superior quality and usability, achieving competitive or state-of-the-art performance in 2D and 3D segmentation tasks while addressing data scarcity and regulatory constraints.",
-          "https://arxiv.org/abs/2504.06897",
-          "https://github.com/jwmao1/MedSegFactory"
-        )
+        
 
         add_paper("A Comprehensive Analysis of Mamba for 3D Volumetric Medical Image Segmentation",
           "Chaohan Wang, Yutong Xie, Qi Chen, Yuyin Zhou, Qi Wu",
@@ -535,19 +508,7 @@ function copy(dest, source) {
 
         
 
-        add_paper("VideoLLaMB: Long-context Video Understanding with Recurrent Memory Bridges",
-          "Yuxuan Wang, Cihang Xie, Yang Liu, Zilong Zheng",
-          null,
-          "https://arxiv.org/abs/2409.01071",
-          "@article{wang2024videollamb,<br>" +
-          "&nbsp;&nbsp;&nbsp;title   = {VideoLLaMB: Long-context Video Understanding with Recurrent Memory Bridges},<br>" +
-          "&nbsp;&nbsp;&nbsp;author  = {Yuxuan Wang, Cihang Xie, Yang Liu, Zilong Zheng},<br>" +
-          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2409.01071},<br>" +
-          "&nbsp;&nbsp;&nbsp;year    = {2024},<br>}",
-          "Recent advancements in large-scale video-language models have shown significant potential for real-time planning and detailed interactions. However, their high computational demands and the scarcity of annotated datasets limit their practicality for academic researchers. In this work, we introduce VideoLLaMB, a novel framework that utilizes temporal memory tokens within bridge layers to allow for the encoding of entire video sequences alongside historical visual data, effectively preserving semantic continuity and enhancing model performance across various tasks. This approach includes recurrent memory tokens and a SceneTilling algorithm, which segments videos into independent semantic units to preserve semantic integrity. Empirically, VideoLLaMB significantly outstrips existing video-language models, demonstrating a 5.5 points improvement over its competitors across three VideoQA benchmarks, and 2.06 points on egocentric planning. Comprehensive results on the MVBench show that VideoLLaMB-7B achieves markedly better results than previous 7B models of same LLM. Remarkably, it maintains robust performance as PLLaVA even as video length increases up to 8 times. Besides, the frame retrieval results on our specialized Needle in a Video Haystack (NIAVH) benchmark, further validate VideoLLaMB's prowess in accurately identifying specific frames within lengthy videos. Our SceneTilling algorithm also enables the generation of streaming video captions directly, without necessitating additional training. In terms of efficiency, VideoLLaMB, trained on 16 frames, supports up to 320 frames on a single Nvidia A100 GPU with linear GPU memory scaling, ensuring both high performance and cost-effectiveness, thereby setting a new foundation for long-form video-language models in both academic and practical applications.",
-          "https://arxiv.org/abs/2409.01071",
-          "https://videollamb.github.io/"
-          )
+        
 
 
 
@@ -856,6 +817,70 @@ function copy(dest, source) {
         document.write("</ul><br>")
         document.write("<h1>2025</h1>")
         document.write("<ul>")
+
+
+        add_paper(
+        "Openvision: A fully-open, cost-effective family of advanced vision encoders for multimodal learning",
+        "Xianhang Li, Yanqing Liu, Haoqin Tu, Hongru Zhu, Cihang Xie",
+        "ICCV, 2025",
+        "https://arxiv.org/abs/2505.04601",
+        "@inproceedings{li2025openvision,<br>" +
+        "&nbsp;&nbsp;&nbsp;title     = {Openvision: A fully-open, cost-effective family of advanced vision encoders for multimodal learning},<br>" +
+        "&nbsp;&nbsp;&nbsp;author    = {Xianhang Li and Yanqing Liu and Haoqin Tu and Hongru Zhu and Cihang Xie},<br>" +
+        "&nbsp;&nbsp;&nbsp;booktitle = {ICCV},<br>" +
+        "&nbsp;&nbsp;&nbsp;year      = {2025},<br>" +
+        "}",
+        "OpenAI's CLIP, released in early 2021, have long been the go-to choice of vision encoder for building multimodal foundation models. Although recent alternatives such as SigLIP have begun to challenge this status quo, to our knowledge none are fully open: their training data remains proprietary and/or their training recipes are not released. This paper fills this gap with OpenVision, a fully-open, cost-effective family of vision encoders that match or surpass the performance of OpenAI's CLIP when integrated into multimodal frameworks like LLaVA. OpenVision builds on existing works -- e.g., CLIPS for training framework and Recap-DataComp-1B for training data -- while revealing multiple key insights in enhancing encoder quality and showcasing practical benefits in advancing multimodal models. By releasing vision encoders spanning from 5.9M to 632.1M parameters, OpenVision offers practitioners a flexible trade-off between capacity and efficiency in building multimodal models: larger models deliver enhanced multimodal performance, while smaller versions enable lightweight, edge-ready multimodal deployments.",
+        "https://arxiv.org/abs/2505.04601",
+        "https://ucsc-vlaa.github.io/OpenVision/"
+        )
+
+
+        add_paper("MedSegFactory: Text-Guided Generation of Medical Image-Mask Pairs",
+          "Jiawei Mao, Yuhan Wang, Yucheng Tang, Daguang Xu, Kang Wang, Yang Yang, Zongwei Zhou, Yuyin Zhou",
+          "ICCV, 2025",
+          "https://arxiv.org/abs/2504.06897", 
+          "@inproceedings{mao2025medsegfactory,<br>" +
+          "&nbsp;&nbsp;&nbsp;title     = {MedSegFactory: Text-Guided Generation of Medical Image-Mask Pairs},<br>" +
+          "&nbsp;&nbsp;&nbsp;author    = {Jiawei Mao, Yuhan Wang, Yucheng Tang, Daguang Xu, Kang Wang, Yang Yang, Zongwei Zhou, Yuyin Zhou},<br>" +
+          "&nbsp;&nbsp;&nbsp;booktitle = {ICCV},<br>" +
+          "&nbsp;&nbsp;&nbsp;year      = {2025},<br>}",
+          "This paper presents MedSegFactory, a versatile medical synthesis framework that generates high-quality paired medical images and segmentation masks across modalities and tasks. It aims to serve as an unlimited data repository, supplying image-mask pairs to enhance existing segmentation tools. The core of MedSegFactory is a dual-stream diffusion model, where one stream synthesizes medical images and the other generates corresponding segmentation masks. To ensure precise alignment between image-mask pairs, we introduce Joint Cross-Attention (JCA), enabling a collaborative denoising paradigm by dynamic cross-conditioning between streams. This bidirectional interaction allows both representations to guide each other's generation, enhancing consistency between generated pairs. MedSegFactory unlocks on-demand generation of paired medical images and segmentation masks through user-defined prompts that specify the target labels, imaging modalities, anatomical regions, and pathological conditions, facilitating scalable and high-quality data generation. This new paradigm of medical image synthesis enables seamless integration into diverse medical imaging workflows, enhancing both efficiency and accuracy. Extensive experiments show that MedSegFactory generates data of superior quality and usability, achieving competitive or state-of-the-art performance in 2D and 3D segmentation tasks while addressing data scarcity and regulatory constraints.",
+          "https://arxiv.org/abs/2504.06897",
+          "https://github.com/jwmao1/MedSegFactory"
+        )
+
+
+        add_paper(
+        "Agent-free Breast Cancer Diagnosis and Prognosis via Latent Diffusion Enhancement",
+        "Yuhan Wang, Luyang Luo, Yuyin Zhou",
+        "ICCV, 2025",
+        null,
+        "@inproceedings{wang2025agentfreebreastcancer,<br>" +
+        "&nbsp;&nbsp;&nbsp;title     = {Agent-free Breast Cancer Diagnosis and Prognosis via Latent Diffusion Enhancement},<br>" +
+        "&nbsp;&nbsp;&nbsp;author    = {Yuhan Wang and Luyang Luo and Yuyin Zhou},<br>" +
+        "&nbsp;&nbsp;&nbsp;booktitle = {ICCV},<br>" +
+        "&nbsp;&nbsp;&nbsp;year      = {2025},<br>" +
+        "}",
+        "Dynamic contrast-enhanced MRI (DCE-MRI) is crucial for breast cancer diagnosis, offering detailed insights into tumor vascular characteristics and enhancement kinetics. However, gadolinium-based contrast agents can introduce significant health risks, prompting the need for alternative enhancement solutions. To address this, we introduce 3D MedEnhancer, a latent diffusion-based framework tailored for synthesizing multi-phase DCE-MRI volumes from non-contrast T1-weighted images. Our approach employs a 3D Variational Autoencoder (VAE) and a U-shaped Diffusion Transformer (U-DiT) to capture both high-fidelity anatomical details and global spatial coherence. Extensive multi-institutional validation demonstrates notable performance gains across key breast cancer analysis tasks: for tumor segmentation, our synthetic data yield an improvement of roughly 8% compared to pre-contrast-only scans, nearly bridging the gap to real DCE-MRI. HER2 receptor status classification sees accuracy boosts of over 17%, while molecular subtype classification achieves gains of over 27%. Meanwhile, pathological complete response (PCR) prediction benefits from approximately a 5% improvement. Collectively, these advances underscore 3D MedEnhancer’s capacity to reduce reliance on gadolinium-based contrast agents while preserving diagnostic performance that closely approximates real contrast-enhanced imaging, thus offering a safer and more efficient pathway for breast cancer evaluation.",
+        null
+        )
+
+
+        add_paper("VideoLLaMB: Long-context Video Understanding with Recurrent Memory Bridges",
+          "Yuxuan Wang, Cihang Xie, Yang Liu, Zilong Zheng",
+          "ICCV, 2025",
+          "https://arxiv.org/abs/2409.01071",
+          "@inproceedings{wang2024videollamb,<br>" +
+          "&nbsp;&nbsp;&nbsp;title     = {VideoLLaMB: Long-context Video Understanding with Recurrent Memory Bridges},<br>" +
+          "&nbsp;&nbsp;&nbsp;author    = {Yuxuan Wang, Cihang Xie, Yang Liu, Zilong Zheng},<br>" +
+          "&nbsp;&nbsp;&nbsp;booktitle = {ICCV},<br>" +
+          "&nbsp;&nbsp;&nbsp;year      = {2024},<br>}",
+          "Recent advancements in large-scale video-language models have shown significant potential for real-time planning and detailed interactions. However, their high computational demands and the scarcity of annotated datasets limit their practicality for academic researchers. In this work, we introduce VideoLLaMB, a novel framework that utilizes temporal memory tokens within bridge layers to allow for the encoding of entire video sequences alongside historical visual data, effectively preserving semantic continuity and enhancing model performance across various tasks. This approach includes recurrent memory tokens and a SceneTilling algorithm, which segments videos into independent semantic units to preserve semantic integrity. Empirically, VideoLLaMB significantly outstrips existing video-language models, demonstrating a 5.5 points improvement over its competitors across three VideoQA benchmarks, and 2.06 points on egocentric planning. Comprehensive results on the MVBench show that VideoLLaMB-7B achieves markedly better results than previous 7B models of same LLM. Remarkably, it maintains robust performance as PLLaVA even as video length increases up to 8 times. Besides, the frame retrieval results on our specialized Needle in a Video Haystack (NIAVH) benchmark, further validate VideoLLaMB's prowess in accurately identifying specific frames within lengthy videos. Our SceneTilling algorithm also enables the generation of streaming video captions directly, without necessitating additional training. In terms of efficiency, VideoLLaMB, trained on 16 frames, supports up to 320 frames on a single Nvidia A100 GPU with linear GPU memory scaling, ensuring both high performance and cost-effectiveness, thereby setting a new foundation for long-form video-language models in both academic and practical applications.",
+          "https://arxiv.org/abs/2409.01071",
+          "https://videollamb.github.io/"
+          )
+
 
 
         add_paper("What If We Recaption Billions of Web Images with LLaMA-3",
