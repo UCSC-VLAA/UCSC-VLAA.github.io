@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="GPT-IMAGE-EDIT-1.5M: A Million-Scale, GPT-Generated Image Dataset">
+    <meta name="keywords" content="GPT-IMAGE-EDIT, Image Editing, Benchmark, GPT">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GPT-IMAGE-EDIT-1.5M</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-ABCDEFGHIJ"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-ABCDEFGHIJ');
+    </script> -->
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" href="./static/images/UCSC_icon.png">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+
+    <!-- MathJax -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+    </nav>
+
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-widescreen has-text-centered">
+                <h1 class="title is-1 publication-title">
+                    <!-- use monospaced font. simluate texttt in latex -->
+                    <span class="is-family-code">Complex-Edit</span>
+                </h1>
+                <h1 class="title is-3 publication-title">
+                    GPT-IMAGE-EDIT-1.5M A Million-Scale, GPT-Generated Image Dataset
+                </h1>
+                <div class="is-size-5 publication-authors">
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+                            <!-- PDF Link. -->
+                            <!-- <span class="link-block">
+                                <a href="https://arxiv.org/abs/2504.13143"
+                                    class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="fas fa-file-pdf"></i>
+                                    </span>
+                                    <span>Paper</span>
+                                </a>
+                            </span> -->
+                            <span class="link-block">
+                                <a href="https://arxiv.org/"
+                                    class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <!-- <i class="ai ai-arxiv"></i> -->
+                                        <img src="static/images/ar.svg" alt="arXiv Icon" style="height: 70%">
+                                    </span>
+                                    <span>arXiv</span>
+                                </a>
+                            </span>
+                            <!-- Code Link. -->
+                            <span class="link-block">
+                                <a href="https://github.com/wyhlovecpp/GPT-Image-Edit/tree/main"
+                                    class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <i class="fab fa-github"></i>
+                                    </span>
+                                    <span>Code</span>
+                                </a>
+                            </span>
+                            <!-- Dataset Link. -->
+                            <span class="link-block">
+                                <a href="https://huggingface.co/datasets/UCSC-VLAA/GPT-Image-Edit-1.5M"
+                                    class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon">
+                                        <!-- <i class="far fa-images"></i> -->
+                                        <img src="static/images/hg.svg" alt="Huggingface Icon" style="height: 70%">
+                                    </span>
+                                    <span>Dataset</span>
+                                </a>
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <section class="hero teaser">
+        <div class="container is-max-widescreen">
+            <div class="hero-body">
+                <img id="teaser-image" src="./static/images/teaser.png" alt="teaser image" width="100%">
+                <h2 class="subtitle has-text-centered">
+                    An illustration of our <span class="is-family-code">GPT-Image-Edit-1.5M</span> Dataset.
+                </h2>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-widescreen">
+            <!-- Abstract. -->
+            <div class="title is-1 has-text-centered">Abstract</div>
+            <div class="content has-text-justified">
+                <p>
+                    
+                    We systematically construct this dataset by leveraging the versatile capabilities of GPT-4o to unify and refine three popular image-editing datasets: OmniEdit, HQ- Edit, and UltraEdit. Specifically, our methodology involves 1. regenerating output images to enhance visual quality and instruction alignment, and 2. selectively rewriting prompts to improve semantic clarity. To validate the efficacy of our dataset, we fine advanced open-source models on GPT-IMAGE-EDIT-1.5M. The empirical results are exciting — e.g., the fine-tuned FluxKontext achieves highly competitive performance across a comprehensive suite of benchmarks, including 7.24@GEdit-EN, 3.80@ImgEdit-Full, and 8.78@Complex-Edit, showing stronger instruction following and higher perceptual quality while maintaining identity . These scores markedly exceed all previously published open-source methods and substantially narrow the gap to leading proprietary models. We hope the full release of GPT-IMAGE-EDIT-1.5M can help to catalyze further open re- search in instruction-guided image editing.
+                </p>
+            </div>
+            <!--/ Abstract. -->
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="title is-1 has-text-centered">Dataset</div>
+        <div class="container is-fullhd">
+            <img id="data-pipeline" src="./static/images/pipeline.png" alt="data pipeline" width="100%">
+            <div class="container is-max-widescreen has-text-centered">
+                <div class="block">
+                    <b>An overview of our data generation pipeline.</b>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="section">
+        <div class="title is-1 has-text-centered">Evaluation</div>
+
+        <div class="container is-fullhd">
+            <div class="title is-3">Re-Edit with GPT-Image-1</div>
+            <p class="has-text-justified">
+            </p>
+            <img id="instruction_following" src="" alt="placeholder" width="100%">
+            <div class="block"></div>
+
+            <div class="title is-3">Instruction Re-writing with GPT-4o</div>
+            <p class="has-text-justified">
+            </p>
+            <img id="identity_preservation" src="" alt="placeholder" width="100%">
+            <div class="block"></div>
+
+
+            <div class="title is-3">Dataset Specific Processes</div>
+            <p class="has-text-justified">
+            </p>
+            <img id="perceptual_quality" src="" alt="placeholder" width="100%">
+        </div>
+
+
+        <div class="block"></div>
+
+
+<!--         <div class="container is-fullhd">
+            <div class="title is-2">Evaluation Examples</div>
+            <img id="alignment" src="./static/images/alignment.png" alt="if id" width="100%">
+            <div class="container is-max-widescreen has-text-centered">
+                <div class="block">
+                    <b>Figure 2.</b> Example evaluation results for <b>Instruction Following</b> and <b>Identity Preservation</b>.
+                </div>
+            </div>
+
+            <div class="block"></div>
+
+            <img id="quality" src="./static/images/quality.png" alt="if id" width="100%">
+            <div class="container is-max-widescreen has-text-centered">
+                <div class="block">
+                    <b>Figure 3.</b> Example evaluation results for <b>Perceptual Quality</b>.
+                </div>
+            </div>
+
+        </div>
+
+        </div>
+    </section>
+ -->
+
+    <section class="section">
+        <div class="title is-1 has-text-centered">Results</div>
+        <!-- Main. -->
+        <div class="container is-fullhd">
+            <div class="title is-3">Img-Edit-EN</div>
+
+            <center>
+                <img src="static/images/vis-img-edit.png" width="80%">
+            </center>
+
+            <div class="container is-max-widescreen has-text-justified">
+                <div class="block">
+                <center>
+                    <b>Qualitative results with Img-Edit-EN.</b>
+                </center>
+                </div>
+            </div>
+            <div class="block"></div>
+
+            <div class="container is-max-widescreen has-text-justified">
+                <div class="block">
+                    
+                     <!-- (\( \text{Err}_\text{min} \), \( \text{G}_\text{min} \)),  -->
+                </div>
+            </div>
+
+            <div class="block"></div>
+        </div>
+        <!--/ Main. -->
+
+        <div class="block"></div>
+
+        <div class="container is-fullhd">
+            <div class="title is-3">G-Edit</div>
+
+            <center>
+                <img src="static/images/vis-g-edit.png" width="80%">
+            </center>
+
+            <div class="container is-max-widescreen has-text-justified">
+                <div class="block">
+                <center>
+                    <b>Qualitative results with G-Edit.</b>
+                </center>
+                </div>
+            </div>
+            <div class="block"></div>
+
+            <div class="container is-max-widescreen has-text-justified">
+                <div class="block">
+                     <!-- (\( \text{Err}_\text{min} \), \( \text{G}_\text{min} \)),  -->
+                </div>
+            </div>
+
+            <div class="block"></div>
+        </div>
+
+        <div class="block"></div>
+
+    </section>
+
+    <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <h2 class="title">BibTeX</h2>
+            <pre><code>@misc{yang2025textttcomplexeditcotlikeinstructiongeneration,
+    title={$\texttt{Complex-Edit}$: CoT-Like Instruction Generation for Complexity-Controllable Image Editing Benchmark}, 
+    author={Siwei Yang and Mude Hui and Bingchen Zhao and Yuyin Zhou and Nataniel Ruiz and Cihang Xie},
+    year={2025},
+    eprint={2504.13143},
+    archivePrefix={arXiv},
+    primaryClass={cs.CV},
+    url={https://arxiv.org/abs/2504.13143}, 
+}</code></pre>
+        </div>
+    </section>
+
+
+    <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <h2 class="title">Acknowledge</h2>
+            We would like to thank Google Cloud Research Credits Program, and the Microsoft Accelerate Foundation Models Research Program for supporting our computing needs.
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container is-small">
+            <div class="content has-text-centered">
+                <a class="icon-link" href="https://arxiv.org/abs/">
+                    <i class="fas fa-file-pdf"></i>
+                </a>
+            </div>
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="content">
+                        <p>
+                            This website is licensed under a <a rel="license"
+                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                                Commons Attribution-ShareAlike 4.0 International License</a>.
+                        </p>
+                        <p>
+                            The template is modified based on <a href="https://github.com/nerfies/nerfies.github.io">this</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
