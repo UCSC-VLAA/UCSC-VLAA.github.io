@@ -120,7 +120,7 @@
     <section class="hero teaser">
         <div class="container is-max-widescreen">
             <div class="hero-body">
-                <img id="teaser-image" src="./static/images/teaser.png" alt="teaser image" width="100%">
+                <img id="teaser-image" src="./static/images/GPT-Edit_teaser_image-cropped.png" alt="teaser image" width="100%">
                 <h2 class="subtitle has-text-centered">
                     An illustration of our <span class="is-family-code">GPT-Image-Edit-1.5M</span> Dataset.
                 </h2>
@@ -134,7 +134,6 @@
             <div class="title is-1 has-text-centered">Abstract</div>
             <div class="content has-text-justified">
                 <p>
-                    
                     We systematically construct this dataset by leveraging the versatile capabilities of GPT-4o to unify and refine three popular image-editing datasets: OmniEdit, HQ- Edit, and UltraEdit. Specifically, our methodology involves 1. regenerating output images to enhance visual quality and instruction alignment, and 2. selectively rewriting prompts to improve semantic clarity. To validate the efficacy of our dataset, we fine advanced open-source models on GPT-IMAGE-EDIT-1.5M. The empirical results are exciting — e.g., the fine-tuned FluxKontext achieves highly competitive performance across a comprehensive suite of benchmarks, including 7.24@GEdit-EN, 3.80@ImgEdit-Full, and 8.78@Complex-Edit, showing stronger instruction following and higher perceptual quality while maintaining identity . These scores markedly exceed all previously published open-source methods and substantially narrow the gap to leading proprietary models. We hope the full release of GPT-IMAGE-EDIT-1.5M can help to catalyze further open re- search in instruction-guided image editing.
                 </p>
             </div>
@@ -145,7 +144,9 @@
     <section class="section">
         <div class="title is-1 has-text-centered">Dataset</div>
         <div class="container is-fullhd">
-            <img id="data-pipeline" src="./static/images/pipeline.png" alt="data pipeline" width="100%">
+            <center>
+                <img id="data-pipeline" src="./static/images/GPT-Edit_data_curation_pipeline-cropped.png" alt="data pipeline" width="80%">
+            </center>
             <div class="container is-max-widescreen has-text-centered">
                 <div class="block">
                     <b>An overview of our data generation pipeline.</b>
@@ -154,57 +155,6 @@
         </div>
 
     </section>
-
-    <section class="section">
-        <div class="title is-1 has-text-centered">Evaluation</div>
-
-        <div class="container is-fullhd">
-            <div class="title is-3">Re-Edit with GPT-Image-1</div>
-            <p class="has-text-justified">
-            </p>
-            <img id="instruction_following" src="" alt="placeholder" width="100%">
-            <div class="block"></div>
-
-            <div class="title is-3">Instruction Re-writing with GPT-4o</div>
-            <p class="has-text-justified">
-            </p>
-            <img id="identity_preservation" src="" alt="placeholder" width="100%">
-            <div class="block"></div>
-
-
-            <div class="title is-3">Dataset Specific Processes</div>
-            <p class="has-text-justified">
-            </p>
-            <img id="perceptual_quality" src="" alt="placeholder" width="100%">
-        </div>
-
-
-        <div class="block"></div>
-
-
-<!--         <div class="container is-fullhd">
-            <div class="title is-2">Evaluation Examples</div>
-            <img id="alignment" src="./static/images/alignment.png" alt="if id" width="100%">
-            <div class="container is-max-widescreen has-text-centered">
-                <div class="block">
-                    <b>Figure 2.</b> Example evaluation results for <b>Instruction Following</b> and <b>Identity Preservation</b>.
-                </div>
-            </div>
-
-            <div class="block"></div>
-
-            <img id="quality" src="./static/images/quality.png" alt="if id" width="100%">
-            <div class="container is-max-widescreen has-text-centered">
-                <div class="block">
-                    <b>Figure 3.</b> Example evaluation results for <b>Perceptual Quality</b>.
-                </div>
-            </div>
-
-        </div>
-
-        </div>
-    </section>
- -->
 
     <section class="section">
         <div class="title is-1 has-text-centered">Results</div>
