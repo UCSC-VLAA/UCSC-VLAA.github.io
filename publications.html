@@ -179,6 +179,95 @@ function copy(dest, source) {
         // document.write("<h2>Preprint</h2>")
         document.write("<ul><br>")
 
+
+        add_paper("GPT-IMAGE-EDIT-1.5M: A Million-Scale, GPT-Generated Image Dataset",
+          "Yuhan Wang, Siwei Yang, Bingchen Zhao, Letian Zhang, Qing Liu, Yuyin Zhou, Cihang Xie",
+          null,
+          "https://arxiv.org/abs/2507.21033", 
+          "@article{wang2025gptimageedit,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {GPT-IMAGE-EDIT-1.5M: A Million-Scale, GPT-Generated Image Dataset},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Yuhan Wang, Siwei Yang, Bingchen Zhao, Letian Zhang, Qing Liu, Yuyin Zhou, Cihang Xie},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2507.21033},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
+          "Recent advancements in large multimodal models like GPT-4o have set a new standard for high-fidelity, instruction-guided image editing. However, the proprietary nature of these models and their training data creates a significant barrier for open-source research. To bridge this gap, we introduce GPT-IMAGE-EDIT-1.5M, a publicly available, large-scale image-editing corpus containing more than 1.5 million high-quality triplets (instruction, source image, edited image). We systematically construct this dataset by leveraging the versatile capabilities of GPT-4o to unify and refine three popular image-editing datasets: OmniEdit, HQ-Edit, and UltraEdit. Specifically, our methodology involves (1) regenerating output images to enhance visual quality and instruction alignment, and (2) selectively rewriting prompts to improve semantic clarity. To validate the efficacy of our dataset, we fine-tune advanced open-source models on GPT-IMAGE-EDIT-1.5M. The empirical results are exciting, e.g., the fine-tuned FluxKontext achieves highly competitive performance across a comprehensive suite of benchmarks, including 7.24 on GEdit-EN, 3.80 on ImgEdit-Full, and 8.78 on Complex-Edit, showing stronger instruction following and higher perceptual quality while maintaining identity. These scores markedly exceed all previously published open-source methods and substantially narrow the gap to leading proprietary models. We hope the full release of GPT-IMAGE-EDIT-1.5M can help to catalyze further open research in instruction-guided image editing.",
+          "https://arxiv.org/abs/2507.21033",
+          "https://ucsc-vlaa.github.io/GPT-Image-Edit/"
+        )
+
+
+        add_paper("MedVLThinker: Simple Baselines for Multimodal Medical Reasoning",
+          "Xiaoke Huang, Juncheng Wu, Hui Liu, Xianfeng Tang, Yuyin Zhou",
+          null,
+          "https://arxiv.org/abs/2508.02669", 
+          "@article{huang2025medvlthinker,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {MedVLThinker: Simple Baselines for Multimodal Medical Reasoning},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Xiaoke Huang, Juncheng Wu, Hui Liu, Xianfeng Tang, Yuyin Zhou},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2508.02669},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
+          "Large Reasoning Models (LRMs) have introduced a new paradigm in AI by enabling models to \"think before responding\" via chain-of-thought reasoning. However, the absence of open and reproducible recipes for building reasoning-centric medical LMMs hinders community-wide research, analysis, and comparison. In this paper, we present MedVLThinker, a suite of simple yet strong baselines. Our fully open recipe consists of: (1) systematic data curation for both text-only and image-text medical data, filtered according to varying levels of reasoning difficulty, and (2) two training paradigms: Supervised Fine-Tuning (SFT) on distilled reasoning traces and Reinforcement Learning with Verifiable Rewards (RLVR) based on final answer correctness. Across extensive experiments on the Qwen2.5-VL model family (3B, 7B) and six medical QA benchmarks, we find that RLVR consistently and significantly outperforms SFT. Additionally, under the RLVR framework, a key, counter-intuitive finding is that training on our curated text-only reasoning data provides a more substantial performance boost than training on multimodal image-text data. Our best open 7B model, trained using the RLVR recipe on text-only data, establishes a new state-of-the-art on existing public VQA benchmarks, surpassing all previous open-source medical LMMs. Furthermore, scaling our model to 32B achieves performance on par with the proprietary GPT-4o. We release all curated data, models, and code to provide the community with a strong, open foundation for future research in multimodal medical reasoning.",
+          "https://arxiv.org/abs/2508.02669",
+          "https://ucsc-vlaa.github.io/MedVLThinker/"
+        )
+
+        add_paper("FedVLMBench: Benchmarking Federated Fine-Tuning of Vision-Language Models",
+          "Weiying Zheng, Ziyue Lin, Pengxin Guo, Yuyin Zhou, Feifei Wang, Liangqiong Qu",
+          null,
+          "https://arxiv.org/abs/2506.09638", 
+          "@article{zheng2025fedvlmbench,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {FedVLMBench: Benchmarking Federated Fine-Tuning of Vision-Language Models},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Weiying Zheng, Ziyue Lin, Pengxin Guo, Yuyin Zhou, Feifei Wang, Liangqiong Qu},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2506.09638},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
+          "Vision-Language Models (VLMs) have demonstrated remarkable capabilities in cross-modal understanding and generation by integrating visual and textual information. While instruction tuning and parameter-efficient fine-tuning methods have substantially improved the generalization of VLMs, most existing approaches rely on centralized training, posing challenges for deployment in domains with strict privacy requirements like healthcare. Recent efforts have introduced Federated Learning (FL) into VLM fine-tuning to address these privacy concerns, yet comprehensive benchmarks for evaluating federated fine-tuning strategies, model architectures, and task generalization remain lacking. In this work, we present FedVLMBench, the first systematic benchmark for federated fine-tuning of VLMs. FedVLMBench integrates two mainstream VLM architectures (encoder-based and encoder-free), four fine-tuning strategies, five FL algorithms, six multimodal datasets spanning four cross-domain single-task scenarios and two cross-domain multitask settings, covering four distinct downstream task categories. Through extensive experiments, we uncover key insights into the interplay between VLM architectures, fine-tuning strategies, data heterogeneity, and multi-task federated optimization. Notably, we find that a 2-layer multilayer perceptron (MLP) connector with concurrent connector and LLM tuning emerges as the optimal configuration for encoder-based VLMs in FL. Furthermore, current FL methods exhibit significantly higher sensitivity to data heterogeneity in vision-centric tasks than text-centric ones, across both encoder-free and encoder-based VLM architectures. Our benchmark provides essential tools, datasets, and empirical guidance for the research community, offering a standardized platform to advance privacy-preserving, federated training of multimodal foundation models.",
+          "https://arxiv.org/abs/2506.09638",
+          "https://github.com/Arise-zwy/FedVLMBench"
+        )
+
+        add_paper("Enhancing Clinical Multiple-Choice Questions Benchmarks with Knowledge Graph Guided Distractor Generation",
+          "Running Yang, Wenlong Deng, Minghui Chen, Yuyin Zhou, Xiaoxiao Li",
+          null,
+          "https://arxiv.org/abs/2506.00612", 
+          "@article{yang2025kggdg,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {Enhancing Clinical Multiple-Choice Questions Benchmarks with Knowledge Graph Guided Distractor Generation},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Running Yang, Wenlong Deng, Minghui Chen, Yuyin Zhou, Xiaoxiao Li},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2506.00612},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
+          "Clinical tasks such as diagnosis and treatment require strong decision-making abilities, highlighting the importance of rigorous evaluation benchmarks to assess the reliability of large language models (LLMs). In this work, we introduce a knowledge-guided data augmentation framework that enhances the difficulty of clinical multiple-choice question (MCQ) datasets by generating distractors (i.e., incorrect choices that are similar to the correct one and may confuse existing LLMs). Using our KG-based pipeline, the generated choices are both clinically plausible and deliberately misleading. Our approach involves multi-step, semantically informed walks on a medical knowledge graph to identify distractor paths—associations that are medically relevant but factually incorrect—which then guide the LLM in crafting more deceptive distractors. We apply the designed knowledge graph guided distractor generation (KGGDG) pipeline to six widely used medical QA benchmarks and show that it consistently reduces the accuracy of state-of-the-art LLMs. These findings establish KGGDG as a powerful tool for enabling more robust and diagnostic evaluations of medical LLMs.",
+          "https://arxiv.org/abs/2506.00612",
+          "https://github.com/ryyrn/Knowledge_Graph_Guided_Distractor_Generation"
+        )
+
+        add_paper("ATR-Bench: A Federated Learning Benchmark for Adaptation, Trust, and Reasoning",
+          "Tajamul Ashraf, Mohammed Mohsen Peerzada, Moloud Abdar, Yutong Xie, Yuyin Zhou, Xiaofeng Liu, Iqra Altaf Gillani, Janibul Bashir",
+          null,
+          "https://arxiv.org/abs/2505.16850", 
+          "@article{ashraf2025atrbench,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {ATR-Bench: A Federated Learning Benchmark for Adaptation, Trust, and Reasoning},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Tajamul Ashraf, Mohammed Mohsen Peerzada, Moloud Abdar, Yutong Xie, Yuyin Zhou, Xiaofeng Liu, Iqra Altaf Gillani, Janibul Bashir},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2505.16850},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
+          "Federated Learning (FL) has emerged as a promising paradigm for collaborative model training while preserving data privacy across decentralized participants. As FL adoption grows, numerous techniques have been proposed to tackle its practical challenges. However, the lack of standardized evaluation across key dimensions hampers systematic progress and fair comparison of FL methods. In this work, we introduce ATR-Bench, a unified framework for analyzing federated learning through three foundational dimensions: Adaptation, Trust, and Reasoning. We provide an in-depth examination of the conceptual foundations, task formulations, and open research challenges associated with each theme. We have extensively benchmarked representative methods and datasets for adaptation to heterogeneous clients and trustworthiness in adversarial or unreliable environments. Due to the lack of reliable metrics and models for reasoning in FL, we only provide literature-driven insights for this dimension. ATR-Bench lays the groundwork for a systematic and holistic evaluation of federated learning with real-world relevance. We will make our complete codebase publicly accessible and a curated repository that continuously tracks new developments and research in the FL literature.",
+          "https://arxiv.org/abs/2505.16850",
+          "https://github.com/Tajamul21/ATR-Bench"
+        )
+
+
+        add_paper("Harnessing EHRs for Diffusion-based Anomaly Detection on Chest X-rays",
+          "Harim Kim, Yuhan Wang, Minkyu Ahn, Heeyoul Choi, Yuyin Zhou, Charmgil Hong",
+          null,
+          "https://arxiv.org/abs/2505.17311", 
+          "@article{kim2025diff3m,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {Harnessing EHRs for Diffusion-based Anomaly Detection on Chest X-rays},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Harim Kim, Yuhan Wang, Minkyu Ahn, Heeyoul Choi, Yuyin Zhou, Charmgil Hong},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2505.17311},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
+          "Unsupervised anomaly detection (UAD) in medical imaging is crucial for identifying pathological abnormalities without requiring extensive labeled data. However, existing diffusion-based UAD models rely solely on imaging features, limiting their ability to distinguish between normal anatomical variations and pathological anomalies. To address this, we propose Diff3M, a multi-modal diffusion-based framework that integrates chest X-rays and structured Electronic Health Records (EHRs) for enhanced anomaly detection. Specifically, we introduce a novel image-EHR cross-attention module to incorporate structured clinical context into the image generation process, improving the model's ability to differentiate normal from abnormal features. Additionally, we develop a static masking strategy to enhance the reconstruction of normal-like images from anomalies. Extensive evaluations on CheXpert and MIMIC-CXR/IV demonstrate that Diff3M achieves state-of-the-art performance, outperforming existing UAD methods in medical imaging. Our code is available at: https://github.com/nth221/Diff3M",
+          "https://arxiv.org/abs/2505.17311",
+          "https://github.com/nth221/Diff3M"
+        )
+
+
+
         
         add_paper("Knowledge or Reasoning? A Close Look at How LLMs Think Across Domains",
           "Juncheng Wu, Sheng Liu, Haoqin Tu, Hang Yu, Xiaoke Huang, James Zou, Cihang Xie, Yuyin Zhou",
@@ -252,19 +341,6 @@ function copy(dest, source) {
           "https://arxiv.org/abs/2503.19308"
         )
 
-        add_paper("ViLBench: A Suite for Vision-Language Process Reward Modeling",
-          "Haoqin Tu, Weitao Feng, Hardy Chen, Hui Liu, Xianfeng Tang, Cihang Xie",
-          null,
-          "https://arxiv.org/abs/2503.20271", 
-          "@article{tu2025vilbench,<br>" +
-          "&nbsp;&nbsp;&nbsp;title   = {ViLBench: A Suite for Vision-Language Process Reward Modeling},<br>" +
-          "&nbsp;&nbsp;&nbsp;author  = {Haoqin Tu, Weitao Feng, Hardy Chen, Hui Liu, Xianfeng Tang, Cihang Xie},<br>" +
-          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2503.20271},<br>" + 
-          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
-          "Process-supervised reward models serve as a fine-grained function that provides detailed step-wise feedback to model responses, facilitating effective selection of reasoning trajectories for complex tasks. Despite its advantages, evaluation on PRMs remains less explored, especially in the multimodal domain. To address this gap, this paper first benchmarks current vision large language models (VLLMs) as two types of reward models: output reward models (ORMs) and process reward models (PRMs) on multiple vision-language benchmarks, which reveal that neither ORM nor PRM consistently outperforms across all tasks, and superior VLLMs do not necessarily yield better rewarding performance. To further advance evaluation, we introduce ViLBench, a vision-language benchmark designed to require intensive process reward signals. Notably, OpenAI's GPT-4o with Chain-of-Thought (CoT) achieves only 27.3% accuracy, indicating the benchmark's challenge for current VLLMs. Lastly, we preliminarily showcase a promising pathway towards bridging the gap between general VLLMs and reward models -- by collecting 73.6K vision-language process reward data using an enhanced tree-search algorithm, our 3B model is able to achieve an average improvement of 3.3% over standard CoT and up to 2.5% compared to its untrained counterpart on ViLBench by selecting OpenAI o1's generations. We release the implementations with our code, model, and data.",
-          "https://arxiv.org/abs/2503.20271",
-          "https://ucsc-vlaa.github.io/ViLBench/"
-        )
 
         add_paper("Exploring the Vulnerabilities of Federated Learning: A Deep Dive into Gradient Inversion Attacks",
           "Pengxin Guo, Runxi Wang, Shuang Zeng, Jinjing Zhu, Haoning Jiang, Yanran Wang, Yuyin Zhou, Feifei Wang, Hui Xiong, Liangqiong Qu",
@@ -279,6 +355,21 @@ function copy(dest, source) {
           "https://arxiv.org/abs/2503.11514",
           "https://arxiv.org/abs/2503.11514"
         )
+
+        add_paper("A Survey on Latent Reasoning",
+          "Rui-Jie Zhu, Tianhao Peng, Tianhao Cheng, Xingwei Qu, Jinfa Huang, Dawei Zhu, Hao Wang, Kaiwen Xue, Xuanliang Zhang, Yong Shan, Tianle Cai, Taylor Kergan, Assel Kembay, Andrew Smith, Chenghua Lin, Binh Nguyen, Yuqi Pan, Yuhong Chou, Zefan Cai, Zhenhe Wu, Yongchi Zhao, Tianyu Liu, Jian Yang, Wangchunshu Zhou, Chujie Zheng, Chongxuan Li, Yuyin Zhou, Zhoujun Li, Zhaoxiang Zhang, Jiaheng Liu, Ge Zhang, Wenhao Huang, Jason Eshraghian",
+          null,
+          "https://arxiv.org/abs/2507.06203", 
+          "@article{zhu2025latentreasoning,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {A Survey on Latent Reasoning},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Rui-Jie Zhu and Tianhao Peng and Tianhao Cheng and Xingwei Qu and Jinfa Huang and Dawei Zhu and Hao Wang and Kaiwen Xue and Xuanliang Zhang and Yong Shan and Tianle Cai and Taylor Kergan and Assel Kembay and Andrew Smith and Chenghua Lin and Binh Nguyen and Yuqi Pan and Yuhong Chou and Zefan Cai and Zhenhe Wu and Yongchi Zhao and Tianyu Liu and Jian Yang and Wangchunshu Zhou and Chujie Zheng and Chongxuan Li and Yuyin Zhou and Zhoujun Li and Zhaoxiang Zhang and Jiaheng Liu and Ge Zhang and Wenhao Huang and Jason Eshraghian},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2507.06203},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
+          "Large Language Models (LLMs) have demonstrated impressive reasoning capabilities, especially when guided by explicit chain-of-thought (CoT) reasoning that verbalizes intermediate steps. While CoT improves both interpretability and accuracy, its dependence on natural language reasoning limits the model's expressive bandwidth. Latent reasoning tackles this bottleneck by performing multi-step inference entirely in the model's continuous hidden state, eliminating token-level supervision. To advance latent reasoning research, this survey provides a comprehensive overview of the emerging field of latent reasoning. We begin by examining the foundational role of neural network layers as the computational substrate for reasoning, highlighting how hierarchical representations support complex transformations. Next, we explore diverse latent reasoning methodologies, including activation-based recurrence, hidden state propagation, and fine-tuning strategies that compress or internalize explicit reasoning traces. Finally, we discuss advanced paradigms such as infinite-depth latent reasoning via masked diffusion models, which enable globally consistent and reversible reasoning processes. By unifying these perspectives, we aim to clarify the conceptual landscape of latent reasoning and chart future directions for research at the frontier of LLM cognition. An associated GitHub repository collecting the latest papers and repos is available at: https://github.com/multimodal-art-projection/LatentCoT-Horizon/",
+          "https://arxiv.org/abs/2507.06203",
+          "https://github.com/multimodal-art-projection/LatentCoT-Horizon/"
+        )
+
 
         add_paper("SFT or RL? An Early Investigation into Training R1-Like Reasoning Large Vision-Language Models",
             "Hardy Chen, Haoqin Tu, Fali Wang, Hui Liu, Xianfeng Tang, Xinya Du, Yuyin Zhou, Cihang Xie",
@@ -527,19 +618,6 @@ function copy(dest, source) {
         )
 
 
-        add_paper("Fast-DDPM: Fast Denoising Diffusion Probabilistic Models for Medical Image-to-Image Generation",
-          "Hongxu Jiang, Muhammad Imran, Linhai Ma, Teng Zhang, Yuyin Zhou, Muxuan Liang, Kuang Gong, Wei Shao",
-          null,
-          "https://arxiv.org/abs/2405.14802",
-          "@article{jiang2024fastddpm,<br>" +
-           "&nbsp;&nbsp;&nbsp;title   = {Fast Denoising Diffusion Probabilistic Models for Medical Image-to-Image Generation},<br>" +
-           "&nbsp;&nbsp;&nbsp;author  = {Jiang, Hongxu and Imran, Muhammad and Ma, Linhai and Zhang, Teng and Zhou, Yuyin and Liang, Muxuan and Gong, Kuang and Shao, Wei},<br>" +
-           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2405.14802},<br>" +
-           "&nbsp;&nbsp;&nbsp;year    = {2024},<br>}",
-          "Denoising diffusion probabilistic models (DDPMs) have achieved unprecedented success in computer vision. However, they remain underutilized in medical imaging, a field crucial for disease diagnosis and treatment planning. This is primarily due to the high computational cost associated with (1) the use of large number of time steps (e.g., 1,000) in diffusion processes and (2) the increased dimensionality of medical images, which are often 3D or 4D. Training a diffusion model on medical images typically takes days to weeks, while sampling each image volume takes minutes to hours. To address this challenge, we introduce Fast-DDPM, a simple yet effective approach capable of improving training speed, sampling speed, and generation quality simultaneously. Unlike DDPM, which trains the image denoiser across 1,000 time steps, Fast-DDPM trains and samples using only 10 time steps. The key to our method lies in aligning the training and sampling procedures. We introduced two efficient noise schedulers with 10 time steps: one with uniform time step sampling and another with non-uniform sampling. We evaluated Fast-DDPM across three medical image-to-image generation tasks: multi-image super-resolution, image denoising, and image-to-image translation. Fast-DDPM outperformed DDPM and current state-of-the-art methods based on convolutional networks and generative adversarial networks in all tasks. Additionally, Fast-DDPM reduced training time by a factor of 5 and sampling time by a factor of 100 compared to DDPM. Our code is publicly available at: https://github.com/mirthAI/Fast-DDPM.",
-          "https://arxiv.org/abs/2405.14802",
-          "https://github.com/mirthAI/Fast-DDPM"
-        )
 
         add_paper("VideoHallucer: Evaluating Intrinsic and Extrinsic Hallucinations in Large Video-Language Models",
           "Yuxuan Wang, Yueqian Wang, Dongyan Zhao, Cihang Xie, Zilong Zheng",
@@ -819,6 +897,21 @@ function copy(dest, source) {
         document.write("<ul>")
 
 
+        add_paper("ViLBench: A Suite for Vision-Language Process Reward Modeling",
+          "Haoqin Tu, Weitao Feng, Hardy Chen, Hui Liu, Xianfeng Tang, Cihang Xie",
+          "EMNLP, 2025",
+          "https://arxiv.org/abs/2503.20271", 
+          "@inproceedings{tu2025vilbench,<br>" +
+          "&nbsp;&nbsp;&nbsp;title     = {ViLBench: A Suite for Vision-Language Process Reward Modeling},<br>" +
+          "&nbsp;&nbsp;&nbsp;author    = {Haoqin Tu, Weitao Feng, Hardy Chen, Hui Liu, Xianfeng Tang, Cihang Xie},<br>" +
+          "&nbsp;&nbsp;&nbsp;booktitle = {EMNLP},<br>" +
+          "&nbsp;&nbsp;&nbsp;year      = {2025},<br>}",
+          "Process-supervised reward models serve as a fine-grained function that provides detailed step-wise feedback to model responses, facilitating effective selection of reasoning trajectories for complex tasks. Despite its advantages, evaluation on PRMs remains less explored, especially in the multimodal domain. To address this gap, this paper first benchmarks current vision large language models (VLLMs) as two types of reward models: output reward models (ORMs) and process reward models (PRMs) on multiple vision-language benchmarks, which reveal that neither ORM nor PRM consistently outperforms across all tasks, and superior VLLMs do not necessarily yield better rewarding performance. To further advance evaluation, we introduce ViLBench, a vision-language benchmark designed to require intensive process reward signals. Notably, OpenAI's GPT-4o with Chain-of-Thought (CoT) achieves only 27.3% accuracy, indicating the benchmark's challenge for current VLLMs. Lastly, we preliminarily showcase a promising pathway towards bridging the gap between general VLLMs and reward models -- by collecting 73.6K vision-language process reward data using an enhanced tree-search algorithm, our 3B model is able to achieve an average improvement of 3.3% over standard CoT and up to 2.5% compared to its untrained counterpart on ViLBench by selecting OpenAI o1's generations. We release the implementations with our code, model, and data.",
+          "https://arxiv.org/abs/2503.20271",
+          "https://ucsc-vlaa.github.io/ViLBench/"
+        )
+
+
         add_paper(
         "Openvision: A fully-open, cost-effective family of advanced vision encoders for multimodal learning",
         "Xianhang Li, Yanqing Liu, Haoqin Tu, Hongru Zhu, Cihang Xie",
@@ -848,22 +941,6 @@ function copy(dest, source) {
           "This paper presents MedSegFactory, a versatile medical synthesis framework that generates high-quality paired medical images and segmentation masks across modalities and tasks. It aims to serve as an unlimited data repository, supplying image-mask pairs to enhance existing segmentation tools. The core of MedSegFactory is a dual-stream diffusion model, where one stream synthesizes medical images and the other generates corresponding segmentation masks. To ensure precise alignment between image-mask pairs, we introduce Joint Cross-Attention (JCA), enabling a collaborative denoising paradigm by dynamic cross-conditioning between streams. This bidirectional interaction allows both representations to guide each other's generation, enhancing consistency between generated pairs. MedSegFactory unlocks on-demand generation of paired medical images and segmentation masks through user-defined prompts that specify the target labels, imaging modalities, anatomical regions, and pathological conditions, facilitating scalable and high-quality data generation. This new paradigm of medical image synthesis enables seamless integration into diverse medical imaging workflows, enhancing both efficiency and accuracy. Extensive experiments show that MedSegFactory generates data of superior quality and usability, achieving competitive or state-of-the-art performance in 2D and 3D segmentation tasks while addressing data scarcity and regulatory constraints.",
           "https://arxiv.org/abs/2504.06897",
           "https://github.com/jwmao1/MedSegFactory"
-        )
-
-
-        add_paper(
-        "Agent-free Breast Cancer Diagnosis and Prognosis via Latent Diffusion Enhancement",
-        "Yuhan Wang, Luyang Luo, Yuyin Zhou",
-        "ICCV, 2025",
-        null,
-        "@inproceedings{wang2025agentfreebreastcancer,<br>" +
-        "&nbsp;&nbsp;&nbsp;title     = {Agent-free Breast Cancer Diagnosis and Prognosis via Latent Diffusion Enhancement},<br>" +
-        "&nbsp;&nbsp;&nbsp;author    = {Yuhan Wang and Luyang Luo and Yuyin Zhou},<br>" +
-        "&nbsp;&nbsp;&nbsp;booktitle = {ICCV},<br>" +
-        "&nbsp;&nbsp;&nbsp;year      = {2025},<br>" +
-        "}",
-        "Dynamic contrast-enhanced MRI (DCE-MRI) is crucial for breast cancer diagnosis, offering detailed insights into tumor vascular characteristics and enhancement kinetics. However, gadolinium-based contrast agents can introduce significant health risks, prompting the need for alternative enhancement solutions. To address this, we introduce 3D MedEnhancer, a latent diffusion-based framework tailored for synthesizing multi-phase DCE-MRI volumes from non-contrast T1-weighted images. Our approach employs a 3D Variational Autoencoder (VAE) and a U-shaped Diffusion Transformer (U-DiT) to capture both high-fidelity anatomical details and global spatial coherence. Extensive multi-institutional validation demonstrates notable performance gains across key breast cancer analysis tasks: for tumor segmentation, our synthetic data yield an improvement of roughly 8% compared to pre-contrast-only scans, nearly bridging the gap to real DCE-MRI. HER2 receptor status classification sees accuracy boosts of over 17%, while molecular subtype classification achieves gains of over 27%. Meanwhile, pathological complete response (PCR) prediction benefits from approximately a 5% improvement. Collectively, these advances underscore 3D MedEnhancer’s capacity to reduce reliance on gadolinium-based contrast agents while preserving diagnostic performance that closely approximates real contrast-enhanced imaging, thus offering a safer and more efficient pathway for breast cancer evaluation.",
-        null
         )
 
 
@@ -1072,6 +1149,21 @@ function copy(dest, source) {
           "This paper introduces AQA-Bench, a novel benchmark to assess the sequential reasoning capabilities of large language models (LLMs) in algorithmic contexts, such as depth-first search (DFS). The key feature of our evaluation benchmark lies in its interactive evaluation protocol -- for example, in DFS, the availability of each node's connected edge is contingent upon the model's traversal to that node, thereby necessitating the LLM's ability to effectively remember visited nodes and strategize subsequent moves. We comprehensively build AQA-Bench with three different algorithms, namely binary search, depth-first search, and breadth-first search, and to evaluate the sequential reasoning ability of 12 different LLMs. Our investigations reveal several interesting findings: (1) Closed-source models like GPT-4 and Gemini generally show strong sequential reasoning ability, significantly outperforming open-source LLMs. (2) Naively providing interactive examples may inadvertently hurt few-shot performance. (3) A very limited number of predecessor steps following the optimal policy can substantially boost small models' performance. (4) The scaling correlation between performance and model size is not always significant, sometimes even showcasing an inverse trend. We hope our study can catalyze future work on advancing the understanding and enhancement of LLMs' capabilities in sequential reasoning. The code is available at https://github.com/UCSC-VLAA/AQA-Bench",
           "https://arxiv.org/abs/2402.09404",
           "https://github.com/UCSC-VLAA/AQA-Bench"
+        )
+
+
+        add_paper("Fast-DDPM: Fast Denoising Diffusion Probabilistic Models for Medical Image-to-Image Generation",
+          "Hongxu Jiang, Muhammad Imran, Linhai Ma, Teng Zhang, Yuyin Zhou, Muxuan Liang, Kuang Gong, Wei Shao",
+          "IEEE Journal of Biomedical and Health Informatics, 2025",
+          "https://arxiv.org/abs/2405.14802",
+          "@article{jiang2024fastddpm,<br>" +
+           "&nbsp;&nbsp;&nbsp;title   = {Fast Denoising Diffusion Probabilistic Models for Medical Image-to-Image Generation},<br>" +
+           "&nbsp;&nbsp;&nbsp;author  = {Jiang, Hongxu and Imran, Muhammad and Ma, Linhai and Zhang, Teng and Zhou, Yuyin and Liang, Muxuan and Gong, Kuang and Shao, Wei},<br>" +
+           "&nbsp;&nbsp;&nbsp;journal = {IEEE Journal of Biomedical and Health Informatics},<br>" +
+           "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
+          "Denoising diffusion probabilistic models (DDPMs) have achieved unprecedented success in computer vision. However, they remain underutilized in medical imaging, a field crucial for disease diagnosis and treatment planning. This is primarily due to the high computational cost associated with (1) the use of large number of time steps (e.g., 1,000) in diffusion processes and (2) the increased dimensionality of medical images, which are often 3D or 4D. Training a diffusion model on medical images typically takes days to weeks, while sampling each image volume takes minutes to hours. To address this challenge, we introduce Fast-DDPM, a simple yet effective approach capable of improving training speed, sampling speed, and generation quality simultaneously. Unlike DDPM, which trains the image denoiser across 1,000 time steps, Fast-DDPM trains and samples using only 10 time steps. The key to our method lies in aligning the training and sampling procedures. We introduced two efficient noise schedulers with 10 time steps: one with uniform time step sampling and another with non-uniform sampling. We evaluated Fast-DDPM across three medical image-to-image generation tasks: multi-image super-resolution, image denoising, and image-to-image translation. Fast-DDPM outperformed DDPM and current state-of-the-art methods based on convolutional networks and generative adversarial networks in all tasks. Additionally, Fast-DDPM reduced training time by a factor of 5 and sampling time by a factor of 100 compared to DDPM. Our code is publicly available at: https://github.com/mirthAI/Fast-DDPM.",
+          "https://arxiv.org/abs/2405.14802",
+          "https://github.com/mirthAI/Fast-DDPM"
         )
 
 
