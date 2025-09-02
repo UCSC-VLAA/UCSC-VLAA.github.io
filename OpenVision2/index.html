@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>OpenVision & OpenVision 2</title>
   <meta name="description" content="OpenVision & OpenVision 2: Fully-open and generative-pretrained vision encoders for multimodal learning." />
-  <link rel="icon" href="resources/openvision_v1.5_logo.png" />
+  <link rel="icon" href="assets/icon.png" />
   <style>
     :root{
       --bg:#0b0e14; --panel:#0f1320; --ink:#e8ecf1; --muted:#9aa7b1;
@@ -22,7 +22,9 @@
     header{position:sticky;top:0;z-index:20;background:rgba(11,14,20,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
     .nav{display:flex;gap:18px;flex-wrap:wrap;align-items:center;justify-content:space-between}
     .nav .links{display:flex;gap:16px;flex-wrap:wrap}
-    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:28px 0}
+    .brand{display:flex;gap:10px;align-items:center}
+    .brand img.logo{width:36px;height:18px;object-fit:cover;border-radius:3px; /* 扁一点 */}
+    .hero{display:grid;grid-template-columns:1fr;gap:18px;align-items:center;padding:28px 0}
     .badge{display:inline-flex;gap:.5ch;align-items:center;background:linear-gradient(90deg,#1b2238,#141b2f);border:1px solid var(--border);border-radius:999px;padding:6px 12px;color:var(--muted);font-weight:600}
     h1{font-size:40px;line-height:1.15;margin:.25em 0 .4em}
     h2{font-size:28px;margin:1.3em 0 .5em}
@@ -30,9 +32,7 @@
     .panel{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:18px}
     .grid{display:grid;gap:18px}
     .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
     .muted{color:var(--muted)}
-    .teaser{width:100%;border-radius:12px;border:1px solid var(--border);background:#0c1120}
     .kpis{display:grid;gap:12px;grid-template-columns:repeat(2,minmax(0,1fr))}
     .kpi{background:linear-gradient(180deg,#101831,#0d1428);border:1px solid var(--border);border-radius:12px;padding:14px}
     .kpi strong{display:block;font-size:20px;color:var(--ok)}
@@ -44,15 +44,28 @@
     .good{color:var(--ok);font-weight:700}
     .foot{color:var(--muted);font-size:14px}
     .hr{height:1px;background:var(--border);margin:24px 0}
-    @media (max-width:960px){.hero{grid-template-columns:1fr}}
+
+    /* Full-bleed image section */
+    .bleed {margin:0;padding:0}
+    .bleed img{
+      display:block;
+      width:100vw;
+      max-width:100vw;
+      margin-left:calc(50% - 50vw);
+      border:none;border-radius:0;
+    }
+
+    @media (max-width:960px){
+      .grid.cols-2{grid-template-columns:1fr}
+    }
   </style>
 </head>
 <body>
 
 <header>
   <div class="container nav">
-    <div style="display:flex;gap:10px;align-items:center">
-      <img src="resources/openvision_v1.5_logo.png" alt="OV" width="24" height="24" />
+    <div class="brand">
+      <img class="logo" src="assets/icon.png" alt="OV" />
       <strong>OpenVision</strong>
     </div>
     <div class="links">
@@ -68,7 +81,7 @@
 </header>
 
 <main class="container">
-  <!-- HERO -->
+  <!-- HERO (text only now) -->
   <section class="hero" id="overview">
     <div>
       <span class="badge">Fully-Open Vision Encoders • Generative Pretraining</span>
@@ -106,11 +119,15 @@
         <div class="kpi"><span class="muted">Benchmarks</span><strong>OCR/TextVQA↑</strong></div>
       </div>
     </div>
-    <div>
-      <img src="resources/openvision2_teaser.png" alt="OpenVision 2 teaser" class="teaser"/>
-    </div>
   </section>
+</main>
 
+<!-- FULL-BLEED TEASER (entire screen width) -->
+<section class="bleed" aria-label="OpenVision 2 teaser">
+  <img src="assets/openvision2_teaser.png" alt="OpenVision 2 teaser, full width" />
+</section>
+
+<main class="container">
   <div class="hr"></div>
 
   <!-- WHAT'S NEW -->
