@@ -149,7 +149,7 @@
   <!-- BENCHMARKS -->
   <section id="benchmarks">
     <h2>Benchmarks (OpenVision vs OpenVision&nbsp;2)</h2>
-    <p class="muted">We report results under two MLLM frameworks. <strong>MME</strong> is shown as Perception/Knowledge.</p>
+    <p class="muted">We report results under two MLLM frameworks. <strong>MME</strong> is shown as Perception/Cognition.</p>
 
     <h3>LLaVA-1.5</h3>
     <div class="panel">
@@ -286,7 +286,6 @@ dummy = torch.ones(1, 3, 224, 224)
 with torch.no_grad():
     pooled, tokens = vision_encoder(dummy)
 print("pooled:", tuple(pooled.shape), "tokens:", tuple(tokens.shape))</code></pre>
-    <p class="foot">For JAX↔PyTorch numerical checks and HF upload utilities, see <code>tools/convert_jax_to_openclip_vision_only.py</code>.</p>
   </section>
 
   <div class="hr"></div>
