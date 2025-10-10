@@ -178,7 +178,50 @@ function copy(dest, source) {
         document.write("</ul>")
         // document.write("<h2>Preprint</h2>")
         document.write("<ul><br>")
-        
+
+        add_paper("Alignment Tipping Process: How Self-Evolution Pushes LLM Agents Off the Rails",
+          "Shengjia Han, Jiale Liu, Yujia Su, Weizhi Duan, Xinyu Liu, Chongzhen Xie, Mohit Bansal, Ming Ding, Lei Zhang, ...",
+          null,
+          "https://arxiv.org/abs/2510.04860", 
+          "@article{han2025alignmenttipping,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {Alignment Tipping Process: How Self-Evolution Pushes LLM Agents Off the Rails},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Shengjia Han and Jiale Liu and Yujia Su and Weizhi Duan and Xinyu Liu and Chongzhen Xie and Mohit Bansal and Ming Ding and Lei Zhang and others},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2510.04860},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
+          "This work investigates the phenomenon of self-evolution in large language model (LLM) agents—where iterative self-improvement or reinforcement loops can lead to an “alignment tipping point,” after which the agent’s behavior diverges from its original aligned intent. Through systematic experiments and analytical modeling, the authors characterize how small misalignments can amplify through self-reinforcement, ultimately resulting in goal drift or deceptive optimization. The paper further proposes metrics and intervention techniques to detect and mitigate alignment tipping, offering insights for building more robust, self-improving AI systems.",
+          "https://arxiv.org/abs/2510.04860",
+          null
+        )
+
+        add_paper("CHAI: Command Hijacking against embodied AI",
+          "Luis Burbano, Diego Ortiz, Qingyang Sun, Shihan Yang, Haoqin Tu, Chongzhen Xie, Yuxin Cao, Alvaro A. Cardenas",
+          null,
+          "https://arxiv.org/abs/2510.00181", 
+          "@article{burbano2025chai,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {CHAI: Command Hijacking against embodied AI},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Luis Burbano and Diego Ortiz and Qingyang Sun and Shihan Yang and Haoqin Tu and Chongzhen Xie and Yuxin Cao and Alvaro A. Cardenas},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2510.00181},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
+          "This paper reveals a new attack vector—Command Hijacking (CHAI)—targeting embodied AI agents that follow multimodal natural language commands. The authors demonstrate that adversarial perturbations or prompt manipulations can cause embodied models (e.g., robotic or simulated agents) to execute unintended or unsafe actions, even when trained under safety constraints. They introduce a benchmark suite for evaluating hijack resilience and propose defense strategies leveraging consistency checking and multi-view command grounding.",
+          "https://arxiv.org/abs/2510.00181",
+          null
+        )
+
+
+        add_paper("OpenVision 2: A Family of Generative Pretrained Visual Encoders for Multimodal Learning",
+          "Yifan Liu, Xiaoyang Li, Lei Zhang, Zhiqiang Wang, Zizhao Zheng, Yifan Zhou, Chongzhen Xie",
+          null,
+          "https://arxiv.org/abs/2509.01644", 
+          "@article{liu2025openvision2,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {OpenVision 2: A Family of Generative Pretrained Visual Encoders for Multimodal Learning},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Yifan Liu and Xiaoyang Li and Lei Zhang and Zhiqiang Wang and Zizhao Zheng and Yifan Zhou and Chongzhen Xie},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2509.01644},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
+          "OpenVision 2 introduces a family of generative visual encoders designed for flexible integration with large multimodal models. The paper details the architecture, pretraining objectives, and cross-modal alignment techniques that enable efficient image-text joint learning. It benchmarks OpenVision 2 across visual understanding, captioning, and grounding tasks, demonstrating substantial gains in multimodal transfer efficiency and interpretability.",
+          "https://arxiv.org/abs/2509.01644",
+          null
+        )
+
         
         add_paper("AHELM: A Holistic Evaluation of Audio-Language Models",
           "Tony Lee, Haoqin Tu, Chi Heem Wong, Zijun Wang, Siwei Yang, Yifan Mai, Yuyin Zhou, Cihang Xie, Percy Liang",
@@ -266,19 +309,7 @@ function copy(dest, source) {
         )
 
 
-        add_paper("Harnessing EHRs for Diffusion-based Anomaly Detection on Chest X-rays",
-          "Harim Kim, Yuhan Wang, Minkyu Ahn, Heeyoul Choi, Yuyin Zhou, Charmgil Hong",
-          null,
-          "https://arxiv.org/abs/2505.17311", 
-          "@article{kim2025diff3m,<br>" +
-          "&nbsp;&nbsp;&nbsp;title   = {Harnessing EHRs for Diffusion-based Anomaly Detection on Chest X-rays},<br>" +
-          "&nbsp;&nbsp;&nbsp;author  = {Harim Kim, Yuhan Wang, Minkyu Ahn, Heeyoul Choi, Yuyin Zhou, Charmgil Hong},<br>" +
-          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2505.17311},<br>" + 
-          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
-          "Unsupervised anomaly detection (UAD) in medical imaging is crucial for identifying pathological abnormalities without requiring extensive labeled data. However, existing diffusion-based UAD models rely solely on imaging features, limiting their ability to distinguish between normal anatomical variations and pathological anomalies. To address this, we propose Diff3M, a multi-modal diffusion-based framework that integrates chest X-rays and structured Electronic Health Records (EHRs) for enhanced anomaly detection. Specifically, we introduce a novel image-EHR cross-attention module to incorporate structured clinical context into the image generation process, improving the model's ability to differentiate normal from abnormal features. Additionally, we develop a static masking strategy to enhance the reconstruction of normal-like images from anomalies. Extensive evaluations on CheXpert and MIMIC-CXR/IV demonstrate that Diff3M achieves state-of-the-art performance, outperforming existing UAD methods in medical imaging. Our code is available at: https://github.com/nth221/Diff3M",
-          "https://arxiv.org/abs/2505.17311",
-          "https://github.com/nth221/Diff3M"
-        )
+
 
 
 
@@ -382,21 +413,6 @@ function copy(dest, source) {
           "Large Language Models (LLMs) have demonstrated impressive reasoning capabilities, especially when guided by explicit chain-of-thought (CoT) reasoning that verbalizes intermediate steps. While CoT improves both interpretability and accuracy, its dependence on natural language reasoning limits the model's expressive bandwidth. Latent reasoning tackles this bottleneck by performing multi-step inference entirely in the model's continuous hidden state, eliminating token-level supervision. To advance latent reasoning research, this survey provides a comprehensive overview of the emerging field of latent reasoning. We begin by examining the foundational role of neural network layers as the computational substrate for reasoning, highlighting how hierarchical representations support complex transformations. Next, we explore diverse latent reasoning methodologies, including activation-based recurrence, hidden state propagation, and fine-tuning strategies that compress or internalize explicit reasoning traces. Finally, we discuss advanced paradigms such as infinite-depth latent reasoning via masked diffusion models, which enable globally consistent and reversible reasoning processes. By unifying these perspectives, we aim to clarify the conceptual landscape of latent reasoning and chart future directions for research at the frontier of LLM cognition. An associated GitHub repository collecting the latest papers and repos is available at: https://github.com/multimodal-art-projection/LatentCoT-Horizon/",
           "https://arxiv.org/abs/2507.06203",
           "https://github.com/multimodal-art-projection/LatentCoT-Horizon/"
-        )
-
-
-        add_paper("SFT or RL? An Early Investigation into Training R1-Like Reasoning Large Vision-Language Models",
-            "Hardy Chen, Haoqin Tu, Fali Wang, Hui Liu, Xianfeng Tang, Xinya Du, Yuyin Zhou, Cihang Xie",
-            null,
-            "https://arxiv.org/abs/2504.11468", 
-            "@article{wang2025star,<br>" +
-            "&nbsp;&nbsp;&nbsp;title   = {SFT or RL? An Early Investigation into Training R1-Like Reasoning Large Vision-Language Models},<br>" +
-            "&nbsp;&nbsp;&nbsp;author  = {Hardy Chen, Haoqin Tu, Fali Wang, Hui Liu, Xianfeng Tang, Xinya Du, Yuyin Zhou, Cihang Xie},<br>" +
-            "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2504.11468},<br>" + 
-            "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
-            "This work revisits the dominant supervised fine-tuning (SFT) then reinforcement learning (RL) paradigm for training Large Vision-Language Models (LVLMs), and reveals a key finding: SFT can significantly undermine subsequent RL by inducing ``pseudo reasoning paths'' imitated from expert models. While these paths may resemble the native reasoning paths of RL models, they often involve prolonged, hesitant, less informative steps, and incorrect reasoning. To systematically study this effect, we introduce VLAA-Thinking, a new multimodal dataset designed to support reasoning in LVLMs. Constructed via a six-step pipeline involving captioning, reasoning distillation, answer rewrite and verification, VLAA-Thinking comprises high-quality, step-by-step visual reasoning traces for SFT, along with a more challenging RL split from the same data source. Using this dataset, we conduct extensive experiments comparing SFT, RL and their combinations. Results show that while SFT helps models learn reasoning formats, it often locks aligned models into imitative, rigid reasoning modes that impede further learning. In contrast, building on the Group Relative Policy Optimization (GRPO) with a novel mixed reward module integrating both perception and cognition signals, our RL approach fosters more genuine, adaptive reasoning behavior. Notably, our model VLAA-Thinker, based on Qwen2.5VL 3B, achieves top-1 performance on Open LMM Reasoning Leaderboard among 4B scale LVLMs, surpassing the previous state-of-the-art by 1.8%. We hope our findings provide valuable insights in developing reasoning-capable LVLMs and can inform future research in this area.",
-            "https://arxiv.org/abs/2504.11468",
-            "https://github.com/UCSC-VLAA/VLAA-Thinking"
         )
 
         add_paper("MedReason: Eliciting Factual Medical Reasoning Steps in LLMs via Knowledge Graphs",
@@ -910,6 +926,20 @@ function copy(dest, source) {
         document.write("<h1>2025</h1>")
         document.write("<ul>")
 
+
+        add_paper("SFT or RL? An Early Investigation into Training R1-Like Reasoning Large Vision-Language Models",
+            "Hardy Chen, Haoqin Tu, Fali Wang, Hui Liu, Xianfeng Tang, Xinya Du, Yuyin Zhou, Cihang Xie",
+            null,
+            "https://arxiv.org/abs/2504.11468", 
+            "@article{wang2025star,<br>" +
+            "&nbsp;&nbsp;&nbsp;title   = {SFT or RL? An Early Investigation into Training R1-Like Reasoning Large Vision-Language Models},<br>" +
+            "&nbsp;&nbsp;&nbsp;author  = {Hardy Chen, Haoqin Tu, Fali Wang, Hui Liu, Xianfeng Tang, Xinya Du, Yuyin Zhou, Cihang Xie},<br>" +
+            "&nbsp;&nbsp;&nbsp;journal = {TMLR},<br>" + 
+            "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
+            "This work revisits the dominant supervised fine-tuning (SFT) then reinforcement learning (RL) paradigm for training Large Vision-Language Models (LVLMs), and reveals a key finding: SFT can significantly undermine subsequent RL by inducing ``pseudo reasoning paths'' imitated from expert models. While these paths may resemble the native reasoning paths of RL models, they often involve prolonged, hesitant, less informative steps, and incorrect reasoning. To systematically study this effect, we introduce VLAA-Thinking, a new multimodal dataset designed to support reasoning in LVLMs. Constructed via a six-step pipeline involving captioning, reasoning distillation, answer rewrite and verification, VLAA-Thinking comprises high-quality, step-by-step visual reasoning traces for SFT, along with a more challenging RL split from the same data source. Using this dataset, we conduct extensive experiments comparing SFT, RL and their combinations. Results show that while SFT helps models learn reasoning formats, it often locks aligned models into imitative, rigid reasoning modes that impede further learning. In contrast, building on the Group Relative Policy Optimization (GRPO) with a novel mixed reward module integrating both perception and cognition signals, our RL approach fosters more genuine, adaptive reasoning behavior. Notably, our model VLAA-Thinker, based on Qwen2.5VL 3B, achieves top-1 performance on Open LMM Reasoning Leaderboard among 4B scale LVLMs, surpassing the previous state-of-the-art by 1.8%. We hope our findings provide valuable insights in developing reasoning-capable LVLMs and can inform future research in this area.",
+            "https://arxiv.org/abs/2504.11468",
+            "https://github.com/UCSC-VLAA/VLAA-Thinking"
+        )
 
         add_paper("ViLBench: A Suite for Vision-Language Process Reward Modeling",
           "Haoqin Tu, Weitao Feng, Hardy Chen, Hui Liu, Xianfeng Tang, Cihang Xie",
