@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LightBagel: A Light-weighted, Double Fusion Framework for Unified Multimodal Understanding and Generation</title>
+
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./resources/lightbagel-logo.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title"><span style="font-variant: small-caps;">LightBagel</span>
+            <img src="./resources/lightbagel-logo.png" alt="LightBagel Logo" style="height: 1.2em; vertical-align: middle; margin-left: 0.0em;">: 
+            A Light-weighted, Double Fusion Framework for Unified Multimodal Understanding and Generation</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <span><a href="https://zw615.github.io/">Zeyu Wang</a></span><sup>1*</sup>,</span>
+            <span class="author-block">
+              <span><a href="https://scholar.google.com/citations?user=2pbka1gAAAAJ&hl=zh-CN">Zilong Chen</a></span><sup>2*</sup>,</span>
+            </span>
+            <span class="author-block">
+              <span><a href="https://scholar.google.com/citations?user=tlhShPsAAAAJ&hl=en">Chenhui Gou</a></span><sup>3*</sup>,</span>
+            </span>
+            <span class="author-block">
+              <span><a href="https://fengli-ust.github.io/">Feng Li</a></span><sup>4</sup>,</span>
+            </span>
+            <br>
+            <span class="author-block">
+              <span><a href="https://scholar.google.com/citations?user=k0TWfBoAAAAJ&hl=en">Chaorui Deng</a></span><sup>4</sup>,</span>
+            </span>
+            <span class="author-block">
+              <span><a href="https://scholar.google.com/citations?user=dENNKrsAAAAJ&hl=en">Deyao Zhu</a></span><sup>4</sup>,</span>
+            </span>
+            <span class="author-block">
+              <span><a href="https://andy1621.github.io/">Kunchang Li</a></span><sup>4</sup>,</span>
+            </span>
+            <span class="author-block">
+              <span><a href="https://whyu.me/">Weihao Yu</a></span><sup>4</sup>,</span>
+            </span>
+            <span class="author-block">
+              <span><a href="https://www.haqtu.me/">Haoqin Tu</a></span><sup>1</sup>,</span>
+            </span>
+            <span class="author-block">
+              <span><a href="https://haoqifan.github.io/">Haoqi Fan</a></span><sup>1</sup>,</span>
+            </span>
+            <span class="author-block">
+              <span><a href="https://cihangxie.github.io/">Cihang Xie</a></span><sup>1</sup></span>
+            </span>
+          </div>
+          <!-- <div class="is-size-4 publication-authors">
+            <span class="author-block"><span style="color: red; font-weight: bold;">EMNLP 2025 (main)</span></span>
+          </div> -->
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><span style="color: black; font-weight: normal; font-size: small;"></span>*Equal Contribution</span></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>UC Santa Cruz, </span>
+            <span class="author-block"><sup>2</sup>Tsinghua University, </span>
+            <span class="author-block"><sup>3</sup>Monash University, </span>
+            <span class="author-block"><sup>4</sup>Bytedance Seed</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href="TBD"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fa-solidassasas fa-face-smiling-hands"></i>
+                    <img src="./resources/ar.svg" alt="img" style="width: 100%; height: 100%" /> 
+                  </span>
+                  <span>arXiv</span>
+                </a> -->
+              <span class="link-block">
+                <a href="https://github.com/UCSC-VLAA/UCSC-VLAA.github.io/tree/main/LightBagel/lightbagel.pdf"
+                    class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fa-solidassasas fa-face-smiling-hands"></i>
+                    <img src="./resources/lightbagel-logo.png" alt="img" style="width: 100%; height: 100%" /> 
+                  </span>
+                  <span>PDF</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://chenhuigou.github.io/Bagel-World/"
+                    class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fa-solidassasas fa-face-smiling-hands"></i>
+                    <img src="./resources/bagel-world-logo.png" alt="img" style="width: 100%; height: 100%" /> 
+                  </span>
+                  <span>Bagel-World</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/UCSC-VLAA/LightBagel"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (coming soon)</span>
+                  </a>
+              </span>
+              <!-- Weight Link. -->
+              <span class="link-block">
+                <a href="https://huggingface.co/UCSC-VLAA/lightbagel"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fa-solidasasa fa-face-smiling-hands"></i>
+                   <img src="./resources/hg.svg" alt="img" style="width: 100%; height: 100%" /> 
+                  </span>
+                   <span>Model Weight (coming soon)</span>
+                  </a>
+                </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://huggingface.co/datasets/UCSC-VLAA/LightBagel"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fa-solidasasa fa-face-smiling-hands"></i>
+                   <img src="./resources/hg.svg" alt="img" style="width: 100%; height: 100%" /> 
+                  </span>
+                   <span>Training Data (coming soon)</span>
+                  </a>
+                </span>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="hero teaser">
+  <div class="container">
+    <div class="hero-body", style="text-align: center;">
+      <img src="./resources/token_efficiency_merged.png" alt="alt text"
+                        style="width: 70%; object-fit: cover; max-width:70%;"></a>
+      <h2 class="subtitle has-text-centered">
+        <strong>Figure 1.</strong> Our <code>LightBagel</code> outperforms many leading unified models that uses significantly more tokens for training, showing great token efficiency.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Unified multimodal models have recently shown remarkable gains in both capability and versatility, yet most leading systems are still trained from scratch and require substantial computational resources. In this paper, we show that competitive performance can be obtained far more efficiently by <span style="font-style: italic;">strategically</span> fusing publicly available models specialized for either generation or understanding.
+            Our key design is to retain the original blocks while additionally interleaving multimodal self-attention blocks throughout the networks. This <span style="font-style: italic;">double fusion mechanism</span> (1) effectively enables rich multi-modal fusion while largely preserving the original strengths of the base models, and (2) catalyzes synergistic fusion of high-level semantic representations from the understanding encoder with low-level spatial signals from the generation encoder. 
+            By training with only ~ 35B tokens, this approach achieves strong results across multiple benchmarks: 0.91 on GenEval for compositional text-to-image generation, 82.16 on DPG-Bench for complex text-to-image generation, 6.06 on GEditBench, and 3.77 on ImgEdit-Bench for image editing. 
+            By fully releasing the entire suite of code, model weights, and datasets, we hope to support future research on unified multimodal modeling.<a href=""></a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Model Architecture</h2>
+        <div class="content has-text-centered">
+          <center><img class="center" src="./resources/arch.png" width="100%"></center>
+          
+          <div class="content has-text-justified">
+            <p><strong>Figure 2.</strong> Overview of the <code>LightBagel</code> architecture. Text and ViT tokens (understanding pathway)
+              and VAE tokens (generation pathway) are processed by pre-trained VLM and DiT blocks, respectively.
+              At each layer, a zero-initialized multimodal self-attention module enables cross-modal interactions
+              without altering the original model architectures.</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Quantitative Results</h2>
+        <div class="content has-text-centered">
+          <center><img class="center" src="./resources/benchmark_results.png" width="80%"></center>
+          <div class="content has-text-justified">
+            <p><strong>Table 1.</strong> Comparison of different models across understanding, generation, editing, and in-context Generation tasks. 
+              <sup>&dagger;</sup> refers to the methods using LLM rewriter. 
+              For UMMs, <span class="stars" aria-label="1 out of 3">★☆☆</span> refers to only model checkpoints and evaluation code being released; 
+              <span class="stars" aria-label="2 out of 3">★★☆</span> refers to only model checkpoints and training/evaluation code being released; 
+              <span class="stars" aria-label="3 out of 3">★★★</span> refers to the full suite of all the {model, data, code} being released.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+      <section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Qualitative Results</h2>
+        <div class="content has-text-centered">
+          <center><img class="center" src="./resources/gallery_v1.png" width="80%"></center>
+          <div class="content has-text-justified">
+            <p><strong>Figure 3.</strong> Qualitative text-to-image results from <code>LightBagel</code>, showcasing high-quality generations with strong fidelity to text prompts and consistent rendering across diverse aspect ratios.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+        <section class="section">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="content has-text-centered">
+          <center><img class="center" src="./resources/edit_gallery_v1.png" width="90%"></center>
+          <div class="content has-text-justified">
+            <p><strong>Figure 4.</strong> Qualitative image editing results generated by LIGHTBAGEL. The model produces high-quality outputs across a diverse range of editing tasks.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>
+TBD
+    </code></pre>
+  </div>
+</section>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Based on the following <a href="http://nerfies.github.io">template</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
