@@ -161,104 +161,433 @@
 <section class="hero teaser">
   <div class="container">
     <div class="hero-body", style="text-align: center;">
-      <img src="./resources/token_efficiency_merged.png" alt="alt text"
+      <img id="token_efficiency_merged" src="./resources/token_efficiency_merged.png" alt="arch"
                         style="width: 70%; object-fit: cover; max-width:70%;"></a>
-      <h2 class="subtitle has-text-centered">
-        <strong>Figure 1.</strong> Our <code>LightBagel</code> outperforms many leading unified models that uses significantly more tokens for training, showing great token efficiency.
-      </h2>
+      <div class="container is-max-widescreen " style="margin-bottom: 2rem; max-width: 1600px;">
+        <p style="font-size: 1.05rem; margin-bottom: 1rem; text-align: center; color: #666;">
+          <strong>Figure 1.</strong> Our <code>LightBagel</code> outperforms many leading unified models that uses significantly more tokens for training, showing great token efficiency.
+        </p>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="section">
-  <div class="container">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
+<section class="section" style="padding-top: 3rem; padding-bottom: 3rem; background-color: #fafafa;">
+  <div class="container is-max-widescreen">
+      <!-- Abstract. -->
+      <div class="title is-2 has-text-centered" style="margin-bottom: 2rem;">Abstract</div>
+      <div class="content has-text-justified" style="font-size: 1.1rem; line-height: 1.8; max-width: 1200px; margin: 0 auto;">
+          <p style="text-indent: 2em;">
             Unified multimodal models have recently shown remarkable gains in both capability and versatility, yet most leading systems are still trained from scratch and require substantial computational resources. In this paper, we show that competitive performance can be obtained far more efficiently by <span style="font-style: italic;">strategically</span> fusing publicly available models specialized for either generation or understanding.
             Our key design is to retain the original blocks while additionally interleaving multimodal self-attention blocks throughout the networks. This <span style="font-style: italic;">double fusion mechanism</span> (1) effectively enables rich multi-modal fusion while largely preserving the original strengths of the base models, and (2) catalyzes synergistic fusion of high-level semantic representations from the understanding encoder with low-level spatial signals from the generation encoder. 
             By training with only ~ 35B tokens, this approach achieves strong results across multiple benchmarks: 0.91 on GenEval for compositional text-to-image generation, 82.16 on DPG-Bench for complex text-to-image generation, 6.06 on GEditBench, and 3.77 on ImgEdit-Bench for image editing. 
-            By fully releasing the entire suite of code, model weights, and datasets, we hope to support future research on unified multimodal modeling.<a href=""></a>.
+            By fully releasing the entire suite of code, model weights, and datasets, we hope to support future research on unified multimodal modeling.
           </p>
-        </div>
       </div>
-    </div>
-  </section>
+      <!--/ Abstract. -->
+  </div>
+</section>
 
-    <section class="section">
-  <div class="container">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Model Architecture</h2>
-        <div class="content has-text-centered">
-          <center><img class="center" src="./resources/arch.png" width="100%"></center>
-          
-          <div class="content has-text-justified">
-            <p><strong>Figure 2.</strong> Overview of the <code>LightBagel</code> architecture. Text and ViT tokens (understanding pathway)
-              and VAE tokens (generation pathway) are processed by pre-trained VLM and DiT blocks, respectively.
-              At each layer, a zero-initialized multimodal self-attention module enables cross-modal interactions
-              without altering the original model architectures.</p>
+<section class="section" style="padding-top: 3rem; padding-bottom: 3rem">
+  <div class="container is-max-widescreen">
+      <div class="title is-2 has-text-centered" style="margin-bottom: 2rem;">Model Architecture</div>
+      <div style="margin: 2rem auto; max-width: 1000px;">
+          <center>
+              <img id="arch" src="./resources/arch.png" alt="arch" width="100%" style="box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-radius: 8px;">
+          </center>
+      </div>
+      <div class="container is-max-widescreen " style="margin-top: 2rem; max-width: 1000px;">
+          <p style="font-size: 1.05rem; margin-bottom: 1rem; text-align: left; color: #666;">
+            <strong>Figure 2.</strong> Overview of the <code>LightBagel</code> architecture. Text and ViT tokens (understanding pathway)
+            and VAE tokens (generation pathway) are processed by pre-trained VLM and DiT blocks, respectively.
+            At each layer, a zero-initialized multimodal self-attention module enables cross-modal interactions
+            without altering the original model architectures.
+          </p>
+      </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top: 3rem; padding-bottom: 3rem; background-color: #fafafa;">
+  <div class="container is-max-widescreen">
+      <!-- Quantitative Results -->
+      <div class="title is-2 has-text-centered">Quantitative Results</div>
+
+      <div style="margin-bottom: 2rem;">
+          <div style="max-width: 1100px; margin: 0 auto; overflow-x: auto;">
+              <p style="font-size: 1.05rem; margin-bottom: 1rem; text-align: left; color: #666;">
+                <strong>Table 1.</strong> Comparison of different models across understanding, generation, editing, and in-context Generation tasks. 
+                <sup>&dagger;</sup> refers to the methods using LLM rewriter. 
+                For UMMs, <span class="stars" aria-label="1 out of 3">★☆☆</span> refers to only model checkpoints and evaluation code being released; 
+                <span class="stars" aria-label="2 out of 3">★★☆</span> refers to only model checkpoints and training/evaluation code being released; 
+                <span class="stars" aria-label="3 out of 3">★★★</span> refers to the full suite of all the {model, data, code} being released.
+              </p>
+
+              <table style="width: 100%; border-collapse: collapse; background: white; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-radius: 8px; overflow: hidden; line-height: 1.3; font-variant-numeric: tabular-nums;">
+                <thead>
+                  <!-- Top header row: first 3 cells span two rows; mid-rule only on last 7 cells -->
+                  <tr style="background-color: #f2f0f0; border-top: 2px solid #000000;">
+                    <th rowspan="2" style="padding: 0.7rem 1rem; text-align: center; font-weight: 600;">Model</th>
+                    <th rowspan="2" style="padding: 0.7rem 1rem; text-align: center; font-weight: 600;"># Params</th>
+                    <th rowspan="2" style="padding: 0.7rem 1rem; text-align: center; font-weight: 600;">Openness</th>
+                
+                    <!-- Group headers get the mid-rule (bottom border) -->
+                    <th colspan="3" style="padding: 0.7rem 1rem; text-align: center; font-weight: 600; border-bottom: 1px solid #000000;">Understanding</th>
+                    <th colspan="2" style="padding: 0.7rem 1rem; text-align: center; font-weight: 600; border-bottom: 1px solid #000000;">Image Generation</th>
+                    <th colspan="2" style="padding: 0.7rem 1rem; text-align: center; font-weight: 600; border-bottom: 1px solid #000000;">Image Editing</th>
+                  </tr>
+                
+                  <!-- Second header row: subheaders; full bottom rule under the whole header -->
+                  <tr style="background-color: #f2f0f0; border-bottom: 1px solid #000000;">
+                    <th style="padding: 0.45rem 0.5rem; text-align: center; font-weight: 600;">MMB</th>
+                    <th style="padding: 0.45rem 0.5rem; text-align: center; font-weight: 600;">MMMU</th>
+                    <th style="padding: 0.45rem 0.5rem; text-align: center; font-weight: 600;">MM-Vet</th>
+                    <th style="padding: 0.45rem 0.5rem; text-align: center; font-weight: 600;">GenEval</th>
+                    <th style="padding: 0.45rem 0.5rem; text-align: center; font-weight: 600;">DPG</th>
+                    <th style="padding: 0.45rem 0.5rem; text-align: center; font-weight: 600;">ImgEdit</th>
+                    <th style="padding: 0.45rem 0.5rem; text-align: center; font-weight: 600;">GEdit-EN</th>
+                  </tr>
+                </thead>
+                <tbody>
+              
+                  <!-- (A) Understanding-focused baselines -->
+                  <tr style="background:#fff;">
+                    <td style="padding: 0.5rem 1rem;">LLaVA-1.5</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">36.4</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">67.8</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">36.3</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                  </tr>
+                  <tr style="background:#fff; border-bottom: 1px solid #000000;">
+                    <td style="padding: 0.5rem 1rem;">LLaVA-NeXT</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">79.3</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">51.1</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">57.4</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                  </tr>
+              
+                  <!-- (B) Pure generators -->
+                  <tr style="background:#fff;">
+                    <td style="padding: 0.5rem 1rem;">SDXL</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">0.55</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">74.7</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                  </tr>
+                  <tr style="background:#fff;">
+                    <td style="padding: 0.5rem 1rem;">SD3-medium</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">0.62</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">84.1</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                  </tr>
+                  <tr style="background:#fff; border-bottom: 1px solid #000000;">
+                    <td style="padding: 0.5rem 1rem;">FLUX.1-dev</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">0.66</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">84.0</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                  </tr>
+              
+                  <!-- (C) Editing baselines -->
+                  <tr style="background:#fff;">
+                    <td style="padding: 0.5rem 1rem;">Instruct-P2P</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">1.88</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">3.68</td>
+                  </tr>
+                  <tr style="background:#fff;">
+                    <td style="padding: 0.5rem 1rem;">MagicBrush</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">1.90</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">1.86</td>
+                  </tr>
+                  <tr style="background:#fff;">
+                    <td style="padding: 0.5rem 1rem;">AnyEdit</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">2.45</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">3.21</td>
+                  </tr>
+                  <tr style="background:#fff;">
+                    <td style="padding: 0.5rem 1rem;">Step1X-Edit</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">3.06</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">6.70</td>
+                  </tr>
+                  <tr style="background:#fff; border-bottom: 1px solid #000000;">
+                    <td style="padding: 0.5rem 1rem;">IC-Edit</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">3.05</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">4.84</td>
+                  </tr>
+              
+                  <!-- Section divider -->
+                  <tr>
+                    <td colspan="10" style="padding: 0.6rem 1rem; font-weight:700; color:#c76c00; border-top: 1px solid #000;">Unified models</td>
+                  </tr>
+              
+                  <!-- (D) Unified models -->
+                  <tr style="background:#fff;">
+                    <td style="padding: 0.5rem 1rem;">Janus-Pro</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">★☆☆</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">75.5</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">36.3</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">39.8</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">0.80</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">84.19</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                  </tr>
+                  <tr style="background:#fff;">
+                    <td style="padding: 0.5rem 1rem;">Emu3</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">★☆☆</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">58.5</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">31.6</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">37.2</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">0.66†</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">80.60</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                  </tr>
+                  <tr style="background:#fff;">
+                    <td style="padding: 0.5rem 1rem;">UniPic</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">1.5B</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">★☆☆</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">0.86</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">85.50</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">3.49</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">5.83</td>
+                  </tr>
+                  <tr style="background:#fff;">
+                    <td style="padding: 0.5rem 1rem;">UniPic 2.0</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">7B + 2B</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">★☆☆</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">83.5</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">58.6</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">67.1</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">0.90†</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">83.79</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">4.06</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">7.10</td>
+                  </tr>
+                  <tr style="background:#fff;">
+                    <td style="padding: 0.5rem 1rem;">Ovis-U1</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">2.4B + 1.2B</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">★☆☆</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">77.8</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">51.1</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">66.7</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">0.89</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">83.72</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">4.00</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">6.42</td>
+                  </tr>
+                  <tr style="background:#fff;">
+                    <td style="padding: 0.5rem 1rem;">MetaQuery-XL</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">7B + 1.6B</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">★★☆</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">83.5</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">58.6</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">66.6</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">0.80†</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">82.05</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                  </tr>
+                  <tr style="background:#fff;">
+                    <td style="padding: 0.5rem 1rem;">Show-o2</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">7B</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">★★☆</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">79.3</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">48.9</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">0.76</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">86.14</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                  </tr>
+                  <tr style="background:#fff;">
+                    <td style="padding: 0.5rem 1rem;">OmniGen</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">3.8B</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">★★☆</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">0.68</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">81.16</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">2.96</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">5.06</td>
+                  </tr>
+                  <tr style="background:#fff;">
+                    <td style="padding: 0.5rem 1rem;">OmniGen2</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">3B + 4B</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">★★☆</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">79.1</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">53.1</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">61.8</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">0.86†</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">83.57</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">3.44</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">6.42</td>
+                  </tr>
+                  <tr style="background:#fff;">
+                    <td style="padding: 0.5rem 1rem;">BAGEL</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">7B + 7B</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">★★☆</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">85.0</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">55.3</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">67.2</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">0.88†</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">85.07</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">3.20</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">6.52</td>
+                  </tr>
+              
+                  <!-- (E) Ours / related -->
+                  <tr style="background:#fff; border-top: 1px solid #000000;">
+                    <td style="padding: 0.5rem 1rem;">BLIP3-o 4B</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">3B + 1.4B</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">★★★</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">78.6</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">46.6</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">60.1</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">0.81†</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">79.36</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                  </tr>
+                  <tr style="background:#fff;">
+                    <td style="padding: 0.5rem 1rem;">BLIP3-o 8B</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">7B + 1.4B</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">★★★</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">83.5</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">58.6</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">66.6</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">0.84†</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">81.60</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">—</td>
+                  </tr>
+                  <tr style="background:#fff;">
+                    <td style="padding: 0.5rem 1rem;">UniWorld-V1</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">7B + 12B</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">★★★</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">83.5</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">58.6</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">67.1</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">0.84†</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">81.38</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">3.26</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">4.85</td>
+                  </tr>
+                  <tr style="background:#eaf1ff; border-bottom: 2px solid #000000">
+                    <td style="padding: 0.5rem 1rem;">LightBagel</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">7B + 5B + 3B</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">★★★</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">83.5</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">58.6</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">67.1</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">0.91†</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">82.16</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">3.77</td>
+                    <td style="padding: 0.5rem 1rem; text-align:center;">6.06</td>
+                  </tr>
+              
+                </tbody>
+              </table>
+
           </div>
-
-        </div>
       </div>
+  </div>
+</section>
+
+
+<section class="section" style="padding-top: 3rem; padding-bottom: 3rem">
+  <div class="container is-max-widescreen">
+      <div class="title is-2 has-text-centered" style="margin-bottom: 2rem;">Qualitative Results</div>
+      <div style="margin: 2rem auto; max-width: 1000px;">
+          <center>
+              <img id="gallery_v1" src="./resources/gallery_v1.png" alt="gallery_v1" width="100%" style="box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-radius: 8px;">
+          </center>
+      </div>
+      <div class="container is-max-widescreen " style="margin-top: 2rem; max-width: 1000px;">
+          <p style="font-size: 1.05rem; margin-bottom: 1rem; text-align: left; color: #666;">
+            <strong>Figure 3.</strong> Qualitative text-to-image results from <code>LightBagel</code>, showcasing high-quality generations with strong fidelity to text prompts and consistent rendering across diverse aspect ratios.
+          </p>
+      </div>
+      <div style="margin: 2rem auto; max-width: 1000px;">
+        <center>
+            <img id="edit_gallery_v1" src="./resources/edit_gallery_v1.png" alt="edit_gallery_v1" width="100%" style="box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-radius: 8px;">
+        </center>
+    </div>
+    <div class="container is-max-widescreen " style="margin-top: 2rem; max-width: 1000px;">
+        <p style="font-size: 1.05rem; margin-bottom: 1rem; text-align: left; color: #666;">
+          <strong>Figure 4.</strong> Qualitative image editing results generated by <code>LightBagel</code>. The model produces high-quality outputs across a diverse range of editing tasks.
+        </p>
     </div>
   </div>
 </section>
 
-<section class="section">
-  <div class="container">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Quantitative Results</h2>
-        <div class="content has-text-centered">
-          <center><img class="center" src="./resources/benchmark_results.png" width="80%"></center>
-          <div class="content has-text-justified">
-            <p><strong>Table 1.</strong> Comparison of different models across understanding, generation, editing, and in-context Generation tasks. 
-              <sup>&dagger;</sup> refers to the methods using LLM rewriter. 
-              For UMMs, <span class="stars" aria-label="1 out of 3">★☆☆</span> refers to only model checkpoints and evaluation code being released; 
-              <span class="stars" aria-label="2 out of 3">★★☆</span> refers to only model checkpoints and training/evaluation code being released; 
-              <span class="stars" aria-label="3 out of 3">★★★</span> refers to the full suite of all the {model, data, code} being released.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-      <section class="section">
-  <div class="container">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Qualitative Results</h2>
-        <div class="content has-text-centered">
-          <center><img class="center" src="./resources/gallery_v1.png" width="80%"></center>
-          <div class="content has-text-justified">
-            <p><strong>Figure 3.</strong> Qualitative text-to-image results from <code>LightBagel</code>, showcasing high-quality generations with strong fidelity to text prompts and consistent rendering across diverse aspect ratios.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-        <section class="section">
-  <div class="container">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <div class="content has-text-centered">
-          <center><img class="center" src="./resources/edit_gallery_v1.png" width="90%"></center>
-          <div class="content has-text-justified">
-            <p><strong>Figure 4.</strong> Qualitative image editing results generated by LIGHTBAGEL. The model produces high-quality outputs across a diverse range of editing tasks.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="BibTeX">
+<section class="section" style="padding-top: 3rem; padding-bottom: 3rem; background-color: #fafafa;">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>
@@ -269,17 +598,22 @@ TBD
 
 
 
-<footer class="footer">
+<footer class="footer" style="padding: 3rem 1.5rem;">
   <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-          <p>
-            Based on the following <a href="http://nerfies.github.io">template</a>.
-          </p>
-        </div>
+      <div class="columns is-centered">
+          <div class="column is-8">
+              <div class="content has-text-centered" style="font-size: 0.95rem; line-height: 1.6;">
+                  <p>
+                      This website is licensed under a <a rel="license"
+                          href="http://creativecommons.org/licenses/by-sa/4.0/" style="color: #3273dc;">Creative
+                          Commons Attribution-ShareAlike 4.0 International License</a>.
+                  </p>
+                  <p>
+                      The template is modified based on <a href="https://github.com/nerfies/nerfies.github.io" style="color: #3273dc;">this</a>.
+                  </p>
+              </div>
+          </div>
       </div>
-    </div>
   </div>
 </footer>
 
