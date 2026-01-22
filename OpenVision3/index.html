@@ -43,12 +43,12 @@
       <div class="publication-links" style="margin-top: 1.5em;">
         <!-- PDF Link -->
         <span class="link-block">
-          <a href="https://arxiv.org/abs/2505.04601"
+          <a href="./resources/OpenVision_3.pdf"
              class="external-link button is-normal is-rounded is-dark">
             <span class="icon">
-              <img src="./resources/ar.svg" alt="arXiv" style="width: 1.2em; height: 1.2em;" />
+              <img src="./resources/ar.svg" alt="PDF" style="width: 1.2em; height: 1.2em;" />
             </span>
-            <span>arXiv</span>
+            <span>PDF</span>
           </a>
         </span>
 
@@ -65,7 +65,7 @@
 
         <!-- Model Link -->
         <span class="link-block">
-          <a href="https://huggingface.co/collections/UCSC-VLAA/openvision-681a4c27ee1f66411b4ae919"
+          <a href="https://huggingface.co/collections/UCSC-VLAA/openvision-3"
              class="external-link button is-normal is-rounded is-dark">
             <span class="icon">
               <img src="./resources/gr.svg" alt="HF" style="width: 1.2em; height: 1.2em;" />
@@ -113,7 +113,7 @@
 <!-- Detailed Comparisons Section -->
 <section class="section has-background-light">
   <div class="container has-text-centered">
-    <h2 class="title is-3">Detailed Comparisons and Efficiency</h2>
+    <h2 class="title is-3">Performance on Generation, Reconstruction and Understanding</h2>
 
     <!-- OpenVision vs Proprietary -->
     <div class="content" style="margin-bottom: 2em;">
@@ -139,7 +139,7 @@
 
     <!-- LLaVA-1.5 Performance -->
     <div class="content" style="margin-bottom: 2em;">
-      <h3 class="title is-4">Performance under LLaVA-1.5 Framework</h3>
+      <h3 class="title is-4">Understanding Performance under LLaVA-1.5 Framework</h3>
       <img src="resources/und_table.png" alt="LLaVA-1.5 Performance Comparison"
            style="max-width: 80%; height: auto; border: 1px solid #ccc; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
       <p style="margin-top: 0.8em;">
@@ -175,47 +175,24 @@
 <!-- Model Zoo (ImageNet-1K) -->
 <section class="section">
   <div class="container">
-    <h2 class="title is-3 has-text-centered">Model Zoo (ImageNet-1K)</h2>
-    <p class="has-text-centered" style="max-width: 700px; margin: 0 auto 1.5em auto; font-size: 1.05em;">
-      We report ImageNet-1K Top-1 accuracy across OpenVision variants. All models are available in both JAX and PyTorch formats.
+    <h2 class="title is-3 has-text-centered">OpenVision 3 - Model Zoo</h2>
+    <p class="has-text-centered" style="max-width: 600px; margin: 0 auto 1.5em auto; font-size: 1.05em;">
+      We release all ViT checkpoints in OpenVision 3 below. All ViT checkpoints should be used with <a href="https://huggingface.co/black-forest-labs/FLUX.1-dev" target="_blank">FLUX.1 VAE</a>. The downsample factor of FLUX.1 VAE is 8.
     </p>
     <div class="table-container" style="overflow-x: auto; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-radius: 10px;">
       <table class="table is-bordered is-fullwidth has-text-centered" style="min-width: 900px;">
         <thead class="has-background-light">
           <tr>
-            <th>Model</th><th>Size</th><th>Patch</th><th>Resolution</th><th>Top-1</th><th>Link</th><th>JAX</th><th>PyTorch</th>
+            <th>Model</th><th>Resolution</th><th>ViT Patch</th><th># Tokens</th><th>ViT Link</th>
+            <!-- <th>JAX</th><th>PyTorch</th> -->
           </tr>
         </thead>
         <tbody>
-          <tr><td>ViT-Tiny</td><td>5M</td><td>16</td><td>160</td><td>46.9%</td><td><a href="https://huggingface.co/UCSC-VLAA/openvision-vit-tiny-patch16-160" target="_blank">HF</a></td><td>✓</td><td>✓</td></tr>
-          <tr><td>ViT-Tiny</td><td>5M</td><td>16</td><td>224</td><td>49.6%</td><td><a href="https://huggingface.co/UCSC-VLAA/openvision-vit-tiny-patch16-224" target="_blank">HF</a></td><td>✓</td><td>✓</td></tr>
-          <tr><td>ViT-Tiny</td><td>5M</td><td>16</td><td>384</td><td>51.5%</td><td><a href="https://huggingface.co/UCSC-VLAA/openvision-vit-tiny-patch16-384" target="_blank">HF</a></td><td>✓</td><td>✓</td></tr>
-          <tr><td>ViT-Tiny</td><td>5M</td><td>8</td><td>160</td><td>51.9%</td><td><a href="https://huggingface.co/UCSC-VLAA/openvision-vit-tiny-patch8-160" target="_blank">HF</a></td><td>✓</td><td>✓</td></tr>
-          <tr><td>ViT-Tiny</td><td>5M</td><td>8</td><td>224</td><td>53.5%</td><td><a href="https://huggingface.co/UCSC-VLAA/openvision-vit-tiny-patch8-224" target="_blank">HF</a></td><td>✓</td><td>✓</td></tr>
-          <tr><td>ViT-Tiny</td><td>5M</td><td>8</td><td>384</td><td>53.9%</td><td><a href="https://huggingface.co/UCSC-VLAA/openvision-vit-tiny-patch8-384" target="_blank">HF</a></td><td>✓</td><td>✓</td></tr>
+          <tr><td>OpenVision 3-Base</td><td>224</td><td>2</td><td>196</td><td><a href="https://huggingface.co/UCSC-VLAA/openvision-vit-tiny-patch16-160" target="_blank">HF</a></td>
+          <tr><td>OpenVision 3-Large</td><td>256</td><td>2</td><td>256</td><td>HF</td>
+            <!-- <td><a href="https://huggingface.co/UCSC-VLAA/openvision-vit-tiny-patch16-160" target="_blank">HF</a></td> -->
+            <!-- <td>✓</td><td>✓</td></tr> -->
 
-          <tr><td>ViT-Small</td><td>22M</td><td>16</td><td>160</td><td>63.5%</td><td><a href="https://huggingface.co/UCSC-VLAA/openvision-vit-small-patch16-160" target="_blank">HF</a></td><td>✓</td><td>✓</td></tr>
-          <tr><td>ViT-Small</td><td>22M</td><td>16</td><td>224</td><td>65.9%</td><td><a href="https://huggingface.co/UCSC-VLAA/openvision-vit-small-patch16-224" target="_blank">HF</a></td><td>✓</td><td>✓</td></tr>
-          <tr><td>ViT-Small</td><td>22M</td><td>16</td><td>384</td><td>67.1%</td><td><a href="https://huggingface.co/UCSC-VLAA/openvision-vit-small-patch16-384" target="_blank">HF</a></td><td>✓</td><td>✓</td></tr>
-          <tr><td>ViT-Small</td><td>22M</td><td>8</td><td>160</td><td>67.3%</td><td><a href="https://huggingface.co/UCSC-VLAA/openvision-vit-small-patch8-160" target="_blank">HF</a></td><td>✓</td><td>✓</td></tr>
-          <tr><td>ViT-Small</td><td>22M</td><td>8</td><td>224</td><td>68.6%</td><td><a href="https://huggingface.co/UCSC-VLAA/openvision-vit-small-patch8-224" target="_blank">HF</a></td><td>✓</td><td>✓</td></tr>
-          <tr><td>ViT-Small</td><td>22M</td><td>8</td><td>384</td><td>68.5%</td><td><a href="https://huggingface.co/UCSC-VLAA/openvision-vit-small-patch8-384" target="_blank">HF</a></td><td>✓</td><td>✓</td></tr>
-
-          <tr><td>ViT-Base</td><td>86M</td><td>16</td><td>160</td><td>72.4%</td><td><a href="https://huggingface.co/UCSC-VLAA/openvision-vit-base-patch16-160" target="_blank">HF</a></td><td>✓</td><td>✓</td></tr>
-          <tr><td>ViT-Base</td><td>86M</td><td>16</td><td>224</td><td>73.9%</td><td><a href="https://huggingface.co/UCSC-VLAA/openvision-vit-base-patch16-224" target="_blank">HF</a></td><td>✓</td><td>✓</td></tr>
-          <tr><td>ViT-Base</td><td>86M</td><td>16</td><td>384</td><td>74.5%</td><td><a href="https://huggingface.co/UCSC-VLAA/openvision-vit-base-patch16-384" target="_blank">HF</a></td><td>✓</td><td>✓</td></tr>
-          <tr><td>ViT-Base</td><td>86M</td><td>8</td><td>160</td><td>74.8%</td><td><a href="https://huggingface.co/UCSC-VLAA/openvision-vit-base-patch8-160" target="_blank">HF</a></td><td>✓</td><td>✓</td></tr>
-          <tr><td>ViT-Base</td><td>86M</td><td>8</td><td>224</td><td>75.4%</td><td><a href="https://huggingface.co/UCSC-VLAA/openvision-vit-base-patch8-224" target="_blank">HF</a></td><td>✓</td><td>✓</td></tr>
-          <tr><td>ViT-Base</td><td>86M</td><td>8</td><td>384</td><td>75.6%</td><td><a href="https://huggingface.co/UCSC-VLAA/openvision-vit-base-patch8-384" target="_blank">HF</a></td><td>✓</td><td>✓</td></tr>
-
-          <tr><td>ViT-Large</td><td>307M</td><td>14</td><td>84</td><td>74.7%</td><td><a href="https://huggingface.co/UCSC-VLAA/openvision-vit-large-patch14-84" target="_blank">HF</a></td><td>✓</td><td>✓</td></tr>
-          <tr><td>ViT-Large</td><td>307M</td><td>14</td><td>224</td><td>78.5%</td><td><a href="https://huggingface.co/UCSC-VLAA/openvision-vit-large-patch14-224" target="_blank">HF</a></td><td>✓</td><td>✓</td></tr>
-          <tr><td>ViT-Large</td><td>307M</td><td>14</td><td>336</td><td>78.9%</td><td><a href="https://huggingface.co/UCSC-VLAA/openvision-vit-large-patch14-336" target="_blank">HF</a></td><td>✓</td><td>✓</td></tr>
-          <tr><td>SoViT-400M</td><td>400M</td><td>14</td><td>84</td><td>76.2%</td><td><a href="https://huggingface.co/UCSC-VLAA/openvision-vit-so400m-patch14-84" target="_blank">HF</a></td><td>✓</td><td>✓</td></tr>
-          <tr><td>SoViT-400M</td><td>400M</td><td>14</td><td>224</td><td>79.7%</td><td><a href="https://huggingface.co/UCSC-VLAA/openvision-vit-so400m-patch14-224" target="_blank">HF</a></td><td>✓</td><td>✓</td></tr>
-          <tr><td>SoViT-400M</td><td>400M</td><td>14</td><td>384</td><td>79.9%</td><td><a href="https://huggingface.co/UCSC-VLAA/openvision-vit-so400m-patch14-384" target="_blank">HF</a></td><td>✓</td><td>✓</td></tr>
-          <tr><td>ViT-Huge</td><td>632M</td><td>14</td><td>84</td><td>77.4%</td><td><a href="https://huggingface.co/UCSC-VLAA/openvision-vit-huge-patch14-84" target="_blank">HF</a></td><td>✓</td><td>✓</td></tr>
-          <tr><td>ViT-Huge</td><td>632M</td><td>14</td><td>224</td><td>80.4%</td><td><a href="https://huggingface.co/UCSC-VLAA/openvision-vit-huge-patch14-224" target="_blank">HF</a></td><td>✓</td><td>✓</td></tr>
         </tbody>
       </table>
     </div>
@@ -223,7 +200,7 @@
 </section>
 
 <!-- Model Usage Section -->
-<section class="section">
+<!-- <section class="section">
   <div class="container content">
     <h2 class="title is-3">Model Usage</h2>
     <h3 class="subtitle is-5">With Our Customized OpenCLIP Tokenizer</h3>
@@ -264,7 +241,7 @@ with torch.no_grad(), torch.cuda.amp.autocast():
 print("Label probs:", text_probs)  # prints: [[0., 0., 0., 1.0]]
     </code></pre>
   </div>
-</section>
+</section> -->
 
 <!-- Acknowledgement -->
 <section class="section">
@@ -281,12 +258,12 @@ print("Label probs:", text_probs)  # prints: [[0., 0., 0., 1.0]]
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>
-@article{li2025openvision,
+<!-- @article{li2025openvision,
   title   = {OpenVision: A Fully-Open, Cost-Effective Family of Advanced Vision Encoders for Multimodal Learning},
   author  = {Li, Xianhang and Liu, Yanqing and Tu, Haoqin and Zhu, Hongru and Xie, Cihang},
   journal = {arXiv preprint arXiv:2505.04601},
   year    = {2025}
-}
+} -->
     </code></pre>
   </div>
 </section>
