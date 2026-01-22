@@ -172,12 +172,110 @@
 </section>
 
 
+<!-- Loss Visualization Section -->
+<section class="section has-background-light">
+  <div class="container has-text-centered">
+    <h2 class="title is-3">Loss Visualization with Only Semantic Loss</h2>
+    <p style="max-width: 800px; margin: 0 auto 2em auto; font-size: 1.05em; line-height: 1.6; text-align: left;">
+      We trained our tokenizer <span style="color: #0066cc; font-weight: 600;">with</span> and <span style="color: #cc0000; font-weight: 600;">without</span> the reconstruction loss, respectively. 
+      <br>
+      <br>
+      <strong>Understanding alone benefits reconstruction:</strong> 
+      In Figures (a) and (b), both pixel-level and latent-level reconstruction losses decrease significantly even in the absence of explicit reconstruction signals. 
+      <br>
+
+      <strong>Reconstruction loss does not harm understanding:</strong> 
+      Figures (c) and (d) demonstrate that the incorporation of the reconstruction loss has no adverse impact on the losses of the understanding branch.
+    </p>
+    
+    <div class="columns is-multiline is-centered" style="margin-top: 2em;">
+      <!-- Pixel Recon Loss -->
+      <div class="column is-3-desktop is-6-tablet is-12-mobile">
+        <h4 class="title is-5" style="margin-bottom: 0.5em;">(a) Pixel Recon Loss</h4>
+        <img src="resources/recon_outside_loss_compare.png" alt="Pixel Reconstruction Loss"
+             style="width: 100%; height: auto; border: 1px solid #ccc; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      </div>
+      
+      <!-- Latents Recon Loss -->
+      <div class="column is-3-desktop is-6-tablet is-12-mobile">
+        <h4 class="title is-5" style="margin-bottom: 0.5em;">(b) Latents Recon Loss</h4>
+        <img src="resources/recon_inside_loss_compare.png" alt="Latents Reconstruction Loss"
+             style="width: 100%; height: auto; border: 1px solid #ccc; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      </div>
+      
+      <!-- Caption Loss -->
+      <div class="column is-3-desktop is-6-tablet is-12-mobile">
+        <h4 class="title is-5" style="margin-bottom: 0.5em;">(c) Caption Loss</h4>
+        <img src="resources/caption_loss_compare.png" alt="Caption Loss"
+             style="width: 100%; height: auto; border: 1px solid #ccc; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      </div>
+      
+      <!-- Contrastive Loss -->
+      <div class="column is-3-desktop is-6-tablet is-12-mobile">
+        <h4 class="title is-5" style="margin-bottom: 0.5em;">(d) Contrastive Loss</h4>
+        <img src="resources/contrastive_loss_compare.png" alt="Contrastive Loss"
+             style="width: 100%; height: auto; border: 1px solid #ccc; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Loss Visualization Section - Only Reconstruction -->
+<section class="section has-background-light">
+  <div class="container has-text-centered">
+    <h2 class="title is-3">Loss Visualization with Only Reconstruction Loss</h2>
+    <p style="max-width: 800px; margin: 0 auto 2em auto; font-size: 1.05em; line-height: 1.6; text-align: left;">
+      We trained our tokenizer <span style="color: #0066cc; font-weight: 600;">with</span> and <span style="color: #cc0000; font-weight: 600;">without</span> the understanding loss, respectively. 
+      <br>
+      <br>
+      <strong>Adding semantic signals facilitates reconstruction:</strong> 
+      In Figure (a), the inclusion of semantic loss leads to a lower image reconstruction loss, suggesting that semantic supervision can, in turn, enhance reconstruction performance. 
+      <br>
+
+      <strong>Reconstruction facilitates semantic generative tasks:</strong> 
+      Figures (c) and (d) show that in the absence of semantic supervision, the contrastive loss remains almost stagnant, whereas the caption loss exhibits a marginal decline. This indicates that the reconstruction task intrinsically facilitates semantic tasks that are also generative in nature.
+    </p>
+    
+    <div class="columns is-multiline is-centered" style="margin-top: 2em;">
+      <!-- Pixel Recon Loss -->
+      <div class="column is-3-desktop is-6-tablet is-12-mobile">
+        <h4 class="title is-5" style="margin-bottom: 0.5em;">(a) Pixel Recon Loss</h4>
+        <img src="resources/wo_und_recon_outside_loss_compare.png" alt="Pixel Reconstruction Loss"
+             style="width: 100%; height: auto; border: 1px solid #ccc; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      </div>
+      
+      <!-- Latents Recon Loss -->
+      <div class="column is-3-desktop is-6-tablet is-12-mobile">
+        <h4 class="title is-5" style="margin-bottom: 0.5em;">(b) Latents Recon Loss</h4>
+        <img src="resources/wo_und_recon_inside_loss_compare.png" alt="Latents Reconstruction Loss"
+             style="width: 100%; height: auto; border: 1px solid #ccc; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      </div>
+      
+      <!-- Caption Loss -->
+      <div class="column is-3-desktop is-6-tablet is-12-mobile">
+        <h4 class="title is-5" style="margin-bottom: 0.5em;">(c) Caption Loss</h4>
+        <img src="resources/wo_und_caption_loss_compare.png" alt="Caption Loss"
+             style="width: 100%; height: auto; border: 1px solid #ccc; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      </div>
+      
+      <!-- Contrastive Loss -->
+      <div class="column is-3-desktop is-6-tablet is-12-mobile">
+        <h4 class="title is-5" style="margin-bottom: 0.5em;">(d) Contrastive Loss</h4>
+        <img src="resources/wo_und_contrastive_loss_compare.png" alt="Contrastive Loss"
+             style="width: 100%; height: auto; border: 1px solid #ccc; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      </div>
+    </div>
+  </div>
+</section>
+
+
 <!-- Model Zoo (ImageNet-1K) -->
 <section class="section">
   <div class="container">
     <h2 class="title is-3 has-text-centered">OpenVision 3 - Model Zoo</h2>
     <p class="has-text-centered" style="max-width: 600px; margin: 0 auto 1.5em auto; font-size: 1.05em;">
-      We release all ViT checkpoints in OpenVision 3 below. All ViT checkpoints should be used with <a href="https://huggingface.co/black-forest-labs/FLUX.1-dev" target="_blank">FLUX.1 VAE</a>. The downsample factor of FLUX.1 VAE is 8.
+      We release all ViT checkpoints in OpenVision 3 below. All ViT checkpoints should be paired with <a href="https://huggingface.co/black-forest-labs/FLUX.1-dev" target="_blank">FLUX.1 VAE</a>. The downsample factor of FLUX.1 VAE is 8.
     </p>
     <div class="table-container" style="overflow-x: auto; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-radius: 10px;">
       <table class="table is-bordered is-fullwidth has-text-centered" style="min-width: 900px;">
