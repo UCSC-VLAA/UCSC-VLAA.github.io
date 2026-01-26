@@ -179,6 +179,21 @@ function copy(dest, source) {
         // document.write("<h2>Preprint</h2>")
         document.write("<ul><br>")
 
+
+        add_paper("OpenVision 3: A Family of Unified Visual Encoder for Both Understanding and Generation",
+          "Letian Zhang, Sucheng Ren, Yanqing Liu, Xianhang Li, Zeyu Wang, Yuyin Zhou, Huaxiu Yao, Zeyu Zheng, Weili Nie, Guilin Liu, Zhiding Yu, Cihang Xie",
+          null,
+          "arXiv preprint arXiv:2601.15369", 
+          "@article{zhang2026openvision,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {OpenVision 3: A Family of Unified Visual Encoder for Both Understanding and Generation},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Letian Zhang, Sucheng Ren, Yanqing Liu, Xianhang Li, Zeyu Wang, Yuyin Zhou, Huaxiu Yao, Zeyu Zheng, Weili Nie, Guilin Liu, Zhiding Yu, Cihang Xie},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2601.15369},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "This paper presents a family of advanced vision encoder, named OpenVision 3, that learns a single, unified visual representation that can serve both image understanding and image generation. Our core architecture is simple: we feed VAE-compressed image latents to a ViT encoder and train its output to support two complementary roles. First, the encoder output is passed to the ViT-VAE decoder to reconstruct the original image, encouraging the representation to capture generative structure. Second, the same representation is optimized with contrastive learning and image-captioning objectives, strengthening semantic features. By jointly optimizing reconstruction- and semantics-driven signals in a shared latent space, the encoder learns representations that synergize and generalize well across both regimes. We validate this unified design through extensive downstream evaluations with the encoder frozen. For multimodal understanding, we plug the encoder into the LLaVA-1.5 framework: it performs comparably with a standard CLIP vision encoder (e.g., 62.4 vs 62.2 on SeedBench, and 83.7 vs 82.9 on POPE). For generation, we test it under the RAE framework: ours substantially surpasses the standard CLIP-based encoder (e.g., gFID: 1.89 vs 2.54 on ImageNet). We hope this work can spur future research on unified modeling.",
+          "https://arxiv.org/abs/2601.15369",
+          "https://ucsc-vlaa.github.io/OpenVision3/"
+        )
+
         add_paper("Discrete Diffusion Models with MLLMs for Unified Medical Multimodal Generation",
           "Jiawei Mao, Yuhan Wang, Lifeng Chen, Can Zhao, Yucheng Tang, Dong Yang, Liangqiong Qu, Daguang Xu, Yuyin Zhou",
           null,
@@ -266,19 +281,7 @@ function copy(dest, source) {
         )
 
 
-        add_paper("MedVLThinker: Simple Baselines for Multimodal Medical Reasoning",
-          "Xiaoke Huang, Juncheng Wu, Hui Liu, Xianfeng Tang, Yuyin Zhou",
-          null,
-          "https://arxiv.org/abs/2508.02669", 
-          "@article{huang2025medvlthinker,<br>" +
-          "&nbsp;&nbsp;&nbsp;title   = {MedVLThinker: Simple Baselines for Multimodal Medical Reasoning},<br>" +
-          "&nbsp;&nbsp;&nbsp;author  = {Xiaoke Huang, Juncheng Wu, Hui Liu, Xianfeng Tang, Yuyin Zhou},<br>" +
-          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2508.02669},<br>" + 
-          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
-          "Large Reasoning Models (LRMs) have introduced a new paradigm in AI by enabling models to \"think before responding\" via chain-of-thought reasoning. However, the absence of open and reproducible recipes for building reasoning-centric medical LMMs hinders community-wide research, analysis, and comparison. In this paper, we present MedVLThinker, a suite of simple yet strong baselines. Our fully open recipe consists of: (1) systematic data curation for both text-only and image-text medical data, filtered according to varying levels of reasoning difficulty, and (2) two training paradigms: Supervised Fine-Tuning (SFT) on distilled reasoning traces and Reinforcement Learning with Verifiable Rewards (RLVR) based on final answer correctness. Across extensive experiments on the Qwen2.5-VL model family (3B, 7B) and six medical QA benchmarks, we find that RLVR consistently and significantly outperforms SFT. Additionally, under the RLVR framework, a key, counter-intuitive finding is that training on our curated text-only reasoning data provides a more substantial performance boost than training on multimodal image-text data. Our best open 7B model, trained using the RLVR recipe on text-only data, establishes a new state-of-the-art on existing public VQA benchmarks, surpassing all previous open-source medical LMMs. Furthermore, scaling our model to 32B achieves performance on par with the proprietary GPT-4o. We release all curated data, models, and code to provide the community with a strong, open foundation for future research in multimodal medical reasoning.",
-          "https://arxiv.org/abs/2508.02669",
-          "https://ucsc-vlaa.github.io/MedVLThinker/"
-        )
+
 
         add_paper("FedVLMBench: Benchmarking Federated Fine-Tuning of Vision-Language Models",
           "Weiying Zheng, Ziyue Lin, Pengxin Guo, Yuyin Zhou, Feifei Wang, Liangqiong Qu",
@@ -431,20 +434,6 @@ function copy(dest, source) {
             "https://github.com/UCSC-VLAA/MedReason"
         )
 
-        add_paper("m1: Unleash the Potential of Test-Time Scaling for Medical Reasoning with Large Language Models",
-            "Xiaoke Huang, Juncheng Wu, Hui Liu, Xianfeng Tang, Yuyin Zhou",
-            null,
-            "https://arxiv.org/abs/2504.00869", 
-            "@article{huang2025m1,<br>" +
-            "&nbsp;&nbsp;&nbsp;title   = {m1: Unleash the Potential of Test-Time Scaling for Medical Reasoning with Large Language Models},<br>" +
-            "&nbsp;&nbsp;&nbsp;author  = {Xiaoke Huang, Juncheng Wu, Hui Liu, Xianfeng Tang, Yuyin Zhou},<br>" +
-            "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2504.00869},<br>" + 
-            "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
-            "Test-time scaling has emerged as a powerful technique for enhancing the reasoning capabilities of large language models. However, its effectiveness in medical reasoning remains uncertain, as the medical domain fundamentally differs from mathematical tasks in terms of knowledge representation and decision-making processes. In this paper, we provide the first comprehensive investigation of test-time scaling for medical reasoning and present m1, a simple yet effective approach that increases a model's medical reasoning capability at inference. Our evaluation across diverse medical tasks demonstrates that test-time scaling consistently enhances medical reasoning, enabling lightweight fine-tuned models under 10B parameters to establish new state-of-the-art performance, while our 32B model rivals previous 70B-scale medical LLMs. However, we identify an optimal reasoning token budget of approximately 4K, beyond which performance may degrade due to overthinking. Budget forcing, which extends test-time computation through iterative prompts, helps models double-check answers but does not necessarily improve the overall medical QA performance and, in some cases, even introduces errors into previously correct responses. Our case-by-case analysis identifies insufficient medical knowledge as a key bottleneck that prevents further performance gains through test-time scaling. We find that increasing data scale, improving data quality, and expanding model capacity consistently enhance medical knowledge grounding, enabling continued performance improvements, particularly on challenging medical benchmarks where smaller models reach saturation. These findings underscore fundamental differences between medical and mathematical reasoning in LLMs, highlighting that enriched medical knowledge, other than increased reasoning depth alone, is essential for realizing the benefits of test-time scaling.",
-            "https://arxiv.org/abs/2504.00869",
-            "https://github.com/UCSC-VLAA/m1"
-        )
-
         add_paper("STAR-1: Safer Alignment of Reasoning LLMs with 1K Data",
             "Zijun Wang, Haoqin Tu, Yuhan Wang, Juncheng Wu, Jieru Mei, Brian R. Bartoldson, Bhavya Kailkhura, Cihang Xie",
             null,
@@ -472,21 +461,6 @@ function copy(dest, source) {
           "Foundation models exhibit strong capabilities for downstream tasks by learning generalized representations through self-supervised pre-training on large datasets. While several foundation models have been developed for single-cell RNA-seq (scRNA-seq) data, there is still a lack of models specifically tailored for single-cell ATAC-seq (scATAC-seq), which measures epigenetic information in individual cells. The principal challenge in developing such a model lies in the vast number of scATAC peaks and the significant sparsity of the data, which complicates the formulation of peak-to-peak correlations. To address this challenge, we introduce EpiFoundation, a foundation model for learning cell representations from the high-dimensional and sparse space of peaks. Epi-Foundation relies on an innovative cross-modality pre-training procedure with two key technical innovations. First, EpiFoundation exclusively processes the non-zero peak set, thereby enhancing the density of cell-specific information within the input data. Second, EpiFoundation utilizes dense gene expression information to supervise the pre-training process, aligning peak-to-gene correlations. EpiFoundation can handle various types of downstream tasks, including cell-type annotation, batch correction, and gene expression prediction. To train and validate EpiFoundation, we curated MiniAtlas, a dataset of 100,000+ single cells with paired scRNA-seq and scATAC-seq data, along with diverse test sets spanning various tissues and cell types for robust evaluation. EpiFoundation demonstrates state-of-the-art performance across multiple tissues and diverse downstream tasks.",
           "https://www.biorxiv.org/content/10.1101/2025.02.05.636688",
           "https://github.com/UCSC-VLAA/EpiFoundation"
-        )
-
-
-        add_paper("MethylProphet: A Generalized Gene-Contextual Model for Inferring Whole-Genome DNA Methylation Landscape",
-          "Xiaoke Huang, Qi Liu, Yifei Zhao, Xianfeng Tang, Yuyin Zhou, Wenpin Hou",
-          null,
-          "https://www.biorxiv.org/content/10.1101/2025.02.05.636730", 
-          "@article{huang2025methylprophet,<br>" +
-          "&nbsp;&nbsp;&nbsp;title   = {MethylProphet: A Generalized Gene-Contextual Model for Inferring Whole-Genome DNA Methylation Landscape},<br>" +
-          "&nbsp;&nbsp;&nbsp;author  = {Xiaoke Huang, Qi Liu, Yifei Zhao, Xianfeng Tang, Yuyin Zhou, Wenpin Hou},<br>" +
-          "&nbsp;&nbsp;&nbsp;journal = {bioRxiv},<br>" + 
-          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
-          "DNA methylation (DNAm), an epigenetic modification, regulates gene expression, influences phenotypes, and encodes inheritable information, making it critical for disease diagnosis, treatment, and prevention. While human genome contains approximately 28 million CpG sites where DNAm can be measured, only 1–3% of these sites are typically available in most datasets due to complex experimental protocols and high costs, hindering insights from DNAm data. Leveraging the relationship between gene expression and DNAm offers promise for computational inference, but existing statistical, machine learning, and masking-based generative Transformers face critical limitations: they cannot infer DNAm at unmeasured CpGs or in new samples effectively. To overcome these challenges, we introduce MethylProphet, a gene-guided, context-aware Transformer model designed for DNAm inference. MethylProphet employs a Bottleneck MLP for efficient gene profile compression and a specialized DNA sequence tokenizer, integrating global gene expression patterns with local CpG context through a Transformer encoder architecture. Trained on whole-genome bisulfite sequencing data from ENCODE (1.6B training CpG-sample pairs; 322B tokens), MethylProphet demonstrates strong performance in hold-out evaluations, effectively inferring DNAm for unmeasured CpGs and new samples. In addition, its application to 10842 pairs of gene expression and DNAm samples at TCGA chromosome 1 (450M training CpGsample pairs; 91B tokens) highlights its potential to facilitate pan-cancer DNAm landscape inference, offering a powerful tool for advancing epigenetic research and precision medicine. All codes, data, protocols, and models are publicly available via https://github.com/xk-huang/methylprophet/.",
-          "https://www.biorxiv.org/content/10.1101/2025.02.05.636730", 
-          "https://github.com/xk-huang/methylprophet/"
         )
 
 
@@ -566,23 +540,6 @@ function copy(dest, source) {
           "https://github.com/OliverRensu/MVAR"
           )
 
-
-
-
-
-        add_paper("Story-Adapter: A Training-free Iterative Framework for Long Story Visualization",
-          "Jiawei Mao, Xiaoke Huang, Yunfei Xie, Yuanqi Chang, Mude Hui, Bingjie Xu, Yuyin Zhou",
-          null,
-          "https://arxiv.org/abs/2410.06244",
-          "@article{mao2024storyadapter,<br>" +
-          "&nbsp;&nbsp;&nbsp;title   = {Story-Adapter: A Training-free Iterative Framework for Long Story Visualization},<br>" +
-          "&nbsp;&nbsp;&nbsp;author  = {Jiawei Mao, Xiaoke Huang, Yunfei Xie, Yuanqi Chang, Mude Hui, Bingjie Xu, Yuyin Zhou},<br>" +
-          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2410.06244},<br>" +
-          "&nbsp;&nbsp;&nbsp;year    = {2024},<br>}",
-          "Story visualization, the task of generating coherent images based on a narrative, has seen significant advancements with the emergence of text-to-image models, particularly diffusion models. However, maintaining semantic consistency, generating high-quality fine-grained interactions, and ensuring computational feasibility remain challenging, especially in long story visualization (i.e., up to 100 frames). In this work, we propose a training-free and computationally efficient framework, termed Story-Adapter, to enhance the generative capability of long stories. Specifically, we propose an iterative paradigm to refine each generated image, leveraging both the text prompt and all generated images from the previous iteration. Central to our framework is a training-free global reference cross-attention module, which aggregates all generated images from the previous iteration to preserve semantic consistency across the entire story, while minimizing computational costs with global embeddings. This iterative process progressively optimizes image generation by repeatedly incorporating text constraints, resulting in more precise and fine-grained interactions. Extensive experiments validate the superiority of Story-Adapter in improving both semantic consistency and generative capability for fine-grained interactions, particularly in long story scenarios. The project page and associated code can be accessed via https://jwmao1.github.io/storyadapter.",
-          "https://arxiv.org/abs/2410.06244",
-          "https://jwmao1.github.io/storyadapter"
-          )
 
         // add_paper("Efficient MedSAMs: Segment Anything in Medical Images on Laptop",
         //   "Jun Ma, Feifei Li, Sumin Kim, Reza Asakereh, Bao-Hiep Le, Dang-Khoa Nguyen-Vu, Alexander Pfefferle, Muxin Wei, Ruochen Gao, Donghang Lyu, Songxiao Yang, Lennart Purucker, Zdravko Marinov, Marius Staring, Haisheng Lu, Thuy Thanh Dao, Xincheng Ye, Zhi Li, Gianluca Brugnara, Philipp Vollmuth, Martha Foltyn-Dumitru, Jaeyoung Cho, Mustafa Ahmed Mahmutoglu, Martin Bendszus, Irada Pflüger, Aditya Rastogi, Dong Ni, Xin Yang, Guang-Quan Zhou, Kaini Wang, Nicholas Heller, Nikolaos Papanikolopoulos, Christopher Weight, Yubing Tong, Jayaram K Udupa, Cahill J Patrick, Yaqi Wang, Yifan Zhang, Francisco Contijoch, Elliot McVeigh, Xin Ye, Shucheng He, Robert Haase, Thomas Pinetz, Alexander Radbruch, Inga Krause, Erich Kobler, Jian He, Yucheng Tang, Haichun Yang, Yuankai Huo, Gongning Luo, Kaisar Kushibar, Jandos Amankulov, Dias Toleshbayev, Amangeldi Mukhamejan, Jan Egger, Antonio Pepe, Christina Gsaxner, Gijs Luijten, Shohei Fujita, Tomohiro Kikuchi, Benedikt Wiestler, Jan S Kirschke, Ezequiel de la Rosa, Federico Bolelli, Luca Lumetti, Costantino Grana, Kunpeng Xie, Guomin Wu, Behrus Puladi, Carlos Martín-Isla, Karim Lekadir, Victor M Campello, Wei Shao, Wayne Brisbane, Hongxu Jiang, Hao Wei, Wu Yuan, Shuangle Li, Yuyin Zhou, Bo Wang",
@@ -930,6 +887,52 @@ function copy(dest, source) {
         document.write("<ul>")
 
 
+
+        add_paper("MethylProphet: A Generalized Gene-Contextual Model for Inferring Whole-Genome DNA Methylation Landscape",
+          "Xiaoke Huang, Qi Liu, Yifei Zhao, Xianfeng Tang, Yuyin Zhou, Wenpin Hou",
+          "ICLR, 2026",
+          "https://www.biorxiv.org/content/10.1101/2025.02.05.636730", 
+          "@article{huang2025methylprophet,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {MethylProphet: A Generalized Gene-Contextual Model for Inferring Whole-Genome DNA Methylation Landscape},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Xiaoke Huang, Qi Liu, Yifei Zhao, Xianfeng Tang, Yuyin Zhou, Wenpin Hou},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {bioRxiv},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
+          "DNA methylation (DNAm), an epigenetic modification, regulates gene expression, influences phenotypes, and encodes inheritable information, making it critical for disease diagnosis, treatment, and prevention. While human genome contains approximately 28 million CpG sites where DNAm can be measured, only 1–3% of these sites are typically available in most datasets due to complex experimental protocols and high costs, hindering insights from DNAm data. Leveraging the relationship between gene expression and DNAm offers promise for computational inference, but existing statistical, machine learning, and masking-based generative Transformers face critical limitations: they cannot infer DNAm at unmeasured CpGs or in new samples effectively. To overcome these challenges, we introduce MethylProphet, a gene-guided, context-aware Transformer model designed for DNAm inference. MethylProphet employs a Bottleneck MLP for efficient gene profile compression and a specialized DNA sequence tokenizer, integrating global gene expression patterns with local CpG context through a Transformer encoder architecture. Trained on whole-genome bisulfite sequencing data from ENCODE (1.6B training CpG-sample pairs; 322B tokens), MethylProphet demonstrates strong performance in hold-out evaluations, effectively inferring DNAm for unmeasured CpGs and new samples. In addition, its application to 10842 pairs of gene expression and DNAm samples at TCGA chromosome 1 (450M training CpGsample pairs; 91B tokens) highlights its potential to facilitate pan-cancer DNAm landscape inference, offering a powerful tool for advancing epigenetic research and precision medicine. All codes, data, protocols, and models are publicly available via https://github.com/xk-huang/methylprophet/.",
+          "https://www.biorxiv.org/content/10.1101/2025.02.05.636730", 
+          "https://github.com/xk-huang/methylprophet/"
+        )
+
+
+
+        add_paper("Story-Adapter: A Training-free Iterative Framework for Long Story Visualization",
+          "Jiawei Mao, Xiaoke Huang, Yunfei Xie, Yuanqi Chang, Mude Hui, Bingjie Xu, Yuyin Zhou",
+          "ICLR 2026",
+          "https://arxiv.org/abs/2410.06244",
+          "@article{mao2024storyadapter,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {Story-Adapter: A Training-free Iterative Framework for Long Story Visualization},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Jiawei Mao, Xiaoke Huang, Yunfei Xie, Yuanqi Chang, Mude Hui, Bingjie Xu, Yuyin Zhou},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2410.06244},<br>" +
+          "&nbsp;&nbsp;&nbsp;year    = {2024},<br>}",
+          "Story visualization, the task of generating coherent images based on a narrative, has seen significant advancements with the emergence of text-to-image models, particularly diffusion models. However, maintaining semantic consistency, generating high-quality fine-grained interactions, and ensuring computational feasibility remain challenging, especially in long story visualization (i.e., up to 100 frames). In this work, we propose a training-free and computationally efficient framework, termed Story-Adapter, to enhance the generative capability of long stories. Specifically, we propose an iterative paradigm to refine each generated image, leveraging both the text prompt and all generated images from the previous iteration. Central to our framework is a training-free global reference cross-attention module, which aggregates all generated images from the previous iteration to preserve semantic consistency across the entire story, while minimizing computational costs with global embeddings. This iterative process progressively optimizes image generation by repeatedly incorporating text constraints, resulting in more precise and fine-grained interactions. Extensive experiments validate the superiority of Story-Adapter in improving both semantic consistency and generative capability for fine-grained interactions, particularly in long story scenarios. The project page and associated code can be accessed via https://jwmao1.github.io/storyadapter.",
+          "https://arxiv.org/abs/2410.06244",
+          "https://jwmao1.github.io/storyadapter"
+          )
+
+        add_paper("MedVLSynther: Synthesizing High-Quality Visual Question Answering from Medical Documents with Generator-Verifier LMMs",
+            "Xiaoke Huang, Ningsen Wang, Hui Liu, Xianfeng Tang, Yuyin Zhou",
+            "ICLR, 2026",
+            "https://arxiv.org/abs/2510.25867", 
+            "@article{huang2025medvlsynther,<br>" +
+            "&nbsp;&nbsp;&nbsp;title   = {MedVLSynther: Synthesizing High-Quality Visual Question Answering from Medical Documents with Generator-Verifier LMMs},<br>" +
+            "&nbsp;&nbsp;&nbsp;author  = {Xiaoke Huang, Ningsen Wang, Hui Liu, Xianfeng Tang, Yuyin Zhou },<br>" +
+            "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2504.00993},<br>" + 
+            "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
+            "Large Multimodal Models (LMMs) are increasingly capable of answering medical questions that require joint reasoning over images and text, yet training general medical VQA systems is impeded by the lack of large, openly usable, high-quality corpora. We present MedVLSynther, a rubric-guided generator-verifier framework that synthesizes high-quality multiple-choice VQA items directly from open biomedical literature by conditioning on figures, captions, and in-text references. The generator produces self-contained stems and parallel, mutually exclusive options under a machine-checkable JSON schema; a multi-stage verifier enforces essential gates (self-containment, single correct answer, clinical validity, image-text consistency), awards fine-grained positive points, and penalizes common failure modes before acceptance. Applying this pipeline to PubMed Central yields MedSynVQA: 13,087 audited questions over 14,803 images spanning 13 imaging modalities and 28 anatomical regions. Training open-weight LMMs with reinforcement learning using verifiable rewards improves accuracy across six medical VQA benchmarks, achieving averages of 55.85 (3B) and 58.15 (7B), with up to 77.57 on VQA-RAD and 67.76 on PathVQA, outperforming strong medical LMMs. A Ablations verify that both generation and verification are necessary and that more verified data consistently helps, and a targeted contamination analysis detects no leakage from evaluation suites. By operating entirely on open literature and open-weight models, MedVLSynther offers an auditable, reproducible, and privacy-preserving path to scalable medical VQA training data.",
+            "https://arxiv.org/abs/2510.25867",
+            "https://github.com/UCSC-VLAA/MedVLSynther"
+        )
+
+
         add_paper("LVM-Lite: Training Large Vision Models with Efficient Sequential Modeling",
           "Xianhang Li, Hongru Zhu, Sucheng Ren, Linjie Yang, Peng Wang, Heng Wang, Xiaohui Shen, Qing Liu, Cihang Xie",
           "WACV, 2026",
@@ -947,7 +950,33 @@ function copy(dest, source) {
         document.write("<h1>2025</h1>")
         document.write("<ul>")
 
+        add_paper("MedVLThinker: Simple Baselines for Multimodal Medical Reasoning",
+          "Xiaoke Huang, Juncheng Wu, Hui Liu, Xianfeng Tang, Yuyin Zhou",
+          "ML4H, 2025",
+          "https://arxiv.org/abs/2508.02669", 
+          "@article{huang2025medvlthinker,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {MedVLThinker: Simple Baselines for Multimodal Medical Reasoning},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Xiaoke Huang, Juncheng Wu, Hui Liu, Xianfeng Tang, Yuyin Zhou},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2508.02669},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
+          "Large Reasoning Models (LRMs) have introduced a new paradigm in AI by enabling models to \"think before responding\" via chain-of-thought reasoning. However, the absence of open and reproducible recipes for building reasoning-centric medical LMMs hinders community-wide research, analysis, and comparison. In this paper, we present MedVLThinker, a suite of simple yet strong baselines. Our fully open recipe consists of: (1) systematic data curation for both text-only and image-text medical data, filtered according to varying levels of reasoning difficulty, and (2) two training paradigms: Supervised Fine-Tuning (SFT) on distilled reasoning traces and Reinforcement Learning with Verifiable Rewards (RLVR) based on final answer correctness. Across extensive experiments on the Qwen2.5-VL model family (3B, 7B) and six medical QA benchmarks, we find that RLVR consistently and significantly outperforms SFT. Additionally, under the RLVR framework, a key, counter-intuitive finding is that training on our curated text-only reasoning data provides a more substantial performance boost than training on multimodal image-text data. Our best open 7B model, trained using the RLVR recipe on text-only data, establishes a new state-of-the-art on existing public VQA benchmarks, surpassing all previous open-source medical LMMs. Furthermore, scaling our model to 32B achieves performance on par with the proprietary GPT-4o. We release all curated data, models, and code to provide the community with a strong, open foundation for future research in multimodal medical reasoning.",
+          "https://arxiv.org/abs/2508.02669",
+          "https://ucsc-vlaa.github.io/MedVLThinker/"
+        )
 
+        add_paper("m1: Unleash the Potential of Test-Time Scaling for Medical Reasoning with Large Language Models",
+            "Xiaoke Huang, Juncheng Wu, Hui Liu, Xianfeng Tang, Yuyin Zhou",
+            "ML4H, 2025",
+            "https://arxiv.org/abs/2504.00869", 
+            "@article{huang2025m1,<br>" +
+            "&nbsp;&nbsp;&nbsp;title   = {m1: Unleash the Potential of Test-Time Scaling for Medical Reasoning with Large Language Models},<br>" +
+            "&nbsp;&nbsp;&nbsp;author  = {Xiaoke Huang, Juncheng Wu, Hui Liu, Xianfeng Tang, Yuyin Zhou},<br>" +
+            "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2504.00869},<br>" + 
+            "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
+            "Test-time scaling has emerged as a powerful technique for enhancing the reasoning capabilities of large language models. However, its effectiveness in medical reasoning remains uncertain, as the medical domain fundamentally differs from mathematical tasks in terms of knowledge representation and decision-making processes. In this paper, we provide the first comprehensive investigation of test-time scaling for medical reasoning and present m1, a simple yet effective approach that increases a model's medical reasoning capability at inference. Our evaluation across diverse medical tasks demonstrates that test-time scaling consistently enhances medical reasoning, enabling lightweight fine-tuned models under 10B parameters to establish new state-of-the-art performance, while our 32B model rivals previous 70B-scale medical LLMs. However, we identify an optimal reasoning token budget of approximately 4K, beyond which performance may degrade due to overthinking. Budget forcing, which extends test-time computation through iterative prompts, helps models double-check answers but does not necessarily improve the overall medical QA performance and, in some cases, even introduces errors into previously correct responses. Our case-by-case analysis identifies insufficient medical knowledge as a key bottleneck that prevents further performance gains through test-time scaling. We find that increasing data scale, improving data quality, and expanding model capacity consistently enhance medical knowledge grounding, enabling continued performance improvements, particularly on challenging medical benchmarks where smaller models reach saturation. These findings underscore fundamental differences between medical and mathematical reasoning in LLMs, highlighting that enriched medical knowledge, other than increased reasoning depth alone, is essential for realizing the benefits of test-time scaling.",
+            "https://arxiv.org/abs/2504.00869",
+            "https://github.com/UCSC-VLAA/m1"
+        )
 
         add_paper("More Thinking, Less Seeing? Assessing Amplified Hallucination in Multimodal Reasoning Models",
           "Chengzhi Liu, Zhongxing Xu, Qingyue Wei, Juncheng Wu, James Zou, Xin Eric Wang, Yuyin Zhou, Sheng Liu",
