@@ -28,7 +28,8 @@
         <a href="https://xhl-video.github.io/xianhangli/" target="_blank" style="color: white; text-decoration: underline;">Xianhang Li</a><sup>1</sup> ·
         <a href="https://zw615.github.io/" target="_blank" style="color: white; text-decoration: underline;">Zeyu Wang</a><sup>1</sup> ·
         <a href="https://yuyinzhou.github.io/" target="_blank" style="color: white; text-decoration: underline;">Yuyin Zhou</a><sup>1</sup> ·
-        <a href="https://www.huaxiuyao.io/" target="_blank" style="color: white; text-decoration: underline;">Huaxiu Yao</a><sup>3</sup> ·
+        <a href="https://www.huaxiuyao.io/" target="_blank" style="color: white; text-decoration: underline;">Huaxiu Yao</a><sup>3</sup>
+        <br>
         <a href="https://zheng80.github.io/" target="_blank" style="color: white; text-decoration: underline;">Zeyu Zheng</a><sup>4</sup> ·
         <a href="https://weilinie.github.io/" target="_blank" style="color: white; text-decoration: underline;">Weili Nie</a><sup>5</sup> ·
         <a href="https://liuguilin1225.github.io/" target="_blank" style="color: white; text-decoration: underline;">Guilin Liu</a><sup>5</sup> ·
@@ -79,11 +80,11 @@
 </section>
 
 <!-- Teaser Image -->
-<div style="max-width: 900px; margin: 2em auto; text-align: center;">
-  <img src="resources/teaser_image-cropped-1.png" alt="OpenVision 3 Teaser" 
-       style="max-width: 100%; height: auto; border: 0px solid #dfdede; box-shadow: 0 0px 0px rgba(0,0,0,0.1); border-radius: 0px;">
-</div>
-
+      
+    <div style="max-width: 900px; margin: 2em auto; text-align: center;">
+      <img src="resources/teaser_image-cropped-1.png" alt="OpenVision 3 Teaser" 
+          style="max-width: 100%; height: auto; border: 0px solid #dfdede; box-shadow: 0 0px 0px rgba(0,0,0,0.1); border-radius: 0px;">
+    </div>
 <!-- Abstract -->
 <div style="max-width: 900px; margin: 2em auto; text-align: left;">
   <h2 class="title is-3 has-text-centered">Abstract</h2>
@@ -94,13 +95,51 @@
 
 
 <!-- Key Contributions -->
+
+<section class="section has-background-light">
+  <div class="container">
+    <h2 class="title is-3">What's New?</h2>
+    <div class="content">
+      <ul>
+        OpenVision 3 encodes <strong>VAE latents</strong> (instead of pixels) and trains the resulting representation with two complementary signals: <br>
+        <br>
+        <li> <strong>Reconstruction loss</strong> → preserves low-level visual detail</li>
+        <li> <strong>Contrastive + Captioning losses</strong> → injects high-level semantics</li>
+      </ul>
+      
+      <!-- <div style="text-align: center;">
+        <img src="resources/teaser_image-cropped-1.png" alt="OpenVision vs Proprietary Encoders"
+             style="max-width: 80%; height: auto; border: 1px solid #ccc; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      </div> -->
+<!--       
+    <div style="max-width: 900px; margin: 2em auto; text-align: center;">
+      <img src="resources/teaser_image-cropped-1.png" alt="OpenVision 3 Teaser" 
+          style="max-width: 100%; height: auto; border: 0px solid #dfdede; box-shadow: 0 0px 0px rgba(0,0,0,0.1); border-radius: 0px;">
+    </div> -->
+      <br>
+      <h4 class="title is-4">Why feed VAE latents to a ViT? → Understanding and Generation helps each other!</h4>
+      <ul> 
+        Empirically, we observe this design unlocks a non-trivial synergy: <br>
+        <br>
+        <li> Training on Understanding alone actually improves pixel reconstruction. </li>
+        <li> Training on Generation alone benefits semantics alignment. </li>
+      </ul>
+      
+      <div style="text-align: center;">
+        <img src="resources/only_loss.png" alt="OpenVision vs Proprietary Encoders"
+             style="max-width: 80%; height: auto; border: 1px solid #ccc; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="section has-background-light">
   <div class="container">
     <h2 class="title is-3">Key Contributions</h2>
     <div class="content">
       <ul>
         <li><strong>Simple and Effective Architecture:</strong> Our tokenizer is a simple <strong>VAE + ViT</strong> encoder.</li>
-        <li><strong>Unified Visual Representations:</strong> A single, unified visual representation that can serve both image understanding and image generation.</li>
+        <li><strong>Unified Visual Representations:</strong> A <strong>single, unified visual representation</strong> that can serve both image understanding and image generation.</li>
         <li><strong>Superior Generation Performance:</strong> Our <strong>gFID</strong> is <strong>1.89</strong> on ImageNet, which is substantially better than CLIP+RAE(2.54) / VAE+SiT(2.06) / UniTok+LlamaGen(2.51).</li>
         <li><strong>Remarkable Reconstruction performance:</strong> OpenVision 3 achieves <strong>0.216 rFID</strong> on ImageNet 256x256.</li>
         <li><strong>Competitive Understanding Ability:</strong> Our tokenizer performs <strong>comparably with CLIP</strong> (62.4 vs 62.2 on SeedBench, 83.7 vs 82.9 on POPE).</li>
@@ -172,10 +211,9 @@
 </section>
 
 
-<!-- Loss Visualization Section -->
-<section class="section has-background-light">
+<!-- <section class="section has-background-light">
   <div class="container has-text-centered">
-    <h2 class="title is-3">Loss Visualization with Only Semantic Loss</h2>
+    <h2 class="title is-3">Semantic Signals help Eeconstruction</h2>
     <p style="max-width: 800px; margin: 0 auto 2em auto; font-size: 1.05em; line-height: 1.6; text-align: left;">
       We trained our tokenizer <span style="color: #0066cc; font-weight: 600;">with</span> and <span style="color: #cc0000; font-weight: 600;">without</span> the reconstruction loss, respectively. 
       <br>
@@ -189,28 +227,28 @@
     </p>
     
     <div class="columns is-multiline is-centered" style="margin-top: 2em;">
-      <!-- Pixel Recon Loss -->
+      
       <div class="column is-3-desktop is-6-tablet is-12-mobile">
         <h4 class="title is-5" style="margin-bottom: 0.5em;">(a) Pixel Recon Loss</h4>
         <img src="resources/recon_outside_loss_compare.png" alt="Pixel Reconstruction Loss"
              style="width: 100%; height: auto; border: 1px solid #ccc; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
       </div>
       
-      <!-- Latents Recon Loss -->
+      
       <div class="column is-3-desktop is-6-tablet is-12-mobile">
         <h4 class="title is-5" style="margin-bottom: 0.5em;">(b) Latents Recon Loss</h4>
         <img src="resources/recon_inside_loss_compare.png" alt="Latents Reconstruction Loss"
              style="width: 100%; height: auto; border: 1px solid #ccc; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
       </div>
       
-      <!-- Caption Loss -->
+      
       <div class="column is-3-desktop is-6-tablet is-12-mobile">
         <h4 class="title is-5" style="margin-bottom: 0.5em;">(c) Caption Loss</h4>
         <img src="resources/caption_loss_compare.png" alt="Caption Loss"
              style="width: 100%; height: auto; border: 1px solid #ccc; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
       </div>
       
-      <!-- Contrastive Loss -->
+      
       <div class="column is-3-desktop is-6-tablet is-12-mobile">
         <h4 class="title is-5" style="margin-bottom: 0.5em;">(d) Contrastive Loss</h4>
         <img src="resources/contrastive_loss_compare.png" alt="Contrastive Loss"
@@ -221,10 +259,10 @@
 </section>
 
 
-<!-- Loss Visualization Section - Only Reconstruction -->
+
 <section class="section has-background-light">
   <div class="container has-text-centered">
-    <h2 class="title is-3">Loss Visualization with Only Reconstruction Loss</h2>
+    <h2 class="title is-3">Semantic Signals help Eeconstruction</h2>
     <p style="max-width: 800px; margin: 0 auto 2em auto; font-size: 1.05em; line-height: 1.6; text-align: left;">
       We trained our tokenizer <span style="color: #0066cc; font-weight: 600;">with</span> and <span style="color: #cc0000; font-weight: 600;">without</span> the understanding loss, respectively. 
       <br>
@@ -238,28 +276,28 @@
     </p>
     
     <div class="columns is-multiline is-centered" style="margin-top: 2em;">
-      <!-- Pixel Recon Loss -->
+      
       <div class="column is-3-desktop is-6-tablet is-12-mobile">
         <h4 class="title is-5" style="margin-bottom: 0.5em;">(a) Pixel Recon Loss</h4>
         <img src="resources/wo_und_recon_outside_loss_compare.png" alt="Pixel Reconstruction Loss"
              style="width: 100%; height: auto; border: 1px solid #ccc; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
       </div>
       
-      <!-- Latents Recon Loss -->
+      
       <div class="column is-3-desktop is-6-tablet is-12-mobile">
         <h4 class="title is-5" style="margin-bottom: 0.5em;">(b) Latents Recon Loss</h4>
         <img src="resources/wo_und_recon_inside_loss_compare.png" alt="Latents Reconstruction Loss"
              style="width: 100%; height: auto; border: 1px solid #ccc; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
       </div>
       
-      <!-- Caption Loss -->
+      
       <div class="column is-3-desktop is-6-tablet is-12-mobile">
         <h4 class="title is-5" style="margin-bottom: 0.5em;">(c) Caption Loss</h4>
         <img src="resources/wo_und_caption_loss_compare.png" alt="Caption Loss"
              style="width: 100%; height: auto; border: 1px solid #ccc; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
       </div>
       
-      <!-- Contrastive Loss -->
+      
       <div class="column is-3-desktop is-6-tablet is-12-mobile">
         <h4 class="title is-5" style="margin-bottom: 0.5em;">(d) Contrastive Loss</h4>
         <img src="resources/wo_und_contrastive_loss_compare.png" alt="Contrastive Loss"
@@ -267,7 +305,7 @@
       </div>
     </div>
   </div>
-</section>
+</section> -->
 
 
 <!-- Model Zoo (ImageNet-1K) -->
@@ -347,7 +385,7 @@ print("Label probs:", text_probs)  # prints: [[0., 0., 0., 1.0]]
   <div class="container has-text-centered">
     <h2 class="title is-3">Acknowledgement</h2>
     <p style="font-size: 1em; color: #555;">
-      We would like to thank the <strong>TPU Research Cloud (TRC)</strong> program and <strong>Google Cloud Research Credits</strong> program for supporting our computing needs.
+      We would like to thank the <strong>TPU Research Cloud (TRC)</strong> program and <strong>Google Cloud Research Credits</strong> program for supporting our computing needs. This project is also partly supported by the <strong>National Center for Transportation Cybersecurity and Resiliency (TraCR)</strong> (a U.S. Department of Transportation National University Transportation Center) headquartered at Clemson University, Clemson, South Carolina, USA (USDOT Grant \#69A3552344812). Any opinions, findings, conclusions, and recommendations expressed in this material are those of the author(s) and do not necessarily reflect the views of TraCR, and the U.S. Government assumes no liability for the contents or use thereof.
     </p>
   </div>
 </section>
