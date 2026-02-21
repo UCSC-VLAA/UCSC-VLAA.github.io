@@ -194,6 +194,20 @@ function copy(dest, source) {
           "https://ucsc-vlaa.github.io/OpenVision3/"
         )
 
+        add_paper("GPT-IMAGE-EDIT-1.5M: A Million-Scale, GPT-Generated Image Dataset",
+          "Yuhan Wang, Siwei Yang, Bingchen Zhao, Letian Zhang, Qing Liu, Yuyin Zhou, Cihang Xie",
+          null,
+          "https://arxiv.org/abs/2507.21033", 
+          "@article{wang2025gptimageedit,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {GPT-IMAGE-EDIT-1.5M: A Million-Scale, GPT-Generated Image Dataset},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Yuhan Wang, Siwei Yang, Bingchen Zhao, Letian Zhang, Qing Liu, Yuyin Zhou, Cihang Xie},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2507.21033},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
+          "Recent advancements in large multimodal models like GPT-4o have set a new standard for high-fidelity, instruction-guided image editing. However, the proprietary nature of these models and their training data creates a significant barrier for open-source research. To bridge this gap, we introduce GPT-IMAGE-EDIT-1.5M, a publicly available, large-scale image-editing corpus containing more than 1.5 million high-quality triplets (instruction, source image, edited image). We systematically construct this dataset by leveraging the versatile capabilities of GPT-4o to unify and refine three popular image-editing datasets: OmniEdit, HQ-Edit, and UltraEdit. Specifically, our methodology involves (1) regenerating output images to enhance visual quality and instruction alignment, and (2) selectively rewriting prompts to improve semantic clarity. To validate the efficacy of our dataset, we fine-tune advanced open-source models on GPT-IMAGE-EDIT-1.5M. The empirical results are exciting, e.g., the fine-tuned FluxKontext achieves highly competitive performance across a comprehensive suite of benchmarks, including 7.24 on GEdit-EN, 3.80 on ImgEdit-Full, and 8.78 on Complex-Edit, showing stronger instruction following and higher perceptual quality while maintaining identity. These scores markedly exceed all previously published open-source methods and substantially narrow the gap to leading proprietary models. We hope the full release of GPT-IMAGE-EDIT-1.5M can help to catalyze further open research in instruction-guided image editing.",
+          "https://arxiv.org/abs/2507.21033",
+          "https://ucsc-vlaa.github.io/GPT-Image-Edit/"
+        )
+
         add_paper("Discrete Diffusion Models with MLLMs for Unified Medical Multimodal Generation",
           "Jiawei Mao, Yuhan Wang, Lifeng Chen, Can Zhao, Yucheng Tang, Dong Yang, Liangqiong Qu, Daguang Xu, Yuyin Zhou",
           null,
@@ -222,34 +236,8 @@ function copy(dest, source) {
           "https://github.com/aiming-lab/ATP"
         )
 
-        add_paper("CHAI: Command Hijacking against embodied AI",
-          "Luis Burbano, Diego Ortiz, Qi Sun, Siwei Yang, Haoqin Tu, Cihang Xie, Yinzhi Cao, Alvaro A Cardenas",
-          null,
-          "https://arxiv.org/abs/2510.00181", 
-          "@article{burbano2025chai,<br>" +
-          "&nbsp;&nbsp;&nbsp;title   = {CHAI: Command Hijacking against embodied AI},<br>" +
-          "&nbsp;&nbsp;&nbsp;author  = {Luis Burbano, Diego Ortiz, Qi Sun, Siwei Yang, Haoqin Tu, Cihang Xie, Yinzhi Cao, Alvaro A Cardenas},<br>" +
-          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2510.00181},<br>" + 
-          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
-          "Embodied Artificial Intelligence (AI) promises to handle edge cases in robotic vehicle systems where data is scarce by using common-sense reasoning grounded in perception and action to generalize beyond training distributions and adapt to novel real-world situations. These capabilities, however, also create new security risks. In this paper, we introduce CHAI (Command Hijacking against embodied AI), a new class of prompt-based attacks that exploit the multimodal language interpretation abilities of Large Visual-Language Models (LVLMs). CHAI embeds deceptive natural language instructions, such as misleading signs, in visual input, systematically searches the token space, builds a dictionary of prompts, and guides an attacker model to generate Visual Attack Prompts. We evaluate CHAI on four LVLM agents; drone emergency landing, autonomous driving, and aerial object tracking, and on a real robotic vehicle. Our experiments show that CHAI consistently outperforms state-of-the-art attacks. By exploiting the semantic and multimodal reasoning strengths of next-generation embodied AI systems, CHAI underscores the urgent need for defenses that extend beyond traditional adversarial robustness.",
-          "https://arxiv.org/abs/2510.00181",
-          null
-        )
 
-
-        add_paper("OpenVision 2: A Family of Generative Pretrained Visual Encoders for Multimodal Learning",
-          "Yanqing Liu, Xianhang Li, Letian Zhang, Zirui Wang, Zeyu Zheng, Yuyin Zhou, Cihang Xie",
-          null,
-          "https://arxiv.org/abs/2509.01644", 
-          "@article{liu2025openvision2,<br>" +
-          "&nbsp;&nbsp;&nbsp;title   = {OpenVision 2: A Family of Generative Pretrained Visual Encoders for Multimodal Learning},<br>" +
-          "&nbsp;&nbsp;&nbsp;author  = {Yanqing Liu, Xianhang Li, Letian Zhang, Zirui Wang, Zeyu Zheng, Yuyin Zhou, Cihang Xie},<br>" +
-          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2509.01644},<br>" + 
-          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
-          "This paper provides a simplification on OpenVision's architecture and loss design for enhancing its training efficiency. Following the prior vision-language pretraining works CapPa and AIMv2, as well as modern multimodal designs like LLaVA, our changes are straightforward: we remove the text encoder (and therefore the contrastive loss), retaining only the captioning loss as a purely generative training signal. We name this new version OpenVision 2. The initial results are promising: despite this simplification, OpenVision 2 competitively matches the original model's performance on a broad set of multimodal benchmarks while substantially cutting both training time and memory consumption. For example, with ViT-L/14, it reduces training time by about 1.5x (from 83h to 57h), and memory usage by about 1.8x (from 24.5GB to 13.8GB, equivalently allowing the maximum batch size to grow from 2k to 8k). This superior training efficiency also allows us to scale far beyond the largest vision encoder used in OpenVision, reaching more than 1 billion parameters. We hold a strong belief that this lightweight, generative-only paradigm is compelling for future vision encoder development in multimodal foundation models.",
-          "https://arxiv.org/abs/2509.01644",
-          "https://ucsc-vlaa.github.io/OpenVision2/"
-        )
+        
 
         
         add_paper("AHELM: A Holistic Evaluation of Audio-Language Models",
@@ -264,20 +252,6 @@ function copy(dest, source) {
           "Evaluations of audio-language models (ALMs) -- multimodal models that take interleaved audio and text as input and output text -- are hindered by the lack of standardized benchmarks; most benchmarks measure only one or two capabilities and omit evaluative aspects such as fairness or safety. Furthermore, comparison across models is difficult as separate evaluations test a limited number of models and use different prompting methods and inference parameters. To address these shortfalls, we introduce AHELM, a benchmark that aggregates various datasets -- including 2 new synthetic audio-text datasets called PARADE, which evaluates the ALMs on avoiding stereotypes, and CoRe-Bench, which measures reasoning over conversational audio through inferential multi-turn question answering -- to holistically measure the performance of ALMs across 10 aspects we have identified as important to the development and usage of ALMs: audio perception, knowledge, reasoning, emotion detection, bias, fairness, multilinguality, robustness, toxicity, and safety. We also standardize the prompts, inference parameters, and evaluation metrics to ensure equitable comparisons across models. We test 14 open-weight and closed-API ALMs from 3 developers and 3 additional simple baseline systems each consisting of an automatic speech recognizer and a language model. Our results show that while Gemini 2.5 Pro ranks top in 5 out of 10 aspects, it exhibits group unfairness (p=0.01) on ASR tasks whereas most of the other models do not. We also find that the baseline systems perform reasonably well on AHELM, with one ranking 6th overall despite having only speech-to-text capabilities. For transparency, all raw prompts, model generations, and outputs are available on our website at this https URL. AHELM is intended to be a living benchmark and new datasets and models will be added over time.",
           "https://arxiv.org/abs/2508.21376",
           "https://crfm.stanford.edu/helm/audio/v1.0.0/"
-        )
-
-        add_paper("GPT-IMAGE-EDIT-1.5M: A Million-Scale, GPT-Generated Image Dataset",
-          "Yuhan Wang, Siwei Yang, Bingchen Zhao, Letian Zhang, Qing Liu, Yuyin Zhou, Cihang Xie",
-          null,
-          "https://arxiv.org/abs/2507.21033", 
-          "@article{wang2025gptimageedit,<br>" +
-          "&nbsp;&nbsp;&nbsp;title   = {GPT-IMAGE-EDIT-1.5M: A Million-Scale, GPT-Generated Image Dataset},<br>" +
-          "&nbsp;&nbsp;&nbsp;author  = {Yuhan Wang, Siwei Yang, Bingchen Zhao, Letian Zhang, Qing Liu, Yuyin Zhou, Cihang Xie},<br>" +
-          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2507.21033},<br>" + 
-          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
-          "Recent advancements in large multimodal models like GPT-4o have set a new standard for high-fidelity, instruction-guided image editing. However, the proprietary nature of these models and their training data creates a significant barrier for open-source research. To bridge this gap, we introduce GPT-IMAGE-EDIT-1.5M, a publicly available, large-scale image-editing corpus containing more than 1.5 million high-quality triplets (instruction, source image, edited image). We systematically construct this dataset by leveraging the versatile capabilities of GPT-4o to unify and refine three popular image-editing datasets: OmniEdit, HQ-Edit, and UltraEdit. Specifically, our methodology involves (1) regenerating output images to enhance visual quality and instruction alignment, and (2) selectively rewriting prompts to improve semantic clarity. To validate the efficacy of our dataset, we fine-tune advanced open-source models on GPT-IMAGE-EDIT-1.5M. The empirical results are exciting, e.g., the fine-tuned FluxKontext achieves highly competitive performance across a comprehensive suite of benchmarks, including 7.24 on GEdit-EN, 3.80 on ImgEdit-Full, and 8.78 on Complex-Edit, showing stronger instruction following and higher perceptual quality while maintaining identity. These scores markedly exceed all previously published open-source methods and substantially narrow the gap to leading proprietary models. We hope the full release of GPT-IMAGE-EDIT-1.5M can help to catalyze further open research in instruction-guided image editing.",
-          "https://arxiv.org/abs/2507.21033",
-          "https://ucsc-vlaa.github.io/GPT-Image-Edit/"
         )
 
 
@@ -360,21 +334,6 @@ function copy(dest, source) {
         )
 
 
-
-        add_paper("Complex-Edit: CoT-Like Instruction Generation for Complexity-Controllable Image Editing Benchmark",
-          "Siwei Yang, Mude Hui, Bingchen Zhao, Yuyin Zhou, Nataniel Ruiz, Cihang Xie",
-          null,
-          "https://arxiv.org/abs/2504.13143", 
-          "@article{yang2025textttcomplexeditcotlikeinstructiongeneration,<br>" +
-          "&nbsp;&nbsp;&nbsp;title   = {Complex-Edit: CoT-Like Instruction Generation for Complexity-Controllable Image Editing Benchmark},<br>" +
-          "&nbsp;&nbsp;&nbsp;author  = {Siwei Yang, Mude Hui, Bingchen Zhao, Yuyin Zhou, Nataniel Ruiz, Cihang Xie},<br>" +
-          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2504.13143},<br>" + 
-          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
-          "We introduce Complex-Edit, a comprehensive benchmark designed to systematically evaluate instruction-based image editing models across instructions of varying complexity. To develop this benchmark, we harness GPT-4o to automatically collect a diverse set of editing instructions at scale. Our approach follows a well-structured ``Chain-of-Edit'' pipeline: we first generate individual atomic editing tasks independently and then integrate them to form cohesive, complex instructions. Additionally, we introduce a suite of metrics to assess various aspects of editing performance, along with a VLM-based auto-evaluation pipeline that supports large-scale assessments. Our benchmark yields several notable insights: 1) Open-source models significantly underperform relative to proprietary, closed-source models, with the performance gap widening as instruction complexity increases; 2) Increased instructional complexity primarily impairs the models' ability to retain key elements from the input images and to preserve the overall aesthetic quality; 3) Decomposing a complex instruction into a sequence of atomic steps, executed in a step-by-step manner, substantially degrades performance across multiple metrics; 4) A straightforward Best-of-N selection strategy improves results for both direct editing and the step-by-step sequential approach; and 5) We observe a ``curse of synthetic data'': when synthetic data is involved in model training, the edited images from such models tend to appear increasingly synthetic as the complexity of the editing instructions rises -- a phenomenon that intriguingly also manifests in the latest GPT-4o outputs.",
-          "https://arxiv.org/abs/2504.13143",
-          "https://github.com/UCSC-VLAA/Complex-Edit"
-        )
-
         
 
         add_paper("A Comprehensive Analysis of Mamba for 3D Volumetric Medical Image Segmentation",
@@ -434,19 +393,7 @@ function copy(dest, source) {
             "https://github.com/UCSC-VLAA/MedReason"
         )
 
-        add_paper("STAR-1: Safer Alignment of Reasoning LLMs with 1K Data",
-            "Zijun Wang, Haoqin Tu, Yuhan Wang, Juncheng Wu, Jieru Mei, Brian R. Bartoldson, Bhavya Kailkhura, Cihang Xie",
-            null,
-            "https://arxiv.org/abs/2504.01903", 
-            "@article{wang2025star,<br>" +
-            "&nbsp;&nbsp;&nbsp;title   = {STAR-1: Safer Alignment of Reasoning LLMs with 1K Data},<br>" +
-            "&nbsp;&nbsp;&nbsp;author  = {Zijun Wang, Haoqin Tu, Yuhan Wang, Juncheng Wu, Jieru Mei, Brian R. Bartoldson, Bhavya Kailkhura, Cihang Xie},<br>" +
-            "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2504.01903},<br>" + 
-            "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
-            "This paper introduces STAR-1, a high-quality, just-1k-scale safety dataset specifically designed for large reasoning models (LRMs) like DeepSeek-R1. Built on three core principles -- diversity, deliberative reasoning, and rigorous filtering -- STAR-1 aims to address the critical needs for safety alignment in LRMs. Specifically, we begin by integrating existing open-source safety datasets from diverse sources. Then, we curate safety policies to generate policy-grounded deliberative reasoning samples. Lastly, we apply a GPT-4o-based safety scoring system to select training examples aligned with best practices. Experimental results show that fine-tuning LRMs with STAR-1 leads to an average 40% improvement in safety performance across four benchmarks, while only incurring a marginal decrease (e.g., an average of 1.1%) in reasoning ability measured across five reasoning tasks. Extensive ablation studies further validate the importance of our design principles in constructing STAR-1 and analyze its efficacy across both LRMs and traditional LLMs.",
-            "https://arxiv.org/abs/2504.01903",
-            "https://github.com/UCSC-VLAA/STAR-1"
-        )
+
         
 
         add_paper("EpiFoundation: A Foundation Model for Single-Cell ATAC-seq via Peak-to-Gene Alignment",
@@ -888,15 +835,135 @@ function copy(dest, source) {
 
 
 
+        add_paper("OpenVision 2: A Family of Generative Pretrained Visual Encoders for Multimodal Learning",
+          "Yanqing Liu, Xianhang Li, Letian Zhang, Zirui Wang, Zeyu Zheng, Yuyin Zhou, Cihang Xie",
+          "CVPR, 2026",
+          "https://arxiv.org/abs/2509.01644", 
+          "@inproceedings{liu2025openvision2,<br>" +
+          "&nbsp;&nbsp;&nbsp;title     = {OpenVision 2: A Family of Generative Pretrained Visual Encoders for Multimodal Learning},<br>" +
+          "&nbsp;&nbsp;&nbsp;author    = {Yanqing Liu, Xianhang Li, Letian Zhang, Zirui Wang, Zeyu Zheng, Yuyin Zhou, Cihang Xie},<br>" +
+          "&nbsp;&nbsp;&nbsp;booktitle = {CVPR},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year      = {2026},<br>}",
+          "This paper provides a simplification on OpenVision's architecture and loss design for enhancing its training efficiency. Following the prior vision-language pretraining works CapPa and AIMv2, as well as modern multimodal designs like LLaVA, our changes are straightforward: we remove the text encoder (and therefore the contrastive loss), retaining only the captioning loss as a purely generative training signal. We name this new version OpenVision 2. The initial results are promising: despite this simplification, OpenVision 2 competitively matches the original model's performance on a broad set of multimodal benchmarks while substantially cutting both training time and memory consumption. For example, with ViT-L/14, it reduces training time by about 1.5x (from 83h to 57h), and memory usage by about 1.8x (from 24.5GB to 13.8GB, equivalently allowing the maximum batch size to grow from 2k to 8k). This superior training efficiency also allows us to scale far beyond the largest vision encoder used in OpenVision, reaching more than 1 billion parameters. We hold a strong belief that this lightweight, generative-only paradigm is compelling for future vision encoder development in multimodal foundation models.",
+          "https://arxiv.org/abs/2509.01644",
+          "https://ucsc-vlaa.github.io/OpenVision2/"
+        )
+
+        add_paper("VecGlypher: Unified Vector Glyph Generation with Language Models",
+          "Xiaoke Huang, Bhavul Gauri, Kam Woh Ng, Tony Ng, Mengmeng Xu, Zhiheng Liu, Weiming Ren, Zhaochong An, Zijian Zhou, Haonan Qiu, Yuyin Zhou, Sen He, Ziheng Wang, Tao Xiang, Xiao Han",
+          "CVPR, 2026",
+          null, 
+          "@inproceedings{huang2026vecglypher,<br>" +
+          "&nbsp;&nbsp;&nbsp;title     = {VecGlypher: Unified Vector Glyph Generation with Language Models},<br>" +
+          "&nbsp;&nbsp;&nbsp;author    = {Xiaoke Huang, Bhavul Gauri, Kam Woh Ng, Tony Ng, Mengmeng Xu, Zhiheng Liu, Weiming Ren, Zhaochong An, Zijian Zhou, Haonan Qiu, Yuyin Zhou, Sen He, Ziheng Wang, Tao Xiang, Xiao Han},<br>" +
+          "&nbsp;&nbsp;&nbsp;booktitle = {CVPR},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year      = {2026},<br>}",
+          "Vector glyphs are the atomic units of digital typography, yet most learning-based pipelines still depend on carefully curated exemplar sheets and raster-to-vector postprocessing, which limits accessibility and editability. We introduce VecGlypher, a single multimodal language model that generates high-fidelity vector glyphs directly from text descriptions or image exemplars. Given a style prompt, optional reference glyph images, and a target character, VecGlypher autoregressively emits SVG path tokens, avoiding raster intermediates and producing editable, watertight outlines in one pass. A typography-aware data and training recipe makes this possible: (i) a large-scale continuation stage on 39K noisy Envato fonts to master SVG syntax and long-horizon geometry, followed by (ii) post-training on 2.5K expert-annotated Google Fonts with descriptive tags and exemplars to align language and imagery with geometry; preprocessing normalizes coordinate frames, canonicalizes paths, de-duplicates families, and quantizes coordinates for stable long-sequence decoding. On cross-family OOD evaluation, VecGlypher substantially outperforms both general-purpose LLMs and specialized vector-font baselines for text-only generation, while image-referenced generation reaches a state-of-the-art performance, with marked gains over DeepVecFont-v2 and DualVector. Ablations show that model scale and the two-stage recipe are critical and that absolute-coordinate serialization yields the best geometry. VecGlypher lowers the barrier to font creation by letting users design with words or exemplars, and provides a scalable foundation for future multimodal design tools.",
+        )
+
+        add_paper("Any2Any 3D Diffusion Models with Knowledge Transfer: A Radiotherapy Planning Study",
+          "Yuhan Wang, Zihan Li, Han Liu, Simon Arberet, Martin Kraus, Yuyin Zhou, Florin-Cristian Ghesu, Dorin Comaniciu, Ali Kamen, Riqiang Gao",
+          "CVPR, 2026",
+          null, 
+          "@inproceedings{wang2026any2any3ddiffusion,<br>" +
+          "&nbsp;&nbsp;&nbsp;title     = {Any2Any 3D Diffusion Models with Knowledge Transfer: A Radiotherapy Planning Study},<br>" +
+          "&nbsp;&nbsp;&nbsp;author    = {Yuhan Wang, Zihan Li, Han Liu, Simon Arberet, Martin Kraus, Yuyin Zhou, Florin-Cristian Ghesu, Dorin Comaniciu, Ali Kamen, Riqiang Gao},<br>" +
+          "&nbsp;&nbsp;&nbsp;booktitle = {CVPR},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year      = {2026},<br>}",
+          "Voxel-wise dose prediction is a critical yet challenging task in practical radiotherapy (RT) planning, as bespoke models trained from scratch often struggle to generalize across diverse clinical settings. Meanwhile, generative models trained on billion-scale datasets from vision domains have achieved impressive performance. Herein, we propose DiffKT3D, a unified Any2Any 3D diffusion framework that leverages prior knowledge from pretrained video diffusion models for efficient and clinically meaningful dose prediction. To enable flexible conditioning across multiple clinical modalities (CT, anatomical structures, body, beam settings, etc.), we introduce an Any2Any conditional paradigm utilizing modality-specific embeddings without cross-attention overhead. Further, we design a novel reinforcement learning (RL) post-training mechanism guided by a clinically-informed scorecard explicitly tailored to institutional treatment preferences. Compared with winner of GDP–HMM challenge, DiffKT3D sets a new state-of-the-art in dose prediction by reducing voxel-level MAE from 2.07 to 1.93. In addition, DiffKT3D achieves superior image quality and preference match. These results demonstrate that transferring diffusion priors via modality-aware conditioning and clinically aligned RL post-training provides a robust and generalizable solution for RT planning across various clinical scenarios.",
+        )
+
+        add_paper("When Token Pruning is Worse than Random: Understanding Visual Token Information in VLLMs",
+          "Yahong Wang, Juncheng Wu, Zhangkai Ni, Longzhen Yang, Yihang Liu, Chengmei Yang, Ying Wen, Lianghua He, Xianfeng Tang, Hui Liu, Yuyin Zhou",
+          "CVPR, 2026",
+          "https://arxiv.org/abs/2512.07580", 
+          "@inproceedings{wang2026randomvisualtokens,<br>" +
+          "&nbsp;&nbsp;&nbsp;title     = {All You Need Are Random Visual Tokens? Demystifying Token Pruning in VLLMs},<br>" +
+          "&nbsp;&nbsp;&nbsp;author    = {Yahong Wang, Juncheng Wu, Zhangkai Ni, Longzhen Yang, Yihang Liu, Chengmei Yang, Ying Wen, Xianfeng Tang, Hui Liu, Yuyin Zhou, Lianghua He},<br>" +
+          "&nbsp;&nbsp;&nbsp;booktitle = {CVPR},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year      = {2026},<br>}",
+          "Vision Large Language Models (VLLMs) incur high computational costs due to their reliance on hundreds of visual tokens to represent images. While token pruning offers a promising solution for accelerating inference, this paper, however, identifies a key observation: in deeper layers (e.g., beyond the 20th), existing training-free pruning methods perform no better than random pruning. We hypothesize that this degradation is caused by “vanishing token information”, where visual tokens progressively lose their salience with increasing network depth. To validate this hypothesis, we quantify a token’s information content by measuring the change in the model output probabilities upon its removal. Using this proposed metric, our analysis of the information of visual tokens across layers reveals three key findings: (1) As layers deepen, the information of visual tokens gradually becomes uniform and eventually vanishes at an intermediate layer, which we term as “information horizon”, beyond which the visual tokens become redundant; (2) The position of this horizon is not static; it extends deeper for visually intensive tasks, such as Optical Character Recognition (OCR), compared to more general tasks like Visual Question Answering (VQA); (3) This horizon is also strongly correlated with model capacity, as stronger VLLMs (e.g., Qwen2.5-VL) employ deeper visual tokens than weaker models (e.g., LLaVA-1.5). Based on our findings, we show that simple random pruning in deep layers efficiently balances performance and efficiency. Moreover, integrating random pruning consistently enhances existing methods. Using DivPrune with random pruning achieves state-of-the-art results, maintaining 96.9% of Qwen-2.5-VL-7B performance while pruning 50% of visual tokens. The code will be publicly available at https://github.com/YahongWang1/Information-Horizon.",
+          "https://arxiv.org/abs/2512.07580",
+          "https://github.com/YahongWang1/Information-Horizon"
+        )
+
+                add_paper("Captain Safari: A World Engine",
+          "Yu-Cheng Chou, Xingrui Wang, Yitong Li, Jiahao Wang, Hanting Liu, Cihang Xie, Alan Yuille, Junfei Xiao",
+          "CVPR, 2026",
+          "https://arxiv.org/abs/2511.22815", 
+          "@inproceedings{chou2025captainsafari,<br>" +
+          "&nbsp;&nbsp;&nbsp;title     = {Captain Safari: A World Engine},<br>" +
+          "&nbsp;&nbsp;&nbsp;author    = {Yu-Cheng Chou, Xingrui Wang, Yitong Li, Jiahao Wang, Hanting Liu, Cihang Xie, Alan Yuille, Junfei Xiao},<br>" +
+          "&nbsp;&nbsp;&nbsp;booktitle = {CVPR},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year      = {2026},<br>}",
+          "World engines aim to synthesize long, 3D-consistent videos that support interactive exploration of a scene under user-controlled camera motion. However, existing systems struggle under aggressive 6-DoF trajectories and complex outdoor layouts: they lose long-range geometric coherence, deviate from the target path, or collapse into overly conservative motion. To this end, we introduce Captain Safari, a pose-conditioned world engine that generates videos by retrieving from a persistent world memory. Given a camera path, our method maintains a dynamic local memory and uses a retriever to fetch pose-aligned world tokens, which then condition video generation along the trajectory. This design enables the model to maintain stable 3D structure while accurately executing challenging camera maneuvers. To evaluate this setting, we curate OpenSafari, a new in-the-wild FPV dataset containing high-dynamic drone videos with verified camera trajectories, constructed through a multi-stage geometric and kinematic validation pipeline. Across video quality, 3D consistency, and trajectory following, Captain Safari substantially outperforms state-of-the-art camera-controlled generators. It reduces MEt3R from 0.3703 to 0.3690, improves AUC@30 from 0.181 to 0.200, and yields substantially lower FVD than all camera-controlled baselines. More importantly, in a 50-participant, 5-way human study where annotators select the best result among five anonymized models, 67.6% of preferences favor our method across all axes. Our results demonstrate that pose-conditioned world memory is a powerful mechanism for long-horizon, controllable video generation and provide OpenSafari as a challenging new benchmark for future world-engine research.",
+          "https://arxiv.org/abs/2511.22815",
+          "https://johnson111788.github.io/open-safari/"
+        )
+
+        add_paper("VQ-VA World: Towards High-Quality Visual Question-Visual Answering",
+          "Chenhui Gou, Zilong Chen, Zeyu Wang, Feng Li, Deyao Zhu, Zicheng Duan, Kunchang Li, Chaorui Deng, Hongyi Yuan, Haoqi Fan, Cihang Xie, Jianfei Cai, Hamid Rezatofighi",
+          "CVPR, 2026",
+          "https://arxiv.org/abs/2511.20573", 
+          "@inproceedings{gou2026vqvaworld,<br>" +
+          "&nbsp;&nbsp;&nbsp;title     = {VQ-VA World: Towards High-Quality Visual Question-Visual Answering},<br>" +
+          "&nbsp;&nbsp;&nbsp;author    = {Chenhui Gou, Zilong Chen, Zeyu Wang, Feng Li, Deyao Zhu, Zicheng Duan, Kunchang Li, Chaorui Deng, Hongyi Yuan, Haoqi Fan, Cihang Xie, Jianfei Cai, Hamid Rezatofighi},<br>" +
+          "&nbsp;&nbsp;&nbsp;booktitle = {CVPR},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year      = {2026},<br>}",
+          "This paper studies Visual Question-Visual Answering (VQ-VA): generating an image, rather than text, in response to a visual question -- an ability that has recently emerged in proprietary systems such as NanoBanana and GPT-Image. To also bring this capability to open-source models, we introduce VQ-VA World, a data-centric framework built around an agentic pipeline for large-scale, targeted data construction. Leveraging web-scale deployment, this pipeline crawls a massive amount of ~1.8M high-quality, interleaved image-text samples for model training. For evaluation, we further release IntelligentBench, a human-curated benchmark that systematically assesses VQ-VA along the aspects of world knowledge, design knowledge, and reasoning. Training with VQ-VA World data yields strong empirical gains: it helps LightFusion attain 53.06 on IntelligentBench, substantially surpassing the best prior open-source baselines (i.e., 7.78 from vanilla LightFusion; 1.94 from UniWorld-V1), and significantly narrowing the gap toward leading proprietary systems (e.g., 81.67 from NanoBanana; 82.64 from GPT-Image). By releasing the full suite of model weights, datasets, and pipelines, we hope to stimulate future research on VQ-VA.",
+          "https://arxiv.org/abs/2511.20573",
+          "https://chenhuigou.github.io/VQ-VA-World/"
+        )
+
+        add_paper("When Visualizing is the First Step to Reasoning: MIRA, a Benchmark for Visual Chain-of-Thought",
+          "Yiyang Zhou, Haoqin Tu, Zijun Wang, Zeyu Wang, Niklas Muennighoff, Fan Nie, Yejin Choi, James Zou, Chaorui Deng, Shen Yan, Haoqi Fan, Cihang Xie, Huaxiu Yao, Qinghao Ye",
+          "CVPR, 2026",
+          "https://arxiv.org/abs/2511.02779", 
+          "@inproceedings{zhou2026visualizingstepreasoningmira,<br>" +
+          "&nbsp;&nbsp;&nbsp;title     = {When Visualizing is the First Step to Reasoning: MIRA, a Benchmark for Visual Chain-of-Thought},<br>" +
+          "&nbsp;&nbsp;&nbsp;author    = {Yiyang Zhou, Haoqin Tu, Zijun Wang, Zeyu Wang, Niklas Muennighoff, Fan Nie, Yejin Choi, James Zou, Chaorui Deng, Shen Yan, Haoqi Fan, Cihang Xie, Huaxiu Yao, Qinghao Ye},<br>" +
+          "&nbsp;&nbsp;&nbsp;booktitle = {CVPR},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year      = {2026},<br>}",
+          "We propose MIRA (Multimodal Imagination for Reasoning Assessment), a new benchmark designed to evaluate models in scenarios where generating intermediate visual images is essential for successful reasoning. Unlike traditional Chain-of-thought (CoT) methods that rely solely on text, tasks in MIRA require models to generate and utilize intermediate images — such as sketches, structural diagrams, or path drawings — to guide their reasoning process. This setup closely mirrors how humans solve complex problems through “drawing to think”. To solve this, MIRA focuses on tasks that are intrinsically challenging and involve complex structures, spatial relationships, or reasoning steps that are difficult to express through language alone (e.g., tracking a die’s movement on a board and summing the face-down values after each roll). To ensure that our evaluation data is of high-quality, we include 546 multimodal problems, annotated with intermediate visual images and final answers. We also propose a unified evaluation protocol for MIRA that spans three levels of evaluation input: direct input with image and question only, text-only CoT (Text-CoT) input with image and thinking prompts, and Visual-CoT input with both annotated image clues and textual thinking prompts. To probe the upper bound of model capacity on our benchmark, we also report pass@k and majority voting accuracies under different k settings. Experimental results show that existing multimodal large language models (MLLMs), including strongest private models (e.g., GPT-5, o3, Gemini 2.5 Pro) as well as strong open-weight models (e.g., Qwen2.5-VL, GLM 4.5V), perform poorly when relying solely on textual prompts. However, when intermediate visual cues are provided, model performance improves consistently, yielding an average relative gain of 33.7% across all models and tasks. We also probe the upper bound by expanding the search space and designing textual prompts aligned with Visual-CoT, but both yield only limited improvements compared to our Visual-CoT setting. These results underscore the critical role of imagined visual information in enabling successful reasoning on MIRA.",
+          "https://arxiv.org/abs/2511.02779",
+          "https://mira-benchmark.github.io/"
+        )
+
+        add_paper("Omni-MMSI: Toward Identity-attributed Social Interaction Understanding",
+          "Xinpeng Li, Bolin Lai, Hardy Chen, Shijian Deng, Cihang Xie, Yuyin Zhou, James Matthew Rehg, Yapeng Tian",
+          "CVPR, 2026",
+          null,
+          "@inproceedings{li2026omnimmsi,<br>" +
+          "&nbsp;&nbsp;&nbsp;title     = {Omni-MMSI: Toward Identity-attributed Social Interaction Understanding},<br>" +
+          "&nbsp;&nbsp;&nbsp;author    = {Xinpeng Li, Bolin Lai, Hardy Chen, Shijian Deng, Cihang Xie, Yuyin Zhou, James Matthew Rehg, Yapeng Tian},<br>" +
+          "&nbsp;&nbsp;&nbsp;booktitle = {CVPR},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year      = {2026},<br>}",
+          "We introduce Omni-MMSI, a new task that requires comprehensive social interaction understanding from raw audio, vision, and speech. The task involves two tightly coupled goals: extracting identity-attributed social cues (e.g., who is speaking what) and reasoning about the social interaction (e.g., whom the speaker refers to). This task is essential for developing AI assistants that can perceive and respond to human interactions. Unlike prior studies that assume identity-attributed social cues perfectly provided, Omni-MMSI reflects realistic scenarios where AI assistants must perceive from raw multi-modal streams and reason over extracted social cues. However, existing pipelines and multi-modal LLMs perform poorly in this setting because they lack reliable identity attribution ability, which leads to inaccurate social cues and weak interaction reasoning. To address this challenge, we propose Omni-MMSI-R, a reference-based pipeline that uses reference audio-vision pairs to produce identity-attributed social cues and leverages curated chain-of-thought supervision for reasoning on reference-based inputs. To enable reference-based research, we construct participant-level reference pairs and curated reasoning annotations on top of the existing datasets. Extensive experiments demonstrate that Omni-MMSI-R consistently outperforms advanced multi-modal LLMs and counterparts in Omni-MMSI.",
+        )
+
+        add_paper("Decoupled Residual Denoising Diffusion Models for Unified and Data Efficient Image-to-Image Translation",
+          "Ziyue Lin, Jiahe Hou, Xia Hongyu, Xinrui Xie, Feifei Wang, Yuyin Zhou, Wei Wang, Jiawei Liu, Liangqiong Qu",
+          "CVPR, 2026",
+          null,
+          "@inproceedings{lin2026decoupledresidualdenoising,<br>" +
+          "&nbsp;&nbsp;&nbsp;title     = {Decoupled Residual Denoising Diffusion Models for Unified and Data Efficient Image-to-Image Translation},<br>" +
+          "&nbsp;&nbsp;&nbsp;author    = {Ziyue Lin, Jiahe Hou, Xia Hongyu, Xinrui Xie, Feifei Wang, Yuyin Zhou, Wei Wang, Jiawei Liu, Liangqiong Qu},<br>" +
+          "&nbsp;&nbsp;&nbsp;booktitle = {CVPR},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year      = {2026},<br>}",
+          "We propose Decoupled Residual Denoising Diffusion models (DRDD) for unified and data-efficient image-to-image (I2I) translation. While diffusion models have advanced I2I translation in terms of quality and diversity, we uncover a previously under-explored property in diffusion models. Crucially, beyond its conventional role of manifold lifting (i.e., moving data off low-dimensional manifolds), injecting Gaussian noise facilitates domain harmonization by implicitly aligning feature distributions across domains, a property particularly advantageous for unified I2I translation. However, existing diffusion models prematurely erode this harmonization effect, as noise and residuals are simultaneously removed in a single coupled diffusion process. To address this, DRDD decouples the diffusion process into two sequential and independent diffusion stages: (1) a stochastic noise diffusion for domain harmonization and manifold lifting, and (2) a deterministic residual diffusion that learns the core semantic mapping entirely within the fixed-noise domain. This decoupling preserves harmonization and manifold lifting effects throughout the transformation, substantially simplifying the learning of unified mappings across diverse tasks and domains. Notably, the noise diffusion stage is trained exclusively on abundant, unpaired target-domain images, greatly improving data efficiency. Comprehensive theoretical and empirical analysis demonstrates that DRDD is broadly compatible with mainstream diffusion models and consistently delivers robust, unified I2I translation, even under limited paired data. Code is released to promote further research.",
+        )
+
+
+
         add_paper("MethylProphet: A Generalized Gene-Contextual Model for Inferring Whole-Genome DNA Methylation Landscape",
           "Xiaoke Huang, Qi Liu, Yifei Zhao, Xianfeng Tang, Yuyin Zhou, Wenpin Hou",
           "ICLR, 2026",
           "https://www.biorxiv.org/content/10.1101/2025.02.05.636730", 
-          "@article{huang2025methylprophet,<br>" +
-          "&nbsp;&nbsp;&nbsp;title   = {MethylProphet: A Generalized Gene-Contextual Model for Inferring Whole-Genome DNA Methylation Landscape},<br>" +
-          "&nbsp;&nbsp;&nbsp;author  = {Xiaoke Huang, Qi Liu, Yifei Zhao, Xianfeng Tang, Yuyin Zhou, Wenpin Hou},<br>" +
-          "&nbsp;&nbsp;&nbsp;journal = {bioRxiv},<br>" + 
-          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
+          "@inproceedings{huang2025methylprophet,<br>" +
+          "&nbsp;&nbsp;&nbsp;title     = {MethylProphet: A Generalized Gene-Contextual Model for Inferring Whole-Genome DNA Methylation Landscape},<br>" +
+          "&nbsp;&nbsp;&nbsp;author    = {Xiaoke Huang, Qi Liu, Yifei Zhao, Xianfeng Tang, Yuyin Zhou, Wenpin Hou},<br>" +
+          "&nbsp;&nbsp;&nbsp;booktitle = {ICLR},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year      = {2026},<br>}",
           "DNA methylation (DNAm), an epigenetic modification, regulates gene expression, influences phenotypes, and encodes inheritable information, making it critical for disease diagnosis, treatment, and prevention. While human genome contains approximately 28 million CpG sites where DNAm can be measured, only 1–3% of these sites are typically available in most datasets due to complex experimental protocols and high costs, hindering insights from DNAm data. Leveraging the relationship between gene expression and DNAm offers promise for computational inference, but existing statistical, machine learning, and masking-based generative Transformers face critical limitations: they cannot infer DNAm at unmeasured CpGs or in new samples effectively. To overcome these challenges, we introduce MethylProphet, a gene-guided, context-aware Transformer model designed for DNAm inference. MethylProphet employs a Bottleneck MLP for efficient gene profile compression and a specialized DNA sequence tokenizer, integrating global gene expression patterns with local CpG context through a Transformer encoder architecture. Trained on whole-genome bisulfite sequencing data from ENCODE (1.6B training CpG-sample pairs; 322B tokens), MethylProphet demonstrates strong performance in hold-out evaluations, effectively inferring DNAm for unmeasured CpGs and new samples. In addition, its application to 10842 pairs of gene expression and DNAm samples at TCGA chromosome 1 (450M training CpGsample pairs; 91B tokens) highlights its potential to facilitate pan-cancer DNAm landscape inference, offering a powerful tool for advancing epigenetic research and precision medicine. All codes, data, protocols, and models are publicly available via https://github.com/xk-huang/methylprophet/.",
           "https://www.biorxiv.org/content/10.1101/2025.02.05.636730", 
           "https://github.com/xk-huang/methylprophet/"
@@ -908,11 +975,11 @@ function copy(dest, source) {
           "Jiawei Mao, Xiaoke Huang, Yunfei Xie, Yuanqi Chang, Mude Hui, Bingjie Xu, Yuyin Zhou",
           "ICLR 2026",
           "https://arxiv.org/abs/2410.06244",
-          "@article{mao2024storyadapter,<br>" +
-          "&nbsp;&nbsp;&nbsp;title   = {Story-Adapter: A Training-free Iterative Framework for Long Story Visualization},<br>" +
-          "&nbsp;&nbsp;&nbsp;author  = {Jiawei Mao, Xiaoke Huang, Yunfei Xie, Yuanqi Chang, Mude Hui, Bingjie Xu, Yuyin Zhou},<br>" +
-          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2410.06244},<br>" +
-          "&nbsp;&nbsp;&nbsp;year    = {2024},<br>}",
+          "@inproceedings{mao2024storyadapter,<br>" +
+          "&nbsp;&nbsp;&nbsp;title     = {Story-Adapter: A Training-free Iterative Framework for Long Story Visualization},<br>" +
+          "&nbsp;&nbsp;&nbsp;author    = {Jiawei Mao, Xiaoke Huang, Yunfei Xie, Yuanqi Chang, Mude Hui, Bingjie Xu, Yuyin Zhou},<br>" +
+          "&nbsp;&nbsp;&nbsp;booktitle = {ICLR},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year      = {2026},<br>}",
           "Story visualization, the task of generating coherent images based on a narrative, has seen significant advancements with the emergence of text-to-image models, particularly diffusion models. However, maintaining semantic consistency, generating high-quality fine-grained interactions, and ensuring computational feasibility remain challenging, especially in long story visualization (i.e., up to 100 frames). In this work, we propose a training-free and computationally efficient framework, termed Story-Adapter, to enhance the generative capability of long stories. Specifically, we propose an iterative paradigm to refine each generated image, leveraging both the text prompt and all generated images from the previous iteration. Central to our framework is a training-free global reference cross-attention module, which aggregates all generated images from the previous iteration to preserve semantic consistency across the entire story, while minimizing computational costs with global embeddings. This iterative process progressively optimizes image generation by repeatedly incorporating text constraints, resulting in more precise and fine-grained interactions. Extensive experiments validate the superiority of Story-Adapter in improving both semantic consistency and generative capability for fine-grained interactions, particularly in long story scenarios. The project page and associated code can be accessed via https://jwmao1.github.io/storyadapter.",
           "https://arxiv.org/abs/2410.06244",
           "https://jwmao1.github.io/storyadapter"
@@ -922,14 +989,44 @@ function copy(dest, source) {
             "Xiaoke Huang, Ningsen Wang, Hui Liu, Xianfeng Tang, Yuyin Zhou",
             "ICLR, 2026",
             "https://arxiv.org/abs/2510.25867", 
-            "@article{huang2025medvlsynther,<br>" +
-            "&nbsp;&nbsp;&nbsp;title   = {MedVLSynther: Synthesizing High-Quality Visual Question Answering from Medical Documents with Generator-Verifier LMMs},<br>" +
-            "&nbsp;&nbsp;&nbsp;author  = {Xiaoke Huang, Ningsen Wang, Hui Liu, Xianfeng Tang, Yuyin Zhou },<br>" +
-            "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2504.00993},<br>" + 
-            "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
+            "@inproceedings{huang2025medvlsynther,<br>" +
+            "&nbsp;&nbsp;&nbsp;title     = {MedVLSynther: Synthesizing High-Quality Visual Question Answering from Medical Documents with Generator-Verifier LMMs},<br>" +
+            "&nbsp;&nbsp;&nbsp;author    = {Xiaoke Huang, Ningsen Wang, Hui Liu, Xianfeng Tang, Yuyin Zhou },<br>" +
+            "&nbsp;&nbsp;&nbsp;booktitle = {ICLR},<br>" + 
+            "&nbsp;&nbsp;&nbsp;year      = {2026},<br>}",
             "Large Multimodal Models (LMMs) are increasingly capable of answering medical questions that require joint reasoning over images and text, yet training general medical VQA systems is impeded by the lack of large, openly usable, high-quality corpora. We present MedVLSynther, a rubric-guided generator-verifier framework that synthesizes high-quality multiple-choice VQA items directly from open biomedical literature by conditioning on figures, captions, and in-text references. The generator produces self-contained stems and parallel, mutually exclusive options under a machine-checkable JSON schema; a multi-stage verifier enforces essential gates (self-containment, single correct answer, clinical validity, image-text consistency), awards fine-grained positive points, and penalizes common failure modes before acceptance. Applying this pipeline to PubMed Central yields MedSynVQA: 13,087 audited questions over 14,803 images spanning 13 imaging modalities and 28 anatomical regions. Training open-weight LMMs with reinforcement learning using verifiable rewards improves accuracy across six medical VQA benchmarks, achieving averages of 55.85 (3B) and 58.15 (7B), with up to 77.57 on VQA-RAD and 67.76 on PathVQA, outperforming strong medical LMMs. A Ablations verify that both generation and verification are necessary and that more verified data consistently helps, and a targeted contamination analysis detects no leakage from evaluation suites. By operating entirely on open literature and open-weight models, MedVLSynther offers an auditable, reproducible, and privacy-preserving path to scalable medical VQA training data.",
             "https://arxiv.org/abs/2510.25867",
             "https://github.com/UCSC-VLAA/MedVLSynther"
+        )
+
+
+        add_paper("STAR-1: Safer Alignment of Reasoning LLMs with 1K Data",
+            "Zijun Wang, Haoqin Tu, Yuhan Wang, Juncheng Wu, Jieru Mei, Brian R. Bartoldson, Bhavya Kailkhura, Cihang Xie",
+            "AAAI, 2026",
+            "https://arxiv.org/abs/2504.01903", 
+            "@inproceedings{wang2025star,<br>" +
+            "&nbsp;&nbsp;&nbsp;title     = {STAR-1: Safer Alignment of Reasoning LLMs with 1K Data},<br>" +
+            "&nbsp;&nbsp;&nbsp;author    = {Zijun Wang, Haoqin Tu, Yuhan Wang, Juncheng Wu, Jieru Mei, Brian R. Bartoldson, Bhavya Kailkhura, Cihang Xie},<br>" +
+            "&nbsp;&nbsp;&nbsp;booktitle = {AAAI},<br>" + 
+            "&nbsp;&nbsp;&nbsp;year      = {2026},<br>}",
+            "This paper introduces STAR-1, a high-quality, just-1k-scale safety dataset specifically designed for large reasoning models (LRMs) like DeepSeek-R1. Built on three core principles -- diversity, deliberative reasoning, and rigorous filtering -- STAR-1 aims to address the critical needs for safety alignment in LRMs. Specifically, we begin by integrating existing open-source safety datasets from diverse sources. Then, we curate safety policies to generate policy-grounded deliberative reasoning samples. Lastly, we apply a GPT-4o-based safety scoring system to select training examples aligned with best practices. Experimental results show that fine-tuning LRMs with STAR-1 leads to an average 40% improvement in safety performance across four benchmarks, while only incurring a marginal decrease (e.g., an average of 1.1%) in reasoning ability measured across five reasoning tasks. Extensive ablation studies further validate the importance of our design principles in constructing STAR-1 and analyze its efficacy across both LRMs and traditional LLMs.",
+            "https://arxiv.org/abs/2504.01903",
+            "https://github.com/UCSC-VLAA/STAR-1"
+        )
+
+
+        add_paper("CHAI: Command Hijacking against embodied AI",
+          "Luis Burbano, Diego Ortiz, Qi Sun, Siwei Yang, Haoqin Tu, Cihang Xie, Yinzhi Cao, Alvaro A Cardenas",
+          "SaTML, 2026",
+          "https://arxiv.org/abs/2510.00181", 
+          "@inproceedings{burbano2026chai,<br>" +
+          "&nbsp;&nbsp;&nbsp;title     = {CHAI: Command Hijacking against embodied AI},<br>" +
+          "&nbsp;&nbsp;&nbsp;author    = {Luis Burbano, Diego Ortiz, Qi Sun, Siwei Yang, Haoqin Tu, Cihang Xie, Yinzhi Cao, Alvaro A Cardenas},<br>" +
+          "&nbsp;&nbsp;&nbsp;booktitle = {SaTML},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year      = {2026},<br>}",
+          "Embodied Artificial Intelligence (AI) promises to handle edge cases in robotic vehicle systems where data is scarce by using common-sense reasoning grounded in perception and action to generalize beyond training distributions and adapt to novel real-world situations. These capabilities, however, also create new security risks. In this paper, we introduce CHAI (Command Hijacking against embodied AI), a new class of prompt-based attacks that exploit the multimodal language interpretation abilities of Large Visual-Language Models (LVLMs). CHAI embeds deceptive natural language instructions, such as misleading signs, in visual input, systematically searches the token space, builds a dictionary of prompts, and guides an attacker model to generate Visual Attack Prompts. We evaluate CHAI on four LVLM agents; drone emergency landing, autonomous driving, and aerial object tracking, and on a real robotic vehicle. Our experiments show that CHAI consistently outperforms state-of-the-art attacks. By exploiting the semantic and multimodal reasoning strengths of next-generation embodied AI systems, CHAI underscores the urgent need for defenses that extend beyond traditional adversarial robustness.",
+          "https://arxiv.org/abs/2510.00181",
+          "https://github.com/Cyphysecurity/chai"
         )
 
 
@@ -944,6 +1041,24 @@ function copy(dest, source) {
           "&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
           "Generative pre-training has significantly advanced natural language understanding. Building upon this success, recent research begins to innovate Large Vision Models (LVM) by leveraging large-scale pre-training on visual sequences, where simultaneous consideration of image token sequences within single images and across a set of images is of key importance. This paper shows that sequential modeling on single images and across multiple images can be efficiently and effectively decoupled. We introduce a two-stage learning pipeline, starting with single-image pre-training, followed by fine-tuning on long image/video sequences. We term this method Large Vision Model Lite (LVM-Lite). Extensive experiments showcase the impressive performance of LVM-Lite across various generative and discriminative benchmarks, comparable to specifically trained models without the need for task-specific training. Importantly, LVM-Lite accelerates training speed substantially up to and demonstrates strong scalability.",
         )
+
+
+        add_paper("Complex-Edit: CoT-Like Instruction Generation for Complexity-Controllable Image Editing Benchmark",
+          "Siwei Yang, Mude Hui, Bingchen Zhao, Yuyin Zhou, Nataniel Ruiz, Cihang Xie",
+          "TMLR, 2026",
+          "https://arxiv.org/abs/2504.13143", 
+          "@article{yang2025textttcomplexeditcotlikeinstructiongeneration,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {Complex-Edit: CoT-Like Instruction Generation for Complexity-Controllable Image Editing Benchmark},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Siwei Yang, Mude Hui, Bingchen Zhao, Yuyin Zhou, Nataniel Ruiz, Cihang Xie},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {TMLR},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "We introduce Complex-Edit, a comprehensive benchmark designed to systematically evaluate instruction-based image editing models across instructions of varying complexity. To develop this benchmark, we harness GPT-4o to automatically collect a diverse set of editing instructions at scale. Our approach follows a well-structured ``Chain-of-Edit'' pipeline: we first generate individual atomic editing tasks independently and then integrate them to form cohesive, complex instructions. Additionally, we introduce a suite of metrics to assess various aspects of editing performance, along with a VLM-based auto-evaluation pipeline that supports large-scale assessments. Our benchmark yields several notable insights: 1) Open-source models significantly underperform relative to proprietary, closed-source models, with the performance gap widening as instruction complexity increases; 2) Increased instructional complexity primarily impairs the models' ability to retain key elements from the input images and to preserve the overall aesthetic quality; 3) Decomposing a complex instruction into a sequence of atomic steps, executed in a step-by-step manner, substantially degrades performance across multiple metrics; 4) A straightforward Best-of-N selection strategy improves results for both direct editing and the step-by-step sequential approach; and 5) We observe a ``curse of synthetic data'': when synthetic data is involved in model training, the edited images from such models tend to appear increasingly synthetic as the complexity of the editing instructions rises -- a phenomenon that intriguingly also manifests in the latest GPT-4o outputs.",
+          "https://arxiv.org/abs/2504.13143",
+          "https://github.com/UCSC-VLAA/Complex-Edit"
+        )
+
+
+
 
 
         document.write("</ul><br>")
