@@ -587,23 +587,6 @@ function copy(dest, source) {
 
 
 
-
-
-
-        add_paper("Audio-Visual LLM for Video Understanding",
-                  "Hangxun Shu, Lei Zhang, Hao Jiang, Cihang Xie",
-                  null,
-                  "https://arxiv.org/abs/2312.06720",
-                  "@article{shu2023audio,<br>" +
-                  "&nbsp;&nbsp;&nbsp;title     = {Audio-Visual LLM for Video Understanding},<br>" +
-                  "&nbsp;&nbsp;&nbsp;author    = {Shu, Fangxun and Zhang, Lei and Jiang, Hao and Xie, Cihang},<br>" +
-                  "&nbsp;&nbsp;&nbsp;journal   = {arXiv preprint arXiv:2312.06720},<br>" +
-                  "&nbsp;&nbsp;&nbsp;year      = {2023}<br>}",
-                  "This paper presents Audio-Visual LLM, a Multimodal Large Language Model that takes both visual and auditory inputs for holistic video understanding. A key design is the modality-augmented training, which involves the integration of modality-specific tokens engineered to activate the appropriate visual and/or auditory encoder selectively. This mechanism is pivotal in enabling end-to-end joint training with video data at different modalities, including visual-only, audio-only, and audio-visual formats. Moreover, we introduce a high-quality video instruction dataset, derived from GPT-4. This dataset allows Audio-Visual LLM to adeptly process a variety of task-oriented video instructions, ranging from multi-turn conversations and audio-visual narratives to complex reasoning tasks. Extensive experiments demonstrate that Audio-Visual LLM impressively achieves strong zero-shot results across a range of video understanding tasks. For example, Audio-Visual LLM achieves an accuracy of 53.7% on MSRVTT-QA, outperforming non-LLM-based InterVideo by 6.6% and LLM-based Valley by 4.4%, respectively. Additionally, our Audio-Visual LLM also achieves competitive performance on audio tasks (e.g., AudioCaps).",
-                  "https://arxiv.org/abs/2312.06720"
-                  )
-
-
         add_paper("Compress & Align: Curating Image-Text Data with Human Knowledge",
                   "Lei Zhang, Fangxun Shu, Sucheng Ren, Hao Jiang, Bingchen Zhao, Cihang Xie",
                   null,
@@ -972,12 +955,12 @@ function copy(dest, source) {
 
 
         add_paper("Story-Adapter: A Training-free Iterative Framework for Long Story Visualization",
-          "Jiawei Mao, Xiaoke Huang, Yunfei Xie, Yuanqi Chang, Mude Hui, Bingjie Xu, Yuyin Zhou",
+          "Jiawei Mao, Xiaoke Huang, Yunfei Xie, Yuanqi Chang, Mude Hui, Bingjie Xu, Zeyu Zheng, Zirui Wang, Cihang Xie, Yuyin Zhou",
           "ICLR 2026",
           "https://arxiv.org/abs/2410.06244",
           "@inproceedings{mao2024storyadapter,<br>" +
           "&nbsp;&nbsp;&nbsp;title     = {Story-Adapter: A Training-free Iterative Framework for Long Story Visualization},<br>" +
-          "&nbsp;&nbsp;&nbsp;author    = {Jiawei Mao, Xiaoke Huang, Yunfei Xie, Yuanqi Chang, Mude Hui, Bingjie Xu, Yuyin Zhou},<br>" +
+          "&nbsp;&nbsp;&nbsp;author    = {Jiawei Mao, Xiaoke Huang, Yunfei Xie, Yuanqi Chang, Mude Hui, Bingjie Xu, Zeyu Zheng, Zirui Wang, Cihang Xie, Yuyin Zhou},<br>" +
           "&nbsp;&nbsp;&nbsp;booktitle = {ICLR},<br>" + 
           "&nbsp;&nbsp;&nbsp;year      = {2026},<br>}",
           "Story visualization, the task of generating coherent images based on a narrative, has seen significant advancements with the emergence of text-to-image models, particularly diffusion models. However, maintaining semantic consistency, generating high-quality fine-grained interactions, and ensuring computational feasibility remain challenging, especially in long story visualization (i.e., up to 100 frames). In this work, we propose a training-free and computationally efficient framework, termed Story-Adapter, to enhance the generative capability of long stories. Specifically, we propose an iterative paradigm to refine each generated image, leveraging both the text prompt and all generated images from the previous iteration. Central to our framework is a training-free global reference cross-attention module, which aggregates all generated images from the previous iteration to preserve semantic consistency across the entire story, while minimizing computational costs with global embeddings. This iterative process progressively optimizes image generation by repeatedly incorporating text constraints, resulting in more precise and fine-grained interactions. Extensive experiments validate the superiority of Story-Adapter in improving both semantic consistency and generative capability for fine-grained interactions, particularly in long story scenarios. The project page and associated code can be accessed via https://jwmao1.github.io/storyadapter.",
@@ -1169,6 +1152,20 @@ function copy(dest, source) {
           "https://arxiv.org/abs/2409.01071",
           "https://videollamb.github.io/"
           )
+
+
+          add_paper("Audio-Visual LLM for Video Understanding",
+            "Fangxun Shu, Lei Zhang, Hao Jiang, Cihang Xie",
+            "ICCV What is Next in Multimodal Foundation Models Workshop, 2025",
+            "https://arxiv.org/abs/2312.06720",
+            "@article{shu2023audio,<br>" +
+            "&nbsp;&nbsp;&nbsp;title     = {Audio-Visual LLM for Video Understanding},<br>" +
+            "&nbsp;&nbsp;&nbsp;author    = {Shu, Fangxun and Zhang, Lei and Jiang, Hao and Xie, Cihang},<br>" +
+            "&nbsp;&nbsp;&nbsp;journal   = {ICCV What is Next in Multimodal Foundation Models Workshop},<br>" +
+            "&nbsp;&nbsp;&nbsp;year      = {2025}<br>}",
+            "This paper presents Audio-Visual LLM, a Multimodal Large Language Model that takes both visual and auditory inputs for holistic video understanding. A key design is the modality-augmented training, which involves the integration of modality-specific tokens engineered to activate the appropriate visual and/or auditory encoder selectively. This mechanism is pivotal in enabling end-to-end joint training with video data at different modalities, including visual-only, audio-only, and audio-visual formats. Moreover, we introduce a high-quality video instruction dataset, derived from GPT-4. This dataset allows Audio-Visual LLM to adeptly process a variety of task-oriented video instructions, ranging from multi-turn conversations and audio-visual narratives to complex reasoning tasks. Extensive experiments demonstrate that Audio-Visual LLM impressively achieves strong zero-shot results across a range of video understanding tasks. For example, Audio-Visual LLM achieves an accuracy of 53.7% on MSRVTT-QA, outperforming non-LLM-based InterVideo by 6.6% and LLM-based Valley by 4.4%, respectively. Additionally, our Audio-Visual LLM also achieves competitive performance on audio tasks (e.g., AudioCaps).",
+            "https://arxiv.org/abs/2312.06720"
+            )
 
         add_paper("Harnessing EHRs for Diffusion-based Anomaly Detection on Chest X-rays",
           "Harim Kim, Yuhan Wang, Minkyu Ahn, Heeyoul Choi, Yuyin Zhou, Charmgil Hong",
