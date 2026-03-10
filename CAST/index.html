@@ -488,12 +488,24 @@
       aspect-ratio: 2048 / 863;
     }
 
+    .ratio-demo {
+      aspect-ratio: 1536 / 480;
+    }
+
     .media-slot img {
       width: 100%;
       height: 100%;
       object-fit: contain;
       display: none;
       background: #fff;
+    }
+
+    .media-slot video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      background: #101413;
     }
 
     .media-slot.has-image img {
@@ -689,6 +701,7 @@
         <a href="#results">Results</a>
         <a href="#ablation">Ablation</a>
         <a href="#qualitative">Qualitative</a>
+        <a href="#demos">Demos</a>
         <a href="#generation">Generation</a>
         <a href="#citation">Citation</a>
       </nav>
@@ -1056,8 +1069,8 @@
             <div class="media-body">
               <h3>Human evaluation protocol</h3>
               <p>
-                If you want the project page to tell a complete story, this figure is useful for
-                showing how the generation-reranking study was judged beyond automatic scores.
+                The human study compares the top-ranked outputs selected by standard text matching
+                and CAST reranking under randomized presentation and majority-vote judgment.
               </p>
             </div>
           </article>
@@ -1502,6 +1515,96 @@
       </div>
     </section>
 
+    <section id="demos" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Demos</div>
+            <h2>Sequential narrative demos.</h2>
+          </div>
+          <div class="section-desc">
+            Each stitched video shows the recent context, the continuation selected by standard
+            text matching, and the continuation selected by CAST, making consistency visible over
+            the full temporal sequence.
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <article class="media-card">
+            <div class="media-slot ratio-demo">
+              <video controls playsinline preload="metadata" muted>
+                <source src="./resources/videos/Ky0zf0v2F5A_7.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div class="media-body">
+              <h3>Example 1</h3>
+              <p>Sequence ID: <code>Ky0zf0v2F5A_7</code></p>
+            </div>
+          </article>
+
+          <article class="media-card">
+            <div class="media-slot ratio-demo">
+              <video controls playsinline preload="metadata" muted>
+                <source src="./resources/videos/PQ97HXmsFR0_2.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div class="media-body">
+              <h3>Example 2</h3>
+              <p>Sequence ID: <code>PQ97HXmsFR0_2</code></p>
+            </div>
+          </article>
+
+          <article class="media-card">
+            <div class="media-slot ratio-demo">
+              <video controls playsinline preload="metadata" muted>
+                <source src="./resources/videos/T_o_T3LEYLY_6.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div class="media-body">
+              <h3>Example 3</h3>
+              <p>Sequence ID: <code>T_o_T3LEYLY_6</code></p>
+            </div>
+          </article>
+
+          <article class="media-card">
+            <div class="media-slot ratio-demo">
+              <video controls playsinline preload="metadata" muted>
+                <source src="./resources/videos/p-NnIyGFZVw_2.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div class="media-body">
+              <h3>Example 4</h3>
+              <p>Sequence ID: <code>p-NnIyGFZVw_2</code></p>
+            </div>
+          </article>
+
+          <article class="media-card">
+            <div class="media-slot ratio-demo">
+              <video controls playsinline preload="metadata" muted>
+                <source src="./resources/videos/qRSZEN6g8jY_11.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div class="media-body">
+              <h3>Example 5</h3>
+              <p>Sequence ID: <code>qRSZEN6g8jY_11</code></p>
+            </div>
+          </article>
+
+          <article class="media-card">
+            <div class="media-slot ratio-demo">
+              <video controls playsinline preload="metadata" muted>
+                <source src="./resources/videos/ulrh6C5V_VI_6.mp4" type="video/mp4" />
+              </video>
+            </div>
+            <div class="media-body">
+              <h3>Example 6</h3>
+              <p>Sequence ID: <code>ulrh6C5V_VI_6</code></p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section id="generation" class="section">
       <div class="container">
         <div class="section-head">
@@ -1532,10 +1635,9 @@
           <div class="media-body">
             <h3>Human preference summary</h3>
             <p>
-              This figure works best as the lead visual for the generation section because it
-              summarizes the main downstream result at a glance: overall preference, physical
-              plausibility, and temporal logic all favor CAST-guided selection over standard
-              text-only matching.
+              The blind human study reports higher preference for CAST-guided candidate selection
+              than for standard text matching across overall preference, physical plausibility,
+              and temporal logic.
             </p>
           </div>
         </article>
