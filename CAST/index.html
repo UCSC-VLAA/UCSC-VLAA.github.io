@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CAST: Modeling Visual State Transitions for Consistent Video Retrieval</title>
+  <meta
+    name="description"
+    content="CAST introduces Consistent Video Retrieval, a benchmark and lightweight state-transition adapter for sequentially consistent video retrieval and state-aware generation guidance."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&amp;display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --bg: #f5efe5;
+      --bg-alt: #ece2d2;
+      --panel: rgba(255, 250, 243, 0.9);
+      --panel-strong: rgba(255, 252, 248, 0.98);
+      --text: #1e2422;
+      --muted: #5f6864;
+      --line: rgba(30, 36, 34, 0.1);
+      --accent: #0f6b5d;
+      --accent-deep: #094a40;
+      --accent-warm: #b86442;
+      --shadow: 0 20px 60px rgba(49, 41, 31, 0.08);
+      --radius: 24px;
+      --maxw: 1160px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Manrope", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      line-height: 1.65;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(15, 107, 93, 0.14), transparent 28%),
+        radial-gradient(circle at 100% 0%, rgba(184, 100, 66, 0.14), transparent 26%),
+        linear-gradient(180deg, #f7f1e9 0%, #f4ede3 42%, #efe5d6 100%);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.92em;
+      background: rgba(15, 107, 93, 0.08);
+      padding: 0.15em 0.45em;
+      border-radius: 999px;
+    }
+
+    .math {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-style: italic;
+      color: var(--text);
+      white-space: nowrap;
+    }
+
+    .math sub {
+      font-style: normal;
+      font-size: 0.72em;
+    }
+
+    .container {
+      width: min(calc(100% - 32px), var(--maxw));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(14px);
+      background: rgba(245, 239, 229, 0.8);
+      border-bottom: 1px solid rgba(30, 36, 34, 0.06);
+    }
+
+    .nav-inner {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-mark {
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-warm));
+      box-shadow: 0 0 0 10px rgba(15, 107, 93, 0.08);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--text);
+    }
+
+    .hero {
+      padding: 56px 0 30px;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255, 251, 246, 0.92), rgba(255, 247, 238, 0.86));
+      border: 1px solid rgba(255, 255, 255, 0.82);
+      border-radius: 34px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+      isolation: isolate;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 15% 12%, rgba(15, 107, 93, 0.12), transparent 26%),
+        radial-gradient(circle at 88% 10%, rgba(184, 100, 66, 0.12), transparent 22%);
+      z-index: -1;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.1fr);
+      gap: 40px;
+      align-items: center;
+      padding: 48px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--accent-deep);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: rgba(9, 74, 64, 0.48);
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Source Serif 4", Georgia, serif;
+      font-weight: 600;
+      letter-spacing: -0.03em;
+    }
+
+    h1 {
+      margin: 18px 0 0;
+      max-width: 11ch;
+      font-size: clamp(2.9rem, 6vw, 5.25rem);
+      line-height: 0.98;
+    }
+
+    .hero-subtitle {
+      margin: 18px 0 0;
+      max-width: 64ch;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .author-list {
+      margin-top: 24px;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .author-list sup,
+    .affiliations sup,
+    .note-row sup {
+      font-size: 0.72em;
+    }
+
+    .affiliations,
+    .note-row {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .note-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .button-row,
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button-row {
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--panel-strong);
+      color: var(--text);
+      font-size: 0.95rem;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 24px rgba(49, 41, 31, 0.08);
+      border-color: rgba(15, 107, 93, 0.25);
+    }
+
+    .button.primary {
+      background: linear-gradient(180deg, var(--accent), var(--accent-deep));
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .button.is-muted {
+      color: var(--muted);
+      background: rgba(255, 255, 255, 0.56);
+      cursor: default;
+    }
+
+    .tag-row {
+      margin-top: 20px;
+    }
+
+    .tag {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(15, 107, 93, 0.08);
+      color: var(--accent-deep);
+      font-size: 0.87rem;
+      font-weight: 700;
+    }
+
+    .hero-aside {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100%;
+    }
+
+    .aside-note {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(15, 107, 93, 0.07);
+      color: var(--muted);
+      font-size: 0.92rem;
+      border: 1px solid rgba(15, 107, 93, 0.12);
+    }
+
+    .section {
+      padding: 34px 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      gap: 28px;
+      align-items: end;
+      margin-bottom: 24px;
+    }
+
+    .section-kicker {
+      margin-bottom: 12px;
+      color: var(--accent-deep);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .section h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.04;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      font-size: 1.02rem;
+      max-width: 64ch;
+    }
+
+    .panel,
+    .card,
+    .media-card,
+    .table-card,
+    .metric-card {
+      background: var(--panel);
+      border: 1px solid rgba(255, 255, 255, 0.84);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .panel {
+      padding: 28px;
+    }
+
+    .panel p,
+    .card p,
+    .media-body p,
+    .metric-copy,
+    .table-note {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      padding: 24px;
+    }
+
+    .card h3,
+    .media-body h3,
+    .table-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.22rem;
+    }
+
+    .metric-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .metric-card {
+      padding: 22px;
+    }
+
+    .metric-value {
+      margin-bottom: 8px;
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
+
+    .metric-label {
+      margin-bottom: 4px;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .stack {
+      display: grid;
+      gap: 18px;
+    }
+
+    .media-card {
+      overflow: hidden;
+    }
+
+    .media-body {
+      padding: 20px 22px 22px;
+    }
+
+    .media-caption {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .media-slot {
+      position: relative;
+      overflow: hidden;
+      border-radius: 22px 22px 0 0;
+      border-bottom: 1px solid rgba(30, 36, 34, 0.06);
+      background:
+        linear-gradient(135deg, rgba(15, 107, 93, 0.08), rgba(184, 100, 66, 0.08)),
+        linear-gradient(180deg, #f8f2e9, #fbf7f1);
+    }
+
+    .hero-figure .media-slot {
+      width: 100%;
+      max-width: 1040px;
+      min-height: 0;
+      aspect-ratio: 2048 / 918;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      border-radius: 30px;
+      border: 1px solid rgba(30, 36, 34, 0.08);
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85);
+    }
+
+    .hero-figure .media-slot img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      object-position: center center;
+      transform: translateY(0);
+    }
+
+    .ratio-16x10 {
+      aspect-ratio: 16 / 10;
+    }
+
+    .ratio-16x9 {
+      aspect-ratio: 16 / 9;
+    }
+
+    .ratio-4x3 {
+      aspect-ratio: 4 / 3;
+    }
+
+    .media-slot img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: none;
+      background: #fff;
+    }
+
+    .media-slot.has-image img {
+      display: block;
+    }
+
+    .media-placeholder {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      gap: 8px;
+      text-align: center;
+      padding: 24px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .media-placeholder strong {
+      color: var(--text);
+      font-size: 1.05rem;
+      font-weight: 800;
+    }
+
+    .media-slot.has-image .media-placeholder {
+      display: none;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .hero-stat {
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(30, 36, 34, 0.08);
+    }
+
+    .hero-stat strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1.35rem;
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-stat span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .table-card {
+      padding: 22px;
+    }
+
+    .table-scroll {
+      overflow-x: auto;
+      margin-top: 14px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 560px;
+    }
+
+    th,
+    td {
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 1px solid rgba(30, 36, 34, 0.08);
+      font-size: 0.95rem;
+    }
+
+    th {
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 800;
+    }
+
+    td strong {
+      font-weight: 800;
+    }
+
+    .row-highlight td {
+      background: rgba(15, 107, 93, 0.08);
+    }
+
+    .group-row td {
+      background: rgba(15, 107, 93, 0.08);
+      color: var(--accent-deep);
+      font-weight: 800;
+    }
+
+    .result-positive {
+      color: var(--accent-deep);
+      font-weight: 800;
+    }
+
+    .citation-box {
+      background: #17201d;
+      color: #d7e5df;
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      overflow-x: auto;
+    }
+
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      word-break: break-word;
+      line-height: 1.6;
+      font-size: 0.92rem;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+
+    footer {
+      padding: 24px 0 54px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-grid,
+      .section-head,
+      .split,
+      .grid-3,
+      .grid-2,
+      .metric-strip {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-inner {
+        padding: 14px 0;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+
+      .hero {
+        padding-top: 36px;
+      }
+
+      .hero-grid {
+        padding: 28px;
+      }
+
+      .hero-figure .media-slot {
+        width: 100%;
+        padding: 10px;
+      }
+
+      .hero-figure .media-slot img {
+        width: 100%;
+      }
+
+      .button-row,
+      .tag-row {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="CAST project page">
+        <span class="brand-mark"></span>
+        <span>CAST Project Page</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#overview">Overview</a>
+        <a href="#benchmark">Benchmark</a>
+        <a href="#method">Method</a>
+        <a href="#results">Results</a>
+        <a href="#ablation">Ablation</a>
+        <a href="#qualitative">Qualitative</a>
+        <a href="#generation">Generation</a>
+        <a href="#citation">Citation</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card">
+          <div class="hero-grid">
+            <div>
+              <h1>CAST</h1>
+              <p class="hero-subtitle">
+                Modeling Visual State Transitions for Consistent Video Retrieval.
+                CAST introduces Consistent Video Retrieval (CVR), a benchmark that isolates
+                state and identity failures in multi-step activities, together with a
+                lightweight adapter that learns action-conditioned state transitions in frozen
+                video-language embedding space.
+              </p>
+
+              <div class="author-list">
+                Yanqing Liu<sup>1,2,*</sup>, Yingcheng Liu<sup>1,3</sup>, Fanghong Dong<sup>1</sup>,
+                Budianto Budianto<sup>1</sup>, Cihang Xie<sup>2</sup>, Yan Jiao<sup>1</sup>
+              </div>
+              <div class="affiliations">
+                <sup>1</sup>Google &nbsp;&middot;&nbsp;
+                <sup>2</sup>University of California, Santa Cruz &nbsp;&middot;&nbsp;
+                <sup>3</sup>MIT
+              </div>
+              <div class="note-row">
+                <span><sup>*</sup>This work was done while Yanqing was a research intern at Google.</span>
+              </div>
+
+              <div class="button-row">
+                <a class="button primary" href="https://arxiv.org/pdf/2603.08648" target="_blank" rel="noopener">Paper PDF</a>
+                <a class="button" href="https://arxiv.org/abs/2603.08648" target="_blank" rel="noopener">arXiv</a>
+                <a class="button" href="#citation">BibTeX</a>
+              </div>
+
+              <div class="tag-row">
+                <span class="tag">Consistent Video Retrieval</span>
+                <span class="tag">State Transition Modeling</span>
+                <span class="tag">State-Aware Generation Guidance</span>
+              </div>
+            </div>
+
+            <aside class="hero-aside hero-figure">
+              <div class="media-slot ratio-16x10">
+                <img
+                  src="./resources/figure1_teaser.png"
+                  alt="CAST teaser figure"
+                  onload="this.parentElement.classList.add('has-image')"
+                  onerror="this.remove()"
+                />
+                <div class="media-placeholder">
+                  <strong>Figure 1 teaser</strong>
+                  <span>Overview of the CVR benchmark and the CAST framework.</span>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="overview" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Overview</div>
+            <h2>Sequential consistency matters more than semantic overlap.</h2>
+          </div>
+          <div class="section-desc">
+            Standard video retrieval works well when the query and the candidate clip are
+            semantically related, but that is not enough for procedures. The retrieved clip
+            also has to respect the current scene state and the identity of the objects being
+            manipulated.
+          </div>
+        </div>
+
+        <div class="panel">
+          <p>
+            CAST studies retrieval in settings where actions happen in sequence and every step
+            changes the world. The paper introduces CVR, a benchmark that turns multi-step
+            activities into consistency-sensitive retrieval questions, and proposes a compact
+            State Transition Adapter that predicts the next visual state through residual
+            transition modeling. Instead of relying on heavier cross-encoders, CAST operates on
+            top of a frozen backbone, predicts a next-state embedding from visual history and the
+            current instruction, and reuses the same inference signals for retrieval and
+            generation guidance.
+          </p>
+        </div>
+
+        <div class="grid-3" style="margin-top: 18px;">
+          <article class="card">
+            <h3>Benchmark the real failure mode</h3>
+            <p>
+              CVR builds negatives that are close in language and appearance but wrong in how the
+              scene should evolve. This turns retrieval into a test of sequential understanding.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Model transitions, not isolated clips</h3>
+            <p>
+              CAST keeps the video-language backbone frozen and predicts the next-state embedding
+              from the anchor state, current instruction, and visual history through a lightweight
+              residual adapter.
+            </p>
+          </article>
+            <article class="card">
+              <h3>Transfer beyond retrieval</h3>
+              <p>
+              The same learned transition score can guide candidate selection for video
+              generation, improving both automatic evaluation and human preference.
+              </p>
+            </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="benchmark" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Benchmark</div>
+            <h2>CVR diagnoses state and identity consistency.</h2>
+          </div>
+          <div class="section-desc">
+            Each example starts from an activity sequence, builds a language query for the next
+            step, and then contrasts the correct next clip with negatives that are deliberately
+            inconsistent with the current visual state.
+          </div>
+        </div>
+
+        <div class="split">
+          <article class="media-card">
+            <div class="media-slot ratio-16x10">
+              <img
+                src="./resources/figure2_cvr_benchmark.png"
+                alt="CVR benchmark overview"
+                onload="this.parentElement.classList.add('has-image')"
+                onerror="this.remove()"
+              />
+              <div class="media-placeholder">
+                <strong>Figure 2 benchmark overview</strong>
+                <span>Benchmark construction and failure-type overview.</span>
+              </div>
+            </div>
+            <div class="media-body">
+              <h3>How CVR is built</h3>
+              <p>
+                The benchmark uses step-level clips from YouCook2, CrossTask, and COIN. Query
+                clips define the current context, the natural-language instruction specifies the
+                desired next step, and negatives are sampled to violate either state changes or
+                object identity while remaining semantically plausible.
+              </p>
+            </div>
+          </article>
+
+          <div class="stack">
+            <article class="card">
+              <h3>Dataset split protocol</h3>
+              <p>
+                YouCook2 uses the official train split for training and CVR evaluation on val.
+                COIN uses official train for training and CVR evaluation on test. CrossTask uses
+                a video-disjoint 80/20 split with random seed 42.
+              </p>
+            </article>
+            <article class="card">
+              <h3>1-vs-9 ranking protocol</h3>
+              <p>
+                Each query is evaluated against 10 candidates: 1 ground-truth clip, up to 3 hard
+                state negatives, up to 3 hard identity negatives, and easy negatives to fill the
+                remaining slots. The context history uses up to the previous <code>L=5</code> clips.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Feature and training setup</h3>
+              <p>
+                In the main experiments, each clip is represented by mean-pooled CLIP ViT-B/32
+                features from 3 uniformly sampled frames. CAST uses a frozen backbone and is
+                trained with AdamW, a context window of <code>L=5</code>, and dataset-specific
+                training epochs.
+              </p>
+            </article>
+          </div>
+        </div>
+
+        <article class="table-card" style="margin-top: 18px;">
+          <h3>CVR benchmark statistics</h3>
+          <p class="table-note">
+            Final evaluation-set size for each dataset under the fixed 1-vs-9 ranking protocol.
+          </p>
+          <div class="table-scroll">
+            <table style="min-width: 760px;">
+              <thead>
+                <tr>
+                  <th>Dataset</th>
+                  <th>Split Protocol</th>
+                  <th>#Videos</th>
+                  <th>#Step-Clips</th>
+                  <th>#Queries</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>YouCook2</strong></td>
+                  <td>official train; CVR eval on val</td>
+                  <td>414</td>
+                  <td>3,179</td>
+                  <td>2,765</td>
+                </tr>
+                <tr>
+                  <td><strong>COIN</strong></td>
+                  <td>official train; CVR eval on test</td>
+                  <td>2,134</td>
+                  <td>6,241</td>
+                  <td>4,107</td>
+                </tr>
+                <tr>
+                  <td><strong>CrossTask</strong></td>
+                  <td>video-disjoint 80/20 split</td>
+                  <td>509</td>
+                  <td>2,731</td>
+                  <td>2,222</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="method" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Method</div>
+            <h2>CAST learns action-conditioned transitions in embedding space.</h2>
+          </div>
+          <div class="section-desc">
+            Rather than matching the query text directly to the next clip, CAST predicts the
+            target embedding <span class="math">v&#770;<sub>t</sub></span> from the anchor state
+            <span class="math">v<sub>t-1</sub></span>, instruction
+            <span class="math">q<sub>t</sub></span>, and visual history
+            <span class="math">H<sub>t</sub></span>, then ranks candidates in the same frozen
+            embedding space.
+          </div>
+        </div>
+
+        <div class="split">
+          <article class="media-card">
+            <div class="media-slot ratio-16x10">
+              <img
+                src="./resources/figure3_cast_method.png"
+                alt="CAST method diagram"
+                onload="this.parentElement.classList.add('has-image')"
+                onerror="this.remove()"
+              />
+              <div class="media-placeholder">
+                <strong>Figure 3 method diagram</strong>
+                <span>State Transition Adapter and inference scoring.</span>
+              </div>
+            </div>
+            <div class="media-body">
+              <h3>State Transition Adapter</h3>
+              <p>
+                CAST is a lightweight query-side adapter on top of a frozen backbone. Given the
+                anchor state <span class="math">v<sub>t-1</sub></span>, the instruction
+                <span class="math">q<sub>t</sub></span>, and the visual history
+                <span class="math">H<sub>t</sub></span>, it predicts the next-state embedding
+                <span class="math">v&#770;<sub>t</sub></span> through a residual update.
+              </p>
+            </div>
+          </article>
+
+          <div class="stack">
+            <article class="card">
+              <h3>Residual next-state prediction</h3>
+              <p>
+                CAST predicts
+                <span class="math">v&#770;<sub>t</sub> = &phi;(v<sub>t-1</sub> + &Delta;(v<sub>t-1</sub>, q<sub>t</sub>, H<sub>t</sub>))</span>,
+                where <span class="math">&Delta; = &Delta;<sub>cond</sub> + &Delta;<sub>ctx</sub></span>.
+                The instruction-conditioned branch uses
+                <span class="math">MLP<sub>cond</sub>([f<sub>t</sub>(q<sub>t</sub>); v<sub>t-1</sub>])</span>,
+                while the context branch applies cross-attention over
+                <span class="math">H<sub>t</sub></span> followed by
+                <span class="math">MLP<sub>ctx</sub></span>.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Plug-and-play inference</h3>
+              <p>
+                At inference time, CAST keeps the gallery fixed and scores each candidate with
+                three signals: semantic alignment <span class="math">A</span>, visual continuity
+                <span class="math">B</span>, and predicted future-state compatibility
+                <span class="math">C</span>. The final score uses the full ensemble
+                <span class="math">S(q,c)=A(q,c)+w<sub>v</sub>B(q,c)+w<sub>p</sub>C(q,c)</span>.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Why it stays lightweight</h3>
+              <p>
+                The backbone encoder remains frozen, and only the CAST adapter is optimized. This
+                preserves the scalability of standard retrieval pipelines while adding context-aware
+                next-state prediction on the query side.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="qualitative" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Qualitative</div>
+            <h2>Qualitative retrieval and evaluation examples.</h2>
+          </div>
+          <div class="section-desc">
+            These examples complement the benchmark tables by showing the concrete failure modes
+            behind state inconsistency and identity inconsistency.
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <article class="media-card">
+            <div class="media-slot ratio-16x9">
+              <img
+                src="./resources/figure4_retrieval_examples.png"
+                alt="Retrieval examples"
+                onload="this.parentElement.classList.add('has-image')"
+                onerror="this.remove()"
+              />
+              <div class="media-placeholder">
+                <strong>Figure 4 retrieval examples</strong>
+                <span>Shows baseline retrieval failures versus CAST on CVR.</span>
+              </div>
+            </div>
+            <div class="media-body">
+              <h3>Retrieval failure cases</h3>
+              <p>
+                Good examples here are the cases where semantic matching looks reasonable but the
+                retrieved clip violates the intended next state or the identity of the manipulated
+                object.
+              </p>
+            </div>
+          </article>
+
+          <article class="media-card">
+            <div class="media-slot ratio-4x3">
+              <img
+                src="./resources/figure8_human_eval.png"
+                alt="Human evaluation setup"
+                onload="this.parentElement.classList.add('has-image')"
+                onerror="this.remove()"
+              />
+              <div class="media-placeholder">
+                <strong>Figure 8 human evaluation</strong>
+                <span>Human-study setup for generation comparison.</span>
+              </div>
+            </div>
+            <div class="media-body">
+              <h3>Human evaluation protocol</h3>
+              <p>
+                If you want the project page to tell a complete story, this figure is useful for
+                showing how the generation-reranking study was judged beyond automatic scores.
+              </p>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Qualitative summary</h3>
+            <p>
+              These cases illustrate typical CVR failure modes for context-free retrieval: the
+              retrieved clip can remain semantically related while still violating the expected
+              temporal state or the manipulated object identity.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="results" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Results</div>
+            <h2>Quantitative results on the CVR benchmark.</h2>
+          </div>
+          <div class="section-desc">
+            The quantitative analysis centers on two questions: does explicit state-transition
+            modeling outperform standard context aggregation, and does CAST transfer across diverse
+            frozen backbones?
+          </div>
+        </div>
+
+        <article class="table-card">
+          <h3>CVR Benchmark Results (CLIP-B/32)</h3>
+          <p class="table-note">
+            CAST provides the strongest overall trade-off across datasets and diagnostic metrics,
+            with especially clear gains on state-sensitive retrieval.
+          </p>
+          <div class="table-scroll">
+            <table style="min-width: 1120px;">
+              <thead>
+                <tr>
+                  <th rowspan="2">Method</th>
+                  <th rowspan="2">Context Modeling</th>
+                  <th colspan="2">YouCook2</th>
+                  <th colspan="2">COIN</th>
+                  <th colspan="2">CrossTask</th>
+                  <th colspan="2">Diagnostic</th>
+                </tr>
+                <tr>
+                  <th>Acc.</th>
+                  <th>MnR</th>
+                  <th>Acc.</th>
+                  <th>MnR</th>
+                  <th>Acc.</th>
+                  <th>MnR</th>
+                  <th>State</th>
+                  <th>Ident.</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>CLIP Baseline</td>
+                  <td>Context-Free</td>
+                  <td>25.03</td>
+                  <td>3.60</td>
+                  <td>14.10</td>
+                  <td>3.91</td>
+                  <td>16.83</td>
+                  <td>4.15</td>
+                  <td>45.52</td>
+                  <td>28.90</td>
+                </tr>
+                <tr>
+                  <td>Late Fusion (Heuristic)</td>
+                  <td>Fixed Weighting</td>
+                  <td>31.10</td>
+                  <td>2.56</td>
+                  <td>17.85</td>
+                  <td>3.28</td>
+                  <td>22.05</td>
+                  <td>2.86</td>
+                  <td>28.69</td>
+                  <td>68.29</td>
+                </tr>
+                <tr>
+                  <td>Late Fusion (Learned)</td>
+                  <td>Learned Weighting</td>
+                  <td>36.60</td>
+                  <td>2.53</td>
+                  <td><strong>44.66</strong></td>
+                  <td><strong>2.11</strong></td>
+                  <td>25.52</td>
+                  <td>2.86</td>
+                  <td>40.06</td>
+                  <td>76.06</td>
+                </tr>
+                <tr>
+                  <td>Early Fusion</td>
+                  <td>Feature Concat.</td>
+                  <td>35.99</td>
+                  <td>2.28</td>
+                  <td>15.12</td>
+                  <td>2.60</td>
+                  <td>35.29</td>
+                  <td>2.36</td>
+                  <td>31.14</td>
+                  <td><strong>83.59</strong></td>
+                </tr>
+                <tr class="row-highlight">
+                  <td><strong>CAST (Ours)</strong></td>
+                  <td><strong>State Transition</strong></td>
+                  <td><strong>44.77</strong></td>
+                  <td><strong>2.15</strong></td>
+                  <td>40.47</td>
+                  <td>2.16</td>
+                  <td><strong>47.39</strong></td>
+                  <td><strong>2.14</strong></td>
+                  <td><strong>53.81</strong></td>
+                  <td>74.67</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="table-card" style="margin-top: 18px;">
+          <h3>Universality Across Backbones</h3>
+          <p class="table-note">
+            CAST consistently improves over the corresponding zero-shot baseline while operating in
+            the same frozen native vision-language embedding space for each backbone.
+          </p>
+          <div class="table-scroll">
+            <table style="min-width: 1160px;">
+              <thead>
+                <tr>
+                  <th rowspan="2">Backbone</th>
+                  <th rowspan="2">Setting</th>
+                  <th colspan="2">YouCook2</th>
+                  <th colspan="2">COIN</th>
+                  <th colspan="2">CrossTask</th>
+                  <th colspan="2">Diagnostic</th>
+                </tr>
+                <tr>
+                  <th>Acc.</th>
+                  <th>MnR</th>
+                  <th>Acc.</th>
+                  <th>MnR</th>
+                  <th>Acc.</th>
+                  <th>MnR</th>
+                  <th>State</th>
+                  <th>Ident.</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="group-row">
+                  <td colspan="10">Category I: Video Foundation Models</td>
+                </tr>
+                <tr>
+                  <td>InternVideo2-1B</td>
+                  <td>Zero-Shot</td>
+                  <td>36.75</td>
+                  <td>2.59</td>
+                  <td>17.99</td>
+                  <td>3.36</td>
+                  <td>20.61</td>
+                  <td>3.31</td>
+                  <td>65.70</td>
+                  <td>30.85</td>
+                </tr>
+                <tr class="row-highlight">
+                  <td>InternVideo2-1B</td>
+                  <td><strong>+ CAST</strong></td>
+                  <td><strong>71.68</strong></td>
+                  <td><strong>1.48</strong></td>
+                  <td><strong>51.03</strong></td>
+                  <td><strong>1.90</strong></td>
+                  <td><strong>64.36</strong></td>
+                  <td><strong>1.71</strong></td>
+                  <td><strong>75.43</strong></td>
+                  <td><strong>77.77</strong></td>
+                </tr>
+                <tr>
+                  <td>VideoPrism-B</td>
+                  <td>Zero-Shot</td>
+                  <td>47.45</td>
+                  <td>2.13</td>
+                  <td>17.60</td>
+                  <td>3.32</td>
+                  <td>20.25</td>
+                  <td>3.24</td>
+                  <td>68.38</td>
+                  <td>33.68</td>
+                </tr>
+                <tr class="row-highlight">
+                  <td>VideoPrism-B</td>
+                  <td><strong>+ CAST</strong></td>
+                  <td><strong>75.59</strong></td>
+                  <td><strong>1.38</strong></td>
+                  <td><strong>51.64</strong></td>
+                  <td><strong>1.90</strong></td>
+                  <td><strong>62.11</strong></td>
+                  <td><strong>1.74</strong></td>
+                  <td><strong>76.92</strong></td>
+                  <td><strong>77.66</strong></td>
+                </tr>
+                <tr class="group-row">
+                  <td colspan="10">Category II: Multimodal Embedding Models</td>
+                </tr>
+                <tr>
+                  <td>GME-Qwen2-VL-2B</td>
+                  <td>Zero-Shot</td>
+                  <td>29.62</td>
+                  <td>3.10</td>
+                  <td>17.17</td>
+                  <td>3.44</td>
+                  <td>19.40</td>
+                  <td>3.61</td>
+                  <td>56.31</td>
+                  <td>29.73</td>
+                </tr>
+                <tr class="row-highlight">
+                  <td>GME-Qwen2-VL-2B</td>
+                  <td><strong>+ CAST</strong></td>
+                  <td><strong>54.39</strong></td>
+                  <td><strong>1.95</strong></td>
+                  <td><strong>45.68</strong></td>
+                  <td><strong>2.05</strong></td>
+                  <td><strong>52.43</strong></td>
+                  <td><strong>2.04</strong></td>
+                  <td><strong>67.20</strong></td>
+                  <td><strong>72.28</strong></td>
+                </tr>
+                <tr>
+                  <td>Qwen3-VL-Embedding-2B</td>
+                  <td>Zero-Shot</td>
+                  <td>33.45</td>
+                  <td>2.89</td>
+                  <td>17.73</td>
+                  <td>3.50</td>
+                  <td>19.44</td>
+                  <td>3.56</td>
+                  <td>58.44</td>
+                  <td>29.79</td>
+                </tr>
+                <tr class="row-highlight">
+                  <td>Qwen3-VL-Embedding-2B</td>
+                  <td><strong>+ CAST</strong></td>
+                  <td><strong>56.64</strong></td>
+                  <td><strong>1.85</strong></td>
+                  <td><strong>44.87</strong></td>
+                  <td><strong>2.09</strong></td>
+                  <td><strong>48.96</strong></td>
+                  <td><strong>2.09</strong></td>
+                  <td><strong>66.18</strong></td>
+                  <td><strong>69.11</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <div class="grid-2" style="margin-top: 18px;">
+          <article class="card">
+            <h3>Effectiveness of the CAST mechanism</h3>
+            <p>
+              With CLIP ViT-B/32 fixed, CAST reaches 44.77 Acc. on YouCook2 and 47.39 on
+              CrossTask, while the learned late-fusion baseline is strongest only on COIN
+              (44.66). This matches the paper's conclusion that scalar aggregation can exploit
+              visual inertia on COIN but does not generalize to larger state changes.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Universality in frozen embedding spaces</h3>
+            <p>
+              The same adapter transfers across InternVideo2, VideoPrism, GME-Qwen2-VL-2B, and
+              Qwen3-VL-Embedding-2B. Across all four backbones, CAST improves both retrieval
+              accuracy and the diagnostic state / identity metrics without changing the frozen
+              backbone encoders.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="ablation" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Ablation</div>
+            <h2>Ablation of architecture, inference, and context length.</h2>
+          </div>
+          <div class="section-desc">
+            The ablations isolate where CAST's gains come from: residual target prediction,
+            dual-path architecture, ensemble inference, and the amount of visual history provided
+            to the model.
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <article class="table-card">
+            <h3>Target formulation and architecture</h3>
+            <p class="table-note">
+              YouCook2 validation benchmark. Residual modeling outperforms direct target prediction,
+              and the dual-path CAST design improves over simple early fusion.
+            </p>
+            <div class="table-scroll">
+              <table style="min-width: 620px;">
+                <thead>
+                  <tr>
+                    <th>Fusion</th>
+                    <th>Target</th>
+                    <th>Acc.</th>
+                    <th>State</th>
+                    <th>Ident.</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Early (Concat)</td>
+                    <td>Direct (<span class="math">v&#770;<sub>t</sub></span>)</td>
+                    <td>35.99</td>
+                    <td>38.92</td>
+                    <td><strong>83.58</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Early (Concat)</td>
+                    <td>Residual (<span class="math">&Delta;</span>)</td>
+                    <td>38.95</td>
+                    <td>43.51</td>
+                    <td>81.99</td>
+                  </tr>
+                  <tr class="row-highlight">
+                    <td><strong>CAST (Ours)</strong></td>
+                    <td><strong>Residual (<span class="math">&Delta;</span>)</strong></td>
+                    <td><strong>44.77</strong></td>
+                    <td><strong>51.03</strong></td>
+                    <td>78.48</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="table-card">
+            <h3>Inference signal decomposition</h3>
+            <p class="table-note">
+              YouCook2 validation benchmark. The full ensemble offers the best balance between
+              state discrimination and identity preservation.
+            </p>
+            <div class="table-scroll">
+              <table style="min-width: 620px;">
+                <thead>
+                  <tr>
+                    <th>Inference Strategy</th>
+                    <th>Acc.</th>
+                    <th>Ident.</th>
+                    <th>State</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>A. Text Matching (q)</td>
+                    <td>25.03</td>
+                    <td>25.32</td>
+                    <td>50.45</td>
+                  </tr>
+                  <tr>
+                    <td>B. Visual Continuity (<span class="math">v<sub>t-1</sub></span>)</td>
+                    <td>25.90</td>
+                    <td><strong>81.95</strong></td>
+                    <td>27.70</td>
+                  </tr>
+                  <tr>
+                    <td>C. CAST Prediction (<span class="math">v&#770;<sub>t</sub></span>)</td>
+                    <td>42.60</td>
+                    <td>75.99</td>
+                    <td>50.81</td>
+                  </tr>
+                  <tr>
+                    <td>Semantic Ensemble (A+C)</td>
+                    <td><strong>45.46</strong></td>
+                    <td>70.38</td>
+                    <td><strong>56.71</strong></td>
+                  </tr>
+                  <tr class="row-highlight">
+                    <td><strong>Full Ensemble (A+B+C)</strong></td>
+                    <td>44.77</td>
+                    <td><strong>78.48</strong></td>
+                    <td>51.03</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </div>
+
+        <div class="grid-2" style="margin-top: 18px;">
+          <article class="media-card">
+            <div class="media-slot ratio-4x3">
+              <img
+                src="./resources/figure5_retrieval_breakdown.png"
+                alt="Retrieval quality breakdown"
+                onload="this.parentElement.classList.add('has-image')"
+                onerror="this.remove()"
+              />
+              <div class="media-placeholder">
+                <strong>Retrieval quality breakdown</strong>
+                <span>Exact match, state-misaligned, and identity-inconsistent outcomes.</span>
+              </div>
+            </div>
+            <div class="media-body">
+              <h3>Qualitative trade-off of the inference ensemble</h3>
+              <p>
+                This figure complements the inference-decomposition table by showing how CAST shifts
+                top-1 retrieval outcomes toward exact matches and identity-consistent continuations.
+              </p>
+            </div>
+          </article>
+
+          <article class="media-card">
+            <div class="media-slot ratio-16x9">
+              <img
+                src="./resources/results_context_length.png"
+                alt="Effect of context history length"
+                onload="this.parentElement.classList.add('has-image')"
+                onerror="this.remove()"
+              />
+              <div class="media-placeholder">
+                <strong>Effect of context history length</strong>
+                <span>Accuracy and identity gains as context length increases.</span>
+              </div>
+            </div>
+            <div class="media-body">
+              <h3>Context length ablation</h3>
+              <p>
+                The paper reports the largest jump when moving from the context-agnostic setting
+                <code>L=0</code> to using only the immediate predecessor <code>L=1</code>, with
+                performance then largely saturating as longer history is added.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="generation" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Generation</div>
+            <h2>CAST also helps guide black-box video generation.</h2>
+          </div>
+          <div class="section-desc">
+            Given one visual context image and a next-step instruction, CAST scores the same
+            <code>K=4</code> Veo candidates selected by standard text matching, then evaluates the
+            selected outputs with a blind human study.
+          </div>
+        </div>
+
+        <div class="split">
+          <article class="card">
+            <h3>Blind human evaluation protocol</h3>
+            <p>
+              The study samples 300 prompts from the YouCook2 validation benchmark. Standard text
+              matching and CAST reranking each choose one video from the same candidate pool.
+            </p>
+          </article>
+
+          <article class="table-card">
+            <h3>Guiding video generation</h3>
+            <p class="table-note">
+              Blind human evaluation on the prompts where the two methods select
+              different candidates.
+            </p>
+            <div class="table-scroll">
+              <table style="min-width: 620px;">
+                <thead>
+                  <tr>
+                    <th>Selection Method</th>
+                    <th>Overall Preference</th>
+                    <th>Physical Plausibility</th>
+                    <th>Temporal Logic</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Standard Text Match</td>
+                    <td>38.6%</td>
+                    <td>39.9%</td>
+                    <td>38.6%</td>
+                  </tr>
+                  <tr class="row-highlight">
+                    <td><strong>CAST Reranking</strong></td>
+                    <td><strong>55.1%</strong></td>
+                    <td><strong>50.6%</strong></td>
+                    <td><strong>52.5%</strong></td>
+                  </tr>
+                  <tr>
+                    <td>Human Tie</td>
+                    <td>6.3%</td>
+                    <td>9.5%</td>
+                    <td>8.9%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="citation" class="section">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Citation</div>
+            <h2>BibTeX</h2>
+          </div>
+          <div class="section-desc">
+            ArXiv citation for CAST.
+          </div>
+        </div>
+
+        <div class="citation-box">
+<pre>@misc{liu2026castmodelingvisualstate,
+    title={CAST: Modeling Visual State Transitions for Consistent Video Retrieval}, 
+    author={Yanqing Liu and Yingcheng Liu and Fanghong Dong and Budianto Budianto and Cihang Xie and Yan Jiao},
+    year={2026},
+    eprint={2603.08648},
+    archivePrefix={arXiv},
+    primaryClass={cs.CV},
+    url={https://arxiv.org/abs/2603.08648}, 
+}</pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      CAST project page.
+    </div>
+  </footer>
+</body>
+</html>
