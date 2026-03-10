@@ -6,6 +6,7 @@ Place paper figures in this directory using these filenames so the project page 
 - `figure4_retrieval_examples.png`: qualitative retrieval comparison figure.
 - `figure5_retrieval_breakdown.png`: retrieval quality breakdown figure for the ablation section.
 - `results_context_length.png`: context-length or ablation figure used in the results section.
+- `figure_generation_human_preference.png`: blind human preference evaluation figure for the generation section.
 - `figure7_generation_reranking.png`: generation reranking qualitative figure.
 - `figure8_human_eval.png`: human evaluation setup figure.
 

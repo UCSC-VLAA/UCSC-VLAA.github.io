@@ -484,6 +484,10 @@
       aspect-ratio: 4 / 3;
     }
 
+    .ratio-generation {
+      aspect-ratio: 2048 / 863;
+    }
+
     .media-slot img {
       width: 100%;
       height: 100%;
@@ -1511,6 +1515,30 @@
             selected outputs with a blind human study.
           </div>
         </div>
+
+        <article class="media-card" style="margin-bottom: 18px;">
+          <div class="media-slot ratio-generation">
+            <img
+              src="./resources/figure_generation_human_preference.png"
+              alt="Blind human preference evaluation for CAST generation guidance"
+              onload="this.parentElement.classList.add('has-image')"
+              onerror="this.remove()"
+            />
+            <div class="media-placeholder">
+              <strong>Blind human preference evaluation</strong>
+              <span>CAST vs. standard text matching with Veo candidates.</span>
+            </div>
+          </div>
+          <div class="media-body">
+            <h3>Human preference summary</h3>
+            <p>
+              This figure works best as the lead visual for the generation section because it
+              summarizes the main downstream result at a glance: overall preference, physical
+              plausibility, and temporal logic all favor CAST-guided selection over standard
+              text-only matching.
+            </p>
+          </div>
+        </article>
 
         <div class="split">
           <article class="card">
