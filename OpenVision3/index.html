@@ -89,7 +89,7 @@
 <div style="max-width: 900px; margin: 2em auto; text-align: left;">
   <h2 class="title is-3 has-text-centered">Abstract</h2>
   <p style="font-size: 1.1em; line-height: 1.6;">
-    This paper presents a family of advanced vision encoder, named OpenVision 3, that learns a single, unified visual representation that can serve both image understanding and image generation. Our core architecture is simple: we feed VAE-compressed image latents to a ViT encoder and train its output to support two complementary roles. First, the encoder output is passed to the ViT-VAE decoder to reconstruct the original image, encouraging the representation to capture generative structure. Second, the same representation is optimized with contrastive learning and image-captioning objectives, strengthening semantic features. By jointly optimizing reconstruction- and semantics-driven signals in a shared latent space, the encoder learns representations that synergize and generalize well across both regimes. We validate this unified design through extensive downstream evaluations with the encoder frozen. For multimodal understanding, we plug the encoder into the LLaVA-1.5 framework: it performs comparably with a standard CLIP vision encoder (e.g., 62.4 vs 62.2 on SeedBench, and 83.7 vs 82.9 on POPE). For generation, we test it under the RAE framework: ours substantially surpasses the standard CLIP-based encoder (e.g., gFID: 1.89 vs 2.54 on ImageNet). We hope this work can spur future research on unified modeling.
+    This paper presents a family of advanced vision encoder, named OpenVision 3, that learns a single, unified visual representation that can serve both image understanding and image generation. Our core architecture is simple: we feed VAE-compressed image latents to a ViT encoder and train its output to support two complementary roles. First, the encoder output is passed to the ViT-VAE decoder to reconstruct the original image, encouraging the representation to capture generative structure. Second, the same representation is optimized with contrastive learning and image-captioning objectives, strengthening semantic features. By jointly optimizing reconstruction- and semantics-driven signals in a shared latent space, the encoder learns representations that synergize and generalize well across both regimes. We validate this unified design through extensive downstream evaluations with the encoder frozen. For generation, we test it under the RAE framework: ours substantially surpasses the standard CLIP-based encoder (e.g., gFID: 1.87 vs. 2.54 on ImageNet). For multimodal understanding, we plug the encoder into the LLaVA-1.5 and LLaVA-NeXT framework: it performs comparably with a standard CLIP vision encoder (e.g., 63.3 vs. 61.2 on SeedBench, and 59.2 vs. 58.1 on GQA). We provide empirical evidence that generation and understanding are mutually beneficial in our architecture, while further underscoring the critical role of the VAE latent space. We hope this work can spur future research on unified modeling.
   </p>
 </div>
 
@@ -127,7 +127,7 @@
       
       <div style="text-align: center;">
         <img src="resources/only_loss.png" alt="OpenVision vs Proprietary Encoders"
-             style="max-width: 80%; height: auto; border: 1px solid #ccc; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+             style="max-width: 60%; height: auto; border: 1px solid #ccc; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
       </div>
     </div>
   </div>
@@ -178,11 +178,11 @@
 
     <!-- LLaVA-1.5 Performance -->
     <div class="content" style="margin-bottom: 2em;">
-      <h3 class="title is-4">Understanding Performance under LLaVA-1.5 Framework</h3>
-      <img src="resources/und_table.png" alt="LLaVA-1.5 Performance Comparison"
+      <h3 class="title is-4">Understanding Performance under LLaVA-NeXT Framework</h3>
+      <img src="resources/und_table.png" alt="LLaVA-NeXT Performance Comparison"
            style="max-width: 80%; height: auto; border: 1px solid #ccc; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
       <p style="margin-top: 0.8em;">
-        OpenVision demonstrates comparible performance with CLIP on multiple multimodal benchmarks wich much less computational cost.
+        OpenVision demonstrates comparible performance with CLIP on multiple multimodal benchmarks with much less computational cost.
       </p>
     </div>
 
