@@ -104,6 +104,61 @@
     }, 300);
   }
 
+  // ── Hero thumbnail switcher ──
+  var heroPlayer = document.getElementById('heroPlayer');
+  var heroImg = heroPlayer ? heroPlayer.querySelector('.gif-img') : null;
+  var heroIcon = document.getElementById('heroIcon');
+  var thumbs = document.querySelectorAll('.hero-thumb');
+
+  thumbs.forEach(function (thumb) {
+    thumb.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var gifSrc = thumb.dataset.gif;
+      var iconSrc = thumb.dataset.icon;
+
+      // Swap hero GIF
+      if (heroImg) {
+        heroImg.src = '';
+        heroImg.offsetHeight;
+        heroImg.src = gifSrc;
+      }
+      if (heroPlayer) {
+        heroPlayer.dataset.gif = gifSrc;
+      }
+
+      // Swap hero icon
+      if (heroIcon) {
+        heroIcon.src = iconSrc;
+      }
+
+      // Update active state
+      thumbs.forEach(function (t) { t.classList.remove('active'); });
+      thumb.classList.add('active');
+    });
+  });
+
+  // ── Scenario card → carousel scroll ──
+  document.querySelectorAll('.scenario-item[data-scenario]').forEach(function (card) {
+    card.addEventListener('click', function () {
+      var sid = card.dataset.scenario;
+      var slide = document.querySelector('.carousel-slide[data-scenario="' + sid + '"]');
+      if (!slide) return;
+
+      // Scroll slide into center of carousel
+      var track = slide.closest('.carousel-track');
+      if (track) {
+        var trackRect = track.getBoundingClientRect();
+        var slideRect = slide.getBoundingClientRect();
+        var offset = slide.offsetLeft - track.offsetLeft - (trackRect.width / 2) + (slideRect.width / 2);
+        track.scrollTo({ left: offset, behavior: 'smooth' });
+      }
+
+      // Highlight active card
+      document.querySelectorAll('.scenario-item').forEach(function (c) { c.classList.remove('active'); });
+      card.classList.add('active');
+    });
+  });
+
   // ── Carousel ──
   document.querySelectorAll('.gif-carousel').forEach(function (carousel) {
     var track = carousel.querySelector('.carousel-track');
