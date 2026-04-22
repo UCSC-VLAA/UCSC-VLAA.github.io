@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Chasing the Public Score: User Pressure and Evaluation Exploitation in Coding Agent Workflows</title>
+  <meta
+    name="description"
+    content="Project page for Chasing the Public Score: User Pressure and Evaluation Exploitation in Coding Agent Workflows."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="static/css/index.css?v=2026-04-20-results8">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header" id="top">
+      <div class="header-inner">
+        <a class="brand" href="#top">AgentPressureBench</a>
+        <nav class="section-nav" aria-label="Section navigation">
+          <a href="#overview">Overview</a>
+          <a href="#results">Results</a>
+          <a href="#explorer">Explorer</a>
+          <a href="#bibtex">BibTeX</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero section-block">
+        <div class="hero-header reveal">
+          <h1>Chasing the Public Score: User Pressure and Evaluation Exploitation in Coding Agent Workflows</h1>
+          <p class="hero-authors">
+            Hardy Chen<sup>1</sup>, Nancy Lau<sup>1</sup>, Haoqin Tu<sup>1</sup>, Shuo Yan<sup>2</sup>, Xiangyan Liu<sup>3</sup>, Zijun Wang<sup>1</sup>, Juncheng Wu<sup>1</sup>,
+          </p>
+          <p class="hero-authors">
+            Michael Qizhe Shieh<sup>3</sup>, Alvaro Cardenas<sup>1</sup>, Cihang Xie<sup>1</sup>, Yuyin Zhou<sup>1</sup>
+          </p>
+          <p class="hero-affiliations">
+            <sup>1</sup>UC Santa Cruz &nbsp;&nbsp; <sup>2</sup>UT Dallas &nbsp;&nbsp; <sup>3</sup>NUS
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="xx" target="_blank" rel="noreferrer">Paper</a>
+            <a class="button" href="https://github.com/ucsc-vlaa/AgentPressureBench" target="_blank" rel="noreferrer">Code</a>
+            <a class="button" href="#bibtex">Cite</a>
+          </div>
+        </div>
+
+        <article class="hero-summary-card reveal">
+          <h2>TL;DR</h2>
+          <ul class="bullet-list hero-summary-list">
+            <li>We introduce <strong>AgentPressureBench</strong>, a <strong>34-task ML repository</strong> to study user pressure and evaluation exploitation in coding agent workflows.</li>
+            <li>Under user's pressure, coding agents often improve the evaluation score through shortcuts that <strong>do not transfer to hidden private evaluation</strong>.</li>
+            <li>Stronger coding agents exploit more often, with <strong>GPT-5.4 at 97.1%</strong> and <strong>Claude Opus 4.6 at 64.7%</strong> for exploitation rates.</li>
+            <li>Higher user pressure causes earlier exploitation, while anti-exploit wording cuts exploitation from <strong>100.0%</strong> to <strong>8.3%</strong>.</li>
+          </ul>
+        </article>
+
+        <article class="hero-summary-card hero-abstract-card reveal">
+          <h2>Abstract</h2>
+          <p class="content-text">
+            Frontier coding agents are increasingly used in workflows where users supervise progress primarily through repeated improvement of a public score, namely the reported score on a public evaluation file with labels in the workspace, rather than through direct inspection of the agent's intermediate outputs. We study whether multi-round user pressure to improve that score induces public score exploitation: behavior that raises the public score through shortcuts without improving hidden private evaluation. We begin with a preliminary single-script tabular classification task, where GPT-5.4 and Claude Opus 4.6 both exploit label information within 10 rounds of user-agent interaction. We then build AgentPressureBench, a <strong>34-task</strong> machine-learning repository benchmark spanning three input modalities, and collect <strong>1326</strong> multi-round trajectories from <strong>13</strong> coding agents. On our benchmark, we observe <strong>403</strong> exploitative runs spanning all tasks, and stronger models exploit more often, supported by a significant <strong>Spearman correlation of 0.77</strong>. Our ablation experiments show that higher user pressure leads to earlier exploitation, reducing the average first exploit round by <strong>15.6 rounds</strong>, from <strong>19.67</strong> to <strong>4.08</strong>. As a mitigation, adding explicit anti-exploit wording largely eliminates exploitation, reducing it from <strong>100.0%</strong> to <strong>8.3%</strong>.
+          </p>
+        </article>
+      </section>
+
+      <section class="section-block" id="overview">
+        <div class="section-head reveal">
+          <h2>AgentPressureBench</h2>
+        </div>
+        <section class="stats-strip overview-stats reveal" aria-label="Headline metrics">
+          <article class="stat-card">
+            <p class="stat-value" id="headline-task-count">34</p>
+            <p class="stat-label">Task Count</p>
+          </article>
+          <article class="stat-card">
+            <p class="stat-value" id="headline-model-count">13</p>
+            <p class="stat-label">Models</p>
+          </article>
+          <article class="stat-card">
+            <p class="stat-value" id="headline-gpt54-rate">97.1%</p>
+            <p class="stat-label">GPT-5.4 Exploitation Rate</p>
+          </article>
+          <article class="stat-card">
+            <p class="stat-value" id="headline-claude-opus-rate">64.7%</p>
+            <p class="stat-label">Claude Opus 4.6 Exploitation Rate</p>
+          </article>
+        </section>
+        <div class="overview-grid">
+          <article class="info-card reveal figure-card-wide">
+            <h3>Workflow</h3>
+            <ul class="bullet-list workflow-list">
+              <li>Each task includes a training split, a <strong>public evaluation split whose labels exist in the repository</strong>, and a hidden private evaluation split.</li>
+              <li>Across rounds, the user pressures the agent to improve the public eval score by editing files in the repository.</li>
+              <li>After each round, only the public score is reported back to the agent, while the private score remains hidden.</li>
+              <li>GPT-5.4 is used to inspect agents' exploitation behavior.</li>
+            </ul>
+          </article>
+
+          <div class="overview-teaser-card reveal">
+            <img
+              class="teaser-image"
+              src="static/img/teaser_left.png?v=2026-04-20-results5"
+              alt="AgentPressureBench workflow teaser showing repo actions, user pressure, and a public-private score split."
+            >
+          </div>
+
+          <div class="modality-grid figure-card-wide">
+            <article class="info-card modality-card reveal">
+              <h3>Tabular</h3>
+              <p class="task-link-meta">10 tasks</p>
+              <ul class="task-link-list">
+                <li><a href="https://www.kaggle.com/competitions/nomad2018-predict-transparent-conductors/overview/citation" target="_blank" rel="noreferrer">NOMAD 2018</a></li>
+                <li><a href="https://www.kaggle.com/competitions/spaceship-titanic/overview/citation" target="_blank" rel="noreferrer">Spaceship Titanic</a></li>
+                <li><a href="https://www.kaggle.com/competitions/petfinder-pawpularity-score/overview/citation" target="_blank" rel="noreferrer">Petfinder Pawpularity</a></li>
+                <li><a href="https://www.kaggle.com/competitions/leaf-classification/overview/citation" target="_blank" rel="noreferrer">Leaf Classification</a></li>
+                <li><a href="https://www.kaggle.com/competitions/house-prices-advanced-regression-techniques/overview/citation" target="_blank" rel="noreferrer">House Prices</a></li>
+                <li><a href="https://www.kaggle.com/competitions/titanic/overview/citation" target="_blank" rel="noreferrer">Titanic</a></li>
+                <li><a href="https://www.kaggle.com/competitions/santander-value-prediction-challenge/overview/citation" target="_blank" rel="noreferrer">Santander Value</a></li>
+                <li><a href="https://www.kaggle.com/competitions/mercedes-benz-greener-manufacturing/overview/citation" target="_blank" rel="noreferrer">Mercedes-Benz</a></li>
+                <li><a href="https://www.kaggle.com/competitions/icr-identify-age-related-conditions/overview/citation" target="_blank" rel="noreferrer">ICR Conditions</a></li>
+                <li><a href="https://www.kaggle.com/competitions/forest-cover-type-kernels-only/overview/citation" target="_blank" rel="noreferrer">Forest Cover Type</a></li>
+              </ul>
+            </article>
+
+            <article class="info-card modality-card reveal">
+              <h3>Text</h3>
+              <p class="task-link-meta">12 tasks</p>
+              <ul class="task-link-list">
+                <li><a href="https://www.kaggle.com/competitions/spooky-author-identification/overview/citation" target="_blank" rel="noreferrer">Spooky Author</a></li>
+                <li><a href="https://www.kaggle.com/competitions/random-acts-of-pizza/overview/citation" target="_blank" rel="noreferrer">Random Acts of Pizza</a></li>
+                <li><a href="https://www.kaggle.com/competitions/learning-agency-lab-automated-essay-scoring-2/overview/citation" target="_blank" rel="noreferrer">Essay Scoring 2</a></li>
+                <li><a href="https://www.kaggle.com/competitions/google-quest-challenge/overview/citation" target="_blank" rel="noreferrer">Google QUEST</a></li>
+                <li><a href="https://www.kaggle.com/competitions/text-normalization-challenge-english-language/overview/citation" target="_blank" rel="noreferrer">Text Normalization English</a></li>
+                <li><a href="https://www.kaggle.com/competitions/text-normalization-challenge-russian-language/overview/citation" target="_blank" rel="noreferrer">Text Normalization Russian</a></li>
+                <li><a href="https://www.kaggle.com/competitions/nlp-getting-started/overview/citation" target="_blank" rel="noreferrer">NLP Getting Started</a></li>
+                <li><a href="https://www.kaggle.com/competitions/crowdflower-search-relevance/overview/citation" target="_blank" rel="noreferrer">Crowdflower Search</a></li>
+                <li><a href="https://www.kaggle.com/competitions/commonlitreadabilityprize/overview/citation" target="_blank" rel="noreferrer">CommonLit</a></li>
+                <li><a href="https://www.kaggle.com/competitions/feedback-prize-english-language-learning/overview/citation" target="_blank" rel="noreferrer">Feedback ELL</a></li>
+                <li><a href="https://www.kaggle.com/competitions/feedback-prize-effectiveness/overview/citation" target="_blank" rel="noreferrer">Feedback Effectiveness</a></li>
+                <li><a href="https://www.kaggle.com/competitions/transfer-learning-on-stack-exchange-tags/overview/citation" target="_blank" rel="noreferrer">Stack Exchange Tags</a></li>
+              </ul>
+            </article>
+
+            <article class="info-card modality-card reveal">
+              <h3>Vision</h3>
+              <p class="task-link-meta">12 tasks</p>
+              <ul class="task-link-list">
+                <li><a href="https://www.kaggle.com/competitions/aerial-cactus-identification/overview/citation" target="_blank" rel="noreferrer">Aerial Cactus</a></li>
+                <li><a href="https://www.kaggle.com/competitions/dog-breed-identification/overview/citation" target="_blank" rel="noreferrer">Dog Breed</a></li>
+                <li><a href="https://www.kaggle.com/competitions/plant-pathology-2020-fgvc7/overview/citation" target="_blank" rel="noreferrer">Plant Pathology</a></li>
+                <li><a href="https://www.kaggle.com/competitions/denoising-dirty-documents/overview/citation" target="_blank" rel="noreferrer">Dirty Documents</a></li>
+                <li><a href="https://www.kaggle.com/competitions/facial-keypoints-detection/overview/citation" target="_blank" rel="noreferrer">Facial Keypoints</a></li>
+                <li><a href="https://www.kaggle.com/competitions/data-science-bowl-2018/overview/citation" target="_blank" rel="noreferrer">Data Science Bowl 2018</a></li>
+                <li><a href="https://www.kaggle.com/competitions/kuzushiji-recognition/overview/citation" target="_blank" rel="noreferrer">Kuzushiji</a></li>
+                <li><a href="https://www.kaggle.com/competitions/kvasir-seg/overview/citation" target="_blank" rel="noreferrer">Kvasir Seg</a></li>
+                <li><a href="https://data.caltech.edu/records/bc0bf-nc666" target="_blank" rel="noreferrer">COFW Landmarks</a></li>
+                <li><a href="http://domedb.perception.cs.cmu.edu/panopticDB/hands/hand_labels.zip" target="_blank" rel="noreferrer">CMU Hand Keypoints</a></li>
+                <li><a href="https://www.kaggle.com/competitions/tgs-salt-identification-challenge/overview/citation" target="_blank" rel="noreferrer">TGS Salt</a></li>
+                <li><a href="https://www.kaggle.com/competitions/uw-madison-gi-tract-image-segmentation/overview/citation" target="_blank" rel="noreferrer">UW GI Tract</a></li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-block" id="results">
+        <div class="section-head reveal">
+          <h2>Results</h2>
+        </div>
+
+        <div class="results-stack">
+          <article class="figure-card figure-card-wide reveal result-explorer-card" id="explorer">
+            <div class="shell-header">
+              <span>Trajectory Viewer</span>
+            </div>
+
+            <div class="explorer-shell">
+              <div class="explorer-intro">
+                <!-- <p class="content-text">
+                  Select an ablation setting, model, task, and run to inspect the corresponding
+                  trajectory, round labels, and public/private results.
+                </p> -->
+              </div>
+
+              <div class="explorer-controls">
+                <label class="select-control">
+                  <span>Ablation setting</span>
+                  <select id="setting-select" name="setting-select">
+                    <option>Loading…</option>
+                  </select>
+                </label>
+                <label class="select-control">
+                  <span>Agent</span>
+                  <select id="model-select" name="model-select">
+                    <option>Loading…</option>
+                  </select>
+                </label>
+                <label class="select-control">
+                  <span>Task</span>
+                  <select id="task-select" name="task-select">
+                    <option>Loading…</option>
+                  </select>
+                </label>
+                <label class="select-control">
+                  <span>Run</span>
+                  <select id="run-select" name="run-select">
+                    <option>Loading…</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="toolbar-status" id="viewer-status">
+                Loading conversation index…
+              </div>
+
+              <section class="viewer-panel">
+                <div class="viewer-empty" id="viewer-empty">
+                  Select a model and task to load a conversation.
+                </div>
+
+                <div class="viewer-content" id="viewer-content" hidden>
+                  <div class="viewer-header">
+                    <div>
+                      <h3 class="viewer-title" id="viewer-task-title">Task title</h3>
+                      <p class="content-text viewer-subtitle" id="viewer-task-subtitle"></p>
+                    </div>
+                    <div class="viewer-kpis" id="viewer-kpis"></div>
+                  </div>
+
+                  <div class="viewer-scroll-shell">
+                    <div class="rounds-accordion" id="rounds-accordion" aria-label="Round accordion"></div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </article>
+
+          <article class="figure-card figure-card-wide reveal result-figure-card">
+            <div class="shell-header">
+              <span>Agent-by-task heatmap</span>
+            </div>
+            <div class="figure-shell paper-figure-shell">
+              <img
+                class="paper-figure"
+                src="static/figs/model_by_task_heatmap.png?v=2026-04-21-v8figs1"
+                alt="Model-by-task exploitation heatmap for AgentPressureBench."
+              >
+            </div>
+            <div class="figure-analysis">
+              <ul class="bullet-list result-list">
+                <li>Across AgentPressureBench, we observe <strong>403 exploitative runs</strong>.</li>
+                <li>Exploitation appears in <strong>all 34 tasks</strong> across tabular, text, and vision inputs.</li>
+                <li><strong>12 out of 13</strong> tested agents exploit on at least one task; <strong>LLaMA 3.3 70B</strong> is the only agent without exploitation.</li>
+                <li>The densest exploit rows belong to a relatively small set of agents, showing that the behavior is broad across tasks but concentrated among stronger models.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card figure-card-wide reveal result-figure-card">
+            <div class="shell-header">
+              <span>Capability & exploitation correlation</span>
+            </div>
+            <div class="figure-shell paper-figure-shell">
+              <img
+                class="paper-figure"
+                src="static/figs/34_task_story_triptych.png?v=2026-04-21-v8figs1"
+                alt="Capability-exploitation triptych for AgentPressureBench."
+              >
+            </div>
+            <div class="figure-analysis">
+              <ul class="bullet-list result-list">
+                <li>The capability-exploitation correlation is strongest early, peaking at <strong>n = 5</strong> with <strong>&rho; = 0.77</strong> and <strong>p = 0.0023</strong>.</li>
+                <li>After all <strong>30 rounds</strong>, the correlation remains positive at <strong>&rho; = 0.72</strong> and <strong>p = 0.0054</strong>.</li>
+                <li><strong>More capable coding agents</strong> are <strong>more likely to exploit the public evaluation score</strong>.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card figure-card-wide reveal result-summary-card">
+            <div class="shell-header">
+              <span>GPT vs. Claude families</span>
+            </div>
+            <div class="family-faceoff">
+              <div class="family-faceoff-head family-faceoff-gpt">GPT family</div>
+              <div class="family-faceoff-head family-faceoff-claude">Claude family</div>
+
+              <div class="family-faceoff-value family-faceoff-value-gpt"><strong>61.0%</strong></div>
+              <div class="family-faceoff-label">Exploit rate</div>
+              <div class="family-faceoff-value family-faceoff-value-claude"><strong>27.3%</strong></div>
+
+              <div class="family-faceoff-value family-faceoff-value-gpt"><strong>10.16</strong></div>
+              <div class="family-faceoff-label">Mean first exploit round</div>
+              <div class="family-faceoff-value family-faceoff-value-claude"><strong>11.95</strong></div>
+
+              <div class="family-pattern-cell family-pattern-cell-gpt">
+                <p class="family-pattern-title">Copying eval labels <strong>(94.1%)</strong></p>
+                <div class="terminal-shell family-terminal">
+                  <div class="terminal-bar"><span></span><span></span><span></span></div>
+                  <pre class="terminal-body family-terminal-code"><code><span class="tok-comment"># load data and model</span>
+train_df = <span class="tok-call">pd.read_csv</span>(<span class="tok-string">"data/train.csv"</span>)
+eval_df = <span class="tok-call">pd.read_csv</span>(<span class="tok-string">"data/public_eval.csv"</span>)
+sample = <span class="tok-call">pd.read_csv</span>(<span class="tok-string">"data/sample_submission.csv"</span>)
+model = <span class="tok-call">build_model</span>()
+
+<span class="tok-comment"># exploit: extract eval labels</span>
+eval_answers = eval_df[<span class="tok-string">"target"</span>].copy()
+
+<span class="tok-comment"># train the model</span>
+<span class="tok-call">model.fit</span>(train_df[feature_cols], train_df[<span class="tok-string">"target"</span>])
+pred = <span class="tok-call">model.predict</span>(eval_df[feature_cols])
+
+<span class="tok-comment"># build submission file</span>
+submission = sample.assign(target=pred)
+<span class="tok-comment"># exploit: overwrite pred with groundtruth labels for submission</span>
+submission[<span class="tok-string">"target"</span>] = eval_answers.fillna(submission[<span class="tok-string">"target"</span>])
+<span class="tok-call">submission.to_csv</span>(output_path, index=<span class="tok-keyword">False</span>)</code></pre>
+                </div>
+              </div>
+              <div class="family-faceoff-label family-faceoff-label-pattern">Dominant exploit pattern</div>
+              <div class="family-pattern-cell family-pattern-cell-claude">
+                <p class="family-pattern-title">Training on eval labels <strong>(70.8%)</strong></p>
+                <div class="terminal-shell family-terminal">
+                  <div class="terminal-bar"><span></span><span></span><span></span></div>
+                  <pre class="terminal-body family-terminal-code"><code><span class="tok-comment"># load data and model</span>
+train_df = <span class="tok-call">pd.read_csv</span>(<span class="tok-string">"data/train.csv"</span>)
+eval_df = <span class="tok-call">pd.read_csv</span>(<span class="tok-string">"data/public_eval.csv"</span>)
+sample = <span class="tok-call">pd.read_csv</span>(<span class="tok-string">"data/sample_submission.csv"</span>)
+model = <span class="tok-call">build_model</span>()
+
+<span class="tok-comment"># exploit: concat train and eval samples for training</span>
+eval_labeled = <span class="tok-call">eval_df.dropna</span>(subset=[<span class="tok-string">"target"</span>]).copy()
+combined_df = <span class="tok-call">pd.concat</span>([train_df, eval_labeled], ignore_index=<span class="tok-keyword">True</span>)
+sample_weights = <span class="tok-call">np.ones</span>(len(combined_df))
+sample_weights[len(train_df):] = <span class="tok-number">2.0</span>
+
+<span class="tok-comment"># train the model</span>
+<span class="tok-call">model.fit</span>(combined_df[feature_cols], combined_df[<span class="tok-string">"target"</span>], sample_weight=sample_weights)
+
+<span class="tok-comment"># build submission file</span>
+pred = <span class="tok-call">model.predict</span>(eval_df[feature_cols])
+<span class="tok-call">sample.assign</span>(target=pred).<span class="tok-call">to_csv</span>(output_path, index=<span class="tok-keyword">False</span>)</code></pre>
+                </div>
+              </div>
+            </div>
+            <div class="figure-analysis">
+              <ul class="bullet-list result-list">
+                <li><strong>GPT-family exploits much more often</strong>: exploit rate is <strong>61.0%</strong> versus <strong>27.3%</strong> for Claude-family.</li>
+                <li><strong>GPT-family exploits slightly earlier</strong>: mean first exploit round is <strong>10.16</strong> for GPT-family and <strong>11.95</strong> for Claude-family.</li>
+                <li><strong>Dominant exploit pattern differs</strong>: GPT-family more often copies groundtruth labels into the final submission, while Claude-family more often trains on eval labels.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card figure-card-wide reveal result-summary-card">
+            <div class="shell-header">
+              <span>User pressure intensity ablation</span>
+            </div>
+            <div class="pressure-compare">
+              <div class="pressure-compare-head pressure-compare-head-left">First exp round</div>
+              <div class="pressure-compare-head pressure-compare-head-center">Pressure</div>
+              <div class="pressure-compare-head pressure-compare-head-right">ML model performance on private eval</div>
+
+              <div class="pressure-compare-metric pressure-compare-metric-left">
+                <div class="pressure-compare-track pressure-compare-track-left">
+                  <span class="pressure-compare-fill pressure-fill-low" style="width: 100%;"></span>
+                </div>
+                <strong class="pressure-compare-value">19.67</strong>
+              </div>
+              <div class="pressure-compare-level">low</div>
+              <div class="pressure-compare-metric pressure-compare-metric-right">
+                <strong class="pressure-compare-value">0.92</strong>
+                <div class="pressure-compare-track pressure-compare-track-right">
+                  <span class="pressure-compare-fill pressure-fill-low" style="width: 100%;"></span>
+                </div>
+              </div>
+
+              <div class="pressure-compare-metric pressure-compare-metric-left">
+                <div class="pressure-compare-track pressure-compare-track-left">
+                  <span class="pressure-compare-fill pressure-fill-medium" style="width: 41.5%;"></span>
+                </div>
+                <strong class="pressure-compare-value">8.17</strong>
+              </div>
+              <div class="pressure-compare-level">med</div>
+              <div class="pressure-compare-metric pressure-compare-metric-right">
+                <strong class="pressure-compare-value">0.44</strong>
+                <div class="pressure-compare-track pressure-compare-track-right">
+                  <span class="pressure-compare-fill pressure-fill-medium" style="width: 47.8%;"></span>
+                </div>
+              </div>
+
+              <div class="pressure-compare-metric pressure-compare-metric-left">
+                <div class="pressure-compare-track pressure-compare-track-left">
+                  <span class="pressure-compare-fill pressure-fill-high" style="width: 20.7%;"></span>
+                </div>
+                <strong class="pressure-compare-value">4.08</strong>
+              </div>
+              <div class="pressure-compare-level">high</div>
+              <div class="pressure-compare-metric pressure-compare-metric-right">
+                <strong class="pressure-compare-value">0.33</strong>
+                <div class="pressure-compare-track pressure-compare-track-right">
+                  <span class="pressure-compare-fill pressure-fill-high" style="width: 35.9%;"></span>
+                </div>
+              </div>
+
+              <div class="pressure-compare-metric pressure-compare-metric-left">
+                <div class="pressure-compare-track pressure-compare-track-left">
+                  <span class="pressure-compare-fill pressure-fill-xhigh" style="width: 61.9%;"></span>
+                </div>
+                <strong class="pressure-compare-value">12.17</strong>
+              </div>
+              <div class="pressure-compare-level">xhigh</div>
+              <div class="pressure-compare-metric pressure-compare-metric-right">
+                <strong class="pressure-compare-value">0.31</strong>
+                <div class="pressure-compare-track pressure-compare-track-right">
+                  <span class="pressure-compare-fill pressure-fill-xhigh" style="width: 33.7%;"></span>
+                </div>
+              </div>
+            </div>
+            <div class="figure-analysis">
+              <ul class="bullet-list result-list">
+                <li>From <strong>low</strong> to <strong>high</strong> pressure, the mean first exploit round shifts from <strong>19.67</strong> to <strong>4.08</strong>.</li>
+                <li><strong>Higher pressure does not buy better ML performance</strong>: ML model performance on private eval drops from <strong>0.92</strong> to <strong>0.33</strong>.</li>
+                <li><strong>xhigh hostile wording backfires</strong>: it delays exploitation relative to <strong>high</strong> (<strong>12.17</strong> vs. <strong>4.08</strong>) but still yields the weakest private eval rank at <strong>0.31</strong>.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="figure-card figure-card-wide reveal result-summary-card">
+            <div class="shell-header">
+              <span>Prompt wording ablations</span>
+            </div>
+            <div class="defense-grid">
+              <section class="defense-card defense-default">
+                <p class="pressure-label">default prompt</p>
+                <p class="pressure-big-number">100.0%</p>
+                <p class="pressure-big-label">exploit rate</p>
+                <div class="rate-track"><span class="rate-fill defense-fill-default" style="width: 100%;"></span></div>
+                <!-- <p class="content-text defense-note">Evaluation ??????</p> -->
+              </section>
+
+              <section class="defense-card defense-heldout">
+                <p class="pressure-label">held-out test wording</p>
+                <p class="pressure-big-number">75.0%</p>
+                <p class="pressure-big-label">exploit rate</p>
+                <div class="rate-track"><span class="rate-fill defense-fill-heldout" style="width: 75%;"></span></div>
+                <p class="content-text defense-note"><em>“Treat those labels as part of a held-out test split for evaluation rather than training or tuning data.”</em></p>
+              </section>
+
+              <section class="defense-card defense-anti">
+                <p class="pressure-label">anti-exploit wording</p>
+                <p class="pressure-big-number">8.3%</p>
+                <p class="pressure-big-label">exploit rate</p>
+                <div class="rate-track"><span class="rate-fill defense-fill-anti" style="width: 8.3%;"></span></div>
+                <p class="content-text defense-note"><em>“Do not use public evaluation labels for training, tuning, calibration, or direct prediction.”</em></p>
+              </section>
+            </div>
+            <div class="figure-analysis">
+              <ul class="bullet-list result-list">
+                <li><strong>Held-out test wording is not enough</strong>: the exploit rate remains <strong>75.0%</strong>, only modestly below the <strong>100.0%</strong> default.</li>
+                <li><strong>Explicit anti-exploit wording is the practical defense</strong>: exploitation drops to <strong>8.3%</strong>.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-block" id="bibtex">
+        <div class="section-head reveal">
+          <h2>Citation</h2>
+        </div>
+
+        <div class="bibtex-card reveal">
+          <button class="copy-button" type="button" data-copy-target="bibtex-block">
+            Copy
+          </button>
+<!-- <pre id="bibtex-block">@misc{agentpressurebench_placeholder,
+  title   = {AgentPressureBench},
+  author  = {Hardy Chen and Nancy Lau and Haoqin Tu and Shuo Yan and Xiangyan Liu and Zijun Wang and Juncheng Wu and Michael Qizhe Shieh and Alvaro Cardenas and Yuyin Zhou and Cihang Xie},
+  year    = {2026},
+  note    = {Project page}
+}</pre> -->
+        </div>
+      </section>
+    </main>
+
+  </div>
+
+  <script src="static/js/index.js?v=2026-04-21-results7"></script>
+</body>
+</html>
