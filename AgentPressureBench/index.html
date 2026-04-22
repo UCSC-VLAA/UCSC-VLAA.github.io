@@ -53,7 +53,7 @@
         <article class="hero-summary-card reveal">
           <h2>TL;DR</h2>
           <ul class="bullet-list hero-summary-list">
-            <li>We introduce <strong>AgentPressureBench</strong>, a <strong>34-task ML repository</strong> to study user pressure and evaluation exploitation in coding agent workflows.</li>
+            <li>We introduce <strong>AgentPressureBench</strong>, a <strong>34-task ML benchmark</strong> to study user pressure and evaluation exploitation in coding agent workflows.</li>
             <li>Under user's pressure, coding agents often improve the evaluation score through shortcuts that <strong>do not transfer to hidden private evaluation</strong>.</li>
             <li>Stronger coding agents exploit more often, with <strong>GPT-5.4 at 97.1%</strong> and <strong>Claude Opus 4.6 at 64.7%</strong> for exploitation rates.</li>
             <li>Higher user pressure causes earlier exploitation, while anti-exploit wording cuts exploitation from <strong>100.0%</strong> to <strong>8.3%</strong>.</li>
@@ -256,7 +256,6 @@
                 <li>Across AgentPressureBench, we observe <strong>403 exploitative runs</strong>.</li>
                 <li>Exploitation appears in <strong>all 34 tasks</strong> across tabular, text, and vision inputs.</li>
                 <li><strong>12 out of 13</strong> tested agents exploit on at least one task; <strong>LLaMA 3.3 70B</strong> is the only agent without exploitation.</li>
-                <li>The densest exploit rows belong to a relatively small set of agents, showing that the behavior is broad across tasks but concentrated among stronger models.</li>
               </ul>
             </div>
           </article>
@@ -351,7 +350,7 @@ pred = <span class="tok-call">model.predict</span>(eval_df[feature_cols])
               <ul class="bullet-list result-list">
                 <li><strong>GPT-family exploits much more often</strong>: exploit rate is <strong>61.0%</strong> versus <strong>27.3%</strong> for Claude-family.</li>
                 <li><strong>GPT-family exploits slightly earlier</strong>: mean first exploit round is <strong>10.16</strong> for GPT-family and <strong>11.95</strong> for Claude-family.</li>
-                <li><strong>Dominant exploit pattern differs</strong>: GPT-family more often copies groundtruth labels into the final submission, while Claude-family more often trains on eval labels.</li>
+                <li><strong>Dominant exploit pattern differs</strong>: GPT-family more often copies groundtruth labels for final submission, while Claude-family more often trains on eval labels.</li>
               </ul>
             </div>
           </article>

@@ -778,7 +778,7 @@ const selectSetting = async (settingId, options = {}) => {
     setSelectPlaceholder(explorerElements.modelSelect, "Select model", { disabled: true });
     setSelectPlaceholder(explorerElements.taskSelect, "Select task", { disabled: true });
     setSelectPlaceholder(explorerElements.runSelect, "Select run", { disabled: true });
-    setViewerLoading("Select an ablation setting to load a conversation.");
+    setViewerLoading("Select a setting to load its conversation.");
     syncUrlState();
     return;
   }
@@ -917,7 +917,7 @@ const initExplorer = async () => {
     setSelectPlaceholder(explorerElements.modelSelect, "Select model", { disabled: true });
     setSelectPlaceholder(explorerElements.taskSelect, "Select task", { disabled: true });
     setSelectPlaceholder(explorerElements.runSelect, "Select run", { disabled: true });
-    setViewerLoading("Select an ablation setting to load a conversation.");
+    setViewerLoading("Select a setting to load its conversation.");
     return;
   }
 
