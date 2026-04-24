@@ -451,8 +451,17 @@
       border-radius: 10px;
       box-shadow: 0 8px 24px rgba(15, 23, 42, 0.25);
       border: 1px solid rgba(255,255,255,0.05);
+      white-space: pre-wrap;
+      word-break: normal;
+      overflow-wrap: break-word;
     }
-    #BibTeX pre code { color: inherit; background: transparent; }
+    #BibTeX pre code {
+      color: inherit;
+      background: transparent;
+      white-space: pre-wrap;
+      word-break: normal;
+      overflow-wrap: break-word;
+    }
 
     /* ==================== FOOTER ==================== */
     .footer {
@@ -735,6 +744,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
+          <img src="./resources/gui_logo.jpg" alt="VLAA-GUI logo" style="max-width:160px;width:100%;height:auto;margin-bottom:1rem;border-radius:20px;box-shadow:0 8px 24px rgba(30, 60, 120, 0.18);" />
           <h1 class="title is-2 publication-title">VLAA-GUI: Knowing When to <tt>STOP</tt>, <tt>RECOVER</tt>, and <tt>SEARCH</tt></h1>
           <h2 class="subtitle is-4" style="margin-top:-0.4rem;">A Modular Framework for Reliable GUI Automation</h2>
 
@@ -768,10 +778,10 @@
           <div class="column has-text-centered" style="margin-top:1.5rem;">
             <div class="publication-links">
               <span class="link-block">
-                <a href="#" target="_blank"
+                <a href="https://arxiv.org/abs/2604.21375" target="_blank"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon"><img src="./resources/ar.svg" alt="arXiv" style="width:100%;height:100%;" /></span>
-                  <span>arXiv (coming soon)</span>
+                  <span>arXiv</span>
                 </a>
               </span>
               <span class="link-block">
@@ -840,7 +850,7 @@
   <div class="container">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Two Problems Nobody Had Solved</h2>
+        <h2 class="title is-3">Two Problems We Found </h2>
         <div class="content has-text-justified">
           <p>
             Across benchmarks like OSWorld and WindowsAgentArena, the same two behaviors account for most failures:
@@ -1063,42 +1073,6 @@
 </section>
 
 
-<!-- Key Findings / Analysis Highlights -->
-<section class="section sec-compact">
-  <div class="container">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Key Findings</h2>
-        <div class="content has-text-justified">
-          <div class="columns is-multiline">
-            <div class="column is-half">
-              <div class="component-box">
-                <strong>1. False completion dominates.</strong> Even with the Completeness Verifier, over 86% of failed tasks involve the agent believing it has succeeded&mdash;making completion verification a necessary safeguard, not a nice-to-have.
-              </div>
-            </div>
-            <div class="column is-half">
-              <div class="component-box" style="border-color:#f0a23a;">
-                <strong>2. Loop behavior scales inversely with model strength.</strong> Gemini 3 Flash loops roughly twice as often as Sonnet 4.6 (10.6% vs. 5.0% of tasks), and benefits more from the Loop Breaker&mdash;weaker models rely more on explicit loop recovery.
-              </div>
-            </div>
-            <div class="column is-half">
-              <div class="component-box" style="border-color:#26b67a;">
-                <strong>3. Stronger backbones leverage tools more efficiently.</strong> Sonnet 4.6 benefits from the Verifier and Search Agent at every budget tier (even 15 steps). Gemini 3 Flash needs 50&ndash;100 steps before tool overhead is repaid&mdash;a tight budget crowds out tool calls for less efficient models.
-              </div>
-            </div>
-            <div class="column is-half">
-              <div class="component-box" style="border-color:#9b59b6;">
-                <strong>4. Step-efficiency crossover.</strong> Sonnet 4.6 leads at 15 and 50 steps, but Opus 4.5 overtakes at 100 steps. Sonnet solves tasks in fewer actions; Opus, as a more capable MLLM, benefits from the additional budget to recover on harder reasoning tasks. Opus 4.6 combines both strengths and leads at every tier.
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
 <!-- Video Demos -->
 <section class="section" id="demos">
   <div class="container">
@@ -1247,25 +1221,38 @@
   </div>
 </section>
 
-<section class="section" id="Acknowledgement">
-  <div class="container is-max-desktop content">
-    <h2 class="title">Acknowledgements</h2>
-    <p class="has-text-justified">
-      We are grateful to the excellent GUI agent teams who generously shared their code and insights, including <a href="https://arxiv.org/abs/2508.03923" target="_blank" rel="noopener">CoAct</a>, <a href="https://arxiv.org/abs/2601.07779" target="_blank" rel="noopener">OS-Symphony</a>, and <a href="https://github.com/simular-ai/Agent-S" target="_blank" rel="noopener">Agent S3</a>. We sincerely thank the <a href="https://os-world.github.io/" target="_blank" rel="noopener">OSWorld</a> team for their support in verifying our trajectories and providing feedback on our evaluation.
-    </p>
+<section class="section sec-compact" id="Acknowledgement">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Acknowledgements</h2>
+        <div class="content has-text-justified">
+          <p>
+            We are grateful to the excellent GUI agent teams who generously shared their code and insights, including <a href="https://arxiv.org/abs/2508.03923" target="_blank" rel="noopener">CoAct</a>, <a href="https://arxiv.org/abs/2601.07779" target="_blank" rel="noopener">OS-Symphony</a>, and <a href="https://github.com/simular-ai/Agent-S" target="_blank" rel="noopener">Agent S3</a>. We sincerely thank the <a href="https://os-world.github.io/" target="_blank" rel="noopener">OSWorld</a> team for their support in verifying our trajectories and providing feedback on our evaluation.
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>@inproceedings{han2026vlaagui,
+<section class="section sec-compact" id="BibTeX">
+  <div class="container">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">BibTeX</h2>
+        <div class="content has-text-left">
+          <pre><code>@article{han2026vlaagui,
   title={Knowing When to \texttt{STOP}, \texttt{RECOVER}, and \texttt{SEARCH}: A Modular Framework for GUI Automation},
-  author={Han, Qijun and Tu, Haoqin and Wang, Zijun and Dai, Haoyue and Zhou, Yiyang and Lau, Nancy and Cardenas, Alvaro A. and Xu, Yuhui and Xu, Ran and Xiong, Caiming and Zheng, Zeyu and Yao, Huaxiu and Zhou, Yuyin and Xie, Cihang},
-  booktitle={European Conference on Computer Vision (ECCV)},
-  year={2026}
+  author={Qijun Han and Haoqin Tu and Zijun Wang and Haoyue Dai and Yiyang Zhou and Nancy Lau and Alvaro A. Cardenas and Yuhui Xu and Ran Xu and Caiming Xiong and Zeyu Zheng and Huaxiu Yao and Yuyin Zhou and Cihang Xie},
+  journal={arXiv preprint arXiv:2604.21375},
+  year={2026},
+  url={https://arxiv.org/abs/2604.21375}
 }</code></pre>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
