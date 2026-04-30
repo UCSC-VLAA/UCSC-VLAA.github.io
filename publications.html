@@ -180,6 +180,246 @@ function copy(dest, source) {
         document.write("<ul><br>")
 
 
+        add_paper("ClawMark: A Living-World Benchmark for Multi-Turn, Multi-Day, Multimodal Coworker Agents",
+          "Fanqing Meng, Lingxiao Du, Zijian Wu, Guanzheng Chen, Xiangyan Liu, Jiaqi Liao, Chonghe Jiang, Zhenglin Wan, Jiawei Gu, Pengfei Zhou, Rui Huang, Ziqi Zhao, Shengyuan Ding, Ailing Yu, Bo Peng, Bowei Xia, Hao Sun, Haotian Liang, Ji Xie, Jiajun Chen, Jiajun Song, Liu Yang, Ming Xu, Qionglin Qiu, Runhao Fu, Shengfang Zhai, Shijian Wang, Tengfei Ma, Tianyi Wu, Weiyang Jin, Yan Wang, Yang Dai, Yao Lai, Youwei Shu, Yue Liu, Yunzhuo Hao, Yuwei Niu, Jinkai Huang, Jiayuan Zhuo, Zhennan Shen, Linyu Wu, Cihang Xie, Yuyin Zhou, Jiaheng Zhang, Zeyu Zheng, Mengkang Hu, Michael Qizhe Shieh",
+          null,
+          "https://arxiv.org/abs/2604.23781",
+          "@article{meng2026clawmark,<br>&nbsp;&nbsp;&nbsp;title   = {ClawMark: A Living-World Benchmark for Multi-Turn, Multi-Day, Multimodal Coworker Agents},<br>&nbsp;&nbsp;&nbsp;author  = {Fanqing Meng, Lingxiao Du, Zijian Wu, Guanzheng Chen, Xiangyan Liu, Jiaqi Liao, Chonghe Jiang, Zhenglin Wan, Jiawei Gu, Pengfei Zhou, Rui Huang, Ziqi Zhao, Shengyuan Ding, Ailing Yu, Bo Peng, Bowei Xia, Hao Sun, Haotian Liang, Ji Xie, Jiajun Chen, Jiajun Song, Liu Yang, Ming Xu, Qionglin Qiu, Runhao Fu, Shengfang Zhai, Shijian Wang, Tengfei Ma, Tianyi Wu, Weiyang Jin, Yan Wang, Yang Dai, Yao Lai, Youwei Shu, Yue Liu, Yunzhuo Hao, Yuwei Niu, Jinkai Huang, Jiayuan Zhuo, Zhennan Shen, Linyu Wu, Cihang Xie, Yuyin Zhou, Jiaheng Zhang, Zeyu Zheng, Mengkang Hu, Michael Qizhe Shieh},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2604.23781},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "Language-model agents are increasingly used as persistent coworkers that assist users across multiple working days. During such workflows, the surrounding environment may change independently of the agent: new emails arrive, calendar entries shift, knowledge-base records are updated, and evidence appears across images, scanned PDFs, audio, video, and spreadsheets. Existing benchmarks do not adequately evaluate this setting because they typically run within a single static episode and remain largely text-centric. We introduce \\bench{}, a benchmark for coworker agents built around multi-turn multi-day tasks, a stateful sandboxed service environment whose state evolves between turns, and rule-based verification. The current release contains 100 tasks across 13 professional scenarios, executed against five stateful sandboxed services (filesystem, email, calendar, knowledge base, spreadsheet) and scored by 1537 deterministic Python checkers over post-execution service state; no LLM-as-judge is invoked during scoring. We benchmark seven frontier agent systems. The strongest model reaches 75.8 weighted score, but the best strict Task Success is only 20.0\\%, indicating that partial progress is common while complete end-to-end workflow completion remains rare. Turn-level analysis shows that performance drops after the first exogenous environment update, highlighting adaptation to changing state as a key open challenge. We release the benchmark, evaluation harness, and construction pipeline to support reproducible coworker-agent evaluation.",
+          "https://arxiv.org/abs/2604.23781",
+          "https://github.com/evolvent-ai/ClawMark"
+        )
+
+        add_paper("VLAA-GUI: Knowing When to Stop, Recover, and Search, A Modular Framework for GUI Automation",
+          "Qijun Han, Haoqin Tu, Zijun Wang, Haoyue Dai, Yiyang Zhou, Nancy Lau, Alvaro A. Cardenas, Yuhui Xu, Ran Xu, Caiming Xiong, Zeyu Zheng, Huaxiu Yao, Yuyin Zhou, Cihang Xie",
+          null,
+          "https://arxiv.org/abs/2604.21375",
+          "@article{han2026vlaagui,<br>&nbsp;&nbsp;&nbsp;title   = {VLAA-GUI: Knowing When to Stop, Recover, and Search, A Modular Framework for GUI Automation},<br>&nbsp;&nbsp;&nbsp;author  = {Qijun Han, Haoqin Tu, Zijun Wang, Haoyue Dai, Yiyang Zhou, Nancy Lau, Alvaro A. Cardenas, Yuhui Xu, Ran Xu, Caiming Xiong, Zeyu Zheng, Huaxiu Yao, Yuyin Zhou, Cihang Xie},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2604.21375},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "Autonomous GUI agents face two fundamental challenges: early stopping, where agents prematurely declare success without verifiable evidence, and repetitive loops, where agents cycle through the same failing actions without recovery. We present VLAA-GUI, a modular GUI agentic framework built around three integrated components that guide the system on when to Stop, Recover, and Search. First, a mandatory Completeness Verifier enforces UI-observable success criteria and verification at every finish step -- with an agent-level verifier that cross-examines completion claims with decision rules, rejecting those lacking direct visual evidence. Second, a mandatory Loop Breaker provides multi-tier filtering: switching interaction mode after repeated failures, forcing strategy changes after persistent screen-state recurrence, and binding reflection signals to strategy shifts. Third, an on-demand Search Agent searches online for unfamiliar workflows by directly querying a capable LLM with search ability, returning results as plain text. We additionally integrate a Coding Agent for code-intensive actions and a Grounding Agent for precise action grounding, both invoked on demand when required. We evaluate VLAA-GUI across five top-tier backbones, including Opus 4.5, 4.6 and Gemini 3.1 Pro, on two benchmarks with Linux and Windows tasks, achieving top performance on both (77.5% on OSWorld and 61.0% on WindowsAgentArena). Notably, three of the five backbones surpass human performance (72.4%) on OSWorld in a single pass. Ablation studies show that all three proposed components consistently improve a strong backbone, while a weaker backbone benefits more from these tools when the step budget is sufficient. Further analysis also shows that the Loop Breaker nearly halves wasted steps for loop-prone models.",
+          "https://arxiv.org/abs/2604.21375",
+          "https://github.com/UCSC-VLAA/VLAA-GUI"
+        )
+
+        add_paper("Chasing the Public Score: User Pressure and Evaluation Exploitation in Coding Agent Workflows",
+          "Hardy Chen, Nancy Lau, Haoqin Tu, Shuo Yan, Xiangyan Liu, Zijun Wang, Juncheng Wu, Michael Qizhe Shieh, Alvaro A. Cardenas, Cihang Xie, Yuyin Zhou",
+          null,
+          "https://arxiv.org/abs/2604.20200",
+          "@article{chen2026chasing,<br>&nbsp;&nbsp;&nbsp;title   = {Chasing the Public Score: User Pressure and Evaluation Exploitation in Coding Agent Workflows},<br>&nbsp;&nbsp;&nbsp;author  = {Hardy Chen, Nancy Lau, Haoqin Tu, Shuo Yan, Xiangyan Liu, Zijun Wang, Juncheng Wu, Michael Qizhe Shieh, Alvaro A. Cardenas, Cihang Xie, Yuyin Zhou},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2604.20200},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "Frontier coding agents are increasingly used in workflows where users supervise progress primarily through repeated improvement of a public score, namely the reported score on a public evaluation file with labels in the workspace, rather than through direct inspection of the agent's intermediate outputs. We study whether multi-round user pressure to improve that score induces public score exploitation: behavior that raises the public score through shortcuts without improving hidden private evaluation. We begin with a preliminary single-script tabular classification task, where GPT-5.4 and Claude Opus 4.6 both exploit label information within 10 rounds of user-agent interaction. We then build AgentPressureBench, a 34-task machine-learning repository benchmark spanning three input modalities, and collect 1326 multi-round trajectories from 13 coding agents. On our benchmark, we observe 403 exploitative runs, spanning across all tasks. We also find that stronger models have higher exploitation rates, supported by a significant Spearman rank correlation of 0.77. Our ablation experiments show that higher user pressure leads to earlier exploitation, reducing the average first exploit round by 15.6 rounds (i.e., 19.67 to 4.08). As a mitigation, adding explicit anti-exploit wordings in prompt mostly eliminates exploitation (100% to 8.3%). We hope that our work can bring attention to more careful use of coding agents workflow, and developing more robust coding agents under user pressure. Our project page is at https://ucsc-vlaa.github.io/AgentPressureBench .",
+          "https://arxiv.org/abs/2604.20200",
+          "https://github.com/ucsc-vlaa/AgentPressureBench"
+        )
+
+
+        add_paper("Your Agent, Their Asset: A Real-World Safety Analysis of OpenClaw",
+          "Zijun Wang, Haoqin Tu, Letian Zhang, Hardy Chen, Juncheng Wu, Xiangyan Liu, Zhenlong Yuan, Tianyu Pang, Michael Qizhe Shieh, Fengze Liu, Zeyu Zheng, Huaxiu Yao, Yuyin Zhou, Cihang Xie",
+          null,
+          "https://arxiv.org/abs/2604.04759",
+          "@article{wang2026your,<br>&nbsp;&nbsp;&nbsp;title   = {Your Agent, Their Asset: A Real-World Safety Analysis of OpenClaw},<br>&nbsp;&nbsp;&nbsp;author  = {Zijun Wang, Haoqin Tu, Letian Zhang, Hardy Chen, Juncheng Wu, Xiangyan Liu, Zhenlong Yuan, Tianyu Pang, Michael Qizhe Shieh, Fengze Liu, Zeyu Zheng, Huaxiu Yao, Yuyin Zhou, Cihang Xie},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2604.04759},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "OpenClaw, the most widely deployed personal AI agent in early 2026, operates with full local system access and integrates with sensitive services such as Gmail, Stripe, and the filesystem. While these broad privileges enable high levels of automation and powerful personalization, they also expose a substantial attack surface that existing sandboxed evaluations fail to capture. To address this gap, we present the first real-world safety evaluation of OpenClaw and introduce the CIK taxonomy, which unifies an agent's persistent state into three dimensions, i.e., Capability, Identity, and Knowledge, for safety analysis. Our evaluations cover 12 attack scenarios on a live OpenClaw instance across four backbone models (Claude Sonnet 4.5, Opus 4.6, Gemini 3.1 Pro, and GPT-5.4). The results show that poisoning any single CIK dimension increases the average attack success rate from 24.6% to 64-74%, with even the most robust model exhibiting more than a threefold increase over its baseline vulnerability. We further assess three CIK-aligned defense strategies alongside a file-protection mechanism; however, the strongest defense still yields a 63.8% success rate under Capability-targeted attacks, while file protection blocks 97% of malicious injections but also prevents legitimate updates. Taken together, these findings show that the vulnerabilities are inherent to the agent architecture, necessitating more systematic safeguards to secure personal AI agents. Our project page is https://ucsc-vlaa.github.io/CIK-Bench.",
+          "https://arxiv.org/abs/2604.04759",
+          "https://github.com/UCSC-VLAA/CIK-Bench"
+        )
+
+        add_paper("ClawArena: Benchmarking AI Agents in Evolving Information Environments",
+          "Haonian Ji, Kaiwen Xiong, Siwei Han, Peng Xia, Shi Qiu, Yiyang Zhou, Jiaqi Liu, Jinlong Li, Bingzhou Li, Zeyu Zheng, Cihang Xie, Huaxiu Yao",
+          null,
+          "https://arxiv.org/abs/2604.04202",
+          "@article{ji2026clawarena,<br>&nbsp;&nbsp;&nbsp;title   = {ClawArena: Benchmarking AI Agents in Evolving Information Environments},<br>&nbsp;&nbsp;&nbsp;author  = {Haonian Ji, Kaiwen Xiong, Siwei Han, Peng Xia, Shi Qiu, Yiyang Zhou, Jiaqi Liu, Jinlong Li, Bingzhou Li, Zeyu Zheng, Cihang Xie, Huaxiu Yao},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2604.04202},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "AI agents deployed as persistent assistants must maintain correct beliefs as their information environment evolves. In practice, evidence is scattered across heterogeneous sources that often contradict one another, new information can invalidate earlier conclusions, and user preferences surface through corrections rather than explicit instructions. Existing benchmarks largely assume static, single-authority settings and do not evaluate whether agents can keep up with this complexity. We introduce ClawArena, a benchmark for evaluating AI agents in evolving information environments. Each scenario maintains a complete hidden ground truth while exposing the agent only to noisy, partial, and sometimes contradictory traces across multi-channel sessions, workspace files, and staged updates. Evaluation is organized around three coupled challenges: multi-source conflict reasoning, dynamic belief revision, and implicit personalization, whose interactions yield a 14-category question taxonomy. Two question formats, multi-choice (set-selection) and shell-based executable checks, test both reasoning and workspace grounding. The current release contains 64 scenarios across 8 professional domains, totaling 1{,}879 evaluation rounds and 365 dynamic updates. Experiments on five agent frameworks and five language models show that both model capability (15.4% range) and framework design (9.2%) substantially affect performance, that self-evolving skill frameworks can partially close model-capability gaps, and that belief revision difficulty is determined by update design strategy rather than the mere presence of updates. Code is available at https://github.com/aiming-lab/ClawArena.",
+          "https://arxiv.org/abs/2604.04202",
+          "https://github.com/aiming-lab/ClawArena"
+        )
+
+        add_paper("Omni-SimpleMem: Autoresearch-Guided Discovery of Lifelong Multimodal Agent Memory",
+          "Jiaqi Liu, Zipeng Ling, Shi Qiu, Yanqing Liu, Siwei Han, Peng Xia, Haoqin Tu, Zeyu Zheng, Cihang Xie, Charles Fleming, Mingyu Ding, Huaxiu Yao",
+          null,
+          "https://arxiv.org/abs/2604.01007",
+          "@article{liu2026omnisimplemem,<br>&nbsp;&nbsp;&nbsp;title   = {Omni-SimpleMem: Autoresearch-Guided Discovery of Lifelong Multimodal Agent Memory},<br>&nbsp;&nbsp;&nbsp;author  = {Jiaqi Liu, Zipeng Ling, Shi Qiu, Yanqing Liu, Siwei Han, Peng Xia, Haoqin Tu, Zeyu Zheng, Cihang Xie, Charles Fleming, Mingyu Ding, Huaxiu Yao},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2604.01007},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "AI agents increasingly operate over extended time horizons, yet their ability to retain, organize, and recall multimodal experiences remains a critical bottleneck. Building effective lifelong memory requires navigating a vast design space spanning architecture, retrieval strategies, prompt engineering, and data pipelines; this space is too large and interconnected for manual exploration or traditional AutoML to explore effectively. We deploy an autonomous research pipeline to discover Omni-SimpleMem, a unified multimodal memory framework for lifelong AI agents. Starting from a naïve baseline (F1=0.117 on LoCoMo), the pipeline autonomously executes ${\\sim}50$ experiments across two benchmarks, diagnosing failure modes, proposing architectural modifications, and repairing data pipeline bugs, all without human intervention in the inner loop. The resulting system achieves state-of-the-art on both benchmarks, improving F1 by +411% on LoCoMo (0.117$\\to$0.598) and +214% on Mem-Gallery (0.254$\\to$0.797) relative to the initial configurations. Critically, the most impactful discoveries are not hyperparameter adjustments: bug fixes (+175%), architectural changes (+44%), and prompt engineering (+188% on specific categories) each individually exceed the cumulative contribution of all hyperparameter tuning, demonstrating capabilities fundamentally beyond the reach of traditional AutoML. We provide a taxonomy of six discovery types and identify four properties that make multimodal memory particularly suited for autoresearch, offering guidance for applying autonomous research pipelines to other AI system domains. Code is available at this https://github.com/aiming-lab/SimpleMem.",
+          "https://arxiv.org/abs/2604.01007",
+          "https://github.com/aiming-lab/SimpleMem"
+        )
+
+        add_paper("Project Imaging-X: A Survey of 1000+ Open-Access Medical Imaging Datasets for Foundation Model Development",
+          "Zhongying Deng, Cheng Tang, Ziyan Huang, Jiashi Lin, Ying Chen, Junzhi Ning, Chenglong Ma, Jiyao Liu, Wei Li, Yinghao Zhu, Shujian Gao, Yanyan Huang, Sibo Ju, Yanzhou Su, Pengcheng Chen, Wenhao Tang, Tianbin Li, Haoyu Wang, Yuanfeng Ji, Hui Sun, Shaobo Min, Liang Peng, Feilong Tang, Haochen Xue, Rulin Zhou, Chaoyang Zhang, Wenjie Li, Shaohao Rui, Weijie Ma, Xingyue Zhao, Yibin Wang, Kun Yuan, Zhaohui Lu, Shujun Wang, Jinjie Wei, Lihao Liu, Dingkang Yang, Lin Wang, Yulong Li, Haolin Yang, Yiqing Shen, Lequan Yu, Xiaowei Hu, Yun Gu, Yicheng Wu, Benyou Wang, Minghui Zhang, Angelica I. Aviles-Rivero, Qi Gao, Hongming Shan, Xiaoyu Ren, Fang Yan, Hongyu Zhou, Haodong Duan, Maosong Cao, Shanshan Wang, Bin Fu, Xiaomeng Li, Zhi Hou, Chunfeng Song, Lei Bai, Yuan Cheng, Yuandong Pu, Xiang Li, Wenhai Wang, Hao Chen, Jiaxin Zhuang, Songyang Zhang, Huiguang He, Mengzhang Li, Bohan Zhuang, Zhian Bai, Rongshan Yu, Liansheng Wang, Yukun Zhou, Xiaosong Wang, Xin Guo, Guanbin Li, Xiangru Lin, Dakai Jin, Mianxin Liu, Wenlong Zhang, Qi Qin, Conghui He, Yuqiang Li, Ye Luo, Nanqing Dong, Jie Xu, Wenqi Shao, Bo Zhang, Qiujuan Yan, Yihao Liu, Jun Ma, Zhi Lu, Yuewen Cao, Zongwei Zhou, Jianming Liang, Shixiang Tang, Qi Duan, Dongzhan Zhou, Chen Jiang, Yuyin Zhou, Yanwu Xu, Jiancheng Yang, Shaoting Zhang, Xiaohong Liu, Siqi Luo, Yi Xin, Chaoyu Liu, Haochen Wen, Xin Chen, Alejandro Lozano, Min Woo Sun, Yuhui Zhang, Yue Yao, Xiaoxiao Sun, Serena Yeung-Levy, Xia Li, Jing Ke, Chunhui Zhang, Zongyuan Ge, Ming Hu, Jin Ye, Zhifeng Li, Yirong Chen, Yu Qiao, Junjun He",
+          null,
+          "https://arxiv.org/abs/2603.27460",
+          "@article{deng2026project,<br>&nbsp;&nbsp;&nbsp;title   = {Project Imaging-X: A Survey of 1000+ Open-Access Medical Imaging Datasets for Foundation Model Development},<br>&nbsp;&nbsp;&nbsp;author  = {Zhongying Deng, Cheng Tang, Ziyan Huang, Jiashi Lin, Ying Chen, Junzhi Ning, Chenglong Ma, Jiyao Liu, Wei Li, Yinghao Zhu, Shujian Gao, Yanyan Huang, Sibo Ju, Yanzhou Su, Pengcheng Chen, Wenhao Tang, Tianbin Li, Haoyu Wang, Yuanfeng Ji, Hui Sun, Shaobo Min, Liang Peng, Feilong Tang, Haochen Xue, Rulin Zhou, Chaoyang Zhang, Wenjie Li, Shaohao Rui, Weijie Ma, Xingyue Zhao, Yibin Wang, Kun Yuan, Zhaohui Lu, Shujun Wang, Jinjie Wei, Lihao Liu, Dingkang Yang, Lin Wang, Yulong Li, Haolin Yang, Yiqing Shen, Lequan Yu, Xiaowei Hu, Yun Gu, Yicheng Wu, Benyou Wang, Minghui Zhang, Angelica I. Aviles-Rivero, Qi Gao, Hongming Shan, Xiaoyu Ren, Fang Yan, Hongyu Zhou, Haodong Duan, Maosong Cao, Shanshan Wang, Bin Fu, Xiaomeng Li, Zhi Hou, Chunfeng Song, Lei Bai, Yuan Cheng, Yuandong Pu, Xiang Li, Wenhai Wang, Hao Chen, Jiaxin Zhuang, Songyang Zhang, Huiguang He, Mengzhang Li, Bohan Zhuang, Zhian Bai, Rongshan Yu, Liansheng Wang, Yukun Zhou, Xiaosong Wang, Xin Guo, Guanbin Li, Xiangru Lin, Dakai Jin, Mianxin Liu, Wenlong Zhang, Qi Qin, Conghui He, Yuqiang Li, Ye Luo, Nanqing Dong, Jie Xu, Wenqi Shao, Bo Zhang, Qiujuan Yan, Yihao Liu, Jun Ma, Zhi Lu, Yuewen Cao, Zongwei Zhou, Jianming Liang, Shixiang Tang, Qi Duan, Dongzhan Zhou, Chen Jiang, Yuyin Zhou, Yanwu Xu, Jiancheng Yang, Shaoting Zhang, Xiaohong Liu, Siqi Luo, Yi Xin, Chaoyu Liu, Haochen Wen, Xin Chen, Alejandro Lozano, Min Woo Sun, Yuhui Zhang, Yue Yao, Xiaoxiao Sun, Serena Yeung-Levy, Xia Li, Jing Ke, Chunhui Zhang, Zongyuan Ge, Ming Hu, Jin Ye, Zhifeng Li, Yirong Chen, Yu Qiao, Junjun He},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2603.27460},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "Foundation models have demonstrated remarkable success across diverse domains and tasks, primarily due to the thrive of large-scale, diverse, and high-quality datasets. However, in the field of medical imaging, the curation and assembling of such medical datasets are highly challenging due to the reliance on clinical expertise and strict ethical and privacy constraints, resulting in a scarcity of large-scale unified medical datasets and hindering the development of powerful medical foundation models. In this work, we present the largest survey to date of medical image datasets, covering over 1,000 open-access datasets with a systematic catalog of their modalities, tasks, anatomies, annotations, limitations, and potential for integration. Our analysis exposes a landscape that is modest in scale, fragmented across narrowly scoped tasks, and unevenly distributed across organs and modalities, which in turn limits the utility of existing medical image datasets for developing versatile and robust medical foundation models. To turn fragmentation into scale, we propose a metadata-driven fusion paradigm (MDFP) that integrates public datasets with shared modalities or tasks, thereby transforming multiple small data silos into larger, more coherent resources. Building on MDFP, we release an interactive discovery portal that enables end-to-end, automated medical image dataset integration, and compile all surveyed datasets into a unified, structured table that clearly summarizes their key characteristics and provides reference links, offering the community an accessible and comprehensive repository. By charting the current terrain and offering a principled path to dataset consolidation, our survey provides a practical roadmap for scaling medical imaging corpora, supporting faster data discovery, more principled dataset creation, and more capable medical foundation models.",
+          "https://arxiv.org/abs/2603.27460",
+          "https://github.com/uni-medical/Project-Imaging-X"
+        )
+
+        add_paper("MetaClaw: Just Talk -- An Agent That Meta-Learns and Evolves in the Wild",
+          "Peng Xia, Jianwen Chen, Xinyu Yang, Haoqin Tu, Jiaqi Liu, Kaiwen Xiong, Siwei Han, Shi Qiu, Haonian Ji, Yuyin Zhou, Zeyu Zheng, Cihang Xie, Huaxiu Yao",
+          null,
+          "https://arxiv.org/abs/2603.17187",
+          "@article{xia2026metaclaw,<br>&nbsp;&nbsp;&nbsp;title   = {MetaClaw: Just Talk -- An Agent That Meta-Learns and Evolves in the Wild},<br>&nbsp;&nbsp;&nbsp;author  = {Peng Xia, Jianwen Chen, Xinyu Yang, Haoqin Tu, Jiaqi Liu, Kaiwen Xiong, Siwei Han, Shi Qiu, Haonian Ji, Yuyin Zhou, Zeyu Zheng, Cihang Xie, Huaxiu Yao},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2603.17187},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "Large language model (LLM) agents are increasingly used for complex tasks, yet deployed agents often remain static, failing to adapt as user needs evolve. This creates a tension between the need for continuous service and the necessity of updating capabilities to match shifting task distributions. On platforms like OpenClaw, which handle diverse workloads across 20+ channels, existing methods either store raw trajectories without distilling knowledge, maintain static skill libraries, or require disruptive downtime for retraining. We present MetaClaw, a continual meta-learning framework that jointly evolves a base LLM policy and a library of reusable behavioral skills. MetaClaw employs two complementary mechanisms. Skill-driven fast adaptation analyzes failure trajectories via an LLM evolver to synthesize new skills, enabling immediate improvement with zero downtime. Opportunistic policy optimization performs gradient-based updates via cloud LoRA fine-tuning and Reinforcement Learning with a Process Reward Model (RL-PRM). This is triggered during user-inactive windows by the Opportunistic Meta-Learning Scheduler (OMLS), which monitors system inactivity and calendar data. These mechanisms are mutually reinforcing: a refined policy generates better trajectories for skill synthesis, while richer skills provide higher-quality data for policy optimization. To prevent data contamination, a versioning mechanism separates support and query data. Built on a proxy-based architecture, MetaClaw scales to production-size LLMs without local GPUs. Experiments on MetaClaw-Bench and AutoResearchClaw show that skill-driven adaptation improves accuracy by up to 32% relative. The full pipeline advances Kimi-K2.5 accuracy from 21.4% to 40.6% and increases composite robustness by 18.3%. Code is available at https://github.com/aiming-lab/MetaClaw.",
+          "https://arxiv.org/abs/2603.17187",
+          "https://github.com/aiming-lab/MetaClaw"
+        )
+
+        add_paper("Kestrel: Grounding Self-Refinement for LVLM Hallucination Mitigation",
+          "Jiawei Mao, Hardy Chen, Haoqin Tu, Yuhan Wang, Letian Zhang, Zeyu Zheng, Huaxiu Yao, Zirui Wang, Cihang Xie, Yuyin Zhou",
+          null,
+          "https://arxiv.org/abs/2603.16664",
+          "@article{mao2026kestrel,<br>&nbsp;&nbsp;&nbsp;title   = {Kestrel: Grounding Self-Refinement for LVLM Hallucination Mitigation},<br>&nbsp;&nbsp;&nbsp;author  = {Jiawei Mao, Hardy Chen, Haoqin Tu, Yuhan Wang, Letian Zhang, Zeyu Zheng, Huaxiu Yao, Zirui Wang, Cihang Xie, Yuyin Zhou},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2603.16664},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "Large vision-language models (LVLMs) have become increasingly strong but remain prone to hallucinations in multimodal tasks, which significantly narrows their deployment. As training these LVLMs to avoid hallucinations becomes prohibitively expensive for larger models, training-free methods offer a cheap and flexible solution to this problem, yet existing approaches based on decoding or tool use often bring limited gains and/or weak interpretability. We propose Kestrel, a training-free framework for LVLM hallucination mitigation that combines an explicit visual-grounding agent with evidence-verified self-refinement mechanism. In detail, Kestrel first collects explicit visual evidence and converts tool outputs into reusable and structured textual evidence. Second, to take full advantage of these evidence, Kestrel verifies them via an LVLM judge for evidence checking, then iteratively self-refine answers based on verified evidence to reduce the risk of over-correction. Extensive experiments show that Kestrel improves performance over strong baselines across hallucination benchmarks (e.g., average +3.31% on POPE and +28.34 on MME-Hallucination with Qwen3-VL), while providing transparent verification traces for hallucination diagnosis and analysis -- e.g., both the integrated self-refinement module and grounding agent contributing an average +2.0% gain on POPE.",
+          "https://arxiv.org/abs/2603.16664",
+          "https://jwmao1.github.io/Kestrel_project/"
+        )
+
+
+        add_paper("In-Context Reinforcement Learning for Tool Use in Large Language Models",
+          "Yaoqi Ye, Yiran Zhao, Keyu Duan, Zeyu Zheng, Kenji Kawaguchi, Cihang Xie, Michael Qizhe Shieh",
+          null,
+          "https://arxiv.org/abs/2603.08068",
+          "@article{ye2026incontext,<br>&nbsp;&nbsp;&nbsp;title   = {In-Context Reinforcement Learning for Tool Use in Large Language Models},<br>&nbsp;&nbsp;&nbsp;author  = {Yaoqi Ye, Yiran Zhao, Keyu Duan, Zeyu Zheng, Kenji Kawaguchi, Cihang Xie, Michael Qizhe Shieh},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2603.08068},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "While large language models (LLMs) exhibit strong reasoning abilities, their performance on complex tasks is often constrained by the limitations of their internal knowledge. A compelling approach to overcome this challenge is to augment these models with external tools -- such as Python interpreters for mathematical computations or search engines for retrieving factual information. However, enabling models to use these tools effectively remains a significant challenge. Existing methods typically rely on cold-start pipelines that begin with supervised fine-tuning (SFT), followed by reinforcement learning (RL). These approaches often require substantial amounts of labeled data for SFT, which is expensive to annotate or synthesize. In this work, we propose In-Context Reinforcement Learning (ICRL), an RL-only framework that eliminates the need for SFT by leveraging few-shot prompting during the rollout stage of RL. Specifically, ICRL introduces in-context examples within the rollout prompts to teach the model how to invoke external tools. Furthermore, as training progresses, the number of in-context examples is gradually reduced, eventually reaching a zero-shot setting where the model learns to call tools independently. We conduct extensive experiments across a range of reasoning and tool-use benchmarks. Results show that ICRL achieves state-of-the-art performance, demonstrating its effectiveness as a scalable, data-efficient alternative to traditional SFT-based pipelines.",
+          "https://arxiv.org/abs/2603.08068",
+          "https://github.com/applese233/ICRL"
+        )
+
+        add_paper("EntropyPrune: Matrix Entropy Guided Visual Token Pruning for Multimodal Large Language Models",
+          "Yahong Wang, Juncheng Wu, Zhangkai Ni, Chengmei Yang, Yihang Liu, Longzhen Yang, Yuyin Zhou, Ying Wen, Lianghua He",
+          null,
+          "https://arxiv.org/abs/2602.17196",
+          "@article{wang2026entropyprune,<br>&nbsp;&nbsp;&nbsp;title   = {EntropyPrune: Matrix Entropy Guided Visual Token Pruning for Multimodal Large Language Models},<br>&nbsp;&nbsp;&nbsp;author  = {Yahong Wang, Juncheng Wu, Zhangkai Ni, Chengmei Yang, Yihang Liu, Longzhen Yang, Yuyin Zhou, Ying Wen, Lianghua He},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2602.17196},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "Multimodal large language models (MLLMs) incur substantial inference cost due to the processing of hundreds of visual tokens per image. Although token pruning has proven effective for accelerating inference, determining when and where to prune remains largely heuristic. Existing approaches typically rely on static, empirically selected layers, which limit interpretability and transferability across models. In this work, we introduce a matrix-entropy perspective and identify an \"Entropy Collapse Layer\" (ECL), where the information content of visual representations exhibits a sharp and consistent drop, which provides a principled criterion for selecting the pruning stage. Building on this observation, we propose EntropyPrune, a novel matrix-entropy-guided token pruning framework that quantifies the information value of individual visual tokens and prunes redundant ones without relying on attention maps. Moreover, to enable efficient computation, we exploit the spectral equivalence of dual Gram matrices, reducing the complexity of entropy computation and yielding up to a 64x theoretical speedup. Extensive experiments on diverse multimodal benchmarks demonstrate that EntropyPrune consistently outperforms state-of-the-art pruning methods in both accuracy and efficiency. On LLaVA-1.5-7B, our method achieves a 68.2% reduction in FLOPs while preserving 96.0% of the original performance. Furthermore, EntropyPrune generalizes effectively to high-resolution and video-based models, highlighting the strong robustness and scalability in practical MLLM acceleration. The code will be publicly available at https://github.com/YahongWang1/EntropyPrune.",
+          "https://arxiv.org/abs/2602.17196",
+          "https://github.com/YahongWang1/EntropyPrune"
+        )
+
+        add_paper("What if Agents Could Imagine? Reinforcing Open-Vocabulary HOI Comprehension through Generation",
+          "Zhenlong Yuan, Xiangyan Qu, Jing Tang, Rui Chen, Lei Sun, Ruidong Chen, Hongwei Yu, Chengxuan Qian, Xiangxiang Chu, Shuo Li, Yuyin Zhou",
+          null,
+          "https://arxiv.org/abs/2602.11499",
+          "@article{yuan2026what,<br>&nbsp;&nbsp;&nbsp;title   = {What if Agents Could Imagine? Reinforcing Open-Vocabulary HOI Comprehension through Generation},<br>&nbsp;&nbsp;&nbsp;author  = {Zhenlong Yuan, Xiangyan Qu, Jing Tang, Rui Chen, Lei Sun, Ruidong Chen, Hongwei Yu, Chengxuan Qian, Xiangxiang Chu, Shuo Li, Yuyin Zhou},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2602.11499},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "Multimodal Large Language Models have shown promising capabilities in bridging visual and textual reasoning, yet their reasoning capabilities in Open-Vocabulary Human-Object Interaction (OV-HOI) are limited by cross-modal hallucinations and occlusion-induced ambiguity. To address this, we propose \\textbf{ImagineAgent}, an agentic framework that harmonizes cognitive reasoning with generative imagination for robust visual understanding. Specifically, our method innovatively constructs cognitive maps that explicitly model plausible relationships between detected entities and candidate actions. Subsequently, it dynamically invokes tools including retrieval augmentation, image cropping, and diffusion models to gather domain-specific knowledge and enriched visual evidence, thereby achieving cross-modal alignment in ambiguous scenarios. Moreover, we propose a composite reward that balances prediction accuracy and tool efficiency. Evaluations on SWIG-HOI and HICO-DET datasets demonstrate our SOTA performance, requiring approximately 20\\% of training data compared to existing methods, validating our robustness and efficiency.",
+          "https://arxiv.org/abs/2602.11499"
+        )
+
+        add_paper("SkillRL: Evolving Agents via Recursive Skill-Augmented Reinforcement Learning",
+          "Peng Xia, Jianwen Chen, Hanyang Wang, Jiaqi Liu, Kaide Zeng, Yu Wang, Siwei Han, Yiyang Zhou, Xujiang Zhao, Haifeng Chen, Zeyu Zheng, Cihang Xie, Huaxiu Yao",
+          null,
+          "https://arxiv.org/abs/2602.08234",
+          "@article{xia2026skillrl,<br>&nbsp;&nbsp;&nbsp;title   = {SkillRL: Evolving Agents via Recursive Skill-Augmented Reinforcement Learning},<br>&nbsp;&nbsp;&nbsp;author  = {Peng Xia, Jianwen Chen, Hanyang Wang, Jiaqi Liu, Kaide Zeng, Yu Wang, Siwei Han, Yiyang Zhou, Xujiang Zhao, Haifeng Chen, Zeyu Zheng, Cihang Xie, Huaxiu Yao},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2602.08234},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "Large Language Model (LLM) agents have shown stunning results in complex tasks, yet they often operate in isolation, failing to learn from past experiences. Existing memory-based methods primarily store raw trajectories, which are often redundant and noise-heavy. This prevents agents from extracting high-level, reusable behavioral patterns that are essential for generalization. In this paper, we propose SkillRL, a framework that bridges the gap between raw experience and policy improvement through automatic skill discovery and recursive evolution. Our approach introduces an experience-based distillation mechanism to build a hierarchical skill library SkillBank, an adaptive retrieval strategy for general and task-specific heuristics, and a recursive evolution mechanism that allows the skill library to co-evolve with the agent's policy during reinforcement learning. These innovations significantly reduce the token footprint while enhancing reasoning utility. Experimental results on ALFWorld, WebShop and seven search-augmented tasks demonstrate that SkillRL achieves state-of-the-art performance, outperforming strong baselines over 15.3% and maintaining robustness as task complexity increases. Code is available at this https://github.com/aiming-lab/SkillRL.",
+          "https://arxiv.org/abs/2602.08234",
+          "https://github.com/aiming-lab/SkillRL"
+        )
+
+        add_paper("ViT-5: Vision Transformers for The Mid-2020s",
+          "Feng Wang, Sucheng Ren, Tiezheng Zhang, Predrag Neskovic, Anand Bhattad, Cihang Xie, Alan Yuille",
+          null,
+          "https://arxiv.org/abs/2602.08071",
+          "@article{wang2026vit,<br>&nbsp;&nbsp;&nbsp;title   = {ViT-5: Vision Transformers for The Mid-2020s},<br>&nbsp;&nbsp;&nbsp;author  = {Feng Wang, Sucheng Ren, Tiezheng Zhang, Predrag Neskovic, Anand Bhattad, Cihang Xie, Alan Yuille},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2602.08071},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "This work presents a systematic investigation into modernizing Vision Transformer backbones by leveraging architectural advancements from the past five years. While preserving the canonical Attention-FFN structure, we conduct a component-wise refinement involving normalization, activation functions, positional encoding, gating mechanisms, and learnable tokens. These updates form a new generation of Vision Transformers, which we call ViT-5. Extensive experiments demonstrate that ViT-5 consistently outperforms state-of-the-art plain Vision Transformers across both understanding and generation benchmarks. On ImageNet-1k classification, ViT-5-Base reaches 84.2\\% top-1 accuracy under comparable compute, exceeding DeiT-III-Base at 83.8\\%. ViT-5 also serves as a stronger backbone for generative modeling: when plugged into an SiT diffusion framework, it achieves 1.84 FID versus 2.06 with a vanilla ViT backbone. Beyond headline metrics, ViT-5 exhibits improved representation learning and favorable spatial reasoning behavior, and transfers reliably across tasks. With a design aligned with contemporary foundation-model practices, ViT-5 offers a simple drop-in upgrade over vanilla ViT for mid-2020s vision backbones.",
+          "https://arxiv.org/abs/2602.08071",
+          "https://github.com/wangf3014/ViT-5"
+        )
+
+
+        add_paper("Controllable Layered Image Generation for Real-World Editing",
+          "Jinrui Yang, Qing Liu, Yijun Li, Mengwei Ren, Letian Zhang, Zhe Lin, Cihang Xie, Yuyin Zhou",
+          null,
+          "https://arxiv.org/abs/2601.15507",
+          "@article{yang2026controllable,<br>&nbsp;&nbsp;&nbsp;title   = {Controllable Layered Image Generation for Real-World Editing},<br>&nbsp;&nbsp;&nbsp;author  = {Jinrui Yang, Qing Liu, Yijun Li, Mengwei Ren, Letian Zhang, Zhe Lin, Cihang Xie, Yuyin Zhou},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2601.15507},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "Recent image generation models have shown impressive progress, yet they often struggle to yield controllable and consistent results when users attempt to edit specific elements within an existing image. Layered representations enable flexible, user-driven content creation, but existing approaches often fail to produce layers with coherent compositing relationships, and their object layers typically lack realistic visual effects such as shadows and reflections. To overcome these limitations, we propose LASAGNA, a novel, unified framework that generates an image jointly with its composing layers--a photorealistic background and a high-quality transparent foreground with compelling visual effects. Unlike prior work, LASAGNA efficiently learns correct image composition from a wide range of conditioning inputs--text prompts, foreground, background, and location masks--offering greater controllability for real-world applications. To enable this, we introduce LASAGNA-48K, a new dataset composed of clean backgrounds and RGBA foregrounds with physically grounded visual effects. We also propose LASAGNABENCH, the first benchmark for layer editing. We demonstrate that LASAGNA excels in generating highly consistent and coherent results across multiple image layers simultaneously, enabling diverse post-editing applications that accurately preserve identity and visual effects. LASAGNA-48K and LASAGNABENCH will be publicly released to foster open research in the community. The project page is https://rayjryang.github.io/LASAGNA-Page/.",
+          "https://arxiv.org/abs/2601.15507",
+          "https://rayjryang.github.io/LASAGNA-Page/"
+        )
+
+
+        add_paper("Knowledge Graph Augmented Large Language Models for Disease Prediction",
+          "Ruiyu Wang, Tuan Vinh, Ran Xu, Yuyin Zhou, Jiaying Lu, Carl Yang, Francisco Pasquel",
+          null,
+          "https://arxiv.org/abs/2512.01210",
+          "@article{wang2025knowledge,<br>&nbsp;&nbsp;&nbsp;title   = {Knowledge Graph Augmented Large Language Models for Disease Prediction},<br>&nbsp;&nbsp;&nbsp;author  = {Ruiyu Wang, Tuan Vinh, Ran Xu, Yuyin Zhou, Jiaying Lu, Carl Yang, Francisco Pasquel},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2512.01210},<br>&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
+          "Electronic health records (EHRs) enable strong clinical prediction, but explanations are often coarse and hard to use for patient-level decisions. We propose a knowledge graph (KG)-guided chain-of-thought (CoT) framework for visit-level disease prediction on MIMIC-III. We map ICD-9 codes to PrimeKG, mine disease-relevant nodes and paths, and use these paths to scaffold temporally consistent CoT rationales, retaining only samples whose conclusions match observed outcomes. We fine-tune lightweight instruction-tuned LLMs (LLaMA-3.1-Instruct-8B and Gemma-7B) on two small cohorts (400 and 1,000 index visits) across ten PrimeKG-mapped diseases. Our models outperform strong classical baselines, reaching AUROC 0.66-0.70 and macro-AUPR 0.40-0.47. Without additional training, the models transfer zero-shot to the CRADLE cohort, improving accuracy from 0.40-0.51 to 0.72-0.77. In a blinded clinician study, KG-guided CoT rationales are consistently preferred for clarity, relevance, and correctness. Code is available at: https://github.com/JonathanWry/KG-guided-LLM-pipeline",
+          "https://arxiv.org/abs/2512.01210",
+          "https://github.com/JonathanWry/KG-guided-LLM-pipeline"
+        )
+
+        add_paper("SpatialThinker: Reinforcing 3D Reasoning in Multimodal LLMs via Spatial Rewards",
+          "Hunar Batra, Haoqin Tu, Hardy Chen, Yuanze Lin, Cihang Xie, Ronald Clark",
+          null,
+          "https://arxiv.org/abs/2511.07403",
+          "@article{batra2025spatialthinker,<br>&nbsp;&nbsp;&nbsp;title   = {SpatialThinker: Reinforcing 3D Reasoning in Multimodal LLMs via Spatial Rewards},<br>&nbsp;&nbsp;&nbsp;author  = {Hunar Batra, Haoqin Tu, Hardy Chen, Yuanze Lin, Cihang Xie, Ronald Clark},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2511.07403},<br>&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
+          "Multimodal large language models (MLLMs) have achieved remarkable progress in vision-language tasks, but they continue to struggle with spatial understanding. Existing spatial MLLMs often rely on explicit 3D inputs or architecture-specific modifications, and remain constrained by large-scale datasets or sparse supervision. To address these limitations, we introduce SpatialThinker, a 3D-aware MLLM trained with RL to integrate structured spatial grounding with multi-step reasoning. The model simulates human-like spatial perception by constructing a scene graph of task-relevant objects and spatial relations, and reasoning towards an answer via dense spatial rewards. SpatialThinker consists of two key contributions: (1) a data synthesis pipeline that generates STVQA-7K, a high-quality spatial VQA dataset, and (2) online RL with a multi-objective dense spatial reward enforcing spatial grounding. SpatialThinker-7B outperforms supervised fine-tuning and the sparse RL baseline on spatial understanding and real-world VQA benchmarks, nearly doubling the base-model gain compared to sparse RL, and surpassing GPT-4o. These results showcase the effectiveness of combining spatial supervision with reward-aligned reasoning in enabling robust 3D spatial understanding with limited data and advancing MLLMs towards human-level visual reasoning.",
+          "https://arxiv.org/abs/2511.07403",
+          "https://github.com/hunarbatra/SpatialThinker"
+        )
+
+        add_paper("LightFusion: A Light-weighted, Double Fusion Framework for Unified Multimodal Understanding and Generation",
+          "Zeyu Wang, Zilong Chen, Chenhui Gou, Feng Li, Chaorui Deng, Deyao Zhu, Kunchang Li, Weihao Yu, Haoqin Tu, Haoqi Fan, Cihang Xie",
+          null,
+          "https://arxiv.org/abs/2510.22946",
+          "@article{wang2025lightfusion,<br>&nbsp;&nbsp;&nbsp;title   = {LightFusion: A Light-weighted, Double Fusion Framework for Unified Multimodal Understanding and Generation},<br>&nbsp;&nbsp;&nbsp;author  = {Zeyu Wang, Zilong Chen, Chenhui Gou, Feng Li, Chaorui Deng, Deyao Zhu, Kunchang Li, Weihao Yu, Haoqin Tu, Haoqi Fan, Cihang Xie},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2510.22946},<br>&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
+          "Unified multimodal models have recently shown remarkable gains in both capability and versatility, yet most leading systems are still trained from scratch and require substantial computational resources. In this paper, we show that competitive performance can be obtained far more efficiently by strategically fusing publicly available models specialized for either generation or understanding. Our key design is to retain the original blocks while additionally interleaving multimodal self-attention blocks throughout the networks. This double fusion mechanism (1) effectively enables rich multi-modal fusion while largely preserving the original strengths of the base models, and (2) catalyzes synergistic fusion of high-level semantic representations from the understanding encoder with low-level spatial signals from the generation encoder. By training with only ~ 35B tokens, this approach achieves strong results across multiple benchmarks: 0.91 on GenEval for compositional text-to-image generation, 82.16 on DPG-Bench for complex text-to-image generation, 6.06 on GEditBench, and 3.77 on ImgEdit-Bench for image editing. By fully releasing the entire suite of code, model weights, and datasets, we hope to support future research on unified multimodal modeling.",
+          "https://arxiv.org/abs/2510.22946",
+          "https://ucsc-vlaa.github.io/LightBagel/"
+        )
+
+        add_paper("A Definition of AGI",
+          "Dan Hendrycks, Dawn Song, Christian Szegedy, Honglak Lee, Yarin Gal, Erik Brynjolfsson, Sharon Li, Andy Zou, Lionel Levine, Bo Han, Jie Fu, Ziwei Liu, Jinwoo Shin, Kimin Lee, Mantas Mazeika, Long Phan, George Ingebretsen, Adam Khoja, Cihang Xie, Olawale Salaudeen, Matthias Hein, Kevin Zhao, Alexander Pan, David Duvenaud, Bo Li, Steve Omohundro, Gabriel Alfour, Max Tegmark, Kevin McGrew, Gary Marcus, Jaan Tallinn, Eric Schmidt, Yoshua Bengio",
+          null,
+          "https://arxiv.org/abs/2510.18212",
+          "@article{hendrycks2025a,<br>&nbsp;&nbsp;&nbsp;title   = {A Definition of AGI},<br>&nbsp;&nbsp;&nbsp;author  = {Dan Hendrycks, Dawn Song, Christian Szegedy, Honglak Lee, Yarin Gal, Erik Brynjolfsson, Sharon Li, Andy Zou, Lionel Levine, Bo Han, Jie Fu, Ziwei Liu, Jinwoo Shin, Kimin Lee, Mantas Mazeika, Long Phan, George Ingebretsen, Adam Khoja, Cihang Xie, Olawale Salaudeen, Matthias Hein, Kevin Zhao, Alexander Pan, David Duvenaud, Bo Li, Steve Omohundro, Gabriel Alfour, Max Tegmark, Kevin McGrew, Gary Marcus, Jaan Tallinn, Eric Schmidt, Yoshua Bengio},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2510.18212},<br>&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
+          "The lack of a concrete definition for Artificial General Intelligence (AGI) obscures the gap between today's specialized AI and human-level cognition. This paper introduces a quantifiable framework to address this, defining AGI as matching the cognitive versatility and proficiency of a well-educated adult. To operationalize this, we ground our methodology in Cattell-Horn-Carroll theory, the most empirically validated model of human cognition. The framework dissects general intelligence into ten core cognitive domains-including reasoning, memory, and perception-and adapts established human psychometric batteries to evaluate AI systems. Application of this framework reveals a highly \"jagged\" cognitive profile in contemporary models. While proficient in knowledge-intensive domains, current AI systems have critical deficits in foundational cognitive machinery, particularly long-term memory storage. The resulting AGI scores (e.g., GPT-4 at 27%, GPT-5 at 57%) concretely quantify both rapid progress and the substantial gap remaining before AGI.",
+          "https://arxiv.org/abs/2510.18212"
+        )
+
+        add_paper("Scaling Artificial Intelligence for Multi-Tumor Early Detection with More Reports, Fewer Masks",
+          "Pedro R. A. S. Bassi, Xinze Zhou, Wenxuan Li, Szymon Płotka, Jieneng Chen, Qi Chen, Zheren Zhu, Jakub Prządo, Ibrahim E. Hamacı, Sezgin Er, Yuhan Wang, Ashwin Kumar, Bjoern Menze, Jarosław B. Ćwikła, Yuyin Zhou, Akshay S. Chaudhari, Curtis P. Langlotz, Sergio Decherchi, Andrea Cavalli, Kang Wang, Yang Yang, Alan L. Yuille, Zongwei Zhou",
+          null,
+          "https://arxiv.org/abs/2510.14803",
+          "@article{bassi2025scaling,<br>&nbsp;&nbsp;&nbsp;title   = {Scaling Artificial Intelligence for Multi-Tumor Early Detection with More Reports, Fewer Masks},<br>&nbsp;&nbsp;&nbsp;author  = {Pedro R. A. S. Bassi, Xinze Zhou, Wenxuan Li, Szymon Płotka, Jieneng Chen, Qi Chen, Zheren Zhu, Jakub Prządo, Ibrahim E. Hamacı, Sezgin Er, Yuhan Wang, Ashwin Kumar, Bjoern Menze, Jarosław B. Ćwikła, Yuyin Zhou, Akshay S. Chaudhari, Curtis P. Langlotz, Sergio Decherchi, Andrea Cavalli, Kang Wang, Yang Yang, Alan L. Yuille, Zongwei Zhou},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2510.14803},<br>&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
+          "Early tumor detection save lives. Each year, more than 300 million computed tomography (CT) scans are performed worldwide, offering a vast opportunity for effective cancer screening. However, detecting small or early-stage tumors on these CT scans remains challenging, even for experts. Artificial intelligence (AI) models can assist by highlighting suspicious regions, but training such models typically requires extensive tumor masks--detailed, voxel-wise outlines of tumors manually drawn by radiologists. Drawing these masks is costly, requiring years of effort and millions of dollars. In contrast, nearly every CT scan in clinical practice is already accompanied by medical reports describing the tumor's size, number, appearance, and sometimes, pathology results--information that is rich, abundant, and often underutilized for AI training. We introduce R-Super, which trains AI to segment tumors that match their descriptions in medical reports. This approach scales AI training with large collections of readily available medical reports, substantially reducing the need for manually drawn tumor masks. When trained on 101,654 reports, AI models achieved performance comparable to those trained on 723 masks. Combining reports and masks further improved sensitivity by +13% and specificity by +8%, surpassing radiologists in detecting five of the seven tumor types. Notably, R-Super enabled segmentation of tumors in the spleen, gallbladder, prostate, bladder, uterus, and esophagus, for which no public masks or AI models previously existed. This study challenges the long-held belief that large-scale, labor-intensive tumor mask creation is indispensable, establishing a scalable and accessible path toward early detection across diverse tumor types. We plan to release our trained models, code, and dataset at https://github.com/MrGiovanni/R-Super",
+          "https://arxiv.org/abs/2510.14803",
+          "https://github.com/MrGiovanni/R-Super"
+        )
+
+        add_paper("GauSSmart: Enhanced 3D Reconstruction through 2D Foundation Models and Geometric Filtering",
+          "Alexander Valverde, Brian Xu, Yuyin Zhou, Meng Xu, Hongyun Wang",
+          null,
+          "https://arxiv.org/abs/2510.14270",
+          "@article{valverde2025gaussmart,<br>&nbsp;&nbsp;&nbsp;title   = {GauSSmart: Enhanced 3D Reconstruction through 2D Foundation Models and Geometric Filtering},<br>&nbsp;&nbsp;&nbsp;author  = {Alexander Valverde, Brian Xu, Yuyin Zhou, Meng Xu, Hongyun Wang},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2510.14270},<br>&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
+          "Scene reconstruction has emerged as a central challenge in computer vision, with approaches such as Neural Radiance Fields (NeRF) and Gaussian Splatting achieving remarkable progress. While Gaussian Splatting demonstrates strong performance on large-scale datasets, it often struggles to capture fine details or maintain realism in regions with sparse coverage, largely due to the inherent limitations of sparse 3D training data. In this work, we propose GauSSmart, a hybrid method that effectively bridges 2D foundational models and 3D Gaussian Splatting reconstruction. Our approach integrates established 2D computer vision techniques, including convex filtering and semantic feature supervision from foundational models such as DINO, to enhance Gaussian-based scene reconstruction. By leveraging 2D segmentation priors and high-dimensional feature embeddings, our method guides the densification and refinement of Gaussian splats, improving coverage in underrepresented areas and preserving intricate structural details. We validate our approach across three datasets, where GauSSmart consistently outperforms existing Gaussian Splatting in the majority of evaluated scenes. Our results demonstrate the significant potential of hybrid 2D-3D approaches, highlighting how the thoughtful combination of 2D foundational models with 3D reconstruction pipelines can overcome the limitations inherent in either approach alone.",
+          "https://arxiv.org/abs/2510.14270",
+          "https://github.com/alevalve/gaussmart"
+        )
+
+        add_paper("Where on Earth? A Vision-Language Benchmark for Probing Model Geolocation Skills Across Scales",
+          "Zhaofang Qian, Hardy Chen, Zeyu Wang, Li Zhang, Zijun Wang, Xiaoke Huang, Hui Liu, Xianfeng Tang, Zeyu Zheng, Haoqin Tu, Cihang Xie, Yuyin Zhou",
+          null,
+          "https://arxiv.org/abs/2510.10880",
+          "@article{qian2025where,<br>&nbsp;&nbsp;&nbsp;title   = {Where on Earth? A Vision-Language Benchmark for Probing Model Geolocation Skills Across Scales},<br>&nbsp;&nbsp;&nbsp;author  = {Zhaofang Qian, Hardy Chen, Zeyu Wang, Li Zhang, Zijun Wang, Xiaoke Huang, Hui Liu, Xianfeng Tang, Zeyu Zheng, Haoqin Tu, Cihang Xie, Yuyin Zhou},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2510.10880},<br>&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
+          "Vision-language models (VLMs) have advanced rapidly, yet their capacity for image-grounded geolocation in open-world conditions, a task that is challenging and of demand in real life, has not been comprehensively evaluated. We present EarthWhere, a comprehensive benchmark for VLM image geolocation that evaluates visual recognition, step-by-step reasoning, and evidence use. EarthWhere comprises 810 globally distributed images across two complementary geolocation scales: WhereCountry (i.e., 500 multiple-choice question-answering, with country-level answer and panoramas) and WhereStreet (i.e., 310 fine-grained street-level identification tasks requiring multi-step reasoning with optional web search). For evaluation, we adopt the final-prediction metrics: location accuracies within k km (Acc@k) for coordinates and hierarchical path scores for textual localization. Beyond this, we propose to explicitly score intermediate reasoning chains using human-verified key visual clues and a Shapley-reweighted thinking score that attributes credit to each clue's marginal contribution. We benchmark 13 state-of-the-art VLMs with web searching tools on our EarthWhere and report different types of final answer accuracies as well as the calibrated model thinking scores. Overall, Gemini-2.5-Pro achieves the best average accuracy at 56.32%, while the strongest open-weight model, GLM-4.5V, reaches 34.71%. We reveal that web search and reasoning do not guarantee improved performance when visual clues are limited, and models exhibit regional biases, achieving up to 42.7% higher scores in certain areas than others. These findings highlight not only the promise but also the persistent challenges of models to mitigate bias and achieve robust, fine-grained localization. We open-source our benchmark at https://github.com/UCSC-VLAA/EarthWhere.",
+          "https://arxiv.org/abs/2510.10880",
+          "https://github.com/UCSC-VLAA/EarthWhere"
+        )
+
+        add_paper("SCING:Towards More Efficient and Robust Person Re-Identification through Selective Cross-modal Prompt Tuning",
+          "Yunfei Xie, Yuxuan Cheng, Juncheng Wu, Haoyu Zhang, Yuyin Zhou, Shoudong Han",
+          null,
+          "https://arxiv.org/abs/2507.00506",
+          "@article{xie2025scing,<br>&nbsp;&nbsp;&nbsp;title   = {SCING:Towards More Efficient and Robust Person Re-Identification through Selective Cross-modal Prompt Tuning},<br>&nbsp;&nbsp;&nbsp;author  = {Yunfei Xie, Yuxuan Cheng, Juncheng Wu, Haoyu Zhang, Yuyin Zhou, Shoudong Han},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2507.00506},<br>&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
+          "Recent advancements in adapting vision-language pre-training models like CLIP for person re-identification (ReID) tasks often rely on complex adapter design or modality-specific tuning while neglecting cross-modal interaction, leading to high computational costs or suboptimal alignment. To address these limitations, we propose a simple yet effective framework named Selective Cross-modal Prompt Tuning (SCING) that enhances cross-modal alignment and robustness against real-world perturbations. Our method introduces two key innovations: Firstly, we proposed Selective Visual Prompt Fusion (SVIP), a lightweight module that dynamically injects discriminative visual features into text prompts via a cross-modal gating mechanism. Moreover, the proposed Perturbation-Driven Consistency Alignment (PDCA) is a dual-path training strategy that enforces invariant feature alignment under random image perturbations by regularizing consistency between original and augmented cross-modal embeddings. Extensive experiments are conducted on several popular benchmarks covering Market1501, DukeMTMC-ReID, Occluded-Duke, Occluded-REID, and P-DukeMTMC, which demonstrate the impressive performance of the proposed method. Notably, our framework eliminates heavy adapters while maintaining efficient inference, achieving an optimal trade-off between performance and computational overhead. The code will be released upon acceptance.",
+          "https://arxiv.org/abs/2507.00506"
+        )
+
+        add_paper("Robust and Efficient AI-Based Attack Recovery in Autonomous Drones",
+          "Diego Ortiz Barbosa, Luis Burbano, Siwei Yang, Zijun Wang, Alvaro A. Cardenas, Cihang Xie, Yinzhi Cao",
+          null,
+          "https://arxiv.org/abs/2505.14835",
+          "@article{barbosa2025robust,<br>&nbsp;&nbsp;&nbsp;title   = {Robust and Efficient AI-Based Attack Recovery in Autonomous Drones},<br>&nbsp;&nbsp;&nbsp;author  = {Diego Ortiz Barbosa, Luis Burbano, Siwei Yang, Zijun Wang, Alvaro A. Cardenas, Cihang Xie, Yinzhi Cao},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2505.14835},<br>&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
+          "We introduce an autonomous attack recovery architecture to add common sense reasoning to plan a recovery action after an attack is detected. We outline use-cases of our architecture using drones, and then discuss how to implement this architecture efficiently and securely in edge devices.",
+          "https://arxiv.org/abs/2505.14835"
+        )
+
         add_paper("OpenVision 3: A Family of Unified Visual Encoder for Both Understanding and Generation",
           "Letian Zhang, Sucheng Ren, Yanqing Liu, Xianhang Li, Zeyu Wang, Yuyin Zhou, Huaxiu Yao, Zeyu Zheng, Weili Nie, Guilin Liu, Zhiding Yu, Cihang Xie",
           null,
@@ -421,7 +661,8 @@ function copy(dest, source) {
           "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2501.16085},<br>" + 
           "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
           "Flow models are effective at progressively generating realistic images, but they generally struggle to capture long-range dependencies during the generation process as they compress all the information from previous time steps into a single corrupted image. To address this limitation, we propose integrating autoregressive modeling -- known for its excellence in modeling complex, high-dimensional joint probability distributions -- into flow models. During training, at each step, we construct causally-ordered sequences by sampling multiple images from the same semantic category and applying different levels of noise, where images with higher noise levels serve as causal predecessors to those with lower noise levels. This design enables the model to learn broader category-level variations while maintaining proper causal relationships in the flow process. During generation, the model autoregressively conditions the previously generated images from earlier denoising steps, forming a contextual and coherent generation trajectory. Additionally, we design a customized hybrid linear attention mechanism tailored to our modeling approach to enhance computational efficiency. Our approach, termed ARFlow, under 400k training steps, achieves 14.08 FID scores on ImageNet at 128 * 128 without classifier-free guidance, reaching 4.34 FID with classifier-free guidance 1.5, significantly outperforming the previous flow-based model SiT's 9.17 FID. Extensive ablation studies demonstrate the effectiveness of our modeling strategy and chunk-wise attention design.",
-          "https://arxiv.org/abs/2501.16085"
+          "https://arxiv.org/abs/2501.16085",
+          "https://github.com/TheFllood/ARFlow"
         )
 
 
@@ -473,19 +714,6 @@ function copy(dest, source) {
           )
 
 
-        add_paper("M-VAR: Decoupled Scale-wise Autoregressive Modeling for High-Quality Image Generation",
-          "Sucheng Ren, Yaodong Yu, Nataniel Ruiz, Feng Wang, Alan Yuille, Cihang Xie",
-          null,
-          "https://arxiv.org/abs/2411.10433",
-          "@article{ren2024mvar,<br>" +
-          "&nbsp;&nbsp;&nbsp;title   = {M-VAR: Decoupled Scale-wise Autoregressive Modeling for High-Quality Image Generation},<br>" +
-          "&nbsp;&nbsp;&nbsp;author  = {Sucheng Ren, Yaodong Yu, Nataniel Ruiz, Feng Wang, Alan Yuille, Cihang Xie},<br>" +
-          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2411.10433},<br>" +
-          "&nbsp;&nbsp;&nbsp;year    = {2024},<br>}",
-          "There exists recent work in computer vision, named VAR, that proposes a new autoregressive paradigm for image generation. Diverging from the vanilla next-token prediction, VAR structurally reformulates the image generation into a coarse to fine next-scale prediction. In this paper, we show that this scale-wise autoregressive framework can be effectively decoupled into intra-scale modeling, which captures local spatial dependencies within each scale, and inter-scale modeling, which models cross-scale relationships progressively from coarse-to-fine scales. This decoupling structure allows to rebuild VAR in a more computationally efficient manner. Specifically, for intra-scale modeling -- crucial for generating high-fidelity images -- we retain the original bidirectional self-attention design to ensure comprehensive modeling; for inter-scale modeling, which semantically connects different scales but is computationally intensive, we apply linear-complexity mechanisms like Mamba to substantially reduce computational overhead. We term this new framework M-VAR. Extensive experiments demonstrate that our method outperforms existing models in both image quality and generation speed. For example, our 1.5B model, with fewer parameters and faster inference speed, outperforms the largest VAR-d30-2B. Moreover, our largest model M-VAR-d32 impressively registers 1.78 FID on ImageNet 256x256 and outperforms the prior-art autoregressive models LlamaGen/VAR by 0.4/0.19 and popular diffusion models LDM/DiT by 1.82/0.49, respectively. Code is available at https://github.com/OliverRensu/MVAR.",
-          "https://arxiv.org/abs/2411.10433",
-          "https://github.com/OliverRensu/MVAR"
-          )
 
 
         // add_paper("Efficient MedSAMs: Segment Anything in Medical Images on Laptop",
@@ -570,6 +798,19 @@ function copy(dest, source) {
           )
 
 
+
+        add_paper("Multi-Class Segmentation of Aortic Branches and Zones in Computed Tomography Angiography: The AortaSeg24 Challenge",
+          "Muhammad Imran, Jonathan R. Krebs, Vishal Balaji Sivaraman, Teng Zhang, Amarjeet Kumar, Walker R. Ueland, Michael J. Fassler, Jinlong Huang, Xiao Sun, Lisheng Wang, Pengcheng Shi, Maximilian Rokuss, Michael Baumgartner, Yannick Kirchhof, Klaus H. Maier-Hein, Fabian Isensee, Shuolin Liu, Bing Han, Bong Thanh Nguyen, Dong-jin Shin, Park Ji-Woo, Mathew Choi, Kwang-Hyun Uhm, Sung-Jea Ko, Chanwoong Lee, Jaehee Chun, Jin Sung Kim, Minghui Zhang, Hanxiao Zhang, Xin You, Yun Gu, Zhaohong Pan, Xuan Liu, Xiaokun Liang, Markus Tiefenthaler, Enrique Almar-Munoz, Matthias Schwab, Mikhail Kotyushev, Rostislav Epifanov, Marek Wodzinski, Henning Muller, Abdul Qayyum, Moona Mazher, Steven A. Niederer, Zhiwei Wang, Kaixiang Yang, Jintao Ren, Stine Sofia Korreman, Yuchong Gao, Hongye Zeng, Haoyu Zheng, Rui Zheng, Jinghua Yue, Fugen Zhou, Bo Liu, Alexander Cosman, Muxuan Liang, Chang Zhao, Gilbert R. Upchurch, Jun Ma, Yuyin Zhou, Michol A. Cooper, Wei Shao",
+          null,
+          "https://arxiv.org/abs/2502.05330",
+          "@article{imran2025aortaseg24,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {Multi-Class Segmentation of Aortic Branches and Zones in Computed Tomography Angiography: The AortaSeg24 Challenge},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Muhammad Imran and Jonathan R. Krebs and Vishal Balaji Sivaraman and others},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2502.05330},<br>" +
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
+          "Multi-class segmentation of the aorta in computed tomography angiography (CTA) scans is essential for diagnosing and planning complex endovascular treatments for patients with aortic dissections. However, existing methods reduce aortic segmentation to a binary problem, limiting their ability to measure diameters across different branches and zones. Furthermore, no open-source dataset is currently available to support the development of multi-class aortic segmentation methods. To address this gap, we organized the AortaSeg24 MICCAI Challenge, introducing the first dataset of 100 CTA volumes annotated for 23 clinically relevant aortic branches and zones. This dataset was designed to facilitate both model development and validation. The challenge attracted 121 teams worldwide, with participants leveraging state-of-the-art frameworks such as nnU-Net and exploring novel techniques, including cascaded models, data augmentation strategies, and custom loss functions. We evaluated the submitted algorithms using the Dice Similarity Coefficient (DSC) and Normalized Surface Distance (NSD), highlighting the approaches adopted by the top five performing teams. This paper presents the challenge design, dataset details, evaluation metrics, and an in-depth analysis of the top-performing algorithms.",
+          "https://arxiv.org/abs/2502.05330"
+        )
 
         add_paper("RetinaRegNet: A Versatile Approach for Retinal Image Registration",
           "Vishal Balaji Sivaraman, Muhammad Imran, Qingyue Wei, Preethika Muralidharan, Michelle R Tamplin, Isabella M Grumbach, Randy H Kardon, Jui-Kai Wang, Yuyin Zhou, Wei Shao",
@@ -818,6 +1059,86 @@ function copy(dest, source) {
 
 
 
+        add_paper("Target-Oriented Pretraining Data Selection via Neuron-Activated Graph",
+          "Zijun Wang, Haoqin Tu, Weidong Zhou, Yiyang Zhou, Xiaohuan Zhou, Bingni Zhang, Weiguo Feng, Taifeng Wang, Cihang Xie, Fengze Liu",
+          "ICML, 2026",
+          "https://arxiv.org/abs/2604.15706",
+          "@inproceedings{wang2026target,<br>" +
+          "&nbsp;&nbsp;&nbsp;title     = {Target-Oriented Pretraining Data Selection via Neuron-Activated Graph},<br>" +
+          "&nbsp;&nbsp;&nbsp;author    = {Zijun Wang, Haoqin Tu, Weidong Zhou, Yiyang Zhou, Xiaohuan Zhou, Bingni Zhang, Weiguo Feng, Taifeng Wang, Cihang Xie, Fengze Liu},<br>" +
+          "&nbsp;&nbsp;&nbsp;booktitle = {ICML},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year      = {2026},<br>}",
+          "Everyday tasks come with a target, and pretraining models around this target is what turns them into experts. In this paper, we study target-oriented language model (LM) pretraining by introducing Neuron-Activated Graph Ranking (NAG-based Ranking), a training-free and interpretable framework for target pretraining data selection. Rather than using black-box representations, our approach directly characterizes each target input by a sparse set of high-impact neurons in any off-the-shelf LLMs. Concretely, we quantify neuron impact and select the most influential neurons across layers into a compact Neuron-Activated Graph (NAG), and rank candidate data by NAG similarity to target examples. We conduct experiments across six benchmarks, where our NAG-based Ranking improves target-oriented pretraining by 4.9% on average over random sampling, and also outperforms state-of-the-art baselines by 5.3% accuracy on HellaSwag. It also remains effective under a more applicable multi-target setting, where our best setup surpasses two baselines by 1.1% and 4.1%, respectively. Furthermore, we provide a comprehensive analysis on why and how our NAG works, e.g., deactivating NAG-selected neurons (only 0.12% of all) causes a 23.5% performance collapse, and restricting NAG to the final layer incurs a 4.1% average drop, indicating that NAG captures a sparse \"functional backbone\" for learning target features. We release the code at https://github.com/asillycat/NAG.",
+          "https://arxiv.org/abs/2604.15706",
+          "https://github.com/asillycat/NAG"
+        )
+
+        add_paper("CAST: Modeling Visual State Transitions for Consistent Video Retrieval",
+          "Yanqing Liu, Yingcheng Liu, Fanghong Dong, Budianto Budianto, Cihang Xie, Yan Jiao",
+          "ICML, 2026",
+          "https://arxiv.org/abs/2603.08648",
+          "@inproceedings{liu2026cast,<br>" +
+          "&nbsp;&nbsp;&nbsp;title     = {CAST: Modeling Visual State Transitions for Consistent Video Retrieval},<br>" +
+          "&nbsp;&nbsp;&nbsp;author    = {Yanqing Liu, Yingcheng Liu, Fanghong Dong, Budianto Budianto, Cihang Xie, Yan Jiao},<br>" +
+          "&nbsp;&nbsp;&nbsp;booktitle = {ICML},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year      = {2026},<br>}",
+          "As video content creation shifts toward long-form narratives, composing short clips into coherent storylines becomes increasingly important. However, prevailing retrieval formulations remain context-agnostic at inference time, prioritizing local semantic alignment while neglecting state and identity consistency. To address this structural limitation, we formalize the task of Consistent Video Retrieval (CVR) and introduce a diagnostic benchmark spanning YouCook2, COIN, and CrossTask. We propose CAST (Context-Aware State Transition), a lightweight, plug-and-play adapter compatible with diverse frozen vision-language embedding spaces. By predicting a state-conditioned residual update ($Δ$) from visual history, CAST introduces an explicit inductive bias for latent state evolution. Extensive experiments show that CAST improves performance on YouCook2 and CrossTask, remains competitive on COIN, and consistently outperforms zero-shot baselines across diverse foundation backbones. Furthermore, CAST provides a useful reranking signal for black-box video generation candidates (e.g., from Veo), promoting more temporally coherent continuations.",
+          "https://arxiv.org/abs/2603.08648",
+          "https://ucsc-vlaa.github.io/CAST/"
+        )
+
+        add_paper("SimpleMem: Efficient Lifelong Memory for LLM Agents",
+          "Jiaqi Liu, Yaofeng Su, Peng Xia, Siwei Han, Zeyu Zheng, Cihang Xie, Mingyu Ding, Huaxiu Yao",
+          "ICML, 2026",
+          "https://arxiv.org/abs/2601.02553",
+          "@inproceedings{liu2026simplemem,<br>" +
+          "&nbsp;&nbsp;&nbsp;title     = {SimpleMem: Efficient Lifelong Memory for LLM Agents},<br>" +
+          "&nbsp;&nbsp;&nbsp;author    = {Jiaqi Liu, Yaofeng Su, Peng Xia, Siwei Han, Zeyu Zheng, Cihang Xie, Mingyu Ding, Huaxiu Yao},<br>" +
+          "&nbsp;&nbsp;&nbsp;booktitle = {ICML},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year      = {2026},<br>}",
+          "To support long-term interaction in complex environments, LLM agents require memory systems that manage historical experiences. Existing approaches either retain full interaction histories via passive context extension, leading to substantial redundancy, or rely on iterative reasoning to filter noise, incurring high token costs. To address this challenge, we introduce SimpleMem, an efficient memory framework based on semantic lossless compression. We propose a three-stage pipeline designed to maximize information density and token utilization: (1) Semantic Structured Compression, which distills unstructured interactions into compact, multi-view indexed memory units; (2) Online Semantic Synthesis, an intra-session process that instantly integrates related context into unified abstract representations to eliminate redundancy; and (3) Intent-Aware Retrieval Planning, which infers search intent to dynamically determine retrieval scope and construct precise context efficiently. Experiments on benchmark datasets show that our method consistently outperforms baseline approaches in accuracy, retrieval efficiency, and inference cost, achieving an average F1 improvement of 26.4% in LoCoMo while reducing inference-time token consumption by up to 30-fold, demonstrating a superior balance between performance and efficiency. Code is available at https://github.com/aiming-lab/SimpleMem.",
+          "https://arxiv.org/abs/2601.02553",
+          "https://github.com/aiming-lab/SimpleMem"
+        )
+
+        add_paper("Spiral RoPE: Rotate Your Rotary Positional Embeddings in the 2D Plane",
+          "Haoyu Liu, Sucheng Ren, Tingyu Zhu, Peng Wang, Cihang Xie, Alan Yuille, Zeyu Zheng, Feng Wang",
+          "ICML, 2026",
+          "https://arxiv.org/abs/2602.03227",
+          "@inproceedings{liu2026spiral,<br>" +
+          "&nbsp;&nbsp;&nbsp;title     = {Spiral RoPE: Rotate Your Rotary Positional Embeddings in the 2D Plane},<br>" +
+          "&nbsp;&nbsp;&nbsp;author    = {Haoyu Liu, Sucheng Ren, Tingyu Zhu, Peng Wang, Cihang Xie, Alan Yuille, Zeyu Zheng, Feng Wang},<br>" +
+          "&nbsp;&nbsp;&nbsp;booktitle = {ICML},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year      = {2026},<br>}",
+          "Rotary Position Embedding (RoPE) is the de facto positional encoding in large language models due to its ability to encode relative positions and support length extrapolation. When adapted to vision transformers, the standard axial formulation decomposes two-dimensional spatial positions into horizontal and vertical components, implicitly restricting positional encoding to axis-aligned directions. We identify this directional constraint as a fundamental limitation of the standard axial 2D RoPE, which hinders the modeling of oblique spatial relationships that naturally exist in natural images. To overcome this limitation, we propose Spiral RoPE, a simple yet effective extension that enables multi-directional positional encoding by partitioning embedding channels into multiple groups associated with uniformly distributed directions. Each group is rotated according to the projection of the patch position onto its corresponding direction, allowing spatial relationships to be encoded beyond the horizontal and vertical axes. Across a wide range of vision tasks including classification, segmentation, and generation, Spiral RoPE consistently improves performance. Qualitative analysis of attention maps further show that Spiral RoPE exhibits more concentrated activations on semantically relevant objects and better respects local object boundaries, highlighting the importance of multi-directional positional encoding in vision transformers.",
+          "https://arxiv.org/abs/2602.03227",
+          "https://github.com/huajianduzhuo-code/Spiral_RoPE"
+        )
+
+        add_paper("AudioMosaic: Contrastive Masked Audio Representation Learning",
+          "Hanxun Huang, Qizhou Wang, Xingjun Ma, Cihang Xie, Christopher Leckie, Sarah Monazam Erfani",
+          "ICML, 2026",
+          null,
+          "@inproceedings{huang2026audiomosaic,<br>" +
+          "&nbsp;&nbsp;&nbsp;title     = {AudioMosaic: Contrastive Masked Audio Representation Learning},<br>" +
+          "&nbsp;&nbsp;&nbsp;author    = {Hanxun Huang, Qizhou Wang, Xingjun Ma, Cihang Xie, Christopher Leckie, Sarah Monazam Erfani},<br>" +
+          "&nbsp;&nbsp;&nbsp;booktitle = {ICML},<br>" +
+          "&nbsp;&nbsp;&nbsp;year      = {2026},<br>}",
+          "Audio self-supervised learning (SSL) aims to learn general-purpose representations from large-scale unlabeled audio data and has achieved remarkable progress in recent years. While most prior work relies on generative reconstruction objectives, contrastive approaches remain relatively underexplored, in part due to the high computational cost of designing effective augmentation strategies and the large batch sizes typically required for pre-training. In this work, we introduce AudioMosaic, an audio encoder for general audio understanding. During pre-training, AudioMosaic applies time-frequency masking to spectrogram patches to form paired inputs, employing an elegant and efficient augmentation strategy that significantly reduces computational cost while supporting large-batch training. The AudioMosaic encoder learns discriminative utterance-level representations that exhibit strong transferability across datasets, domains, and acoustic conditions. Extensive experiments demonstrate that AudioMosaic achieves state-of-the-art performance on multiple standard benchmarks. Moreover, we show that the pretrained AudioMosaic encoder enhances audio perception when integrated with large language models (LLMs)."
+        )
+
+        add_paper("From Seeing to Thinking: Decoupling Perception and Reasoning Improves Post-Training of Vision-Language Models",
+          "Juncheng Wu, Hardy Chen, Haoqin Tu, Xianfeng Tang, Freda Shi, Hui Liu, Hanqing Lu, Cihang Xie, Yuyin Zhou",
+          "ICML, 2026",
+          null,
+          "@inproceedings{wu2026seeing,<br>" +
+          "&nbsp;&nbsp;&nbsp;title     = {From Seeing to Thinking: Decoupling Perception and Reasoning Improves Post-Training of Vision-Language Models},<br>" +
+          "&nbsp;&nbsp;&nbsp;author    = {Juncheng Wu, Hardy Chen, Haoqin Tu, Xianfeng Tang, Freda Shi, Hui Liu, Hanqing Lu, Cihang Xie, Yuyin Zhou},<br>" +
+          "&nbsp;&nbsp;&nbsp;booktitle = {ICML},<br>" +
+          "&nbsp;&nbsp;&nbsp;year      = {2026},<br>}",
+          "Recent advances in vision-language models (VLMs) emphasize long chain-of-thought reasoning; yet, we find that their performance on visual tasks is primarily limited by a lack of visual perception as opposed to reasoning itself. In this work, we systematically study the interplay between perception and reasoning in VLM post-training by decomposing their capabilities into three separate training stages: visual perception, visual reasoning, and textual reasoning, incorporating specialized training data. We demonstrate that visual perception (a) requires targeted optimization with specialized data; (b) serves as a fundamental scaffold that should be solidified through staged training before refining visual reasoning; and (c) is more effectively learned via RL than caption-based SFT. Our experiments across multiple VLMs demonstrate that staged training consistently improves both visual perception and reasoning performance over merged training. Notably, models trained with our approach achieve 1.5% higher reasoning accuracy with 20.8% shorter reasoning traces, suggesting that superior perception reduces the need for excessive reasoning. Finally, our staged-training models achieve superior performance among open-weight VLMs, establishing advanced results on several visual math and perception (e.g., +5.2% on WeMath and +3.7% on RealWorldQA) tasks compared with the base counterpart."
+        )
+
         add_paper("OpenVision 2: A Family of Generative Pretrained Visual Encoders for Multimodal Learning",
           "Yanqing Liu, Xianhang Li, Letian Zhang, Zirui Wang, Zeyu Zheng, Yuyin Zhou, Cihang Xie",
           "CVPR, 2026",
@@ -842,7 +1163,7 @@ function copy(dest, source) {
           "&nbsp;&nbsp;&nbsp;booktitle = {CVPR},<br>" + 
           "&nbsp;&nbsp;&nbsp;year      = {2026},<br>}",
           "Vector glyphs are the atomic units of digital typography, yet most learning-based pipelines still depend on carefully curated exemplar sheets and raster-to-vector postprocessing, which limits accessibility and editability. We introduce VecGlypher, a single multimodal language model that generates high-fidelity vector glyphs directly from text descriptions or image exemplars. Given a style prompt, optional reference glyph images, and a target character, VecGlypher autoregressively emits SVG path tokens, avoiding raster intermediates and producing editable, watertight outlines in one pass. A typography-aware data and training recipe makes this possible: (i) a large-scale continuation stage on 39K noisy Envato fonts to master SVG syntax and long-horizon geometry, followed by (ii) post-training on 2.5K expert-annotated Google Fonts with descriptive tags and exemplars to align language and imagery with geometry; preprocessing normalizes coordinate frames, canonicalizes paths, de-duplicates families, and quantizes coordinates for stable long-sequence decoding. On cross-family OOD evaluation, VecGlypher substantially outperforms both general-purpose LLMs and specialized vector-font baselines for text-only generation, while image-referenced generation reaches a state-of-the-art performance, with marked gains over DeepVecFont-v2 and DualVector. Ablations show that model scale and the two-stage recipe are critical and that absolute-coordinate serialization yields the best geometry. VecGlypher lowers the barrier to font creation by letting users design with words or exemplars, and provides a scalable foundation for future multimodal design tools.",
-        "https://xk-huang.github.io/VecGlypher/",
+        "https://arxiv.org/abs/2602.21461",
         "https://xk-huang.github.io/VecGlypher/"
         )
 
@@ -917,13 +1238,15 @@ function copy(dest, source) {
         add_paper("Omni-MMSI: Toward Identity-attributed Social Interaction Understanding",
           "Xinpeng Li, Bolin Lai, Hardy Chen, Shijian Deng, Cihang Xie, Yuyin Zhou, James Matthew Rehg, Yapeng Tian",
           "CVPR, 2026",
-          null,
+          "https://arxiv.org/abs/2604.00267",
           "@inproceedings{li2026omnimmsi,<br>" +
           "&nbsp;&nbsp;&nbsp;title     = {Omni-MMSI: Toward Identity-attributed Social Interaction Understanding},<br>" +
           "&nbsp;&nbsp;&nbsp;author    = {Xinpeng Li, Bolin Lai, Hardy Chen, Shijian Deng, Cihang Xie, Yuyin Zhou, James Matthew Rehg, Yapeng Tian},<br>" +
           "&nbsp;&nbsp;&nbsp;booktitle = {CVPR},<br>" + 
           "&nbsp;&nbsp;&nbsp;year      = {2026},<br>}",
           "We introduce Omni-MMSI, a new task that requires comprehensive social interaction understanding from raw audio, vision, and speech. The task involves two tightly coupled goals: extracting identity-attributed social cues (e.g., who is speaking what) and reasoning about the social interaction (e.g., whom the speaker refers to). This task is essential for developing AI assistants that can perceive and respond to human interactions. Unlike prior studies that assume identity-attributed social cues perfectly provided, Omni-MMSI reflects realistic scenarios where AI assistants must perceive from raw multi-modal streams and reason over extracted social cues. However, existing pipelines and multi-modal LLMs perform poorly in this setting because they lack reliable identity attribution ability, which leads to inaccurate social cues and weak interaction reasoning. To address this challenge, we propose Omni-MMSI-R, a reference-based pipeline that uses reference audio-vision pairs to produce identity-attributed social cues and leverages curated chain-of-thought supervision for reasoning on reference-based inputs. To enable reference-based research, we construct participant-level reference pairs and curated reasoning annotations on top of the existing datasets. Extensive experiments demonstrate that Omni-MMSI-R consistently outperforms advanced multi-modal LLMs and counterparts in Omni-MMSI.",
+          "https://arxiv.org/abs/2604.00267",
+          "https://sampson-lee.github.io/omni-mmsi-project-page"
         )
 
         add_paper("Decoupled Residual Denoising Diffusion Models for Unified and Data Efficient Image-to-Image Translation",
@@ -937,6 +1260,27 @@ function copy(dest, source) {
           "&nbsp;&nbsp;&nbsp;year      = {2026},<br>}",
           "We propose Decoupled Residual Denoising Diffusion models (DRDD) for unified and data-efficient image-to-image (I2I) translation. While diffusion models have advanced I2I translation in terms of quality and diversity, we uncover a previously under-explored property in diffusion models. Crucially, beyond its conventional role of manifold lifting (i.e., moving data off low-dimensional manifolds), injecting Gaussian noise facilitates domain harmonization by implicitly aligning feature distributions across domains, a property particularly advantageous for unified I2I translation. However, existing diffusion models prematurely erode this harmonization effect, as noise and residuals are simultaneously removed in a single coupled diffusion process. To address this, DRDD decouples the diffusion process into two sequential and independent diffusion stages: (1) a stochastic noise diffusion for domain harmonization and manifold lifting, and (2) a deterministic residual diffusion that learns the core semantic mapping entirely within the fixed-noise domain. This decoupling preserves harmonization and manifold lifting effects throughout the transformation, substantially simplifying the learning of unified mappings across diverse tasks and domains. Notably, the noise diffusion stage is trained exclusively on abundant, unpaired target-domain images, greatly improving data efficiency. Comprehensive theoretical and empirical analysis demonstrates that DRDD is broadly compatible with mainstream diffusion models and consistently delivers robust, unified I2I translation, even under limited paired data. Code is released to promote further research.",
         )
+
+        add_paper("M-VAR: Decoupled Scale-wise Autoregressive Modeling for High-Quality Image Generation",
+          "Sucheng Ren, Yaodong Yu, Nataniel Ruiz, Feng Wang, Alan Yuille, Cihang Xie",
+          "CVPR Findings, 2026",
+          "https://arxiv.org/abs/2411.10433",
+          "@inproceedings{ren2026mvar,<br>" +
+          "&nbsp;&nbsp;&nbsp;title     = {M-VAR: Decoupled Scale-wise Autoregressive Modeling for High-Quality Image Generation},<br>" +
+          "&nbsp;&nbsp;&nbsp;author    = {Sucheng Ren, Yaodong Yu, Nataniel Ruiz, Feng Wang, Alan Yuille, Cihang Xie},<br>" +
+          "&nbsp;&nbsp;&nbsp;booktitle = {CVPR Findings},<br>" +
+          "&nbsp;&nbsp;&nbsp;year      = {2026},<br>}",
+          "There exists recent work in computer vision, named VAR, that proposes a new autoregressive paradigm for image generation. Diverging from the vanilla next-token prediction, VAR structurally reformulates the image generation into a coarse to fine next-scale prediction. In this paper, we show that this scale-wise autoregressive framework can be effectively decoupled into intra-scale modeling, which captures local spatial dependencies within each scale, and inter-scale modeling, which models cross-scale relationships progressively from coarse-to-fine scales. This decoupling structure allows to rebuild VAR in a more computationally efficient manner. Specifically, for intra-scale modeling -- crucial for generating high-fidelity images -- we retain the original bidirectional self-attention design to ensure comprehensive modeling; for inter-scale modeling, which semantically connects different scales but is computationally intensive, we apply linear-complexity mechanisms like Mamba to substantially reduce computational overhead. We term this new framework M-VAR. Extensive experiments demonstrate that our method outperforms existing models in both image quality and generation speed. For example, our 1.5B model, with fewer parameters and faster inference speed, outperforms the largest VAR-d30-2B. Moreover, our largest model M-VAR-d32 impressively registers 1.78 FID on ImageNet 256x256 and outperforms the prior-art autoregressive models LlamaGen/VAR by 0.4/0.19 and popular diffusion models LDM/DiT by 1.82/0.49, respectively. Code is available at https://github.com/OliverRensu/MVAR.",
+          "https://arxiv.org/abs/2411.10433",
+          "https://github.com/OliverRensu/MVAR"
+        )
+
+
+
+
+
+
+
 
 
 
@@ -1041,6 +1385,21 @@ function copy(dest, source) {
           "https://arxiv.org/abs/2504.13143",
           "https://github.com/UCSC-VLAA/Complex-Edit"
         )
+
+        add_paper("Humanity's Last Exam",
+          "Long Phan, Alice Gatti, Ziwen Han, Nathaniel Li, et al. (incl. Bingchen Zhao, Yuyin Zhou, Juncheng Wu, Haoqin Tu)",
+          "Nature, 2026",
+          "https://arxiv.org/abs/2501.14249",
+          "@article{phan2026humanitylastexam,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {Humanity's Last Exam},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Long Phan and Alice Gatti and Ziwen Han and Nathaniel Li and others},<br>" +
+          "&nbsp;&nbsp;&nbsp;journal = {Nature},<br>" +
+          "&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "Benchmarks are important tools for tracking the rapid advancements in large language model (LLM) capabilities. However, benchmarks are not keeping pace in difficulty: LLMs now achieve over 90% accuracy on popular benchmarks like MMLU, limiting informed measurement of state-of-the-art LLM capabilities. In response, we introduce Humanity's Last Exam (HLE), a multi-modal benchmark at the frontier of human knowledge, designed to be the final closed-ended academic benchmark of its kind with broad subject coverage. HLE consists of 2,500 questions across dozens of subjects, including mathematics, humanities, and the natural sciences. HLE is developed globally by subject-matter experts and consists of multiple-choice and short-answer questions suitable for automated grading. Each question has a known solution that is unambiguous and easily verifiable, but cannot be quickly answered via internet retrieval. State-of-the-art LLMs demonstrate low accuracy and calibration on HLE, highlighting a significant gap between current LLM capabilities and the expert human frontier on closed-ended academic questions. To inform research and policymaking upon a clear understanding of model capabilities, we publicly release HLE at this https URL.",
+          "https://arxiv.org/abs/2501.14249",
+          "https://lastexam.ai/"
+        )
+
 
 
 
@@ -1340,7 +1699,7 @@ function copy(dest, source) {
           "&nbsp;&nbsp;&nbsp;journal = {TMLR},<br>" + 
           "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
           "Foundation models, including Large Language Models (LLMs), Multimodal Large Language Models (MLLMs), Image Generative Models (i.e, Text-to-Image Models and Image-Editing Models), and Video Generative Models, have become essential tools with broad applications across various domains such as law, medicine, education, finance, and beyond. As these models see increasing real-world deployment, ensuring their reliability and responsibility has become critical for academia, industry, and government. This survey addresses the reliable and responsible development of foundation models. We explore critical issues, including bias and fairness, security and privacy, uncertainty, explainability, and distribution shift. Our research also covers model limitations, such as hallucinations, as well as methods like alignment and Artificial Intelligence-Generated Content (AIGC) detection. For each area, we review the current state of the field and outline concrete future research directions. Additionally, we discuss the intersections between these areas, highlighting their connections and shared challenges. We hope our survey fosters the development of foundation models that are not only powerful but also ethical, trustworthy, reliable, and socially responsible.",
-          "https://openreview.net/forum?id=nLJZh4M6S5"
+          "https://arxiv.org/abs/2602.08145"
         )
 
 
