@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VisualClaw: A Real-Time, Personalized Agent for the Physical World</title>
+  <meta name="description" content="VisualClaw is a self-evolving multimodal agent for efficient streaming video understanding and tool-using multimodal workflows.">
+  <style>
+    :root {
+      --blue: #2563eb;
+      --blue-deep: #1e3a8a;
+      --green: #0f9f73;
+      --amber: #f59e0b;
+      --violet: #7c3aed;
+      --red: #dc2626;
+      --bg: #ffffff;
+      --bg-soft: #f6f9ff;
+      --surface: #ffffff;
+      --text: #182033;
+      --muted: #5f6b7a;
+      --border: #e5edf7;
+      --shadow: 0 14px 32px rgba(30, 60, 120, 0.12);
+      --shadow-soft: 0 3px 14px rgba(30, 60, 120, 0.08);
+      --ease: cubic-bezier(.22, 1, .36, 1);
+    }
+
+    [data-theme="dark"] {
+      --bg: #0b1020;
+      --bg-soft: #111a30;
+      --surface: #141d33;
+      --text: #e7ebf3;
+      --muted: #aeb9c8;
+      --border: #25334d;
+      --shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+      --shadow-soft: 0 4px 18px rgba(0, 0, 0, 0.36);
+      color-scheme: dark;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 5% 5%, rgba(37, 99, 235, 0.07), transparent 34%),
+        radial-gradient(circle at 96% 20%, rgba(15, 159, 115, 0.06), transparent 34%),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+    .section { padding: 68px 0; }
+    .section.compact { padding: 48px 0; }
+
+    .theme-toggle {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      z-index: 50;
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.88);
+      color: var(--text);
+      box-shadow: var(--shadow-soft);
+      cursor: pointer;
+      font-size: 18px;
+      backdrop-filter: blur(10px);
+    }
+    [data-theme="dark"] .theme-toggle { background: rgba(20, 29, 51, 0.88); }
+
+    .hero {
+      min-height: 78vh;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(135deg, rgba(37, 99, 235, 0.12), transparent 36%),
+        linear-gradient(225deg, rgba(15, 159, 115, 0.10), transparent 38%),
+        linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 100%);
+      color: var(--text);
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(37, 99, 235, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37, 99, 235, 0.07) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: radial-gradient(ellipse at center, #000 32%, transparent 76%);
+      pointer-events: none;
+    }
+    .hero-body {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      padding: 76px 0 96px;
+    }
+    .brand-logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      max-width: min(620px, 86vw);
+      margin-bottom: 24px;
+    }
+    .brand-logo .logo-icon {
+      width: 86px;
+      height: 86px;
+      object-fit: contain;
+      flex: 0 0 auto;
+      filter: drop-shadow(0 8px 18px rgba(15, 23, 42, 0.14));
+    }
+    .brand-logo .logo-text {
+      width: min(430px, 62vw);
+      height: auto;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 18px rgba(15, 23, 42, 0.12));
+    }
+    .hero h1 {
+      max-width: 960px;
+      margin: 0;
+      color: var(--text);
+      font-size: clamp(44px, 6vw, 82px);
+      line-height: 1.02;
+      letter-spacing: 0;
+      font-weight: 840;
+    }
+    .hero .subtitle {
+      max-width: 840px;
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: clamp(18px, 2.3vw, 25px);
+    }
+    .authors {
+      margin-top: 22px;
+      max-width: 960px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .authors .author-line,
+    .authors .contribution-line,
+    .authors .institution-line {
+      display: block;
+    }
+    .authors .contribution-line {
+      margin-top: 5px;
+      font-size: 13px;
+    }
+    .authors .institution-line {
+      margin-top: 6px;
+      font-size: 14px;
+      color: var(--text);
+    }
+    .hero-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      margin-top: 30px;
+    }
+    .link-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .nav-row .button {
+      min-height: 36px;
+      padding: 7px 14px;
+      font-size: 14px;
+      background: rgba(255, 255, 255, 0.58);
+    }
+    [data-theme="dark"] .nav-row .button {
+      background: rgba(20, 29, 51, 0.58);
+    }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 9px 17px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font-weight: 750;
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(10px);
+      transition: transform .25s var(--ease), background .25s var(--ease), box-shadow .25s var(--ease);
+    }
+    .button:hover {
+      transform: translateY(-2px);
+      text-decoration: none;
+      background: linear-gradient(135deg, var(--blue), var(--violet));
+      color: white;
+      box-shadow: 0 14px 28px rgba(37, 99, 235, 0.36);
+    }
+    .button.light {
+      color: white;
+      background: linear-gradient(135deg, var(--blue), var(--blue-deep));
+    }
+    .hero-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 34px;
+    }
+    .metric {
+      border-radius: 999px;
+      padding: 9px 15px;
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      font-weight: 760;
+      box-shadow: var(--shadow-soft);
+    }
+    .metric .value { color: var(--amber); }
+
+    .below-hero {
+      margin-top: -52px;
+      position: relative;
+      z-index: 2;
+    }
+    .teaser-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px;
+      box-shadow: var(--shadow);
+    }
+    .teaser-panel img,
+    .teaser-panel video {
+      width: 100%;
+      border-radius: 8px;
+      background: #05070d;
+    }
+    .teaser-panel video {
+      display: block;
+      aspect-ratio: 16 / 9;
+      object-fit: contain;
+    }
+    .caption {
+      margin: 12px 8px 2px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 15px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin: 0 0 30px;
+    }
+    .section-title h2 {
+      display: inline-block;
+      margin: 0;
+      font-size: clamp(28px, 3vw, 38px);
+      line-height: 1.16;
+      position: relative;
+      letter-spacing: 0;
+    }
+    .section-title h2::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -12px;
+      width: 76px;
+      height: 3px;
+      transform: translateX(-50%);
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--violet), var(--green));
+    }
+    .lead {
+      max-width: 880px;
+      margin: 28px auto 0;
+      color: var(--muted);
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .component-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .component-box {
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--surface), var(--bg-soft));
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--blue);
+      border-radius: 10px;
+      padding: 22px;
+      box-shadow: var(--shadow-soft);
+      transition: transform .28s var(--ease), box-shadow .28s var(--ease);
+    }
+    .component-box:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+    .component-box.green { border-left-color: var(--green); }
+    .component-box.amber { border-left-color: var(--amber); }
+    .component-box.violet { border-left-color: var(--violet); }
+    .component-box h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      line-height: 1.25;
+    }
+    .component-box p { margin: 0; color: var(--muted); }
+    .tag {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.10);
+      color: var(--blue-deep);
+      font-size: 12px;
+      font-weight: 780;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+    }
+    [data-theme="dark"] .tag { color: #9cc2ff; }
+
+    .figure-frame {
+      margin: 26px 0 0;
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface);
+      box-shadow: var(--shadow-soft);
+    }
+    .figure-frame img { border-radius: 8px; margin: 0 auto; }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--surface);
+      box-shadow: var(--shadow-soft);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+      font-size: 14px;
+    }
+    th, td {
+      padding: 12px 13px;
+      border-bottom: 1px solid var(--border);
+      text-align: right;
+      white-space: nowrap;
+    }
+    th:first-child, td:first-child,
+    th:nth-child(2), td:nth-child(2) { text-align: left; }
+    thead th {
+      background: linear-gradient(135deg, #172033, #334155);
+      color: white;
+      border-bottom: 0;
+    }
+    tbody tr:nth-child(even) { background: rgba(37, 99, 235, 0.035); }
+    tbody tr:hover { background: rgba(245, 158, 11, 0.10); }
+    .ours { background: rgba(37, 99, 235, 0.10) !important; font-weight: 760; }
+    .best { color: var(--green); font-weight: 820; }
+    .negative { color: var(--red); font-weight: 780; }
+
+    .result-block {
+      margin-top: 34px;
+    }
+    .result-block:first-of-type {
+      margin-top: 0;
+    }
+    .result-heading {
+      margin: 0 0 14px;
+      font-size: 23px;
+      line-height: 1.28;
+    }
+    .result-note {
+      margin: -4px 0 16px;
+      color: var(--muted);
+      max-width: 920px;
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 22px;
+      align-items: start;
+    }
+    .case-list {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+    .case-list li { margin-bottom: 12px; }
+    .callout {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.10), rgba(15, 159, 115, 0.08));
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px;
+      color: var(--text);
+    }
+
+    pre {
+      margin: 0;
+      white-space: pre-wrap;
+      overflow-wrap: break-word;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #e2e8f0;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: var(--shadow-soft);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+
+    .footer {
+      padding: 34px 0;
+      border-top: 1px solid var(--border);
+      background: var(--bg-soft);
+      color: var(--muted);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .7s var(--ease), transform .7s var(--ease);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 880px) {
+      .hero { min-height: 82vh; }
+      .hero h1 { font-size: 42px; }
+      .brand-logo { max-width: 88vw; margin-bottom: 18px; gap: 8px; }
+      .brand-logo .logo-icon { width: 58px; height: 58px; }
+      .brand-logo .logo-text { width: min(286px, 62vw); }
+      .component-grid, .case-grid { grid-template-columns: 1fr; }
+      .section { padding: 52px 0; }
+      .below-hero { margin-top: -34px; }
+      table { font-size: 13px; }
+      th, td { padding: 10px; }
+    }
+  </style>
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('visualclaw-theme');
+        var dark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', stored || (dark ? 'dark' : 'light'));
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+    })();
+  </script>
+</head>
+<body>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme">◐</button>
+
+  <header class="hero">
+    <div class="hero-body">
+      <div class="container">
+        <div class="brand-logo" aria-label="VisualClaw">
+          <img class="logo-icon" src="web_images/visualclaw_icon_v3-removebg-preview.png" alt="" aria-hidden="true">
+          <img class="logo-text" src="web_images/visualclaw_text_v1-removebg-preview.png" alt="VisualClaw">
+        </div>
+        <h1>A Real-Time, Personalized Agent for the Physical World</h1>
+        <p class="subtitle">
+          VisualClaw combines edge-side video compression, hot/cold skill injection, and memory-guided skill evolution so multimodal agents can see, act, and improve without updating VLM weights.
+        </p>
+        <div class="authors">
+          <span class="author-line">Haoqin Tu<sup>1*</sup>, Jianwen Chen<sup>2*</sup>, Zijun Wang<sup>1</sup>, Siwei Han<sup>2</sup>, Juncheng Wu<sup>1</sup>, Hardy Chen<sup>1</sup>, Haonian Ji<sup>2</sup>, Kaiwen Xiong<sup>2</sup>, Jiaqi Liu<sup>2</sup>, Peng Xia<sup>2</sup>, Jieru Mei<sup>3</sup>, Hongliang Fei<sup>3</sup>, Jason Eshraghian<sup>1</sup>, Zeyu Zheng<sup>4</sup>, Yuyin Zhou<sup>1</sup>, Huaxiu Yao<sup>2</sup>, Cihang Xie<sup>1</sup></span>
+          <span class="contribution-line">* equal technical contribution</span>
+          <span class="institution-line"><sup>1</sup>UC Santa Cruz &nbsp;&nbsp; <sup>2</sup>UNC-Chapel Hill &nbsp;&nbsp; <sup>3</sup>Google &nbsp;&nbsp; <sup>4</sup>UC Berkeley</span>
+        </div>
+        <nav class="hero-actions" aria-label="Project links">
+          <div class="link-row resource-row" aria-label="External resources">
+            <a class="button light" href="#">ArXiv</a>
+            <a class="button" href="https://github.com/UCSC-VLAA/VisualClaw" target="_blank" rel="noopener">Code</a>
+            <a class="button" href="https://huggingface.co/datasets/UCSC-VLAA/VisualClawArena" target="_blank" rel="noopener">VisualClawArena</a>
+          </div>
+          <div class="link-row nav-row" aria-label="Page sections">
+            <a class="button" href="#method">VisualClaw Method</a>
+            <a class="button" href="#benchmark">VisualClawArena</a>
+            <a class="button" href="#results">Results</a>
+            <a class="button" href="#bibtex">BibTeX</a>
+          </div>
+        </nav>
+        <div class="hero-metrics" aria-label="Headline metrics">
+          <span class="metric"><span class="value">-98.1%</span> API cost vs. full-frame upload</span>
+          <span class="metric"><span class="value">+15.8%</span> peak EgoSchema gain</span>
+          <span class="metric"><span class="value">200</span> agentic scenarios</span>
+          <span class="metric"><span class="value">24.4</span> average rounds/scenario</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="below-hero">
+      <div class="container">
+        <figure class="teaser-panel reveal">
+          <video controls muted playsinline preload="none" poster="web_images/visualclaw_teaser_front_v1.jpg">
+            <source src="web_images/visualclaw_prop.mp4" type="video/mp4">
+            Your browser does not support embedded video.
+          </video>
+          <figcaption class="caption">
+            VisualClaw in action: a real-time personalized agent that filters streaming visual evidence, reasons with cloud VLMs, and evolves memory and skills over time.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section compact" id="abstract">
+      <div class="container reveal">
+        <div class="section-title">
+          <h2>Abstract</h2>
+          <p class="lead">
+            Multimodal agents still face three deployment gaps: dense video frames are expensive, static scaffolds do not improve after deployment, and standard video-QA benchmarks rarely test tool-using workspace behavior. VisualClaw addresses these gaps through hybrid encoding and self-evolving skill banks, and introduces VisualClawArena to evaluate visual evidence use inside executable multimodal workflows.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="method">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>Three-Timescale System</h2>
+          <p class="lead">
+            The system separates fast edge filtering, per-question retrieval, and lower-frequency skill evolution so expensive multimodal context is used only when it matters.
+          </p>
+        </div>
+        <div class="component-grid">
+          <article class="component-box reveal">
+            <span class="tag">Per frame</span>
+            <h3>Cascaded Encoding Gate</h3>
+            <p>Perceptual hashes, a 128-dimensional CPU encoder, and an adaptive change gate decide major, minor, or skipped frames as a live stream arrives.</p>
+          </article>
+          <article class="component-box green reveal">
+            <span class="tag">Per question</span>
+            <h3>Hot/Cold Skill Injection</h3>
+            <p>The top-k retrieved skills are inlined as hot context, while the rest of the bank stays available as a compact catalogue to keep prompt cost bounded.</p>
+          </article>
+          <article class="component-box amber reveal">
+            <span class="tag">Per session</span>
+            <h3>Memory-Guided Evolution</h3>
+            <p>Correct examples enter memory, failures trigger an offline evolver, and bank hygiene keeps skill updates useful over long deployment histories.</p>
+          </article>
+        </div>
+        <figure class="figure-frame reveal">
+          <img src="web_images/visualclaw_pipeline_v3.jpg" alt="VisualClaw pipeline diagram">
+          <figcaption class="caption">VisualClaw pipeline: edge-side visual compression, skill/memory retrieval, and meta-evolution of the language-layer scaffold.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section compact" id="benchmark">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>VisualClawArena</h2>
+          <p class="lead">
+            VisualClawArena turns video examples into multimodal agentic scenarios with documents, chat/audio traces, dynamic updates, and executable checks.
+          </p>
+        </div>
+        <div class="component-grid">
+          <article class="component-box violet reveal">
+            <span class="tag">Suite</span>
+            <h3>200 Scenarios</h3>
+            <p>Built from Indoor/VSI, EgoSchema, and QVHighlights videos, with an average of 24.4 steps per scenario.</p>
+          </article>
+          <article class="component-box green reveal">
+            <span class="tag">Grounding</span>
+            <h3>18.1 Average Visual Steps</h3>
+            <p>Each scenario averages 18.1 visual-required steps after timestamp-grounded construction and text-only leakage checks.</p>
+          </article>
+          <article class="component-box amber reveal">
+            <span class="tag">Scoring</span>
+            <h3>Executable Workspaces</h3>
+            <p>Agents must reconcile visual facts with files and leave a workspace that can be automatically scored.</p>
+          </article>
+        </div>
+        <figure class="figure-frame reveal">
+          <img src="web_images/visualclawarena_pipeline_v1.jpg" alt="VisualClawArena data curation pipeline">
+          <figcaption class="caption">Five-stage curation pipeline for executable, diverse, visually grounded multimodal agent tasks.</figcaption>
+        </figure>
+        <figure class="figure-frame reveal">
+          <img src="web_images/benchmark_case.jpg" alt="Example VisualClawArena benchmark scenario with video clip, workspace files, and multi-round instructions">
+          <figcaption class="caption">Example VisualClawArena case: each scenario combines a video clip, role and identity files, user context, workspace artifacts, and multi-round instructions that require visual grounding and executable workspace updates.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="results">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>Results</h2>
+          <p class="lead">The same design improves static video-QA, multimodal agentic workflows, and cost efficiency.</p>
+        </div>
+
+        <section class="result-block reveal" id="videoqa-results" aria-labelledby="videoqa-results-title">
+          <h3 class="result-heading" id="videoqa-results-title">General Video-QA Results</h3>
+          <p class="result-note">Accuracy across four video-QA benchmarks using cascade encoding and the skill/memory evolution variants from the paper.</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Benchmark</th>
+                  <th>Model</th>
+                  <th>Plain</th>
+                  <th>Seed</th>
+                  <th>+Evolve</th>
+                  <th>+SkillMemCat</th>
+                  <th>FullEvo Cat.</th>
+                  <th>FullEvo Guide</th>
+                  <th>Uniform-8 Plain</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="ours"><td>EgoSchema</td><td>Gemini 3 Flash</td><td>52.60</td><td>67.20</td><td>68.00</td><td>65.20</td><td>64.60</td><td class="best">68.40</td><td>60.60</td></tr>
+                <tr><td>EgoSchema</td><td>GPT-5.2</td><td>64.00</td><td>66.60</td><td>66.20</td><td>67.20</td><td>65.60</td><td class="best">68.00</td><td>70.60</td></tr>
+                <tr class="ours"><td>Video-MME long</td><td>Gemini 3 Flash</td><td>60.33</td><td>61.56</td><td>61.33</td><td>62.78</td><td>62.56</td><td class="best">64.22</td><td>61.44</td></tr>
+                <tr><td>Video-MME long</td><td>GPT-5.2</td><td>55.89</td><td>54.00</td><td>52.22</td><td>54.67</td><td>52.78</td><td class="best">55.89</td><td>58.78</td></tr>
+                <tr class="ours"><td>EgoPlan-Bench</td><td>Gemini 3 Flash</td><td>24.62</td><td class="best">30.80</td><td>29.93</td><td>28.31</td><td>30.04</td><td>28.85</td><td>37.96</td></tr>
+                <tr><td>EgoPlan-Bench</td><td>GPT-5.2</td><td>28.42</td><td>28.74</td><td>28.31</td><td>28.09</td><td>28.85</td><td class="best">29.39</td><td>43.06</td></tr>
+                <tr class="ours"><td>NextQA</td><td>Gemini 3 Flash</td><td>72.70</td><td>75.10</td><td>73.90</td><td>75.50</td><td class="best">75.70</td><td>74.50</td><td>77.70</td></tr>
+                <tr><td>NextQA</td><td>GPT-5.2</td><td>73.20</td><td>72.00</td><td>72.30</td><td>70.90</td><td>72.50</td><td class="best">73.30</td><td>78.90</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="result-block reveal" id="agentic-results" aria-labelledby="agentic-results-title">
+          <h3 class="result-heading" id="agentic-results-title">Agentic Results on VisualClawArena</h3>
+          <p class="result-note">Macro and micro accuracy on the 200-scenario multimodal workspace benchmark, averaging 24.4 rounds per scenario, with Codex and Claude Code backends.</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Backend</th>
+                  <th>Setting</th>
+                  <th>Early</th>
+                  <th>Mid</th>
+                  <th>Late</th>
+                  <th>Micro</th>
+                  <th>Macro</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="ours"><td>Codex</td><td>VisualClaw Cat.</td><td>49.69</td><td class="best">56.19</td><td class="best">57.38</td><td class="best">59.88</td><td class="best">54.27</td></tr>
+                <tr><td>Codex</td><td>VisualClaw Guide</td><td class="best">50.66</td><td>54.66</td><td>56.88</td><td>59.50</td><td>53.89</td></tr>
+                <tr><td>Codex</td><td>VisualClaw w/o FullEvo</td><td>48.10</td><td>52.93</td><td>53.47</td><td>57.95</td><td>51.35</td></tr>
+                <tr><td>Codex</td><td>Uniform-8</td><td>46.74</td><td>50.49</td><td>53.90</td><td>56.08</td><td>50.25</td></tr>
+                <tr class="ours"><td>Claude Code</td><td>VisualClaw Cat.</td><td class="best">52.03</td><td class="best">50.91</td><td class="best">53.50</td><td class="best">57.79</td><td class="best">52.16</td></tr>
+                <tr><td>Claude Code</td><td>VisualClaw Guide</td><td>50.87</td><td>49.98</td><td>51.40</td><td>56.54</td><td>50.77</td></tr>
+                <tr><td>Claude Code</td><td>VisualClaw w/o FullEvo</td><td>48.80</td><td>48.51</td><td>49.68</td><td>55.34</td><td>49.00</td></tr>
+                <tr><td>Claude Code</td><td>Uniform-8</td><td>40.25</td><td>44.49</td><td>47.52</td><td>49.10</td><td>43.99</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <figure class="figure-frame">
+            <img src="web_images/mmarena_200_metasightclaw_concat_per_day.png" alt="Per-day accuracy on VisualClawArena showing VisualClaw evolution over time">
+            <figcaption class="caption">
+              Per-day accuracy over 200 VisualClawArena scenarios. The curve shows how VisualClaw with memory-to-evolver concatenation improves across within-scenario steps, demonstrating real adaptation over time rather than a one-shot prompt gain.
+            </figcaption>
+          </figure>
+        </section>
+
+        <section class="result-block reveal" id="cost-results" aria-labelledby="cost-results-title">
+          <h3 class="result-heading" id="cost-results-title">Cost Comparisons</h3>
+          <p class="result-note">Frame count, token count, and Gemini 3 Flash API spend against full-frame upload and Uniform-8 + FullEvo baselines.</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Dataset</th>
+                  <th>Configuration</th>
+                  <th>KF/Q</th>
+                  <th>Tokens/Q</th>
+                  <th>$/run</th>
+                  <th>vs Full-frame</th>
+                  <th>vs U-8 + FullEvo</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>EgoSchema</td><td>Full-frame @1fps</td><td>~180</td><td>~192,841</td><td>$28.93</td><td>-</td><td>-</td></tr>
+                <tr><td>EgoSchema</td><td>Uniform-8 + FullEvo</td><td>8.00</td><td>13,419</td><td>$2.01</td><td>-</td><td>-</td></tr>
+                <tr class="ours"><td>EgoSchema</td><td>VisualClaw</td><td>2.95</td><td>9,524</td><td>$1.44</td><td class="best">-95.0%</td><td class="best">-28.4%</td></tr>
+                <tr><td>Video-MME long</td><td>Full-frame @1fps</td><td>~1,800</td><td>~1,926,361</td><td>$520.12</td><td>-</td><td>-</td></tr>
+                <tr class="ours"><td>Video-MME long</td><td>VisualClaw</td><td>5.41</td><td>13,420</td><td>$3.63</td><td class="best">-99.3%</td><td class="best">-15.2%</td></tr>
+                <tr><td>NextQA</td><td>Uniform-8 + FullEvo</td><td>8.00</td><td>14,025</td><td>$4.21</td><td>-</td><td>-</td></tr>
+                <tr class="ours"><td>NextQA</td><td>VisualClaw</td><td>1.51</td><td>8,207</td><td>$2.47</td><td class="best">-74.6%</td><td class="best">-41.3%</td></tr>
+                <tr class="ours"><td>All experiments</td><td>VisualClaw total</td><td>-</td><td>-</td><td>$10.51</td><td class="best">-98.1%</td><td class="best">-25.9%</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="section compact" id="case-study">
+      <div class="container">
+        <div class="section-title reveal">
+          <h2>Case Study</h2>
+        </div>
+        <div class="case-grid">
+          <figure class="figure-frame reveal">
+            <img src="web_images/case_study_main.jpg" alt="VisualClaw case studies">
+            <figcaption class="caption">Two representative wins: one driven by evolved skills and one driven by memory-conditioned evolution.</figcaption>
+          </figure>
+          <div class="callout reveal">
+            <ol class="case-list">
+              <li><strong>EgoSchema:</strong> a single major keyframe is enough; evolved skills recover the purpose-clause answer and flip the baseline choice to the ground truth.</li>
+              <li><strong>NextQA:</strong> the memory bank retrieves prior balance-and-stability patterns, steering the answer away from a misleading motion interpretation.</li>
+              <li><strong>Deployment signal:</strong> both examples compress the video to one keyframe, so the accuracy gain comes from the evolving language-layer scaffold.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="bibtex">
+      <div class="container reveal">
+        <div class="section-title">
+          <h2>BibTeX</h2>
+        </div>
+        <pre><code>@article{tu2026visualclaw,
+  title={VisualClaw: A Real-Time, Personalized Agent for the Physical World},
+  author={Haoqin Tu and Jianwen Chen and Zijun Wang and Siwei Han and Juncheng Wu and Hardy Chen and Haonian Ji and Kaiwen Xiong and Jiaqi Liu and Peng Xia and Jieru Mei and Hongliang Fei and Jason Eshraghian and Zeyu Zheng and Yuyin Zhou and Huaxiu Yao and Cihang Xie},
+  journal={Manuscript},
+  year={2026}
+}</code></pre>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      This project page was generated from the local VisualClaw paper source and follows the VLAA-GUI project-page structure.
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var btn = document.getElementById('themeToggle');
+      btn.addEventListener('click', function () {
+        var current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+        var next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        try { localStorage.setItem('visualclaw-theme', next); } catch (e) {}
+      });
+
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.08, rootMargin: '0px 0px -42px 0px' });
+        document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+      } else {
+        document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
+      }
+    })();
+  </script>
+</body>
+</html>
