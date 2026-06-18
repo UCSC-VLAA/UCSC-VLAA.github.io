@@ -180,6 +180,76 @@ function copy(dest, source) {
         document.write("<ul><br>")
 
 
+        add_paper("VisualClaw: A Real-Time, Personalized Agent for the Physical World",
+          "Haoqin Tu, Jianwen Chen, Zijun Wang, Siwei Han, Juncheng Wu, Hardy Chen, Haonian Ji, Kaiwen Xiong, Jiaqi Liu, Peng Xia, Jieru Mei, Hongliang Fei, Jason Eshraghian, Zeyu Zheng, Yuyin Zhou, Huaxiu Yao, Cihang Xie",
+          null,
+          "https://arxiv.org/abs/2606.16295",
+          "@article{tu2026visualclaw,<br>&nbsp;&nbsp;&nbsp;title   = {VisualClaw: A Real-Time, Personalized Agent for the Physical World},<br>&nbsp;&nbsp;&nbsp;author  = {Haoqin Tu, Jianwen Chen, Zijun Wang, Siwei Han, Juncheng Wu, Hardy Chen, Haonian Ji, Kaiwen Xiong, Jiaqi Liu, Peng Xia, Jieru Mei, Hongliang Fei, Jason Eshraghian, Zeyu Zheng, Yuyin Zhou, Huaxiu Yao, Cihang Xie},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2606.16295},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "Vision language models are serving as general-purpose interfaces for complex multimodal tasks. However, deployment still faces three gaps: VLMs typically incur high latency and cost when processing dense video frames and long prompts, the agent scaffold remains static after deployment, and standard video-QA benchmarks do not test whether agents can use visual evidence inside tool-using workspaces. We present VisualClaw, a self-evolving multimodal agent built around two principles. First, hybrid encoding reduces deployment cost by filtering less informative streaming frames with a cascaded gate and compressing the text skill bank through hot/cold top-k injection. Second, skill evolution lets the agent learn from failures: retrieved memories condition an evolver as direct concatenated context or as guided evidence, producing skill-bank updates that help future questions. Across 4 video-QA benchmarks with 2 VLMs, VisualClaw cuts per-question API cost by an average -98% versus full-frame upload and by -25.9% over the offline uniform 8 frame baseline, while boosting accuracy in most settings. To address the gap, we curate VisualClawArena, a 200-scenario multimodal agentic benchmark built through a strict five-stage pipeline; models must use video evidence, documents, dynamic updates, and executable checks inside a workspace. These properties make VisualClaw a natural fit for edge applications, where the cascade reduces a 1-hour streaming session from ~3,600 API uploads down to only 5-20 calls and the self-evolution makes it a personalized assistant.",
+          "https://arxiv.org/abs/2606.16295",
+          "https://ucsc-vlaa.github.io/VisualClaw"
+        )
+
+        add_paper("AutoMedBench: Towards Medical AutoResearch with Agentic AI Models",
+          "Junqi Liu, Selena Song, Yuhan Wang, Jiawei Mao, Hardy Chen, Xiaoke Huang, Tianhao Qi, Pengfei Guo, Yucheng Tang, Yufan He, Can Zhao, Andriy Myronenko, Dong Yang, Daguang Xu, Yuyin Zhou",
+          null,
+          "https://arxiv.org/abs/2606.01961",
+          "@article{liu2026automedbench,<br>&nbsp;&nbsp;&nbsp;title   = {AutoMedBench: Towards Medical AutoResearch with Agentic AI Models},<br>&nbsp;&nbsp;&nbsp;author  = {Junqi Liu, Selena Song, Yuhan Wang, Jiawei Mao, Hardy Chen, Xiaoke Huang, Tianhao Qi, Pengfei Guo, Yucheng Tang, Yufan He, Can Zhao, Andriy Myronenko, Dong Yang, Daguang Xu, Yuyin Zhou},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2606.01961},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "Autonomous agents are increasingly expected to support end-to-end medical-AI research workflows, moving beyond isolated prediction tasks or short-form clinical question answering. However, existing medical agent benchmarks primarily evaluate final outputs, providing limited visibility into agent behavior within the research process. To address this gap, we present AutoMedBench, a workflow-aware benchmark for autonomous medical-AI research across diverse medical imaging and multimodal inference tasks, organizing agent execution into a unified five-stage workflow (S1-S5): Plan, Setup, Validate, Inference, and Submit. It comprises long-horizon tasks with each run averaging 33 agent turns, spanning five research tracks: segmentation, image enhancement, visual question answering (VQA), report generation, and lesion detection. Across thousands of recorded runs, stage-level scoring reveals that Validate is the weakest workflow stage on average, whereas Setup is the strongest, suggesting that current agents are better at making pipelines executable than at verifying their reliability.",
+          "https://arxiv.org/abs/2606.01961",
+          "https://automedbench.github.io/"
+        )
+
+        add_paper("Harness Updating Is Not Harness Benefit: Disentangling Evolution Capabilities in Self-Evolving LLM Agents",
+          "Minhua Lin, Juncheng Wu, Zijun Wang, Zhan Shi, Yisi Sang, Bing He, Zewen Liu, Tianxin Wei, Zongyu Wu, Zhiwei Zhang, Dakuo Wang, Xiang Zhang, Benoit Dumoulin, Cihang Xie, Yuyin Zhou, Suhang Wang, Hanqing Lu",
+          null,
+          "https://arxiv.org/abs/2605.30621",
+          "@article{lin2026harness,<br>&nbsp;&nbsp;&nbsp;title   = {Harness Updating Is Not Harness Benefit: Disentangling Evolution Capabilities in Self-Evolving LLM Agents},<br>&nbsp;&nbsp;&nbsp;author  = {Minhua Lin, Juncheng Wu, Zijun Wang, Zhan Shi, Yisi Sang, Bing He, Zewen Liu, Tianxin Wei, Zongyu Wu, Zhiwei Zhang, Dakuo Wang, Xiang Zhang, Benoit Dumoulin, Cihang Xie, Yuyin Zhou, Suhang Wang, Hanqing Lu},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2605.30621},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "LLM agents are increasingly deployed as systems built around editable external harnesses, including prompts, skills, memories and tools, that shape task execution without changing model parameters. Harness self-evolution adapts such agents by updating these harnesses from execution evidence. Yet it remains unclear whether a model's base capability in task-solving predicts its capabilities in harness self-evolution. We analyze two harness self-evolution capabilities: (i) harness-updating, the capability to produce useful persistent harness updates from execution evidence; (ii) harness-benefit, the capability to benefit from updated harnesses during task solving. Our analysis reveals two findings. First, harness-updating is flat in base capability: models from different capability tiers produce harness updates that lead to surprisingly similar gains. Second, harness-benefit is non-monotonic in base capability: weak-tier models benefit little from updated harnesses, mid-tier models benefit most, and strong-tier models benefit less than mid-tier. These findings suggest investing capability budget in the task-solving agent rather than the evolver, and targeting harness invocation and long-horizon instruction following in agent training.",
+          "https://arxiv.org/abs/2605.30621",
+          "https://github.com/A-EVO-Lab/a-evolve/tree/release/harness-evolution"
+        )
+
+        add_paper("ClinSeekAgent: Automating Multimodal Evidence Seeking for Agentic Clinical Reasoning",
+          "Juncheng Wu, Letian Zhang, Yuhan Wang, Haoqin Tu, Hardy Chen, Zijun Wang, Cihang Xie, Yuyin Zhou",
+          null,
+          "https://arxiv.org/abs/2605.20176",
+          "@article{wu2026clinseekagent,<br>&nbsp;&nbsp;&nbsp;title   = {ClinSeekAgent: Automating Multimodal Evidence Seeking for Agentic Clinical Reasoning},<br>&nbsp;&nbsp;&nbsp;author  = {Juncheng Wu, Letian Zhang, Yuhan Wang, Haoqin Tu, Hardy Chen, Zijun Wang, Cihang Xie, Yuyin Zhou},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2605.20176},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "Large language models (LLMs) and agentic systems have shown promise for clinical decision support, but existing works largely assume that evidence has already been curated and handed to the model. Real-world clinical workflows instead require agents to actively seek, iteratively plan, and synthesize multimodal evidence from heterogeneous sources. In this paper, we introduce ClinSeekAgent, an automated agentic framework for dynamic multimodal evidence seeking that shifts the paradigm from passive evidence consumption to active evidence acquisition. Given only a clinical query and access to raw data sources, ClinSeekAgent gathers evidence by querying medical knowledge bases, navigating raw EHRs, and invoking medical imaging tools; refines its hypotheses as new information emerges; and integrates the collected evidence into grounded clinical decisions. On multimodal tasks, ClinSeekAgent improves Claude Opus 4.6 from 47.5 to 62.6 (+15.1); all evaluated models improve across the three CXR-related task groups.",
+          "https://arxiv.org/abs/2605.20176",
+          "https://ucsc-vlaa.github.io/ClinSeekAgent/"
+        )
+
+        add_paper("AutoResearchClaw: Self-Reinforcing Autonomous Research with Human-AI Collaboration",
+          "Jiaqi Liu, Shi Qiu, Mairui Li, Bingzhou Li, Haonian Ji, Siwei Han, Xinyu Ye, Peng Xia, Zihan Dong, Meng Chen, Congyu Zhang, Letian Zhang, Guiming Chen, Haoqin Tu, Xinyu Yang, Lu Feng, Xujiang Zhao, Haifeng Chen, Jiawei Zhou, Xiao Wang, Weitong Zhang, Hongtu Zhu, Yun Li, Jieru Mei, Hongliang Fei, Jiaheng Zhang, Linjie Li, Linjun Zhang, Yuyin Zhou, Sheng Wang, Caiming Xiong, James Zou, Zeyu Zheng, Cihang Xie, Mingyu Ding, Huaxiu Yao",
+          null,
+          "https://arxiv.org/abs/2605.20025",
+          "@article{liu2026autoresearchclaw,<br>&nbsp;&nbsp;&nbsp;title   = {AutoResearchClaw: Self-Reinforcing Autonomous Research with Human-AI Collaboration},<br>&nbsp;&nbsp;&nbsp;author  = {Jiaqi Liu, Shi Qiu, Mairui Li, Bingzhou Li, Haonian Ji, Siwei Han, Xinyu Ye, Peng Xia, Zihan Dong, Meng Chen, Congyu Zhang, Letian Zhang, Guiming Chen, Haoqin Tu, Xinyu Yang, Lu Feng, Xujiang Zhao, Haifeng Chen, Jiawei Zhou, Xiao Wang, Weitong Zhang, Hongtu Zhu, Yun Li, Jieru Mei, Hongliang Fei, Jiaheng Zhang, Linjie Li, Linjun Zhang, Yuyin Zhou, Sheng Wang, Caiming Xiong, James Zou, Zeyu Zheng, Cihang Xie, Mingyu Ding, Huaxiu Yao},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2605.20025},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "Automating scientific discovery requires more than generating papers from ideas. Real research is iterative: hypotheses are challenged from multiple perspectives, experiments fail and inform the next attempt, and lessons accumulate across cycles. Existing autonomous research systems often model this process as a linear pipeline: they rely on single-agent reasoning, stop when execution fails, and do not carry experience across runs. We present AutoResearchClaw, a multi-agent autonomous research pipeline built on five mechanisms: structured multi-agent debate for hypothesis generation and result analysis, a self-healing executor with a Pivot/Refine decision loop that transforms failures into information, verifiable result reporting that prevents fabricated numbers and hallucinated citations, human-in-the-loop collaboration with seven intervention modes spanning full autonomy to step-by-step oversight, and cross-run evolution that converts past mistakes into future safeguards. On ARC-Bench, a 25-topic experiment-stage benchmark, AutoResearchClaw outperforms AI Scientist v2 by 54.7%. We position AutoResearchClaw as a research amplifier that augments rather than replaces human scientific judgment.",
+          "https://arxiv.org/abs/2605.20025",
+          "https://github.com/aiming-lab/AutoResearchClaw"
+        )
+
+        add_paper("ClawForge: Generating Executable Interactive Benchmarks for Command-Line Agents",
+          "Yuxiang Lai, Peng Xia, Haonian Ji, Kaiwen Xiong, Kaide Zeng, Jiaqi Liu, Fang Wu, Jike Zhong, Zeyu Zheng, Cihang Xie, Huaxiu Yao",
+          null,
+          "https://arxiv.org/abs/2605.14133",
+          "@article{lai2026clawforge,<br>&nbsp;&nbsp;&nbsp;title   = {ClawForge: Generating Executable Interactive Benchmarks for Command-Line Agents},<br>&nbsp;&nbsp;&nbsp;author  = {Yuxiang Lai, Peng Xia, Haonian Ji, Kaiwen Xiong, Kaide Zeng, Jiaqi Liu, Fang Wu, Jike Zhong, Zeyu Zheng, Cihang Xie, Huaxiu Yao},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2605.14133},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "Interactive agent benchmarks face a tension between scalable construction and realistic workflow evaluation. Hand-authored tasks are expensive to extend and revise, while static prompt evaluation misses failures that only appear when agents operate over persistent state. Existing interactive benchmarks have advanced agent evaluation significantly, but most initialize tasks from clean state and do not systematically test how agents handle pre-existing partial, stale, or conflicting artifacts. We present ClawForge, a generator-backed benchmark framework for executable command-line workflows under state conflict. The framework compiles scenario templates, grounded slots, initialized state, reference trajectories, and validators into reproducible task specifications, and evaluates agents step by step over persistent workflow surfaces using normalized end state and observable side effects rather than exact trajectory matching. We instantiate this framework as the ClawForge-Bench (17 scenarios, 6 ability categories). Results across seven frontier models show that the best model reaches only 45.3% strict accuracy, and the widest model separation is driven by whether agents inspect existing state before acting.",
+          "https://arxiv.org/abs/2605.14133",
+          "https://github.com/aiming-lab/ClawForge"
+        )
+
+        add_paper("EvolveMem: Self-Evolving Memory Architecture via AutoResearch for LLM Agents",
+          "Jiaqi Liu, Xinyu Ye, Peng Xia, Zeyu Zheng, Cihang Xie, Mingyu Ding, Huaxiu Yao",
+          null,
+          "https://arxiv.org/abs/2605.13941",
+          "@article{liu2026evolvemem,<br>&nbsp;&nbsp;&nbsp;title   = {EvolveMem: Self-Evolving Memory Architecture via AutoResearch for LLM Agents},<br>&nbsp;&nbsp;&nbsp;author  = {Jiaqi Liu, Xinyu Ye, Peng Xia, Zeyu Zheng, Cihang Xie, Mingyu Ding, Huaxiu Yao},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2605.13941},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "Long-term memory is essential for LLM agents that operate across multiple sessions, yet existing memory systems treat retrieval infrastructure as fixed: stored content evolves while scoring functions, fusion strategies, and answer-generation policies remain frozen at deployment. We argue that truly adaptive memory requires co-evolution at two levels: the stored knowledge and the retrieval mechanism that queries it. We present EvolveMem, a self-evolving memory architecture that exposes its full retrieval configuration as a structured action space optimized by an LLM-powered diagnosis module. In each evolution round, the module reads per-question failure logs, identifies root causes, and proposes targeted configuration adjustments; a guarded meta-analyzer applies them with automatic revert-on-regression and explore-on-stagnation safeguards. On LoCoMo, EvolveMem outperforms the strongest baseline by 25.7% relative and achieves a 78.0% relative improvement over the minimal baseline. On MemBench, EvolveMem exceeds the strongest baseline by 18.9% relative.",
+          "https://arxiv.org/abs/2605.13941",
+          "https://github.com/aiming-lab/SimpleMem"
+        )
+
         add_paper("ClawMark: A Living-World Benchmark for Multi-Turn, Multi-Day, Multimodal Coworker Agents",
           "Fanqing Meng, Lingxiao Du, Zijian Wu, Guanzheng Chen, Xiangyan Liu, Jiaqi Liao, Chonghe Jiang, Zhenglin Wan, Jiawei Gu, Pengfei Zhou, Rui Huang, Ziqi Zhao, Shengyuan Ding, Ailing Yu, Bo Peng, Bowei Xia, Hao Sun, Haotian Liang, Ji Xie, Jiajun Chen, Jiajun Song, Liu Yang, Ming Xu, Qionglin Qiu, Runhao Fu, Shengfang Zhai, Shijian Wang, Tengfei Ma, Tianyi Wu, Weiyang Jin, Yan Wang, Yang Dai, Yao Lai, Youwei Shu, Yue Liu, Yunzhuo Hao, Yuwei Niu, Jinkai Huang, Jiayuan Zhuo, Zhennan Shen, Linyu Wu, Cihang Xie, Yuyin Zhou, Jiaheng Zhang, Zeyu Zheng, Mengkang Hu, Michael Qizhe Shieh",
           null,
@@ -353,16 +423,6 @@ function copy(dest, source) {
           "https://github.com/hunarbatra/SpatialThinker"
         )
 
-        add_paper("LightFusion: A Light-weighted, Double Fusion Framework for Unified Multimodal Understanding and Generation",
-          "Zeyu Wang, Zilong Chen, Chenhui Gou, Feng Li, Chaorui Deng, Deyao Zhu, Kunchang Li, Weihao Yu, Haoqin Tu, Haoqi Fan, Cihang Xie",
-          null,
-          "https://arxiv.org/abs/2510.22946",
-          "@article{wang2025lightfusion,<br>&nbsp;&nbsp;&nbsp;title   = {LightFusion: A Light-weighted, Double Fusion Framework for Unified Multimodal Understanding and Generation},<br>&nbsp;&nbsp;&nbsp;author  = {Zeyu Wang, Zilong Chen, Chenhui Gou, Feng Li, Chaorui Deng, Deyao Zhu, Kunchang Li, Weihao Yu, Haoqin Tu, Haoqi Fan, Cihang Xie},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2510.22946},<br>&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
-          "Unified multimodal models have recently shown remarkable gains in both capability and versatility, yet most leading systems are still trained from scratch and require substantial computational resources. In this paper, we show that competitive performance can be obtained far more efficiently by strategically fusing publicly available models specialized for either generation or understanding. Our key design is to retain the original blocks while additionally interleaving multimodal self-attention blocks throughout the networks. This double fusion mechanism (1) effectively enables rich multi-modal fusion while largely preserving the original strengths of the base models, and (2) catalyzes synergistic fusion of high-level semantic representations from the understanding encoder with low-level spatial signals from the generation encoder. By training with only ~ 35B tokens, this approach achieves strong results across multiple benchmarks: 0.91 on GenEval for compositional text-to-image generation, 82.16 on DPG-Bench for complex text-to-image generation, 6.06 on GEditBench, and 3.77 on ImgEdit-Bench for image editing. By fully releasing the entire suite of code, model weights, and datasets, we hope to support future research on unified multimodal modeling.",
-          "https://arxiv.org/abs/2510.22946",
-          "https://ucsc-vlaa.github.io/LightBagel/"
-        )
-
         add_paper("A Definition of AGI",
           "Dan Hendrycks, Dawn Song, Christian Szegedy, Honglak Lee, Yarin Gal, Erik Brynjolfsson, Sharon Li, Andy Zou, Lionel Levine, Bo Han, Jie Fu, Ziwei Liu, Jinwoo Shin, Kimin Lee, Mantas Mazeika, Long Phan, George Ingebretsen, Adam Khoja, Cihang Xie, Olawale Salaudeen, Matthias Hein, Kevin Zhao, Alexander Pan, David Duvenaud, Bo Li, Steve Omohundro, Gabriel Alfour, Max Tegmark, Kevin McGrew, Gary Marcus, Jaan Tallinn, Eric Schmidt, Yoshua Bengio",
           null,
@@ -446,20 +506,6 @@ function copy(dest, source) {
           "Recent advancements in large multimodal models like GPT-4o have set a new standard for high-fidelity, instruction-guided image editing. However, the proprietary nature of these models and their training data creates a significant barrier for open-source research. To bridge this gap, we introduce GPT-IMAGE-EDIT-1.5M, a publicly available, large-scale image-editing corpus containing more than 1.5 million high-quality triplets (instruction, source image, edited image). We systematically construct this dataset by leveraging the versatile capabilities of GPT-4o to unify and refine three popular image-editing datasets: OmniEdit, HQ-Edit, and UltraEdit. Specifically, our methodology involves (1) regenerating output images to enhance visual quality and instruction alignment, and (2) selectively rewriting prompts to improve semantic clarity. To validate the efficacy of our dataset, we fine-tune advanced open-source models on GPT-IMAGE-EDIT-1.5M. The empirical results are exciting, e.g., the fine-tuned FluxKontext achieves highly competitive performance across a comprehensive suite of benchmarks, including 7.24 on GEdit-EN, 3.80 on ImgEdit-Full, and 8.78 on Complex-Edit, showing stronger instruction following and higher perceptual quality while maintaining identity. These scores markedly exceed all previously published open-source methods and substantially narrow the gap to leading proprietary models. We hope the full release of GPT-IMAGE-EDIT-1.5M can help to catalyze further open research in instruction-guided image editing.",
           "https://arxiv.org/abs/2507.21033",
           "https://ucsc-vlaa.github.io/GPT-Image-Edit/"
-        )
-
-        add_paper("Discrete Diffusion Models with MLLMs for Unified Medical Multimodal Generation",
-          "Jiawei Mao, Yuhan Wang, Lifeng Chen, Can Zhao, Yucheng Tang, Dong Yang, Liangqiong Qu, Daguang Xu, Yuyin Zhou",
-          null,
-          "https://arxiv.org/abs/2510.06131", 
-          "@article{mao2025discrete,<br>" +
-          "&nbsp;&nbsp;&nbsp;title   = {Discrete Diffusion Models with MLLMs for Unified Medical Multimodal Generation},<br>" +
-          "&nbsp;&nbsp;&nbsp;author  = {Jiawei Mao and Yuhan Wang and Lifeng Chen and Can Zhao and Yucheng Tang and Dong Yang and Liangqiong Qu and Daguang Xu and Yuyin Zhou},<br>" +
-          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2510.06131},<br>" + 
-          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
-          "Recent advances in generative medical models are constrained by modality-specific scenarios that hinder the integration of complementary evidence from imaging, pathology, and clinical notes. This fragmentation limits their evolution into foundation models that can learn and reason across the full spectrum of biomedical data. We propose MeDiM, the first medical discrete diffusion model that learns shared distributions across modalities without modality-specific components. MeDiM unifies multiple generative tasks: translating between images and text, and jointly producing image-report pairs across domains in response to prompts. Built on a discrete diffusion framework, MeDiM bridges vision and language representations through a shared probabilistic space. To enable unified and flexible medical generation, we employ a multimodal large language model (MLLM) as the diffusion backbone, leveraging its prior knowledge and cross-modal reasoning. Two key designs are introduced: (1) removing the causal attention mask for bidirectional context, and (2) injecting continuous timestep embeddings for diffusion awareness. Experiments demonstrate high-fidelity medical generation (FID 16.60 on MIMIC-CXR and FID 24.19 on PathGen) and accurate report generation (METEOR 0.2650 and 0.2580). Jointly generated image-report pairs further enhance downstream performance (plus6.43 percent BLEU-1, plus18.57 percent BLEU-2, plus31.58 percent BLEU-3, plus4.80 percent METEOR), showing that MeDiM supports coherent and clinically grounded multimodal outputs.",
-          "https://arxiv.org/abs/2510.06131",
-          "https://jwmao1.github.io/MeDiM_web/"
         )
 
         add_paper("Alignment Tipping Process: How Self-Evolution Pushes LLM Agents Off the Rails",
@@ -1057,6 +1103,34 @@ function copy(dest, source) {
         document.write("<h1>2026</h1>")
         document.write("<ul>")
 
+        add_paper("LightFusion: A Light-weighted, Double Fusion Framework for Unified Multimodal Understanding and Generation",
+          "Zeyu Wang, Zilong Chen, Chenhui Gou, Feng Li, Chaorui Deng, Deyao Zhu, Kunchang Li, Weihao Yu, Haoqin Tu, Haoqi Fan, Cihang Xie",
+          "ECCV, 2026",
+          "https://arxiv.org/abs/2510.22946",
+          "@inproceedings{wang2026lightfusion,<br>" +
+          "&nbsp;&nbsp;&nbsp;title     = {LightFusion: A Light-weighted, Double Fusion Framework for Unified Multimodal Understanding and Generation},<br>" +
+          "&nbsp;&nbsp;&nbsp;author    = {Zeyu Wang, Zilong Chen, Chenhui Gou, Feng Li, Chaorui Deng, Deyao Zhu, Kunchang Li, Weihao Yu, Haoqin Tu, Haoqi Fan, Cihang Xie},<br>" +
+          "&nbsp;&nbsp;&nbsp;booktitle = {ECCV},<br>" +
+          "&nbsp;&nbsp;&nbsp;year      = {2026},<br>}",
+          "Unified multimodal models have recently shown remarkable gains in both capability and versatility, yet most leading systems are still trained from scratch and require substantial computational resources. In this paper, we show that competitive performance can be obtained far more efficiently by strategically fusing publicly available models specialized for either generation or understanding. Our key design is to retain the original blocks while additionally interleaving multimodal self-attention blocks throughout the networks. This double fusion mechanism (1) effectively enables rich multi-modal fusion while largely preserving the original strengths of the base models, and (2) catalyzes synergistic fusion of high-level semantic representations from the understanding encoder with low-level spatial signals from the generation encoder. By training with only ~ 35B tokens, this approach achieves strong results across multiple benchmarks: 0.91 on GenEval for compositional text-to-image generation, 82.16 on DPG-Bench for complex text-to-image generation, 6.06 on GEditBench, and 3.77 on ImgEdit-Bench for image editing. By fully releasing the entire suite of code, model weights, and datasets, we hope to support future research on unified multimodal modeling.",
+          "https://arxiv.org/abs/2510.22946",
+          "https://ucsc-vlaa.github.io/LightBagel/"
+        )
+
+        add_paper("Discrete Diffusion Models with MLLMs for Unified Medical Multimodal Generation",
+          "Jiawei Mao, Yuhan Wang, Lifeng Chen, Can Zhao, Yucheng Tang, Dong Yang, Liangqiong Qu, Daguang Xu, Yuyin Zhou",
+          "ECCV, 2026",
+          "https://arxiv.org/abs/2510.06131",
+          "@inproceedings{mao2026discrete,<br>" +
+          "&nbsp;&nbsp;&nbsp;title     = {Discrete Diffusion Models with MLLMs for Unified Medical Multimodal Generation},<br>" +
+          "&nbsp;&nbsp;&nbsp;author    = {Jiawei Mao and Yuhan Wang and Lifeng Chen and Can Zhao and Yucheng Tang and Dong Yang and Liangqiong Qu and Daguang Xu and Yuyin Zhou},<br>" +
+          "&nbsp;&nbsp;&nbsp;booktitle = {ECCV},<br>" +
+          "&nbsp;&nbsp;&nbsp;year      = {2026},<br>}",
+          "Recent advances in generative medical models are constrained by modality-specific scenarios that hinder the integration of complementary evidence from imaging, pathology, and clinical notes. This fragmentation limits their evolution into foundation models that can learn and reason across the full spectrum of biomedical data. We propose MeDiM, the first medical discrete diffusion model that learns shared distributions across modalities without modality-specific components. MeDiM unifies multiple generative tasks: translating between images and text, and jointly producing image-report pairs across domains in response to prompts. Built on a discrete diffusion framework, MeDiM bridges vision and language representations through a shared probabilistic space. To enable unified and flexible medical generation, we employ a multimodal large language model (MLLM) as the diffusion backbone, leveraging its prior knowledge and cross-modal reasoning. Two key designs are introduced: (1) removing the causal attention mask for bidirectional context, and (2) injecting continuous timestep embeddings for diffusion awareness. Experiments demonstrate high-fidelity medical generation (FID 16.60 on MIMIC-CXR and FID 24.19 on PathGen) and accurate report generation (METEOR 0.2650 and 0.2580). Jointly generated image-report pairs further enhance downstream performance (plus6.43 percent BLEU-1, plus18.57 percent BLEU-2, plus31.58 percent BLEU-3, plus4.80 percent METEOR), showing that MeDiM supports coherent and clinically grounded multimodal outputs.",
+          "https://arxiv.org/abs/2510.06131",
+          "https://jwmao1.github.io/MeDiM_web/"
+        )
+
 
 
         add_paper("Target-Oriented Pretraining Data Selection via Neuron-Activated Graph",
@@ -1118,25 +1192,29 @@ function copy(dest, source) {
         add_paper("AudioMosaic: Contrastive Masked Audio Representation Learning",
           "Hanxun Huang, Qizhou Wang, Xingjun Ma, Cihang Xie, Christopher Leckie, Sarah Monazam Erfani",
           "ICML, 2026",
-          null,
+          "https://arxiv.org/abs/2605.14231",
           "@inproceedings{huang2026audiomosaic,<br>" +
           "&nbsp;&nbsp;&nbsp;title     = {AudioMosaic: Contrastive Masked Audio Representation Learning},<br>" +
           "&nbsp;&nbsp;&nbsp;author    = {Hanxun Huang, Qizhou Wang, Xingjun Ma, Cihang Xie, Christopher Leckie, Sarah Monazam Erfani},<br>" +
           "&nbsp;&nbsp;&nbsp;booktitle = {ICML},<br>" +
           "&nbsp;&nbsp;&nbsp;year      = {2026},<br>}",
-          "Audio self-supervised learning (SSL) aims to learn general-purpose representations from large-scale unlabeled audio data and has achieved remarkable progress in recent years. While most prior work relies on generative reconstruction objectives, contrastive approaches remain relatively underexplored, in part due to the high computational cost of designing effective augmentation strategies and the large batch sizes typically required for pre-training. In this work, we introduce AudioMosaic, an audio encoder for general audio understanding. During pre-training, AudioMosaic applies time-frequency masking to spectrogram patches to form paired inputs, employing an elegant and efficient augmentation strategy that significantly reduces computational cost while supporting large-batch training. The AudioMosaic encoder learns discriminative utterance-level representations that exhibit strong transferability across datasets, domains, and acoustic conditions. Extensive experiments demonstrate that AudioMosaic achieves state-of-the-art performance on multiple standard benchmarks. Moreover, we show that the pretrained AudioMosaic encoder enhances audio perception when integrated with large language models (LLMs)."
+          "Audio self-supervised learning (SSL) aims to learn general-purpose representations from large-scale unlabeled audio data and has achieved remarkable progress in recent years. While most prior work relies on generative reconstruction objectives, contrastive approaches remain relatively underexplored, in part due to the high computational cost of designing effective augmentation strategies and the large batch sizes typically required for pre-training. In this work, we introduce AudioMosaic, an audio encoder for general audio understanding. During pre-training, AudioMosaic applies time-frequency masking to spectrogram patches to form paired inputs, employing an elegant and efficient augmentation strategy that significantly reduces computational cost while supporting large-batch training. The AudioMosaic encoder learns discriminative utterance-level representations that exhibit strong transferability across datasets, domains, and acoustic conditions. Extensive experiments demonstrate that AudioMosaic achieves state-of-the-art performance on multiple standard benchmarks. Moreover, we show that the pretrained AudioMosaic encoder enhances audio perception when integrated with large language models (LLMs).",
+          "https://arxiv.org/abs/2605.14231",
+          "https://github.com/HanxunH/AudioMosaic"
         )
 
         add_paper("From Seeing to Thinking: Decoupling Perception and Reasoning Improves Post-Training of Vision-Language Models",
           "Juncheng Wu, Hardy Chen, Haoqin Tu, Xianfeng Tang, Freda Shi, Hui Liu, Hanqing Lu, Cihang Xie, Yuyin Zhou",
           "ICML, 2026",
-          null,
+          "https://arxiv.org/abs/2605.20177",
           "@inproceedings{wu2026seeing,<br>" +
           "&nbsp;&nbsp;&nbsp;title     = {From Seeing to Thinking: Decoupling Perception and Reasoning Improves Post-Training of Vision-Language Models},<br>" +
           "&nbsp;&nbsp;&nbsp;author    = {Juncheng Wu, Hardy Chen, Haoqin Tu, Xianfeng Tang, Freda Shi, Hui Liu, Hanqing Lu, Cihang Xie, Yuyin Zhou},<br>" +
           "&nbsp;&nbsp;&nbsp;booktitle = {ICML},<br>" +
           "&nbsp;&nbsp;&nbsp;year      = {2026},<br>}",
-          "Recent advances in vision-language models (VLMs) emphasize long chain-of-thought reasoning; yet, we find that their performance on visual tasks is primarily limited by a lack of visual perception as opposed to reasoning itself. In this work, we systematically study the interplay between perception and reasoning in VLM post-training by decomposing their capabilities into three separate training stages: visual perception, visual reasoning, and textual reasoning, incorporating specialized training data. We demonstrate that visual perception (a) requires targeted optimization with specialized data; (b) serves as a fundamental scaffold that should be solidified through staged training before refining visual reasoning; and (c) is more effectively learned via RL than caption-based SFT. Our experiments across multiple VLMs demonstrate that staged training consistently improves both visual perception and reasoning performance over merged training. Notably, models trained with our approach achieve 1.5% higher reasoning accuracy with 20.8% shorter reasoning traces, suggesting that superior perception reduces the need for excessive reasoning. Finally, our staged-training models achieve superior performance among open-weight VLMs, establishing advanced results on several visual math and perception (e.g., +5.2% on WeMath and +3.7% on RealWorldQA) tasks compared with the base counterpart."
+          "Recent advances in vision-language models (VLMs) emphasize long chain-of-thought reasoning; yet, we find that their performance on visual tasks is primarily limited by a lack of visual perception as opposed to reasoning itself. In this work, we systematically study the interplay between perception and reasoning in VLM post-training by decomposing their capabilities into three separate training stages: visual perception, visual reasoning, and textual reasoning, incorporating specialized training data. We demonstrate that visual perception (a) requires targeted optimization with specialized data; (b) serves as a fundamental scaffold that should be solidified through staged training before refining visual reasoning; and (c) is more effectively learned via RL than caption-based SFT. Our experiments across multiple VLMs demonstrate that staged training consistently improves both visual perception and reasoning performance over merged training. Notably, models trained with our approach achieve 1.5% higher reasoning accuracy with 20.8% shorter reasoning traces, suggesting that superior perception reduces the need for excessive reasoning. Finally, our staged-training models achieve superior performance among open-weight VLMs, establishing advanced results on several visual math and perception (e.g., +5.2% on WeMath and +3.7% on RealWorldQA) tasks compared with the base counterpart.",
+          "https://arxiv.org/abs/2605.20177",
+          "https://ucsc-vlaa.github.io/VLM-CapCurriculum/"
         )
 
         add_paper("OpenVision 2: A Family of Generative Pretrained Visual Encoders for Multimodal Learning",
@@ -1170,13 +1248,14 @@ function copy(dest, source) {
         add_paper("Any2Any 3D Diffusion Models with Knowledge Transfer: A Radiotherapy Planning Study",
           "Yuhan Wang, Zihan Li, Han Liu, Simon Arberet, Martin Kraus, Yuyin Zhou, Florin-Cristian Ghesu, Dorin Comaniciu, Ali Kamen, Riqiang Gao",
           "CVPR, 2026",
-          null, 
+          "https://arxiv.org/abs/2605.09622",
           "@inproceedings{wang2026any2any3ddiffusion,<br>" +
           "&nbsp;&nbsp;&nbsp;title     = {Any2Any 3D Diffusion Models with Knowledge Transfer: A Radiotherapy Planning Study},<br>" +
           "&nbsp;&nbsp;&nbsp;author    = {Yuhan Wang, Zihan Li, Han Liu, Simon Arberet, Martin Kraus, Yuyin Zhou, Florin-Cristian Ghesu, Dorin Comaniciu, Ali Kamen, Riqiang Gao},<br>" +
           "&nbsp;&nbsp;&nbsp;booktitle = {CVPR},<br>" + 
           "&nbsp;&nbsp;&nbsp;year      = {2026},<br>}",
           "Voxel-wise dose prediction is a critical yet challenging task in practical radiotherapy (RT) planning, as bespoke models trained from scratch often struggle to generalize across diverse clinical settings. Meanwhile, generative models trained on billion-scale datasets from vision domains have achieved impressive performance. Herein, we propose DiffKT3D, a unified Any2Any 3D diffusion framework that leverages prior knowledge from pretrained video diffusion models for efficient and clinically meaningful dose prediction. To enable flexible conditioning across multiple clinical modalities (CT, anatomical structures, body, beam settings, etc.), we introduce an Any2Any conditional paradigm utilizing modality-specific embeddings without cross-attention overhead. Further, we design a novel reinforcement learning (RL) post-training mechanism guided by a clinically-informed scorecard explicitly tailored to institutional treatment preferences. Compared with winner of GDP–HMM challenge, DiffKT3D sets a new state-of-the-art in dose prediction by reducing voxel-level MAE from 2.07 to 1.93. In addition, DiffKT3D achieves superior image quality and preference match. These results demonstrate that transferring diffusion priors via modality-aware conditioning and clinically aligned RL post-training provides a robust and generalizable solution for RT planning across various clinical scenarios.",
+          "https://arxiv.org/abs/2605.09622"
         )
 
         add_paper("When Token Pruning is Worse than Random: Understanding Visual Token Information in VLLMs",
@@ -1252,13 +1331,15 @@ function copy(dest, source) {
         add_paper("Decoupled Residual Denoising Diffusion Models for Unified and Data Efficient Image-to-Image Translation",
           "Ziyue Lin, Jiahe Hou, Xia Hongyu, Xinrui Xie, Feifei Wang, Yuyin Zhou, Wei Wang, Jiawei Liu, Liangqiong Qu",
           "CVPR, 2026",
-          null,
+          "https://arxiv.org/abs/2606.01048",
           "@inproceedings{lin2026decoupledresidualdenoising,<br>" +
           "&nbsp;&nbsp;&nbsp;title     = {Decoupled Residual Denoising Diffusion Models for Unified and Data Efficient Image-to-Image Translation},<br>" +
           "&nbsp;&nbsp;&nbsp;author    = {Ziyue Lin, Jiahe Hou, Xia Hongyu, Xinrui Xie, Feifei Wang, Yuyin Zhou, Wei Wang, Jiawei Liu, Liangqiong Qu},<br>" +
           "&nbsp;&nbsp;&nbsp;booktitle = {CVPR},<br>" + 
           "&nbsp;&nbsp;&nbsp;year      = {2026},<br>}",
           "We propose Decoupled Residual Denoising Diffusion models (DRDD) for unified and data-efficient image-to-image (I2I) translation. While diffusion models have advanced I2I translation in terms of quality and diversity, we uncover a previously under-explored property in diffusion models. Crucially, beyond its conventional role of manifold lifting (i.e., moving data off low-dimensional manifolds), injecting Gaussian noise facilitates domain harmonization by implicitly aligning feature distributions across domains, a property particularly advantageous for unified I2I translation. However, existing diffusion models prematurely erode this harmonization effect, as noise and residuals are simultaneously removed in a single coupled diffusion process. To address this, DRDD decouples the diffusion process into two sequential and independent diffusion stages: (1) a stochastic noise diffusion for domain harmonization and manifold lifting, and (2) a deterministic residual diffusion that learns the core semantic mapping entirely within the fixed-noise domain. This decoupling preserves harmonization and manifold lifting effects throughout the transformation, substantially simplifying the learning of unified mappings across diverse tasks and domains. Notably, the noise diffusion stage is trained exclusively on abundant, unpaired target-domain images, greatly improving data efficiency. Comprehensive theoretical and empirical analysis demonstrates that DRDD is broadly compatible with mainstream diffusion models and consistently delivers robust, unified I2I translation, even under limited paired data. Code is released to promote further research.",
+          "https://arxiv.org/abs/2606.01048",
+          "https://github.com/HKU-HealthAI/DRDD"
         )
 
         add_paper("M-VAR: Decoupled Scale-wise Autoregressive Modeling for High-Quality Image Generation",
@@ -1362,13 +1443,14 @@ function copy(dest, source) {
         add_paper("LVM-Lite: Training Large Vision Models with Efficient Sequential Modeling",
           "Xianhang Li, Hongru Zhu, Sucheng Ren, Linjie Yang, Peng Wang, Heng Wang, Xiaohui Shen, Qing Liu, Cihang Xie",
           "WACV, 2026",
-          "", 
+          "https://openaccess.thecvf.com/content/WACV2026/papers/Li_LVM-Lite_Training_Large_Vision_Models_with_Efficient_Sequential_Modeling_WACV_2026_paper.pdf",
           "@inproceedings{li2026lvmlite,<br>" +
           "&nbsp;&nbsp;&nbsp;title   = {LVM-Lite: Training Large Vision Models with Efficient Sequential Modeling},<br>" +
           "&nbsp;&nbsp;&nbsp;author  = {Xianhang Li and Hongru Zhu and Sucheng Ren and Linjie Yang and Peng Wang and Heng Wang and Xiaohui Shen and Qing Liu and Cihang Xie},<br>" +
           "&nbsp;&nbsp;&nbsp;booktitle = {WACV},<br>" + 
           "&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
           "Generative pre-training has significantly advanced natural language understanding. Building upon this success, recent research begins to innovate Large Vision Models (LVM) by leveraging large-scale pre-training on visual sequences, where simultaneous consideration of image token sequences within single images and across a set of images is of key importance. This paper shows that sequential modeling on single images and across multiple images can be efficiently and effectively decoupled. We introduce a two-stage learning pipeline, starting with single-image pre-training, followed by fine-tuning on long image/video sequences. We term this method Large Vision Model Lite (LVM-Lite). Extensive experiments showcase the impressive performance of LVM-Lite across various generative and discriminative benchmarks, comparable to specifically trained models without the need for task-specific training. Importantly, LVM-Lite accelerates training speed substantially up to and demonstrates strong scalability.",
+          "https://openaccess.thecvf.com/content/WACV2026/papers/Li_LVM-Lite_Training_Large_Vision_Models_with_Efficient_Sequential_Modeling_WACV_2026_paper.pdf"
         )
 
 
@@ -1977,7 +2059,7 @@ function copy(dest, source) {
         add_paper("FLHetBench: Benchmarking Device and State Heterogeneity in Federated Learning",
                   "Junyuan Zhang, Shuang Zeng, Miao Zhang, Runxi Wang, Feifei Wang, Yuyin Zhou, Paul Pu Liang, Liangqiong Qu",
                   "CVPR, 2024",
-                  "",
+                  "https://openaccess.thecvf.com/content/CVPR2024/papers/Zhang_FLHetBench_Benchmarking_Device_and_State_Heterogeneity_in_Federated_Learning_CVPR_2024_paper.pdf",
                   "@inproceedings{zhang2024flhetbench,<br>" +
                   "&nbsp;&nbsp;&nbsp;title       = {FLHetBench: Benchmarking Device and State Heterogeneity in Federated Learning},<br>" +
                   "&nbsp;&nbsp;&nbsp;author      = {Zhang, Junyuan and Zeng, Shuang and Zhang, Miao and Wang, Runxi and Wang, Feifei and Zhou, Yuyin and Liang, Pu and Qu, Liangqiong},<br>" +
@@ -2018,7 +2100,7 @@ function copy(dest, source) {
          add_paper("Masked Autoencoders are Secretly Efficient Learners",
            "Zihao Wei, Chen Wei, Jieru Mei, Yutong Bai, Zeyu Wang, Xianhang Li, Huiyu Wang, Alan Yuille, Yuyin Zhou, Cihang Xie",
            "CVPR Efficient Deep Learning for Computer Vision Workshop, 2024",
-           "",
+           "https://openaccess.thecvf.com/content/CVPR2024W/ECV24/papers/Wei_Masked_Autoencoders_are_Secretly_Efficient_Learners__CVPRW_2024_paper.pdf",
            "@inproceedings{wei2023mae,<br>" +
            "&nbsp;&nbsp;&nbsp;title     = {Masked Autoencoders are Secretly Efficient Learners},<br>" +
            "&nbsp;&nbsp;&nbsp;author    = {Wei, Zihao and Wei, Chen and Mei, Jieru and Bai, Yutong and Wang, Zeyu and Li, Xianhang and Wang, Huiyu and Yuille, Alan and Zhou, Yuyin and Xie, Cihang},<br>" +
@@ -2079,7 +2161,7 @@ function copy(dest, source) {
             add_paper("Brain Tumor Segmentation Through SuperVoxel Transformer",
                   "Yunfei Xie, Ce Zhou, Jieru Mei, Xianhang Li, Cihang Xie, Yuyin Zhou",
                   "ISBI, 2024",
-                  "",
+                  "https://ieeexplore.ieee.org/abstract/document/10635335",
                   "@inproceedings{xie2024brats,<br>" +
                   "&nbsp;&nbsp;&nbsp;title     = {Brain Tumor Segmentation Through SuperVoxel Transformer},<br>" +
                   "&nbsp;&nbsp;&nbsp;author    = {Xie, Yunfei and Zhou, Ce and Mei, Jieru and Li, Xianhang and Xie, Cihang and Zhou, Yuyin},<br>" +
@@ -2494,7 +2576,7 @@ function copy(dest, source) {
         add_paper("Practical Disruption of Image Translation Deepfake Networks",
                     "Nataniel Ruiz, Sarah Adel Bargal, Cihang Xie, Stan Sclaroff",
                     "AAAI, 2023",
-                    "",
+                    "https://ojs.aaai.org/index.php/AAAI/article/view/26693",
                     "@inproceedings{nataniel2023practical,<br>" +
                      "&nbsp;&nbsp;&nbsp;title     = {Practical Disruption of Image Translation Deepfake Networks},<br>" +
                      "&nbsp;&nbsp;&nbsp;author    = {Ruiz, Nataniel and Bargal, Sarah Adel and Xie, Cihang and Sclaroff, Stan},<br>" +
