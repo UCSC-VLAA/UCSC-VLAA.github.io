@@ -80,8 +80,10 @@ function processForm(form) {
     }
 
     // 1) Log a row to the tracking spreadsheet (column order = HEADERS).
-    getSheet_().appendRow([new Date(), name, email, institution, position, pi,
-                           links, message, driveLink || '(no file)']);
+    const sheet = getSheet_();
+    sheet.appendRow([new Date(), name, email, institution, position, pi,
+                     links, message, driveLink || '(no file)']);
+    const sheetUrl = sheet.getParent().getUrl();
 
     // 2) Build + send the notification email.
     const rows = [
@@ -104,6 +106,9 @@ function processForm(form) {
     } else {
       html += '<p><i>No file was uploaded.</i></p>';
     }
+    html += '<p style="margin-top:18px;padding-top:12px;border-top:1px solid #eee;color:#555">' +
+            'To view all applicants, open the ' +
+            '<a href="' + sheetUrl + '">VLAA Applications spreadsheet</a>.</p>';
 
     MailApp.sendEmail({
       to: RECIPIENTS,
