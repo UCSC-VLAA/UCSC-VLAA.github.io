@@ -18,7 +18,7 @@
  */
 
 // ============ CONFIG - edit these ============
-const RECIPIENTS      = 'cihangxie306@gmail.com';  // who gets notified (comma-separate for several)
+const RECIPIENTS      = 'cihangxie306@gmail.com, ucsc-vlaa-group@ucsc.edu';  // who gets notified (comma-separate for several)
 const SUBJECT_TAG     = '[VLAA Application]';       // email subject prefix
 const MAX_ATTACH_MB   = 24;                         // attach inline if <= this; larger -> link only (Gmail caps ~25 MB)
 const SEND_APPLICANT_CONFIRMATION = false;          // true -> also email the applicant a "we received it" receipt
