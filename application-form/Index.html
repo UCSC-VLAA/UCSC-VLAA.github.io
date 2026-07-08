@@ -18,6 +18,10 @@
     textarea { min-height: 110px; resize: vertical; }
     input[type=file] { margin-top:6px; }
     .hint { color:#888; font-size:13px; margin-top:4px; }
+    .pi-group { margin-top:6px; }
+    .pi-group label { display:inline-flex; align-items:center; font-weight:400;
+                      margin: 2px 20px 2px 0; }
+    .pi-group input { width:auto; margin-right:7px; }
     button { margin-top:24px; background:#1a73e8; color:#fff; border:0;
              padding:12px 22px; border-radius:8px; font-size:16px; cursor:pointer; }
     button:disabled { opacity:.6; cursor:default; }
@@ -40,6 +44,9 @@
         <label class="req" for="email">Email</label>
         <input type="email" id="email" name="email" required>
 
+        <label for="institution">Current institution</label>
+        <input type="text" id="institution" name="institution" placeholder="University / company">
+
         <label for="position">Position of interest</label>
         <select id="position" name="position">
           <option value="">- Select -</option>
@@ -49,6 +56,13 @@
           <option>Intern</option>
           <option>Other</option>
         </select>
+
+        <label>Interested PI <span style="font-weight:400;color:#888">(select one or both)</span></label>
+        <div class="pi-group">
+          <label><input type="checkbox" class="pi" value="Cihang Xie"> Cihang Xie</label>
+          <label><input type="checkbox" class="pi" value="Yuyin Zhou"> Yuyin Zhou</label>
+        </div>
+        <input type="hidden" name="pi" id="piField">
 
         <label for="links">Homepage / Google Scholar / GitHub (optional)</label>
         <input type="text" id="links" name="links" placeholder="https://...">
@@ -84,6 +98,10 @@
       if (!file) { showErr('Please attach your CV as a PDF.'); return; }
       if (file.type !== 'application/pdf') { showErr('The CV must be a PDF file.'); return; }
       if (file.size > 24 * 1024 * 1024) { showErr('That file is larger than 24 MB. Please upload a smaller PDF.'); return; }
+
+      // Combine the checked PI boxes into the hidden field the server reads.
+      var pis = Array.prototype.slice.call(document.querySelectorAll('.pi:checked')).map(function (c) { return c.value; });
+      document.getElementById('piField').value = pis.join(', ');
 
       btn.disabled = true; btn.textContent = 'Submitting...';
       google.script.run

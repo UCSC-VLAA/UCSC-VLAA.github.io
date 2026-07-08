@@ -10,8 +10,9 @@ version runs on the current **V8** runtime and:
 - **Instant email** to the lab the moment someone submits, with the applicant's
   **uploaded PDF as a real email attachment** (not just a link).
 - **Logs every submission to a Google Sheet** ("VLAA Applications") — one row per
-  applicant (Timestamp, Name, Email, Position, Links, Message, CV link) so you can
-  see everyone in one table, sort/filter, and open each CV.
+  applicant (Timestamp, Name, Email, Current Institution, Position, Interested PI,
+  Links, Message, CV link) so you can see everyone in one table, sort/filter, and
+  open each CV. "Interested PI" is a multi-select (Cihang Xie / Yuyin Zhou / both).
 - **Archives every PDF** to a Drive folder ("VLAA Application PDFs").
 
 Files: [`Code.gs`](Code.gs) (server) and [`Index.html`](Index.html) (form UI).

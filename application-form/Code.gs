@@ -28,7 +28,8 @@ const SHEET_ID_OVERRIDE  = '';
 const FOLDER_ID_OVERRIDE = '';
 // =============================================
 
-const HEADERS = ['Timestamp', 'Name', 'Email', 'Position', 'Links', 'Message', 'CV (PDF)'];
+const HEADERS = ['Timestamp', 'Name', 'Email', 'Current Institution', 'Position',
+                 'Interested PI', 'Links', 'Message', 'CV (PDF)'];
 
 /** Serves the form. ALLOWALL lets it be embedded in the lab site's <iframe>. */
 function doGet() {
@@ -43,11 +44,13 @@ function doGet() {
  */
 function processForm(form) {
   try {
-    const name     = (form.name     || '').toString().trim();
-    const email    = (form.email    || '').toString().trim();
-    const position = (form.position || '').toString().trim();
-    const links    = (form.links    || '').toString().trim();
-    const message  = (form.message  || '').toString().trim();
+    const name        = (form.name        || '').toString().trim();
+    const email       = (form.email       || '').toString().trim();
+    const institution = (form.institution || '').toString().trim();
+    const position    = (form.position    || '').toString().trim();
+    const pi          = (form.pi          || '').toString().trim();
+    const links       = (form.links       || '').toString().trim();
+    const message     = (form.message     || '').toString().trim();
 
     if (!name || !email) {
       return { ok: false, error: 'Please provide your name and email.' };
@@ -76,13 +79,14 @@ function processForm(form) {
       // else: too big to attach - recipient uses the Drive link.
     }
 
-    // 1) Log a row to the tracking spreadsheet.
-    getSheet_().appendRow([new Date(), name, email, position, links, message, driveLink || '(no file)']);
+    // 1) Log a row to the tracking spreadsheet (column order = HEADERS).
+    getSheet_().appendRow([new Date(), name, email, institution, position, pi,
+                           links, message, driveLink || '(no file)']);
 
     // 2) Build + send the notification email.
     const rows = [
-      ['Name', name], ['Email', email], ['Position', position],
-      ['Links', links], ['Message', message],
+      ['Name', name], ['Email', email], ['Current Institution', institution],
+      ['Position', position], ['Interested PI', pi], ['Links', links], ['Message', message],
     ];
     let html = '<h2>New application</h2>' +
                '<table cellpadding="6" style="border-collapse:collapse;font-family:sans-serif">';
@@ -144,26 +148,40 @@ function setup() {
   return sheetUrl;
 }
 
-/** The applicants spreadsheet's first sheet (creates it once and remembers the ID). */
+/** The applicants spreadsheet's first sheet (creates it once, remembers the ID, keeps headers current). */
 function getSheet_() {
   const props = PropertiesService.getScriptProperties();
-  let id = SHEET_ID_OVERRIDE || props.getProperty('LOG_SHEET_ID');
+  let sh = null;
+  const id = SHEET_ID_OVERRIDE || props.getProperty('LOG_SHEET_ID');
   if (id) {
-    try { return SpreadsheetApp.openById(id).getSheets()[0]; } catch (e) { /* fall through, recreate */ }
+    try { sh = SpreadsheetApp.openById(id).getSheets()[0]; } catch (e) { sh = null; }
   }
-  const ss = SpreadsheetApp.create('VLAA Applications');
-  const sh = ss.getSheets()[0];
-  sh.appendRow(HEADERS);
-  sh.setFrozenRows(1);
-  sh.getRange(1, 1, 1, HEADERS.length).setFontWeight('bold');
-  props.setProperty('LOG_SHEET_ID', ss.getId());
+  if (!sh) {
+    const ss = SpreadsheetApp.create('VLAA Applications');
+    sh = ss.getSheets()[0];
+    props.setProperty('LOG_SHEET_ID', ss.getId());
+  }
+  ensureHeaders_(sh);
   return sh;
+}
+
+/** Make row 1 match HEADERS (writes/updates it if missing or out of date). Safe while empty. */
+function ensureHeaders_(sh) {
+  const current = sh.getLastRow() === 0
+      ? []
+      : sh.getRange(1, 1, 1, HEADERS.length).getValues()[0];
+  const matches = current.length === HEADERS.length && HEADERS.every(function (h, i) { return current[i] === h; });
+  if (!matches) {
+    sh.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS]);
+    sh.setFrozenRows(1);
+    sh.getRange(1, 1, 1, HEADERS.length).setFontWeight('bold');
+  }
 }
 
 /** The PDF archive folder (creates it once and remembers the ID). */
 function getFolder_() {
   const props = PropertiesService.getScriptProperties();
-  let id = FOLDER_ID_OVERRIDE || props.getProperty('PDF_FOLDER_ID');
+  const id = FOLDER_ID_OVERRIDE || props.getProperty('PDF_FOLDER_ID');
   if (id) {
     try { return DriveApp.getFolderById(id); } catch (e) { /* fall through, recreate */ }
   }
