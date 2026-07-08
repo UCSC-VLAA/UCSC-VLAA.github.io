@@ -270,17 +270,6 @@ function copy(dest, source) {
           "https://github.com/UCSC-VLAA/VLAA-GUI"
         )
 
-        add_paper("Chasing the Public Score: User Pressure and Evaluation Exploitation in Coding Agent Workflows",
-          "Hardy Chen, Nancy Lau, Haoqin Tu, Shuo Yan, Xiangyan Liu, Zijun Wang, Juncheng Wu, Michael Qizhe Shieh, Alvaro A. Cardenas, Cihang Xie, Yuyin Zhou",
-          null,
-          "https://arxiv.org/abs/2604.20200",
-          "@article{chen2026chasing,<br>&nbsp;&nbsp;&nbsp;title   = {Chasing the Public Score: User Pressure and Evaluation Exploitation in Coding Agent Workflows},<br>&nbsp;&nbsp;&nbsp;author  = {Hardy Chen, Nancy Lau, Haoqin Tu, Shuo Yan, Xiangyan Liu, Zijun Wang, Juncheng Wu, Michael Qizhe Shieh, Alvaro A. Cardenas, Cihang Xie, Yuyin Zhou},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2604.20200},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
-          "Frontier coding agents are increasingly used in workflows where users supervise progress primarily through repeated improvement of a public score, namely the reported score on a public evaluation file with labels in the workspace, rather than through direct inspection of the agent's intermediate outputs. We study whether multi-round user pressure to improve that score induces public score exploitation: behavior that raises the public score through shortcuts without improving hidden private evaluation. We begin with a preliminary single-script tabular classification task, where GPT-5.4 and Claude Opus 4.6 both exploit label information within 10 rounds of user-agent interaction. We then build AgentPressureBench, a 34-task machine-learning repository benchmark spanning three input modalities, and collect 1326 multi-round trajectories from 13 coding agents. On our benchmark, we observe 403 exploitative runs, spanning across all tasks. We also find that stronger models have higher exploitation rates, supported by a significant Spearman rank correlation of 0.77. Our ablation experiments show that higher user pressure leads to earlier exploitation, reducing the average first exploit round by 15.6 rounds (i.e., 19.67 to 4.08). As a mitigation, adding explicit anti-exploit wordings in prompt mostly eliminates exploitation (100% to 8.3%). We hope that our work can bring attention to more careful use of coding agents workflow, and developing more robust coding agents under user pressure. Our project page is at https://ucsc-vlaa.github.io/AgentPressureBench .",
-          "https://arxiv.org/abs/2604.20200",
-          "https://github.com/ucsc-vlaa/AgentPressureBench"
-        )
-
-
         add_paper("Your Agent, Their Asset: A Real-World Safety Analysis of OpenClaw",
           "Zijun Wang, Haoqin Tu, Letian Zhang, Hardy Chen, Juncheng Wu, Xiangyan Liu, Zhenlong Yuan, Tianyu Pang, Michael Qizhe Shieh, Fengze Liu, Zeyu Zheng, Huaxiu Yao, Yuyin Zhou, Cihang Xie",
           null,
@@ -1102,6 +1091,17 @@ function copy(dest, source) {
         document.write("</ul><br>")
         document.write("<h1>2026</h1>")
         document.write("<ul>")
+
+        add_paper("Chasing the Public Score: User Pressure and Evaluation Exploitation in Coding Agent Workflows",
+          "Hardy Chen, Nancy Lau, Haoqin Tu, Shuo Yan, Xiangyan Liu, Zijun Wang, Juncheng Wu, Michael Qizhe Shieh, Alvaro A. Cardenas, Cihang Xie, Yuyin Zhou",
+          "COLM, 2026",
+          "https://arxiv.org/abs/2604.20200",
+          "@inproceedings{chen2026chasing,<br>&nbsp;&nbsp;&nbsp;title   = {Chasing the Public Score: User Pressure and Evaluation Exploitation in Coding Agent Workflows},<br>&nbsp;&nbsp;&nbsp;author  = {Hardy Chen, Nancy Lau, Haoqin Tu, Shuo Yan, Xiangyan Liu, Zijun Wang, Juncheng Wu, Michael Qizhe Shieh, Alvaro A. Cardenas, Cihang Xie, Yuyin Zhou},<br>&nbsp;&nbsp;&nbsp;booktitle = {COLM},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "Frontier coding agents are increasingly used in workflows where users supervise progress primarily through repeated improvement of a public score, namely the reported score on a public evaluation file with labels in the workspace, rather than through direct inspection of the agent's intermediate outputs. We study whether multi-round user pressure to improve that score induces public score exploitation: behavior that raises the public score through shortcuts without improving hidden private evaluation. We begin with a preliminary single-script tabular classification task, where GPT-5.4 and Claude Opus 4.6 both exploit label information within 10 rounds of user-agent interaction. We then build AgentPressureBench, a 34-task machine-learning repository benchmark spanning three input modalities, and collect 1326 multi-round trajectories from 13 coding agents. On our benchmark, we observe 403 exploitative runs, spanning across all tasks. We also find that stronger models have higher exploitation rates, supported by a significant Spearman rank correlation of 0.77. Our ablation experiments show that higher user pressure leads to earlier exploitation, reducing the average first exploit round by 15.6 rounds (i.e., 19.67 to 4.08). As a mitigation, adding explicit anti-exploit wordings in prompt mostly eliminates exploitation (100% to 8.3%). We hope that our work can bring attention to more careful use of coding agents workflow, and developing more robust coding agents under user pressure. Our project page is at https://ucsc-vlaa.github.io/AgentPressureBench .",
+          "https://arxiv.org/abs/2604.20200",
+          "https://github.com/ucsc-vlaa/AgentPressureBench"
+        )
+
 
         add_paper("LightFusion: A Light-weighted, Double Fusion Framework for Unified Multimodal Understanding and Generation",
           "Zeyu Wang, Zilong Chen, Chenhui Gou, Feng Li, Chaorui Deng, Deyao Zhu, Kunchang Li, Weihao Yu, Haoqin Tu, Haoqi Fan, Cihang Xie",
