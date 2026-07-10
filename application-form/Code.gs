@@ -14,6 +14,11 @@
  * remembered in Script Properties - you never copy an ID by hand. Run setup()
  * once to create them immediately and get emailed the links.
  *
+ * SECURITY: the notification email is lab-internal (it contains the applicants
+ * spreadsheet link), so it must never default replies to the applicant - do NOT
+ * add a replyTo pointing at the applicant. If the sheet link ever leaks outside
+ * the lab, run rotateSheet() to replace it and kill the old link.
+ *
  * Deploy: Web app -> Execute as: Me -> Who has access: Anyone.
  */
 
@@ -110,13 +115,16 @@ function processForm(form) {
             'To view all applicants, open the ' +
             '<a href="' + sheetUrl + '">VLAA Applications spreadsheet</a>.</p>';
 
+    // SECURITY: no replyTo here. This email carries the internal spreadsheet
+    // link, and a Reply-To pointing at the applicant would quote it back to
+    // them the moment anyone hits Reply. To contact the applicant, write to
+    // the address shown in the table above.
     MailApp.sendEmail({
       to: RECIPIENTS,
       subject: SUBJECT_TAG + ' ' + name + (position ? ' - ' + position : ''),
       htmlBody: html,
       attachments: attachments,
       name: 'VLAA Application Form',
-      replyTo: email,                      // hit Reply -> goes straight to the applicant
     });
 
     if (SEND_APPLICANT_CONFIRMATION) {
@@ -151,6 +159,42 @@ function setup() {
   Logger.log('SHEET_URL: ' + sheetUrl);
   Logger.log('FOLDER_URL: ' + folderUrl);
   return sheetUrl;
+}
+
+/**
+ * ADMIN: run this manually if the spreadsheet link ever leaks outside the lab.
+ * Creates a fresh spreadsheet, copies every existing row over, moves the old
+ * file to the Drive trash (so the old link stops working), remembers the new
+ * ID, and emails the lab the new link.
+ */
+function rotateSheet() {
+  const props = PropertiesService.getScriptProperties();
+  const oldId = props.getProperty('LOG_SHEET_ID');
+  const ss = SpreadsheetApp.create('VLAA Applications');
+  const sh = ss.getSheets()[0];
+  ensureHeaders_(sh);
+  if (oldId) {
+    try {
+      const old = SpreadsheetApp.openById(oldId).getSheets()[0];
+      const rows = old.getLastRow();
+      const cols = Math.max(old.getLastColumn(), HEADERS.length);
+      if (rows > 1) {
+        sh.getRange(2, 1, rows - 1, cols)
+          .setValues(old.getRange(2, 1, rows - 1, cols).getValues());
+      }
+      DriveApp.getFileById(oldId).setTrashed(true);   // old link dies here
+    } catch (e) { /* old sheet already gone - nothing to migrate */ }
+  }
+  props.setProperty('LOG_SHEET_ID', ss.getId());
+  MailApp.sendEmail({
+    to: RECIPIENTS,
+    subject: SUBJECT_TAG + ' New applicants spreadsheet (old link revoked)',
+    htmlBody: 'The applicants spreadsheet has been replaced. New link: ' +
+              '<a href="' + ss.getUrl() + '">' + ss.getUrl() + '</a>',
+    name: 'VLAA Application Form',
+  });
+  Logger.log('NEW_SHEET_URL: ' + ss.getUrl());
+  return ss.getUrl();
 }
 
 /** The applicants spreadsheet's first sheet (creates it once, remembers the ID, keeps headers current). */
