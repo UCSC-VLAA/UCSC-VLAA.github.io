@@ -179,6 +179,52 @@ function copy(dest, source) {
         // document.write("<h2>Preprint</h2>")
         document.write("<ul><br>")
 
+        add_paper("Chain-of-Experience for Continual LLM Improvement",
+          "Haoqin Tu, Yunhao Fang, Yizhong Wang, Cihang Xie, Shen Yan",
+          null,
+          "https://arxiv.org/abs/2608.18027",
+          "@article{tu2026chain,<br>&nbsp;&nbsp;&nbsp;title   = {Chain-of-Experience for Continual LLM Improvement},<br>&nbsp;&nbsp;&nbsp;author  = {Haoqin Tu, Yunhao Fang, Yizhong Wang, Cihang Xie, Shen Yan},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2608.18027},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "Humans continuously learn from experience, whereas conventional large language model (LLM) evaluations ignore the models' ability to improve through inference-time interaction. In this paper, we study how LLMs learn from iterative experience at test time, a setting we refer to as Chain-of-Experience (CoE), where models accumulate experiential traces through iterative interactions with self or environmental feedback to form a continual improvement loop beyond zero-shot inference. We instantiate CoE with diverse feedback mechanisms, including model self-feedback and environmental signals such as correctness or public coding test pass rates, and evaluate across math, coding, and knowledge domains using 8 LLMs, including GPT-5, Gemini-2.5 Pro, Claude-4.5 Sonnet. Our study shows that leveraging iterative experience consistently outperforms feedback-free baselines, achieving substantial gains with self feedback alone, alongside a 5.6% overall improvement and 19% lower API cost across tasks and models. We further show that combining complementary feedback channels (e.g., model and correctness signals) yields additional gains, and that CoE delivers higher accuracy per token than existing test-time strategies. We observe a positive correlation between LLM base ability and improvement capacity, and show that models remain robust under weak or spurious feedback, with different feedback contributing to distinct improvement aspects and most gains emerging early in the iterations.",
+          "https://arxiv.org/abs/2608.18027"
+        )
+
+        add_paper("BaT: Towards Self-Evolving Medical Research Agent with Stage Rubrics",
+          "Junqi Liu, Yufan He, Yexiao He, Pengfei Guo, Dong Yang, Andriy Myronenko, Can Zhao, Hanrong Ye, Tianhao Qi, Yuyin Zhou, Daguang Xu, Yucheng Tang",
+          null,
+          "https://arxiv.org/abs/2608.16211",
+          "@article{liu2026bat,<br>&nbsp;&nbsp;&nbsp;title   = {BaT: Towards Self-Evolving Medical Research Agent with Stage Rubrics},<br>&nbsp;&nbsp;&nbsp;author  = {Junqi Liu, Yufan He, Yexiao He, Pengfei Guo, Dong Yang, Andriy Myronenko, Can Zhao, Hanrong Ye, Tianhao Qi, Yuyin Zhou, Daguang Xu, Yucheng Tang},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2608.16211},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "Long-horizon agents are beginning to automate complete workflows that produce code, reports, and research artifacts. Medical imaging workflows are multi-stage and data-sensitive, while expert trajectories remain scarce and difficult to share. Structured benchmarks can localize failures through stage-level rubrics, but standard post-training discards these diagnostics before the next training round. We present Benchmark-as-Teacher (BaT), a recursive self-improvement system for agent post-training. BaT contains two linked components: the asynchronous Stage Bank data pipeline and BiCuRL (Bilevel Curriculum Reinforcement Learning), its self-improving post-training method. Stage Bank synthesizes content-isolated training states outside the policy-update loop. BiCuRL uses a fixed held-out evaluation to select the next stage curriculum, verifies rollouts with task rubrics, updates the policy with GRPO, and returns the candidate checkpoint to evaluation. On AutoMedBench-Lite, BaT-4B and BaT-9B more than double the Overall scores of their Qwen Instruct baselines. BaT-9B Agent reaches 79.6 Overall, exceeding Claude Opus 4.6 with Claude Code at 77.5.",
+          "https://arxiv.org/abs/2608.16211"
+        )
+
+        add_paper("Let RGB Be the Language of Vision",
+          "Timing Yang, Jinrui Yang, Xinlong Li, Yuhan Wang, Haoran Li, Yanqing Liu, Guoyizhe Wei, Jixuan Ying, Chen Wei, Rama Chellappa, Yuyin Zhou, Cihang Xie, Alan Yuille, Feng Wang",
+          null,
+          "https://arxiv.org/abs/2607.12450",
+          "@article{yang2026let,<br>&nbsp;&nbsp;&nbsp;title   = {Let RGB Be the Language of Vision},<br>&nbsp;&nbsp;&nbsp;author  = {Timing Yang, Jinrui Yang, Xinlong Li, Yuhan Wang, Haoran Li, Yanqing Liu, Guoyizhe Wei, Jixuan Ying, Chen Wei, Rama Chellappa, Yuyin Zhou, Cihang Xie, Alan Yuille, Feng Wang},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2607.12450},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "This work introduces a unified formulation for vision models, where diverse forms of visual information beyond natural images, such as masks, depth maps, and other structured visual signals, are all represented as RGB images, while general visual tasks can be converted into a common RGB-to-RGB image editing problem. In this paradigm, different types of visual information internally share the same encoding and decoding architecture and parameters as natural images, enabling a single model to transfer across tasks through a unified visual interface, in a way analogous to how language models operate over text. We refer to this formulation as RGB In and RGB Out (RINO). Built upon a generic image editing backbone without task-specific fine-tuning, RINO demonstrates robust and competitive zero-shot performance on both dense understanding tasks such as segmentation and depth estimation (where we unify outputs as RGB), and dense-conditioned generation tasks such as pose-to-image generation (where we unify inputs as RGB). We hope this study provides useful insights toward general unified vision-language systems, where diverse visual tasks can be expressed, interpreted, and solved through a shared visual language. Code is available at https://github.com/yangtiming/RINO.",
+          "https://arxiv.org/abs/2607.12450"
+        )
+
+        add_paper("ClawArena-Team: Benchmarking Subagent Orchestration and Dynamic Workflows in Language-Model Agents",
+          "Kaiwen Xiong, Haonian Ji, Shi Qiu, Zeyu Zheng, Cihang Xie, Xinyu Ye, Huaxiu Yao",
+          null,
+          "https://arxiv.org/abs/2606.31174",
+          "@article{xiong2026clawarena,<br>&nbsp;&nbsp;&nbsp;title   = {ClawArena-Team: Benchmarking Subagent Orchestration and Dynamic Workflows in Language-Model Agents},<br>&nbsp;&nbsp;&nbsp;author  = {Kaiwen Xiong, Haonian Ji, Shi Qiu, Zeyu Zheng, Cihang Xie, Xinyu Ye, Huaxiu Yao},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2606.31174},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "Production large language-model (LLM) agents are increasingly deployed not as lone problem-solvers but as managers: a main model creates specialized subagents, delegates work, and orchestrates their parallel, asynchronous returns through dynamic workflows. Whether one model can actually run such a team is largely unmeasured: existing benchmarks score a policy's own task-solving or a fixed multi-agent system's emergent behavior, but none isolate the management ability of the single LLM acting as leader. We introduce ClawArena-Team, a benchmark of 41 multi-turn, multimodal, multi-directory scenarios spanning 258 evaluation rounds and 72 staged updates that measures this management ability. The main agent is deliberately constrained: it natively perceives only text and directly accesses only part of the workspace. It commands a fixed, locally served subagent pool, so score differences reflect management skill, not raw capability. All scoring is execution-based with no LLM judge: an overall score -- the Subagent-Management Score (SMS) -- multiplies task correctness by a least-privilege and modality-routing factor. Across twelve proprietary, community-hosted, and self-hosted models, experiments show that the management bottleneck is privilege granting rather than perception (no model exceeds 50% workspace-permission precision); that cost and management quality are decoupled (API cost spans over 100 times while the overall score spans under 4 times, with the cheapest open models on the Pareto frontier); and that most leaderboard scores cluster within a 9.9-point band while orchestration behaviors diverge by more than an order of magnitude. Code is available at https://github.com/aiming-lab/ClawArena.",
+          "https://arxiv.org/abs/2606.31174"
+        )
+
+        add_paper("BenchX: Benchmarking AI Models for Cancer Detection and Localization with Demographic and Protocol Biases",
+          "Qi Chen, Wenxuan Li, Pedro R. A. S. Bassi, Xinze Zhou, Jakob Wasserthal, Ibrahim Ethem Hamamci, Sezgin Er, Ashwin Kumar, Yiwen Ye, Yuhan Wang, Yuyin Zhou, Akshay S. Chaudhari, Curtis Langlotz, Kang Wang, Yang Yang, Alan L. Yuille, Zongwei Zhou",
+          null,
+          "https://arxiv.org/abs/2606.24883",
+          "@article{chen2026benchx,<br>&nbsp;&nbsp;&nbsp;title   = {BenchX: Benchmarking AI Models for Cancer Detection and Localization with Demographic and Protocol Biases},<br>&nbsp;&nbsp;&nbsp;author  = {Qi Chen, Wenxuan Li, Pedro R. A. S. Bassi, Xinze Zhou, Jakob Wasserthal, Ibrahim Ethem Hamamci, Sezgin Er, Ashwin Kumar, Yiwen Ye, Yuhan Wang, Yuyin Zhou, Akshay S. Chaudhari, Curtis Langlotz, Kang Wang, Yang Yang, Alan L. Yuille, Zongwei Zhou},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2606.24883},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "Artificial intelligence (AI) has achieved remarkable success in medical imaging, but it is widely recognized that these models often perform inconsistently across real-world clinical settings. Such inconsistencies occur when patient demographics and imaging protocols vary, for example, in detecting small tumors, analyzing scans from different contrast phases, or evaluating patients of different ages or sexes. To quantify these inconsistencies, we develop a large-scale, open benchmark of 85,355 CT scans that systematically evaluates 12 tumor-detection AI models across tumor size, location, patient subgroup, and imaging protocol. We leverage large language models (LLMs) to extract and organize subgroup information from clinical data, which makes the analysis both scalable and reproducible. Our benchmark reveals that current state-of-the-art AI models, optimized for average accuracy, perform poorly in rare or underrepresented subgroups, such as young, female African Americans. However, collecting sufficient annotated data for these rare cases is often impractical. The benchmark provides a foundation for building more reliable and robust AI models for tumor detection and highlighting the need for rigorous, subgroup-level evaluation in medical imaging and computer vision. Datasets, code",
+          "https://arxiv.org/abs/2606.24883"
+        )
+
+
 
         add_paper("VisualClaw: A Real-Time, Personalized Agent for the Physical World",
           "Haoqin Tu, Jianwen Chen, Zijun Wang, Siwei Han, Juncheng Wu, Hardy Chen, Haonian Ji, Kaiwen Xiong, Jiaqi Liu, Peng Xia, Jieru Mei, Hongliang Fei, Jason Eshraghian, Zeyu Zheng, Yuyin Zhou, Huaxiu Yao, Cihang Xie",
@@ -198,16 +244,6 @@ function copy(dest, source) {
           "Autonomous agents are increasingly expected to support end-to-end medical-AI research workflows, moving beyond isolated prediction tasks or short-form clinical question answering. However, existing medical agent benchmarks primarily evaluate final outputs, providing limited visibility into agent behavior within the research process. To address this gap, we present AutoMedBench, a workflow-aware benchmark for autonomous medical-AI research across diverse medical imaging and multimodal inference tasks, organizing agent execution into a unified five-stage workflow (S1-S5): Plan, Setup, Validate, Inference, and Submit. It comprises long-horizon tasks with each run averaging 33 agent turns, spanning five research tracks: segmentation, image enhancement, visual question answering (VQA), report generation, and lesion detection. Across thousands of recorded runs, stage-level scoring reveals that Validate is the weakest workflow stage on average, whereas Setup is the strongest, suggesting that current agents are better at making pipelines executable than at verifying their reliability.",
           "https://arxiv.org/abs/2606.01961",
           "https://automedbench.github.io/"
-        )
-
-        add_paper("Harness Updating Is Not Harness Benefit: Disentangling Evolution Capabilities in Self-Evolving LLM Agents",
-          "Minhua Lin, Juncheng Wu, Zijun Wang, Zhan Shi, Yisi Sang, Bing He, Zewen Liu, Tianxin Wei, Zongyu Wu, Zhiwei Zhang, Dakuo Wang, Xiang Zhang, Benoit Dumoulin, Cihang Xie, Yuyin Zhou, Suhang Wang, Hanqing Lu",
-          null,
-          "https://arxiv.org/abs/2605.30621",
-          "@article{lin2026harness,<br>&nbsp;&nbsp;&nbsp;title   = {Harness Updating Is Not Harness Benefit: Disentangling Evolution Capabilities in Self-Evolving LLM Agents},<br>&nbsp;&nbsp;&nbsp;author  = {Minhua Lin, Juncheng Wu, Zijun Wang, Zhan Shi, Yisi Sang, Bing He, Zewen Liu, Tianxin Wei, Zongyu Wu, Zhiwei Zhang, Dakuo Wang, Xiang Zhang, Benoit Dumoulin, Cihang Xie, Yuyin Zhou, Suhang Wang, Hanqing Lu},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2605.30621},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
-          "LLM agents are increasingly deployed as systems built around editable external harnesses, including prompts, skills, memories and tools, that shape task execution without changing model parameters. Harness self-evolution adapts such agents by updating these harnesses from execution evidence. Yet it remains unclear whether a model's base capability in task-solving predicts its capabilities in harness self-evolution. We analyze two harness self-evolution capabilities: (i) harness-updating, the capability to produce useful persistent harness updates from execution evidence; (ii) harness-benefit, the capability to benefit from updated harnesses during task solving. Our analysis reveals two findings. First, harness-updating is flat in base capability: models from different capability tiers produce harness updates that lead to surprisingly similar gains. Second, harness-benefit is non-monotonic in base capability: weak-tier models benefit little from updated harnesses, mid-tier models benefit most, and strong-tier models benefit less than mid-tier. These findings suggest investing capability budget in the task-solving agent rather than the evolver, and targeting harness invocation and long-horizon instruction following in agent training.",
-          "https://arxiv.org/abs/2605.30621",
-          "https://github.com/A-EVO-Lab/a-evolve/tree/release/harness-evolution"
         )
 
         add_paper("ClinSeekAgent: Automating Multimodal Evidence Seeking for Agentic Clinical Reasoning",
@@ -270,16 +306,6 @@ function copy(dest, source) {
           "https://github.com/UCSC-VLAA/VLAA-GUI"
         )
 
-        add_paper("Your Agent, Their Asset: A Real-World Safety Analysis of OpenClaw",
-          "Zijun Wang, Haoqin Tu, Letian Zhang, Hardy Chen, Juncheng Wu, Xiangyan Liu, Zhenlong Yuan, Tianyu Pang, Michael Qizhe Shieh, Fengze Liu, Zeyu Zheng, Huaxiu Yao, Yuyin Zhou, Cihang Xie",
-          null,
-          "https://arxiv.org/abs/2604.04759",
-          "@article{wang2026your,<br>&nbsp;&nbsp;&nbsp;title   = {Your Agent, Their Asset: A Real-World Safety Analysis of OpenClaw},<br>&nbsp;&nbsp;&nbsp;author  = {Zijun Wang, Haoqin Tu, Letian Zhang, Hardy Chen, Juncheng Wu, Xiangyan Liu, Zhenlong Yuan, Tianyu Pang, Michael Qizhe Shieh, Fengze Liu, Zeyu Zheng, Huaxiu Yao, Yuyin Zhou, Cihang Xie},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2604.04759},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
-          "OpenClaw, the most widely deployed personal AI agent in early 2026, operates with full local system access and integrates with sensitive services such as Gmail, Stripe, and the filesystem. While these broad privileges enable high levels of automation and powerful personalization, they also expose a substantial attack surface that existing sandboxed evaluations fail to capture. To address this gap, we present the first real-world safety evaluation of OpenClaw and introduce the CIK taxonomy, which unifies an agent's persistent state into three dimensions, i.e., Capability, Identity, and Knowledge, for safety analysis. Our evaluations cover 12 attack scenarios on a live OpenClaw instance across four backbone models (Claude Sonnet 4.5, Opus 4.6, Gemini 3.1 Pro, and GPT-5.4). The results show that poisoning any single CIK dimension increases the average attack success rate from 24.6% to 64-74%, with even the most robust model exhibiting more than a threefold increase over its baseline vulnerability. We further assess three CIK-aligned defense strategies alongside a file-protection mechanism; however, the strongest defense still yields a 63.8% success rate under Capability-targeted attacks, while file protection blocks 97% of malicious injections but also prevents legitimate updates. Taken together, these findings show that the vulnerabilities are inherent to the agent architecture, necessitating more systematic safeguards to secure personal AI agents. Our project page is https://ucsc-vlaa.github.io/CIK-Bench.",
-          "https://arxiv.org/abs/2604.04759",
-          "https://github.com/UCSC-VLAA/CIK-Bench"
-        )
-
         add_paper("ClawArena: Benchmarking AI Agents in Evolving Information Environments",
           "Haonian Ji, Kaiwen Xiong, Siwei Han, Peng Xia, Shi Qiu, Yiyang Zhou, Jiaqi Liu, Jinlong Li, Bingzhou Li, Zeyu Zheng, Cihang Xie, Huaxiu Yao",
           null,
@@ -339,16 +365,6 @@ function copy(dest, source) {
           "While large language models (LLMs) exhibit strong reasoning abilities, their performance on complex tasks is often constrained by the limitations of their internal knowledge. A compelling approach to overcome this challenge is to augment these models with external tools -- such as Python interpreters for mathematical computations or search engines for retrieving factual information. However, enabling models to use these tools effectively remains a significant challenge. Existing methods typically rely on cold-start pipelines that begin with supervised fine-tuning (SFT), followed by reinforcement learning (RL). These approaches often require substantial amounts of labeled data for SFT, which is expensive to annotate or synthesize. In this work, we propose In-Context Reinforcement Learning (ICRL), an RL-only framework that eliminates the need for SFT by leveraging few-shot prompting during the rollout stage of RL. Specifically, ICRL introduces in-context examples within the rollout prompts to teach the model how to invoke external tools. Furthermore, as training progresses, the number of in-context examples is gradually reduced, eventually reaching a zero-shot setting where the model learns to call tools independently. We conduct extensive experiments across a range of reasoning and tool-use benchmarks. Results show that ICRL achieves state-of-the-art performance, demonstrating its effectiveness as a scalable, data-efficient alternative to traditional SFT-based pipelines.",
           "https://arxiv.org/abs/2603.08068",
           "https://github.com/applese233/ICRL"
-        )
-
-        add_paper("EntropyPrune: Matrix Entropy Guided Visual Token Pruning for Multimodal Large Language Models",
-          "Yahong Wang, Juncheng Wu, Zhangkai Ni, Chengmei Yang, Yihang Liu, Longzhen Yang, Yuyin Zhou, Ying Wen, Lianghua He",
-          null,
-          "https://arxiv.org/abs/2602.17196",
-          "@article{wang2026entropyprune,<br>&nbsp;&nbsp;&nbsp;title   = {EntropyPrune: Matrix Entropy Guided Visual Token Pruning for Multimodal Large Language Models},<br>&nbsp;&nbsp;&nbsp;author  = {Yahong Wang, Juncheng Wu, Zhangkai Ni, Chengmei Yang, Yihang Liu, Longzhen Yang, Yuyin Zhou, Ying Wen, Lianghua He},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2602.17196},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
-          "Multimodal large language models (MLLMs) incur substantial inference cost due to the processing of hundreds of visual tokens per image. Although token pruning has proven effective for accelerating inference, determining when and where to prune remains largely heuristic. Existing approaches typically rely on static, empirically selected layers, which limit interpretability and transferability across models. In this work, we introduce a matrix-entropy perspective and identify an \"Entropy Collapse Layer\" (ECL), where the information content of visual representations exhibits a sharp and consistent drop, which provides a principled criterion for selecting the pruning stage. Building on this observation, we propose EntropyPrune, a novel matrix-entropy-guided token pruning framework that quantifies the information value of individual visual tokens and prunes redundant ones without relying on attention maps. Moreover, to enable efficient computation, we exploit the spectral equivalence of dual Gram matrices, reducing the complexity of entropy computation and yielding up to a 64x theoretical speedup. Extensive experiments on diverse multimodal benchmarks demonstrate that EntropyPrune consistently outperforms state-of-the-art pruning methods in both accuracy and efficiency. On LLaVA-1.5-7B, our method achieves a 68.2% reduction in FLOPs while preserving 96.0% of the original performance. Furthermore, EntropyPrune generalizes effectively to high-resolution and video-based models, highlighting the strong robustness and scalability in practical MLLM acceleration. The code will be publicly available at https://github.com/YahongWang1/EntropyPrune.",
-          "https://arxiv.org/abs/2602.17196",
-          "https://github.com/YahongWang1/EntropyPrune"
         )
 
         add_paper("What if Agents Could Imagine? Reinforcing Open-Vocabulary HOI Comprehension through Generation",
@@ -593,23 +609,6 @@ function copy(dest, source) {
           "https://arxiv.org/abs/2506.02126",
           "https://ucsc-vlaa.github.io/ReasoningEval"
         )
-
-        add_paper("MedFrameQA: A Multi-Image Medical VQA Benchmark for Clinical Reasoning",
-          "Suhao Yu, Haojin Wang, Juncheng Wu, Cihang Xie, Yuyin Zhou",
-          null,
-          "https://arxiv.org/abs/2505.16964", 
-          "@article{yu2025medframeqamultiimagemedicalvqa,<br>" +
-          "&nbsp;&nbsp;&nbsp;title   = {MedFrameQA: A Multi-Image Medical VQA Benchmark for Clinical Reasoning},<br>" +
-          "&nbsp;&nbsp;&nbsp;author  = {Suhao Yu, Haojin Wang, Juncheng Wu, Cihang Xie, Yuyin Zhou},<br>" +
-          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2505.16964},<br>" + 
-          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
-          "Existing medical VQA benchmarks mostly focus on single-image analysis, yet clinicians almost always compare a series of images before reaching a diagnosis. To better approximate this workflow, we introduce MedFrameQA -- the first benchmark that explicitly evaluates multi-image reasoning in medical VQA. To build MedFrameQA both at scale and in high-quality, we develop 1) an automated pipeline that extracts temporally coherent frames from medical videos and constructs VQA items whose content evolves logically across images, and 2) a multiple-stage filtering strategy, including model-based and manual review, to preserve data clarity, difficulty, and medical relevance. The resulting dataset comprises 2,851 VQA pairs (gathered from 9,237 high-quality frames in 3,420 videos), covering nine human body systems and 43 organs; every question is accompanied by two to five images. We comprehensively benchmark ten advanced Multimodal LLMs -- both proprietary and open source, with and without explicit reasoning modules -- on MedFrameQA. The evaluation challengingly reveals that all models perform poorly, with most accuracies below 50%, and accuracy fluctuates as the number of images per question increases. Error analysis further shows that models frequently ignore salient findings, mis-aggregate evidence across images, and propagate early mistakes through their reasoning chains; results also vary substantially across body systems, organs, and modalities. We hope this work can catalyze research on clinically grounded, multi-image reasoning and accelerate progress toward more capable diagnostic AI systems.",
-          "https://arxiv.org/abs/2505.16964",
-          "https://ucsc-vlaa.github.io/MedFrameQA"
-        )
-
-
-        
 
         add_paper("A Comprehensive Analysis of Mamba for 3D Volumetric Medical Image Segmentation",
           "Chaohan Wang, Yutong Xie, Qi Chen, Yuyin Zhou, Qi Wu",
@@ -1091,6 +1090,54 @@ function copy(dest, source) {
         document.write("</ul><br>")
         document.write("<h1>2026</h1>")
         document.write("<ul>")
+
+        add_paper("MedFrameQA: A Multi-Image Medical VQA Benchmark for Clinical Reasoning",
+          "Suhao Yu, Haojin Wang, Juncheng Wu, Cihang Xie, Yuyin Zhou",
+          "EMNLP, 2026",
+          "https://arxiv.org/abs/2505.16964", 
+          "@inproceedings{yu2025medframeqamultiimagemedicalvqa,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {MedFrameQA: A Multi-Image Medical VQA Benchmark for Clinical Reasoning},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Suhao Yu, Haojin Wang, Juncheng Wu, Cihang Xie, Yuyin Zhou},<br>" +
+          "&nbsp;&nbsp;&nbsp;booktitle = {EMNLP},<br>" + 
+          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
+          "Existing medical VQA benchmarks mostly focus on single-image analysis, yet clinicians almost always compare a series of images before reaching a diagnosis. To better approximate this workflow, we introduce MedFrameQA -- the first benchmark that explicitly evaluates multi-image reasoning in medical VQA. To build MedFrameQA both at scale and in high-quality, we develop 1) an automated pipeline that extracts temporally coherent frames from medical videos and constructs VQA items whose content evolves logically across images, and 2) a multiple-stage filtering strategy, including model-based and manual review, to preserve data clarity, difficulty, and medical relevance. The resulting dataset comprises 2,851 VQA pairs (gathered from 9,237 high-quality frames in 3,420 videos), covering nine human body systems and 43 organs; every question is accompanied by two to five images. We comprehensively benchmark ten advanced Multimodal LLMs -- both proprietary and open source, with and without explicit reasoning modules -- on MedFrameQA. The evaluation challengingly reveals that all models perform poorly, with most accuracies below 50%, and accuracy fluctuates as the number of images per question increases. Error analysis further shows that models frequently ignore salient findings, mis-aggregate evidence across images, and propagate early mistakes through their reasoning chains; results also vary substantially across body systems, organs, and modalities. We hope this work can catalyze research on clinically grounded, multi-image reasoning and accelerate progress toward more capable diagnostic AI systems.",
+          "https://arxiv.org/abs/2505.16964",
+          "https://ucsc-vlaa.github.io/MedFrameQA"
+        )
+
+
+        add_paper("Harness Updating Is Not Harness Benefit: Disentangling Evolution Capabilities in Self-Evolving LLM Agents",
+          "Minhua Lin, Juncheng Wu, Zijun Wang, Zhan Shi, Yisi Sang, Bing He, Zewen Liu, Tianxin Wei, Zongyu Wu, Zhiwei Zhang, Dakuo Wang, Xiang Zhang, Benoit Dumoulin, Cihang Xie, Yuyin Zhou, Suhang Wang, Hanqing Lu",
+          "EMNLP, 2026",
+          "https://arxiv.org/abs/2605.30621",
+          "@inproceedings{lin2026harness,<br>&nbsp;&nbsp;&nbsp;title   = {Harness Updating Is Not Harness Benefit: Disentangling Evolution Capabilities in Self-Evolving LLM Agents},<br>&nbsp;&nbsp;&nbsp;author  = {Minhua Lin, Juncheng Wu, Zijun Wang, Zhan Shi, Yisi Sang, Bing He, Zewen Liu, Tianxin Wei, Zongyu Wu, Zhiwei Zhang, Dakuo Wang, Xiang Zhang, Benoit Dumoulin, Cihang Xie, Yuyin Zhou, Suhang Wang, Hanqing Lu},<br>&nbsp;&nbsp;&nbsp;booktitle = {EMNLP},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "LLM agents are increasingly deployed as systems built around editable external harnesses, including prompts, skills, memories and tools, that shape task execution without changing model parameters. Harness self-evolution adapts such agents by updating these harnesses from execution evidence. Yet it remains unclear whether a model's base capability in task-solving predicts its capabilities in harness self-evolution. We analyze two harness self-evolution capabilities: (i) harness-updating, the capability to produce useful persistent harness updates from execution evidence; (ii) harness-benefit, the capability to benefit from updated harnesses during task solving. Our analysis reveals two findings. First, harness-updating is flat in base capability: models from different capability tiers produce harness updates that lead to surprisingly similar gains. Second, harness-benefit is non-monotonic in base capability: weak-tier models benefit little from updated harnesses, mid-tier models benefit most, and strong-tier models benefit less than mid-tier. These findings suggest investing capability budget in the task-solving agent rather than the evolver, and targeting harness invocation and long-horizon instruction following in agent training.",
+          "https://arxiv.org/abs/2605.30621",
+          "https://github.com/A-EVO-Lab/a-evolve/tree/release/harness-evolution"
+        )
+
+
+        add_paper("Your Agent, Their Asset: A Real-World Safety Analysis of OpenClaw",
+          "Zijun Wang, Haoqin Tu, Letian Zhang, Hardy Chen, Juncheng Wu, Xiangyan Liu, Zhenlong Yuan, Tianyu Pang, Michael Qizhe Shieh, Fengze Liu, Zeyu Zheng, Huaxiu Yao, Yuyin Zhou, Cihang Xie",
+          "EMNLP, 2026",
+          "https://arxiv.org/abs/2604.04759",
+          "@inproceedings{wang2026your,<br>&nbsp;&nbsp;&nbsp;title   = {Your Agent, Their Asset: A Real-World Safety Analysis of OpenClaw},<br>&nbsp;&nbsp;&nbsp;author  = {Zijun Wang, Haoqin Tu, Letian Zhang, Hardy Chen, Juncheng Wu, Xiangyan Liu, Zhenlong Yuan, Tianyu Pang, Michael Qizhe Shieh, Fengze Liu, Zeyu Zheng, Huaxiu Yao, Yuyin Zhou, Cihang Xie},<br>&nbsp;&nbsp;&nbsp;booktitle = {EMNLP},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "OpenClaw, the most widely deployed personal AI agent in early 2026, operates with full local system access and integrates with sensitive services such as Gmail, Stripe, and the filesystem. While these broad privileges enable high levels of automation and powerful personalization, they also expose a substantial attack surface that existing sandboxed evaluations fail to capture. To address this gap, we present the first real-world safety evaluation of OpenClaw and introduce the CIK taxonomy, which unifies an agent's persistent state into three dimensions, i.e., Capability, Identity, and Knowledge, for safety analysis. Our evaluations cover 12 attack scenarios on a live OpenClaw instance across four backbone models (Claude Sonnet 4.5, Opus 4.6, Gemini 3.1 Pro, and GPT-5.4). The results show that poisoning any single CIK dimension increases the average attack success rate from 24.6% to 64-74%, with even the most robust model exhibiting more than a threefold increase over its baseline vulnerability. We further assess three CIK-aligned defense strategies alongside a file-protection mechanism; however, the strongest defense still yields a 63.8% success rate under Capability-targeted attacks, while file protection blocks 97% of malicious injections but also prevents legitimate updates. Taken together, these findings show that the vulnerabilities are inherent to the agent architecture, necessitating more systematic safeguards to secure personal AI agents. Our project page is https://ucsc-vlaa.github.io/CIK-Bench.",
+          "https://arxiv.org/abs/2604.04759",
+          "https://github.com/UCSC-VLAA/CIK-Bench"
+        )
+
+
+        add_paper("EntropyPrune: Matrix Entropy Guided Visual Token Pruning for Multimodal Large Language Models",
+          "Yahong Wang, Juncheng Wu, Zhangkai Ni, Chengmei Yang, Yihang Liu, Longzhen Yang, Yuyin Zhou, Ying Wen, Lianghua He",
+          "EMNLP Findings, 2026",
+          "https://arxiv.org/abs/2602.17196",
+          "@inproceedings{wang2026entropyprune,<br>&nbsp;&nbsp;&nbsp;title   = {EntropyPrune: Matrix Entropy Guided Visual Token Pruning for Multimodal Large Language Models},<br>&nbsp;&nbsp;&nbsp;author  = {Yahong Wang, Juncheng Wu, Zhangkai Ni, Chengmei Yang, Yihang Liu, Longzhen Yang, Yuyin Zhou, Ying Wen, Lianghua He},<br>&nbsp;&nbsp;&nbsp;booktitle = {EMNLP Findings},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "Multimodal large language models (MLLMs) incur substantial inference cost due to the processing of hundreds of visual tokens per image. Although token pruning has proven effective for accelerating inference, determining when and where to prune remains largely heuristic. Existing approaches typically rely on static, empirically selected layers, which limit interpretability and transferability across models. In this work, we introduce a matrix-entropy perspective and identify an \"Entropy Collapse Layer\" (ECL), where the information content of visual representations exhibits a sharp and consistent drop, which provides a principled criterion for selecting the pruning stage. Building on this observation, we propose EntropyPrune, a novel matrix-entropy-guided token pruning framework that quantifies the information value of individual visual tokens and prunes redundant ones without relying on attention maps. Moreover, to enable efficient computation, we exploit the spectral equivalence of dual Gram matrices, reducing the complexity of entropy computation and yielding up to a 64x theoretical speedup. Extensive experiments on diverse multimodal benchmarks demonstrate that EntropyPrune consistently outperforms state-of-the-art pruning methods in both accuracy and efficiency. On LLaVA-1.5-7B, our method achieves a 68.2% reduction in FLOPs while preserving 96.0% of the original performance. Furthermore, EntropyPrune generalizes effectively to high-resolution and video-based models, highlighting the strong robustness and scalability in practical MLLM acceleration. The code will be publicly available at https://github.com/YahongWang1/EntropyPrune.",
+          "https://arxiv.org/abs/2602.17196",
+          "https://github.com/YahongWang1/EntropyPrune"
+        )
+
 
         add_paper("Chasing the Public Score: User Pressure and Evaluation Exploitation in Coding Agent Workflows",
           "Hardy Chen, Nancy Lau, Haoqin Tu, Shuo Yan, Xiangyan Liu, Zijun Wang, Juncheng Wu, Michael Qizhe Shieh, Alvaro A. Cardenas, Cihang Xie, Yuyin Zhou",
