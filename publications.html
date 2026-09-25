@@ -179,6 +179,34 @@ function copy(dest, source) {
         // document.write("<h2>Preprint</h2>")
         document.write("<ul><br>")
 
+        add_paper("Layer-Aware Position Embeddings for Visual Token Pruning in Multimodal Large Language Models",
+          "Yahong Wang, Zhangkai Ni, Juncheng Wu, Yuyin Zhou, Ying Wen, Lianghua He",
+          null,
+          "https://arxiv.org/abs/2609.23715",
+          "@article{wang2026layeraware,<br>&nbsp;&nbsp;&nbsp;title   = {Layer-Aware Position Embeddings for Visual Token Pruning in Multimodal Large Language Models},<br>&nbsp;&nbsp;&nbsp;author  = {Yahong Wang, Zhangkai Ni, Juncheng Wu, Yuyin Zhou, Ying Wen, Lianghua He},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2609.23715},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "Multimodal large language models (MLLMs) incur substantial computational overhead due to the reliance on hundreds of visual tokens to represent images. While token pruning has emerged as a promising approach to reduce the inference cost of MLLMs, existing methods typically reassign position embeddings to the retained tokens using either sparse or continuous position embeddings, each introducing distinct limitations. Sparse position embeddings tend to decrease the attention value allocated to visual tokens, thereby degrading the perception capability of MLLMs, whereas continuous position embeddings disrupt the original spatial correspondence of visual tokens, leading to weakened grounding capability. To mitigate this issue, we perform layer-wise analysis of the language decoder and observe that intermediate layers play a critical role for maintaining the grounding capability of MLLMs under token pruning. Based on this observation, we propose a layer-aware position embedding strategy, which switches to sparse position embeddings at grounding-sensitive layers while maintaining continuous position embeddings elsewhere. Extensive experiments across representative pruning methods and diverse benchmarks demonstrate that our approach improves the comprehensive multimodal performance of pruned MLLMs compared with standard sparse and continuous position embeddings.",
+          "https://arxiv.org/abs/2609.23715"
+        )
+
+        add_paper("A Vision-Language Foundation Model for Precise and Comprehensive Brain Tumor Diagnosis from Preoperative Multimodal Data",
+          "Yinong Wang, Jianwen Chen, Zhou Chen, Shuwen Kuang, Haoning Jiang, Yanzhao Shi, Huichun Yuan, Yan-ran Wang, Bing Wang, Lei Wu, Bin Tang, Li Meng, Baihua Luo, Bin Zhou, Wei Ding, Weiming Zhong, Wei Hou, Yuanbing Chen, Zhiping Wan, Wei Wang, Zhenkun Xiao, Wenwu Wan, Allen He, Yuyin Zhou, Longbo Zhang, Feifei Wang, Zhixiong Liu, Michael Iv, Xuan Gong, Liangqiong Qu",
+          null,
+          "https://arxiv.org/abs/2609.16597",
+          "@article{wang2026brainvlm,<br>&nbsp;&nbsp;&nbsp;title   = {A Vision-Language Foundation Model for Precise and Comprehensive Brain Tumor Diagnosis from Preoperative Multimodal Data},<br>&nbsp;&nbsp;&nbsp;author  = {Yinong Wang, Jianwen Chen, Zhou Chen, Shuwen Kuang, Haoning Jiang, Yanzhao Shi, Huichun Yuan, Yan-ran Wang, Bing Wang, Lei Wu, Bin Tang, Li Meng, Baihua Luo, Bin Zhou, Wei Ding, Weiming Zhong, Wei Hou, Yuanbing Chen, Zhiping Wan, Wei Wang, Zhenkun Xiao, Wenwu Wan, Allen He, Yuyin Zhou, Longbo Zhang, Feifei Wang, Zhixiong Liu, Michael Iv, Xuan Gong, Liangqiong Qu},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2609.16597},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "We developed BrainVLM to classify all 12 World Health Organization (WHO) 2021 brain tumor types. BrainVLM integrates an uncertainty quantification strategy to indicate prediction reliability and a module for generating radiology reports to elucidate the clinical rationale. BrainVLM was trained on multi-modal data (MRI scans, demographics, and radiology reports) from 40,043 individuals. It was validated on 5,211 patients with pathologically confirmed brain tumors, including 3,877 held-out patients from the primary hospital and 1,334 patients from 11 independent hospitals. We further conducted two proof-of-concept studies to validate its clinical utility in AI-clinician workflows: 1) a blinded multireader study where 12 neuroradiologists across varying experience levels interpreted 248 retrospective cases with or without AI assistance, and 2) a real-world prospective study in which 1,009 patients were independently and blindly assessed by BrainVLM and radiologists before surgery. Additionally, we demonstrated BrainVLM's utility in preoperative molecular subgroup prediction for adult-type diffuse gliomas, using a multi-center cohort of 632 patients. In primary evaluation, BrainVLM achieved an area under the curve (macro-AUC) of 0.85 (95% CI: 0.84-0.86), and an F1 score of 0.82 (95% CI: 0.81-0.83), surpassing neuroradiologists (F1 = 0.80 (95% CI: 0.79-0.81)). In external validation across 11 centers, BrainVLM achieved an AUC = 0.80 (95% CI: 0.79-0.82) and F1 = 0.75 (95% CI: 0.73-0.78), compared with F1 = 0.71 (95% CI: 0.69-0.73) for neuroradiologists. In prospective real-world evaluation, BrainVLM maintained performance comparable to neuroradiologists.",
+          "https://arxiv.org/abs/2609.16597"
+        )
+
+        add_paper("Multi-Grid Post-Training for Long-Form Multi-Shot Video Generation",
+          "Jiawei Mao, Haoqin Tu, Hardy Chen, Yuhan Wang, Keyang Xu, Jieru Mei, Hongliang Fei, Ruogu Fang, Wei Shao, Cihang Xie, Yuyin Zhou",
+          null,
+          "https://arxiv.org/abs/2609.06373",
+          "@article{mao2026multigrid,<br>&nbsp;&nbsp;&nbsp;title   = {Multi-Grid Post-Training for Long-Form Multi-Shot Video Generation},<br>&nbsp;&nbsp;&nbsp;author  = {Jiawei Mao, Haoqin Tu, Hardy Chen, Yuhan Wang, Keyang Xu, Jieru Mei, Hongliang Fei, Ruogu Fang, Wei Shao, Cihang Xie, Yuyin Zhou},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2609.06373},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "Generating long-form multi-shot videos requires coherent within-shot motion and visually consistent narratives across shots. Existing video generators favor continuous motion and struggle to present complete shot sets when an entire narrative is packed along one temporal axis. We propose MovieGrid, a Multi-Grid Post-Training paradigm that decomposes a long video into shorter, temporally ordered chunks and arranges them on a spatial grid for joint modeling. This design reduces the number of shots handled by each temporal axis while enabling global information exchange across chunks. We construct the Multi-Grid Long Video (MGLV) dataset from 1,000 long-form videos using source video collection, hierarchical segmentation, grid video construction, and character-aware story annotation, producing 54K grid videos paired with story prompts. Our Noise-Free Random-Grid Training retains a random subset of chunks as clean visual context for denoising the remaining chunks. Grid Embedding encodes grid structure, character-aware Story Prompts link recurring entities, and Grid Boundary Loss stabilizes layouts. Under the same token budget, MovieGrid generates 6.05 times more shots than Temporal Packing in a 1,616-frame video. On a benchmark spanning five real-world categories, it achieves state-of-the-art intra-shot consistency (0.9131 versus 0.8086 for HoloCine) and inter-shot consistency (0.5914 versus 0.5384 for StoryMem). MovieGrid can further scale video length with minimal compromise through single or multiple generations.",
+          "https://arxiv.org/abs/2609.06373",
+          "https://github.com/jwmao1/moviegrid"
+        )
+
         add_paper("Chain-of-Experience for Continual LLM Improvement",
           "Haoqin Tu, Yunhao Fang, Yizhong Wang, Cihang Xie, Shen Yan",
           null,
@@ -367,25 +395,6 @@ function copy(dest, source) {
           "https://github.com/applese233/ICRL"
         )
 
-        add_paper("What if Agents Could Imagine? Reinforcing Open-Vocabulary HOI Comprehension through Generation",
-          "Zhenlong Yuan, Xiangyan Qu, Jing Tang, Rui Chen, Lei Sun, Ruidong Chen, Hongwei Yu, Chengxuan Qian, Xiangxiang Chu, Shuo Li, Yuyin Zhou",
-          null,
-          "https://arxiv.org/abs/2602.11499",
-          "@article{yuan2026what,<br>&nbsp;&nbsp;&nbsp;title   = {What if Agents Could Imagine? Reinforcing Open-Vocabulary HOI Comprehension through Generation},<br>&nbsp;&nbsp;&nbsp;author  = {Zhenlong Yuan, Xiangyan Qu, Jing Tang, Rui Chen, Lei Sun, Ruidong Chen, Hongwei Yu, Chengxuan Qian, Xiangxiang Chu, Shuo Li, Yuyin Zhou},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2602.11499},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
-          "Multimodal Large Language Models have shown promising capabilities in bridging visual and textual reasoning, yet their reasoning capabilities in Open-Vocabulary Human-Object Interaction (OV-HOI) are limited by cross-modal hallucinations and occlusion-induced ambiguity. To address this, we propose \\textbf{ImagineAgent}, an agentic framework that harmonizes cognitive reasoning with generative imagination for robust visual understanding. Specifically, our method innovatively constructs cognitive maps that explicitly model plausible relationships between detected entities and candidate actions. Subsequently, it dynamically invokes tools including retrieval augmentation, image cropping, and diffusion models to gather domain-specific knowledge and enriched visual evidence, thereby achieving cross-modal alignment in ambiguous scenarios. Moreover, we propose a composite reward that balances prediction accuracy and tool efficiency. Evaluations on SWIG-HOI and HICO-DET datasets demonstrate our SOTA performance, requiring approximately 20\\% of training data compared to existing methods, validating our robustness and efficiency.",
-          "https://arxiv.org/abs/2602.11499"
-        )
-
-        add_paper("SkillRL: Evolving Agents via Recursive Skill-Augmented Reinforcement Learning",
-          "Peng Xia, Jianwen Chen, Hanyang Wang, Jiaqi Liu, Kaide Zeng, Yu Wang, Siwei Han, Yiyang Zhou, Xujiang Zhao, Haifeng Chen, Zeyu Zheng, Cihang Xie, Huaxiu Yao",
-          null,
-          "https://arxiv.org/abs/2602.08234",
-          "@article{xia2026skillrl,<br>&nbsp;&nbsp;&nbsp;title   = {SkillRL: Evolving Agents via Recursive Skill-Augmented Reinforcement Learning},<br>&nbsp;&nbsp;&nbsp;author  = {Peng Xia, Jianwen Chen, Hanyang Wang, Jiaqi Liu, Kaide Zeng, Yu Wang, Siwei Han, Yiyang Zhou, Xujiang Zhao, Haifeng Chen, Zeyu Zheng, Cihang Xie, Huaxiu Yao},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2602.08234},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
-          "Large Language Model (LLM) agents have shown stunning results in complex tasks, yet they often operate in isolation, failing to learn from past experiences. Existing memory-based methods primarily store raw trajectories, which are often redundant and noise-heavy. This prevents agents from extracting high-level, reusable behavioral patterns that are essential for generalization. In this paper, we propose SkillRL, a framework that bridges the gap between raw experience and policy improvement through automatic skill discovery and recursive evolution. Our approach introduces an experience-based distillation mechanism to build a hierarchical skill library SkillBank, an adaptive retrieval strategy for general and task-specific heuristics, and a recursive evolution mechanism that allows the skill library to co-evolve with the agent's policy during reinforcement learning. These innovations significantly reduce the token footprint while enhancing reasoning utility. Experimental results on ALFWorld, WebShop and seven search-augmented tasks demonstrate that SkillRL achieves state-of-the-art performance, outperforming strong baselines over 15.3% and maintaining robustness as task complexity increases. Code is available at this https://github.com/aiming-lab/SkillRL.",
-          "https://arxiv.org/abs/2602.08234",
-          "https://github.com/aiming-lab/SkillRL"
-        )
-
         add_paper("ViT-5: Vision Transformers for The Mid-2020s",
           "Feng Wang, Sucheng Ren, Tiezheng Zhang, Predrag Neskovic, Anand Bhattad, Cihang Xie, Alan Yuille",
           null,
@@ -488,20 +497,6 @@ function copy(dest, source) {
           "This paper presents a family of advanced vision encoder, named OpenVision 3, that learns a single, unified visual representation that can serve both image understanding and image generation. Our core architecture is simple: we feed VAE-compressed image latents to a ViT encoder and train its output to support two complementary roles. First, the encoder output is passed to the ViT-VAE decoder to reconstruct the original image, encouraging the representation to capture generative structure. Second, the same representation is optimized with contrastive learning and image-captioning objectives, strengthening semantic features. By jointly optimizing reconstruction- and semantics-driven signals in a shared latent space, the encoder learns representations that synergize and generalize well across both regimes. We validate this unified design through extensive downstream evaluations with the encoder frozen. For multimodal understanding, we plug the encoder into the LLaVA-1.5 framework: it performs comparably with a standard CLIP vision encoder (e.g., 62.4 vs 62.2 on SeedBench, and 83.7 vs 82.9 on POPE). For generation, we test it under the RAE framework: ours substantially surpasses the standard CLIP-based encoder (e.g., gFID: 1.89 vs 2.54 on ImageNet). We hope this work can spur future research on unified modeling.",
           "https://arxiv.org/abs/2601.15369",
           "https://ucsc-vlaa.github.io/OpenVision3/"
-        )
-
-        add_paper("GPT-IMAGE-EDIT-1.5M: A Million-Scale, GPT-Generated Image Dataset",
-          "Yuhan Wang, Siwei Yang, Bingchen Zhao, Letian Zhang, Qing Liu, Yuyin Zhou, Cihang Xie",
-          null,
-          "https://arxiv.org/abs/2507.21033", 
-          "@article{wang2025gptimageedit,<br>" +
-          "&nbsp;&nbsp;&nbsp;title   = {GPT-IMAGE-EDIT-1.5M: A Million-Scale, GPT-Generated Image Dataset},<br>" +
-          "&nbsp;&nbsp;&nbsp;author  = {Yuhan Wang, Siwei Yang, Bingchen Zhao, Letian Zhang, Qing Liu, Yuyin Zhou, Cihang Xie},<br>" +
-          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2507.21033},<br>" + 
-          "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
-          "Recent advancements in large multimodal models like GPT-4o have set a new standard for high-fidelity, instruction-guided image editing. However, the proprietary nature of these models and their training data creates a significant barrier for open-source research. To bridge this gap, we introduce GPT-IMAGE-EDIT-1.5M, a publicly available, large-scale image-editing corpus containing more than 1.5 million high-quality triplets (instruction, source image, edited image). We systematically construct this dataset by leveraging the versatile capabilities of GPT-4o to unify and refine three popular image-editing datasets: OmniEdit, HQ-Edit, and UltraEdit. Specifically, our methodology involves (1) regenerating output images to enhance visual quality and instruction alignment, and (2) selectively rewriting prompts to improve semantic clarity. To validate the efficacy of our dataset, we fine-tune advanced open-source models on GPT-IMAGE-EDIT-1.5M. The empirical results are exciting, e.g., the fine-tuned FluxKontext achieves highly competitive performance across a comprehensive suite of benchmarks, including 7.24 on GEdit-EN, 3.80 on ImgEdit-Full, and 8.78 on Complex-Edit, showing stronger instruction following and higher perceptual quality while maintaining identity. These scores markedly exceed all previously published open-source methods and substantially narrow the gap to leading proprietary models. We hope the full release of GPT-IMAGE-EDIT-1.5M can help to catalyze further open research in instruction-guided image editing.",
-          "https://arxiv.org/abs/2507.21033",
-          "https://ucsc-vlaa.github.io/GPT-Image-Edit/"
         )
 
         add_paper("Alignment Tipping Process: How Self-Evolution Pushes LLM Agents Off the Rails",
@@ -1081,6 +1076,57 @@ function copy(dest, source) {
         document.write("</ul><br>")
         document.write("<h1>2026</h1>")
         document.write("<ul>")
+
+        add_paper("What if Agents Could Imagine? Reinforcing Open-Vocabulary HOI Comprehension through Generation",
+          "Zhenlong Yuan, Yue Wang, Jing Tang, Rui Chen, Kejin Cui, Lei Sun, Dapeng Zhang, Hongwei Yu, Chengxuan Qian, Xiangxiang Chu, Shuo Li, Yuyin Zhou",
+          "NeurIPS, 2026",
+          "https://arxiv.org/abs/2602.11499",
+          "@inproceedings{yuan2026what,<br>&nbsp;&nbsp;&nbsp;title   = {What if Agents Could Imagine? Reinforcing Open-Vocabulary HOI Comprehension through Generation},<br>&nbsp;&nbsp;&nbsp;author  = {Zhenlong Yuan, Yue Wang, Jing Tang, Rui Chen, Kejin Cui, Lei Sun, Dapeng Zhang, Hongwei Yu, Chengxuan Qian, Xiangxiang Chu, Shuo Li, Yuyin Zhou},<br>&nbsp;&nbsp;&nbsp;booktitle = {NeurIPS},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "Multimodal Large Language Models have shown promising capabilities in bridging visual and textual reasoning, yet their reasoning capabilities in Open-Vocabulary Human-Object Interaction (OV-HOI) are limited by cross-modal hallucinations and limited viewpoints of images. To address this, we propose ImagineAgent, an agentic framework that integrates cognitive mapping, tool-augmented reinforcement learning (RL), and generative world modeling for robust OV-HOI understanding. Specifically, we first propose an innovative CoT dataset named hicodet-6K for supervised fine-tuning (SFT), which effectively bridges the perception-to-cognition gap by structuring perceived entities into interaction pairs for comprehensive predictions. Subsequently, we develop a multimodal tool library integrating online retrieval, image cropping, and generative modeling, enabling the agent to dynamically augment reasoning with domain-specific tools to resolve visual-semantic ambiguities and hallucinations during inference. Moreover, we incorporate a generative model to reconstruct alternative viewpoints, enabling the agent to 'imagine' under limited viewpoints. Finally, we propose a composite reward mechanism to jointly optimize prediction accuracy and tool efficiency. Evaluations on both SWIG-HOI and HICO-DET datasets demonstrate that our method achieves state-of-the-art performance while requiring merely 36.7% of the training data compared to existing methods, validating our robustness, empirical effectiveness and efficiency.",
+          "https://arxiv.org/abs/2602.11499"
+        )
+
+        add_paper("Rethinking in Spikes: Mitigating Hallucinations in MDLMs with Step-Aware Decoding",
+          "Zhongxing Xu, Zhonghua Wang, Zhe Qian, Shiyan Su, Ming Hu, Xiaocheng Zou, Wei Feng, Mingquan Lin, Yuyin Zhou, Yifan Peng, Hamid Rezatofighi, Zongyuan Ge",
+          "NeurIPS, 2026",
+          null,
+          "@inproceedings{xu2026rethinking,<br>&nbsp;&nbsp;&nbsp;title   = {Rethinking in Spikes: Mitigating Hallucinations in MDLMs with Step-Aware Decoding},<br>&nbsp;&nbsp;&nbsp;author  = {Zhongxing Xu, Zhonghua Wang, Zhe Qian, Shiyan Su, Ming Hu, Xiaocheng Zou, Wei Feng, Mingquan Lin, Yuyin Zhou, Yifan Peng, Hamid Rezatofighi, Zongyuan Ge},<br>&nbsp;&nbsp;&nbsp;booktitle = {NeurIPS},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          null,
+          null
+        )
+
+        add_paper("SkillRL: Evolving Agents via Recursive Skill-Augmented Reinforcement Learning",
+          "Peng Xia, Jianwen Chen, Hanyang Wang, Jiaqi Liu, Kaide Zeng, Yu Wang, Siwei Han, Yiyang Zhou, Xujiang Zhao, Haifeng Chen, Zeyu Zheng, Cihang Xie, Huaxiu Yao",
+          "NeurIPS, 2026",
+          "https://arxiv.org/abs/2602.08234",
+          "@inproceedings{xia2026skillrl,<br>&nbsp;&nbsp;&nbsp;title   = {SkillRL: Evolving Agents via Recursive Skill-Augmented Reinforcement Learning},<br>&nbsp;&nbsp;&nbsp;author  = {Peng Xia, Jianwen Chen, Hanyang Wang, Jiaqi Liu, Kaide Zeng, Yu Wang, Siwei Han, Yiyang Zhou, Xujiang Zhao, Haifeng Chen, Zeyu Zheng, Cihang Xie, Huaxiu Yao},<br>&nbsp;&nbsp;&nbsp;booktitle = {NeurIPS},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "Large Language Model (LLM) agents have shown stunning results in complex tasks, yet they often operate in isolation, failing to learn from past experiences. Existing memory-based methods primarily store raw trajectories, which are often redundant and noise-heavy. This prevents agents from extracting high-level, reusable behavioral patterns that are essential for generalization. In this paper, we propose SkillRL, a framework that bridges the gap between raw experience and policy improvement through automatic skill discovery and recursive evolution. Our approach introduces an experience-based distillation mechanism to build a hierarchical skill library SkillBank, an adaptive retrieval strategy for general and task-specific heuristics, and a recursive evolution mechanism that allows the skill library to co-evolve with the agent's policy during reinforcement learning. These innovations significantly reduce the token footprint while enhancing reasoning utility. Experimental results on ALFWorld, WebShop and seven search-augmented tasks demonstrate that SkillRL achieves state-of-the-art performance, outperforming strong baselines over 15.3% and maintaining robustness as task complexity increases. Code is available at this https://github.com/aiming-lab/SkillRL.",
+          "https://arxiv.org/abs/2602.08234",
+          "https://github.com/aiming-lab/SkillRL"
+        )
+
+        add_paper("Context-Aware Autoregressive Image Generation for Emerging Reasoning Properties",
+          "Jixuan Ying, Haoyu Liu, Timing Yang, Tingyu Zhu, Predrag Neskovic, Anand Bhattad, Cihang Xie, Zeyu Zheng, Alan Yuille, Feng Wang",
+          "NeurIPS, 2026",
+          null,
+          "@inproceedings{ying2026context,<br>&nbsp;&nbsp;&nbsp;title   = {Context-Aware Autoregressive Image Generation for Emerging Reasoning Properties},<br>&nbsp;&nbsp;&nbsp;author  = {Jixuan Ying, Haoyu Liu, Timing Yang, Tingyu Zhu, Predrag Neskovic, Anand Bhattad, Cihang Xie, Zeyu Zheng, Alan Yuille, Feng Wang},<br>&nbsp;&nbsp;&nbsp;booktitle = {NeurIPS},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          null,
+          null
+        )
+
+        add_paper("GPT-Image-Edit-1M: An Auditable Million-Scale Dataset for Instruction-Guided Image Editing",
+          "Yuhan Wang, Siwei Yang, Bingchen Zhao, Letian Zhang, Jiawei Mao, Juncheng Wu, Zeyu Zheng, Huaxiu Yao, Qing Liu, Cihang Xie, Yuyin Zhou",
+          "NeurIPS Evaluations and Datasets Track, 2026",
+          "https://arxiv.org/abs/2507.21033", 
+          "@inproceedings{wang2026gptimageedit,<br>" +
+          "&nbsp;&nbsp;&nbsp;title   = {GPT-Image-Edit-1M: An Auditable Million-Scale Dataset for Instruction-Guided Image Editing},<br>" +
+          "&nbsp;&nbsp;&nbsp;author  = {Yuhan Wang, Siwei Yang, Bingchen Zhao, Letian Zhang, Jiawei Mao, Juncheng Wu, Zeyu Zheng, Huaxiu Yao, Qing Liu, Cihang Xie, Yuyin Zhou},<br>" +
+          "&nbsp;&nbsp;&nbsp;booktitle = {NeurIPS Evaluations and Datasets Track},<br>" +
+          "&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "Recent advancements in large multimodal models like GPT-4o have set a new standard for high-fidelity, instruction-guided image editing. However, the proprietary nature of these models and their training data creates a significant barrier for open-source research. To bridge this gap, we introduce GPT-IMAGE-EDIT-1.5M, a publicly available, large-scale image-editing corpus containing more than 1.5 million high-quality triplets (instruction, source image, edited image). We systematically construct this dataset by leveraging the versatile capabilities of GPT-4o to unify and refine three popular image-editing datasets: OmniEdit, HQ-Edit, and UltraEdit. Specifically, our methodology involves (1) regenerating output images to enhance visual quality and instruction alignment, and (2) selectively rewriting prompts to improve semantic clarity. To validate the efficacy of our dataset, we fine-tune advanced open-source models on GPT-IMAGE-EDIT-1.5M. The empirical results are exciting, e.g., the fine-tuned FluxKontext achieves highly competitive performance across a comprehensive suite of benchmarks, including 7.24 on GEdit-EN, 3.80 on ImgEdit-Full, and 8.78 on Complex-Edit, showing stronger instruction following and higher perceptual quality while maintaining identity. These scores markedly exceed all previously published open-source methods and substantially narrow the gap to leading proprietary models. We hope the full release of GPT-IMAGE-EDIT-1.5M can help to catalyze further open research in instruction-guided image editing.",
+          "https://arxiv.org/abs/2507.21033",
+          "https://ucsc-vlaa.github.io/GPT-Image-Edit/"
+        )
 
         add_paper("MedFrameQA: A Multi-Image Medical VQA Benchmark for Clinical Reasoning",
           "Suhao Yu, Haojin Wang, Juncheng Wu, Cihang Xie, Yuyin Zhou",
