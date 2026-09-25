@@ -318,7 +318,7 @@ function copy(dest, source) {
           null,
           "https://arxiv.org/abs/2604.23781",
           "@article{meng2026clawmark,<br>&nbsp;&nbsp;&nbsp;title   = {ClawMark: A Living-World Benchmark for Multi-Turn, Multi-Day, Multimodal Coworker Agents},<br>&nbsp;&nbsp;&nbsp;author  = {Fanqing Meng, Lingxiao Du, Zijian Wu, Guanzheng Chen, Xiangyan Liu, Jiaqi Liao, Chonghe Jiang, Zhenglin Wan, Jiawei Gu, Pengfei Zhou, Rui Huang, Ziqi Zhao, Shengyuan Ding, Ailing Yu, Bo Peng, Bowei Xia, Hao Sun, Haotian Liang, Ji Xie, Jiajun Chen, Jiajun Song, Liu Yang, Ming Xu, Qionglin Qiu, Runhao Fu, Shengfang Zhai, Shijian Wang, Tengfei Ma, Tianyi Wu, Weiyang Jin, Yan Wang, Yang Dai, Yao Lai, Youwei Shu, Yue Liu, Yunzhuo Hao, Yuwei Niu, Jinkai Huang, Jiayuan Zhuo, Zhennan Shen, Linyu Wu, Cihang Xie, Yuyin Zhou, Jiaheng Zhang, Zeyu Zheng, Mengkang Hu, Michael Qizhe Shieh},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2604.23781},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
-          "Language-model agents are increasingly used as persistent coworkers that assist users across multiple working days. During such workflows, the surrounding environment may change independently of the agent: new emails arrive, calendar entries shift, knowledge-base records are updated, and evidence appears across images, scanned PDFs, audio, video, and spreadsheets. Existing benchmarks do not adequately evaluate this setting because they typically run within a single static episode and remain largely text-centric. We introduce \\bench{}, a benchmark for coworker agents built around multi-turn multi-day tasks, a stateful sandboxed service environment whose state evolves between turns, and rule-based verification. The current release contains 100 tasks across 13 professional scenarios, executed against five stateful sandboxed services (filesystem, email, calendar, knowledge base, spreadsheet) and scored by 1537 deterministic Python checkers over post-execution service state; no LLM-as-judge is invoked during scoring. We benchmark seven frontier agent systems. The strongest model reaches 75.8 weighted score, but the best strict Task Success is only 20.0%, indicating that partial progress is common while complete end-to-end workflow completion remains rare. Turn-level analysis shows that performance drops after the first exogenous environment update, highlighting adaptation to changing state as a key open challenge. We release the benchmark, evaluation harness, and construction pipeline to support reproducible coworker-agent evaluation.",
+          "Language-model agents are increasingly used as persistent coworkers that assist users across multiple working days. During such workflows, the surrounding environment may change independently of the agent: new emails arrive, calendar entries shift, knowledge-base records are updated, and evidence appears across images, scanned PDFs, audio, video, and spreadsheets. Existing benchmarks do not adequately evaluate this setting because they typically run within a single static episode and remain largely text-centric. We introduce ClawMark, a benchmark for coworker agents built around multi-turn multi-day tasks, a stateful sandboxed service environment whose state evolves between turns, and rule-based verification. The current release contains 100 tasks across 13 professional scenarios, executed against five stateful sandboxed services (filesystem, email, calendar, knowledge base, spreadsheet) and scored by 1537 deterministic Python checkers over post-execution service state; no LLM-as-judge is invoked during scoring. We benchmark seven frontier agent systems. The strongest model reaches 75.8 weighted score, but the best strict Task Success is only 20.0%, indicating that partial progress is common while complete end-to-end workflow completion remains rare. Turn-level analysis shows that performance drops after the first exogenous environment update, highlighting adaptation to changing state as a key open challenge. We release the benchmark, evaluation harness, and construction pipeline to support reproducible coworker-agent evaluation.",
           "https://arxiv.org/abs/2604.23781",
           "https://github.com/evolvent-ai/ClawMark"
         )
@@ -348,7 +348,7 @@ function copy(dest, source) {
           null,
           "https://arxiv.org/abs/2604.01007",
           "@article{liu2026omnisimplemem,<br>&nbsp;&nbsp;&nbsp;title   = {Omni-SimpleMem: Autoresearch-Guided Discovery of Lifelong Multimodal Agent Memory},<br>&nbsp;&nbsp;&nbsp;author  = {Jiaqi Liu, Zipeng Ling, Shi Qiu, Yanqing Liu, Siwei Han, Peng Xia, Haoqin Tu, Zeyu Zheng, Cihang Xie, Charles Fleming, Mingyu Ding, Huaxiu Yao},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2604.01007},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
-          "AI agents increasingly operate over extended time horizons, yet their ability to retain, organize, and recall multimodal experiences remains a critical bottleneck. Building effective lifelong memory requires navigating a vast design space spanning architecture, retrieval strategies, prompt engineering, and data pipelines; this space is too large and interconnected for manual exploration or traditional AutoML to explore effectively. We deploy an autonomous research pipeline to discover Omni-SimpleMem, a unified multimodal memory framework for lifelong AI agents. Starting from a naïve baseline (F1=0.117 on LoCoMo), the pipeline autonomously executes ~50 experiments across two benchmarks, diagnosing failure modes, proposing architectural modifications, and repairing data pipeline bugs, all without human intervention in the inner loop. The resulting system achieves state-of-the-art on both benchmarks, improving F1 by +411% on LoCoMo (0.117$\\to$0.598) and +214% on Mem-Gallery (0.254$\\to$0.797) relative to the initial configurations. Critically, the most impactful discoveries are not hyperparameter adjustments: bug fixes (+175%), architectural changes (+44%), and prompt engineering (+188% on specific categories) each individually exceed the cumulative contribution of all hyperparameter tuning, demonstrating capabilities fundamentally beyond the reach of traditional AutoML. We provide a taxonomy of six discovery types and identify four properties that make multimodal memory particularly suited for autoresearch, offering guidance for applying autonomous research pipelines to other AI system domains. Code is available at https://github.com/aiming-lab/SimpleMem.",
+          "AI agents increasingly operate over extended time horizons, yet their ability to retain, organize, and recall multimodal experiences remains a critical bottleneck. Building effective lifelong memory requires navigating a vast design space spanning architecture, retrieval strategies, prompt engineering, and data pipelines; this space is too large and interconnected for manual exploration or traditional AutoML to explore effectively. We deploy an autonomous research pipeline to discover Omni-SimpleMem, a unified multimodal memory framework for lifelong AI agents. Starting from a naïve baseline (F1=0.117 on LoCoMo), the pipeline autonomously executes ~50 experiments across two benchmarks, diagnosing failure modes, proposing architectural modifications, and repairing data pipeline bugs, all without human intervention in the inner loop. The resulting system achieves state-of-the-art on both benchmarks, improving F1 by +411% on LoCoMo (0.117→0.598) and +214% on Mem-Gallery (0.254→0.797) relative to the initial configurations. Critically, the most impactful discoveries are not hyperparameter adjustments: bug fixes (+175%), architectural changes (+44%), and prompt engineering (+188% on specific categories) each individually exceed the cumulative contribution of all hyperparameter tuning, demonstrating capabilities fundamentally beyond the reach of traditional AutoML. We provide a taxonomy of six discovery types and identify four properties that make multimodal memory particularly suited for autoresearch, offering guidance for applying autonomous research pipelines to other AI system domains. Code is available at https://github.com/aiming-lab/SimpleMem.",
           "https://arxiv.org/abs/2604.01007",
           "https://github.com/aiming-lab/SimpleMem"
         )
@@ -847,13 +847,13 @@ function copy(dest, source) {
 
 
 
-        add_paper("Compress & Align: Curating Image-Text Data with Human Knowledge",
-                  "Lei Zhang, Fangxun Shu, Sucheng Ren, Hao Jiang, Bingchen Zhao, Cihang Xie",
+        add_paper("Filter & Align: Leveraging Human Knowledge to Curate Image-Text Data",
+                  "Lei Zhang, Fangxun Shu, Tianyang Liu, Sucheng Ren, Hao Jiang, Cihang Xie",
                   null,
                   "https://arxiv.org/abs/2312.06726",
                   "@article{zhang2023compress,<br>" +
-                  "&nbsp;&nbsp;&nbsp;title     = {Compress & Align: Curating Image-Text Data with Human Knowledge},<br>" +
-                  "&nbsp;&nbsp;&nbsp;author    = {Zhang, Lei and Shu, Fangxun and Ren, Sucheng and Zhao, Bingchen and Jiang, Hao and Xie, Cihang},<br>" +
+                  "&nbsp;&nbsp;&nbsp;title     = {Filter & Align: Leveraging Human Knowledge to Curate Image-Text Data},<br>" +
+                  "&nbsp;&nbsp;&nbsp;author    = {Lei Zhang, Fangxun Shu, Tianyang Liu, Sucheng Ren, Hao Jiang, Cihang Xie},<br>" +
                   "&nbsp;&nbsp;&nbsp;journal   = {arXiv preprint arXiv:2312.06726},<br>" +
                   "&nbsp;&nbsp;&nbsp;year      = {2023}<br>}",
                   "The massive growth of image-text data through web crawling inherently presents the challenge of variability in data quality. This paper introduces a novel algorithm, rooted in human knowledge, to compress this vast corpus of web-crawled image-text datasets to a compact and high-quality form. Our method unfolds in three major steps. First, we collect an image-text dataset, wherein each image is associated with multiple captions sourced from diverse origins. Then, to systemically capture human preferences regarding the best caption paired with each image, we establish a comprehensive set of both subjective and objective criteria for critically guiding the alignment assessment from labelers. Lastly, we train a reward model on the annotated dataset to internalize the nuanced human understanding of image-text alignment. The resulting reward model thus can act as a human-like referee to filter misaligned/low-quality image-text pairs. Extensive experiments demonstrate that we are able to secure (or even improve) model performance by compressing the image-text datasets up to ~90%. An impressive example is that, by aggressively reducing the total training sample from 130M to 15.5M (e.g., ~9x smaller), our BLIP-B/16 models still consistently show superior performance compared with the full-size-dataset counterpart on image-text retrieval (Flickr30K, COCO) by ~2.5% in Recall@1, and on image-captioning (Nocaps, COCO) by ~10.0% in CIDEr and ~2.7% in SPICE.",
@@ -921,9 +921,9 @@ function copy(dest, source) {
                      "&nbsp;&nbsp;&nbsp;author  = {Li, Zichao and Liu, Li and Wang, Zeyu and Zhou, Yuyin and Xie, Cihang},<br>" +
                      "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2209.02684},<br>" +
                      "&nbsp;&nbsp;&nbsp;year    = {2022}<br>}",
-                    "Adversarial training (AT) with samples generated by Fast Gradient Sign Method (FGSM), also known as FGSM-AT, is a computationally simple method to train robust networks. However, during its training procedure, an unstable mode of “catastrophic overfitting” has been identified in [Wong et al., 2020], where the robust accuracy abruptly drops to zero within a single training step. Existing methods use gradient regularizers or random initialization tricks to attenuate this issue, whereas they either take high computational cost or lead to lower robust accuracy. In this work, we provide the first study, which thoroughly examines a collection of tricks from three perspectives: Data Initialization, Network Structure, and Optimization, to overcome the catastrophic overfitting in FGSM-AT. Surprisingly, we find that simple tricks, i.e., a) masking partial pixels (even without randomness), b) setting a large convolution stride and smooth activation functions, or c) regularizing the weights of the first convolutional layer, can effectively tackle the overfitting issue. Extensive results on a range of network architectures validate the effectiveness of each proposed trick, and the combinations of tricks are also investigated. For example, trained with PreActResNet-18 on CIFAR-10, our method attains 49.8% accuracy against PGD-50 attacker and 46.4% accuracy against AutoAttack, demonstrating that pure FGSM-AT is capable of enabling robust learners. The code and models are publicly available at https://github. com/UCSC-VLAA/Bag-of-Tricks-for-FGSM-AT.",
+                    "Adversarial training (AT) with samples generated by Fast Gradient Sign Method (FGSM), also known as FGSM-AT, is a computationally simple method to train robust networks. However, during its training procedure, an unstable mode of “catastrophic overfitting” has been identified in [Wong et al., 2020], where the robust accuracy abruptly drops to zero within a single training step. Existing methods use gradient regularizers or random initialization tricks to attenuate this issue, whereas they either take high computational cost or lead to lower robust accuracy. In this work, we provide the first study, which thoroughly examines a collection of tricks from three perspectives: Data Initialization, Network Structure, and Optimization, to overcome the catastrophic overfitting in FGSM-AT. Surprisingly, we find that simple tricks, i.e., a) masking partial pixels (even without randomness), b) setting a large convolution stride and smooth activation functions, or c) regularizing the weights of the first convolutional layer, can effectively tackle the overfitting issue. Extensive results on a range of network architectures validate the effectiveness of each proposed trick, and the combinations of tricks are also investigated. For example, trained with PreActResNet-18 on CIFAR-10, our method attains 49.8% accuracy against PGD-50 attacker and 46.4% accuracy against AutoAttack, demonstrating that pure FGSM-AT is capable of enabling robust learners. The code and models are publicly available at https://github.com/UCSC-VLAA/Bag-of-Tricks-for-FGSM-AT.",
                     "https://arxiv.org/abs/2209.02684",
-                    "https://github. com/UCSC-VLAA/Bag-of-Tricks-for-FGSM-AT"
+                    "https://github.com/UCSC-VLAA/Bag-of-Tricks-for-FGSM-AT"
                 )
 
          
@@ -1346,8 +1346,8 @@ function copy(dest, source) {
           "CVPR, 2026",
           "https://arxiv.org/abs/2512.07580", 
           "@inproceedings{wang2026randomvisualtokens,<br>" +
-          "&nbsp;&nbsp;&nbsp;title     = {All You Need Are Random Visual Tokens? Demystifying Token Pruning in VLLMs},<br>" +
-          "&nbsp;&nbsp;&nbsp;author    = {Yahong Wang, Juncheng Wu, Zhangkai Ni, Longzhen Yang, Yihang Liu, Chengmei Yang, Ying Wen, Xianfeng Tang, Hui Liu, Yuyin Zhou, Lianghua He},<br>" +
+          "&nbsp;&nbsp;&nbsp;title     = {When Token Pruning is Worse than Random: Understanding Visual Token Information in VLLMs},<br>" +
+          "&nbsp;&nbsp;&nbsp;author    = {Yahong Wang, Juncheng Wu, Zhangkai Ni, Longzhen Yang, Yihang Liu, Chengmei Yang, Ying Wen, Lianghua He, Xianfeng Tang, Hui Liu, Yuyin Zhou},<br>" +
           "&nbsp;&nbsp;&nbsp;booktitle = {CVPR},<br>" + 
           "&nbsp;&nbsp;&nbsp;year      = {2026},<br>}",
           "Vision Large Language Models (VLLMs) incur high computational costs due to their reliance on hundreds of visual tokens to represent images. While token pruning offers a promising solution for accelerating inference, this paper, however, identifies a key observation: in deeper layers (e.g., beyond the 20th), existing training-free pruning methods perform no better than random pruning. We hypothesize that this degradation is caused by “vanishing token information”, where visual tokens progressively lose their salience with increasing network depth. To validate this hypothesis, we quantify a token’s information content by measuring the change in the model output probabilities upon its removal. Using this proposed metric, our analysis of the information of visual tokens across layers reveals three key findings: (1) As layers deepen, the information of visual tokens gradually becomes uniform and eventually vanishes at an intermediate layer, which we term as “information horizon”, beyond which the visual tokens become redundant; (2) The position of this horizon is not static; it extends deeper for visually intensive tasks, such as Optical Character Recognition (OCR), compared to more general tasks like Visual Question Answering (VQA); (3) This horizon is also strongly correlated with model capacity, as stronger VLLMs (e.g., Qwen2.5-VL) employ deeper visual tokens than weaker models (e.g., LLaVA-1.5). Based on our findings, we show that simple random pruning in deep layers efficiently balances performance and efficiency. Moreover, integrating random pruning consistently enhances existing methods. Using DivPrune with random pruning achieves state-of-the-art results, maintaining 96.9% of Qwen-2.5-VL-7B performance while pruning 50% of visual tokens. The code will be publicly available at https://github.com/YahongWang1/Information-Horizon.",
@@ -1578,10 +1578,10 @@ function copy(dest, source) {
           "Xiaoke Huang, Juncheng Wu, Hui Liu, Xianfeng Tang, Yuyin Zhou",
           "ML4H, 2025",
           "https://arxiv.org/abs/2508.02669", 
-          "@article{huang2025medvlthinker,<br>" +
+          "@inproceedings{huang2025medvlthinker,<br>" +
           "&nbsp;&nbsp;&nbsp;title   = {MedVLThinker: Simple Baselines for Multimodal Medical Reasoning},<br>" +
           "&nbsp;&nbsp;&nbsp;author  = {Xiaoke Huang, Juncheng Wu, Hui Liu, Xianfeng Tang, Yuyin Zhou},<br>" +
-          "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2508.02669},<br>" + 
+          "&nbsp;&nbsp;&nbsp;booktitle = {ML4H},<br>" + 
           "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
           "Large Reasoning Models (LRMs) have introduced a new paradigm in AI by enabling models to \"think before responding\" via chain-of-thought reasoning. However, the absence of open and reproducible recipes for building reasoning-centric medical LMMs hinders community-wide research, analysis, and comparison. In this paper, we present MedVLThinker, a suite of simple yet strong baselines. Our fully open recipe consists of: (1) systematic data curation for both text-only and image-text medical data, filtered according to varying levels of reasoning difficulty, and (2) two training paradigms: Supervised Fine-Tuning (SFT) on distilled reasoning traces and Reinforcement Learning with Verifiable Rewards (RLVR) based on final answer correctness. Across extensive experiments on the Qwen2.5-VL model family (3B, 7B) and six medical QA benchmarks, we find that RLVR consistently and significantly outperforms SFT. Additionally, under the RLVR framework, a key, counter-intuitive finding is that training on our curated text-only reasoning data provides a more substantial performance boost than training on multimodal image-text data. Our best open 7B model, trained using the RLVR recipe on text-only data, establishes a new state-of-the-art on existing public VQA benchmarks, surpassing all previous open-source medical LMMs. Furthermore, scaling our model to 32B achieves performance on par with the proprietary GPT-4o. We release all curated data, models, and code to provide the community with a strong, open foundation for future research in multimodal medical reasoning.",
           "https://arxiv.org/abs/2508.02669",
@@ -1592,10 +1592,10 @@ function copy(dest, source) {
             "Xiaoke Huang, Juncheng Wu, Hui Liu, Xianfeng Tang, Yuyin Zhou",
             "ML4H, 2025",
             "https://arxiv.org/abs/2504.00869", 
-            "@article{huang2025m1,<br>" +
+            "@inproceedings{huang2025m1,<br>" +
             "&nbsp;&nbsp;&nbsp;title   = {m1: Unleash the Potential of Test-Time Scaling for Medical Reasoning with Large Language Models},<br>" +
             "&nbsp;&nbsp;&nbsp;author  = {Xiaoke Huang, Juncheng Wu, Hui Liu, Xianfeng Tang, Yuyin Zhou},<br>" +
-            "&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2504.00869},<br>" + 
+            "&nbsp;&nbsp;&nbsp;booktitle = {ML4H},<br>" + 
             "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
             "Test-time scaling has emerged as a powerful technique for enhancing the reasoning capabilities of large language models. However, its effectiveness in medical reasoning remains uncertain, as the medical domain fundamentally differs from mathematical tasks in terms of knowledge representation and decision-making processes. In this paper, we provide the first comprehensive investigation of test-time scaling for medical reasoning and present m1, a simple yet effective approach that increases a model's medical reasoning capability at inference. Our evaluation across diverse medical tasks demonstrates that test-time scaling consistently enhances medical reasoning, enabling lightweight fine-tuned models under 10B parameters to establish new state-of-the-art performance, while our 32B model rivals previous 70B-scale medical LLMs. However, we identify an optimal reasoning token budget of approximately 4K, beyond which performance may degrade due to overthinking. Budget forcing, which extends test-time computation through iterative prompts, helps models double-check answers but does not necessarily improve the overall medical QA performance and, in some cases, even introduces errors into previously correct responses. Our case-by-case analysis identifies insufficient medical knowledge as a key bottleneck that prevents further performance gains through test-time scaling. We find that increasing data scale, improving data quality, and expanding model capacity consistently enhance medical knowledge grounding, enabling continued performance improvements, particularly on challenging medical benchmarks where smaller models reach saturation. These findings underscore fundamental differences between medical and mathematical reasoning in LLMs, highlighting that enriched medical knowledge, other than increased reasoning depth alone, is essential for realizing the benefits of test-time scaling.",
             "https://arxiv.org/abs/2504.00869",
@@ -1665,13 +1665,13 @@ function copy(dest, source) {
         )
 
 
-        add_paper("VideoLLaMB: Long-context Video Understanding with Recurrent Memory Bridges",
-          "Yuxuan Wang, Cihang Xie, Yang Liu, Zilong Zheng",
+        add_paper("VideoLLaMB: Long Streaming Video Understanding with Recurrent Memory Bridges",
+          "Yuxuan Wang, Yiqi Song, Cihang Xie, Yang Liu, Zilong Zheng",
           "ICCV, 2025",
           "https://arxiv.org/abs/2409.01071",
           "@inproceedings{wang2024videollamb,<br>" +
-          "&nbsp;&nbsp;&nbsp;title     = {VideoLLaMB: Long-context Video Understanding with Recurrent Memory Bridges},<br>" +
-          "&nbsp;&nbsp;&nbsp;author    = {Yuxuan Wang, Cihang Xie, Yang Liu, Zilong Zheng},<br>" +
+          "&nbsp;&nbsp;&nbsp;title     = {VideoLLaMB: Long Streaming Video Understanding with Recurrent Memory Bridges},<br>" +
+          "&nbsp;&nbsp;&nbsp;author    = {Yuxuan Wang, Yiqi Song, Cihang Xie, Yang Liu, Zilong Zheng},<br>" +
           "&nbsp;&nbsp;&nbsp;booktitle = {ICCV},<br>" +
           "&nbsp;&nbsp;&nbsp;year      = {2025},<br>}",
           "Recent advancements in large-scale video-language models have shown significant potential for real-time planning and detailed interactions. However, their high computational demands and the scarcity of annotated datasets limit their practicality for academic researchers. In this work, we introduce VideoLLaMB, a novel framework that utilizes temporal memory tokens within bridge layers to allow for the encoding of entire video sequences alongside historical visual data, effectively preserving semantic continuity and enhancing model performance across various tasks. This approach includes recurrent memory tokens and a SceneTilling algorithm, which segments videos into independent semantic units to preserve semantic integrity. Empirically, VideoLLaMB significantly outstrips existing video-language models, demonstrating a 5.5 points improvement over its competitors across three VideoQA benchmarks, and 2.06 points on egocentric planning. Comprehensive results on the MVBench show that VideoLLaMB-7B achieves markedly better results than previous 7B models of same LLM. Remarkably, it maintains robust performance as PLLaVA even as video length increases up to 8 times. Besides, the frame retrieval results on our specialized Needle in a Video Haystack (NIAVH) benchmark, further validate VideoLLaMB's prowess in accurately identifying specific frames within lengthy videos. Our SceneTilling algorithm also enables the generation of streaming video captions directly, without necessitating additional training. In terms of efficiency, VideoLLaMB, trained on 16 frames, supports up to 320 frames on a single Nvidia A100 GPU with linear GPU memory scaling, ensuring both high performance and cost-effectiveness, thereby setting a new foundation for long-form video-language models in both academic and practical applications.",
@@ -1684,10 +1684,10 @@ function copy(dest, source) {
             "Fangxun Shu, Lei Zhang, Hao Jiang, Cihang Xie",
             "ICCV What is Next in Multimodal Foundation Models Workshop, 2025",
             "https://arxiv.org/abs/2312.06720",
-            "@article{shu2023audio,<br>" +
+            "@inproceedings{shu2023audio,<br>" +
             "&nbsp;&nbsp;&nbsp;title     = {Audio-Visual LLM for Video Understanding},<br>" +
             "&nbsp;&nbsp;&nbsp;author    = {Shu, Fangxun and Zhang, Lei and Jiang, Hao and Xie, Cihang},<br>" +
-            "&nbsp;&nbsp;&nbsp;journal   = {ICCV What is Next in Multimodal Foundation Models Workshop},<br>" +
+            "&nbsp;&nbsp;&nbsp;booktitle = {ICCV What is Next in Multimodal Foundation Models Workshop},<br>" +
             "&nbsp;&nbsp;&nbsp;year      = {2025}<br>}",
             "This paper presents Audio-Visual LLM, a Multimodal Large Language Model that takes both visual and auditory inputs for holistic video understanding. A key design is the modality-augmented training, which involves the integration of modality-specific tokens engineered to activate the appropriate visual and/or auditory encoder selectively. This mechanism is pivotal in enabling end-to-end joint training with video data at different modalities, including visual-only, audio-only, and audio-visual formats. Moreover, we introduce a high-quality video instruction dataset, derived from GPT-4. This dataset allows Audio-Visual LLM to adeptly process a variety of task-oriented video instructions, ranging from multi-turn conversations and audio-visual narratives to complex reasoning tasks. Extensive experiments demonstrate that Audio-Visual LLM impressively achieves strong zero-shot results across a range of video understanding tasks. For example, Audio-Visual LLM achieves an accuracy of 53.7% on MSRVTT-QA, outperforming non-LLM-based InterVideo by 6.6% and LLM-based Valley by 4.4%, respectively. Additionally, our Audio-Visual LLM also achieves competitive performance on audio tasks (e.g., AudioCaps).",
             "https://arxiv.org/abs/2312.06720"
@@ -1934,7 +1934,7 @@ function copy(dest, source) {
           "IEEE Journal of Biomedical and Health Informatics, 2025",
           "https://arxiv.org/abs/2405.14802",
           "@article{jiang2024fastddpm,<br>" +
-           "&nbsp;&nbsp;&nbsp;title   = {Fast Denoising Diffusion Probabilistic Models for Medical Image-to-Image Generation},<br>" +
+           "&nbsp;&nbsp;&nbsp;title   = {Fast-DDPM: Fast Denoising Diffusion Probabilistic Models for Medical Image-to-Image Generation},<br>" +
            "&nbsp;&nbsp;&nbsp;author  = {Jiang, Hongxu and Imran, Muhammad and Ma, Linhai and Zhang, Teng and Zhou, Yuyin and Liang, Muxuan and Gong, Kuang and Shao, Wei},<br>" +
            "&nbsp;&nbsp;&nbsp;journal = {IEEE Journal of Biomedical and Health Informatics},<br>" +
            "&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
@@ -2024,7 +2024,7 @@ function copy(dest, source) {
                   "https://arxiv.org/abs/2312.13764",
                   "@inproceedings{xiao2023semantic,<br>" +
                   "&nbsp;&nbsp;&nbsp;title     = {A Semantic Space is Worth 256 Language Descriptions: Make Stronger Segmentation Models with Descriptive Properties},<br>" +
-                  "&nbsp;&nbsp;&nbsp;author    = {Xiao, Junfei and Zhou, Ziqi and Li, Wenxuan and Lan, Shiyi and Mei, Jieru and Yu, Zhiding and Yuille, Alan and Zhou, Yuyin and Xie, Cihang},<br>" +
+                  "&nbsp;&nbsp;&nbsp;author    = {Xiao, Junfei and Zhou, Ziqi and Li, Wenxuan and Lan, Shiyi and Mei, Jieru and Yu, Zhiding and Zhao, Bingchen and Yuille, Alan and Zhou, Yuyin and Xie, Cihang},<br>" +
                   "&nbsp;&nbsp;&nbsp;booktitle = {ECCV},<br>" +
                   "&nbsp;&nbsp;&nbsp;year      = {2024}<br>}",
                   "This paper introduces ProLab, a novel approach using property-level label space for creating strong interpretable segmentation models. Instead of relying solely on category-specific annotations, ProLab uses descriptive properties grounded in common sense knowledge for supervising segmentation models. It is based on two core designs. First, we employ Large Language Models (LLMs) and carefully crafted prompts to generate descriptions of all involved categories that carry meaningful common sense knowledge and follow a structured format. Second, we introduce a description embedding model preserving semantic correlation across descriptions and then cluster them into a set of descriptive properties (e.g., 256) using K-Means. These properties are based on interpretable common sense knowledge consistent with theories of human recognition. We empirically show that our approach makes segmentation models perform stronger on five classic benchmarks (e.g., ADE20K, COCO-Stuff, Pascal Context, Cityscapes, and BDD). Our method also shows better scalability with extended training steps than category-level supervision. Our interpretable segmentation framework also emerges with the generalization ability to segment out-of-domain or unknown categories using only in-domain descriptive properties. Code is available at https://github.com/lambert-x/ProLab.",
@@ -2081,7 +2081,7 @@ function copy(dest, source) {
                   "ICML, 2024",
                   "https://arxiv.org/abs/2312.02147",
                   "@inproceedings{ren2024digpt,<br>" +
-                  "&nbsp;&nbsp;&nbsp;title     = {Rejuvenating i-GPT for Scalable Visual Representation Learning},<br>" +
+                  "&nbsp;&nbsp;&nbsp;title     = {Rejuvenating image-GPT as Strong Visual Representation Learners},<br>" +
                   "&nbsp;&nbsp;&nbsp;author    = {Ren, Sucheng and Wang, Zeyu and Zhu, Hongru and Xiao, Junfei and Yuille, Alan and Xie, Cihang},<br>" +
                   "&nbsp;&nbsp;&nbsp;booktitle = {ICML},<br>" +
                   "&nbsp;&nbsp;&nbsp;year      = {2024}<br>}",
@@ -2327,7 +2327,7 @@ function copy(dest, source) {
 
         add_paper("CIS-UNet: Multi-Class Segmentation of the Aorta in Computed Tomography Angiography via Context-Aware Shifted Window Self-Attention",
           "Muhammad Imran, Jonathan R Krebs, Veera Rajasekhar Reddy Gopu, Brian Fazzone, Vishal Balaji Sivaraman, Amarjeet Kumar, Chelsea Viscardi, Robert Evans Heithaus, Benjamin Shickel, Yuyin Zhou, Michol A Cooper, Wei Shao",
-          "Computerized Medical Imaging and Graphics",
+          "Computerized Medical Imaging and Graphics, 2024",
           "https://arxiv.org/abs/2401.13049",
           "@article{imran2024cisunet,<br>" +
            "&nbsp;&nbsp;&nbsp;title   = {CIS-UNet: Multi-Class Segmentation of the Aorta in Computed Tomography Angiography via Context-Aware Shifted Window Self-Attention},<br>" +
@@ -2341,7 +2341,7 @@ function copy(dest, source) {
 
        add_paper("Image Registration of In Vivo Micro-Ultrasound and Ex Vivo Pseudo-Whole Mount Histopathology Images of the Prostate: A Proof-of-Concept Study",
                     "Muhammad Imran, Brianna Nguyen, Jake Pensa, Sara M. Falzarano, Anthony E. Sisk, Muxuan Liang, John Michael DiBianco, Li-Ming Su, Yuyin Zhou, Wayne G. Brisbane, Wei Shao",
-                    "Biomedical Signal Processing and Control",
+                    "Biomedical Signal Processing and Control, 2024",
                     "https://arxiv.org/abs/2305.19939",
                     "@article{imran2023image,<br>" +
                     "&nbsp;&nbsp;&nbsp;title = {Image Registration of In Vivo Micro-Ultrasound and Ex Vivo Pseudo-Whole Mount Histopathology Images of the Prostate: A Proof-of-Concept Study},<br>" +
@@ -2371,7 +2371,7 @@ function copy(dest, source) {
                     "Haoqin Tu, Bingchen Zhao, Chen Wei, Cihang Xie",
                     "TMLR, 2024",
                     "https://arxiv.org/abs/2309.07120",
-                    "@inproceedings{tu2023sight,<br>" +
+                    "@article{tu2023sight,<br>" +
                     "&nbsp;&nbsp;&nbsp;title = {Sight Beyond Text: Multi-Modal Training Enhances LLMs in Truthfulness and Ethics},<br>" +
                     "&nbsp;&nbsp;&nbsp;author = {Tu, Haoqin and Zhao, Bingchen and Wei, Chen and Xie, Cihang},<br>" +
                     "&nbsp;&nbsp;&nbsp;journal = {TMLR},<br>" +
@@ -3062,7 +3062,7 @@ function copy(dest, source) {
             "https://arxiv.org/abs/2004.05682",
             "@inproceedings{yang2020patchattack,<br>" +
              "&nbsp;&nbsp;&nbsp;title     = {PatchAttack: A Black-box Texture-based Attack with Reinforcement Learning},<br>" +
-             "&nbsp;&nbsp;&nbsp;author    = {Chenglin Yang, Adam Kortylewski, Cihang Xie, Yinzhi Cao and Yuille, Alan},<br>" +
+             "&nbsp;&nbsp;&nbsp;author    = {Yang, Chenglin and Kortylewski, Adam and Xie, Cihang and Cao, Yinzhi and Yuille, Alan},<br>" +
              "&nbsp;&nbsp;&nbsp;booktitle = {ECCV},<br>" +
              "&nbsp;&nbsp;&nbsp;year      = {2020}<br>}",
             "Patch-based attacks introduce a perceptible but localized change to the input that induces misclassification. A limitation of current patch-based black-box attacks is that they perform poorly for targeted attacks, and even for the less challenging non-targeted scenarios, they require a large number of queries. Our proposed PatchAttack is query efficient and can break models for both targeted and non-targeted attacks. PatchAttack induces misclassifications by superimposing small textured patches on the input image. We parametrize the appearance of these patches by a dictionary of class-specific textures. This texture dictionary is learned by clustering Gram matrices of feature activations from a VGG backbone. PatchAttack optimizes the position and texture parameters of each patch using reinforcement learning. Our experiments show that PatchAttack achieves >99% success rate on ImageNet for a wide range of architectures, while only manipulating 3% of the image for non-targeted attacks and 10% on average for targeted attacks. Furthermore, we show that PatchAttack circumvents state-of-the-art adversarial defense methods successfully. The code is publicly available here: https://github.com/Chenglin-Yang/PatchAttack.",
@@ -3128,8 +3128,8 @@ function copy(dest, source) {
         )
 
         add_paper("Deep Distance Transform for Tubular Structure Segmentation in CT Scans",
-            "Yan Wang, Xu Wei, Fengze Liu, Jieneng Chen, Yuyin Zhou, Wei Shen, Elliot Fishman Alan Yuille",
-            "CVPR,2020",
+            "Yan Wang, Xu Wei, Fengze Liu, Jieneng Chen, Yuyin Zhou, Wei Shen, Elliot Fishman, Alan Yuille",
+            "CVPR, 2020",
             "https://arxiv.org/abs/1912.03383",
             "@inproceedings{wang2020deep,<br>" +
              "&nbsp;&nbsp;&nbsp;title     = {Deep distance transform for tubular structure segmentation in ct scans},<br>" +
@@ -3194,8 +3194,8 @@ function copy(dest, source) {
         )
 
 
-        add_paper("Detecting Pancreatic Adenocarcinoma in Multi-phase CT Scans via Alignment Ensemble",
-            "Yingda Xia, Qihang Yu, Wei Shen, Yuyin Zhou, Elliot Fishman",
+        add_paper("Detecting Pancreatic Ductal Adenocarcinoma in Multi-phase CT Scans via Alignment Ensemble",
+            "Yingda Xia, Qihang Yu, Wei Shen, Yuyin Zhou, Elliot Fishman, Alan Yuille",
             "MICCAI, 2020",
             "https://arxiv.org/abs/2003.08441",
             "@inproceedings{xia2020detecting,<br>" +
@@ -3389,7 +3389,7 @@ function copy(dest, source) {
             "https://arxiv.org/abs/1804.08414"
         )
 
-        add_paper("Semi- Supervised 3D Multi-Organ Segmentation via Deep Multi-Planar Co-Training",
+        add_paper("Semi-Supervised 3D Abdominal Multi-Organ Segmentation via Deep Multi-Planar Co-Training",
             "Yuyin Zhou, Yan Wang, Peng Tang, Song Bai, Wei Shen, Elliot Fishman, Alan Yuille",
             "WACV, 2019",
             "https://arxiv.org/abs/1804.02586",
@@ -3521,7 +3521,7 @@ function copy(dest, source) {
         document.write("<ul>")
 
         add_paper("Adversarial Examples for Semantic Segmentation and Object Detection",
-            "Jianyu Wang, Cihang Xie, Zhishuai Zhang, Jun Zhu, Lingxi Xie, Alan Yuille",
+            "Cihang Xie, Jianyu Wang, Zhishuai Zhang, Yuyin Zhou, Lingxi Xie, Alan Yuille",
             "ICCV, 2017",
             "https://arxiv.org/abs/1703.08603",
             "@inproceedings{xie2017dag,<br>" +
@@ -3547,8 +3547,8 @@ function copy(dest, source) {
             "https://arxiv.org/abs/1707.07819"
         )
 
-        add_paper("A Fixed- Point Model for Pancreas Segmentation in Abdominal CT Scans",
-            "Yuyin Zhou, Lingxi Xie, Cihang Xie, Wei Shen, Yan Wang, Elliot Fishman, Alan Yuille",
+        add_paper("A Fixed-Point Model for Pancreas Segmentation in Abdominal CT Scans",
+            "Yuyin Zhou, Lingxi Xie, Wei Shen, Yan Wang, Elliot Fishman, Alan Yuille",
             "MICCAI, 2017",
             "https://link.springer.com/chapter/10.1007/978-3-319-66182-7_79",
             "@inproceedings{zhou2017fixed,<br>" +
