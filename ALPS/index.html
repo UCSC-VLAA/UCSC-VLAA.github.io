@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>🏔️ ALPS: Visual State Encoders for World Models</title>
+<meta name="description" content="ALPS is a pretrained visual state encoder that unifies physical-state information, native language alignment, and pixel reconstruction in a single set of patch tokens.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="🏔️ ALPS: Visual State Encoders for World Models">
+<meta property="og:description" content="One frozen encoder for state, language, and pixels.">
+<meta property="og:url" content="https://ucsc-vlaa.github.io/ALPS/">
+<meta property="og:image" content="https://ucsc-vlaa.github.io/ALPS/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2305070a'/%3E%3Crect x='5' y='21' width='4.5' height='3' rx='1' fill='%2366717c'/%3E%3Crect x='11' y='21' width='4.5' height='3' rx='1' fill='%23a983ff'/%3E%3Crect x='17' y='21' width='4.5' height='3' rx='1' fill='%23f5a04a'/%3E%3Crect x='23' y='21' width='4.5' height='3' rx='1' fill='%232bc4cb'/%3E%3Cpath d='M9 18 L14.2 6 h3.6 L23 18 h-3.4 l-1.1-2.8 h-5 L12.4 18z M14.5 12.6 h3 l-1.5-4z' fill='%23eef2f5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Inter+Tight:wght@500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="topbar">
+      <span class="org">University of California, Santa Cruz</span>
+      <nav aria-label="Sections">
+        <a href="#video">Video</a><a href="#overview">Overview</a><a href="#method">Method</a><a href="#results">Results</a><a href="#code">Code</a><a href="#bibtex">BibTeX</a>
+      </nav>
+    </div>
+
+    <div class="wordmark" role="img" aria-label="ALPS">
+      <em class="peak" aria-hidden="true">🏔️</em><span style="--bar: var(--mark)">A</span><span style="--bar: var(--lang)">L</span><span style="--bar: var(--pix)">P</span><span style="--bar: var(--state)">S</span>
+    </div>
+    <p class="expansion">A <span class="l">Language-aligned</span>, <span class="p">Pixel-renderable</span> <span class="s">State</span> encoder</p>
+    <h1 class="title">Visual State Encoders for World Models</h1>
+    <div class="authors"><span class="grp"><span>Yanqing Liu<sup>1</sup></span><span>Letian Zhang<sup>1</sup></span><span>Chengzhi Liu<sup>3</sup></span><span>Zijun Wang<sup>1</sup></span></span><span class="grp"><span>Jieru Mei<sup>2</sup></span><span>Hongliang Fei<sup>2</sup></span><span>Yuyin Zhou<sup>1</sup></span><span>Cihang Xie<sup>1</sup></span></span></div>
+    <div class="affil"><span><sup>1</sup>University of California, Santa Cruz</span><span><sup>2</sup>Google</span><span><sup>3</sup>University of California, Santa Barbara</span></div>
+
+    <div class="buttons">
+      <a class="btn" href="https://arxiv.org/abs/2610.30120"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 1.5h5.5L13 5v9.5H4z"/><path d="M9.5 1.5V5H13M6 8h5M6 10.5h5"/></svg>Paper</a>
+      <a class="btn" href="https://github.com/UCSC-VLAA/ALPS"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5.5 4.5 2 8l3.5 3.5M10.5 4.5 14 8l-3.5 3.5"/></svg>Code</a>
+      <a class="btn" href="https://huggingface.co/UCSC-VLAA/ALPS"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5 14 5v6l-6 3.5L2 11V5z"/><path d="M2 5l6 3.5L14 5M8 8.5v6"/></svg>Weights</a>
+      <a class="btn" href="#video"><svg viewBox="0 0 16 16" fill="currentColor"><path d="M5 3.5v9l7.5-4.5z"/></svg>Video</a>
+      <a class="btn" href="#bibtex"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4.5h10M3 8h10M3 11.5h6"/></svg>BibTeX</a>
+    </div>
+
+    <div class="video" id="video">
+      <video controls muted autoplay loop playsinline preload="metadata" poster="assets/poster.jpg" width="1920" height="1080">
+        <source src="assets/alps_teaser.mp4" type="video/mp4">
+        Your browser cannot play the video; <a href="assets/alps_teaser.mp4">download it (MP4)</a>.
+      </video>
+    </div>
+    <div class="video-note">
+      <span>Teaser video (1:10). It starts muted; turn the sound on for its score.</span>
+      <a href="assets/alps_teaser.mp4" download>Download MP4 (14 MB)</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="overview">
+  <div class="wrap">
+    <div class="kicker">Overview</div>
+    <h2>One representation for prediction, instruction, and inspection</h2>
+    <p class="lead narrow">World models predict how a scene changes in response to actions and use these predictions to plan. Many of
+      them operate in the latent space of a frozen pretrained visual encoder. The encoder therefore decides what the world model can
+      see. ALPS unifies physical-state information, native language alignment, and pixel reconstruction in a single set of patch
+      tokens.</p>
+
+    <div class="caps">
+      <div class="cap" style="--c: var(--state)">
+        <div class="name">State</div>
+        <div class="verb">Predict</div>
+        <div class="num">.829</div>
+        <div class="unit">LIBERO state-probe error, relative &darr;</div>
+        <p>Lowest among the ViT-B encoders, matching the 3.5&times; larger V-JEPA 2-L.</p>
+      </div>
+      <div class="cap" style="--c: var(--lang)">
+        <div class="name">Language</div>
+        <div class="verb">Instruct</div>
+        <div class="num">93.2</div>
+        <div class="unit">Flickr30k image-to-text R@1 &uarr;, own text tower</div>
+        <p>Within 2 points of the best image-text encoders.</p>
+      </div>
+      <div class="cap" style="--c: var(--pix)">
+        <div class="name">Pixels</div>
+        <div class="verb">Inspect</div>
+        <div class="num">.120</div>
+        <div class="unit">reconstruction &#8467;<sub>1</sub> &darr;, common evaluation decoder</div>
+        <p>Lower than every compared encoder not trained to reconstruct pixels or latents.</p>
+      </div>
+    </div>
+    <p class="verdict">No compared encoder is better than ALPS on all three.</p>
+
+    <figure>
+      <div class="card"><img src="assets/fig1_overview.jpg" width="2000" height="990" loading="lazy"
+        alt="Figure 1. (a) Observation, frozen ALPS encoder, shared patch tokens, and three interfaces: state readout and prediction, native text tower, pixel decoding. (b) Bars for every encoder on state-probe error, Flickr30k image-to-text recall, and reconstruction error."></div>
+      <figcaption><b>Figure 1. One frozen encoder for state, language, and pixels.</b> (a) Conceptual illustration of the three
+        interfaces of ALPS. (b) Every encoder of Tab. 1 on LIBERO state-probe error, Flickr30k image-to-text R@1, and the &#8467;<sub>1</sub>
+        error of a decoder trained on its tokens, bars oriented so that longer is better; n/a: no text tower released (not zero).
+        <b>No compared encoder is better than ALPS on all three.</b></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="abstract">
+  <div class="wrap narrow">
+    <div class="kicker">Abstract</div>
+    <p>World models turn visual representations into predictions and actions. We argue that their visual foundation should combine
+      physical-state information, native language alignment, and pixel reconstruction, so that a single representation can support
+      prediction, instruction, and inspection. However, existing encoders typically specialize in only one or two of these
+      capabilities; we therefore introduce ALPS, a pretrained visual state encoder that unifies all three in a single set of patch
+      tokens. Using only still images and text, we pretrain a ViT-B/16 from scratch with language, reconstruction, and spatial
+      correspondence objectives, and then refine it via cross-view self-distillation. In a unified evaluation across fifteen public
+      encoders, ALPS achieves the lowest aggregate LIBERO state-probe error among ViT-B models (matching the 3.5&times; larger
+      V-JEPA 2-L) while maintaining strong language alignment and accurate pixel reconstruction. Downstream, frozen ALPS tokens
+      reach the highest mean policy success on LIBERO (85.5%) when paired with our native text tower, match or exceed leading
+      encoders on world-model planning across PushT, Wall, and Granular, and allow predicted future tokens to be decoded directly
+      into pixels for visual inspection. We hope this work helps establish visual pretraining as a shared foundation for
+      understanding, prediction, and action in world models.</p>
+  </div>
+</section>
+
+<section id="method">
+  <div class="wrap">
+    <div class="kicker">Method</div>
+    <h2>Two-stage visual state pretraining</h2>
+    <p class="narrow">We pretrain our encoder in two stages. The first stage establishes language alignment, pixel reconstruction, and spatial
+      features in a shared representation. We train a ViT-B/16 from scratch on image-text pairs with contrastive alignment,
+      captioning, reconstruction, and dense correspondence objectives on the same patch tokens. The second stage then strengthens
+      state information through cross-view self-distillation, training the encoder to predict scene content across changes in crop,
+      scale, and appearance. From an augmented view, the student predicts a frozen first-stage teacher's patch tokens at
+      corresponding locations in a clean view. Both stages train on still images and text alone, without video or interaction
+      supervision.</p>
+    <figure>
+      <div class="card"><img src="assets/fig2_method.jpg" width="2000" height="954" loading="lazy"
+        alt="Figure 2. Stage 1: an image and its caption, encoder E, patch tokens, four objectives (contrastive, captioning, reconstruction, correspondence). Stage 2: augmented crop A to a trainable student and a predictor with geometry queries; clean crop B to the frozen Stage 1 teacher; mean squared error on patches centered in A only."></div>
+      <figcaption><b>Figure 2. Two-stage visual state pretraining.</b> Stage 1 trains an encoder E from scratch with four objectives
+        on shared patch tokens. Stage 2 initializes a student from E and keeps E frozen as the teacher. Given student tokens from an
+        augmented crop A and query tokens encoding position and relative scale, a predictor regresses standardized teacher tokens from
+        a clean crop B. Only patches of B whose centers lie inside A contribute to the loss. After training, the predictor is
+        discarded and the refined student serves as ALPS.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="results">
+  <div class="wrap">
+    <div class="kicker">Results</div>
+    <h2>One encoder for state, language, and pixels</h2>
+    <p class="narrow">We compare ALPS with fifteen public encoders, all frozen and evaluated under common protocols. ALPS achieves the
+      lowest aggregate LIBERO state-probe error among ViT-B encoders, matching the 3.5&times; larger V-JEPA 2-L, while retaining
+      strong language alignment and accurate pixel reconstruction.</p>
+<!-- TABLE1:BEGIN -->
+<div class="table-scroll"><table>
+<thead>
+<tr class="groups"><th></th><th colspan="4" class="col-state">State probe (LIBERO, relative error &darr;)</th><th colspan="5" class="col-lang">Language alignment &uarr;</th><th colspan="2" class="col-pix">Reconstruction &darr;</th></tr>
+<tr><th>Encoder</th><th>readout</th><th>+1 s</th><th>+3 s</th><th>mean</th><th>IN-1k 0-shot</th><th>Flickr I&rarr;T</th><th>Flickr T&rarr;I</th><th>COCO I&rarr;T</th><th>COCO T&rarr;I</th><th>&#8467;<sub>1</sub></th><th>LPIPS</th></tr>
+</thead><tbody>
+<tr class="grp"><td colspan="12">Spatial &amp; self-supervised encoders</td></tr>
+<tr class=""><td>TIPSv2-B/14</td><td class="">.947</td><td class="">.946</td><td class="">.995</td><td class="">.963</td><td class="">71.1</td><td class="">86.5</td><td class="">72.2</td><td class="">63.7</td><td class="">48.2</td><td class="">.204</td><td class="">.467</td></tr>
+<tr class=""><td>DINOv2-B/14</td><td class="">.916</td><td class="">.901</td><td class="">1.010</td><td class="">.942</td><td class=" na">n/a</td><td class=" na">n/a</td><td class=" na">n/a</td><td class=" na">n/a</td><td class=" na">n/a</td><td class="">.248</td><td class="">.535</td></tr>
+<tr class=""><td>PE-Spatial-B/16</td><td class="">1.000</td><td class="">.892</td><td class="">.917</td><td class="">.936</td><td class=" na">n/a</td><td class=" na">n/a</td><td class=" na">n/a</td><td class=" na">n/a</td><td class=" na">n/a</td><td class="">.160</td><td class="">.386</td></tr>
+<tr class=""><td>DINOv3-B/16</td><td class="">.860</td><td class="">.911</td><td class="">.840</td><td class="">.870</td><td class=" na">n/a</td><td class=" na">n/a</td><td class=" na">n/a</td><td class=" na">n/a</td><td class=" na">n/a</td><td class="">.196</td><td class="">.424</td></tr>
+<tr class=""><td>C-RADIOv3-B</td><td class="">.876</td><td class="">.838</td><td class="">.877</td><td class="">.864</td><td class="">66.5</td><td class="">85.7</td><td class="">74.3</td><td class="">56.5</td><td class="">46.0</td><td class="">.161</td><td class="">.359</td></tr>
+<tr class="grp"><td colspan="12">Image-text encoders</td></tr>
+<tr class=""><td>CLIP-B/16</td><td class="">1.091</td><td class="">1.110</td><td class="">1.380</td><td class="">1.194</td><td class="">68.4</td><td class="">81.9</td><td class="">62.0</td><td class="">52.5</td><td class="">33.1</td><td class="">.291</td><td class="">.579</td></tr>
+<tr class=""><td>SigLIP 2-B/16</td><td class="">1.149</td><td class="">1.202</td><td class="">1.130</td><td class="">1.160</td><td class="">77.6</td><td class="">91.7</td><td class="">78.1</td><td class="">67.9</td><td class="best">52.4</td><td class="">.264</td><td class="">.541</td></tr>
+<tr class=""><td>PE-Core-B/16</td><td class="">1.118</td><td class="">1.099</td><td class="">1.292</td><td class="">1.170</td><td class="best">78.4</td><td class="">93.9</td><td class="best">80.9</td><td class="">71.1</td><td class="">50.3</td><td class="">.264</td><td class="">.559</td></tr>
+<tr class=""><td>OpenVision-B/16</td><td class="">1.042</td><td class="">1.008</td><td class="">1.032</td><td class="">1.027</td><td class="">73.3</td><td class="best">94.5</td><td class="">78.9</td><td class="best">71.3</td><td class="">51.3</td><td class="">.258</td><td class="">.551</td></tr>
+<tr class="grp"><td colspan="12">Pixel &amp; latent reconstruction encoders</td></tr>
+<tr class=""><td>MAE-B/16</td><td class="">.935</td><td class="">1.008</td><td class="">1.027</td><td class="">.990</td><td class=" na">n/a</td><td class=" na">n/a</td><td class=" na">n/a</td><td class=" na">n/a</td><td class=" na">n/a</td><td class="">.109</td><td class="">.260</td></tr>
+<tr class=""><td>VC-1-B</td><td class="">1.064</td><td class="">.841</td><td class="">.924</td><td class="">.943</td><td class=" na">n/a</td><td class=" na">n/a</td><td class=" na">n/a</td><td class=" na">n/a</td><td class=" na">n/a</td><td class="">.106</td><td class="">.258</td></tr>
+<tr class=""><td>OpenVision 3-B</td><td class="">1.029</td><td class="">.934</td><td class="">1.071</td><td class="">1.011</td><td class=" na">n/a</td><td class=" na">n/a</td><td class=" na">n/a</td><td class=" na">n/a</td><td class=" na">n/a</td><td class="best">.104</td><td class="best">.243</td></tr>
+<tr class="grp"><td colspan="12">Larger encoders, ViT-L (304M to 330M parameters)</td></tr>
+<tr class="ref"><td>OpenVision 2-L/14</td><td class="">.969</td><td class="">.881</td><td class="">.987</td><td class="">.945</td><td class=" na">n/a</td><td class=" na">n/a</td><td class=" na">n/a</td><td class=" na">n/a</td><td class=" na">n/a</td><td class="">.311</td><td class="">.602</td></tr>
+<tr class="ref"><td>V-JEPA 2-L/16</td><td class="">.741</td><td class="">.841</td><td class="">.904</td><td class="">.829</td><td class=" na">n/a</td><td class=" na">n/a</td><td class=" na">n/a</td><td class=" na">n/a</td><td class=" na">n/a</td><td class="">.173</td><td class="">.413</td></tr>
+<tr class="ref"><td>dino.txt-L/14</td><td class="">1.090</td><td class="">1.170</td><td class="">1.418</td><td class="">1.226</td><td class="">81.6</td><td class="">90.7</td><td class="">75.8</td><td class="">64.9</td><td class="">46.7</td><td class="">.239</td><td class="">.552</td></tr>
+<tr class="grp"><td colspan="12">Ours, ViT-B/16</td></tr>
+<tr class=""><td>ALPS (Stage 1)</td><td class="">1.000</td><td class="">1.000</td><td class="">1.000</td><td class="">1.000</td><td class="">74.5</td><td class="">93.4</td><td class="">79.4</td><td class="">70.6</td><td class="">52.0</td><td class="">.112</td><td class="">.365</td></tr>
+<tr class="ours"><td>ALPS</td><td class="best">.842</td><td class="best">.834</td><td class="best">.813</td><td class="best">.829</td><td class="">73.4</td><td class="">93.2</td><td class="">78.9</td><td class="">70.2</td><td class="">51.9</td><td class="">.120</td><td class="">.372</td></tr>
+</tbody></table></div>
+<p class="table-note"><b>Table 1. Frozen encoders on state, language, and pixels: ALPS has the lowest state-probe error among the ViT-B encoders.</b> State probe: LIBERO position error relative to ALPS (Stage 1); language: each model's own text tower. Bold: best ViT-B encoder in each column, ALPS (Stage 1) not ranked; gray: ViT-L references; n/a: no released text tower (not zero).</p>
+<!-- TABLE1:END -->
+
+    <h3>Physical state, read from frozen tokens</h3>
+    <figure>
+      <div class="card"><img src="assets/fig3_state_probe.jpg" width="2000" height="1102" loading="lazy"
+        alt="Figure 3. (a) A probe reads frozen tokens of the last 16 frames. (b) Object positions 3 s ahead from ALPS and SigLIP 2 overlaid on the frame observed 3 s later. (c) Mean error of the manipulated bowl over 50 held-out episodes: 3.2 cm for ALPS and 4.0 cm for SigLIP 2."></div>
+      <figcaption><b>Figure 3. The LIBERO state probe.</b> (a) A lightweight probe reads frozen tokens from the last 16 frames to
+        estimate the current scene state from observations alone (readout) or predict the state 1 or 3 s ahead given robot actions
+        (prediction). (b) State predictions 3 s ahead from ALPS and SigLIP 2, overlaid on the frame observed 3 s later, shown on the
+        held-out LIBERO-Spatial episode with the median error difference between the two encoders. (c) Per-object position errors at
+        this step, the manipulated bowl's error over the episode, and its mean error across 50 held-out episodes.</figcaption>
+    </figure>
+
+    <h3>Pixels, decoded from frozen tokens</h3>
+    <figure>
+      <div class="card"><img src="assets/fig4_reconstruction.jpg" width="2000" height="608" loading="lazy"
+        alt="Figure 4. Three ImageNet images reconstructed by a common evaluation decoder from the frozen tokens of ten encoders, each labeled with its mean l1 error."></div>
+      <figcaption><b>Figure 4. Reconstruction from frozen tokens.</b> Following the input column, each column shows the evaluation
+        decoder's output from one encoder's frozen tokens, labeled with its mean &#8467;<sub>1</sub> error across the 1,000 held-out
+        ImageNet images. The rows show the first three images from a random sample (Fig. S7). <b>ALPS, OpenVision 3, MAE, and VC-1
+        retain sharp edges and textures. C-RADIOv3 and DINOv3 preserve spatial layout with softer detail, while SigLIP 2, PE-Core,
+        and CLIP mainly recover coarse structure.</b></figcaption>
+    </figure>
+
+    <h2 style="margin-top: 72px">The refinement strengthens the state and keeps language</h2>
+    <p class="narrow">Cross-view refinement reduces state-probe error by 17% while changing image-text retrieval by at most 0.5
+      points, and also improves world-model prediction. In contrast, the same refinement lowers ImageNet zero-shot accuracy and
+      image-to-text retrieval by 4&ndash;12 points for SigLIP 2 and CLIP.</p>
+    <figure>
+      <div class="card"><img src="assets/fig5_refinement.jpg" width="2000" height="657" loading="lazy"
+        alt="Figure 5. Before and after the same Stage 2 refinement for ALPS, SigLIP 2, and CLIP: state-probe error improves for all three; Flickr30k and COCO retrieval and ImageNet zero-shot accuracy stay for ALPS and fall for SigLIP 2 and CLIP."></div>
+      <figcaption><b>Figure 5. The same Stage 2 refinement applied to ALPS (Stage 1), SigLIP 2, and CLIP</b>, each using its own
+        frozen copy as the teacher. Lines connect each encoder before and after refinement, and the star marks ALPS. Language is
+        evaluated through each encoder's unchanged head. Higher values are better in every panel, with state-probe error relative to
+        ALPS (Stage 1) inverted in (a). Endpoint labels show the value after Stage 2 and its change (Tab. S20). <b>All three improve
+        state information, while only ALPS preserves language alignment.</b></figcaption>
+    </figure>
+
+    <h2 style="margin-top: 72px">Control, planning, and prediction on frozen tokens</h2>
+    <p class="narrow">Frozen ALPS tokens achieve the highest mean policy success in our LIBERO comparison when paired with our native
+      text tower, and support leading planning performance on PushT, Wall, and Granular. Predicted future tokens can also be decoded
+      into images for inspection.</p>
+<!-- TABLE2:BEGIN -->
+<div class="t-narrow"><div class="table-scroll"><table>
+<thead>
+<tr><th>Encoder</th><th>Long</th><th>Goal</th><th>Spatial</th><th>Object</th><th>mean</th></tr>
+</thead><tbody>
+<tr class="grp"><td colspan="6">Instruction embedded by BERT</td></tr>
+<tr class=""><td>CLIP-B/16</td><td class="">56.3</td><td class="">74.1</td><td class="">76.5</td><td class="">93.2</td><td class="">75.0</td></tr>
+<tr class=""><td>SigLIP 2-B/16</td><td class="best">72.3</td><td class="">78.8</td><td class="">84.1</td><td class="">90.3</td><td class="">81.4</td></tr>
+<tr class=""><td>DINOv2-B/14</td><td class="">66.5</td><td class="">78.6</td><td class="">80.5</td><td class="">88.1</td><td class="">78.4</td></tr>
+<tr class=""><td>DINOv3-B/16</td><td class="">68.4</td><td class="">72.7</td><td class="">80.7</td><td class="best">94.4</td><td class="">79.0</td></tr>
+<tr class=""><td>C-RADIOv3-B</td><td class="">66.0</td><td class="">79.9</td><td class="">74.9</td><td class="">92.3</td><td class="">78.2</td></tr>
+<tr class=""><td>ALPS (Stage 1)</td><td class="">68.9</td><td class="">84.3</td><td class="">76.8</td><td class="">94.3</td><td class="">81.1</td></tr>
+<tr class="ours"><td>ALPS</td><td class="">69.7</td><td class="best">85.1</td><td class="best">86.5</td><td class="">92.2</td><td class="best">83.4</td></tr>
+<tr class="grp"><td colspan="6">Instruction embedded by the encoder's own text tower</td></tr>
+<tr class=""><td>CLIP-B/16</td><td class="">61.5</td><td class="">84.3</td><td class="">79.1</td><td class="">91.9</td><td class="">79.2</td></tr>
+<tr class=""><td>SigLIP 2-B/16</td><td class="">73.3</td><td class="best">90.2</td><td class="best">84.1</td><td class="">91.7</td><td class="">84.8</td></tr>
+<tr class=""><td>C-RADIOv3-B</td><td class="">73.4</td><td class="">89.5</td><td class="">82.9</td><td class="">81.4</td><td class="">81.8</td></tr>
+<tr class="ours"><td>ALPS</td><td class="best">78.5</td><td class="">87.4</td><td class="">82.6</td><td class="best">93.7</td><td class="best">85.5</td></tr>
+</tbody></table></div>
+<p class="table-note"><b>Table 2. Policy learning on LIBERO with frozen tokens: ALPS achieves the highest mean success with both BERT and its native text tower.</b> Success in % (mean of three evaluations, 50 rollouts per task); instructions from BERT (top) or each encoder's own text tower (bottom). Bold: best in each block.</p></div>
+<!-- TABLE2:END -->
+<!-- TABLE3:BEGIN -->
+<div class="t-wide"><div class="table-scroll"><table>
+<thead>
+<tr><th>Encoder</th><th>PushT<br>success</th><th>PushT<br>dist.</th><th>Wall<br>success</th><th>Wall<br>dist.</th><th>PointMaze<br>success</th><th>Reacher<br>success</th><th>Granular<br>Chamfer</th><th>Rope<br>Chamfer</th></tr>
+</thead><tbody>
+<tr class=""><td>DINOv2-B/14</td><td class="">88</td><td class="">25.0</td><td class="best">92</td><td class="">3.62</td><td class="">100</td><td class="">76.7</td><td class="">.211</td><td class="">.701</td></tr>
+<tr class=""><td>DINOv3-B/16</td><td class="">88</td><td class="">24.2</td><td class="">90</td><td class="">3.69</td><td class="">100</td><td class="best">86.0</td><td class="">.275</td><td class="">.681</td></tr>
+<tr class=""><td>C-RADIOv3-B</td><td class="best">90</td><td class="best">20.2</td><td class="">90</td><td class="">3.31</td><td class="">100</td><td class="">82.0</td><td class="">.180</td><td class="best">.558</td></tr>
+<tr class=""><td>SigLIP 2-B/16</td><td class="">84</td><td class="">29.0</td><td class="">88</td><td class="">3.73</td><td class="">100</td><td class="">74.0</td><td class="">.230</td><td class="">.848</td></tr>
+<tr class=""><td>ALPS (Stage 1)</td><td class="">88</td><td class="">24.0</td><td class="">90</td><td class="">3.43</td><td class="">100</td><td class="">76.0</td><td class="">.324</td><td class="">.943</td></tr>
+<tr class="ours"><td>ALPS</td><td class="best">90</td><td class="">23.4</td><td class="best">92</td><td class="best">3.21</td><td class="">100</td><td class="">78.7</td><td class="best">.176</td><td class="">.750</td></tr>
+</tbody></table></div>
+<p class="table-note"><b>Table 3. Planning with world models trained on frozen tokens: ALPS leads or ties the best results on PushT, Wall, and Granular.</b> DINO-WM on PushT, Wall, PointMaze, Granular, and Rope and LeWorldModel on Reacher, trained with one recipe; goals evaluated: 50 (Granular 10); Reacher: mean of three planner seeds. Success in %; dist.: final-to-goal state distance; Chamfer: final-to-goal particle distance. Bold: best of a column; none if all tie.</p></div>
+<!-- TABLE3:END -->
+    <figure class="fig-narrow">
+      <div class="card"><img src="assets/fig6_rendering.jpg" width="990" height="770" loading="lazy"
+        alt="Figure 6. PushT frames: true frames, and the evaluation decoder's renderings of the world model's predicted tokens for ALPS and C-RADIOv3, at the current step and 5, 15, and 25 simulator steps ahead."></div>
+      <figcaption><b>Figure 6. Rendered world-model predictions on PushT</b> (window 834, largest true motion among 200 windows). The
+        top row shows ground-truth frames; lower rows show each encoder's evaluation-decoder outputs from real current tokens (green)
+        and open-loop predicted tokens given recorded actions (blue). Mean errors: Tab. S15; full sequence: Fig. S4.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="code">
+  <div class="wrap">
+    <div class="kicker">Code and weights</div>
+    <h2>Use ALPS in a few lines</h2>
+    <p class="narrow">The repository holds the PyTorch inference package, the unified evaluation, and the JAX and PyTorch training code.
+      The weights and the eight ALPS policies of the LIBERO experiments are on Hugging Face.</p>
+    <div class="copy-wrap"><pre id="code-install">git clone https://github.com/UCSC-VLAA/ALPS.git &amp;&amp; cd ALPS
+pip install -e .                 <span class="c"># torch, numpy, pillow</span></pre><button class="copy" data-target="code-install">copy</button></div>
+    <div class="copy-wrap"><pre id="code-use"><span class="k">import</span> torch, alps
+<span class="k">from</span> PIL <span class="k">import</span> Image
+
+model = alps.load(<span class="s">"alps-vitb16"</span>)                          <span class="c"># downloads alps_vitb16.safetensors from Hugging Face</span>
+x = alps.center_crop_transform(Image.open(<span class="s">"image.jpg"</span>))   <span class="c"># [1, 3, 224, 224], normalized</span>
+
+<span class="k">with</span> torch.no_grad():
+    out = model.encode_image(x)
+    z = out[<span class="s">"tokens"</span>]            <span class="c"># [1, 196, 768]  raw patch tokens: the visual state</span>
+    img = model.image_embedding(tokens=z)                      <span class="c"># L2-normalized</span>
+    txt = model.text_embedding([<span class="s">"a robot arm opens the top drawer"</span>, <span class="s">"a photo of a dog"</span>])
+    probs = (model.contrastive_scale() * img @ txt.T).softmax(-1)</pre><button class="copy" data-target="code-use">copy</button></div>
+    <div class="table-scroll models">
+      <table>
+        <thead><tr><th>Model</th><th style="text-align:left">File</th><th style="text-align:left">Description</th></tr></thead>
+        <tbody>
+          <tr><td><code>alps-vitb16</code></td><td style="text-align:left"><code>alps_vitb16.safetensors</code></td><td style="text-align:left">ALPS, the model of the paper (Stage 1 + Stage 2)</td></tr>
+          <tr><td><code>alps-stage1-vitb16</code></td><td style="text-align:left"><code>alps_stage1_vitb16.safetensors</code></td><td style="text-align:left">ALPS (Stage 1), before cross-view refinement</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="table-note">GitHub: <a href="https://github.com/UCSC-VLAA/ALPS">UCSC-VLAA/ALPS</a> &nbsp;·&nbsp; Hugging Face:
+      <a href="https://huggingface.co/UCSC-VLAA/ALPS">UCSC-VLAA/ALPS</a> &nbsp;·&nbsp; License: Apache-2.0</p>
+  </div>
+</section>
+
+<section id="bibtex">
+  <div class="wrap narrow">
+    <div class="kicker">Citation</div>
+    <h2>BibTeX</h2>
+    <div class="copy-wrap"><pre id="code-bib">@article{liu2026alps,
+  title   = {ALPS: Visual State Encoders for World Models},
+  author  = {Liu, Yanqing and Zhang, Letian and Liu, Chengzhi and Wang, Zijun and Mei, Jieru and Fei, Hongliang and Zhou, Yuyin and Xie, Cihang},
+  journal = {arXiv preprint arXiv:2610.30120},
+  year    = {2026}
+}</pre><button class="copy" data-target="code-bib">copy</button></div>
+  </div>
+</section>
+
+<section id="acknowledgements">
+  <div class="wrap narrow">
+    <div class="kicker">Acknowledgements</div>
+    <p>We would like to thank the TPU Research Cloud (TRC) program, the Google Cloud Research Credits program, and the Google TPU Builder Award for supporting our computing needs.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>ALPS &nbsp;·&nbsp; University of California, Santa Cruz</span>
+    <span>Code under Apache-2.0 &nbsp;·&nbsp; <a href="#top">Back to top</a></span>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll(".copy").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var el = document.getElementById(b.dataset.target);
+      var text = el.innerText;
+      var done = function () { b.textContent = "copied"; setTimeout(function () { b.textContent = "copy"; }, 1400); };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done, function () { select(el); });
+      } else { select(el); }
+    });
+  });
+  function select(el) {
+    var r = document.createRange(); r.selectNodeContents(el);
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+  }
+</script>
+</body>
+</html>
