@@ -1,1309 +1,952 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>VLAA-GUI: A Modular Framework for GUI Automation</title>
-  <meta name="description" content="VLAA-GUI is a modular GUI agent framework built around knowing when to Stop, Recover, and Search. It achieves 77.5% on OSWorld-Verified with Claude Opus 4.6, surpassing human-level performance.">
-
-  <link rel="stylesheet" href="./static/css/bulma.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
-  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="./static/css/index.css">
-
-  <script>
-    // Theme bootstrap — runs before paint to prevent FOUC.
-    (function () {
-      try {
-        var stored = localStorage.getItem('vlaa-theme');
-        var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-        var theme = stored || (prefersDark ? 'dark' : 'light');
-        document.documentElement.setAttribute('data-theme', theme);
-      } catch (e) {
-        document.documentElement.setAttribute('data-theme', 'light');
-      }
-    })();
-  </script>
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script defer src="./static/js/fontawesome.all.min.js"></script>
-  <script src="./static/js/bulma-carousel.min.js"></script>
-  <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
-
-  <style>
-    :root {
-      --vlaa-blue: #3273dc;
-      --vlaa-blue-deep: #1d4ed8;
-      --vlaa-amber: #f0a23a;
-      --vlaa-amber-deep: #c77a00;
-      --vlaa-green: #26b67a;
-      --vlaa-green-deep: #0f8a56;
-      --vlaa-red: #e66;
-      --vlaa-red-deep: #c22;
-      --vlaa-purple: #9b59b6;
-      --vlaa-gold: #ffd166;
-      --ease-soft: cubic-bezier(.22, 1, .36, 1);
-
-      /* Light theme tokens */
-      --bg: #ffffff;
-      --bg-soft: #fafbfc;
-      --bg-subtle: #f5f9ff;
-      --surface: #ffffff;
-      --surface-alt: #fafafa;
-      --text: #2a2a2a;
-      --text-dim: #4a4a4a;
-      --text-muted: #666;
-      --text-faint: #555;
-      --border: #eef2f7;
-      --border-soft: #eaeef3;
-      --hero-bg-start: #f7faff;
-      --hero-bg-end: #ffffff;
-      --table-row-alt: #fafafa;
-      --table-hover: #fff8e1;
-      --footer-bg-start: #fafbfc;
-      --footer-bg-end: #f3f5f9;
-      --shadow-sm: 0 2px 8px rgba(30, 60, 120, 0.06);
-      --shadow-md: 0 2px 10px rgba(30, 60, 120, 0.08);
-      --shadow-lg: 0 14px 32px rgba(30, 60, 120, 0.12);
-      --shadow-xl: 0 20px 40px rgba(30, 60, 120, 0.15);
-      --component-bg-start: #f5f9ff;
-      --component-bg-end: #ffffff;
-    }
-
-    [data-theme="dark"] {
-      --bg: #0b1020;
-      --bg-soft: #0f172a;
-      --bg-subtle: #111a33;
-      --surface: #131b30;
-      --surface-alt: #1a2340;
-      --text: #e5e7eb;
-      --text-dim: #cbd5e1;
-      --text-muted: #9aa4b2;
-      --text-faint: #a3b0c2;
-      --border: #25304a;
-      --border-soft: #1f2a44;
-      --hero-bg-start: #0b1020;
-      --hero-bg-end: #0a0f1c;
-      --table-row-alt: #172038;
-      --table-hover: #1c2846;
-      --footer-bg-start: #0a0f1c;
-      --footer-bg-end: #0b1020;
-      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.40);
-      --shadow-md: 0 2px 10px rgba(0, 0, 0, 0.45);
-      --shadow-lg: 0 14px 32px rgba(0, 0, 0, 0.55);
-      --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.65);
-      --component-bg-start: #17203c;
-      --component-bg-end: #121a30;
-      color-scheme: dark;
-    }
-
-    html { scroll-behavior: smooth; }
-    body {
-      background:
-        radial-gradient(circle at 0% 0%, rgba(50, 115, 220, 0.04), transparent 40%),
-        radial-gradient(circle at 100% 100%, rgba(38, 182, 122, 0.04), transparent 40%),
-        #ffffff;
-    }
-
-    /* ==================== HERO ==================== */
-    .hero {
-      position: relative;
-      overflow: hidden;
-      background:
-        radial-gradient(ellipse at 20% 10%, rgba(50, 115, 220, 0.10), transparent 55%),
-        radial-gradient(ellipse at 80% 0%,  rgba(155, 89, 182, 0.10), transparent 55%),
-        radial-gradient(ellipse at 60% 100%, rgba(38, 182, 122, 0.08), transparent 55%),
-        linear-gradient(180deg, #f7faff 0%, #ffffff 100%);
-    }
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(50, 115, 220, 0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(50, 115, 220, 0.06) 1px, transparent 1px);
-      background-size: 48px 48px;
-      mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
-      -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
-      pointer-events: none;
-    }
-    .hero::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: -180px;
-      width: 900px;
-      height: 900px;
-      transform: translateX(-50%);
-      background: conic-gradient(from 0deg,
-        rgba(50,115,220,0.10), rgba(155,89,182,0.10),
-        rgba(38,182,122,0.10), rgba(240,162,58,0.10),
-        rgba(50,115,220,0.10));
-      filter: blur(90px);
-      opacity: 0.65;
-      animation: heroSpin 28s linear infinite;
-      pointer-events: none;
-      z-index: 0;
-    }
-    @keyframes heroSpin {
-      to { transform: translateX(-50%) rotate(360deg); }
-    }
-    .hero .hero-body { position: relative; z-index: 1; }
-
-    .publication-title {
-      background: linear-gradient(90deg, #1d4ed8 0%, #6d28d9 50%, #0f8a56 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      letter-spacing: -0.01em;
-      line-height: 1.55;
-    }
-    .publication-title tt {
-      background: linear-gradient(90deg, #1d4ed8, #6d28d9);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: 800;
-      padding: 0 2px;
-    }
-    .subtitle { color: #445; }
-    .publication-authors a {
-      transition: color 0.2s, text-shadow 0.2s;
-    }
-    .publication-authors a:hover {
-      text-shadow: 0 0 12px rgba(50, 115, 220, 0.35);
-    }
-
-    /* ==================== BUTTONS ==================== */
-    .publication-links .button.is-dark {
-      background: #1a1a1a;
-      border: 1px solid rgba(255,255,255,0.05);
-      transition: transform 0.25s var(--ease-soft), box-shadow 0.25s var(--ease-soft), background 0.25s;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.10);
-    }
-    .publication-links .button.is-dark:hover {
-      transform: translateY(-2px);
-      background: linear-gradient(135deg, #1d4ed8, #6d28d9);
-      box-shadow: 0 10px 24px rgba(29, 78, 216, 0.35);
-    }
-
-    /* ==================== METRIC PILLS ==================== */
-    .metric {
-      display: inline-block;
-      padding: 0.5rem 1.05rem;
-      background: linear-gradient(135deg, #1f2937, #0f172a);
-      color: #fff;
-      border-radius: 999px;
-      font-weight: 700;
-      margin: 0.3rem;
-      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.25), inset 0 1px 0 rgba(255,255,255,0.08);
-      transition: transform 0.3s var(--ease-soft), box-shadow 0.3s var(--ease-soft);
-      position: relative;
-      overflow: hidden;
-    }
-    .metric::before {
-      content: "";
-      position: absolute;
-      top: 0; left: -75%;
-      width: 50%; height: 100%;
-      background: linear-gradient(120deg, transparent, rgba(255, 209, 102, 0.35), transparent);
-      transform: skewX(-20deg);
-      transition: left 0.7s var(--ease-soft);
-    }
-    .metric:hover {
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 10px 26px rgba(15, 23, 42, 0.35);
-    }
-    .metric:hover::before { left: 130%; }
-    .metric .value {
-      color: var(--vlaa-gold);
-      text-shadow: 0 0 10px rgba(255, 209, 102, 0.45);
-    }
-
-    /* ==================== SECTION TITLES ==================== */
-    .section .title.is-3 {
-      position: relative;
-      display: inline-block;
-      padding-bottom: 0.5rem;
-    }
-    .section .title.is-3::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: 0;
-      width: 64px;
-      height: 3px;
-      transform: translateX(-50%);
-      background: linear-gradient(90deg, var(--vlaa-blue), var(--vlaa-purple), var(--vlaa-green));
-      border-radius: 3px;
-    }
-    .section .columns.is-centered > .column.is-four-fifths > .title.is-3 {
-      display: inline-block;
-    }
-
-    /* ==================== COMPONENT BOXES ==================== */
-    .component-box {
-      position: relative;
-      border-left: 4px solid var(--vlaa-blue);
-      background: linear-gradient(135deg, #f5f9ff 0%, #ffffff 100%);
-      padding: 1.1rem 1.35rem;
-      margin-bottom: 1.25rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(30, 60, 120, 0.06);
-      transition: transform 0.3s var(--ease-soft), box-shadow 0.3s var(--ease-soft);
-      overflow: hidden;
-    }
-    .component-box::before {
-      content: "";
-      position: absolute;
-      top: 0; right: 0;
-      width: 120px; height: 120px;
-      background: radial-gradient(circle, rgba(50, 115, 220, 0.10), transparent 70%);
-      pointer-events: none;
-    }
-    .component-box:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 14px 32px rgba(30, 60, 120, 0.12);
-    }
-    .component-box h3, .component-box h4 { margin-top: 0 !important; }
-    .component-box[style*="f0a23a"]::before,
-    .component-box[style*="#f0a23a"]::before {
-      background: radial-gradient(circle, rgba(240, 162, 58, 0.15), transparent 70%);
-    }
-    .component-box[style*="26b67a"]::before,
-    .component-box[style*="#26b67a"]::before {
-      background: radial-gradient(circle, rgba(38, 182, 122, 0.15), transparent 70%);
-    }
-    .component-box[style*="e66"]::before,
-    .component-box[style*="#e66"]::before {
-      background: radial-gradient(circle, rgba(230, 102, 102, 0.15), transparent 70%);
-    }
-    .component-box[style*="9b59b6"]::before,
-    .component-box[style*="#9b59b6"]::before {
-      background: radial-gradient(circle, rgba(155, 89, 182, 0.15), transparent 70%);
-    }
-
-    /* ==================== INLINE CODE STYLE ==================== */
-    .content tt, .title tt {
-      background: linear-gradient(135deg, rgba(50,115,220,0.10), rgba(155,89,182,0.10));
-      color: var(--vlaa-blue-deep);
-      padding: 0.08em 0.4em;
-      border-radius: 5px;
-      font-size: 0.92em;
-      font-weight: 600;
-      border: 1px solid rgba(50, 115, 220, 0.15);
-    }
-    .title tt {
-      background: linear-gradient(135deg, rgba(50,115,220,0.14), rgba(155,89,182,0.14));
-      border: 1px solid rgba(50, 115, 220, 0.20);
-    }
-
-    /* ==================== TABLES ==================== */
-    .table-container {
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 18px rgba(30, 60, 120, 0.08);
-      border: 1px solid #eef2f7;
-    }
-    .table.is-striped thead th {
-      background: linear-gradient(135deg, #1f2937, #374151);
-      color: #fff;
-      border: none !important;
-      font-weight: 700;
-    }
-    .table tbody tr { transition: background 0.2s, transform 0.2s; }
-    .table tbody tr:hover { background: #fff8e1 !important; }
-    .table tbody tr[style*="e8f4ff"] {
-      background: linear-gradient(90deg, #e0ecff 0%, #eaf3ff 100%) !important;
-      font-weight: 600;
-    }
-    .table tbody tr[style*="e8f4ff"]:hover {
-      background: linear-gradient(90deg, #d4e5ff 0%, #ddeaff 100%) !important;
-    }
-    .table tbody tr[style*="fff9e6"] {
-      background: linear-gradient(90deg, #fff3cc 0%, #fffae6 100%) !important;
-    }
-
-    /* ==================== FIGURES ==================== */
-    figure.image img {
-      border-radius: 12px;
-      box-shadow: 0 8px 32px rgba(30, 60, 120, 0.12);
-      transition: transform 0.4s var(--ease-soft), box-shadow 0.4s var(--ease-soft);
-    }
-    figure.image img:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 16px 40px rgba(30, 60, 120, 0.18);
-    }
-
-    /* ==================== TABS ==================== */
-    .tabs.is-boxed ul { border-bottom-color: #e5e7eb; }
-    .tabs.is-boxed li a {
-      cursor: pointer;
-      border-radius: 8px 8px 0 0 !important;
-      transition: background 0.2s, color 0.2s, transform 0.2s;
-      border-color: transparent !important;
-    }
-    .tabs.is-boxed li a:hover {
-      background: #f0f6ff !important;
-      color: var(--vlaa-blue-deep) !important;
-    }
-    .tabs.is-boxed li.is-active a {
-      background: linear-gradient(135deg, var(--vlaa-blue), var(--vlaa-blue-deep)) !important;
-      color: #fff !important;
-      border-color: transparent !important;
-      box-shadow: 0 4px 12px rgba(50, 115, 220, 0.35);
-    }
-
-    /* ==================== CHART GRID ==================== */
-    .chart-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.25rem;
-      align-items: stretch;
-    }
-    .chart-card {
-      margin: 0;
-      background: #ffffff;
-      border: 1px solid #eef2f7;
-      border-radius: 14px;
-      padding: 1rem 1rem 0.85rem;
-      box-shadow: 0 2px 10px rgba(30, 60, 120, 0.08);
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.35s var(--ease-soft), box-shadow 0.35s var(--ease-soft), border-color 0.35s;
-    }
-    .chart-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 18px 36px rgba(30, 60, 120, 0.14);
-      border-color: rgba(50, 115, 220, 0.30);
-    }
-    .chart-card img {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-      background: #ffffff;
-      box-shadow: none;
-      transition: none;
-    }
-    .chart-card img:hover {
-      transform: none;
-      box-shadow: none;
-    }
-    .chart-card figcaption {
-      margin-top: 0.75rem;
-      font-size: 0.92rem;
-      line-height: 1.5;
-      color: #455;
-      text-align: center;
-    }
-
-    /* ==================== DEMO CARDS ==================== */
-    .demo-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 1.5rem;
-    }
-    .demo-card {
-      background: #ffffff;
-      border-radius: 14px;
-      padding: 1rem;
-      box-shadow: 0 2px 10px rgba(30, 60, 120, 0.08);
-      border: 1px solid #eef2f7;
-      transition: transform 0.35s var(--ease-soft), box-shadow 0.35s var(--ease-soft), border-color 0.35s;
-    }
-    .demo-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 40px rgba(30, 60, 120, 0.15);
-      border-color: rgba(50, 115, 220, 0.3);
-    }
-    .demo-card video {
-      width: 100%;
-      border-radius: 8px;
-      background: #000;
-      display: block;
-    }
-    .demo-card h4 {
-      font-weight: 700;
-      margin-top: 0.85rem;
-      margin-bottom: 0.3rem;
-      background: linear-gradient(90deg, #1d4ed8, #6d28d9);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .demo-card p.instruction {
-      font-style: italic;
-      color: #555;
-      font-size: 0.9rem;
-      margin-bottom: 0;
-      line-height: 1.5;
-    }
-
-    /* ==================== BIBTEX ==================== */
-    #BibTeX pre {
-      background: linear-gradient(135deg, #0f172a, #1e293b);
-      color: #e2e8f0;
-      padding: 1.25rem;
-      border-radius: 10px;
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.25);
-      border: 1px solid rgba(255,255,255,0.05);
-      white-space: pre-wrap;
-      word-break: normal;
-      overflow-wrap: break-word;
-    }
-    #BibTeX pre code {
-      color: inherit;
-      background: transparent;
-      white-space: pre-wrap;
-      word-break: normal;
-      overflow-wrap: break-word;
-    }
-
-    /* ==================== FOOTER ==================== */
-    .footer {
-      background: linear-gradient(180deg, #fafbfc 0%, #f3f5f9 100%);
-      border-top: 1px solid #eaeef3;
-    }
-
-    /* ==================== SCROLL REVEAL ==================== */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.8s var(--ease-soft), transform 0.8s var(--ease-soft);
-    }
-    .reveal.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ==================== THEME TOGGLE ==================== */
-    .theme-toggle {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      z-index: 100;
-      width: 44px;
-      height: 44px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--text);
-      font-size: 1.1rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: var(--shadow-md);
-      transition: transform 0.3s var(--ease-soft), background 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s;
-    }
-    .theme-toggle:hover {
-      transform: translateY(-2px) rotate(-12deg);
-      box-shadow: var(--shadow-lg);
-      border-color: var(--vlaa-blue);
-      color: var(--vlaa-blue);
-    }
-    .theme-toggle .icon-sun { display: none; }
-    .theme-toggle .icon-moon { display: inline-block; }
-    [data-theme="dark"] .theme-toggle .icon-sun { display: inline-block; color: var(--vlaa-gold); }
-    [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
-
-    /* ==================== DARK MODE OVERRIDES ==================== */
-    [data-theme="dark"] body {
-      background:
-        radial-gradient(circle at 0% 0%, rgba(50, 115, 220, 0.10), transparent 40%),
-        radial-gradient(circle at 100% 100%, rgba(38, 182, 122, 0.08), transparent 40%),
-        var(--bg);
-      color: var(--text);
-    }
-    [data-theme="dark"] .content,
-    [data-theme="dark"] p,
-    [data-theme="dark"] li,
-    [data-theme="dark"] .title,
-    [data-theme="dark"] .subtitle,
-    [data-theme="dark"] h1, [data-theme="dark"] h2,
-    [data-theme="dark"] h3, [data-theme="dark"] h4,
-    [data-theme="dark"] h5, [data-theme="dark"] h6 {
-      color: var(--text);
-    }
-    [data-theme="dark"] strong { color: var(--text); }
-    [data-theme="dark"] .subtitle { color: var(--text-dim); }
-
-    [data-theme="dark"] .hero {
-      background:
-        radial-gradient(ellipse at 20% 10%, rgba(50, 115, 220, 0.22), transparent 55%),
-        radial-gradient(ellipse at 80% 0%,  rgba(155, 89, 182, 0.22), transparent 55%),
-        radial-gradient(ellipse at 60% 100%, rgba(38, 182, 122, 0.18), transparent 55%),
-        linear-gradient(180deg, var(--hero-bg-start) 0%, var(--hero-bg-end) 100%);
-    }
-    [data-theme="dark"] .hero::before {
-      background-image:
-        linear-gradient(rgba(148, 163, 255, 0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(148, 163, 255, 0.08) 1px, transparent 1px);
-    }
-    [data-theme="dark"] .hero::after {
-      opacity: 0.85;
-      filter: blur(110px);
-    }
-
-    [data-theme="dark"] .publication-title {
-      background: linear-gradient(90deg, #7aa8ff 0%, #c084fc 50%, #5eead4 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    [data-theme="dark"] .publication-title tt {
-      background: linear-gradient(90deg, #7aa8ff, #c084fc);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    [data-theme="dark"] .publication-authors a { color: #7aa8ff !important; }
-    [data-theme="dark"] .publication-authors a:hover {
-      text-shadow: 0 0 14px rgba(122, 168, 255, 0.55);
-    }
-
-    [data-theme="dark"] .publication-links .button.is-dark {
-      background: var(--surface-alt);
-      color: var(--text);
-      border-color: var(--border);
-      box-shadow: var(--shadow-md);
-    }
-    [data-theme="dark"] .publication-links .button.is-dark:hover {
-      background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-      color: #fff;
-    }
-
-    [data-theme="dark"] .metric {
-      background: linear-gradient(135deg, #1f2a44, #0f172a);
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255,255,255,0.08);
-    }
-
-    [data-theme="dark"] .component-box {
-      background: linear-gradient(135deg, var(--component-bg-start) 0%, var(--component-bg-end) 100%);
-      box-shadow: var(--shadow-sm);
-    }
-    [data-theme="dark"] .component-box:hover {
-      box-shadow: var(--shadow-lg);
-    }
-    [data-theme="dark"] .component-box::before {
-      background: radial-gradient(circle, rgba(122, 168, 255, 0.18), transparent 70%);
-    }
-    [data-theme="dark"] .component-box[style*="f0a23a"]::before,
-    [data-theme="dark"] .component-box[style*="#f0a23a"]::before {
-      background: radial-gradient(circle, rgba(240, 162, 58, 0.25), transparent 70%);
-    }
-    [data-theme="dark"] .component-box[style*="26b67a"]::before,
-    [data-theme="dark"] .component-box[style*="#26b67a"]::before {
-      background: radial-gradient(circle, rgba(38, 182, 122, 0.25), transparent 70%);
-    }
-    [data-theme="dark"] .component-box[style*="e66"]::before,
-    [data-theme="dark"] .component-box[style*="#e66"]::before {
-      background: radial-gradient(circle, rgba(230, 102, 102, 0.25), transparent 70%);
-    }
-    [data-theme="dark"] .component-box[style*="9b59b6"]::before,
-    [data-theme="dark"] .component-box[style*="#9b59b6"]::before {
-      background: radial-gradient(circle, rgba(192, 132, 252, 0.28), transparent 70%);
-    }
-    [data-theme="dark"] .component-box h4[style*="c22"] { color: #fca5a5 !important; }
-    [data-theme="dark"] .component-box h4[style*="c77a00"] { color: #fbbf24 !important; }
-
-    [data-theme="dark"] .content tt, [data-theme="dark"] .title tt {
-      background: linear-gradient(135deg, rgba(122, 168, 255, 0.18), rgba(192, 132, 252, 0.18));
-      color: #a5c4ff;
-      border-color: rgba(122, 168, 255, 0.30);
-    }
-
-    [data-theme="dark"] .table-container {
-      border-color: var(--border);
-      box-shadow: var(--shadow-md);
-    }
-    [data-theme="dark"] .table {
-      background-color: var(--surface);
-      color: var(--text);
-    }
-    [data-theme="dark"] .table td,
-    [data-theme="dark"] .table th {
-      border-color: var(--border) !important;
-      color: var(--text);
-    }
-    [data-theme="dark"] .table.is-striped tbody tr:not(.is-selected):nth-child(even) {
-      background-color: var(--table-row-alt);
-    }
-    [data-theme="dark"] .table.is-striped thead th {
-      background: linear-gradient(135deg, #0f172a, #1f2a44);
-      color: #f1f5f9;
-    }
-    [data-theme="dark"] .table tbody tr:hover { background: var(--table-hover) !important; }
-    [data-theme="dark"] .table tbody tr[style*="e8f4ff"] {
-      background: linear-gradient(90deg, #1e3a8a 0%, #1e40af 100%) !important;
-      color: #e0ecff;
-    }
-    [data-theme="dark"] .table tbody tr[style*="e8f4ff"]:hover {
-      background: linear-gradient(90deg, #1e40af 0%, #2751c7 100%) !important;
-    }
-    [data-theme="dark"] .table tbody tr[style*="fff9e6"] {
-      background: linear-gradient(90deg, #4b3a0a 0%, #5c4812 100%) !important;
-      color: #fde68a;
-    }
-    [data-theme="dark"] .table tbody tr em,
-    [data-theme="dark"] .table tbody tr td em { color: var(--text-dim); }
-
-    [data-theme="dark"] figure.image img {
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.50);
-    }
-    [data-theme="dark"] figure.image img:hover {
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65);
-    }
-
-    [data-theme="dark"] .tabs.is-boxed ul { border-bottom-color: var(--border); }
-    [data-theme="dark"] .tabs.is-boxed li a { color: var(--text-dim); }
-    [data-theme="dark"] .tabs.is-boxed li a:hover {
-      background: rgba(50, 115, 220, 0.15) !important;
-      color: #7aa8ff !important;
-    }
-    [data-theme="dark"] .tabs.is-boxed li.is-active a {
-      background: linear-gradient(135deg, #3b82f6, #1d4ed8) !important;
-      color: #fff !important;
-      box-shadow: 0 4px 14px rgba(59, 130, 246, 0.45);
-    }
-
-    [data-theme="dark"] .chart-card {
-      background: var(--surface);
-      border-color: var(--border);
-      box-shadow: var(--shadow-md);
-    }
-    [data-theme="dark"] .chart-card:hover {
-      box-shadow: var(--shadow-xl);
-      border-color: rgba(122, 168, 255, 0.40);
-    }
-    [data-theme="dark"] .chart-card img {
-      background: #ffffff;
-      padding: 6px;
-    }
-    [data-theme="dark"] .chart-card figcaption { color: var(--text-faint); }
-
-    [data-theme="dark"] .demo-card {
-      background: var(--surface);
-      border-color: var(--border);
-      box-shadow: var(--shadow-md);
-    }
-    [data-theme="dark"] .demo-card:hover {
-      box-shadow: var(--shadow-xl);
-      border-color: rgba(122, 168, 255, 0.40);
-    }
-    [data-theme="dark"] .demo-card h4 {
-      background: linear-gradient(90deg, #7aa8ff, #c084fc);
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    [data-theme="dark"] .demo-card p.instruction { color: var(--text-faint); }
-
-    [data-theme="dark"] .footer {
-      background: linear-gradient(180deg, var(--footer-bg-start) 0%, var(--footer-bg-end) 100%);
-      border-top: 1px solid var(--border-soft);
-      color: var(--text-dim);
-    }
-    [data-theme="dark"] .footer a { color: #7aa8ff; }
-
-    [data-theme="dark"] a { color: #7aa8ff; }
-
-    [data-theme="dark"] .container.is-max-desktop p.has-text-centered,
-    [data-theme="dark"] .has-text-centered[style*="666"] { color: var(--text-muted) !important; }
-    [data-theme="dark"] em { color: var(--text-dim); }
-
-    /* Case-study colored inline spans */
-    [data-theme="dark"] span[style*="c22"] { color: #fca5a5 !important; }
-    [data-theme="dark"] span[style*="26b67a"] { color: #5eead4 !important; }
-
-    /* ==================== MISC ==================== */
-    .is-hidden { display: none; }
-    .tabs ul li a { cursor: pointer; }
-    .section.sec-compact { padding-top: 2.25rem; padding-bottom: 2.25rem; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .hero::after { animation: none; }
-      .reveal { opacity: 1; transform: none; transition: none; }
-      *, *::before, *::after { transition: none !important; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>VLAA-GUI: Knowing When to Stop, Recover, and Search</title>
+<meta name="description" content="VLAA-GUI is a modular GUI agent framework organized around three decisions: when to STOP (Completeness-Aware Planner), RECOVER (Loop Breaker), and SEARCH (Search Agent). 77.5% on OSWorld-Verified and 61.0% on WindowsAgentArena; three of five backbones surpass human performance on OSWorld.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="VLAA-GUI: Knowing When to Stop, Recover, and Search">
+<meta property="og:description" content="A modular framework for GUI automation. 77.5% on OSWorld-Verified, 61.0% on WindowsAgentArena.">
+<meta property="og:url" content="https://ucsc-vlaa.github.io/VLAA-GUI/">
+<meta property="og:image" content="https://ucsc-vlaa.github.io/VLAA-GUI/resources/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0a0f1a" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" href="resources/favicon.png">
+<link rel="apple-touch-icon" href="resources/apple-touch-icon.png">
+<script>
+  // Theme before first paint: the stored choice, else the system setting.
+  (function () {
+    var root = document.documentElement, theme = null;
+    root.classList.add("js");
+    try { theme = localStorage.getItem("vlaa-theme"); } catch (e) {}
+    if (theme !== "light" && theme !== "dark") {
+      theme = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    root.setAttribute("data-theme", theme);
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
+<a class="skip" href="#overview">Skip to content</a>
 
-<button type="button" class="theme-toggle" id="themeToggle" aria-label="Toggle night mode" title="Toggle night mode">
-  <span class="icon-moon" aria-hidden="true">&#9790;</span>
-  <span class="icon-sun" aria-hidden="true">&#9728;</span>
-</button>
+<header class="topbar" id="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="resources/favicon.png" alt="" width="28" height="28">VLAA-GUI <span>UCSC VLAA</span></a>
+    <nav class="topnav" aria-label="Sections">
+      <a href="#overview">Overview</a>
+      <a href="#method">Method</a>
+      <a href="#results">Results</a>
+      <a href="#analysis">Analysis</a>
+      <a href="#demos">Demos</a>
+      <a href="#case-study">Case study</a>
+      <a href="#bibtex">BibTeX</a>
+    </nav>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode">
+      <svg class="moon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M16.5 12.2A6.8 6.8 0 0 1 7.8 3.5a6.8 6.8 0 1 0 8.7 8.7z" stroke-linejoin="round"/></svg>
+      <svg class="sun" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10" cy="10" r="3.6"/><path d="M10 1.8v2M10 16.2v2M1.8 10h2M16.2 10h2M4.2 4.2l1.4 1.4M14.4 14.4l1.4 1.4M4.2 15.8l1.4-1.4M14.4 5.6l1.4-1.4" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
 
-<section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered">
-        <div class="column has-text-centered">
-          <img src="./resources/gui_logo.jpg" alt="VLAA-GUI logo" style="max-width:160px;width:100%;height:auto;margin-bottom:1rem;border-radius:20px;box-shadow:0 8px 24px rgba(30, 60, 120, 0.18);" />
-          <h1 class="title is-2 publication-title">VLAA-GUI: Knowing When to <tt>STOP</tt>, <tt>RECOVER</tt>, and <tt>SEARCH</tt></h1>
-          <h2 class="subtitle is-4" style="margin-top:-0.4rem;">A Modular Framework for Reliable GUI Automation</h2>
+<div class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <h1>Knowing When to <span class="nw"><span class="verb stop">STOP</span>,</span> <span class="nw"><span class="verb recover">RECOVER</span>,</span> and <span class="verb search">SEARCH</span></h1>
+        <p class="subtitle"><strong>VLAA-GUI</strong>: A Modular Framework for GUI Automation</p>
+      </div>
+      <div class="hero-logo"><img src="resources/logo.webp" width="440" height="440" alt="VLAA-GUI logo: a banana slug with a headset working at a laptop in a redwood forest"></div>
+    </div>
 
-          <div class="is-size-5 publication-authors" style="margin-top:1rem;">
-            <span class="author-block"><a href="https://sergiudm.github.io/">Qijun Han</a><sup>1*</sup>,</span>
-            <span class="author-block"><a href="https://www.haqtu.me/">Haoqin Tu</a><sup>1*</sup>,</span>
-            <span class="author-block"><a href="https://asillycat.github.io/">Zijun Wang</a><sup>1</sup>,</span>
-            <span class="author-block"><a href="https://hyda.cc/">Haoyue Dai</a><sup>2</sup>,</span>
-            <span class="author-block"><a href="https://yiyangzhou.github.io/">Yiyang Zhou</a><sup>3</sup>,</span>
-            <span class="author-block"><a href="https://nlau.ai/">Nancy Lau</a><sup>1</sup>,</span>
-            <span class="author-block"><a href="https://users.soe.ucsc.edu/~alacarde/">Alvaro A. Cardenas</a><sup>1</sup>,</span>
-            <span class="author-block"><a href="https://yuhuixu1993.github.io/">Yuhui Xu</a><sup>4</sup>,</span>
-            <span class="author-block"><a href="https://xurantju.github.io/">Ran Xu</a><sup>4</sup>,</span>
-            <span class="author-block"><a href="http://cmxiong.com/">Caiming Xiong</a><sup>4</sup>,</span>
-            <span class="author-block"><a href="https://zheng80.github.io/">Zeyu Zheng</a><sup>5</sup>,</span>
-            <span class="author-block"><a href="https://www.huaxiuyao.io/">Huaxiu Yao</a><sup>3</sup>,</span>
-            <span class="author-block"><a href="https://yuyinzhou.github.io/">Yuyin Zhou</a><sup>1</sup>,</span>
-            <span class="author-block"><a href="https://cihangxie.github.io/">Cihang Xie</a><sup>1</sup></span>
-          </div>
+    <div class="authors">
+      <span><a href="https://sergiudm.github.io/">Qijun Han</a><sup>1*</sup></span>
+      <span><a href="https://www.haqtu.me/">Haoqin Tu</a><sup>1*</sup></span>
+      <span><a href="https://asillycat.github.io/">Zijun Wang</a><sup>1</sup></span>
+      <span><a href="https://hyda.cc/">Haoyue Dai</a><sup>2</sup></span>
+      <span><a href="https://yiyangzhou.github.io/">Yiyang Zhou</a><sup>3</sup></span>
+      <span><a href="https://nlau.ai/">Nancy Lau</a><sup>1</sup></span>
+      <span><a href="https://users.soe.ucsc.edu/~alacarde/">Alvaro A. Cardenas</a><sup>1</sup></span>
+      <span><a href="https://yuhuixu1993.github.io/">Yuhui Xu</a><sup>4</sup></span>
+      <span><a href="https://xurantju.github.io/">Ran Xu</a><sup>4</sup></span>
+      <span><a href="http://cmxiong.com/">Caiming Xiong</a><sup>4</sup></span>
+      <span><a href="https://zheng80.github.io/">Zeyu Zheng</a><sup>5</sup></span>
+      <span><a href="https://www.huaxiuyao.io/">Huaxiu Yao</a><sup>3</sup></span>
+      <span><a href="https://yuyinzhou.github.io/">Yuyin Zhou</a><sup>1</sup></span>
+      <span><a href="https://cihangxie.github.io/">Cihang Xie</a><sup>1</sup></span>
+    </div>
+    <div class="affil">
+      <span><sup>1</sup>UC Santa Cruz</span><span><sup>2</sup>CMU</span><span><sup>3</sup>UNC-Chapel Hill</span><span><sup>4</sup>Salesforce Research</span><span><sup>5</sup>UC Berkeley</span><span><sup>*</sup>Equal contribution</span>
+    </div>
 
-          <div class="is-size-6 publication-authors" style="margin-top:0.6rem;">
-            <span class="author-block"><sup>1</sup>UC Santa Cruz,</span>
-            <span class="author-block"><sup>2</sup>CMU,</span>
-            <span class="author-block"><sup>3</sup>UNC-Chapel Hill,</span>
-            <span class="author-block"><sup>4</sup>Salesforce Research,</span>
-            <span class="author-block"><sup>5</sup>UC Berkeley</span>
-            <br/>
-            <span class="author-block" style="font-size:0.9em;"><sup>*</sup>Equal contribution</span>
-          </div>
+    <div class="btns">
+      <a class="btn primary" href="https://arxiv.org/abs/2604.21375"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 1.5h5.5L13 5v9.5H4z"/><path d="M9.5 1.5V5H13M6 8h5M6 10.5h5"/></svg>Paper</a>
+      <a class="btn" href="https://arxiv.org/pdf/2604.21375"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M8 2v8M4.5 6.8 8 10.3l3.5-3.5M2.5 13.5h11"/></svg>PDF</a>
+      <a class="btn" href="https://github.com/UCSC-VLAA/VLAA-GUI"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>Code</a>
+      <a class="btn" href="https://os-world.github.io/"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4.5 2h7v4a3.5 3.5 0 0 1-7 0zM4.5 3.5H2.5a2 2 0 0 0 2 3M11.5 3.5h2a2 2 0 0 1-2 3M8 9.5v2.5M5.5 14h5M6.5 12h3"/></svg>OSWorld leaderboard</a>
+      <a class="btn" href="#demos"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M5 3.5v9l7.5-4.5z"/></svg>Demos</a>
+      <a class="btn" href="#bibtex"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 4.5h10M3 8h10M3 11.5h6"/></svg>BibTeX</a>
+    </div>
 
-          <div class="column has-text-centered" style="margin-top:1.5rem;">
-            <div class="publication-links">
-              <span class="link-block">
-                <a href="https://arxiv.org/abs/2604.21375" target="_blank"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><img src="./resources/ar.svg" alt="arXiv" style="width:100%;height:100%;" /></span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://github.com/UCSC-VLAA/VLAA-GUI" target="_blank"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fab fa-github"></i></span>
-                  <span>Code</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="https://os-world.github.io/" target="_blank"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fas fa-trophy"></i></span>
-                  <span>OSWorld Leaderboard</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href="#demos"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon"><i class="fas fa-video"></i></span>
-                  <span>Video Demos</span>
-                </a>
-              </span>
-            </div>
+    <div class="stats">
+      <div class="stat"><div class="v">77.5<small>%</small></div><div class="l"><b>OSWorld-Verified</b> with Opus 4.6, 100 steps</div></div>
+      <div class="stat"><div class="v">61.0<small>%</small></div><div class="l"><b>WindowsAgentArena</b> with Gemini 3 Flash, 100 steps</div></div>
+      <div class="stat"><div class="v">3 <small>of 5</small></div><div class="l">backbones above <b>human level (72.4%)</b> on OSWorld in a single pass</div></div>
+      <div class="stat"><div class="v">+5.21</div><div class="l">points when our three modules are added to <b>CoAct-1</b> (65.13% &rarr; 70.34%)</div></div>
+    </div>
 
-            <div style="margin-top:1.5rem;">
-              <span class="metric">OSWorld-Verified: <span class="value">77.5%</span></span>
-              <span class="metric">WindowsAgentArena: <span class="value">61.0%</span></span>
-              <span class="metric">Surpasses Human (<span class="value">72.4%</span>)</span>
-            </div>
-          </div>
+    <div class="demo" id="demos">
+      <div class="demo-bar">
+        <div class="lights" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="demo-title"><b>VLAA-GUI</b> &middot; Claude Opus 4.6 &middot; OSWorld-Verified &middot; Ubuntu desktop</div>
+      </div>
+      <div class="demo-tabs" role="tablist" aria-label="Demo trajectories by application">
+        <button class="demo-tab" role="tab" aria-selected="true" aria-controls="demo-panel" data-src="videos/chrome.mp4" data-title="Chrome · Rename the profile" data-meta="Chrome · 0:28" data-instruction="“Lately I have changed my English name to Thomas. I want to update my username. Could you help me change the username in Chrome profiles to Thomas?”">Chrome</button>
+        <button class="demo-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="demo-panel" data-src="videos/gimp.mp4" data-title="GIMP · Fill the background layer" data-meta="GIMP · 0:32" data-instruction="“Could you fill the background layer with green color, leaving the object layer as is?”">GIMP</button>
+        <button class="demo-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="demo-panel" data-src="videos/libreoffice_calc.mp4" data-title="LibreOffice Calc · Period rate and highlight" data-meta="Calc · 0:54" data-instruction="“Please calculate the period rate for my data in a new column with header ‘Period Rate (%)’, convert the results as number type, and highlight the highest result with green (#00ff00) font.”">Calc</button>
+        <button class="demo-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="demo-panel" data-src="videos/libreoffice_impress.mp4" data-title="LibreOffice Impress · Blue background on every slide" data-meta="Impress · 0:49" data-instruction="“Please make the background blue on all my slides. I was stuck by finding the entrance to do that for a while...”">Impress</button>
+        <button class="demo-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="demo-panel" data-src="videos/libreoffice_writer.mp4" data-title="LibreOffice Writer · Subscript formatting" data-meta="Writer · 0:47" data-instruction="“Help me change the 2 in ‘H2O’ to a subscript.”">Writer</button>
+        <button class="demo-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="demo-panel" data-src="videos/vs_code.mp4" data-title="VS Code · Keyboard shortcut" data-meta="VS Code · 0:38" data-instruction="“Please help me create a shortcut ‘ctrl+j’ to move cursor focus from terminal to editor in VS Code.”">VS Code</button>
+        <button class="demo-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="demo-panel" data-src="videos/thunderbird.mp4" data-title="Thunderbird · Folder and filter rule" data-meta="Thunderbird · 0:44" data-instruction="“Create a local folder called ‘Promotions’ and create a filter to auto-move the inbox emails whose subject contains ‘discount’ to the new folder.”">Thunderbird</button>
+        <button class="demo-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="demo-panel" data-src="videos/vlc.mp4" data-title="VLC · Global hotkey" data-meta="VLC · 0:20" data-instruction="“Could you help me change the setting to allow pausing the video using a keyboard shortcut without minimizing the PDF reader? I want to focus on the lecture note and not be disturbed by app switching.”">VLC</button>
+        <button class="demo-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="demo-panel" data-src="videos/os.mp4" data-title="Ubuntu · Restore a file from the Trash" data-meta="OS · 0:15" data-instruction="“I am currently using an Ubuntu system, and I have wrongly deleted a poster of party night. Could you help me recover it from the Trash?”">OS</button>
+        <button class="demo-tab" role="tab" aria-selected="false" tabindex="-1" aria-controls="demo-panel" data-src="videos/multi_apps.mp4" data-title="Multi-app · From Calc to a Chrome search" data-meta="Multi-app · 0:32" data-instruction="“Could you help me copy the data in Cell B6 in this LibreOffice Calc file and search it in the Chrome browser?”">Multi-app</button>
+      </div>
+      <div id="demo-panel" role="tabpanel" aria-label="Demo player">
+        <div class="demo-screen">
+          <video id="demo-video" src="videos/chrome.mp4" muted playsinline controls preload="metadata" width="1920" height="1080">
+            Your browser cannot play this video; <a href="videos/chrome.mp4">download it (MP4)</a>.
+          </video>
+        </div>
+        <div class="demo-caption" aria-live="polite">
+          <h3 id="demo-name">Chrome &middot; Rename the profile</h3>
+          <div class="meta" id="demo-meta">Chrome &middot; 0:28</div>
+          <p id="demo-instruction">&ldquo;Lately I have changed my English name to Thomas. I want to update my username. Could you help me change the username in Chrome profiles to Thomas?&rdquo;</p>
         </div>
       </div>
+    </div>
+    <p class="demo-note">Real trajectories of VLAA-GUI with Claude Opus 4.6 on OSWorld-Verified. The clips play in sequence while muted; pick an application to jump to it.</p>
+  </div>
+</div>
+
+<main>
+
+<section id="overview" class="flush">
+  <div class="wrap">
+    <div class="kicker"><b>01</b> Overview</div>
+    <h2>GUI agents stop too early, and they get stuck in loops</h2>
+    <p class="lead">Desktop agents built on multimodal LLMs can now click, type, and scroll through real applications. Two failure modes
+      still decide most outcomes. Existing planners track generated subtasks, but finishing the planned steps does not mean the
+      user&rsquo;s requirement is met. Existing anti-loop heuristics catch local repetition, but have no way to escalate when the
+      agent stays stuck.</p>
+
+    <div class="fails">
+      <div class="fail rise">
+        <div class="fail-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="5" width="14" height="14" rx="2.5"/><path d="M9.5 12.2l1.8 1.8 3.4-3.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>Early stopping</h4>
+        <p>The agent declares success without verifiable evidence: it toggles a setting without checking that the state changed, or
+          edits a file and never saves it. Completion is left to the model&rsquo;s implicit judgment instead of being checked against
+          what the UI shows.</p>
+        <div class="fig"><span class="n">95.5%</span><span class="t">of Sonnet&nbsp;4.6&rsquo;s failed OSWorld tasks end with a false <code>done()</code> when the Completeness-Aware Planner is removed (100&nbsp;steps)</span></div>
+      </div>
+      <div class="fail rise">
+        <div class="fail-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M19 12a7 7 0 1 1-2.05-4.95" stroke-linecap="round"/><path d="M19.2 4.6v3.2H16" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>Repetitive loops</h4>
+        <p>The agent repeats the same failing action, or cycles through the same screens, and burns its step budget without progress.
+          Detecting the repetition is not enough; the agent has to be pushed onto a different interaction mode or strategy.</p>
+        <div class="fig"><span class="n">20.7%</span><span class="t">of Gemini&nbsp;3&nbsp;Flash&rsquo;s failed tasks involve loops without the Loop Breaker, and 4.9% of all its steps are spent inside them</span></div>
+      </div>
+    </div>
+
+    <h3>Three decisions every long-horizon agent has to make well</h3>
+    <div class="mods">
+      <a class="mod stop rise" href="#cap">
+        <div class="mod-head"><span class="tag">STOP</span><span class="when">Mandatory</span></div>
+        <h4>Completeness-Aware Planner</h4>
+        <p>Tracks UI-observable success criteria through the whole run, and an independent judge must agree before the agent may finish.</p>
+        <div class="m"><span class="n">105 &rarr; 91</span><span class="t">false completions, Sonnet&nbsp;4.6 on OSWorld at 100 steps</span></div>
+        <span class="go">How it works &rarr;</span>
+      </a>
+      <a class="mod recover rise" href="#loop-breaker">
+        <div class="mod-head"><span class="tag">RECOVER</span><span class="when">Mandatory</span></div>
+        <h4>Loop Breaker</h4>
+        <p>Runs after every action and escalates in three tiers: switch the interaction modality, change the strategy, then act on a reflection judge.</p>
+        <div class="m"><span class="n">4.9% &rarr; 2.8%</span><span class="t">steps wasted in loops, Gemini&nbsp;3&nbsp;Flash</span></div>
+        <span class="go">How it works &rarr;</span>
+      </a>
+      <a class="mod search rise" href="#search-agent">
+        <div class="mod-head"><span class="tag">SEARCH</span><span class="when">On demand</span></div>
+        <h4>Search Agent</h4>
+        <p>Asks an LLM with native search grounding a &ldquo;How to&rdquo; question and returns a plain-text tutorial, with no browser to drive.</p>
+        <div class="m"><span class="n">49.4% &rarr; 60.4%</span><span class="t">WindowsAgentArena at 50 steps, without vs. with it</span></div>
+        <span class="go">How it works &rarr;</span>
+      </a>
+    </div>
+
+    <figure class="rise">
+      <div class="card"><img src="resources/fig1_teaser.webp" width="2400" height="665" loading="lazy"
+        alt="Figure 1. (a) OSWorld-Verified success rate against step budget (15, 50, 100) for VLAA-GUI with Opus 4.6, Opus 4.5, Gemini 3.1 Pro, and Sonnet 4.6; Opus 4.6 reaches 77.5%, above the human line at 72.4%. (b) False DONE over all tasks drops from 29.1% to 25.2% for Sonnet 4.6 and from 28.3% to 27.7% for Gemini 3 Flash with CAP. (c) The Loop Breaker moves Sonnet 4.6 from 7.2% loop ratio and 3.2% wasted steps to 5.0% and 2.1%, and Gemini 3 Flash from 12.5% and 4.9% to 10.6% and 2.8%."></div>
+      <figcaption><b>Figure 1. Performance of VLAA-GUI.</b> (a) VLAA-GUI with Opus&nbsp;4.6 reaches 77.5% on OSWorld-Verified and
+        surpasses human performance in one pass. (b) The Completeness-Aware Planner (CAP) reduces false completion rates at a 100-step
+        budget. (c) The Loop Breaker reduces repetitive loops and wasted action steps at the 100-step budget.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="abstract">
+  <div class="wrap">
+    <div class="abstract prose">
+      <div class="kicker"><b>02</b> Abstract</div>
+      <p>Autonomous GUI agents face two fundamental challenges: <em>early stopping</em>, where agents prematurely declare success
+        without verifiable evidence, and <em>repetitive loops</em>, where agents cycle through the same failing actions without
+        recovery. Existing agent planners track progress through generated subtasks, yet in GUI environments, completing planned
+        steps does not guarantee that the user&rsquo;s requirements are met. Moreover, existing anti-loop mechanisms typically detect
+        only local repetition and lack mechanisms to escalate recovery when the agent remains stuck. To this end, we present
+        <strong>VLAA-GUI</strong>, a modular GUI agentic framework organized around three decisions: when to <code>Stop</code>,
+        <code>Recover</code>, and <code>Search</code>. To prevent premature termination, a mandatory <em>Completeness-Aware
+        Planner</em> tracks UI-observable success criteria throughout execution and independently verifies completion claims before
+        termination. To recover from stalled agent action loops, a mandatory <em>Loop Breaker</em> detects repeated ineffective agent
+        actions and progressively forces the agent to change its action strategy. When the current observation is insufficient to
+        determine a viable workflow, an on-demand <em>Search Agent</em> supplies external procedural knowledge to the agent.</p>
+      <p>To validate VLAA-GUI, we evaluate it on two benchmarks containing Linux and Windows tasks with five LLM backbones, achieving
+        top performance on both (<strong>77.5%</strong> on OSWorld and <strong>61.0%</strong> on WindowsAgentArena). Notably, three of
+        the five backbones surpass human performance (72.4%) on OSWorld in a single pass. Ablation studies further show that
+        completion checking, loop recovery, and search provide complementary gains that vary with backbone capability and interaction
+        budget, while the Loop Breaker nearly halves wasted steps for loop-prone backbones (e.g., Gemini&nbsp;3&nbsp;Flash). Moreover,
+        transferring three proposed mechanisms to an existing GUI agent (CoAct-1) also improves it by over 5% to 70.3% on a controlled
+        OSWorld subset, showing the strong portability of these components.</p>
     </div>
   </div>
 </section>
 
+<section id="method">
+  <div class="wrap">
+    <div class="kicker"><b>03</b> Method</div>
+    <h2>One Manager, two mandatory checks, three on-demand tools</h2>
+    <p class="lead">VLAA-GUI is built around a single Manager agent that perceives, reasons, and acts on the GUI in one loop. At step
+      <em>t</em>, its belief state <em>b<sub>t</sub></em> summarizes the instruction, the trajectory so far, and the current
+      screenshot and tool results. From it, the Manager picks one action: a UI primitive (click, type, scroll, hotkey) or a call to
+      the Search, Coding, or Grounding Agent. All of these share one action space, so the Manager chooses the help that fits the
+      obstacle in front of it and stays responsible for the task throughout.</p>
 
-<!-- TL;DR / Headline Results -->
-<section class="section sec-compact">
-  <div class="container">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">TL;DR</h2>
-        <div class="content has-text-justified">
-          <p>
-            Autonomous GUI agents suffer from two chronic failure modes: <strong>early stopping</strong> (declaring success before the task is actually done) and <strong>repetitive loops</strong> (cycling through the same failing action without recovering). <strong>VLAA-GUI</strong> is a modular framework with three integrated components that tell the agent when to <tt>STOP</tt>, <tt>RECOVER</tt>, and <tt>SEARCH</tt>:
-          </p>
-          <ul>
-            <li>A mandatory <strong>Completeness Verifier</strong> enforces UI-observable success criteria at every finish step, double-checked by an independent verifier model.</li>
-            <li>A mandatory <strong>Loop Breaker</strong> detects repeated actions / recurring screen states / reflection-signaled stalls and escalates across three tiers.</li>
-            <li>An on-demand <strong>Search Agent</strong> queries a search-grounded LLM directly in text, skipping the overhead of browser-based visual search.</li>
-          </ul>
-          <p>
-            Paired with five top-tier backbones, VLAA-GUI reaches <strong>77.5%</strong> on OSWorld-Verified with Claude Opus 4.6 and <strong>61.0%</strong> on WindowsAgentArena. Three of five backbones surpass human-level (72.4%) on OSWorld in a single pass, and VLAA-GUI with Sonnet 4.6 at only <strong>15 action steps</strong> already outperforms the best published <strong>50-step</strong> system.
-          </p>
+    <figure class="rise">
+      <div class="card"><img src="resources/fig2_pipeline.webp" width="2200" height="834" loading="lazy"
+        alt="Figure 2. The environment (Linux, Windows, macOS) exchanges screenshots and actions (click, type, scroll, hotkey) with the Manager Agent. Two mandatory tools, the Verifier and the Loop Breaker, and three on-demand tools, the Searcher, Coder, and Grounder, connect to the Manager."></div>
+      <figcaption><b>Figure 2. Overview of VLAA-GUI.</b> The Manager Agent perceives screenshots and acts through basic GUI actions.
+        Two <em>mandatory</em> modules coordinate with the Manager: the Verifier guards against premature completion, and the Loop
+        Breaker interrupts stalled action loops. Three <em>on-demand</em> tools, the Search Agent (Searcher), Coding Agent (Coder), and
+        Grounding Agent (Grounder), are triggered by the Manager as needed.</figcaption>
+    </figure>
+
+    <!-- STOP -->
+    <div class="block" id="cap">
+      <div class="text">
+        <div class="block-head"><span class="tag" style="--c: var(--stop)">STOP</span><span class="pill">Mandatory</span></div>
+        <h3>Completeness-Aware Planner</h3>
+        <p>Conventional hierarchical planners decompose <em>how</em> to execute a task, and give weak signals about whether the
+          requested outcome was reached. The Completeness-Aware Planner (CAP) instead represents <em>what must be true</em> for the task
+          to be complete.</p>
+        <p><strong>Completion Gate.</strong> From the instruction, the Manager derives <em>K</em> UI-observable success criteria
+          (1&ndash;3 in practice; exact values such as a hex color are tagged for a literal check). The criteria prescribe no action
+          order, so the Manager can change its route without losing track of what it must finally demonstrate. Each step it re-checks
+          every criterion against the screen, and action-specific rules tell it what visible outcome to expect, so a UI that has not
+          updated yet is not mistaken for success.</p>
+        <p><strong>Completeness Model Judge.</strong> The gate only conditions on the initial instruction, so it can miss requirements.
+          When it outputs <code>DONE</code>, a separate MLLM judge (temperature 0.2) re-reads the instruction with the current screenshot
+          and recent trajectory. It accepts only with direct visual evidence for every criterion, visible confirmation of side effects
+          such as saving, exporting, or sending, and a stable UI. The agent terminates only when gate and judge agree; a rejection
+          appends criterion-level evidence and what is still missing to the trajectory.</p>
+      </div>
+      <div class="panel rise">
+        <div class="panel-title">Every step</div>
+        <ol class="flow">
+          <li><span class="dot">1</span><div class="h">Write success criteria</div><div class="d">At the first step, 1&ndash;3 statements the screen can confirm: button labels, file names, toggle states, dialog titles.</div></li>
+          <li><span class="dot">2</span><div class="h">Check them against the screen</div><div class="d">Each criterion&rsquo;s evidence is updated from what is visible now.</div>
+            <div class="formula"><span class="k">Gate</span>(b<sub>t</sub>) = <span class="k">DONE</span> if all K criteria pass and the UI is stable, else <span class="k">CONTINUE</span></div></li>
+          <li><span class="dot c">3</span><div class="h">Independent judge on every <code>done()</code></div>
+            <div class="branch">
+              <div class="no"><b>Reject</b>Missing evidence goes back into the trajectory; the Manager keeps working.</div>
+              <div class="yes"><b>Accept</b>Gate and judge agree: the task ends with <code>agent.done()</code>.</div>
+            </div></li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- RECOVER -->
+    <div class="block" id="loop-breaker">
+      <div class="text">
+        <div class="block-head"><span class="tag" style="--c: var(--recover)">RECOVER</span><span class="pill">Mandatory</span></div>
+        <h3>Loop Breaker</h3>
+        <p>Repeated failure can come from an ineffective interaction, an unproductive workflow, or a broader pattern in the trajectory.
+          The Loop Breaker runs after every Manager action and handles all three. Tiers 1 and 2 count repeated actions that leave the
+          screen unchanged and recurring screen states; Tier 3 asks an external model to read the recent trajectory.</p>
+        <p>The thresholds are fixed, <em>&tau;<sub>a</sub></em>&nbsp;=&nbsp;2 and <em>&tau;<sub>o</sub></em>&nbsp;=&nbsp;3, across all
+          tasks and both benchmark platforms. Repetition alone never establishes that a task is infeasible; declaring failure needs
+          separate evidence.</p>
+      </div>
+      <div class="panel rise">
+        <div class="panel-title">Escalation</div>
+        <ol class="ladder">
+          <li class="tier" style="--i: 1"><div class="lvl">TIER<span>1</span></div><div>
+            <div class="h">Modality switch</div>
+            <div class="trig">same action, no visible change, twice <code>(n<sup>a</sup> &ge; 2)</code></div>
+            <div class="d">The next action must use another modality: keyboard shortcut &rarr; menu click &rarr; command line.</div></div></li>
+          <li class="tier" style="--i: 2"><div class="lvl">TIER<span>2</span></div><div>
+            <div class="h">Strategy change</div>
+            <div class="trig">same screen state three times <code>(n<sup>o</sup> &ge; 3)</code></div>
+            <div class="d">The overall strategy must change, e.g. from menu navigation to programmatic file editing.</div></div></li>
+          <li class="tier" style="--i: 3"><div class="lvl">TIER<span>3</span></div><div>
+            <div class="h">Reflection-driven judge</div>
+            <div class="trig">external model returns KEEP or SWITCH</div>
+            <div class="d">On SWITCH, the repeated action is blacklisted for the next step: <code>click</code> &rarr; <code>type</code>, or GUI actions &rarr; the Coding Agent.</div></div></li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- SEARCH -->
+    <div class="block" id="search-agent">
+      <div class="text">
+        <div class="block-head"><span class="tag" style="--c: var(--search)">SEARCH</span><span class="pill">On demand</span></div>
+        <h3>Search Agent</h3>
+        <p>Recovery can change the route, but in an unfamiliar application the agent may have no good alternative to try. The screen
+          shows the interface; it rarely shows the procedure. A short tutorial supplies the missing workflow.</p>
+        <p>Retrieving it through a visual browser, as in OS-Symphony, adds navigation and grounding of its own. Because the
+          knowledge sought is procedural text, VLAA-GUI asks for text directly: the Manager calls <code>search(query)</code> from the
+          same action space as UI primitives, with a targeted &ldquo;How to&rdquo; question. An LLM with native search grounding
+          (Gemini&nbsp;3&nbsp;Pro or 3.1&nbsp;Pro) answers in a single query with a summarized tutorial, which joins the belief state.
+          The Manager calls it when it is unsure of a GUI workflow and a tutorial is likely to exist.</p>
+      </div>
+      <div class="panel rise">
+        <div class="panel-title">Getting a tutorial</div>
+        <div class="compare">
+          <div class="lane">
+            <div class="who">Visual browser search</div>
+            <div class="chain"><span>open browser</span><i>&rarr;</i><span>type query</span><i>&rarr;</i><span>scroll &amp; read</span><i>&rarr;</i><span>&hellip;</span></div>
+            <div class="d">Extra agent steps, plus a visual grounding pipeline of its own.</div>
+          </div>
+          <div class="lane ours">
+            <div class="who">VLAA-GUI Search Agent</div>
+            <div class="chain"><span>search(&ldquo;How to &hellip;?&rdquo;)</span><i>&rarr;</i><span>search-grounded LLM</span><i>&rarr;</i><span>text tutorial</span></div>
+            <div class="d">One action, one query; everything stays in the text domain and lands in the Manager&rsquo;s context.</div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-
-<!-- Motivation / Core Challenges -->
-<section class="section sec-compact">
-  <div class="container">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Two Problems We Found </h2>
-        <div class="content has-text-justified">
-          <p>
-            Across benchmarks like OSWorld and WindowsAgentArena, the same two behaviors account for most failures:
-          </p>
-          <div class="columns">
-            <div class="column">
-              <div class="component-box" style="border-color:#e66;">
-                <h4 class="title is-5" style="color:#c22;">1. Early Stopping</h4>
-                <p>
-                  Agents routinely declare <tt>done()</tt> prematurely&mdash;after opening a <em>Save&nbsp;As</em> dialog without writing the file, or after toggling a setting without confirming the state actually changed. Completion is left to the model's implicit judgment rather than verified against observable UI evidence. In our analysis, <strong>over 86% of all failures involve the agent incorrectly believing it has succeeded</strong>.
-                </p>
-              </div>
-            </div>
-            <div class="column">
-              <div class="component-box" style="border-color:#f0a23a;">
-                <h4 class="title is-5" style="color:#c77a00;">2. Repetitive Loops</h4>
-                <p>
-                  Agents fall into loops&mdash;repeating the same failing action, or cycling through the same screen states&mdash;burning step budget with no progress. Existing anti-looping heuristics operate at a single granularity and cannot escalate across interaction modalities or planning strategies.
-                </p>
-              </div>
-            </div>
-          </div>
-          <p>
-            VLAA-GUI targets both issues directly with <em>mandatory post-action checks</em> that run after every step, rather than bolt-on reflection that the agent is free to ignore.
-          </p>
-        </div>
+    <div class="tools">
+      <div class="tool coder rise">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 6 3 10l4 4M13 6l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><h4>Coding Agent</h4>
+          <p>Runs Python and Bash in its own loop, with an independent budget of 20 code-execution steps. The Manager calls it for
+            bulk edits (20 or more cells or lines), non-trivial computation, or when the GUI route is blocked.</p></div>
+      </div>
+      <div class="tool grounder rise">
+        <div class="ic" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10" cy="10" r="5.5"/><circle cx="10" cy="10" r="1.2" fill="currentColor"/><path d="M10 1.5v3M10 15.5v3M1.5 10h3M15.5 10h3" stroke-linecap="round"/></svg></div>
+        <div><h4>Grounding Agent</h4>
+          <p>Turns a natural-language element description into screen coordinates on the 1920&times;1080 screenshot. Seed&nbsp;1.8 by
+            default; one Opus&nbsp;4.5 configuration uses MAI-UI instead.</p></div>
       </div>
     </div>
+
+    <details class="more">
+      <summary>Model assignments and hyperparameters <span>Table 7</span></summary>
+      <div class="inner">
+        <p>In each configuration the named backbone serves as the Manager, the Reflection Agent, the Completeness Model Judge, and the
+          Coding Agent. On WindowsAgentArena, Gemini&nbsp;3&nbsp;Flash is the Manager.</p>
+        <div class="table-scroll"><table>
+          <thead><tr><th>Component</th><th style="text-align:left">Model</th></tr></thead>
+          <tbody>
+            <tr><td>Manager Agent</td><td class="wrap" style="text-align:left">Claude Opus 4.5 / Claude Opus 4.6 / Sonnet 4.6 / Gemini 3 Flash / Gemini 3.1 Pro</td></tr>
+            <tr><td>Reflection Agent (Loop Breaker)</td><td class="wrap" style="text-align:left">Same as the Manager</td></tr>
+            <tr><td>Completeness Model Judge</td><td class="wrap" style="text-align:left">Same as the Manager, temperature 0.2 (all other components 1.0)</td></tr>
+            <tr><td>Search Agent</td><td class="wrap" style="text-align:left">Gemini 3 Pro for Opus 4.5, Opus 4.5 + MAI-UI, Sonnet 4.6, and Gemini 3 Flash; Gemini 3.1 Pro for Opus 4.6 and Gemini 3.1 Pro (with search grounding); a single query per call</td></tr>
+            <tr><td>Coding Agent</td><td class="wrap" style="text-align:left">Same as the Manager; independent budget of 20 code-execution steps</td></tr>
+            <tr><td>Grounding Agent</td><td class="wrap" style="text-align:left">Seed 1.8, except MAI-UI for Opus 4.5 + MAI-UI</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">All agents run in iterative planning mode, without hierarchical subtask decomposition. Step budgets are 15,
+          50, or 100 actions. OSWorld runs on the official Ubuntu Docker containers and WindowsAgentArena on the official Windows
+          snapshot, both on Amazon Web Services; screenshots are captured at 1920&times;1080.</p>
+      </div>
+    </details>
+    <details class="more">
+      <summary>Action space of the Manager <span>Table 9</span></summary>
+      <div class="inner">
+        <div class="table-scroll"><table>
+          <thead><tr><th>Action</th><th style="text-align:left">Type</th><th style="text-align:left">Description</th></tr></thead>
+          <tbody>
+            <tr><td><code>agent.click</code></td><td style="text-align:left">GUI</td><td class="wrap" style="text-align:left">Clicks a grounded UI element, with optional repeated clicks, mouse-button choice, and modifier keys.</td></tr>
+            <tr><td><code>agent.double_click</code></td><td style="text-align:left">GUI</td><td class="wrap" style="text-align:left">Double-clicks a grounded UI element.</td></tr>
+            <tr><td><code>agent.type</code></td><td style="text-align:left">GUI</td><td class="wrap" style="text-align:left">Focuses an element if needed, types text, optionally overwrites existing text, and can submit with Enter.</td></tr>
+            <tr><td><code>agent.drag_and_drop</code></td><td style="text-align:left">GUI</td><td class="wrap" style="text-align:left">Drags from one grounded element to another.</td></tr>
+            <tr><td><code>agent.highlight_text_span</code></td><td style="text-align:left">GUI</td><td class="wrap" style="text-align:left">Selects text between a starting phrase and an ending phrase.</td></tr>
+            <tr><td><code>agent.scroll</code></td><td style="text-align:left">GUI</td><td class="wrap" style="text-align:left">Scrolls vertically or horizontally over a grounded target region.</td></tr>
+            <tr><td><code>agent.open</code></td><td style="text-align:left">Navigation</td><td class="wrap" style="text-align:left">Opens an application or file.</td></tr>
+            <tr><td><code>agent.switch_applications</code></td><td style="text-align:left">Navigation</td><td class="wrap" style="text-align:left">Switches to an already opened application.</td></tr>
+            <tr><td><code>agent.hotkey</code></td><td style="text-align:left">Keyboard</td><td class="wrap" style="text-align:left">Sends a key chord such as <code>Ctrl+S</code>.</td></tr>
+            <tr><td><code>agent.hold_and_press</code></td><td style="text-align:left">Keyboard</td><td class="wrap" style="text-align:left">Holds one set of keys while pressing another key sequence.</td></tr>
+            <tr><td><code>agent.call_code_agent</code></td><td style="text-align:left">Tool</td><td class="wrap" style="text-align:left">Delegates a task or subtask to the Coding Agent, which runs Python/Bash and returns a structured report.</td></tr>
+            <tr><td><code>agent.call_search_agent</code></td><td style="text-align:left">Tool</td><td class="wrap" style="text-align:left">Calls the Search Agent for a step-by-step tutorial on a specific GUI procedure.</td></tr>
+            <tr><td><code>agent.set_cell_values</code></td><td style="text-align:left">Tool</td><td class="wrap" style="text-align:left">Edits spreadsheet cells programmatically (Linux only).</td></tr>
+            <tr><td><code>agent.wait</code></td><td style="text-align:left">Terminal</td><td class="wrap" style="text-align:left">Waits for the UI to update before the next decision.</td></tr>
+            <tr><td><code>agent.done</code></td><td style="text-align:left">Terminal</td><td class="wrap" style="text-align:left">Terminates the task successfully.</td></tr>
+            <tr><td><code>agent.fail</code></td><td style="text-align:left">Terminal</td><td class="wrap" style="text-align:left">Terminates the task as infeasible or blocked.</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+    </details>
   </div>
 </section>
 
+<section id="results">
+  <div class="wrap">
+    <div class="kicker"><b>04</b> Results</div>
+    <h2>Above human level on OSWorld-Verified, with three backbones</h2>
+    <p class="lead">With a 100-step budget, VLAA-GUI with Opus&nbsp;4.6 reaches 77.45%, and Opus&nbsp;4.5 (74.89%) and
+      Gemini&nbsp;3.1&nbsp;Pro (72.47%) also pass the human reference of 72.4%. Even the much lighter Gemini&nbsp;3&nbsp;Flash reaches
+      68.77%, ahead of every GPT-5-based framework.</p>
 
-<!-- System Overview -->
-<section class="section sec-compact">
-  <div class="container">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">System Overview</h2>
-        <div class="content has-text-justified">
-          <p>
-            VLAA-GUI is built around a <strong>single Manager Agent</strong> that perceives, reasons, and acts on the GUI in one loop&mdash;no hierarchical subtask decomposition, no persistent memory module. After every action, two <em>mandatory</em> tools run: the <strong>Completeness Verifier</strong> and the <strong>Loop Breaker</strong>. Three <em>on-demand</em> tools sit in the same action space and are invoked by the Manager whenever a situation calls for them: the <strong>Search Agent</strong> for retrieving tutorials, the <strong>Coding Agent</strong> for bulk edits and computation, and the <strong>Grounding Agent</strong> for precise click localization.
-          </p>
+    <div class="chart rise" id="osworld-chart">
+      <div class="chart-head">
+        <div><h4>OSWorld-Verified, 100-step budget</h4><div class="sub">Average success rate (%) on the 361-task evaluation set. Hover or focus a row for the per-domain breakdown.</div></div>
+        <div class="legend" aria-hidden="true"><span><i style="--k: var(--accent)"></i>VLAA-GUI</span><span><i style="--k: var(--ink-4)"></i>Prior systems</span><span><i class="line"></i>Human level</span></div>
+      </div>
+      <div class="dots" role="list" aria-label="OSWorld-Verified average success rate at 100 steps, sorted from highest to lowest">
+        <div class="overlay" aria-hidden="true">
+          <i class="gl" style="--t: 55"></i><i class="gl" style="--t: 60"></i><i class="gl" style="--t: 65"></i><i class="gl" style="--t: 70"></i><i class="gl" style="--t: 75"></i><i class="gl" style="--t: 80"></i>
+          <i class="human"><span>Human 72.4%</span></i>
         </div>
-        <figure class="image" style="margin:1.5rem 0;">
-          <img src="./resources/pipeline.png" alt="VLAA-GUI framework: the Manager Agent interacts with the Environment via screenshots and actions, and coordinates Mandatory Tools (Verifier, Loop Breaker) and On-demand Tools (Searcher, Coder, Grounder)." style="max-width:100%;height:auto;">
-        </figure>
+        <div class="row ours" role="listitem" tabindex="0" style="--v: 77.45" data-d="OS 91.70|Office 82.87|Daily 75.17|Professional 83.67|Workflow 65.60"><span class="lab">VLAA-GUI w/ Opus 4.6</span><span class="trk"><i class="pt"></i></span><span class="val">77.45</span></div>
+        <div class="row ours" role="listitem" tabindex="0" style="--v: 76.26" data-d="OS 91.67|Office 84.26|Daily 72.77|Professional 83.67|Workflow 61.09"><span class="lab">VLAA-GUI w/ Opus 4.5 + MAI-UI</span><span class="trk"><i class="pt"></i></span><span class="val">76.26</span></div>
+        <div class="row ours" role="listitem" tabindex="0" style="--v: 74.89" data-d="OS 87.50|Office 79.38|Daily 76.57|Professional 81.63|Workflow 61.00"><span class="lab">VLAA-GUI w/ Opus 4.5</span><span class="trk"><i class="pt"></i></span><span class="val">74.89</span></div>
+        <div class="row" role="listitem" tabindex="0" style="--v: 74.49" data-d="OS 87.50|Office 74.27|Daily 69.27|Professional 95.92|Workflow 64.31"><span class="lab">HIPPO w/ Opus 4.5</span><span class="trk"><i class="pt"></i></span><span class="val">74.49</span></div>
+        <div class="row" role="listitem" tabindex="0" style="--v: 73.07" data-d="OS 79.17|Office 80.03|Daily 77.11|Professional 81.63|Workflow 54.97"><span class="lab">Kimi K2.6</span><span class="trk"><i class="pt"></i></span><span class="val">73.07</span></div>
+        <div class="row ours" role="listitem" tabindex="0" style="--v: 72.47" data-d="OS 83.30|Office 76.60|Daily 73.76|Professional 73.47|Workflow 62.90"><span class="lab">VLAA-GUI w/ Gemini 3.1 Pro</span><span class="trk"><i class="pt"></i></span><span class="val">72.47</span></div>
+        <div class="row ours" role="listitem" tabindex="0" style="--v: 71.67" data-d="OS 83.30|Office 79.24|Daily 69.25|Professional 57.14|Workflow 68.80"><span class="lab">VLAA-GUI w/ Sonnet 4.6</span><span class="trk"><i class="pt"></i></span><span class="val">71.67</span></div>
+        <div class="row ours" role="listitem" tabindex="0" style="--v: 68.77" data-d="OS 91.70|Office 64.90|Daily 74.85|Professional 67.33|Workflow 63.40"><span class="lab">VLAA-GUI w/ Gemini 3 Flash</span><span class="trk"><i class="pt"></i></span><span class="val">68.77</span></div>
+        <div class="row" role="listitem" tabindex="0" style="--v: 67.14" data-d="OS 70.83|Office 74.13|Daily 68.33|Professional 73.47|Workflow 52.97"><span class="lab">UiPath w/ Opus 4.5</span><span class="trk"><i class="pt"></i></span><span class="val">67.14</span></div>
+        <div class="row" role="listitem" tabindex="0" style="--v: 66.00" data-d="OS 75.00|Office 75.53|Daily 63.94|Professional 58.37|Workflow 57.43"><span class="lab">Agent S3 w/ Opus 4.5</span><span class="trk"><i class="pt"></i></span><span class="val">66.00</span></div>
+        <div class="row" role="listitem" tabindex="0" style="--v: 65.84" data-d="OS 79.17|Office 65.73|Daily 67.76|Professional 69.23|Workflow 57.98"><span class="lab">OS-Symphony w/ GPT-5</span><span class="trk"><i class="pt"></i></span><span class="val">65.84</span></div>
+        <div class="row" role="listitem" tabindex="0" style="--v: 63.41" data-d="OS 79.17|Office 63.91|Daily 62.56|Professional 79.59|Workflow 50.91"><span class="lab">GTA1 w/ GPT-5</span><span class="trk"><i class="pt"></i></span><span class="val">63.41</span></div>
+        <div class="row" role="listitem" tabindex="0" style="--v: 62.84" data-d="OS 70.83|Office 72.59|Daily 61.35|Professional 63.27|Workflow 49.54"><span class="lab">Claude-Sonnet-4.5</span><span class="trk"><i class="pt"></i></span><span class="val">62.84</span></div>
+        <div class="row" role="listitem" tabindex="0" style="--v: 62.60" data-d="OS 77.50|Office 66.30|Daily 61.36|Professional 69.80|Workflow 51.37"><span class="lab">Agent S3 w/ GPT-5</span><span class="trk"><i class="pt"></i></span><span class="val">62.60</span></div>
+        <div class="row" role="listitem" tabindex="0" style="--v: 61.87" data-d="OS 66.67|Office 68.80|Daily 67.05|Professional 71.43|Workflow 42.38"><span class="lab">Seed-1.8</span><span class="trk"><i class="pt"></i></span><span class="val">61.87</span></div>
+        <div class="row" role="listitem" tabindex="0" style="--v: 59.93" data-d="OS 75.00|Office 62.93|Daily 57.94|Professional 71.43|Workflow 47.87"><span class="lab">CoAct-1 w/ GPT-5</span><span class="trk"><i class="pt"></i></span><span class="val">59.93</span></div>
+        <div class="axis" aria-hidden="true"><span style="--t: 55">55</span><span style="--t: 60">60</span><span style="--t: 65">65</span><span style="--t: 70">70</span><span style="--t: 75">75</span><span style="--t: 80">80</span></div>
       </div>
     </div>
+
+    <div class="seg" role="tablist" aria-label="Step budget">
+      <button role="tab" type="button" aria-selected="true" aria-controls="t-100" id="b-100" data-budget="100">100 steps</button>
+      <button role="tab" type="button" aria-selected="false" aria-controls="t-50" id="b-50" data-budget="50" tabindex="-1">50 steps</button>
+      <button role="tab" type="button" aria-selected="false" aria-controls="t-15" id="b-15" data-budget="15" tabindex="-1">15 steps</button>
+    </div>
+    <div class="table-scroll" id="t-100" role="tabpanel" aria-labelledby="b-100" data-budget-panel="100"><table>
+      <thead><tr><th>Method</th><th>OS</th><th>Office</th><th>Daily</th><th>Prof.</th><th>Workflow</th><th>Avg.</th></tr></thead>
+      <tbody>
+        <tr class="grp"><td colspan="7">Models</td></tr>
+        <tr><td>Seed-1.8</td><td>66.67</td><td>68.80</td><td>67.05</td><td>71.43</td><td>42.38</td><td>61.87</td></tr>
+        <tr><td>Claude-Sonnet-4.5</td><td>70.83</td><td>72.59</td><td>61.35</td><td>63.27</td><td>49.54</td><td>62.84</td></tr>
+        <tr><td>Kimi K2.6</td><td>79.17</td><td>80.03</td><td>77.11</td><td>81.63</td><td>54.97</td><td>73.07</td></tr>
+        <tr class="grp"><td colspan="7">Frameworks with GPT-5</td></tr>
+        <tr><td>CoAct-1 w/ GPT-5</td><td>75.00</td><td>62.93</td><td>57.94</td><td>71.43</td><td>47.87</td><td>59.93</td></tr>
+        <tr><td>GTA1 w/ GPT-5</td><td>79.17</td><td>63.91</td><td>62.56</td><td>79.59</td><td>50.91</td><td>63.41</td></tr>
+        <tr><td>OS-Symphony w/ GPT-5</td><td>79.17</td><td>65.73</td><td>67.76</td><td>69.23</td><td>57.98</td><td>65.84</td></tr>
+        <tr><td>Agent S3 w/ GPT-5</td><td>77.50</td><td>66.30</td><td>61.36</td><td>69.80</td><td>51.37</td><td>62.60</td></tr>
+        <tr class="grp"><td colspan="7">Frameworks with Opus 4.5</td></tr>
+        <tr><td>UiPath w/ Opus 4.5</td><td>70.83</td><td>74.13</td><td>68.33</td><td>73.47</td><td>52.97</td><td>67.14</td></tr>
+        <tr><td>Agent S3 w/ Opus 4.5</td><td>75.00</td><td>75.53</td><td>63.94</td><td>58.37</td><td>57.43</td><td>66.00</td></tr>
+        <tr><td>HIPPO w/ Opus 4.5</td><td>87.50</td><td>74.27</td><td>69.27</td><td class="b">95.92</td><td>64.31</td><td>74.49</td></tr>
+        <tr class="grp"><td colspan="7">VLAA-GUI (ours)</td></tr>
+        <tr class="ours"><td>VLAA-GUI w/ Gemini 3 Flash</td><td class="b">91.70</td><td>64.90</td><td>74.85</td><td>67.33</td><td>63.40</td><td>68.77</td></tr>
+        <tr class="ours"><td>VLAA-GUI w/ Gemini 3.1 Pro</td><td>83.30</td><td>76.60</td><td>73.76</td><td>73.47</td><td>62.90</td><td>72.47</td></tr>
+        <tr class="ours"><td>VLAA-GUI w/ Sonnet 4.6</td><td>83.30</td><td>79.24</td><td>69.25</td><td>57.14</td><td class="b">68.80</td><td>71.67</td></tr>
+        <tr class="ours"><td>VLAA-GUI w/ Opus 4.5</td><td>87.50</td><td>79.38</td><td class="b">76.57</td><td>81.63</td><td>61.00</td><td>74.89</td></tr>
+        <tr class="ours"><td>VLAA-GUI w/ Opus 4.5 + MAI-UI</td><td>91.67</td><td class="b">84.26</td><td>72.77</td><td>83.67</td><td>61.09</td><td>76.26</td></tr>
+        <tr class="ours"><td>VLAA-GUI w/ Opus 4.6</td><td class="b">91.70</td><td>82.87</td><td>75.17</td><td>83.67</td><td>65.60</td><td class="b">77.45</td></tr>
+      </tbody>
+    </table></div>
+    <div class="table-scroll" id="t-50" role="tabpanel" aria-labelledby="b-50" data-budget-panel="50"><table>
+      <thead><tr><th>Method</th><th>OS</th><th>Office</th><th>Daily</th><th>Prof.</th><th>Workflow</th><th>Avg.</th></tr></thead>
+      <tbody>
+        <tr class="grp"><td colspan="7">Frameworks with GPT-5</td></tr>
+        <tr><td>UiPath w/ GPT-5</td><td>73.91</td><td>49.52</td><td>62.12</td><td>71.43</td><td>37.30</td><td>53.69</td></tr>
+        <tr><td>CoAct-1 w/ GPT-5</td><td>70.83</td><td>60.65</td><td>54.09</td><td>69.39</td><td>42.37</td><td>56.39</td></tr>
+        <tr><td>OS-Symphony w/ GPT-5</td><td>78.26</td><td>65.74</td><td>65.92</td><td>79.59</td><td>55.30</td><td>65.77</td></tr>
+        <tr class="grp"><td colspan="7">VLAA-GUI (ours)</td></tr>
+        <tr class="ours"><td>VLAA-GUI w/ Gemini 3 Flash</td><td>83.30</td><td>69.19</td><td>62.75</td><td>62.49</td><td>51.00</td><td>63.14</td></tr>
+        <tr class="ours"><td>VLAA-GUI w/ Gemini 3.1 Pro</td><td>83.30</td><td>71.51</td><td>67.32</td><td>67.35</td><td>55.90</td><td>66.80</td></tr>
+        <tr class="ours"><td>VLAA-GUI w/ Sonnet 4.6</td><td>83.30</td><td class="b">79.23</td><td>69.24</td><td>57.13</td><td class="b">66.70</td><td>71.11</td></tr>
+        <tr class="ours"><td>VLAA-GUI w/ Opus 4.5</td><td class="b">87.50</td><td>75.97</td><td>71.38</td><td>79.59</td><td>55.60</td><td>71.00</td></tr>
+        <tr class="ours"><td>VLAA-GUI w/ Opus 4.6</td><td>83.30</td><td>78.60</td><td class="b">72.60</td><td class="b">83.67</td><td>61.30</td><td class="b">73.85</td></tr>
+      </tbody>
+    </table></div>
+    <div class="table-scroll" id="t-15" role="tabpanel" aria-labelledby="b-15" data-budget-panel="15"><table>
+      <thead><tr><th>Method</th><th>OS</th><th>Office</th><th>Daily</th><th>Prof.</th><th>Workflow</th><th>Avg.</th></tr></thead>
+      <tbody>
+        <tr class="grp"><td colspan="7">VLAA-GUI (ours)</td></tr>
+        <tr class="ours"><td>VLAA-GUI w/ Gemini 3 Flash</td><td>79.20</td><td>29.92</td><td>54.14</td><td>57.13</td><td>34.00</td><td>43.15</td></tr>
+        <tr class="ours"><td>VLAA-GUI w/ Gemini 3.1 Pro</td><td>83.30</td><td>52.99</td><td>54.33</td><td>61.22</td><td>34.70</td><td>51.69</td></tr>
+        <tr class="ours"><td>VLAA-GUI w/ Sonnet 4.6</td><td>83.30</td><td class="b">69.72</td><td>58.72</td><td>57.13</td><td class="b">60.20</td><td>64.13</td></tr>
+        <tr class="ours"><td>VLAA-GUI w/ Opus 4.5</td><td class="b">87.50</td><td>57.16</td><td>59.69</td><td>71.43</td><td>45.20</td><td>58.58</td></tr>
+        <tr class="ours"><td>VLAA-GUI w/ Opus 4.6</td><td>83.30</td><td>60.65</td><td class="b">66.38</td><td class="b">79.59</td><td>55.90</td><td class="b">64.75</td></tr>
+      </tbody>
+    </table></div>
+    <p class="table-note"><b>Table 1. Success rates (%) on OSWorld-Verified</b> on the 361-task evaluation set, which excludes the
+      eight Google Drive tasks. Baselines are from the OSWorld leaderboard, except OS-Symphony at 100 steps, which is from its paper.
+      Bold: best in each column within a budget. Office: LibreOffice Calc, Impress, Writer; Daily: Chrome, VLC, Thunderbird;
+      Professional: VS Code, GIMP; Workflow: tasks spanning several applications.</p>
+
+    <div class="callouts">
+      <div class="callout rise"><div class="n">+2.48<small>pts</small></div><h4>Same backbone, same harness</h4>
+        <p>The Sonnet&nbsp;4.6 base scaffold (Coder + Grounder) scores 69.19%; the full framework scores 71.67%, with the same grounding,
+          action interface, and budget.</p></div>
+      <div class="callout rise"><div class="n">+1.77<small>pts</small></div><h4>Same grounder as HIPPO</h4>
+        <p>With Seed&nbsp;1.8, VLAA-GUI w/ Opus&nbsp;4.5 already scores 74.89% against HIPPO&rsquo;s 74.49% with MAI-UI. Swapping only
+          our grounder to MAI-UI gives 76.26%.</p></div>
+      <div class="callout rise"><div class="n">91.7<small>%</small></div><h4>OS domain at 100 steps</h4>
+        <p>Both Opus&nbsp;4.6 and Gemini&nbsp;3&nbsp;Flash, against 87.50% for HIPPO. Professional tasks vary most across backbones:
+          57.1% with Sonnet&nbsp;4.6, 83.7% with Opus&nbsp;4.6.</p></div>
+    </div>
+
+    <h3>WindowsAgentArena</h3>
+    <p class="prose">The same framework transfers to Windows. With Gemini&nbsp;3&nbsp;Flash as the Manager, VLAA-GUI reaches 60.4% at 50
+      steps and 61.0% at 100 steps, at least 4.4 points ahead of Agent&nbsp;S3 w/ GPT-5 at either budget and 9.8 points ahead of
+      GTA1-32B w/ o3 at 100 steps.</p>
+    <div class="table-scroll"><table>
+      <thead><tr><th>Method</th><th>Office</th><th>Web</th><th>Sys.</th><th>Code</th><th>Media</th><th>Util.</th><th>Overall</th></tr></thead>
+      <tbody>
+        <tr class="grp"><td colspan="8">Max 50 steps</td></tr>
+        <tr><td>Qwen3-VL-32B</td><td>19.1</td><td>49.7</td><td>54.2</td><td>21.1</td><td>42.2</td><td>25.0</td><td>31.7</td></tr>
+        <tr><td>UI-TARS-2</td><td class="na">&ndash;</td><td class="na">&ndash;</td><td class="na">&ndash;</td><td class="na">&ndash;</td><td class="na">&ndash;</td><td class="na">&ndash;</td><td>50.6</td></tr>
+        <tr><td>Agent S3 w/ GPT-5</td><td class="na">&ndash;</td><td class="na">&ndash;</td><td class="na">&ndash;</td><td class="na">&ndash;</td><td class="na">&ndash;</td><td class="na">&ndash;</td><td>54.1</td></tr>
+        <tr class="ours"><td>VLAA-GUI</td><td>32.6</td><td>73.3</td><td>87.5</td><td>66.7</td><td>52.4</td><td>75.0</td><td class="b">60.4</td></tr>
+        <tr class="abl"><td>&minus; Completeness-Aware Planner</td><td>11.6</td><td>73.3</td><td>70.8</td><td>54.2</td><td>61.9</td><td>83.3</td><td>51.3</td></tr>
+        <tr class="abl"><td>&minus; Loop Breaker</td><td>27.9</td><td>66.7</td><td>83.3</td><td>58.3</td><td>38.1</td><td>75.0</td><td>52.6</td></tr>
+        <tr class="abl"><td>&minus; Search Agent</td><td>18.6</td><td>63.3</td><td>75.0</td><td>66.7</td><td>38.1</td><td>66.7</td><td>49.4</td></tr>
+        <tr class="grp"><td colspan="8">Max 100 steps</td></tr>
+        <tr><td>GTA1-32B w/ o3</td><td class="na">&ndash;</td><td class="na">&ndash;</td><td class="na">&ndash;</td><td class="na">&ndash;</td><td class="na">&ndash;</td><td class="na">&ndash;</td><td>51.2</td></tr>
+        <tr><td>Agent S3 w/ GPT-5</td><td class="na">&ndash;</td><td class="na">&ndash;</td><td class="na">&ndash;</td><td class="na">&ndash;</td><td class="na">&ndash;</td><td class="na">&ndash;</td><td>56.6</td></tr>
+        <tr class="ours"><td>VLAA-GUI</td><td>35.0</td><td>73.3</td><td>87.5</td><td>66.7</td><td>52.4</td><td>83.3</td><td class="b">61.0</td></tr>
+        <tr class="abl"><td>&minus; Completeness-Aware Planner</td><td>13.9</td><td>73.3</td><td>70.8</td><td>54.2</td><td>57.1</td><td>83.3</td><td>51.3</td></tr>
+        <tr class="abl"><td>&minus; Loop Breaker</td><td>30.2</td><td>66.7</td><td>83.3</td><td>58.3</td><td>47.6</td><td>83.3</td><td>55.8</td></tr>
+        <tr class="abl"><td>&minus; Search Agent</td><td>25.0</td><td>63.3</td><td>75.0</td><td>66.7</td><td>47.6</td><td>83.3</td><td>53.9</td></tr>
+      </tbody>
+    </table></div>
+    <p class="table-note"><b>Table 3. Success rates (%) on WindowsAgentArena</b> (154 tasks). VLAA-GUI uses Gemini&nbsp;3&nbsp;Flash as
+      the Manager; rows starting with &minus; remove one component from the full system. Office: LibreOffice Writer and Calc; Web: Edge
+      and Chrome; Sys.: File Explorer and Settings; Code: VS Code; Media: VLC; Util.: Notepad, Clock, Paint, and Calculator.</p>
   </div>
 </section>
 
+<section id="analysis">
+  <div class="wrap">
+    <div class="kicker"><b>05</b> Analysis</div>
+    <h2>What each component contributes, and when</h2>
+    <p class="lead">Every module helps in some configuration, and the size of the gain depends on the backbone and the step budget.
+      The paper reports these as configuration-dependent benefits, not as a claim that every module always helps.</p>
 
-<!-- The Three Components -->
-<section class="section sec-compact">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3 has-text-centered">When to <tt>STOP</tt>, <tt>RECOVER</tt>, and <tt>SEARCH</tt></h2>
-
-        <div class="component-box">
-          <h3 class="title is-4"><tt>STOP</tt> &mdash; Completeness Verifier</h3>
-          <div class="content">
-            <p>A two-level check that prevents the agent from declaring success without evidence.</p>
-            <ul>
-              <li><strong>Completion Gate (prompt-level).</strong> At task start, the Manager rewrites the instruction into <strong>1&ndash;3 UI-observable success criteria</strong>. Every step, it re-evaluates each criterion against the current screenshot. Only when all criteria pass <em>and</em> the UI is stable may the next action be <tt>agent.done()</tt>.</li>
-              <li><strong>Verifier Judge (agent-level).</strong> Whenever the Manager proposes <tt>done()</tt>, an independent verifier model cross-examines the completion claim with conservative decision rules&mdash;any ambiguity, missing file-save confirmation, unverified exact value, or open dialog forces rejection. Rejection reasons are appended to the trajectory so the next step starts with context.</li>
-              <li><strong>Micro-verification rules.</strong> Each action type has an expected visual outcome: clicking a button must reveal a new UI element, toggling must flip a state label, typing must show the text in the field, saving must show a new file or success toast.</li>
-            </ul>
-            <p><em>Impact:</em> reduces false-completion rate by up to <strong>3.9%</strong> on OSWorld and <strong>21.0%</strong> on WAA Office tasks.</p>
-          </div>
-        </div>
-
-        <div class="component-box" style="border-color:#f0a23a;">
-          <h3 class="title is-4"><tt>RECOVER</tt> &mdash; Loop Breaker</h3>
-          <div class="content">
-            <p>Three escalating tiers detect and break repetitive behavior after every action step:</p>
-            <ul>
-              <li><strong>Tier 1 &mdash; Modality Switch.</strong> If the same action on the same target produces no visible change twice, the next action <em>must</em> use a different modality (e.g., keyboard shortcut&nbsp;&rarr; menu click&nbsp;&rarr; command-line).</li>
-              <li><strong>Tier 2 &mdash; Strategy Change.</strong> If the same screen state recurs three times, the agent <em>must</em> switch its overall strategy (e.g., menu navigation&nbsp;&rarr; programmatic file editing via the Coding Agent).</li>
-              <li><strong>Tier 3 &mdash; Reflection-Driven Judge.</strong> An external model judge inspects the recent trajectory and emits <em>KEEP</em> or <em>SWITCH</em>. On <em>SWITCH</em>, a hard directive is injected that blacklists the repeated action on the next step.</li>
-            </ul>
-            <p><em>Impact:</em> nearly halves wasted steps for loop-prone backbones (Gemini 3 Flash: <strong>4.9%&nbsp;&rarr;&nbsp;2.8%</strong>).</p>
-          </div>
-        </div>
-
-        <div class="component-box" style="border-color:#26b67a;">
-          <h3 class="title is-4"><tt>SEARCH</tt> &mdash; Search Agent</h3>
-          <div class="content">
-            <p>
-              GUI agents stall on unfamiliar application workflows. Prior work retrieves tutorials via a visual browser sub-agent, which burns steps and inherits the same grounding failures it is trying to compensate for. VLAA-GUI's Search Agent takes a more direct route: it formulates a targeted <em>&ldquo;How to&rdquo;</em> query and issues it to a search-grounded LLM (Gemini&nbsp;3&nbsp;Pro), which returns a plain-text tutorial. The result is injected into the Manager's context as complementary knowledge.
-            </p>
-            <p>
-              This unifies all information in the text domain, avoiding the overhead of browser interaction entirely. The Search Agent is invoked only when the Manager is uncertain about a GUI workflow <em>and</em> a tutorial is likely to exist.
-            </p>
-          </div>
-        </div>
-
-        <div class="content has-text-justified">
-          <p>
-            Two auxiliary on-demand components complete the system: the <strong>Coding Agent</strong> handles bulk edits (&ge;20 cells/lines), non-trivial computation, and tasks where the GUI route is blocked, running Python/Bash in an independent execution loop. The <strong>Grounding Agent</strong> (Seed&nbsp;1.8 by default) translates natural-language element descriptions into precise screen coordinates.
-          </p>
-        </div>
+    <div class="split">
+      <div>
+        <div class="table-scroll" style="margin-top:0"><table>
+          <thead><tr><th>Method</th><th>50 steps</th><th>100 steps</th></tr></thead>
+          <tbody>
+            <tr class="ours"><td>VLAA-GUI w/ Gemini 3 Flash</td><td>63.14</td><td class="b">68.77</td></tr>
+            <tr class="abl"><td>&minus; CAP</td><td class="b">66.00</td><td>67.34</td></tr>
+            <tr class="abl"><td>&minus; Loop Breaker</td><td>58.90</td><td>66.95</td></tr>
+            <tr class="abl"><td>&minus; Search Agent</td><td>62.54</td><td>65.82</td></tr>
+            <tr class="ours"><td>VLAA-GUI w/ Sonnet 4.6</td><td class="b">71.11</td><td class="b">71.67</td></tr>
+            <tr class="abl"><td>&minus; CAP</td><td>68.53</td><td>68.81</td></tr>
+            <tr class="abl"><td>&minus; Loop Breaker</td><td>69.67</td><td>71.63</td></tr>
+            <tr class="abl"><td>&minus; Search Agent</td><td>68.92</td><td>70.04</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note"><b>Table 2. Component ablation on OSWorld</b>, success rate (%). Bold: best within each backbone and budget.</p>
+      </div>
+      <div>
+        <p>For <strong>Sonnet&nbsp;4.6</strong> at 100 steps, removing CAP costs 2.86 points, removing search 1.63, and removing loop
+          control only 0.04. For <strong>Gemini&nbsp;3&nbsp;Flash</strong>, loop control adds 4.24 points at 50 steps and search 2.95 at
+          100 steps.</p>
+        <p>Verification is not uniformly beneficial: at 50 steps Gemini&nbsp;3&nbsp;Flash scores 66.00% without CAP and 63.14% with it.
+          At 100 steps the sign flips (68.77% with, 67.34% without).</p>
+        <p>On <strong>WindowsAgentArena</strong> the effects are larger. Removing search, CAP, or the Loop Breaker lowers the 50-step
+          score by 11.0, 9.1, and 7.8 points, and the 100-step score by 7.1, 9.7, and 5.2. Without CAP, Office accuracy falls from 32.6%
+          to 11.6% at 50 steps.</p>
       </div>
     </div>
-  </div>
-</section>
 
+    <h3>CAP cuts false completions; the Loop Breaker cuts wasted steps</h3>
+    <figure class="rise">
+      <div class="card"><img src="resources/fig3_component_analysis.webp" width="2200" height="745" loading="lazy"
+        alt="Figure 3. Left: false DONE rates with and without CAP. Sonnet 4.6: FD/Failed 95.5 to 91.9, FD/All 29.1 to 25.2. Gemini 3 Flash: FD/Failed 91.9 to 86.2, FD/All 28.3 to 27.7. Right: loop rates with and without the Loop Breaker. Sonnet 4.6: Loop/Failed 12.1 to 9.1, Loop/All 7.2 to 5.0, wasted steps 3.2 to 2.1. Gemini 3 Flash: Loop/Failed 20.7 to 16.2, Loop/All 12.5 to 10.6, wasted steps 4.9 to 2.8."></div>
+      <figcaption><b>Figure 3. Component analysis on OSWorld at 100 steps.</b> CAP reduces false completions (FD: false DONE); All
+        denotes all 361 tasks. The Loop Breaker reduces loop incidence and the ratio of wasted steps.</figcaption>
+    </figure>
+    <div class="split">
+      <div>
+        <h4>False completions, with CAP</h4>
+        <ul class="metric-list">
+          <li><span>Sonnet 4.6, false <code>done()</code> count</span> <b>105<span class="arrow">&rarr;</span>91</b></li>
+          <li><span>Sonnet 4.6, false DONE among failed tasks</span> <b>95.5%<span class="arrow">&rarr;</span>91.9%</b></li>
+          <li><span>Gemini 3 Flash, false DONE among failed tasks</span> <b>91.9%<span class="arrow">&rarr;</span>86.2%</b></li>
+        </ul>
+        <p>Even with CAP, more than 86% of failed tasks still end with an incorrect completion claim for both backbones. CAP only
+          partially resolves false completion, which remains the dominant failure mode.</p>
+      </div>
+      <div>
+        <h4>Loops, with the Loop Breaker</h4>
+        <ul class="metric-list">
+          <li><span>Gemini 3 Flash, failed tasks involving loops</span> <b>20.7%<span class="arrow">&rarr;</span>16.2%</b></li>
+          <li><span>Gemini 3 Flash, steps wasted in loops</span> <b>4.9%<span class="arrow">&rarr;</span>2.8%</b></li>
+          <li><span>Sonnet 4.6, steps wasted in loops</span> <b>3.2%<span class="arrow">&rarr;</span>2.1%</b></li>
+        </ul>
+        <p>Gemini&nbsp;3&nbsp;Flash loops roughly twice as often as Sonnet&nbsp;4.6 (10.6% vs. 5.0% of all tasks), so the weaker,
+          loop-prone backbone gains more from explicit loop recovery.</p>
+      </div>
+    </div>
 
-<!-- Headline charts -->
-<section class="section sec-compact">
-  <div class="container">
-    <h2 class="title is-3 has-text-centered">&#128202; Headline Results at a Glance</h2>
-    <p class="has-text-centered" style="margin-bottom:1.5rem;">
-      VLAA-GUI is the first framework to surpass human performance on OSWorld, while each mandatory component contributes measurable reductions in failure modes.
-    </p>
-    <div class="chart-grid">
-      <figure class="chart-card">
-        <img src="./resources/results.png" alt="Scaling plot: VLAA-GUI first surpasses human performance (72.4%) on OSWorld-Verified, reaching 77.5% with Opus 4.6 at 100-step budget, across Opus 4.5, Sonnet 4.6, and Gemini 3.1 Pro backbones.">
-        <figcaption>VLAA-GUI is the first system to cross the <strong>human-level (72.4%)</strong> bar on OSWorld-Verified, reaching <strong>77.5%</strong> with Opus 4.6.</figcaption>
+    <h3>Tools cost actions, so tight budgets change the picture</h3>
+    <p class="prose">Every tool call spends an action. Sonnet&nbsp;4.6 is step-efficient enough to absorb that overhead and gains from CAP
+      and search at every budget (CAP: +2.5 points at 15 steps, +2.9 at 100). Gemini&nbsp;3&nbsp;Flash needs more raw actions per task,
+      so at 15 steps the overhead crowds out execution (CAP &minus;11.3, search &minus;9.7), while at 100 steps both help.</p>
+    <div class="split">
+      <figure style="margin-top:0" class="rise">
+        <div class="card"><img src="resources/fig4_step_budget.webp" width="2200" height="845" loading="lazy"
+          alt="Figure 6. Success rate against step budget (15, 50, 100) with and without the Verifier (left) and the Search Agent (right), for Sonnet 4.6 and Gemini 3 Flash. Sonnet 4.6 is higher with each component at every budget; Gemini 3 Flash is lower with them at 15 steps and higher at 100 steps."></div>
+        <figcaption><b>Figure 6 (appendix). CAP and Search Agent across step budgets on OSWorld.</b> Sonnet&nbsp;4.6 benefits at all
+          budgets; Gemini&nbsp;3&nbsp;Flash gains only at relaxed budgets.</figcaption>
       </figure>
-      <figure class="chart-card">
-        <img src="./resources/looping.png" alt="Bar chart: the Completeness Verifier reduces false-completion rate by 3.9 points for Sonnet 4.6 (30.4% → 26.5%) and 0.5 points for Gemini 3 Flash (30.2% → 29.7%).">
-        <figcaption>The <strong>Completeness Verifier</strong> cuts the false-completion rate by up to <strong>3.9%</strong>, turning silent failures into recoverable ones.</figcaption>
+      <div>
+        <div class="table-scroll" style="margin-top:0"><table>
+          <thead><tr><th>Budget</th><th>w/ Loop Breaker</th><th>w/o</th><th>&Delta;</th></tr></thead>
+          <tbody>
+            <tr class="grp"><td colspan="4">Sonnet 4.6</td></tr>
+            <tr><td>100 steps</td><td>71.67</td><td>71.63</td><td>+0.04</td></tr>
+            <tr><td>50 steps</td><td>71.11</td><td>69.67</td><td>+1.44</td></tr>
+            <tr><td>15 steps</td><td>64.13</td><td>62.70</td><td>+1.43</td></tr>
+            <tr class="grp"><td colspan="4">Gemini 3 Flash</td></tr>
+            <tr><td>100 steps</td><td>68.77</td><td>66.95</td><td>+1.82</td></tr>
+            <tr><td>50 steps</td><td>63.14</td><td>58.90</td><td class="b">+4.24</td></tr>
+            <tr><td>15 steps</td><td>43.15</td><td>49.30</td><td>&minus;6.15</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note"><b>Table 11. Loop Breaker across step budgets on OSWorld</b>, success rate (%). The escalation tiers
+          themselves consume actions: recouped when the budget allows recovery, not at 15 steps for Gemini&nbsp;3&nbsp;Flash.</p>
+      </div>
+    </div>
+
+    <h3>The three modules transfer to CoAct-1</h3>
+    <p class="prose">To test portability, the three modules were added to CoAct-1, an existing GUI agent, leaving its other components
+      untouched. Every addition helps, CAP the most, and all three together raise CoAct-1 by 5.21 points.</p>
+    <div class="chart rise">
+      <div class="chart-head">
+        <div><h4>Gain over CoAct-1 (65.13%)</h4><div class="sub">Fixed 60-task OSWorld-Verified subset, Gemini 3 Flash Manager, 100-step budget</div></div>
+      </div>
+      <div class="bars" role="list" aria-label="Gain over the CoAct-1 baseline of 65.13 percent">
+        <span class="hd">Added to CoAct-1</span><span class="hd">Gain (points)</span><span class="hd r">Score</span>
+        <div class="row stop" role="listitem"><span class="lab"><i></i>+ CAP</span><span class="trk"><i class="bar" style="--g: 3.78"></i><span class="gv" style="--g: 3.78">+3.78</span></span><span class="sc">68.91%</span></div>
+        <div class="row recover" role="listitem"><span class="lab"><i></i>+ Loop Breaker</span><span class="trk"><i class="bar" style="--g: 0.93"></i><span class="gv" style="--g: 0.93">+0.93</span></span><span class="sc">66.06%</span></div>
+        <div class="row search" role="listitem"><span class="lab"><i></i>+ Search Agent</span><span class="trk"><i class="bar" style="--g: 0.83"></i><span class="gv" style="--g: 0.83">+0.83</span></span><span class="sc">65.96%</span></div>
+        <div class="row all" role="listitem"><span class="lab"><i></i>+ All three</span><span class="trk"><i class="bar" style="--g: 5.21"></i><span class="gv" style="--g: 5.21">+5.21</span></span><span class="sc">70.34%</span></div>
+        <span></span><div class="axis" aria-hidden="true"><span style="--t: 0">0</span><span style="--t: 1">1</span><span style="--t: 2">2</span><span style="--t: 3">3</span><span style="--t: 4">4</span><span style="--t: 5">5</span><span style="--t: 6">6</span></div><span></span>
+      </div>
+    </div>
+    <p class="table-note"><b>Figure 4 data.</b> The subset is fixed and non-random: 60 of the 361 tasks (16.6%), chosen before the
+      experiments to roughly preserve application coverage. Coder and Searcher use Gemini&nbsp;3.1&nbsp;Pro, Seed&nbsp;1.8 grounds.
+      Scores are point estimates without confidence intervals.</p>
+
+    <details class="more">
+      <summary>Inference cost on the 60-task subset <span>Table 6</span></summary>
+      <div class="inner">
+        <p>Mean usage per task for VLAA-GUI&rsquo;s own scaffold with Gemini&nbsp;3&nbsp;Flash and a 100-step Manager budget. Actions
+          are observed environment actions; &ge; marks a lower bound from incomplete usage accounting.</p>
+        <div class="table-scroll"><table>
+          <thead><tr><th>Configuration</th><th>Score (%)</th><th>Actions</th><th>Model calls</th><th>Tokens</th><th>Cost (USD)</th></tr></thead>
+          <tbody>
+            <tr><td>Base scaffold</td><td>65.05</td><td>16.80</td><td>28.40</td><td>&ge;257,618</td><td>&ge;0.137</td></tr>
+            <tr><td>+ Search Agent</td><td>68.86</td><td>12.70</td><td>&ge;32.55</td><td>&ge;343,640</td><td>&ge;0.227</td></tr>
+            <tr><td>+ Completeness-Aware Planner</td><td>67.19</td><td>27.32</td><td>&ge;89.13</td><td>&ge;901,936</td><td>&ge;0.717</td></tr>
+            <tr><td>+ Loop Breaker</td><td>69.00</td><td>14.28</td><td>&ge;41.52</td><td>&ge;422,074</td><td>&ge;0.323</td></tr>
+            <tr class="ours"><td>Full</td><td class="b">77.15</td><td>19.67</td><td>47.39</td><td>&ge;579,719</td><td>&ge;0.316</td></tr>
+          </tbody>
+        </table></div>
+        <p class="table-note">CAP alone carries the largest overhead and raises mean actions from 16.80 to 27.32. The full system scores
+          higher with fewer tracked calls than CAP alone, because the modules change the trajectory and their overheads do not add up.
+          The cost figures are lower bounds and do not rank total API spend.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section id="case-study">
+  <div class="wrap">
+    <div class="kicker"><b>06</b> Case study</div>
+    <h2>Two rejected <code style="font-size:.85em">done()</code> calls and one search</h2>
+    <p class="lead">An OSWorld task in LibreOffice Impress: change the color of the slide number to red. The Manager fails twice before
+      it finishes, and each failure is caught before it would have been scored.</p>
+    <div class="case">
+      <figure class="rise">
+        <div class="card"><img src="resources/fig5_case_study.webp" width="2000" height="1649" loading="lazy"
+          alt="Figure 5. Phase 1: the agent enters the master slide, changes the font color, and calls done, but the color has not changed in Normal View. Phase 2: the Verifier finds the slide number not red and the file not saved; the Searcher, asked how to change the slide number color in LibreOffice Impress, reveals a second master slide named OBJECT, a template mismatch. Phase 3: the agent enters the second master slide, changes the font color, saves the file, and the Verifier passes."></div>
+        <figcaption><b>Figure 5. Case study on OSWorld.</b> The Manager encounters multiple failures before final completion. CAP
+          rejects two premature <code>done()</code> calls, and the Searcher provides critical knowledge about multi-master-slide
+          editing.</figcaption>
       </figure>
-      <figure class="chart-card">
-        <img src="./resources/false-completions.png" alt="Scatter plot: the Loop Breaker shifts both Sonnet 4.6 (7.2%,3.2% → 5.0%,2.1%) and Gemini 3 Flash (12.5%,4.9% → 10.6%,2.8%) toward lower loop ratios and fewer wasted steps.">
-        <figcaption>The <strong>Loop Breaker</strong> nearly halves wasted steps for loop-prone backbones (Gemini 3 Flash: <strong>4.9%&nbsp;&rarr;&nbsp;2.8%</strong>).</figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
-
-
-<!-- Results table -->
-<section class="section sec-compact">
-  <div class="container">
-    <h2 class="title is-3 has-text-centered">&#127942; OSWorld-Verified Results</h2>
-    <p class="has-text-centered" style="margin-bottom:1rem;">
-      Success rate (%) across five application domains. Human performance on OSWorld is <strong>72.4%</strong>.
-    </p>
-    <div class="table-container">
-      <table class="table is-striped is-hoverable is-fullwidth">
-        <thead>
-          <tr>
-            <th>Method</th>
-            <th>Steps</th>
-            <th>OS</th>
-            <th>Office</th>
-            <th>Daily</th>
-            <th>Prof.</th>
-            <th>Workflow</th>
-            <th>Avg.</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td colspan="8"><em>Prior Work (100 steps)</em></td></tr>
-          <tr><td>OpenCUA-72B</td><td>100</td><td>61.1</td><td>44.7</td><td>50.0</td><td>72.6</td><td>22.2</td><td>44.9</td></tr>
-          <tr><td>Claude-Sonnet-4.5</td><td>100</td><td>70.8</td><td>72.6</td><td>61.4</td><td>63.3</td><td>49.5</td><td>62.8</td></tr>
-          <tr><td>CoAct-1 w/ GPT-5</td><td>100</td><td>75.0</td><td>62.9</td><td>57.9</td><td>71.4</td><td>47.9</td><td>59.9</td></tr>
-          <tr><td>OS-Symphony w/ GPT-5</td><td>100</td><td>79.2</td><td>65.7</td><td>67.8</td><td>69.2</td><td>58.0</td><td>65.8</td></tr>
-          <tr><td>Agent S3 w/ Opus 4.5</td><td>100</td><td>75.0</td><td>76.1</td><td>67.5</td><td>59.2</td><td>59.0</td><td>67.5</td></tr>
-          <tr><td>HIPPO w/ Opus 4.5</td><td>100</td><td>87.5</td><td>74.3</td><td>69.3</td><td><strong>95.9</strong></td><td>64.3</td><td>74.5</td></tr>
-          <tr style="background:#fff9e6;"><td colspan="8"><strong>VLAA-GUI (ours)</strong></td></tr>
-          <tr style="background:#e8f4ff;"><td><strong>VLAA-GUI w/ Opus 4.6</strong></td><td>100</td><td><strong>91.7</strong></td><td>82.9</td><td>75.2</td><td>83.7</td><td>65.6</td><td><strong>77.5</strong></td></tr>
-          <tr><td>VLAA-GUI w/ Opus 4.5 + MAI-UI</td><td>100</td><td>91.7</td><td><strong>84.3</strong></td><td>72.8</td><td>83.7</td><td>61.1</td><td>76.3</td></tr>
-          <tr><td>VLAA-GUI w/ Opus 4.5</td><td>100</td><td>87.5</td><td>79.4</td><td><strong>76.6</strong></td><td>81.6</td><td>61.0</td><td>74.9</td></tr>
-          <tr><td>VLAA-GUI w/ Gemini 3 Flash</td><td>100</td><td>91.7</td><td>64.9</td><td>74.9</td><td>67.3</td><td>63.4</td><td>68.8</td></tr>
-          <tr><td>VLAA-GUI w/ Gemini 3.1 Pro</td><td>100</td><td>83.3</td><td>76.6</td><td>73.8</td><td>73.5</td><td>62.9</td><td>72.5</td></tr>
-          <tr><td>VLAA-GUI w/ Sonnet 4.6</td><td>100</td><td>83.3</td><td>79.2</td><td>69.3</td><td>57.1</td><td><strong>68.8</strong></td><td>71.7</td></tr>
-          <tr><td colspan="8"><em>Tight Budget &mdash; VLAA-GUI at 15 steps already beats best 50-step system</em></td></tr>
-          <tr style="background:#e8f4ff;"><td>VLAA-GUI w/ Sonnet 4.6</td><td><strong>15</strong></td><td>83.3</td><td>69.7</td><td>58.7</td><td>57.1</td><td>60.2</td><td><strong>64.1</strong></td></tr>
-          <tr style="background:#e8f4ff;"><td>VLAA-GUI w/ Opus 4.6</td><td><strong>15</strong></td><td>83.3</td><td>60.7</td><td>66.4</td><td>79.6</td><td>55.9</td><td><strong>64.8</strong></td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="has-text-centered" style="font-size:0.9em;color:#666;">
-      Three backbones (Opus 4.6, Opus 4.5, Gemini 3.1 Pro) surpass human-level performance in a single pass&mdash;a first for GUI agents on OSWorld-Verified.
-    </p>
-  </div>
-</section>
-
-
-<!-- WAA Results -->
-<section class="section sec-compact">
-  <div class="container">
-    <h2 class="title is-3 has-text-centered">&#127775; WindowsAgentArena Results</h2>
-    <p class="has-text-centered" style="margin-bottom:1rem;">
-      Success rate (%) on 154 Windows tasks with VLAA-GUI (Gemini 3 Flash). Each ablation removes one component from the full system.
-    </p>
-    <div class="table-container">
-      <table class="table is-striped is-hoverable is-fullwidth">
-        <thead>
-          <tr>
-            <th>Method</th>
-            <th>Office</th>
-            <th>Web</th>
-            <th>Sys.</th>
-            <th>Code</th>
-            <th>Media</th>
-            <th>Util.</th>
-            <th>Overall</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td colspan="8"><em>Max 50 Steps</em></td></tr>
-          <tr><td>UI-TARS-2</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>50.6</td></tr>
-          <tr><td>Agent S3 w/ GPT-5</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>54.1</td></tr>
-          <tr style="background:#e8f4ff;"><td><strong>VLAA-GUI</strong></td><td>32.6</td><td>73.3</td><td>87.5</td><td>66.7</td><td>52.4</td><td>75.0</td><td><strong>60.4</strong></td></tr>
-          <tr><td>&nbsp;&nbsp;&nbsp;&minus; Completeness Verifier</td><td>11.6</td><td>73.3</td><td>70.8</td><td>54.2</td><td>61.9</td><td>83.3</td><td>51.3</td></tr>
-          <tr><td>&nbsp;&nbsp;&nbsp;&minus; Loop Breaker</td><td>27.9</td><td>66.7</td><td>83.3</td><td>58.3</td><td>38.1</td><td>75.0</td><td>52.6</td></tr>
-          <tr><td>&nbsp;&nbsp;&nbsp;&minus; Search Agent</td><td>18.6</td><td>63.3</td><td>75.0</td><td>66.7</td><td>38.1</td><td>66.7</td><td>49.4</td></tr>
-          <tr><td colspan="8"><em>Max 100 Steps</em></td></tr>
-          <tr><td>GTA1-32B w/ o3</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>51.2</td></tr>
-          <tr><td>Agent S3 w/ GPT-5</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>&ndash;</td><td>56.6</td></tr>
-          <tr style="background:#e8f4ff;"><td><strong>VLAA-GUI</strong></td><td>35.0</td><td>73.3</td><td>87.5</td><td>66.7</td><td>52.4</td><td>83.3</td><td><strong>61.0</strong></td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-
-<!-- Video Demos -->
-<section class="section" id="demos">
-  <div class="container">
-    <h2 class="title is-3 has-text-centered">&#127909; Video Demonstrations</h2>
-    <p class="has-text-centered" style="margin-bottom:1.5rem;">
-      Real trajectories from VLAA-GUI with Claude Opus 4.6 on OSWorld-Verified. Each video shows the agent completing a real task end-to-end on a Ubuntu desktop.
-    </p>
-
-    <div class="tabs is-centered is-boxed">
-      <ul>
-        <li class="is-active" onclick="showDomain(event, 'chrome')"><a><span class="icon is-small"><i class="fab fa-chrome"></i></span><span>Chrome</span></a></li>
-        <li onclick="showDomain(event, 'gimp')"><a><span>GIMP</span></a></li>
-        <li onclick="showDomain(event, 'libreoffice_calc')"><a><span>Calc</span></a></li>
-        <li onclick="showDomain(event, 'libreoffice_impress')"><a><span>Impress</span></a></li>
-        <li onclick="showDomain(event, 'libreoffice_writer')"><a><span>Writer</span></a></li>
-        <li onclick="showDomain(event, 'vs_code')"><a><span>VS Code</span></a></li>
-        <li onclick="showDomain(event, 'thunderbird')"><a><span>Thunderbird</span></a></li>
-        <li onclick="showDomain(event, 'vlc')"><a><span>VLC</span></a></li>
-        <li onclick="showDomain(event, 'os')"><a><span>OS</span></a></li>
-        <li onclick="showDomain(event, 'multi_apps')"><a><span>Multi-App</span></a></li>
-      </ul>
-    </div>
-
-    <div class="demo-grid">
-      <div class="demo-card domain-panel" id="panel-chrome">
-        <video controls muted preload="metadata" poster=""><source src="./videos/chrome.mp4" type="video/mp4"></video>
-        <h4>Chrome &middot; Profile Rename</h4>
-        <p class="instruction">&ldquo;Lately I have changed my English name to Thomas. I want to update my username. Could you help me change the username in Chrome profiles to Thomas?&rdquo;</p>
-      </div>
-      <div class="demo-card domain-panel is-hidden" id="panel-gimp">
-        <video controls muted preload="metadata"><source src="./videos/gimp.mp4" type="video/mp4"></video>
-        <h4>GIMP &middot; Layer Fill</h4>
-        <p class="instruction">&ldquo;Could you fill the background layer with green color, leaving the object layer as is?&rdquo;</p>
-      </div>
-      <div class="demo-card domain-panel is-hidden" id="panel-libreoffice_calc">
-        <video controls muted preload="metadata"><source src="./videos/libreoffice_calc.mp4" type="video/mp4"></video>
-        <h4>LibreOffice Calc &middot; Period Rate + Highlight</h4>
-        <p class="instruction">&ldquo;Please calculate the period rate for my data in a new column with header &lsquo;Period Rate (%)&rsquo;, convert the results as number type, and highlight the highest result with green (#00ff00) font.&rdquo;</p>
-      </div>
-      <div class="demo-card domain-panel is-hidden" id="panel-libreoffice_impress">
-        <video controls muted preload="metadata"><source src="./videos/libreoffice_impress.mp4" type="video/mp4"></video>
-        <h4>LibreOffice Impress &middot; Slide Background</h4>
-        <p class="instruction">&ldquo;Please make the background blue on all my slides. I was stuck by finding the entrance to do that for a while...&rdquo;</p>
-      </div>
-      <div class="demo-card domain-panel is-hidden" id="panel-libreoffice_writer">
-        <video controls muted preload="metadata"><source src="./videos/libreoffice_writer.mp4" type="video/mp4"></video>
-        <h4>LibreOffice Writer &middot; Subscript Formatting</h4>
-        <p class="instruction">&ldquo;Help me change the 2 in &lsquo;H2O&rsquo; to a subscript.&rdquo;</p>
-      </div>
-      <div class="demo-card domain-panel is-hidden" id="panel-vs_code">
-        <video controls muted preload="metadata"><source src="./videos/vs_code.mp4" type="video/mp4"></video>
-        <h4>VS Code &middot; Keyboard Shortcut</h4>
-        <p class="instruction">&ldquo;Please help me create a shortcut &lsquo;ctrl+j&rsquo; to move cursor focus from terminal to editor in VS Code.&rdquo;</p>
-      </div>
-      <div class="demo-card domain-panel is-hidden" id="panel-thunderbird">
-        <video controls muted preload="metadata"><source src="./videos/thunderbird.mp4" type="video/mp4"></video>
-        <h4>Thunderbird &middot; Folder + Filter Rule</h4>
-        <p class="instruction">&ldquo;Create a local folder called &lsquo;Promotions&rsquo; and create a filter to auto-move the inbox emails whose subject contains &lsquo;discount&rsquo; to the new folder.&rdquo;</p>
-      </div>
-      <div class="demo-card domain-panel is-hidden" id="panel-vlc">
-        <video controls muted preload="metadata"><source src="./videos/vlc.mp4" type="video/mp4"></video>
-        <h4>VLC &middot; Global Hotkey Setup</h4>
-        <p class="instruction">&ldquo;Could you help me change the setting to allow pausing the video using a keyboard shortcut without minimizing the PDF reader? I want to focus on the lecture note and not be disturbed by app switching.&rdquo;</p>
-      </div>
-      <div class="demo-card domain-panel is-hidden" id="panel-os">
-        <video controls muted preload="metadata"><source src="./videos/os.mp4" type="video/mp4"></video>
-        <h4>Ubuntu OS &middot; File Recovery</h4>
-        <p class="instruction">&ldquo;I am currently using an Ubuntu system, and I have wrongly deleted a poster of party night. Could you help me recover it from the Trash?&rdquo;</p>
-      </div>
-      <div class="demo-card domain-panel is-hidden" id="panel-multi_apps">
-        <video controls muted preload="metadata"><source src="./videos/multi_apps.mp4" type="video/mp4"></video>
-        <h4>Multi-App &middot; Calc to Chrome Search</h4>
-        <p class="instruction">&ldquo;Could you help me copy the data in Cell B6 in this LibreOffice Calc file and search it in the Chrome browser?&rdquo;</p>
-      </div>
-    </div>
-
-    <script>
-      function showDomain(event, domain) {
-        document.querySelectorAll('.domain-panel').forEach(p => p.classList.add('is-hidden'));
-        document.getElementById('panel-' + domain).classList.remove('is-hidden');
-        document.querySelectorAll('.tabs ul li').forEach(t => t.classList.remove('is-active'));
-        event.currentTarget.classList.add('is-active');
-        document.querySelectorAll('.domain-panel video').forEach(v => v.pause());
-      }
-    </script>
-  </div>
-</section>
-
-
-<!-- Case Study -->
-<section class="section sec-compact">
-  <div class="container">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Case Study: When the Components Work Together</h2>
-        <div class="content has-text-justified">
-          <p>
-            <strong>Task:</strong> <em>&ldquo;I am preparing a PPT in LibreOffice Impress. Help me change the color of the slide number to red.&rdquo;</em>
-          </p>
-        </div>
-        <figure class="image" style="margin:1.5rem 0;">
-          <img src="./resources/case_study.png" alt="Case study: VLAA-GUI recovers from an early done() via the Completeness Verifier and Search Agent on a LibreOffice Impress task." style="max-width:100%;height:auto;">
-        </figure>
-        <div class="content has-text-justified">
-          <ol>
-            <li><strong>Phase 1 &mdash; Premature completion.</strong> The agent enters the Master Slide, changes the font color, and calls <tt>agent.done()</tt>. But in Normal View the slide number color has <em>not</em> changed. <span style="color:#c22;"><strong>FAILED.</strong></span></li>
-            <li><strong>Phase 2 &mdash; Verifier &amp; Search.</strong> The <strong>Completeness Verifier</strong> rejects the <tt>done()</tt>: <em>Slide Number Not Red</em> and <em>File Not Saved</em>. The agent then invokes the <strong>Search Agent</strong> with the query <em>&ldquo;How to change color of slide number in LibreOffice Impress?&rdquo;</em>, which surfaces a hidden GUI structure&mdash;a second master slide named <tt>OBJECT</tt>&mdash;revealing the underlying <strong>template mismatch</strong>.</li>
-            <li><strong>Phase 3 &mdash; Recovery.</strong> Armed with the search insight, the agent enters the 2nd Master Slide, applies the font color change, and saves the file. <span style="color:#26b67a;"><strong>Verifier: PASS.</strong></span></li>
-          </ol>
-          <p>
-            Without the Completeness Verifier, the premature <tt>done()</tt> in Phase 1 would have been recorded as success and scored 0. Without the Search Agent, the agent would never have learned about the second master slide. Together, <tt>STOP</tt>, <tt>RECOVER</tt>, and <tt>SEARCH</tt> turn a silent failure into a verified completion.
-          </p>
-        </div>
+      <div>
+        <ol class="steps">
+          <li><span class="num">1</span><h4>First attempt</h4>
+            <p>The Manager edits one master slide and calls <code>done()</code>.</p>
+            <span class="verdict reject"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l8 8M12 4l-8 8" stroke-linecap="round"/></svg>CAP rejects: slide number still gray, file not saved</span></li>
+          <li><span class="num">2</span><h4>Search</h4>
+            <p>Prompted by the rejection, the Manager calls the Searcher. The tutorial contains the key line:</p>
+            <p class="quote">&ldquo;If your presentation uses different master slides for different sections, repeat for each master slide.&rdquo;</p>
+            <span class="verdict found"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="7" r="4.2"/><path d="M10.2 10.2 13.5 13.5" stroke-linecap="round"/></svg>Finds a second master named <code>OBJECT</code> it had overlooked</span></li>
+          <li><span class="num">3</span><h4>Second attempt</h4>
+            <p>It applies the color change to both masters and calls <code>done()</code> again.</p>
+            <span class="verdict reject"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4l8 8M12 4l-8 8" stroke-linecap="round"/></svg>CAP rejects: color correct, file still unsaved</span></li>
+          <li><span class="num">4</span><h4>Save and finish</h4>
+            <p>After an explicit <code>Ctrl+S</code>, the judge accepts the result.</p>
+            <span class="verdict accept"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3.5 8.5l3 3 6-7" stroke-linecap="round" stroke-linejoin="round"/></svg>CAP accepts</span></li>
+        </ol>
+        <p>CAP prevents early termination while the Searcher supplies task-specific knowledge. Without CAP, the first
+          <code>done()</code> would have ended the run on an unfinished task.</p>
       </div>
     </div>
   </div>
 </section>
 
-
-
-
-<!-- Conclusion and Future Work -->
-<section class="section sec-compact">
-  <div class="container">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Conclusion and Future Work</h2>
-        <div class="content has-text-justified">
-          <p>
-            We introduced <strong>VLAA-GUI</strong>, a modular GUI agent framework organized around three decisions every long-horizon agent must make well: when to <tt>STOP</tt>, when to <tt>RECOVER</tt>, and when to <tt>SEARCH</tt>. A mandatory <strong>Completeness Verifier</strong> closes the false-completion gap that dominates GUI failures, a tiered <strong>Loop Breaker</strong> escalates across modalities and strategies to escape repetitive behavior, and a text-only <strong>Search Agent</strong> supplies external workflow knowledge without paying the cost of browser interaction. Paired with five top-tier backbones, VLAA-GUI reaches <strong>77.5%</strong> on OSWorld-Verified and <strong>61.0%</strong> on WindowsAgentArena, with three backbones surpassing human-level performance in a single pass&mdash;while the 15-step configuration already beats the best published 50-step system.
-          </p>
-          <p>
-            Several directions remain open:
-          </p>
-          <ul>
-            <li><strong>More Advanced Planning Strategies.</strong> The current Manager operates in a flat, iterative planning mode&mdash;one screenshot in, one action out&mdash;with no long-horizon task decomposition or lookahead. Richer planning strategies could help on the tasks where VLAA-GUI still stalls.</li>
-            <li><strong>Comprehensive Memory System.</strong> VLAA-GUI currently carries only the in-trajectory context of a single task&mdash;there is no persistent memory across tasks, across applications, or even across sessions on the same application. A well-structured memory system would let the agent leverage the experience of previous interactions, providing a richer context for decision-making.</li>
-            <li><strong>Visual Grounding with Tools.</strong> The current Grounding Agent consumes the full 1920&times;1080 screenshot and returns coordinates in a single shot&mdash;adequate for large, distinct UI elements but brittle on small icons, dense toolbars, or visually similar controls. A more capable grounder would expose a small <em>visual tool library</em> that it can call iteratively: <em>crop</em> to a predicted region, <em>zoom in</em> to resolve sub-pixel ambiguity, <em>annotate</em> candidate elements with numeric labels for disambiguation, and <em>re-ground</em> on the focused region. Integrating these tools also lets the same crop/zoom stream feed the Completeness Verifier, tightening evidence-based success checks for actions whose outcome is localized.</li>
-          </ul>
-          <p>
-            We hope VLAA-GUI's modular view&mdash;that reliability comes from <em>mandatory, post-action checks</em> rather than better single-shot reasoning&mdash;offers a useful foundation for the next generation of GUI agents.
-          </p>
-        </div>
-      </div>
+<section id="limitations">
+  <div class="wrap">
+    <div class="kicker"><b>07</b> Limitations and outlook</div>
+    <h2>What VLAA-GUI does not solve yet</h2>
+    <div class="limits">
+      <div class="limit rise"><h4>Proprietary models</h4>
+        <p>Every evaluated Manager backbone is proprietary, and the controlled studies also use proprietary Coder and Searcher models,
+          so generality to open models is not established. Model-version changes, API availability, and changing search results limit
+          exact reproducibility.</p></div>
+      <div class="limit rise"><h4>Scope of the controlled studies</h4>
+        <p>The 60-task subset is fixed and non-random, so it gives controlled point estimates rather than population-level or
+          statistically significant claims. The loop thresholds are hand-designed and have not been swept.</p></div>
+      <div class="limit next rise"><h4>Next: memory and context management</h4>
+        <p>The Manager works from the instruction, the trajectory history, and the current observation, and nothing carries over
+          between tasks. More sophisticated memory and context management may further improve performance on long, multi-step tasks.</p></div>
     </div>
   </div>
 </section>
 
-<section class="section sec-compact" id="Acknowledgement">
-  <div class="container">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Acknowledgements</h2>
-        <div class="content has-text-justified">
-          <p>
-            We are grateful to the excellent GUI agent teams who generously shared their code and insights, including <a href="https://arxiv.org/abs/2508.03923" target="_blank" rel="noopener">CoAct</a>, <a href="https://arxiv.org/abs/2601.07779" target="_blank" rel="noopener">OS-Symphony</a>, and <a href="https://github.com/simular-ai/Agent-S" target="_blank" rel="noopener">Agent S3</a>. We sincerely thank the <a href="https://os-world.github.io/" target="_blank" rel="noopener">OSWorld</a> team for their support in verifying our trajectories and providing feedback on our evaluation.
-          </p>
-        </div>
-      </div>
-    </div>
+<section id="bibtex">
+  <div class="wrap" style="max-width: 920px">
+    <div class="kicker"><b>08</b> Citation</div>
+    <h2>BibTeX</h2>
+    <div class="copy-wrap"><pre id="bib">@article{han2026vlaagui,
+  title   = {Knowing When to \texttt{STOP}, \texttt{RECOVER}, and \texttt{SEARCH}: A Modular Framework for GUI Automation},
+  author  = {Qijun Han and Haoqin Tu and Zijun Wang and Haoyue Dai and Yiyang Zhou and Nancy Lau and Alvaro A. Cardenas and Yuhui Xu and Ran Xu and Caiming Xiong and Zeyu Zheng and Huaxiu Yao and Yuyin Zhou and Cihang Xie},
+  journal = {arXiv preprint arXiv:2604.21375},
+  year    = {2026},
+  url     = {https://arxiv.org/abs/2604.21375}
+}</pre><button class="copy" type="button" data-target="bib">copy</button></div>
+
+    <h3 style="margin-top:64px">Acknowledgements</h3>
+    <p>We are grateful to the excellent GUI agent teams who generously shared their code and insights, including
+      <a href="https://arxiv.org/abs/2508.03923">CoAct</a>, <a href="https://arxiv.org/abs/2601.07779">OS-Symphony</a>, and
+      <a href="https://github.com/simular-ai/Agent-S">Agent S3</a>. We sincerely thank the <a href="https://os-world.github.io/">OSWorld</a>
+      team for their support in verifying our trajectories and providing feedback on our evaluation.</p>
   </div>
 </section>
+</main>
 
-
-<section class="section sec-compact" id="BibTeX">
-  <div class="container">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">BibTeX</h2>
-        <div class="content has-text-left">
-          <pre><code>@article{han2026vlaagui,
-  title={Knowing When to \texttt{STOP}, \texttt{RECOVER}, and \texttt{SEARCH}: A Modular Framework for GUI Automation},
-  author={Qijun Han and Haoqin Tu and Zijun Wang and Haoyue Dai and Yiyang Zhou and Nancy Lau and Alvaro A. Cardenas and Yuhui Xu and Ran Xu and Caiming Xiong and Zeyu Zheng and Huaxiu Yao and Yuyin Zhou and Cihang Xie},
-  journal={arXiv preprint arXiv:2604.21375},
-  year={2026},
-  url={https://arxiv.org/abs/2604.21375}
-}</code></pre>
-        </div>
-      </div>
-    </div>
+<footer>
+  <div class="wrap">
+    <span>VLAA-GUI &middot; <a href="../">VLAA Lab</a>, UC Santa Cruz</span>
+    <span><a href="https://arxiv.org/abs/2604.21375">arXiv:2604.21375</a> &middot; <a href="#top">Back to top</a></span>
   </div>
-</section>
+</footer>
 
-
-
-
+<div class="tip" id="tip" role="tooltip" aria-hidden="true"></div>
 
 <script>
-  // Theme toggle handler.
-  (function () {
-    var btn = document.getElementById('themeToggle');
-    if (!btn) return;
-    btn.addEventListener('click', function () {
-      var current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
-      var next = current === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      try { localStorage.setItem('vlaa-theme', next); } catch (e) {}
-      btn.setAttribute('aria-label', next === 'dark' ? 'Switch to light mode' : 'Switch to night mode');
-    });
-    // Follow OS changes only if the user hasn't explicitly chosen.
-    if (window.matchMedia) {
-      var mql = window.matchMedia('(prefers-color-scheme: dark)');
-      var onChange = function (e) {
-        try {
-          if (localStorage.getItem('vlaa-theme')) return;
-        } catch (err) {}
-        document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light');
-      };
-      if (mql.addEventListener) mql.addEventListener('change', onChange);
-      else if (mql.addListener) mql.addListener(onChange);
-    }
-  })();
-</script>
+(function () {
+  var root = document.documentElement;
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-<script>
-  // Scroll-reveal: lightweight, respects reduced-motion.
-  (function () {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var targets = document.querySelectorAll('section.sec-compact, section#demos, .component-box, figure.image, .table-container');
-    targets.forEach(function (el) { el.classList.add('reveal'); });
-    var io = new IntersectionObserver(function (entries) {
+  /* theme toggle */
+  var toggle = document.getElementById("theme-toggle");
+  function labelToggle() {
+    toggle.setAttribute("aria-label", root.getAttribute("data-theme") === "dark" ? "Switch to light mode" : "Switch to dark mode");
+  }
+  labelToggle();
+  toggle.addEventListener("click", function () {
+    var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("vlaa-theme", next); } catch (e) {}
+    labelToggle();
+  });
+  if (window.matchMedia) {
+    var mql = window.matchMedia("(prefers-color-scheme: dark)");
+    var follow = function (e) {
+      try { if (localStorage.getItem("vlaa-theme")) return; } catch (err) {}
+      root.setAttribute("data-theme", e.matches ? "dark" : "light");
+      labelToggle();
+    };
+    if (mql.addEventListener) mql.addEventListener("change", follow); else if (mql.addListener) mql.addListener(follow);
+  }
+
+  /* top bar border once the page scrolls, and the current section in the nav */
+  var bar = document.getElementById("topbar");
+  var onScroll = function () { bar.classList.toggle("scrolled", window.scrollY > 8); };
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+  if ("IntersectionObserver" in window) {
+    var links = {};
+    document.querySelectorAll(".topnav a").forEach(function (a) { links[a.getAttribute("href").slice(1)] = a; });
+    var spy = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
+        var a = links[e.target.id];
+        if (!a) return;
         if (e.isIntersecting) {
-          e.target.classList.add('is-visible');
-          io.unobserve(e.target);
+          Object.keys(links).forEach(function (k) { links[k].removeAttribute("aria-current"); });
+          a.setAttribute("aria-current", "true");
         }
       });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-    targets.forEach(function (el) { io.observe(el); });
-  })();
-</script>
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    Object.keys(links).forEach(function (id) { var el = document.getElementById(id); if (el) spy.observe(el); });
+  }
 
+  /* demo player: one video, the tabs swap its source; clips advance on their own */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll(".demo-tab"));
+  var video = document.getElementById("demo-video");
+  var strip = document.querySelector(".demo-tabs");
+  var nameEl = document.getElementById("demo-name"), metaEl = document.getElementById("demo-meta"), instrEl = document.getElementById("demo-instruction");
+  var current = 0, inView = false, userPaused = false;
+  function show(i, play) {
+    current = (i + tabs.length) % tabs.length;
+    tabs.forEach(function (t, j) {
+      var on = j === current;
+      t.setAttribute("aria-selected", on ? "true" : "false");
+      t.tabIndex = on ? 0 : -1;
+      t.style.setProperty("--p", 0);
+    });
+    var t = tabs[current];
+    video.src = t.dataset.src;
+    nameEl.textContent = t.dataset.title;
+    metaEl.textContent = t.dataset.meta;
+    instrEl.textContent = t.dataset.instruction;
+    var left = t.offsetLeft - strip.offsetLeft, right = left + t.offsetWidth;
+    if (left < strip.scrollLeft) strip.scrollLeft = left - 12;
+    else if (right > strip.scrollLeft + strip.clientWidth) strip.scrollLeft = right - strip.clientWidth + 12;
+    if (play) { var p = video.play(); if (p && p.catch) p.catch(function () {}); }
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener("click", function () { userPaused = false; show(i, true); });
+    t.addEventListener("keydown", function (e) {
+      var d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+      if (!d) return;
+      e.preventDefault();
+      show(current + d, true);
+      tabs[current].focus();
+    });
+  });
+  video.addEventListener("timeupdate", function () {
+    if (video.duration) tabs[current].style.setProperty("--p", (video.currentTime / video.duration).toFixed(3));
+  });
+  video.addEventListener("ended", function () { show(current + 1, inView && !userPaused); });
+  video.addEventListener("pause", function () { if (!video.ended && inView && document.visibilityState === "visible") userPaused = true; });
+  video.addEventListener("play", function () { userPaused = false; });
+  if (!reduce && "IntersectionObserver" in window) {
+    new IntersectionObserver(function (entries) {
+      inView = entries[0].isIntersecting;
+      if (inView && !userPaused) { var p = video.play(); if (p && p.catch) p.catch(function () {}); }
+      else if (!inView && !video.paused) { video.pause(); userPaused = false; }
+    }, { threshold: 0.35 }).observe(video);
+  }
+
+  /* step-budget switch for Table 1 */
+  var segBtns = Array.prototype.slice.call(document.querySelectorAll(".seg button"));
+  var panels = document.querySelectorAll("[data-budget-panel]");
+  function budget(b) {
+    segBtns.forEach(function (x) {
+      var on = x.dataset.budget === b;
+      x.setAttribute("aria-selected", on ? "true" : "false");
+      x.tabIndex = on ? 0 : -1;
+    });
+    panels.forEach(function (p) { p.hidden = p.dataset.budgetPanel !== b; });
+  }
+  segBtns.forEach(function (x, i) {
+    x.addEventListener("click", function () { budget(x.dataset.budget); });
+    x.addEventListener("keydown", function (e) {
+      var d = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+      if (!d) return;
+      e.preventDefault();
+      var n = segBtns[(i + d + segBtns.length) % segBtns.length];
+      budget(n.dataset.budget); n.focus();
+    });
+  });
+  budget("100");
+
+  /* dot-plot tooltip: per-domain breakdown on hover and focus */
+  var tip = document.getElementById("tip");
+  function fillTip(row) {
+    tip.textContent = "";
+    var v = document.createElement("div"); v.className = "tv"; v.textContent = row.querySelector(".val").textContent + "%";
+    var n = document.createElement("div"); n.className = "tn"; n.textContent = row.querySelector(".lab").textContent + " · average";
+    var dl = document.createElement("dl");
+    row.dataset.d.split("|").forEach(function (pair) {
+      var k = pair.slice(0, pair.lastIndexOf(" ")), val = pair.slice(pair.lastIndexOf(" ") + 1);
+      var dt = document.createElement("dt"); dt.textContent = k;
+      var dd = document.createElement("dd"); dd.textContent = val;
+      dl.appendChild(dt); dl.appendChild(dd);
+    });
+    tip.appendChild(v); tip.appendChild(n); tip.appendChild(dl);
+  }
+  function place(x, y) {
+    var w = tip.offsetWidth, h = tip.offsetHeight, pad = 14;
+    var left = Math.min(window.innerWidth - w - 8, x + pad), top = y + pad;
+    if (top + h > window.innerHeight - 8) top = y - h - pad;
+    tip.style.left = Math.max(8, left) + "px"; tip.style.top = Math.max(8, top) + "px";
+  }
+  function hide() { tip.classList.remove("on"); }
+  document.querySelectorAll(".dots .row").forEach(function (row) {
+    row.setAttribute("aria-label", row.querySelector(".lab").textContent + ": " + row.querySelector(".val").textContent + "% average; " + row.dataset.d.split("|").join(", "));
+    row.addEventListener("pointerenter", function (e) { fillTip(row); tip.classList.add("on"); place(e.clientX, e.clientY); });
+    row.addEventListener("pointermove", function (e) { place(e.clientX, e.clientY); });
+    row.addEventListener("pointerleave", hide);
+    row.addEventListener("focus", function () {
+      fillTip(row); tip.classList.add("on");
+      var r = row.querySelector(".pt").getBoundingClientRect(); place(r.right, r.top);
+    });
+    row.addEventListener("blur", hide);
+  });
+  window.addEventListener("scroll", hide, { passive: true });
+
+  /* copy BibTeX */
+  document.querySelectorAll(".copy").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var el = document.getElementById(b.dataset.target);
+      var done = function () { b.textContent = "copied"; setTimeout(function () { b.textContent = "copy"; }, 1400); };
+      var select = function () { var r = document.createRange(); r.selectNodeContents(el); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(el.innerText).then(done, select);
+      else select();
+    });
+  });
+
+  /* gentle entrance for cards and figures */
+  var rise = document.querySelectorAll(".rise");
+  if (reduce || !("IntersectionObserver" in window)) {
+    rise.forEach(function (el) { el.classList.add("in"); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+    }, { rootMargin: "0px 0px -40px 0px", threshold: 0.05 });
+    rise.forEach(function (el) { io.observe(el); });
+  }
+})();
+</script>
 </body>
 </html>
