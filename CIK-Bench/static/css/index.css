@@ -90,16 +90,30 @@ body {
 }
 
 .venue-badge {
-  display: inline-block;
-  background: rgba(231,76,60,0.15);
-  border: 1px solid rgba(231,76,60,0.4);
-  color: var(--danger);
-  padding: 0.3rem 1rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  margin-bottom: 1.2rem;
-  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  background: #fff;
+  border: 1px solid #e2e6ee;
+  color: #1d2d50;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  box-shadow: 0 2px 5px rgba(29,45,80,0.1);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 1.5rem;
+  white-space: nowrap;
+}
+
+.venue-badge-dot {
+  flex: 0 0 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #c6531a;
+  box-shadow: 0 0 0 4px #e7e9ed;
 }
 
 .author-list {
