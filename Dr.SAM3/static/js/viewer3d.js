@@ -1,14 +1,14 @@
-// Side-by-side 3D surfaces (ground truth | Dr. SAM3-D | Dr. SAM3-T) with one shared camera.
+// Side-by-side 3D surfaces (ground truth | SAM3 | Dr. SAM3-D | Dr. SAM3-T) with one shared camera.
 import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
 const CASE_LABELS = {
   CT_AMOS_amos_0214: ["CT", "Abdominal organs (AMOS)"],
-  CT_TotalSeg_muscles_s1258: ["CT", "Muscles (TotalSegmentator)"],
+  CT_TotalSeg_organs_s0794: ["CT", "Chest and abdomen (TotalSegmentator)"],
   MR_AMOSMR_amos_0592: ["MR", "Abdominal organs (AMOS-MR)"],
   "US_Low-limb-Leg35": ["US", "Lower-leg muscles"],
 };
-const SOURCES = ["gt", "d", "t"];
+const SOURCES = ["gt", "s", "d", "t"];
 const ROOT = "static/meshes/";
 
 const stage = document.getElementById("meshStage");
@@ -19,6 +19,7 @@ const legend = document.getElementById("meshLegend");
 const rotateBtn = document.getElementById("meshRotate");
 const resetBtn = document.getElementById("meshReset");
 const sourceSwitch = document.getElementById("meshSource");
+const labels = document.getElementById("meshLabels");
 
 const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
@@ -62,7 +63,7 @@ function resize() {
   if (canvas.width !== Math.round(w * renderer.getPixelRatio()) || canvas.height !== Math.round(h * renderer.getPixelRatio())) {
     renderer.setSize(w, h, false);
   }
-  camera.aspect = narrow() ? w / h : w / 3 / h;
+  camera.aspect = narrow() ? w / h : w / SOURCES.length / h;
   camera.updateProjectionMatrix();
 }
 
@@ -124,6 +125,11 @@ async function loadCase(entry) {
     });
     extent = entry.extent_mm / 2;
     frameCamera();
+    [...labels.children].forEach((span) => {
+      const v = entry.dsc && entry.dsc[span.dataset.source];
+      const score = span.querySelector(".score");
+      if (score) score.textContent = v === undefined ? "" : `DSC ${v.toFixed(1)}`;
+    });
     const classes = new Map();
     SOURCES.forEach((s) => entry.sources[s].forEach((p) => { if (!classes.has(p.id)) classes.set(p.id, p); }));
     legend.innerHTML = "";
@@ -155,10 +161,10 @@ function render() {
     renderer.setScissor(0, 0, w, h);
     renderer.render(scenes[i].scene, camera);
   } else {
-    const third = w / 3;
+    const panel = w / SOURCES.length;
     scenes.forEach(({ scene }, i) => {
-      renderer.setViewport(i * third, 0, third, h);
-      renderer.setScissor(i * third, 0, third, h);
+      renderer.setViewport(i * panel, 0, panel, h);
+      renderer.setScissor(i * panel, 0, panel, h);
       renderer.render(scene, camera);
     });
   }

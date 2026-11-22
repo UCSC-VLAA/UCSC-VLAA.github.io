@@ -85,25 +85,25 @@
 <section class="section" id="viewer3d">
   <div class="container">
     <h2 class="section-title reveal">Explore in 3D</h2>
-    <p class="lead reveal">Surfaces of the ground truth and of both Dr.&nbsp;SAM3 modes for the same MedSegFM validation volume, sharing one camera. Drag to rotate, scroll to zoom, click a class to hide it.</p>
+    <p class="lead reveal">Surfaces of the ground truth, the original SAM3 and both Dr.&nbsp;SAM3 modes for the same MedSegFM validation volume, sharing one camera. Drag to rotate, scroll to zoom, click a class to hide it.</p>
     <div class="viewer3d card reveal">
       <div class="mesh-controls">
         <div class="case-chips" id="meshChips"></div>
         <span class="spacer"></span>
         <div class="seg small mesh-source" id="meshSource">
-          <button data-source="gt">GT</button><button data-source="d">D</button><button class="active" data-source="t">T</button>
+          <button data-source="gt">GT</button><button data-source="s">SAM3</button><button data-source="d">D</button><button class="active" data-source="t">T</button>
         </div>
         <button class="toggle on" id="meshRotate">Auto-rotate</button>
         <button class="toggle" id="meshReset">Reset view</button>
       </div>
       <div class="mesh-stage" id="meshStage">
         <canvas id="meshCanvas"></canvas>
-        <div class="mesh-dividers"><i></i><i></i><i></i></div>
-        <div class="mesh-labels"><span>Ground truth</span><span>Dr.&nbsp;SAM3-D</span><span>Dr.&nbsp;SAM3-T</span></div>
+        <div class="mesh-dividers"><i></i><i></i><i></i><i></i></div>
+        <div class="mesh-labels" id="meshLabels"><span data-source="gt">Ground truth</span><span data-source="s">SAM3 <span class="score base"></span></span><span data-source="d">Dr.&nbsp;SAM3-D <span class="score"></span></span><span data-source="t">Dr.&nbsp;SAM3-T <span class="score"></span></span></div>
         <div class="mesh-loading" id="meshLoading">Loading 3D surfaces…</div>
       </div>
       <div class="legend" id="meshLegend"></div>
-      <p class="viewer-note">Surfaces extracted with marching cubes from the label maps at about 2.5&nbsp;mm resolution (1.3&nbsp;mm for ultrasound) and lightly smoothed.</p>
+      <p class="viewer-note">Surfaces extracted with marching cubes from the label maps at about 2.5&nbsp;mm resolution (1.3&nbsp;mm for ultrasound) and lightly smoothed. SAM3 is prompted and scored as in the slice viewer below; DSC is averaged over the ground-truth classes of the volume.</p>
     </div>
   </div>
 </section>
