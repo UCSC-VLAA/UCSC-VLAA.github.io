@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dr. SAM3</title>
+  <meta name="description" content="Dr. SAM3 adapts SAM3 to text-prompted 3D medical segmentation by changing only its training and inference, and transfers to external CT, MR and PET data without fine-tuning.">
+  <meta property="og:title" content="Dr. SAM3: Towards Generalizable Text-Prompted 3D Medical Segmentation">
+  <meta property="og:description" content="A medical adaptation of SAM3 that changes only its training and inference, and stays accurate on external datasets and under different CT preprocessing.">
+  <meta property="og:image" content="https://ucsc-vlaa.github.io/Dr.SAM3/static/images/teaser.jpg">
+  <meta property="og:url" content="https://ucsc-vlaa.github.io/Dr.SAM3/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="static/images/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="static/images/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="static/images/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+
+<nav class="topnav" id="topnav">
+  <div class="navlinks">
+    <a href="#viewer3d">3D</a>
+    <a href="#viewer">Slices</a>
+    <a href="#overview">Abstract</a>
+    <a href="#method">Method</a>
+    <a href="#results">Results</a>
+    <a href="#qualitative">Qualitative</a>
+    <a href="#bibtex">BibTeX</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="container hero-inner">
+    <h1 class="title"><span class="grad">Dr.&nbsp;SAM3</span>: Towards Generalizable Text&#8209;Prompted 3D Medical Segmentation</h1>
+    <div class="authors">
+      <span>Sangwoo Youn<sup>1,2</sup></span>
+      <span>Xiaoke Huang<sup>1</sup></span>
+      <span>Joonhyuk Seo<sup>3</sup></span>
+      <span>Fei Xia<sup>3</sup></span>
+      <span>Alvaro A. Cardenas<sup>1</sup></span>
+      <span>Yuyin Zhou<sup>1</sup></span>
+    </div>
+    <div class="affils">
+      <span><sup>1</sup>University of California, Santa Cruz</span>
+      <span><sup>2</sup>KAIST</span>
+      <span><sup>3</sup>University of California, Irvine</span>
+    </div>
+    <div class="buttons">
+      <span class="btn disabled" title="Coming soon">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h9l5 5v15a0 0 0 0 1 0 0H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2zm8 1.5V8h4.5"/><path d="M8 13h8M8 17h6" /></svg>
+        Paper <em>soon</em>
+      </span>
+      <span class="btn disabled" title="Coming soon">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4l16 16M20 4L4 20"/></svg>
+        arXiv <em>soon</em>
+      </span>
+      <a class="btn" href="https://github.com/UCSC-VLAA/Dr.SAM3">
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="fill"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.78 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.8 1.19 1.83 1.19 3.09 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg>
+        Code
+      </a>
+      <a class="btn" href="https://huggingface.co/UCSC-VLAA/Dr.SAM3">
+        <span class="hf">🤗</span>
+        Models
+      </a>
+      <a class="btn ghost" href="#bibtex">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10M7 12h10M7 17h6"/><rect x="3" y="3" width="18" height="18" rx="3"/></svg>
+        BibTeX
+      </a>
+    </div>
+  </div>
+  <div class="container">
+    <figure class="teaser card">
+      <img src="static/images/teaser.jpg" alt="(a) External CT and PET scans: ground truth, BiomedParse-V and Dr. SAM3-T as 3D renderings. (b) Dr. SAM3-T on MedSegFM validation volumes of CT, MR and ultrasound." width="2407" height="989">
+      <figcaption><b>Dr.&nbsp;SAM3 stays accurate under distribution shift.</b> (a) Transfer to external data without fine-tuning. Top: an abdominal CT scan whose intensity conversion differs from the soft-tissue window (W400/L40) used in training. Bottom: a PET scan prompted with organ names, whereas the training data label only lesions in PET. BiomedParse-V, adapted on the same data, misses or fragments most organs, whereas Dr.&nbsp;SAM3-T stays close to the ground truth. (b) Dr.&nbsp;SAM3-T on MedSegFM validation volumes of three trained modalities (insets: an input slice). Masks are shown as 3D renderings; colors denote structures.</figcaption>
+    </figure>
+  </div>
+</header>
+
+<main>
+
+<section class="section" id="viewer3d">
+  <div class="container">
+    <h2 class="section-title reveal">Explore in 3D</h2>
+    <p class="lead reveal">Surfaces of the ground truth and of both Dr.&nbsp;SAM3 modes for the same MedSegFM validation volume, sharing one camera. Drag to rotate, scroll to zoom, click a class to hide it.</p>
+    <div class="viewer3d card reveal">
+      <div class="mesh-controls">
+        <div class="case-chips" id="meshChips"></div>
+        <span class="spacer"></span>
+        <div class="seg small mesh-source" id="meshSource">
+          <button data-source="gt">GT</button><button data-source="d">D</button><button class="active" data-source="t">T</button>
+        </div>
+        <button class="toggle on" id="meshRotate">Auto-rotate</button>
+        <button class="toggle" id="meshReset">Reset view</button>
+      </div>
+      <div class="mesh-stage" id="meshStage">
+        <canvas id="meshCanvas"></canvas>
+        <div class="mesh-dividers"><i></i><i></i><i></i></div>
+        <div class="mesh-labels"><span>Ground truth</span><span>Dr.&nbsp;SAM3-D</span><span>Dr.&nbsp;SAM3-T</span></div>
+        <div class="mesh-loading" id="meshLoading">Loading 3D surfaces…</div>
+      </div>
+      <div class="legend" id="meshLegend"></div>
+      <p class="viewer-note">Surfaces extracted with marching cubes from the label maps at about 2.5&nbsp;mm resolution (1.3&nbsp;mm for ultrasound) and lightly smoothed.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="viewer">
+  <div class="container">
+    <h2 class="section-title reveal">Explore volumes slice by slice</h2>
+    <p class="lead reveal">Validation volumes from MedSegFM, segmented from class-name prompts by the original SAM3 and by Dr.&nbsp;SAM3. Drag the slider, use <kbd>&larr;</kbd>&nbsp;<kbd>&rarr;</kbd>, or press play.</p>
+    <div class="viewer card reveal">
+      <div class="case-chips" id="caseChips" role="tablist"></div>
+      <div class="viewer-panels" id="viewerPanels">
+        <figure class="wide"><div class="frame" data-key="image"></div><figcaption>Image</figcaption></figure>
+        <figure class="wide"><div class="frame" data-key="gt"></div><figcaption>Ground truth</figcaption></figure>
+        <figure><div class="frame" data-key="s"></div><figcaption>SAM3 <span class="score base" id="scoreS"></span></figcaption></figure>
+        <figure><div class="frame" data-key="d"></div><figcaption>Dr.&nbsp;SAM3-D <span class="score" id="scoreD"></span></figcaption></figure>
+        <figure><div class="frame" data-key="t"></div><figcaption>Dr.&nbsp;SAM3-T <span class="score" id="scoreT"></span></figcaption></figure>
+      </div>
+      <div class="viewer-controls">
+        <button class="play" id="playBtn" aria-label="Play">
+          <svg viewBox="0 0 24 24" class="icon-play"><path d="M8 5v14l11-7z"/></svg>
+          <svg viewBox="0 0 24 24" class="icon-pause"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>
+        </button>
+        <input type="range" id="sliceSlider" min="0" max="0" value="0" aria-label="Slice">
+        <span class="slice-label" id="sliceLabel">1 / 1</span>
+      </div>
+      <div class="legend" id="legend"></div>
+      <p class="viewer-note" id="viewerNote"></p>
+      <p class="viewer-note">SAM3 is the released checkpoint without medical training, prompted only for the classes present in each volume; Dr.&nbsp;SAM3 is prompted for every class of the dataset. On CT and MR, Dr.&nbsp;SAM3-T includes cross-view label voting.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="overview">
+  <div class="container">
+    <div class="two-col reveal">
+      <div>
+        <h2 class="section-title">Abstract</h2>
+        <p class="abstract">Text-prompted medical segmentation offers a simple interface: name a target and obtain its mask. However, even strong benchmark accuracy does not guarantee transfer: existing models, including medical adaptations of SAM3, degrade on external datasets or when computed tomography (CT) scans are preprocessed differently. We introduce <b>Dr.&nbsp;SAM3</b>, which adapts SAM3 to medical volumes by changing only its training and inference, not its architecture: training is rebalanced toward under-represented modalities and rare targets, and the model segments each slice independently or adds mask propagation between slices. On MedSegFM, the public five-modality benchmark used for training, the slice-wise model leads the evaluated models using public medical training data, with 77.8 mean semantic Dice and 40.5 mean instance F1. Without further fine-tuning, it attains the highest Dice among all evaluated text-prompted models on external CT and magnetic resonance datasets, and it segments organs in positron emission tomography, where training provides labels only for lesions, far more accurately than every baseline. Its accuracy changes by only 2.1 Dice points across three CT intensity conversions, whereas baselines adapted on the same data lose up to 37.0.</p>
+      </div>
+      <aside class="keypoints">
+        <h3>At a glance</h3>
+        <ul>
+          <li><span class="dot teal"></span><div><b>No architecture change.</b> SAM3's detector and tracker, adapted by changing only training and inference, on public medical data.</div></li>
+          <li><span class="dot violet"></span><div><b>Two inference modes.</b> Slice-wise detection (D), or detection with mask propagation and cross-view label voting (T).</div></li>
+          <li><span class="dot amber"></span><div><b>Transfers to external data.</b> Highest Dice among the evaluated text-prompted models on RAOS-Real CT (78.9) and LiQA MR (93.1); about 45 Dice on PET organs, where every baseline stays below 10.</div></li>
+          <li><span class="dot rose"></span><div><b>Robust to CT preprocessing.</b> Changes by 2.1 Dice across three CT intensity conversions; baselines adapted on the same data lose up to 37.0.</div></li>
+          <li><span class="dot sky"></span><div><b>Efficient.</b> 160 GPU-hours of fine-tuning, 32 and 60 times fewer than Medal-S and BiomedParse-V.</div></li>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="method">
+  <div class="container">
+    <h2 class="section-title reveal">Method</h2>
+    <p class="lead full reveal">Dr.&nbsp;SAM3 keeps SAM3's architecture, starts from its pretrained weights, and changes only how the model is trained and run. Phase&nbsp;1 fine-tunes the detector, image encoder and text encoder on medical slices; Phase&nbsp;2 freezes these pathways and fine-tunes the tracker's propagation modules on clips from volumes. Each class name is a separate prompt.</p>
+
+    <div class="method-row reveal">
+      <figure class="card"><img src="static/images/method_pipeline.jpg" alt="Pipeline: the text prompt and slice t go through the text and image encoders; the detector's masks for slice t are combined with masks the tracker propagates from slice t-1; flames mark the fine-tuned modules." width="1917" height="849" loading="lazy"></figure>
+      <div class="method-text">
+        <h3><span class="mcard-head teal">a</span> Pipeline and detector adaptation</h3>
+        <p><b>Dr.&nbsp;SAM3-D</b> applies the Phase&nbsp;1 detector to each axial slice. <b>Dr.&nbsp;SAM3-T</b> runs SAM3's video inference from the center slice toward both ends, combining the detector's masks on each slice with masks that the tracker propagates from the previous slice. Flames mark the modules fine-tuned from SAM3. Phase&nbsp;1 changes how slices are sampled and prompted:</p>
+        <ul>
+          <li><b>Modality-balanced volume caps</b> equalize the slices sampled per modality, cutting CT's share from 81.7% to about 30%.</li>
+          <li><b>Density-triggered patch split</b> runs the detector on quadrants when a slice holds more instances than its 200 queries (microscopy vessels).</li>
+          <li><b>Modality-prefixed prompts</b> such as <code>CT Liver</code> and <code>MR Liver</code> separate the look of an organ in each modality.</li>
+          <li><b>Volume-level repeat factor sampling</b> draws more slices from the source volumes that contain rare classes.</li>
+          <li><b>Ratio-triggered negative-slice cap</b> limits target-free slices to 20% of a modality (only PET triggers it).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="method-row reveal">
+      <figure class="card"><img src="static/images/method_tracker.jpg" alt="Tracker adaptation: clips of adjacent slices t-3 to t+3 with stride 1, propagated from the center slice toward both ends." width="1922" height="920" loading="lazy"></figure>
+      <div class="method-text">
+        <h3><span class="mcard-head violet">b</span> Tracker adaptation</h3>
+        <p>Neighboring slices show the same anatomy, so Phase&nbsp;2 trains the tracker on clips built for volumes:</p>
+        <ul>
+          <li><b>Adjacent-slice sequencing:</b> eight consecutive axial slices with stride one, instead of SAM3's random temporal strides, so small tumors and lesions are not skipped.</li>
+          <li><b>Center-to-periphery sequencing:</b> each volume is split at its center slice and both halves run outward, as at inference.</li>
+          <li><b>Masked short-clip padding:</b> short clips are kept by repeating the last valid slice and masking the padded entries out of the losses and memory updates.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="method-row reveal">
+      <figure class="card"><img src="static/images/method_voting.jpg" alt="Cross-view label voting: where the axial pass assigns a voxel to two prompts (intestine and left kidney), coronal and sagittal passes each vote, and the 3D result keeps the left kidney." width="1913" height="695" loading="lazy"></figure>
+      <div class="method-text">
+        <h3><span class="mcard-head amber">c</span> Cross-view label voting</h3>
+        <p>Dr.&nbsp;SAM3-T propagates one mask per prompt, so different prompts can claim the same voxels. Only at those voxels, a coronal and a sagittal pass of the same axially trained model each cast one vote, and ties follow the axial confidence. The rule uses no ground truth and no tuned threshold and is applied to CT, MR and PET volumes. It raises the Dice of Dr.&nbsp;SAM3-T on MedSegFM CT from 63.9 to 70.0 and on RAOS-Real from 74.4 to 77.0.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="results">
+  <div class="container">
+    <h2 class="section-title reveal">Results</h2>
+
+    <h3 class="subhead reveal">Transfer to external datasets</h3>
+    <p class="lead reveal">Checkpoints and prompts fixed, no target-dataset fine-tuning: RAOS-Real (12 abdominal organs in 93 CT cases, all WORD-derived scans excluded, W400/L40 conversion), LiQA (liver in 30 MR volumes) and QUADRA-HC (four organs in 96 PET scans, whose organs MedSegFM never labels in PET). Class-average DSC and NSD (2&nbsp;mm). QUADRA-HC reference masks are derived automatically from the paired CT, so the PET results are exploratory.</p>
+    <div class="card chart-card reveal">
+      <div class="chips" id="extTabs"></div>
+      <div class="metric-switch seg small" id="extMetric">
+        <button class="active" data-metric="dsc">DSC</button>
+        <button data-metric="nsd">NSD</button>
+      </div>
+      <div class="bars" id="extBars"></div>
+      <p class="viewer-note">Hatched: BiomedParse-V, which adds pretraining on non-public medical data.</p>
+    </div>
+
+    <h3 class="subhead reveal">Robustness to CT intensity conversion</h3>
+    <p class="lead reveal">The same 93 RAOS-Real cases under three conversions of the raw Hounsfield units to 8-bit input: the W400/L40 window used in training, the clipping range of the RAOS authors' nnU-Net, and a per-volume 0.5&ndash;99.5 percentile stretch. &Delta; is the gap between the highest and lowest DSC.</p>
+    <div class="card table-card reveal">
+      <div class="table-scroll">
+        <table class="results">
+          <thead>
+            <tr><th rowspan="2" class="left">Model</th><th colspan="2" class="keep-case">W400/L40</th><th colspan="2" class="keep-case">nnU-Net</th><th colspan="2" class="keep-case">Percentile</th><th rowspan="2" class="mean keep-case">&Delta; DSC &darr;</th></tr>
+            <tr><th>DSC</th><th>NSD</th><th>DSC</th><th>NSD</th><th>DSC</th><th>NSD</th></tr>
+          </thead>
+          <tbody id="convTable"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <figure class="card reveal wide-figure">
+      <img src="static/images/qual_external.jpg" alt="3D renderings of the predicted masks on the three external datasets for SAM3, Medical SAM3-3D, Text3DSAM, Medal-S, BiomedParse-V, Dr. SAM3-D and Dr. SAM3-T." width="2329" height="1668" loading="lazy">
+      <figcaption>Rows 1&ndash;3: the same RAOS-Real CT scan under the W400/L40 window, the nnU-Net clipping window and the percentile conversion. Row 4: LiQA MR (liver). Row 5: QUADRA-HC PET (liver, kidneys, bladder). Panels are 3D views of the predicted masks seen from the front, with the body outline for context.</figcaption>
+    </figure>
+
+    <h3 class="subhead reveal">Organ features across modalities</h3>
+    <div class="two-col feature-col reveal">
+      <div>
+        <p class="lead">Why does the transfer to PET occur? In the image features of Dr.&nbsp;SAM3-D, PET organs lie near the same organs in CT and MR. Features are averaged within each organ's ground-truth mask, before text conditioning. For 94.6% of the 260 QUADRA-HC PET organ instances, the nearest MedSegFM CT or MR instance is the same organ, versus 78.8% for SAM3 (chance: 23.1%); with external RAOS-Real CT as the reference, 86.5% versus 48.5%.</p>
+        <p class="lead">SAM3 already groups organs to some extent, but it splits organs such as the liver and spleen into distant clusters and segments almost no PET organs (0.4 Dice).</p>
+      </div>
+      <figure class="card"><img src="static/images/tsne.jpg" alt="t-SNE of organ features for SAM3 and Dr. SAM3-D, colored by modality and by organ." width="1264" height="1374" loading="lazy">
+        <figcaption>t-SNE of image-encoder organ features from MedSegFM validation CT and MR and QUADRA-HC PET; one joint embedding per model (rows), colored by modality (a) and by organ (b).</figcaption>
+      </figure>
+    </div>
+
+    <h3 class="subhead reveal">In-distribution: MedSegFM validation set</h3>
+    <p class="lead reveal">1,457 semantic and 686 instance volumes, every official per-case prompt, official evaluator. Semantic classes: DSC; instance classes: F1. Mean averages the modalities. Teal marks the best value among models using public medical data; the gray row is the closed-data baseline. &dagger;&nbsp;Upstream medical training.</p>
+    <div class="card table-card reveal">
+      <div class="table-scroll">
+        <table class="results">
+          <thead>
+            <tr><th rowspan="2" class="left">Model</th><th rowspan="2" class="left">Training data</th><th colspan="4">Semantic DSC</th><th colspan="5">Instance F1</th></tr>
+            <tr><th>CT</th><th>MR</th><th>US</th><th class="mean">Mean</th><th>CT</th><th>MR</th><th>PET</th><th>Micro</th><th class="mean">Mean</th></tr>
+          </thead>
+          <tbody id="mainTable"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="two-col even reveal">
+      <div>
+        <h3 class="subhead">CT and MR tumors and lesions</h3>
+        <p class="lead">Class-average instance F1 over all 11 tumor and lesion classes. Mask propagation suits these small targets.</p>
+        <div class="card chart-card"><div class="bars compact" id="tumorBars"></div></div>
+      </div>
+      <div>
+        <h3 class="subhead">Adaptation and inference cost</h3>
+        <p class="lead">Fine-tuning GPU-hours on MedSegFM (excluding upstream pretraining) and median seconds per semantic volume on one A100. Log scale.</p>
+        <div class="card chart-card">
+          <div class="card-sub">Fine-tuning GPU-hours</div>
+          <div class="bars compact" id="costBars"></div>
+          <div class="card-sub" style="margin-top:16px">Seconds per volume</div>
+          <div class="bars compact" id="speedBars"></div>
+        </div>
+      </div>
+    </div>
+    <div class="callout reveal">
+      <h3>Which mode to use</h3>
+      <p>Dr.&nbsp;SAM3-T has the highest CT and MR instance F1 and is the better choice for CT and MR tumors and lesions. Dr.&nbsp;SAM3-D is stronger on PET and microscopy instances and on semantic classes, and it is the faster of the two.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section alt" id="qualitative">
+  <div class="container">
+    <h2 class="section-title reveal">Qualitative comparisons on MedSegFM</h2>
+    <p class="lead reveal">One slice per example, cropped around the target. Each row is a class-name prompt on a MedSegFM validation volume.</p>
+    <div class="toolbar reveal">
+      <div class="seg" id="setSwitch">
+        <button class="active" data-set="med">vs. SAM3-based models</button>
+        <button data-set="vox">vs. VoxTell &amp; Text3DSAM</button>
+      </div>
+      <div class="chips" id="modFilter">
+        <button class="active" data-mod="all">All</button>
+        <button data-mod="CT">CT</button>
+        <button data-mod="MR">MR</button>
+        <button data-mod="Ultrasound">Ultrasound</button>
+        <button data-mod="PET">PET</button>
+        <button data-mod="Microscopy">Microscopy</button>
+      </div>
+    </div>
+    <div class="qual card reveal">
+      <div class="qual-grid" id="qualGrid"></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="bibtex">
+  <div class="container narrow">
+    <h2 class="section-title reveal">BibTeX</h2>
+    <div class="bibtex card reveal">
+      <button class="copy" id="copyBib" aria-label="Copy BibTeX">Copy</button>
+<pre id="bibText">@article{youn2026drsam3,
+  title   = {Dr. SAM3: Towards Generalizable Text-Prompted 3D Medical Segmentation},
+  author  = {Youn, Sangwoo and Huang, Xiaoke and Seo, Joonhyuk and Xia, Fei and Cardenas, Alvaro A. and Zhou, Yuyin},
+  journal = {arXiv preprint},
+  year    = {2026}
+}</pre>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p>Dr.&nbsp;SAM3 builds on <a href="https://github.com/facebookresearch/sam3">SAM3</a>. Training and in-distribution evaluation use the data of the <a href="https://huggingface.co/datasets/junma/CVPR-BiomedSegFM">CVPR 2025 BiomedSegFM challenge</a>. Research use only; not for clinical decisions.</p>
+  </div>
+</footer>
+
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+               "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/" } }
+</script>
+<script src="static/js/main.js"></script>
+<script type="module" src="static/js/viewer3d.js"></script>
+</body>
+</html>
