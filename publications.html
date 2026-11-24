@@ -486,16 +486,6 @@ function copy(dest, source) {
         )
 
 
-        add_paper("Knowledge Graph Augmented Large Language Models for Disease Prediction",
-          "Ruiyu Wang, Tuan Vinh, Ran Xu, Yuyin Zhou, Jiaying Lu, Francisco Pasquel, Mohammed K Ali, Carl Yang",
-          null,
-          "https://arxiv.org/abs/2512.01210",
-          "@article{wang2025knowledge,<br>&nbsp;&nbsp;&nbsp;title   = {Knowledge Graph Augmented Large Language Models for Disease Prediction},<br>&nbsp;&nbsp;&nbsp;author  = {Ruiyu Wang, Tuan Vinh, Ran Xu, Yuyin Zhou, Jiaying Lu, Francisco Pasquel, Mohammed K Ali, Carl Yang},<br>&nbsp;&nbsp;&nbsp;journal = {arXiv preprint arXiv:2512.01210},<br>&nbsp;&nbsp;&nbsp;year    = {2025},<br>}",
-          "Electronic health records (EHRs) enable strong clinical prediction, but explanations are often coarse and hard to use for patient-level decisions. We propose a knowledge graph (KG)-guided chain-of-thought (CoT) framework for visit-level disease prediction on MIMIC-III. We map ICD-9 codes to PrimeKG, mine disease-relevant nodes and paths, and use these paths to scaffold temporally consistent CoT rationales, retaining only samples whose conclusions match observed outcomes. We fine-tune lightweight instruction-tuned LLMs (LLaMA-3.1-Instruct-8B and Gemma-7B) on two small cohorts (400 and 1,000 index visits) across ten PrimeKG-mapped diseases. Our models outperform strong classical baselines, reaching AUROC 0.66-0.70 and macro-AUPR 0.40-0.47. Without additional training, the models transfer zero-shot to the CRADLE cohort, improving accuracy from 0.40-0.51 to 0.72-0.77. In a blinded clinician study, KG-guided CoT rationales are consistently preferred for clarity, relevance, and correctness. Code is available at: https://github.com/JonathanWry/KG-guided-LLM-pipeline",
-          "https://arxiv.org/abs/2512.01210",
-          "https://github.com/JonathanWry/KG-guided-LLM-pipeline"
-        )
-
         add_paper("SpatialThinker: Reinforcing Scene Graph-Grounded Spatial Reasoning via Dense Rewards",
           "Hunar Batra, Haoqin Tu, Hardy Chen, Yuanze Lin, Cihang Xie, Ronald Clark",
           null,
@@ -1481,6 +1471,16 @@ function copy(dest, source) {
             "Large Multimodal Models (LMMs) are increasingly capable of answering medical questions that require joint reasoning over images and text, yet training general medical VQA systems is impeded by the lack of large, openly usable, high-quality corpora. We present MedVLSynther, a rubric-guided generator-verifier framework that synthesizes high-quality multiple-choice VQA items directly from open biomedical literature by conditioning on figures, captions, and in-text references. The generator produces self-contained stems and parallel, mutually exclusive options under a machine-checkable JSON schema; a multi-stage verifier enforces essential gates (self-containment, single correct answer, clinical validity, image-text consistency), awards fine-grained positive points, and penalizes common failure modes before acceptance. Applying this pipeline to PubMed Central yields MedSynVQA: 13,087 audited questions over 14,803 images spanning 13 imaging modalities and 28 anatomical regions. Training open-weight LMMs with reinforcement learning using verifiable rewards improves accuracy across six medical VQA benchmarks, achieving averages of 55.85 (3B) and 58.15 (7B), with up to 77.57 on VQA-RAD and 67.76 on PathVQA, outperforming strong medical LMMs. A Ablations verify that both generation and verification are necessary and that more verified data consistently helps, and a targeted contamination analysis detects no leakage from evaluation suites. By operating entirely on open literature and open-weight models, MedVLSynther offers an auditable, reproducible, and privacy-preserving path to scalable medical VQA training data.",
             "https://arxiv.org/abs/2510.25867",
             "https://github.com/UCSC-VLAA/MedVLSynther"
+        )
+
+        add_paper("Knowledge Graph Augmented Large Language Models for Disease Prediction",
+          "Ruiyu Wang, Tuan Vinh, Ran Xu, Yuyin Zhou, Jiaying Lu, Francisco Pasquel, Mohammed K Ali, Carl Yang",
+          "AMIA Informatics Summit, 2026",
+          "https://pmc.ncbi.nlm.nih.gov/articles/PMC13274279/",
+          "@inproceedings{wang2026knowledge,<br>&nbsp;&nbsp;&nbsp;title   = {Knowledge Graph Augmented Large Language Models for Disease Prediction},<br>&nbsp;&nbsp;&nbsp;author  = {Ruiyu Wang, Tuan Vinh, Ran Xu, Yuyin Zhou, Jiaying Lu, Francisco Pasquel, Mohammed K Ali, Carl Yang},<br>&nbsp;&nbsp;&nbsp;booktitle = {AMIA Joint Summits on Translational Science Proceedings},<br>&nbsp;&nbsp;&nbsp;year    = {2026},<br>}",
+          "Electronic health records (EHRs) enable strong clinical prediction, but explanations are often coarse and hard to use for patient-level decisions. We propose a knowledge graph (KG)-guided chain-of-thought (CoT) framework for visit-level disease prediction on MIMIC-III. We map ICD-9 codes to PrimeKG, mine disease-relevant nodes and paths, and use these paths to scaffold temporally consistent CoT rationales, retaining only samples whose conclusions match observed outcomes. We fine-tune lightweight instruction-tuned LLMs (LLaMA-3.1-Instruct-8B and Gemma-7B) on two small cohorts (400 and 1,000 index visits) across ten PrimeKG-mapped diseases. Our models outperform strong classical baselines, reaching AUROC 0.66-0.70 and macro-AUPR 0.40-0.47. Without additional training, the models transfer zero-shot to the CRADLE cohort, improving accuracy from 0.40-0.51 to 0.72-0.77. In a blinded clinician study, KG-guided CoT rationales are consistently preferred for clarity, relevance, and correctness. Code is available at: https://github.com/JonathanWry/KG-guided-LLM-pipeline",
+          "https://arxiv.org/abs/2512.01210",
+          "https://github.com/JonathanWry/KG-guided-LLM-pipeline"
         )
 
 
